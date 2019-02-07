@@ -1,0 +1,265 @@
+<script>
+(function() {
+    var addEventListener = function(el, eventName, handler) {
+        if (el.addEventListener) {
+            el.addEventListener(eventName, handler);
+        } else {
+            el.attachEvent('on' + eventName, function() {
+                handler.call(el);
+            });
+        }
+    };
+
+    var triggerEvent = function(el, eventName, options) {
+        var event;
+        if (window.CustomEvent) {
+            event = new CustomEvent(eventName, options);
+        } else {
+            event = document.createEvent('CustomEvent');
+            event.initCustomEvent(eventName, true, true, options);
+        }
+        el.dispatchEvent(event);
+    };
+
+    var group = document.querySelector('select.real-estate-filter-group'),
+        types = document.querySelectorAll('select.real-estate-filter-type'),
+        filter = document.querySelectorAll('.real-estate-filter > div'),
+        tmpIndex = 0;
+
+    if (group !== null) {
+        addEventListener(group ,'change', function (e) {
+            for (var i=0; i<types.length; i++) {
+                if (types[i].getAttribute('data-group') === e.target.value) {
+                    types[i].style.display = '';
+                    types[i].disabled = false;
+                    tmpIndex = i;
+                } else {
+                    types[i].style.display = 'none';
+                    types[i].disabled = true;
+                }
+            }
+            triggerEvent(types[tmpIndex], 'change');
+        });
+    }
+
+    if (types.length) {
+        for (var i=0; i<types.length; i++) {
+            if (types[i].getAttribute('data-reload') == 1) {
+                addEventListener(types[i], 'change', function (e) {
+                    e.currentTarget.form.submit();
+                });
+            } else {
+                addEventListener(types[i] ,'change', function (e) {
+                    var option = document.querySelector('select.real-estate-filter-type option[value="'+RealEstate.Config.filterCriteria[e.target.value].switchType+'"]');
+                    if (option !== null) {
+                        option.selected = true;
+                    } else {
+                        for (j=0; j<types.length; j++) {
+                            if (e.target !== types[j]) {
+                                if (types[j].options.length) {
+                                  types[j].options[0].selected = true;
+                                }
+                            }
+                        }
+                    }
+                    for (var j=0; j<filter.length; j++) {
+                        if (RealEstate.Config.filterCriteria[e.target.value].fields.indexOf(filter[j].getAttribute('data-group'))>=0) {
+                            filter[j].style.display = '';
+                        } else {
+                            filter[j].style.display = 'none';
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    var forEach = function ( collection, callback, scope ) {
+        if ( Object.prototype.toString.call( collection ) === '[object Object]' ) {
+            for ( var prop in collection ) {
+                if ( Object.prototype.hasOwnProperty.call( collection, prop ) ) {
+                    callback.call( scope, collection[prop], prop, collection );
+                }
+            }
+        } else {
+            for ( var i = 0, len = collection.length; i < len; i++ ) {
+                callback.call( scope, collection[i], i, collection );
+            }
+        }
+    };
+
+    var parseRangeInputs = function(group, txtTarget) {
+        var clsMask = ['price', 'room', 'area'],
+            mask = '',
+            from = group.querySelector('.from'),
+            to = group.querySelector('.to');
+
+        for(var i=0; i< clsMask.length; i++){
+            if(txtTarget.offsetParent.classList.contains(clsMask[i])){
+                mask = clsMask[i];
+                break;
+            }
+        }
+
+        if(from.value && to.value) {
+            txtTarget.value = maskInput(from.value, mask) + ' - ' + maskInput(to.value, mask);
+        } else if(from.value) {
+            txtTarget.value = 'ab ' + maskInput(from.value, mask);
+        } else if(to.value) {
+            txtTarget.value = 'bis ' + maskInput(to.value, mask);
+        } else {
+            txtTarget.value = '';
+        }
+
+        if(txtTarget.value){
+            switch (mask) {
+                case 'price':
+                    txtTarget.value += ' €';
+                    break;
+                case 'area':
+                    txtTarget.value += ' m²';
+                    break;
+                case 'room':
+                    txtTarget.value += ' Zi.';
+                    break;
+            }
+        }
+
+        txtTarget.dispatchEvent(new Event('change'));
+    };
+
+    var closeCombineGroups = function(){
+        var combineGroups = document.querySelectorAll('.filter-combine-group.open');
+
+        for (var g=0; g<combineGroups.length; g++) {
+            combineGroups[g].classList.remove('open');
+        }
+    };
+
+    var maskInput = function(val, mask){
+        if (typeof Intl === 'object' && typeof Intl.NumberFormat === 'function') {
+            var newVal = '';
+
+            switch(mask){
+                case 'price':
+                case 'area':
+                    newVal = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 2, useGrouping: true }).format(val);
+                    break;
+                default:
+                    newVal = val;
+            }
+
+            return newVal;
+        }else{
+            return val;
+        }
+    };
+
+    var combineGroups = document.querySelectorAll('.filter-combine-group'),
+        closer = null,
+        txtTarget = null,
+        elRange = null;
+
+    if (combineGroups.length) {
+
+        forEach(combineGroups, function (group, index) {
+
+            addEventListener(group,'click', function (e) {
+                // already open -> close
+                if(e.target.classList.contains('filter-combine-group') && e.target.classList.contains('open')){
+                    closeCombineGroups();
+
+                //open
+                }else if(!e.target.classList.contains('close')){
+                    closeCombineGroups();
+                    e.currentTarget.classList.add('open');
+                }
+            });
+
+            txtTarget = group.querySelector('input');
+            closer = group.querySelector('.close');
+            elRange = group.querySelectorAll('.from, .to');
+
+            for (var r = 0; r < elRange.length; r++) {
+                var event = [];
+
+                elRange[r].txtTarget = txtTarget;
+                elRange[r].evtGroup = group;
+
+                switch (elRange[r].tagName.toLowerCase())
+                {
+                    case 'input':
+                        event = ['keyup', 'change'];
+                        break;
+                    case 'select':
+                        event = ['change'];
+                        break;
+                }
+
+                if(event.length) {
+                    for (var ec=0; ec<event.length; ec++) {
+                        addEventListener(elRange[r], event[ec], function (e) {
+                            parseRangeInputs(e.currentTarget.evtGroup, e.currentTarget.txtTarget);
+                        });
+                    }
+
+                    parseRangeInputs(elRange[r].evtGroup, elRange[r].txtTarget);
+                }
+            }
+
+            // button click
+            addEventListener(closer, 'click', function (e) {
+                group.classList.remove('open');
+            });
+        });
+
+        // document click
+        addEventListener(document, 'click', function (event) {
+            var hasParent = false;
+            for(var node = event.target; node != document.body; node = node.parentNode) {
+                if(node.classList.contains('filter-combine-group')){
+                    hasParent = true;
+                    break;
+                }
+            }
+            if(!hasParent) {
+                closeCombineGroups();
+            }
+        });
+    }
+
+    var roomFrom = document.querySelector('select.room_from');
+    var roomTo = document.querySelector('select.room_to');
+
+    if(roomFrom && roomTo){
+       addEventListener(roomFrom, 'change', function(){
+           if(roomTo.value && roomFrom.value >= roomTo.value){
+               var cnt = parseInt(roomFrom.value) + 1;
+
+               if(roomTo.options[cnt]){
+                   roomTo.options[cnt].selected = true;
+               }else{
+                   roomTo.options[0].selected = true;
+               }
+
+               roomTo.dispatchEvent(new Event('change'));
+           }
+
+           for (var i=0; i<roomTo.options.length; i++){
+               if(roomTo.options[i].value && roomTo.options[i].value <= roomFrom.value){
+                   roomTo.options[i].disabled = true;
+               }else{
+                   roomTo.options[i].disabled = false;
+               }
+           }
+       });
+    }
+})();
+var RealEstate = {
+    Config: {
+        filterCriteria: {
+<?= \Oveleon\ContaoImmoManagerBundle\FilterDefaultFilter::getConfigFilterCriteria(); ?>
+        }
+    }
+};
+</script>

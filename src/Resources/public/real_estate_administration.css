@@ -1,0 +1,77 @@
+/*
+ * This file is part of Oveleon ImmoManager.
+ *
+ * @link      https://github.com/oveleon/contao-immo-manager-bundle
+ * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ */
+
+.navigation.provider, .navigation.type, .navigation.filter, .navigation.field_format, .navigation.interface, .navigation.config {
+  display: none !important; }
+
+.re_administration {
+  border-top: 1px solid #e6e6e8;
+  padding-top: 9px; }
+  .re_administration P {
+    padding: 9px 0 18px;
+    margin-bottom: 0;
+    color: #8a8a8a; }
+    .re_administration P:last-child {
+      padding-bottom: 0; }
+  .re_administration a {
+    font-weight: bold; }
+  .re_administration .re_listing_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    margin: 20px 9px 16px; }
+    .re_administration .re_listing_container .re_group {
+      width: calc((100% / 3) - 18px);
+      background: #f7f7f7;
+      margin: 0 9px 18px; }
+      .re_administration .re_listing_container .re_group h3 {
+        position: relative;
+        padding: 20px 20px 20px 55px;
+        border-bottom: 1px solid #e6e6e8;
+        color: #868686; }
+        .re_administration .re_listing_container .re_group h3:before {
+          position: absolute;
+          display: inline-block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          left: 18px;
+          top: 14px;
+          width: 25px;
+          height: 25px; }
+        .re_administration .re_listing_container .re_group h3.provider:before {
+          content: '';
+          background-image: url("/bundles/contaoimmomanager/icons/user.svg"); }
+        .re_administration .re_listing_container .re_group h3.filter:before {
+          content: '';
+          background-image: url("/bundles/contaoimmomanager/icons/filter.svg"); }
+        .re_administration .re_listing_container .re_group h3.interface:before {
+          content: '';
+          background-image: url("/bundles/contaoimmomanager/icons/link.svg"); }
+        .re_administration .re_listing_container .re_group h3.settings:before {
+          content: '';
+          background-image: url("/bundles/contaoimmomanager/icons/settings.svg"); }
+      .re_administration .re_listing_container .re_group .re_group_inner {
+        padding: 20px; }
+  .re_administration .re_header {
+    position: relative;
+    margin: 3px 18px;
+    padding: 2px 0; }
+    .re_administration .re_header .re_lizenz {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 5px;
+      padding: 5px;
+      background: #c6c8c2;
+      color: #FFF;
+      font-size: 11px;
+      text-transform: uppercase; }
+      .re_administration .re_header .re_lizenz.pacc {
+        background: #48c900; }
+
+/*# sourceMappingURL=real_estate_administration.css.map */

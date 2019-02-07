@@ -1,0 +1,177 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_filter.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_filter.title.0">
+        <source>Title</source>
+        <target>Titel</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.title.1">
+        <source>Please enter the filter title.</source>
+        <target>Bitte geben Sie den Filter-Titel ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.alias.0">
+        <source>Filter alias</source>
+        <target>Filteralias</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.alias.1">
+        <source>The form alias is a unique reference to the form which can be called instead of its numeric ID.</source>
+        <target>Der Filteralias ist eine eindeutige Referenz, die anstelle der numerischen Form-ID aufgerufen werden kann.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.jumpTo.0">
+        <source>Redirect page</source>
+        <target>Weiterleitungsseite</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.jumpTo.1">
+        <source>Please choose the page to which visitors will be redirected after submitting the filter.</source>
+        <target>Bitte wählen Sie die Seite aus, zu der Besucher nach dem Abschicken des Filters weitergeleitet werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.filterMode.0">
+        <source>Filter mode</source>
+        <target>Filtermodus</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.filterMode.1">
+        <source>Please enter the filter mode.</source>
+        <target>Bitte geben Sie den Filtermodus ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.listFilter.0">
+        <source>List filter</source>
+        <target>Listenfilter</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.listFilter.1">
+        <source>Please enter the list filters.</source>
+        <target>Bitte geben Sie die Listenfilter an.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.customTpl.0">
+        <source>Filter template</source>
+        <target>Filtertemplate</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.customTpl.1">
+        <source>Here you can select the filter template.</source>
+        <target>Hier können Sie das Filtertemplate auswählen.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter.method.0">
+        <source>Submission method</source>
+        <target>Übertragungsmethode</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.method.1">
+        <source>The default form submission method is POST.</source>
+        <target>Die Standard-Übertragungsmethode ist POST.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.novalidate.0">
+        <source>Disable HTML5 validation</source>
+        <target>HTML5-Validierung deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.novalidate.1">
+        <source>Add the &lt;em&gt;novalidate&lt;/em&gt; attribute to the form tag.</source>
+        <target>Fügt dem Formular das &lt;em&gt;novalidate&lt;/em&gt;-Attribut hinzu.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.attributes.0">
+        <source>CSS ID/class</source>
+        <target>CSS-ID/Klasse</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.attributes.1">
+        <source>Here you can set an ID and one or more classes.</source>
+        <target>Hier können Sie eine ID und beliebig viele Klassen eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.formID.0">
+        <source>Form ID</source>
+        <target>Formular-ID</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.formID.1">
+        <source>The filter ID is required to trigger a Contao module.</source>
+        <target>Die Filter-ID wird zur Ansteuerung eines Contao-Moduls benötigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.tstamp.0">
+        <source>Revision date</source>
+        <target>Änderungsdatum</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.tstamp.1">
+        <source>Date and time of the latest revision</source>
+        <target>Datum und Uhrzeit der letzten Änderung</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter.title_legend">
+        <source>Title and forwarding</source>
+        <target>Titel und Weiterleitung</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.filter_mode_legend">
+        <source>Filter mode settings</source>
+        <target>Filtermodus-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.template_legend">
+        <source>Template settings</source>
+        <target>Template-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.expert_legend">
+        <source>Expert settings</source>
+        <target>Experten-Einstellungen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter.new.0">
+        <source>New filter</source>
+        <target>Neuer Filter</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.new.1">
+        <source>Create a new filter</source>
+        <target>Einen neuen Filter erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.edit.0">
+        <source>Edit filter</source>
+        <target>Filter bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.edit.1">
+        <source>Edit filter ID %s</source>
+        <target>Filter ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.editheader.0">
+        <source>Edit fields</source>
+        <target>Felder bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.editheader.1">
+        <source>Edit assigned fields</source>
+        <target>Zugehörige Felder bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.copy.0">
+        <source>Duplicate filter</source>
+        <target>Filter duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.copy.1">
+        <source>Duplicate filter ID %s</source>
+        <target>Filter ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.delete.0">
+        <source>Delete filter</source>
+        <target>Filter löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.delete.1">
+        <source>Delete filter ID %s</source>
+        <target>Filter ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle.0">
+        <source>Activate/deactivate filter</source>
+        <target>Filter aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle.1">
+        <source>Activate/deactivate filter ID %s</source>
+        <target>Filter ID %s aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.show.0">
+        <source>Filter details</source>
+        <target>Filterdetails</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.show.1">
+        <source>Show the details of filter ID %s</source>
+        <target>Die Details des Filters ID %s anzeigen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

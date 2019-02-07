@@ -1,0 +1,8 @@
+
+<div class="<?= $this->prefix ?><?php if ($this->class) echo ' ' . $this->class; ?>">
+  <?php $this->block('filter_label'); ?>
+  <?php $this->endblock(); ?>
+
+  <?php $this->block('filter_item'); ?>
+  <?php $this->endblock(); ?>
+</div>

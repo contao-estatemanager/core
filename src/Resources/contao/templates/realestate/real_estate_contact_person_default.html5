@@ -1,0 +1,9 @@
+<div class="real_estate_contact_person_default contact-person block">
+  <?php if ($this->addImage): ?>
+      <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
+  <?php endif; ?>
+  <div class="name"><?=$this->name?></div>
+  <?php if($this->mainPhone): ?>
+      <div class="phone"><?=$this->mainPhone?></div>
+  <?php endif; ?>
+</div>

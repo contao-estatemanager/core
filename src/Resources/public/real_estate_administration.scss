@@ -1,0 +1,86 @@
+.navigation {
+
+  &.provider, &.type, &.filter, &.field_format, &.interface, &.config {
+    display: none !important;
+  }
+}
+
+.re_administration{
+  border-top: 1px solid #e6e6e8;
+  padding-top: 9px;
+
+  P{
+    padding: 9px 0 18px;
+    margin-bottom: 0;
+    color: #8a8a8a;
+
+    &:last-child{
+      padding-bottom: 0;
+    }
+  }
+
+  a{
+    font-weight: bold;
+  }
+
+  .re_listing_container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 0;
+    margin: 20px 9px 16px;
+
+    .re_group{
+      width: calc((100% / 3) - 18px);
+      background: #f7f7f7;
+      margin: 0 9px 18px;
+
+      h3{
+        position: relative;
+        padding: 20px 20px 20px 55px;
+        border-bottom: 1px solid #e6e6e8;
+        color: #868686;
+
+        &:before{
+          position: absolute;
+          display: inline-block;
+          background-size: contain;
+          background-repeat: no-repeat;
+          left: 18px;
+          top: 14px;
+          width: 25px;
+          height: 25px;
+        }
+
+        &.provider:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/user.svg');
+        }
+
+        &.filter:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/filter.svg');
+        }
+
+        &.interface:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/link.svg');
+        }
+
+        &.settings:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/settings.svg');
+        }
+      }
+
+      .re_group_inner{
+        padding: 20px;
+      }
+    }
+  }
+
+  .re_header{
+    position: relative;
+    margin: 3px 18px;
+    padding: 2px 0;
+  }
+}

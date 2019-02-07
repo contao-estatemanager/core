@@ -1,0 +1,373 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_filter_item.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="RFI.type.0">
+        <source>Real estate type</source>
+        <target>Immobilien-Typ</target>
+      </trans-unit>
+      <trans-unit id="RFI.type.1">
+        <source>A filter for real estate groups and real estate types.</source>
+        <target>Ein Filter für Immobilien-Gruppen und Immobilien-Typen.</target>
+      </trans-unit>
+      <trans-unit id="RFI.location.0">
+        <source>Addressfield</source>
+        <target>Adressfeld</target>
+      </trans-unit>
+      <trans-unit id="RFI.location.1">
+        <source>An address field for filtering based on address entries.</source>
+        <target>Ein Adressfeld zum Filtern anhand von Adresseingaben.</target>
+      </trans-unit>
+      <trans-unit id="RFI.radius.0">
+        <source>Radius field</source>
+        <target>Umkreissuche</target>
+      </trans-unit>
+      <trans-unit id="RFI.radius.1">
+        <source>A field for radius search.</source>
+        <target>Ein Feld zur Umkreissuche.</target>
+      </trans-unit>
+      <trans-unit id="RFI.defaultFilter.0">
+        <source>Type filter</source>
+        <target>Typ-Filter</target>
+      </trans-unit>
+      <trans-unit id="RFI.defaultFilter.1">
+        <source>Filters depending on the real estate type properties.</source>
+        <target>Vom Immobilien-Typ abhängige Filter.</target>
+      </trans-unit>
+      <trans-unit id="RFI.more.0">
+        <source>more</source>
+        <target>more</target>
+      </trans-unit>
+      <trans-unit id="RFI.more.1">
+        <source></source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="RFI.submit.0">
+        <source>Submit field</source>
+        <target>Absendefeld</target>
+      </trans-unit>
+      <trans-unit id="RFI.submit.1">
+        <source>A button to submit the filter.</source>
+        <target>Eine Absende-Schaltfläche zur Versendung des Filters.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.type.0">
+        <source>Field type</source>
+        <target>Feldtyp</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.type.1">
+        <source>Please choose the type of field.</source>
+        <target>Bitte wählen Sie den Typ des Filterfelds.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.name.0">
+        <source>Field name</source>
+        <target>Feldname</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.name.1">
+        <source>The field name is a unique name to identify the field.</source>
+        <target>Der Feldname ist ein eindeutiger Name zur Identifizierung des Feldes.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.label.0">
+        <source>Field label</source>
+        <target>Feldbezeichnung</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.label.1">
+        <source>The field label will be visible on the website, typically in front of or above the field.</source>
+        <target>Die Feldbezeichnung wird auf der Webseite angezeigt, normalerweise links neben oder oberhalb des Feldes.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mandatory.0">
+        <source>Mandatory field</source>
+        <target>Pflichtfeld</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mandatory.1">
+        <source>The form will not submit if the field is empty.</source>
+        <target>Das Feld muss zum Abschicken des Formulars ausgefüllt werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mode.0">
+        <source>Mode</source>
+        <target>Modus</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mode.1">
+        <source>Here you can specify the mode of the field.</source>
+        <target>Hier können Sie den Modus des Feldes angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLongTitle.0">
+        <source>Use long real estate title</source>
+        <target>Langen Immobilien-Titel verwenden</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLongTitle.1">
+        <source>Use the long real estate title.</source>
+        <target>Den langen Immobilien-Titel verwenden.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mergeOptions.0">
+        <source>Merge options</source>
+        <target>Optionen zusammenfügen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mergeOptions.1">
+        <source>Options are displayed merged.</source>
+        <target>Die Optionen werden zusammengeführt ausgegeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.addBlankOption.0">
+        <source>Add blank option</source>
+        <target>Leere Option anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.addBlankOption.1">
+        <source>Display an empty option on first position.</source>
+        <target>Eine leere Option an erster Stelle anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.typeItem.0">
+        <source>Type field</source>
+        <target>Typfeld</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.typeItem.1">
+        <source>Please select the assigned type field.</source>
+        <target>Bitte das zugehörige Typfeld auswählen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groupItem.0">
+        <source>Group field</source>
+        <target>Gruppenfeld</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groupItem.1">
+        <source>Please select the assigned group field.</source>
+        <target>Bitte das zugehörige Gruppenfeld auswählen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.group.0">
+        <source>Real estate group</source>
+        <target>Immobilien-Gruppe</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.group.1">
+        <source>Please select the real estate group.</source>
+        <target>Bitte die Immobilien-Gruppe auswählen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.submitOnChange.0">
+        <source>Submit on change</source>
+        <target>Bei Änderung absenden</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.submitOnChange.1">
+        <source>The filter is sent as soon as a change is made.</source>
+        <target>Der Filter wird abgesendet sobald eine Änderung erfolgt.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groups.0">
+        <source>Real estate groups</source>
+        <target>Immobilien-Gruppen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groups.1">
+        <source>Here you can specify the real estate groups that are to be taken into account.</source>
+        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options.0">
+        <source>Options</source>
+        <target>Optionen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options.1">
+        <source>If JavaScript is disabled, make sure to save your changes before modifying the order.</source>
+        <target>Wenn JavaScript deaktiviert ist, speichern Sie unbedingt Ihre Änderungen, bevor Sie die Reihenfolge ändern.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.displayMode.0">
+        <source>Display mode</source>
+        <target>Anzeige-Modus</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.displayMode.1">
+        <source>Here you can specify the display mode.</source>
+        <target>Hier können Sie en Anzeige-Modus angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showPlaceholder.0">
+        <source>Show placeholder</source>
+        <target>Placeholder enzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showPlaceholder.1">
+        <source>Here you can specify if the placeholder should be displayed.</source>
+        <target>Hier können Sie angeben, ob der Placeholder angezeigt werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.0">
+        <source>Show label</source>
+        <target>Label enzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.1">
+        <source>Here you can specify if the label should be displayed.</source>
+        <target>Hier können Sie angeben, ob des Label angezeigt werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.placeholder.0">
+        <source>Placeholder</source>
+        <target>Platzhalter</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.placeholder.1">
+        <source>Show this text as long as the field is empty (requires HTML5).</source>
+        <target>Dieser Text wird angezeigt solange das Feld noch nicht ausgefüllt wurde (benötigt HTML5).</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.imageSubmit.0">
+        <source>Create an image button</source>
+        <target>Bildschaltfläche erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.imageSubmit.1">
+        <source>Use an image submit button instead of the default one.</source>
+        <target>Eine Bildschaltfläche anstatt der Standard-Schaltfläche verwenden.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.singleSRC.0">
+        <source>Source file</source>
+        <target>Quelldatei</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.class.0">
+        <source>CSS class</source>
+        <target>CSS-Klasse</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.class.1">
+        <source>Here you can enter one or more classes.</source>
+        <target>Hier können Sie eine oder mehrere Klassen eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.accesskey.0">
+        <source>Access key</source>
+        <target>Tastaturkürzel</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.accesskey.1">
+        <source>A form field can be focused by pressing the [ALT] or [CTRL] key and the access key simultaneously.</source>
+        <target>Ein Formularfeld kann direkt angewählt werden, indem man gleichzeitig die [ALT]- bzw. [STRG]-Taste und das Tastaturkürzel drückt.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.tabindex.0">
+        <source>Tab index</source>
+        <target>Tab-Index</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.tabindex.1">
+        <source>The position of the form field in the tabbing order.</source>
+        <target>Die Position des Formularfeldes innerhalb der Tabulator-Reihenfolge.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.customTpl.0">
+        <source>Custom form field template</source>
+        <target>Individuelles Template</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.customTpl.1">
+        <source>Here you can overwrite the default form field template.</source>
+        <target>Hier können Sie das Standard-Template überschreiben.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible.0">
+        <source>Invisible</source>
+        <target>Unsichtbar</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible.1">
+        <source>Hide the filter field on the website.</source>
+        <target>Das Filterfeld auf der Webseite nicht anzeigen.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.type_legend">
+        <source>Field type and name</source>
+        <target>Feldtyp und -name</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.field_config_legend">
+        <source>Field configuration</source>
+        <target>Feldkonfiguration</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.image_legend">
+        <source>Image button</source>
+        <target>Bildschaltfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options_legend">
+        <source>Options</source>
+        <target>Optionen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.expert_legend">
+        <source>Expert settings</source>
+        <target>Experten-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.template_legend">
+        <source>Template settings</source>
+        <target>Template-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible_legend">
+        <source>Visibility</source>
+        <target>Sichtbarkeit</target>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.new.0">
+        <source>New field</source>
+        <target>Neues Feld</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.new.1">
+        <source>Create a new field</source>
+        <target>Ein neues Feld anlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.show.0">
+        <source>Field details</source>
+        <target>Felddetails</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.show.1">
+        <source>Show the details of field ID %s</source>
+        <target>Details des Feldes ID %s anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.edit.0">
+        <source>Edit field</source>
+        <target>Feld bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.edit.1">
+        <source>Edit field ID %s</source>
+        <target>Das Feld ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.cut.0">
+        <source>Move field</source>
+        <target>Feld verschieben</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.cut.1">
+        <source>Move field ID %s</source>
+        <target>Das Feld ID %s verschieben</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.copy.0">
+        <source>Duplicate field</source>
+        <target>Feld duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.copy.1">
+        <source>Duplicate field ID %s</source>
+        <target>Das Feld ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.delete.0">
+        <source>Delete field</source>
+        <target>Feld löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.delete.1">
+        <source>Delete field ID %s</source>
+        <target>Das Feld ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.editheader.0">
+        <source>Edit form</source>
+        <target>Formular bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.editheader.1">
+        <source>Edit the form settings</source>
+        <target>Die Formular-Einstellungen bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pasteafter.0">
+        <source>Paste at the top</source>
+        <target>Oben einfügen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pasteafter.1">
+        <source>Paste after field ID %s</source>
+        <target>Nach dem Feld ID %s einfügen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pastenew.0">
+        <source>Add new at the top</source>
+        <target>Neues Inhaltselement oben erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pastenew.1">
+        <source>Add new after field ID %s</source>
+        <target>Neues Feld nach ID %s erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.toggle.0">
+        <source>Toggle visibility</source>
+        <target>Sichtbarkeit ändern</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.toggle.1">
+        <source>Toggle the visibility of field ID %s</source>
+        <target>Die Sichtbarkeit des Feldes ID %s ändern</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.option.1">
+        <source>Import options from a CSV file</source>
+        <target>Optionen aus einer CSV-Datei importieren</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

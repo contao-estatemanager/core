@@ -1,0 +1,83 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/tl_field_format_action.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_field_format_action.new.0">
+        <source>Neue Formataktion</source>
+        <target>Neue Formataktion</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.new.1">
+        <source>Neue Formataktion anlegen</source>
+        <target>Neue Formataktion anlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.edit.0">
+        <source>Aktion bearbeiten</source>
+        <target>Aktion bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.delete.0">
+        <source>Aktion löschen</source>
+        <target>Aktion löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.show.0">
+        <source>Aktioninformationen anzeigen</source>
+        <target>Aktioninformationen anzeigen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_field_format_action.type_legend">
+        <source>Formataktion</source>
+        <target>Formataktion</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.setting_legend">
+        <source>Aktions-Einstellungen</source>
+        <target>Aktions-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.action.0">
+        <source>Aktion</source>
+        <target>Aktion</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.action.1">
+        <source>Bitte wählen Sie eine Aktion.</source>
+        <target>Bitte wählen Sie eine Aktion.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.decimals.0">
+        <source>Nachkommastellen</source>
+        <target>Nachkommastellen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.decimals.1">
+        <source>Geben Sie bitte die länge der Nachkommastellen an</source>
+        <target>Nachkommastellen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.text.0">
+        <source>Text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.seperator.0">
+        <source>Trennzeichen</source>
+        <target>Trennzeichen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.elements.0">
+        <source>Felder</source>
+        <target>Felder</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.elements.1">
+        <source>Wählen Sie ein oder meherer Felder, welche kombiniert werden sollen. Bitte beachten Sie, dass das eigene Feld mit aufgenommen werden muss, sofern dieses mit kombiniert werden soll.</source>
+        <target>Wählen Sie ein oder meherer Felder, welche kombiniert werden sollen. Bitte beachten Sie, dass das eigene Feld mit aufgenommen werden muss, sofern dieses mit kombiniert werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.necessary.0">
+        <source>Erzwingen</source>
+        <target>Erzwingen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.necessary.1">
+        <source>Umwandlung erzwingen, selbst wenn kein Wert vorhanden ist.</source>
+        <target>Umwandlung erzwingen, selbst wenn kein Wert vorhanden ist.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

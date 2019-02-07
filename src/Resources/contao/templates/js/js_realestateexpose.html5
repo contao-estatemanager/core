@@ -1,0 +1,36 @@
+<script>
+    (function() {
+        var addEventListener = function(el, eventName, handler) {
+            if (el.addEventListener) {
+                el.addEventListener(eventName, handler);
+            } else {
+                el.attachEvent('on' + eventName, function() {
+                    handler.call(el);
+                });
+            }
+        };
+
+        var tab = function(event) {
+            event.preventDefault();
+
+            if((event.target.tagName.toLowerCase() !== 'a')){
+                return;
+            }
+
+            var actives = document.querySelectorAll('.active');
+
+            for (var i=0; i < actives.length; i++){
+                actives[i].classList.remove('active');
+            }
+
+            event.target.classList.add('active');
+            document.getElementById(event.target.href.split('#')[1]).classList.add('active');
+        };
+
+        var tabs = document.getElementsByClassName('tabs');
+
+        if(tabs.length){
+            addEventListener(tabs[0], 'click', tab);
+        }
+    })();
+</script>

@@ -1,0 +1,343 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/tl_real_estate_filter.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_real_estate_filter.miete_leasing">
+        <source>Mieten</source>
+        <target>Mieten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kauf_erbpacht">
+        <source>Kaufen</source>
+        <target>Kaufen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.from">
+        <source>ab</source>
+        <target>ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.to">
+        <source>bis</source>
+        <target>bis</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.price">
+        <source>Preis</source>
+        <target>Preis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.price_from">
+        <source>Preis ab</source>
+        <target>Preis ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.price_to">
+        <source>Preis bis</source>
+        <target>Preis bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete">
+        <source>Kaltmiete</source>
+        <target>Kaltmiete</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_from">
+        <source>Kaltmiete ab</source>
+        <target>Kaltmiete ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_to">
+        <source>Kaltmiete bis</source>
+        <target>Kaltmiete bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete">
+        <source>Kaltmiete</source>
+        <target>Kaltmiete</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_from">
+        <source>Kaltmiete ab</source>
+        <target>Kaltmiete ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_to">
+        <source>Kaltmiete bis</source>
+        <target>Kaltmiete bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete">
+        <source>Pauschalmiete</source>
+        <target>Pauschalmiete</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_from">
+        <source>Pauschalmiete ab</source>
+        <target>Pauschalmiete ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_to">
+        <source>Pauschalmiete bis</source>
+        <target>Pauschalmiete bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht">
+        <source>Pacht</source>
+        <target>Pacht</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_from">
+        <source>Pacht ab</source>
+        <target>Pacht ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_to">
+        <source>Pacht bis</source>
+        <target>Pacht bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis">
+        <source>Kaufpreis</source>
+        <target>Kaufpreis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_from">
+        <source>Kaufpreis ab</source>
+        <target>Kaufpreis ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_to">
+        <source>Kaufpreis bis</source>
+        <target>Kaufpreis bis</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.price_per">
+        <source>Preis pro</source>
+        <target>Preis pro</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.per_month">
+        <source>pro Monat</source>
+        <target>pro Monat</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.per_square_meter">
+        <source>pro m²</source>
+        <target>pro m²</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.room">
+        <source>Zimmer</source>
+        <target>Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_from">
+        <source>Zimmer ab</source>
+        <target>Zimmer ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_to">
+        <source>Zimmer bis</source>
+        <target>Zimmer bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.from_x_rooms">
+        <source>ab %s Zimmer</source>
+        <target>ab %s Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.to_x_rooms">
+        <source>bis %s Zimmer</source>
+        <target>bis %s Zimmer</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.area">
+        <source>Fläche</source>
+        <target>Fläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.area_from">
+        <source>Fläche ab</source>
+        <target>Fläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.area_to">
+        <source>Fläche bis</source>
+        <target>Fläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche">
+        <source>Wohnfläche</source>
+        <target>Wohnfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_from">
+        <source>Wohnfläche ab</source>
+        <target>Wohnfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_to">
+        <source>Wohnfläche bis</source>
+        <target>Wohnfläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche">
+        <source>Gesamtfläche</source>
+        <target>Gesamtfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_from">
+        <source>Gesamtfläche ab</source>
+        <target>Gesamtfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_to">
+        <source>Gesamtfläche bis</source>
+        <target>Gesamtfläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche">
+        <source>Grundstücksfläche</source>
+        <target>Grundstücksfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_from">
+        <source>Grundstücksfläche ab</source>
+        <target>Grundstücksfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_to">
+        <source>Grundstücksfläche bis</source>
+        <target>Grundstücksfläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche">
+        <source>Nutzfläche</source>
+        <target>Nutzfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_from">
+        <source>Nutzfläche ab</source>
+        <target>Nutzfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_to">
+        <source>Nutzfläche bis</source>
+        <target>Nutzfläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche">
+        <source>Vermietbare Fläche</source>
+        <target>Vermietbare Fläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_from">
+        <source>Vermietbare Fläche ab</source>
+        <target>Vermietbare Fläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_to">
+        <source>Vermietbare Fläche bis</source>
+        <target>Vermietbare Fläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche">
+        <source>Bürofläche</source>
+        <target>Bürofläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_from">
+        <source>Bürofläche ab</source>
+        <target>Bürofläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_to">
+        <source>Bürofläche bis</source>
+        <target>Bürofläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche">
+        <source>Verkaufsfläche</source>
+        <target>Verkaufsfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_from">
+        <source>Verkaufsfläche ab</source>
+        <target>Verkaufsfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_to">
+        <source>Verkaufsfläche bis</source>
+        <target>Verkaufsfläche bis</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.period">
+        <source>Bezugsfrei</source>
+        <target>Bezugsfrei</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.period_from">
+        <source>Bezugsfrei ab</source>
+        <target>Bezugsfrei ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.period_to">
+        <source>Bezugsfrei bis</source>
+        <target>Bezugsfrei bis</target>
+      </trans-unit>
+
+
+      <trans-unit id="tl_real_estate_filter.radius">
+        <source>Umkreis</source>
+        <target>Umkreis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.radius_unit">
+        <source>%s km</source>
+        <target>%s km</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.dateAdded_asc">
+        <source>Aktualität (neueste zuerst)</source>
+        <target>Aktualität (neueste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_asc">
+        <source>Kaltmiete (niedrigste zuerst)</source>
+        <target>Kaltmiete (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_desc">
+        <source>Kaltmiete (höchste zuerst)</source>
+        <target>Kaltmiete (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_asc">
+        <source>Kaufpreis (niedrigste zuerst)</source>
+        <target>Kaufpreis (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_desc">
+        <source>Kaufpreis (höchste zuerst)</source>
+        <target>Kaufpreis (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_asc">
+        <source>Kaltmiete (niedrigste zuerst)</source>
+        <target>Kaltmiete (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_desc">
+        <source>Kaltmiete (höchste zuerst)</source>
+        <target>Kaltmiete (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_asc">
+        <source>Pauschalmiete (niedrigste zuerst)</source>
+        <target>Pauschalmiete (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_desc">
+        <source>Pauschalmiete (höchste zuerst)</source>
+        <target>Pauschalmiete (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_asc">
+        <source>Pacht (niedrigste zuerst)</source>
+        <target>Pacht (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_desc">
+        <source>Pacht (höchste zuerst)</source>
+        <target>Pacht (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlZimmer_asc">
+        <source>Zimmeranzahl (niedrigste zuerst)</source>
+        <target>Zimmeranzahl (niedrigste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlZimmer_desc">
+        <source>Zimmeranzahl (höchste zuerst)</source>
+        <target>Zimmeranzahl (höchste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_asc">
+        <source>Wohnfläche (kleinste zuerst)</source>
+        <target>Wohnfläche (kleinste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_desc">
+        <source>Wohnfläche (größste zuerst)</source>
+        <target>Wohnfläche (größste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_asc">
+        <source>Gesamtfläche (kleinste zuerst)</source>
+        <target>Gesamtfläche (kleinste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_desc">
+        <source>Gesamtfläche (größste zuerst)</source>
+        <target>Gesamtfläche (größste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_asc">
+        <source>Grundstücksfläche (kleinste zuerst)</source>
+        <target>Grundstücksfläche (kleinste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_desc">
+        <source>Grundstücksfläche (größste zuerst)</source>
+        <target>Grundstücksfläche (größste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_asc">
+        <source>Vermietbare Fläche (kleinste zuerst)</source>
+        <target>Vermietbare Fläche (kleinste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_desc">
+        <source>Vermietbare Fläche (größste zuerst)</source>
+        <target>Vermietbare Fläche (größste zuerst)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

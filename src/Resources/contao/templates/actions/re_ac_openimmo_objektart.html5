@@ -1,0 +1,69 @@
+<?php
+/**
+ * This file is part of Oveleon ImmoManager.
+ *
+ * @link      https://github.com/oveleon/contao-immo-manager-bundle
+ * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ */
+
+return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedCollection){
+
+    if($field !== 'objektart')
+    {
+        return $varValue;
+    }
+
+    $objectType = false;
+
+    switch($varValue)
+    {
+        case 'zimmer':
+            $objectType = 'zimmerTyp';
+            break;
+        case 'wohnung':
+            $objectType = 'wohnungTyp';
+            break;
+        case 'haus':
+            $objectType = 'hausTyp';
+            break;
+        case 'grundstueck':
+            $objectType = 'grundstTyp';
+            break;
+        case 'buero_praxen':
+            $objectType = 'bueroTyp';
+            break;
+        case 'einzelhandel':
+            $objectType = 'handelTyp';
+            break;
+        case 'gastgewerbe':
+            $objectType = 'gastgewTyp';
+            break;
+        case 'hallen_lager_prod':
+            $objectType = 'hallenTyp';
+            break;
+        case 'land_und_forstwirtschaft':
+            $objectType = 'landTyp';
+            break;
+        case 'parken':
+            $objectType = 'parkenTyp';
+            break;
+        case 'sonstige':
+            $objectType = 'sonstigeTyp';
+            break;
+        case 'freizeitimmobilie_gewerblich':
+            $objectType = 'freizeitTyp';
+            break;
+        case 'zinshaus_renditeobjekt':
+            $objectType = 'zinsTyp';
+            break;
+    }
+
+    if($objectType && $objRealEstate->{$objectType})
+    {
+        $arrRemovedCollection[] = $objectType;
+        return Oveleon\ContaoImmoManagerBundle\Translator::translateValue($objRealEstate->{$objectType}, $objectType);
+    }
+
+    return $varValue;
+});

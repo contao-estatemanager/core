@@ -1,0 +1,40 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <div class="result-map-filter">
+    <?php if ($this->addFilter): ?>
+        <?= $this->filter ?>
+    <?php endif; ?>
+  </div>
+
+  <?php if ($this->addSorting): ?>
+    <div class="result-sorting">
+      <form method="post" enctype="application/x-www-form-urlencoded" novalidate="">
+        <div class="formbody">
+          <input type="hidden" name="FORM_SUBMIT" value="sorting">
+          <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+          <div class="widget widget-select select">
+            <select name="sorting" class="select" onchange="this.form.submit()">
+              <?php foreach ($this->sortingOptions as $value => $label): ?>
+                <option value="<?= $value ?>"<?= $this->selectedSortingOption == $value ? ' selected' : '' ?>><?= $label ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  <?php endif; ?>
+
+  <?php if (empty($this->realEstates)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+    <div class="result-list">
+      <div class="result-list-inner">
+        <?= implode('', $this->realEstates) ?>
+      </div>
+    </div>
+      <?= $this->pagination ?>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

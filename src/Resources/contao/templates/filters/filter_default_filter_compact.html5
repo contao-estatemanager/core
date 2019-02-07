@@ -1,0 +1,149 @@
+<?php $this->extend('filter_row'); ?>
+
+<?php $this->block('filter_item'); ?>
+
+<?php if ($this->outputAllFilter || $this->addGroupPrice): ?>
+    <div class="price" data-group="price"<?= !$this->addGroupPrice ? ' style="display:none;"' : '' ?>>
+        <?php if ($this->displayMode == 'range'): ?>
+            <div class="widget widget-select select price filter-combine-group">
+                <?php if ($this->showLabel): ?><label for="ctrl_price"><?= $this->labelPrice ?></label><?php endif; ?>
+                <input type="text" id="ctrl_price" class="mask" readonly <?= $this->showPlaceholder ? ' placeholder="'.$this->labelPrice.'"' : '' ?>/>
+                <div class="group">
+                    <div class="group-inner">
+                      <label><?= $this->labelPrice ?></label>
+                        <div class="widget widget-text price_from first">
+                            <input type="number" name="price_from" class="text price_from from"  placeholder="<?= $this->labelFrom ?>" value="<?= $this->price_from ?>">
+                        </div>
+                        <div class="widget widget-text price_to last">
+                            <input type="number" name="price_to" class="text price_to to" placeholder="<?= $this->labelTo ?>" value="<?= $this->price_to ?>">
+                        </div>
+                        <?php if ($this->outputAllFilter || $this->addGroupPer): ?>
+                            <div class="price_per" data-group="per"<?= !$this->addGroupPer ? ' style="display:none;"' : '' ?>>
+                                <div class="widget widget-select select price_per">
+                                    <select name="price_per" id="ctrl_price_per" class="select price_per">
+                                        <option value><?= $this->labelPer ?></option>
+                                        <option value="square_meter"<?= $this->price_per == 'square_meter' ? ' selected' : '' ?>><?= $this->labelPerSquareMeter ?></option>
+                                    </select>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="widget widget-submit">
+                            <button type="button" class="close submit"><?= $this->labelOk ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="widget widget-text price_to">
+                <?php if ($this->showLabel): ?><label for="ctrl_price_to"><?= $this->labelPriceTo ?></label><?php endif; ?>
+                <input type="number" name="price_to" id="ctrl_price_to" class="text price_to"<?= $this->showPlaceholder ? ' placeholder="'.$this->labelPriceTo.'"' : '' ?> value="<?= $this->price_to ?>">
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<?php if ($this->outputAllFilter || $this->addGroupRoom): ?>
+    <div class="room" data-group="room"<?= !$this->addGroupRoom ? ' style="display:none;"' : '' ?>>
+        <?php if ($this->displayMode != 'range'): ?>
+            <div class="widget widget-select select room_from">
+                <?php if ($this->showLabel): ?><label for="ctrl_room_from"><?= $this->labelRoomFrom ?></label><?php endif; ?>
+                <select name="room_from" id="ctrl_room_from" class="select room_from">
+                    <option value><?= !$this->showLabel ? $this->labelRoomFrom : '' ?></option>
+                    <?php foreach ($this->roomFromOptions as $value => $label): ?>
+                        <option value="<?= $value ?>"<?= $this->room_from == $value ? ' selected' : '' ?>><?= $label ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        <?php else: ?>
+            <div class="widget widget-select select room filter-combine-group">
+                <?php if ($this->showLabel): ?><label for="ctrl_room"><?= $this->labelRoom ?></label><?php endif; ?>
+                <input type="text" id="ctrl_room" class="mask" readonly <?= $this->showPlaceholder ? 'placeholder="'.$this->labelRoom.'"' : '' ?>/>
+                <div class="group">
+                    <div class="group-inner">
+                        <label><?= $this->labelRoom ?></label>
+                        <div class="widget widget-select select room_from first">
+                            <select name="room_from" class="select room_from from">
+                                <option value><?= $this->labelFrom ?></option>
+                                <?php foreach ($this->roomFromOptions as $value => $label): ?>
+                                    <option value="<?= $value ?>"<?= $this->room_from == $value ? ' selected' : '' ?>><?= $label ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="widget widget-select select room_to last">
+                            <select name="room_to" class="select room_to to">
+                                <option value><?= $this->labelTo ?></option>
+                                <?php foreach ($this->roomToOptions as $value => $label): ?>
+                                    <option value="<?= $value ?>"<?= $this->room_to == $value ? ' selected' : '' ?>><?= $label ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="widget widget-submit">
+                            <button type="button" class="close submit"><?= $this->labelOk ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<?php if ($this->outputAllFilter || $this->addGroupArea): ?>
+    <div class="area" data-group="area"<?= !$this->addGroupArea ? ' style="display:none;"' : '' ?>>
+        <?php if ($this->displayMode != 'range'): ?>
+            <div class="widget widget-text area_from">
+                <?php if ($this->showLabel): ?><label for="ctrl_area_from"><?= $this->labelAreaFrom ?></label><?php endif; ?>
+                <input type="number" name="area_from" id="ctrl_area_from" value="<?= $this->area_from ?>" <?= $this->showPlaceholder ? ' placeholder="'.$this->labelAreaFrom.'"' : '' ?>>
+            </div>
+        <?php else: ?>
+            <div class="widget widget-select select area filter-combine-group">
+                <?php if ($this->showLabel): ?><label for="ctrl_area"><?= $this->labelArea ?></label><?php endif; ?>
+                <input type="text" id="ctrl_area" class="mask" readonly <?= $this->showPlaceholder ? 'placeholder="'.$this->labelArea.'"' : '' ?>/>
+                <div class="group right">
+                    <div class="group-inner">
+                        <label><?= $this->labelArea ?></label>
+                        <div class="widget widget-text area_from first">
+                            <input type="number" name="area_from" class="from" value="<?= $this->area_from ?>" placeholder="<?=$this->labelFrom?>">
+                        </div>
+                        <div class="widget widget-text area_to last">
+                            <input type="number" name="area_to" class="to" value="<?= $this->area_to ?>" placeholder="<?=$this->labelTo?>">
+                        </div>
+                        <div class="widget widget-submit">
+                            <button type="button" class="close submit"><?= $this->labelOk ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<?php if ($this->outputAllFilter || $this->addGroupPeriod): ?>
+    <div class="period" data-group="period"<?= !$this->addGroupPeriod ? ' style="display:none;"' : '' ?>>
+        <?php if ($this->displayMode != 'range'): ?>
+            <div class="widget widget-text period_from date">
+                <?php if ($this->showLabel): ?><label for="ctrl_period_from"><?= $this->labelPeriodFrom ?></label><?php endif; ?>
+                <input type="text" name="period_from" id="ctrl_period_from" value="<?= $this->period_from ?>" <?= $this->showPlaceholder ? 'placeholder="'.$this->labelPeriodFrom.'"' : '' ?>/>
+            </div>
+        <?php else: ?>
+            <div class="widget widget-select select date filter-combine-group">
+                <?php if ($this->showLabel): ?><label for="ctrl_period"><?= $this->labelPeriod ?></label><?php endif; ?>
+                <input type="text" id="ctrl_period" class="mask" readonly <?= $this->showPlaceholder ? 'placeholder="'.$this->labelPeriod.'"' : '' ?>/>
+                <div class="group right">
+                    <div class="group-inner">
+                        <label><?= $this->labelPeriod ?></label>
+                        <div class="widget widget-text period_from first">
+                            <input type="text" name="period_from" class="from" placeholder="<?= $this->labelFrom ?>" value="<?= $this->period_from ?>">
+                        </div>
+                        <div class="widget widget-text period_to last">
+                            <input type="text" name="period_to" class="to" placeholder="<?= $this->labelTo ?>" value="<?= $this->period_to ?>">
+                        </div>
+                        <div class="widget widget-submit">
+                            <button type="button" class="close submit"><?= $this->labelOk ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>

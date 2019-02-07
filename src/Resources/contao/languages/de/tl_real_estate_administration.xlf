@@ -1,0 +1,85 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/tl_real_estate_administration.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_real_estate_administration.title">
+        <source>Verwaltung</source>
+        <target>Verwaltung</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_administration.group_provider">
+        <source>Anbieter / Kontaktpersonen</source>
+        <target>Anbieter / Kontaktpersonen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.group_filter">
+        <source>Filter- / Formateinstellungen</source>
+        <target>Filter- / Formateinstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.group_interface">
+        <source>Schnittstellen / Zuweisungen</source>
+        <target>Schnittstellen / Zuweisungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.group_settings">
+        <source>Einstellungen</source>
+        <target>Einstellungen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_administration.provider.0">
+        <source>Anbieter / Kontaktpersonen verwalten</source>
+        <target>Anbieter / Kontaktpersonen verwalten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.provider.1">
+        <source>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien zu diesem Portal zu übertragen.</source>
+        <target>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien zu diesem Portal zu übertragen.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_administration.filter.0">
+        <source>Filter verwalten</source>
+        <target>Filter verwalten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.filter.1">
+        <source>Individuelle Immobilien-Filter verwalten und anlegen. Stellt das Grundgerüst eines Immobilien-Filters im Frontend dar.</source>
+        <target>Individuelle Immobilien-Filter verwalten und anlegen. Stellt das Grundgerüst eines Immobilien-Filters im Frontend dar.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.type.0">
+        <source>Objekttypen verwalten</source>
+        <target>Objekttypen verwalten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.type.1">
+        <source>Hier kann das allgemine Verhalten von Immobilien-Gruppen, sowie Immobilien-Typen gesteuert werden.</source>
+        <target>Hier kann das allgemine Verhalten von Immobilien-Gruppen, sowie Immobilien-Typen gesteuert werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.field_format.0">
+        <source>Feldformatierung verwalten</source>
+        <target>Feldformatierung verwalten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.field_format.1">
+        <source>Hier kann die Darstellung und Formatierung der einzelnen Immobilien-Felder verwalten werden.</source>
+        <target>Hier kann die Darstellung und Formatierung der einzelnen Immobilien-Felder verwalten werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.interface.0">
+        <source>Schnittstellen verwalten</source>
+        <target>Schnittstellen verwalten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.interface.1">
+        <source>Hier können OpenImmo Import-Schnittstellen verwalten und ausgeführt werden.</source>
+        <target>Hier können OpenImmo Import-Schnittstellen verwalten und ausgeführt werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.config.0">
+        <source>Einstellungen</source>
+        <target>Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.config.1">
+        <source>Globale Immobilien-Einstellungen</source>
+        <target>Globale Immobilien-Einstellungen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

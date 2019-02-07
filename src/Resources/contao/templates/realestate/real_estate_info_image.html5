@@ -1,0 +1,32 @@
+<div class="real_estate_info_image block<?= $this->class ?>">
+    <div class="real_estate_info_image_inner">
+
+      <?php if(count($this->status)): ?>
+        <div class="status">
+            <?php foreach ($this->status as $status): ?>
+                <div class="token <?=$status['class']?>"><?=$status['value']?></div>
+            <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+
+      <div class="main-image">
+        <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+          <?php $this->insert('image', $this->arrData); ?>
+        </a>
+      </div>
+
+      <div class="content">
+        <div class="top">
+          <div class="title">
+              <?= $this->title ?>
+          </div>
+
+          <div class="address"><?= $this->address ?></div>
+        </div>
+        <div class="price">
+            <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
+            <div class="main-price-label"><?= $this->mainPrice['label'] ?></div>
+        </div>
+      </div>
+    </div>
+</div>

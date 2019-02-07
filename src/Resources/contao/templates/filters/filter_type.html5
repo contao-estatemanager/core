@@ -1,0 +1,39 @@
+<?php $this->extend('filter_row'); ?>
+
+<?php $this->block('filter_label'); ?>
+  <?php if ($this->label): ?>
+    <label for="ctrl_<?= $this->id ?>"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
+      <?php if ($this->mandatory): ?>
+        <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label ?><span class="mandatory">*</span>
+      <?php else: ?>
+        <?= $this->label ?>
+      <?php endif; ?>
+    </label>
+  <?php endif; ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('filter_item'); ?>
+  <?php if ($this->addTypeField): ?>
+    <input type="hidden" name="REAL_ESTATE_TYPE_FIELD" value="<?= $this->name ?>">
+  <?php endif; ?>
+  <?php if ($this->addGroupField): ?>
+    <input type="hidden" name="REAL_ESTATE_GROUP_FIELD" value="<?= $this->name ?>">
+  <?php endif; ?>
+  <?php foreach ($this->selects as $index => $select): ?>
+    <select name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>_<?= $index ?>" class="<?= $select['class'] ?> <?= $this->class ?>"<?= $select['group'] ? ' data-group="'.$select['group'].'"' : '' ?><?= $select['submitOnChange'] ? ' data-reload="1"' : '' ?><?= $select['disabled'] ? ' disabled style="display:none;"' : '' ?><?= $this->getAttributes() ?>>
+      <?php foreach ($select['options'] as $option): ?>
+        <?php if ($option['type'] == 'group_start'): ?>
+          <optgroup label="<?= $option['label'] ?>">
+        <?php endif; ?>
+
+        <?php if ($option['type'] == 'option'): ?>
+          <option value="<?= $option['value'] ?>"<?php if ($option['group']): ?> data-group="<?= $option['group'] ?>"<?php endif; ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
+        <?php endif; ?>
+
+        <?php if ($option['type'] == 'group_end'): ?>
+          </optgroup>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </select>
+  <?php endforeach; ?>
+<?php $this->endblock(); ?>

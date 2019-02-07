@@ -1,0 +1,30 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/modules.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="MOD.real_estate.0">
+        <source>Real Estates</source>
+        <target>Immobilien</target>
+      </trans-unit>
+      <trans-unit id="MOD.real_estate.1">
+        <source>Manage real estates</source>
+        <target>Immobilien verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.administration.0">
+        <source>Administration</source>
+        <target>Verwaltung</target>
+      </trans-unit>
+      <trans-unit id="MOD.administration.1">
+        <source>Manage real estates settings</source>
+        <target>Immobilieneinstellungen verwalten</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

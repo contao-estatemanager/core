@@ -1,0 +1,36 @@
+<div class="real_estate_default block<?= $this->class ?>">
+    <div class="real_estate_default_inner">
+
+      <?php if(count($this->status)): ?>
+        <div class="status">
+            <?php foreach ($this->status as $status): ?>
+                <div class="token <?=$status['class']?>"><?=$status['value']?></div>
+            <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+
+      <div class="main-image">
+        <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+          <?php $this->insert('image', $this->arrData); ?>
+        </a>
+      </div>
+
+      <div class="title"><?= $this->linkHeadline ?></div>
+      <div class="address"><?= $this->address ?></div>
+
+      <div class="main-details">
+          <?php foreach ($this->mainDetails as $detail): ?>
+            <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
+              <span class="label"><?= $detail['label'] ?></span>
+              <span class="value"><?= $detail['value'] ?></span>
+            </div>
+          <?php endforeach; ?>
+      </div>
+
+      <div class="bottom">
+        <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
+        <div class="expose-link"><?= $this->linkExpose ?></div>
+      </div>
+
+    </div>
+</div>

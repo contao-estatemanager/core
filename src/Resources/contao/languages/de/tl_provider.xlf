@@ -1,0 +1,292 @@
+<?xml version="1.0" ?><!--
+  ~ This file is part of Oveleon ImmoManager.
+  ~
+  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
+  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+  -->
+
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_provider.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_provider.anbieternr.0">
+        <source>Provider No.</source>
+        <target>Anbieter Nr.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.anbieternr.1">
+        <source>Please enter an unique provider number.</source>
+        <target>Bitte geben Sie eine eindeutige Anbieter Nummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.openimmo_anid.0">
+        <source>Provider No. (OpenImmo)</source>
+        <target>Anbieter Nr. (OpenImmo)</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.openimmo_anid.1">
+        <source>Please enter an unique OpenImmo provider number.</source>
+        <target>Bitte geben Sie eine eindeutige OpenImmo Anbieter Nummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.lizenzkennung.0">
+        <source>License ID</source>
+        <target>Lizenzkennung</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.lizenzkennung.1">
+        <source>Please enter the license ID of the provider.</source>
+        <target>Bitte geben Sie die Lizenzkennung des Anbieters ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.singleSRC.0">
+        <source>Logo of provider</source>
+        <target>Anbieter Logo</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.singleSRC.1">
+        <source>Here you can enter the logo of the provider.</source>
+        <target>Hier können Sie das Logo des Anbieters angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.forwardingMode.0">
+        <source>Forwarding mode</source>
+        <target>Weiterleitungsmodus</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.forwardingMode.1">
+        <source>Please enter the mode of e-mail forwarding.</source>
+        <target>Bitte geben Sie den Modus der E-Mail Weiterleitung an.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.firma.0">
+        <source>Company</source>
+        <target>Firma</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.firma.1">
+        <source>Please enter the company name.</source>
+        <target>Bitte geben Sie den Firmennamen ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.postleitzahl.0">
+        <source>Postal code</source>
+        <target>Postleitzahl</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.postleitzahl.1">
+        <source>Please enter the postal code.</source>
+        <target>Bitte geben Sie die Postleitzahl ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.ort.0">
+        <source>City</source>
+        <target>Ort</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.ort.1">
+        <source>Plase enter the name of the city.</source>
+        <target>Bitte geben Sie den Namen des Ortes ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.strasse.0">
+        <source>Street</source>
+        <target>Straße</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.strasse.1">
+        <source>Please enter the street name.</source>
+        <target>Bitte geben Sie den Straßennamen ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.hausnummer.0">
+        <source>House number</source>
+        <target>Hausnummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.hausnummer.1">
+        <source>Please enter the number.</source>
+        <target>Bitte geben Sie die Hausnummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.bundesland.0">
+        <source>State</source>
+        <target>Staat</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.bundesland.1">
+        <source>Plase enter the name of the state.</source>
+        <target>Bitte geben Sie den Namen des Staates ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.land.0">
+        <source>Country</source>
+        <target>Land</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.land.1">
+        <source>Please select the country.</source>
+        <target>Bitte wählen Sie ein Land.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon.0">
+        <source>Phone number</source>
+        <target>Telefonnummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon.1">
+        <source>Please enter the phone number.</source>
+        <target>Bitte geben Sie die Telefonnummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.email.0">
+        <source>E-mail address</source>
+        <target>E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.email.1">
+        <source>Please enter a valid e-mail address.</source>
+        <target>Bitte geben Sie eine gültige E-Mail-Adresse ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.firmenanschrift.0">
+        <source>Company address</source>
+        <target>Firmenanschrift</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.firmenanschrift.1">
+        <source>Here you can optionally enter the address as free text.</source>
+        <target>Hier können Sie optional die Adresse als Freitext angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.vertretungsberechtigter.0">
+        <source>Vertretungsberechtigter</source>
+        <target>Vertretungsberechtigter</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.vertretungsberechtigter.1">
+        <source>Bitte geben Sie den Vertretungsberechtigter ein.</source>
+        <target>Bitte geben Sie den Vertretungsberechtigter ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.berufsaufsichtsbehoerde.0">
+        <source>Berufsaufsichtsbehörde</source>
+        <target>Berufsaufsichtsbehörde</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.berufsaufsichtsbehoerde.1">
+        <source>Bitte geben Sie die Berufsaufsichtsbehörde ein.</source>
+        <target>Bitte geben Sie die Berufsaufsichtsbehörde ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister.0">
+        <source>Handelsregister</source>
+        <target>Handelsregister</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister.1">
+        <source>Bitte geben Sie das Handelsregister ein.</source>
+        <target>Bitte geben Sie das Handelsregister ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister_nr.0">
+        <source>Handelsregisternummer</source>
+        <target>Handelsregisternummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister_nr.1">
+        <source>Bitte geben Sie die Handelsregisternummer ein.</source>
+        <target>Bitte geben Sie die Handelsregisternummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.umsstid.0">
+        <source>Umsatzsteuer-Identifikationsnummer</source>
+        <target>Umsatzsteuer-Identifikationsnummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.umsstid.1">
+        <source>Bitte geben Sie die Umsatzsteuer-Identifikationsnummer ein.</source>
+        <target>Bitte geben Sie die Umsatzsteuer-Identifikationsnummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.steuernummer.0">
+        <source>Steuernummer</source>
+        <target>Steuernummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.steuernummer.1">
+        <source>Bitte geben Sie die Steuernummer ein.</source>
+        <target>Bitte geben Sie die Steuernummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.weiteres.0">
+        <source>Weitere Angaben</source>
+        <target>Weitere Angaben</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.weiteres.1">
+        <source>Hier können Sie weitere Angaben eintragen.</source>
+        <target>Hier können Sie weitere Angaben eintragen.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum.0">
+        <source>Impressum</source>
+        <target>Impressum</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum.1">
+        <source>Here you can optionally enter the impress as free text.</source>
+        <target>Hier können Sie optional das Impressum als Freitext angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.published.0">
+        <source>Publish provider</source>
+        <target>Anbieter veröffentlichen</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.published.1">
+        <source>Make the provider publicly visible on the website.</source>
+        <target>Den Anbieter auf der Webseite veröffentlichen.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_provider.general_legend">
+        <source>General</source>
+        <target>Allgemein</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.config_legend">
+        <source>Forwarding</source>
+        <target>Weiterleitung</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.address_legend">
+        <source>Address details</source>
+        <target>Adressdaten</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.address_text_legend">
+        <source>Address text</source>
+        <target>Adresse Freitext</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum_legend">
+        <source>Imprint</source>
+        <target>Impressum</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum_text_legend">
+        <source>Imprint text</source>
+        <target>Impressum Freitext</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.published_legend">
+        <source>Publish settings</source>
+        <target>Veröffentlichung</target>
+      </trans-unit>
+
+      <trans-unit id="tl_provider.new.0">
+        <source>New provider</source>
+        <target>Neuer Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.new.1">
+        <source>Create a new provider</source>
+        <target>Einen neue Anbieter erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.editheader.0">
+        <source>Edit provider</source>
+        <target>Anbieter bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.editheader.1">
+        <source>Edit provider ID %s</source>
+        <target>Anbieter ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.edit.0">
+        <source>Edit contact persons</source>
+        <target>Ansprechpartner bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.edit.1">
+        <source>Edit assigned contact persons</source>
+        <target>Zugehörige Ansprechpartner bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.copy.0">
+        <source>Duplicate provider</source>
+        <target>Anbieter duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.copy.1">
+        <source>Duplicate provider ID %s</source>
+        <target>Anbieter ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.delete.0">
+        <source>Delete provider</source>
+        <target>Anbieter löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.delete.1">
+        <source>Delete provider ID %s</source>
+        <target>Anbieter ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.toggle.0">
+        <source>Activate/deactivate provider</source>
+        <target>Anbieter aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.toggle.1">
+        <source>Activate/deactivate provider ID %s</source>
+        <target>Anbieter ID %s aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.show.0">
+        <source>Provider details</source>
+        <target>Anbieterdetails</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.show.1">
+        <source>Show the details of provider ID %s</source>
+        <target>Die Details des Anbieters ID %s anzeigen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
