@@ -1,12 +1,4 @@
-/*
- * This file is part of Oveleon ImmoManager.
- *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
- */
-
-.navigation.provider, .navigation.type, .navigation.filter, .navigation.field_format, .navigation.interface, .navigation.config {
+.navigation.provider, .navigation.type, .navigation.filter, .navigation.field_format, .navigation.interface, .navigation.config, .navigation.addon {
   display: none !important; }
 
 .re_administration {
@@ -61,17 +53,5 @@
     position: relative;
     margin: 3px 18px;
     padding: 2px 0; }
-    .re_administration .re_header .re_lizenz {
-      position: absolute;
-      right: 0;
-      top: 0;
-      border-radius: 5px;
-      padding: 5px;
-      background: #c6c8c2;
-      color: #FFF;
-      font-size: 11px;
-      text-transform: uppercase; }
-      .re_administration .re_header .re_lizenz.pacc {
-        background: #48c900; }
 
 /*# sourceMappingURL=real_estate_administration.css.map */

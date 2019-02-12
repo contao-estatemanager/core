@@ -46,6 +46,11 @@ array_insert($GLOBALS['BE_MOD'], 1, array
             'tables'            => array('tl_real_estate_config'),
             'hideInNavigation'  => true,
         ),
+        'addon' => array
+        (
+            'tables'            => array('tl_immo_manager_addon'),
+            'hideInNavigation'  => true,
+        ),
         'administration' => array
         (
             'callback'          => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateAdministration'
@@ -98,7 +103,7 @@ $GLOBALS['TL_RAM'] = array
 (
     'provider'    => array('provider'),
     'filter'      => array('filter', 'type', 'field_format'),
-    'settings'    => array('interface', 'config'),
+    'settings'    => array('interface', 'config', 'addon'),
 );
 
 // Style sheet

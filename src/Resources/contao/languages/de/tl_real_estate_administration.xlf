@@ -80,6 +80,14 @@
         <source>Globale Immobilien-Einstellungen</source>
         <target>Globale Immobilien-Einstellungen</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_administration.addon.0">
+        <source>Add-Ons</source>
+        <target>Add-Ons</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_administration.addon.1">
+        <source>Add-On Lizenzen</source>
+        <target>Add-On Lizenzen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
