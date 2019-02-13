@@ -83,6 +83,16 @@ class ModuleRealEstateList extends ModuleRealEstate
                 break;
         }
 
+        // HOOK: real estate list count items
+        if (isset($GLOBALS['TL_HOOKS']['realEstateListCountItems']) && \is_array($GLOBALS['TL_HOOKS']['realEstateListCountItems']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['realEstateListCountItems'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($intCount, $this);
+            }
+        }
+
         return $intCount;
     }
 
@@ -118,6 +128,16 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
                 break;
+        }
+
+        // HOOK: real estate list fetch items
+        if (isset($GLOBALS['TL_HOOKS']['realEstateListFetchItems']) && \is_array($GLOBALS['TL_HOOKS']['realEstateListFetchItems']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['realEstateListFetchItems'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objRealEstate, $limit, $offset, $this);
+            }
         }
 
         return $objRealEstate;

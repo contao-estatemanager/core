@@ -32,5 +32,8 @@
         <div class="expose-link"><?= $this->linkExpose ?></div>
       </div>
 
+      <?php foreach ($this->arrExtensions as $extension): ?>
+          <?= $extension ?>
+      <?php endforeach; ?>
     </div>
 </div>

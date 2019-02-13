@@ -122,6 +122,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->mainArea = $realEstate->getMainArea();
         $objTemplate->details = $realEstate->getDetails(['price'], true);
         $objTemplate->status = array();
+        $objTemplate->arrExtensions = array();
 
         $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
 
@@ -145,6 +146,16 @@ abstract class ModuleRealEstate extends \Module
             );
 
             $this->addImageToTemplate($objTemplate, $arrItem, null, null, $objModel);
+        }
+
+        // HOOK: parse real estate
+        if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['parseRealEstate'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objTemplate, $realEstate, $this);
+            }
         }
 
         return $objTemplate->parse();
