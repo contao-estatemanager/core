@@ -75,6 +75,16 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         \System::loadLanguageFile('tl_real_estate_expose');
 
+        // HOOK: real estate expose generate
+        if (isset($GLOBALS['TL_HOOKS']['generateExpose']) && \is_array($GLOBALS['TL_HOOKS']['generateExpose']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['generateExpose'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($this);
+            }
+        }
+
         return parent::generate();
     }
 

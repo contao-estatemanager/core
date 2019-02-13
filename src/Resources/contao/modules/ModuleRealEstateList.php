@@ -45,6 +45,16 @@ class ModuleRealEstateList extends ModuleRealEstate
             return $objTemplate->parse();
         }
 
+        // HOOK: real estate list generate
+        if (isset($GLOBALS['TL_HOOKS']['generateList']) && \is_array($GLOBALS['TL_HOOKS']['generateList']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['generateList'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($this);
+            }
+        }
+
         $strBuffer = parent::generate();
 
         return (!$this->countItems() && $this->hideOnEmpty) ? '' : $strBuffer;
