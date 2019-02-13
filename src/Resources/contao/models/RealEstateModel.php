@@ -356,7 +356,6 @@ namespace Oveleon\ContaoImmoManagerBundle;
  * @property string $objektnrIntern
  * @property string $objektnrExtern
  * @property string $referenz
- * @property string $topObjekt
  * @property string $aktivVon
  * @property string $aktivBis
  * @property string $openimmoObid
@@ -727,7 +726,6 @@ namespace Oveleon\ContaoImmoManagerBundle;
  * @method static RealEstateModel|null findOneByObjektnrIntern($col, $val, $opt=array())
  * @method static RealEstateModel|null findOneByObjektnrExtern($col, $val, $opt=array())
  * @method static RealEstateModel|null findOneByReferenz($col, $val, $opt=array())
- * @method static RealEstateModel|null findOneByTopObjekt($col, $val, $opt=array())
  * @method static RealEstateModel|null findOneByAktivVon($col, $val, $opt=array())
  * @method static RealEstateModel|null findOneByAktivBis($col, $val, $opt=array())
  * @method static RealEstateModel|null findOneByOpenimmoObid($col, $val, $opt=array())
@@ -1098,7 +1096,6 @@ namespace Oveleon\ContaoImmoManagerBundle;
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByObjektnrIntern($val, array $opt=array())
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByObjektnrExtern($val, array $opt=array())
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByReferenz($val, array $opt=array())
- * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByTopObjekt($val, array $opt=array())
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByAktivVon($val, array $opt=array())
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByAktivBis($val, array $opt=array())
  * @method static \Model\Collection|RealEstateModel[]|RealEstateModel|null findByOpenimmoObid($val, array $opt=array())
@@ -1469,7 +1466,6 @@ namespace Oveleon\ContaoImmoManagerBundle;
  * @method static integer countByObjektnrIntern($id, array $opt=array())
  * @method static integer countByObjektnrExtern($id, array $opt=array())
  * @method static integer countByReferenz($id, array $opt=array())
- * @method static integer countByTopObjekt($id, array $opt=array())
  * @method static integer countByAktivVon($id, array $opt=array())
  * @method static integer countByAktivBis($id, array $opt=array())
  * @method static integer countByOpenimmoObid($id, array $opt=array())
@@ -1508,48 +1504,6 @@ class RealEstateModel extends \Model
      * @var string
      */
     protected static $strTable = 'tl_real_estate';
-
-    /**
-     * Count published real estate top objects
-     *
-     * @param array   $arrOptions  An optional options array
-     *
-     * @return integer The number of real estate items
-     */
-    public static function countPublishedTopObjects(array $arrOptions=array())
-    {
-        $t = static::$strTable;
-        $arrColumns = array("$t.topObjekt='1'");
-
-        if (!static::isPreviewMode($arrOptions))
-        {
-            $time = \Date::floorToMinute();
-            $arrColumns[] = "($t.aktivVon='' OR $t.aktivVon<='$time') AND ($t.aktivBis='' OR $t.aktivBis>'" . ($time + 60) . "') AND $t.published='1'";
-        }
-
-        return static::countBy($arrColumns, null, $arrOptions);
-    }
-
-    /**
-     * Find published real estate top objects
-     *
-     * @param array   $arrOptions An optional options array
-     *
-     * @return \Model\Collection|RealEstateModel[]|RealEstateModel|null A collection of models or null if there are no real estates
-     */
-    public static function findPublishedTopObjects(array $arrOptions=array())
-    {
-        $t = static::$strTable;
-        $arrColumns = array("$t.topObjekt='1'");
-
-        if (!static::isPreviewMode($arrOptions))
-        {
-            $time = \Date::floorToMinute();
-            $arrColumns[] = "($t.aktivVon='' OR $t.aktivVon<='$time') AND ($t.aktivBis='' OR $t.aktivBis>'" . ($time + 60) . "') AND $t.published='1'";
-        }
-
-        return static::findBy($arrColumns, null, $arrOptions);
-    }
 
     /**
      * Find published real estate items
