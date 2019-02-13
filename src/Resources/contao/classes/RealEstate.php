@@ -182,7 +182,7 @@ class RealEstate
         return $return;
     }
 
-    public function getStatus()
+    public function getStatusToken()
     {
         $return = array();
 
