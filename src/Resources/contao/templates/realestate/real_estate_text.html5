@@ -2,10 +2,10 @@
     <div class="real_estate_text_inner">
       <div class="left-container">
 
-        <?php if(count($this->status)): ?>
+        <?php if(count($this->arrStatusTokens)): ?>
             <div class="status">
-                <?php foreach ($this->status as $status): ?>
-                    <div class="token <?=$status['class']?>"><?=$status['value']?></div>
+                <?php foreach ($this->arrStatusTokens as $statusToken): ?>
+                    <div class="token <?=$statusToken['class']?>"><?=$statusToken['value']?></div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
