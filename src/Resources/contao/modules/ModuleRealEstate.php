@@ -121,7 +121,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->mainPrice = $realEstate->getMainPrice();
         $objTemplate->mainArea = $realEstate->getMainArea();
         $objTemplate->details = $realEstate->getDetails(['price'], true);
-        $objTemplate->arrStatusTokens = array();
+        $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($this->statusTokens);
         $objTemplate->arrExtensions = array();
 
         $objModel = \FilesModel::findByUuid($realEstate->getMainImage());

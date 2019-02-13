@@ -182,11 +182,16 @@ class RealEstate
         return $return;
     }
 
-    public function getStatusToken()
+    public function getStatusTokens($availableStatusTokens)
     {
         $return = array();
+        $tokens = \StringUtil::deserialize($availableStatusTokens);
 
-        if (strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
+        if(!$tokens){
+            return $return;
+        }
+
+        if (in_array('new', $tokens) && strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (
@@ -194,7 +199,7 @@ class RealEstate
                 'class' => 'new'
             );
         }
-        if ($this->objRealEstate->verkaufstatus === 'reserviert')
+        if (in_array('reserved', $tokens) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (
@@ -202,12 +207,20 @@ class RealEstate
                 'class' => 'reserved'
             );
         }
-        if ($this->objRealEstate->verkaufstatus === 'verkauft')
+        if (in_array('sold', $tokens) && $this->objRealEstate->verkaufstatus === 'verkauft')
         {
             $return[] = array
             (
                 'value' => Translator::translateValue('verkauft'),
-                'class' => 'saled'
+                'class' => 'sold'
+            );
+        }
+        if (in_array('rented', $tokens) && $this->objRealEstate->verkaufstatus === 'vermietet')
+        {
+            $return[] = array
+            (
+                'value' => Translator::translateValue('vermietet'),
+                'class' => 'rented'
             );
         }
 
