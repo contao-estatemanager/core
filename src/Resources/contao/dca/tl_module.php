@@ -7,6 +7,9 @@
  * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
  */
 
+// load misc language
+\System::loadLanguageFile('tl_real_estate_misc');
+
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addForm';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addFilterModule';
