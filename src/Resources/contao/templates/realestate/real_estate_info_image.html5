@@ -28,5 +28,9 @@
             <div class="main-price-label"><?= $this->mainPrice['label'] ?></div>
         </div>
       </div>
+
+      <?php foreach ($this->arrExtensions as $extension): ?>
+          <?= $extension ?>
+      <?php endforeach; ?>
     </div>
 </div>
