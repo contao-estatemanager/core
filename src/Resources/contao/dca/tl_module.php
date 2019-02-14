@@ -35,11 +35,11 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
 (
     'realEstateTemplate' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateListTemplate'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
         'default'                 => 'real_estate_default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateListTemplates'),
+        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateTemplates'),
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
@@ -241,7 +241,7 @@ class tl_module_immo_manager extends Backend
      *
      * @return array
      */
-    public function getRealEstateListTemplates()
+    public function getRealEstateTemplates()
     {
         return $this->getTemplateGroup('real_estate_');
     }
