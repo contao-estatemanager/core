@@ -97,279 +97,189 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         global $objPage;
 
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+        $realEstate = new RealEstate($objRealEstate, null);
 
-        $this->realEstate = new RealEstate($objRealEstate, null);
-        $this->objRealEstateType = $this->realEstate->getType();
+        $arrCustomSections = array();
+        $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');
+        $arrModules = \StringUtil::deserialize($this->exposeModules);
 
+        $arrModuleIds = array();
+
+        // Filter the disabled modules
+        foreach ($arrModules as $module)
+        {
+            if ($module['enable'])
+            {
+                $arrModuleIds[] = $module['mod'];
+            }
+        }
+
+        // Get all modules in a single DB query
+        $objModules = ExposeModuleModel::findMultipleByIds($arrModuleIds);
+
+        if ($objModules !== null || $arrModules[0]['mod'] == 0)
+        {
+            $arrMapper = array();
+
+            // Create a mapper array in case a module is included more than once
+            if ($objModules !== null)
+            {
+                while ($objModules->next())
+                {
+                    $arrMapper[$objModules->id] = $objModules->current();
+                }
+            }
+
+            foreach ($arrModules as $arrModule)
+            {
+                // Disabled module
+                if (!$arrModule['enable'])
+                {
+                    continue;
+                }
+
+                // Replace the module ID with the module model
+                if ($arrModule['mod'] > 0 && isset($arrMapper[$arrModule['mod']]))
+                {
+                    $arrModule['mod'] = $arrMapper[$arrModule['mod']];
+                }
+
+                // Generate the modules
+                if (\in_array($arrModule['col'], $arrSections))
+                {
+                    $this->Template->{$arrModule['col']} .= $this->getExposeModule($arrModule['mod'], $realEstate, $arrModule['col']);
+                }
+                else
+                {
+                    $arrCustomSections[$arrModule['col']] .= $this->getExposeModule($arrModule['mod'], $realEstate, $arrModule['col']);
+                }
+            }
+        }
+
+        $this->Template->sections = $arrCustomSections;
         $this->Template->realEstateId = $objRealEstate->id;
-
-        $this->updateVisitedSession($objRealEstate->id);
-
-        $this->Template->gallery = $this->parseGallery($this->realEstate);
-        $this->Template->floorPlanGallery = $this->parseFloorPlanGallery($this->realEstate);
-        $this->Template->title = $this->realEstate->getTitle();
-        $this->Template->address = $this->realEstate->getLocationString();
-        $this->Template->mainDetails = $this->realEstate->getMainDetails(6);
-        $this->Template->mainAttributes = $this->realEstate->getMainAttributes();
-        $this->Template->mainPrice = $this->realEstate->getMainPrice();
-        $this->Template->mainArea = $this->realEstate->getMainArea();
-        $this->Template->details = $this->realEstate->getDetails(['price', 'energie'], true);
-        $this->Template->texts = $this->realEstate->getTexts();
-        $this->Template->form = $this->parseForm();
-        $this->Template->contactPerson = $this->parseContactPerson();
-
-        $this->Template->links = $this->realEstate->links;
-
-        $this->Template->referer = 'javascript:history.go(-1)';
-        $this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
-
-        $this->Template->headlineDetails = Translator::translateExpose('headlineDetails');
-        $this->Template->headlinePrice = Translator::translateExpose('headlinePrice');
-        $this->Template->headlineEnergiepass = Translator::translateExpose('headlineEnergiepass');
-        $this->Template->headlineSimilarObjects = Translator::translateExpose('headlineSimilarObjects');
-        $this->Template->headlineFutherLinks = Translator::translateExpose('headlineFutherLinks');
-        $this->Template->headlineFloorPlans = Translator::translateExpose('headlineFloorPlans');
-        $this->Template->headlineContactPerson = Translator::translateExpose('headlineContactPerson');
-        $this->Template->headlineVirtualTour = Translator::translateExpose('headlineVirtualTour');
-
-        $this->Template->optionPrint = Translator::translateExpose('optionPrint');
     }
 
     /**
-     * Parse properties contact person
+     * Generate a expose module and return it as string
      *
-     * @return string
-     */
-    protected function parseContactPerson(){
-        $contactPerson = $this->realEstate->getContactPerson();
-        $strTemplate = 'real_estate_contact_person_default';
-
-        // Use a custom template
-        if ($this->realEstateContactPersonTemplate != '')
-        {
-            $strTemplate = $this->realEstateContactPersonTemplate;
-        }
-
-        $objTemplate = new \FrontendTemplate($strTemplate);
-        $objTemplate->setData($contactPerson);
-
-        $addImage = false;
-
-        if ($contactPerson['singleSRC'] != '')
-        {
-
-            $objModel = \FilesModel::findByUuid($contactPerson['singleSRC']);
-
-            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
-            {
-                $addImage = true;
-                $image = array
-                (
-                    'id'         => $objModel->id,
-                    'uuid'       => $objModel->uuid,
-                    'name'       => $objModel->basename,
-                    'singleSRC'  => $objModel->path,
-                    'filesModel' => $objModel->current(),
-                    'size'       => $this->contactPersonImgSize,
-                );
-
-                $this->addImageToTemplate($objTemplate, $image, null, null, $objModel);
-            }
-        }
-
-        $objTemplate->addImage = $addImage;
-
-        return $objTemplate->parse();
-    }
-
-    /**
-     * Parse properties gallery
+     * @param mixed  $intId     A module ID or a Model object
+     * @param string $strColumn The name of the column
      *
-     * @return string
+     * @return string The module HTML markup
      */
-    protected function parseGallery($realEstate)
+    public function getExposeModule($intId, $realEstate, $strColumn='main')
     {
-        $images = array();
-        $body = array();
-        $objFiles = \FilesModel::findMultipleByUuids($realEstate->getImageBundle());
-
-        if($objFiles === null)
+        if (!\is_object($intId) && !\strlen($intId))
         {
-            // Set default image
-            $defaultImage = \Config::get('defaultImage');
+            return '';
+        }
 
-            if($defaultImage)
+        if (\is_object($intId))
+        {
+            $objRow = $intId;
+        }
+        else
+        {
+            $objRow = ExposeModuleModel::findByPk($intId);
+
+            if ($objRow === null)
             {
-                $objFiles = \FilesModel::findMultipleByUuids([$defaultImage]);
-            }
-
-            if($objFiles === null){
                 return '';
             }
         }
 
-        // Get all images
-        while ($objFiles->next())
-        {
-            // Continue if the files has been processed or does not exist
-            if (isset($images[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path))
-            {
-                continue;
-            }
-
-            $objFile = new \File($objFiles->path);
-
-            if (!$objFile->isImage)
-            {
-                continue;
-            }
-
-            // Add the image
-            $images[$objFiles->path] = array
-            (
-                'id'         => $objFiles->id,
-                'uuid'       => $objFiles->uuid,
-                'name'       => $objFile->basename,
-                'singleSRC'  => $objFiles->path,
-                'filesModel' => $objFiles->current(),
-                'size'       => $this->realEstateGalleryImgSize,
-            );
-
-            $objCell = new \stdClass();
-
-            $this->addImageToTemplate($objCell, $images[$objFiles->path], null, null, $images[$objFiles->path]['filesModel']);
-
-            $body[] = $objCell;
-        }
-
-        $strTemplate = 'real_estate_gallery_default';
-
-        // Use a custom template
-        if ($this->realEstateGalleryTemplate != '')
-        {
-            $strTemplate = $this->realEstateGalleryTemplate;
-        }
-
-        $objTemplate = new \FrontendTemplate($strTemplate);
-        $objTemplate->body = $body;
-
-        return $objTemplate->parse();
-    }
-
-    /**
-     * Parse properties floor plan
-     *
-     * @return string
-     */
-    protected function parseFloorPlanGallery($realEstate)
-    {
-        $images = array();
-        $body = array();
-        $objFiles = \FilesModel::findMultipleByUuids($realEstate->getFloorPlanImages());
-
-        if($objFiles === null)
+        // Check the visibility (see #6311)
+        if (!static::isVisibleElement($objRow))
         {
             return '';
         }
 
-        // Get all images
-        while ($objFiles->next())
+        $strClass = ExposeModule::findClass($objRow->type);
+
+        // Return if the class does not exist
+        if (!class_exists($strClass))
         {
-            // Continue if the files has been processed or does not exist
-            if (isset($images[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path))
-            {
-                continue;
-            }
+            \System::log('Module class "'.$strClass.'" (module "'.$objRow->type.'") does not exist', __METHOD__, TL_ERROR);
 
-            $objFile = new \File($objFiles->path);
-
-            if (!$objFile->isImage)
-            {
-                continue;
-            }
-
-            // Add the image
-            $images[$objFiles->path] = array
-            (
-                'id'         => $objFiles->id,
-                'uuid'       => $objFiles->uuid,
-                'name'       => $objFile->basename,
-                'singleSRC'  => $objFiles->path,
-                'filesModel' => $objFiles->current(),
-                'size'       => $this->floorPlanImgSize,
-            );
-
-            $objCell = new \stdClass();
-
-            $this->addImageToTemplate($objCell, $images[$objFiles->path], null, null, $images[$objFiles->path]['filesModel']);
-
-            $body[] = $objCell;
-        }
-
-        $strTemplate = 'real_estate_gallery_default';
-
-        // Use a custom template
-        if ($this->realEstateFloorPlanGalleryTemplate != '')
-        {
-            $strTemplate = $this->realEstateFloorPlanGalleryTemplate;
-        }
-
-        $objTemplate = new \FrontendTemplate($strTemplate);
-        $objTemplate->body = $body;
-
-        return $objTemplate->parse();
-    }
-
-    /**
-     * Parse the contact person form
-     *
-     * @return string
-     */
-    protected function parseForm()
-    {
-        $objForm = \FormModel::findByPk($this->form);
-
-        if ($objForm === null)
-        {
             return '';
         }
 
-        $form = new ExposeForm($objForm);
+        $objRow->typePrefix = 'expose_mod_';
 
-        $form->setStrKey('form');
+        /** @var ExposeModule $objModule */
+        $objModule = new $strClass($objRow, $realEstate, $strColumn);
+        $strBuffer = $objModule->generate();
 
-        return $form->generate();
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['getExposeModule']) && \is_array($GLOBALS['TL_HOOKS']['getExposeModule']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['getExposeModule'] as $callback)
+            {
+                $strBuffer = \System::importStatic($callback[0])->{$callback[1]}($objRow, $strBuffer, $objModule);
+            }
+        }
+
+        // Disable indexing if protected
+        if ($objModule->protected && !preg_match('/^\s*<!-- indexer::stop/', $strBuffer))
+        {
+            $strBuffer = "\n<!-- indexer::stop -->". $strBuffer ."<!-- indexer::continue -->\n";
+        }
+
+        return $strBuffer;
     }
 
     /**
-     * Count the total matching items
+     * Check whether an element is visible in the front end
      *
-     * @return integer
+     * @param ExposeModuleModel $objElement The element model
+     *
+     * @return boolean True if the element is visible
      */
-    protected function countItems()
+    public static function isVisibleElement(ExposeModuleModel $objElement)
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->getFilterOptions();
+        $blnReturn = true;
 
-        return RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
+        // Only apply the restrictions in the front end
+        if (TL_MODE == 'FE')
+        {
+            // Protected element
+            if ($objElement->protected)
+            {
+                if (!FE_USER_LOGGED_IN)
+                {
+                    $blnReturn = false;
+                }
+                else
+                {
+                    $groups = \StringUtil::deserialize($objElement->groups);
+
+                    if (empty($groups) || !\is_array($groups) || !\count(array_intersect($groups, \FrontendUser::getInstance()->groups)))
+                    {
+                        $blnReturn = false;
+                    }
+                }
+            }
+
+            // Show to guests only
+            elseif ($objElement->guests && FE_USER_LOGGED_IN)
+            {
+                $blnReturn = false;
+            }
+        }
+
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['isVisibleElement']) && \is_array($GLOBALS['TL_HOOKS']['isVisibleElement']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['isVisibleElement'] as $callback)
+            {
+                $blnReturn = \System::importStatic($callback[0])->{$callback[1]}($objElement, $blnReturn);
+            }
+        }
+
+        return $blnReturn;
     }
 
-    /**
-     * Fetch the matching items
-     *
-     * @param integer $limit
-     * @param integer $offset
-     *
-     * @return \Model\Collection|RealEstateModel|null
-     */
-    protected function fetchItems($limit, $offset)
-    {
-        list($arrColumns, $arrValues, $arrOptions) = $this->getFilterOptions();
-
-        $arrOptions['limit']  = $limit;
-        $arrOptions['offset'] = $offset;
-
-        return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
-    }
 
     /**
      * Collect necessary filter parameter for similar real estates and return it as array

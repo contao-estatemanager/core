@@ -1,11 +1,4 @@
-<?xml version="1.0" ?><!--
-  ~ This file is part of Oveleon ImmoManager.
-  ~
-  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
-  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
-  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
-  -->
-
+<?xml version="1.0" ?>
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/modules.php" source-language="en" target-language="de">
     <body>
@@ -24,6 +17,55 @@
       <trans-unit id="MOD.administration.1">
         <source>Manage real estates settings</source>
         <target>Immobilieneinstellungen verwalten</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.immomanager">
+        <source>ImmoManager</source>
+        <target>ImmoManager</target>
+      </trans-unit>
+      <trans-unit id="FMD.properties">
+        <source>properties</source>
+        <target>Eigenschaften</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateExpose.0">
+        <source>Expose</source>
+        <target>Expose</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateExpose.1">
+        <source>Erzeugt ein Expose</source>
+        <target>Erzeugt ein Expose</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateFilter.0">
+        <source>Filter</source>
+        <target>Filter</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateFilter.1">
+        <source>Erzeugt einen Immobilienfilter</source>
+        <target>Erzeugt einen Immobilienfilter</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateList.0">
+        <source>Liste</source>
+        <target>Liste</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateList.1">
+        <source>Erzeugt eine Immobilienliste</source>
+        <target>Erzeugt eine Immobilienliste</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateResultList.0">
+        <source>Ergebnisliste</source>
+        <target>Ergebnisliste</target>
+      </trans-unit>
+      <trans-unit id="FMD.realEstateResultList.1">
+        <source>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann</source>
+        <target>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann</target>
+      </trans-unit>
+      <trans-unit id="FMD.title.0">
+        <source>Object title</source>
+        <target>Objekttitel</target>
+      </trans-unit>
+      <trans-unit id="FMD.title.1">
+        <source>Gibt den Titel des Objektes aus</source>
+        <target>Gibt den Titel des Objektes aus</target>
       </trans-unit>
     </body>
   </file>

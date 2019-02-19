@@ -14,6 +14,11 @@
         <source>Status output</source>
         <target>Statusausgabe</target>
       </trans-unit>
+      <trans-unit id="tl_module.module_legend">
+        <source>Exposé-Module</source>
+        <target>Exposé-Module</target>
+      </trans-unit>
+
       <trans-unit id="tl_module.listMode.0">
         <source>Ausgabe-Modus</source>
         <target>Ausgabe-Modus</target>
@@ -45,6 +50,14 @@
       <trans-unit id="tl_module.realEstateTemplate.1">
         <source>Choose a template to set the representation of a single property</source>
         <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.0">
+        <source>Exposé-Module</source>
+        <target>Exposé-Module</target>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.1">
+        <source>Platzieren Sie Module an die gewünschte Stelle im Exposé</source>
+        <target>Platzieren Sie Module an die gewünschte Stelle im Exposé</target>
       </trans-unit>
     </body>
   </file>

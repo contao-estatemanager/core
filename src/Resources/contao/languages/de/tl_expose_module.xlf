@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_expose_module.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_expose_module.edit.0">
+        <source>Bearbeiten</source>
+        <target>Bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.edit.1">
+        <source>Exposé-Modul bearbeiten</source>
+        <target>Exposé-Modul bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.new.0">
+        <source>Neues Exposé-Modul</source>
+        <target>Neues Exposé-Modul</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.new.1">
+        <source>Erzeugen Sie ein neues Exposé-Modul</source>
+        <target>Erzeugen Sie ein neues Exposé-Modul</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.copy.0">
+        <source>Exposé-Modul kopieren</source>
+        <target>Exposé-Modul kopieren</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.copy.1">
+        <source>Eine Kopie von diesem Exposé-Modul erzeugen</source>
+        <target>Eine Kopie von diesem Exposé-Modul erzeugen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.delete.0">
+        <source>Exposé-Modul löschen</source>
+        <target>Exposé-Modul löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.delete.1">
+        <source>Exposé-Modul löschen</source>
+        <target>Exposé-Modul löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show.0">
+        <source>Informationen anzeigen</source>
+        <target>Informationen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show.1">
+        <source>Informationen anzeigen</source>
+        <target>Informationen anzeigen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_expose_module.title_legend">
+        <source>Titel und Typ</source>
+        <target>Titel und Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected_legend">
+        <source>Zugriffsschutz</source>
+        <target>Zugriffsschutz</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.template_legend">
+        <source>Template settings</source>
+        <target>Template-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.expert_legend">
+        <source>Expert settings</source>
+        <target>Experten-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.title_output_legend">
+        <source>Title output</source>
+        <target>Titel Ausgabe</target>
+      </trans-unit>
+
+      <trans-unit id="tl_expose_module.name.0">
+        <source>Titel</source>
+        <target>Titel</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.name.1">
+        <source>Bitte geben Sie den Titel des Exposé-Moduls ein.</source>
+        <target>Bitte geben Sie den Titel des Exposé-Moduls ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.headline.0">
+        <source>Headline</source>
+        <target>Überschrift</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.headline.1">
+        <source>Here you can add a headline to the module.</source>
+        <target>Hier können Sie dem Modul eine Überschrift hinzufügen.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.type.0">
+        <source>Expose-Modultyp</source>
+        <target>Expose-Modultyp</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.type.1">
+        <source>Bitte wählen Sie den Typ des Exposé-Moduls.</source>
+        <target>Bitte wählen Sie den Typ des Exposé-Moduls.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.customTpl.0">
+        <source>Individuelles Template</source>
+        <target>Individuelles Template</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.customTpl.1">
+        <source>Hier können Sie das Standard-Template überschreiben.</source>
+        <target>Hier können Sie das Standard-Template überschreiben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected.0">
+        <source>Protect module</source>
+        <target>Modul schützen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected.1">
+        <source>Show the module to certain member groups only.</source>
+        <target>Das Modul nur bestimmten Gruppen anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.guests.0">
+        <source>Show to guests only</source>
+        <target>Nur Gästen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.guests.1">
+        <source>Hide the module if a member is logged in.</source>
+        <target>Das Modul verstecken, sobald ein Mitglied angemeldet ist.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.cssID.0">
+        <source>CSS ID/class</source>
+        <target>CSS-ID/Klasse</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.cssID.1">
+        <source>Here you can set an ID and one or more classes.</source>
+        <target>Hier können Sie eine ID und beliebig viele Klassen eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.groups.0">
+        <source>Allowed member groups</source>
+        <target>Erlaubte Mitgliedergruppen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.groups.1">
+        <source>These groups will be able to see the module.</source>
+        <target>Diese Gruppen können das Modul sehen.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.titleSize.0">
+        <source>Title size</source>
+        <target>Titelgröße</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.titleSize.1">
+        <source>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</source>
+        <target>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -51,6 +51,11 @@ array_insert($GLOBALS['BE_MOD'], 1, array
             'tables'            => array('tl_immo_manager_addon'),
             'hideInNavigation'  => true,
         ),
+        'expose_module' => array
+        (
+            'tables'            => array('tl_expose_module'),
+            'hideInNavigation'  => true,
+        ),
         'administration' => array
         (
             'callback'          => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateAdministration'
@@ -70,6 +75,10 @@ $GLOBALS['TL_MODELS']['tl_field_format']           = '\\Oveleon\\ContaoImmoManag
 $GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\Oveleon\\ContaoImmoManagerBundle\\FieldFormatActionModel';
 $GLOBALS['TL_MODELS']['tl_interface']              = '\\Oveleon\\ContaoImmoManagerBundle\\InterfaceModel';
 $GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\Oveleon\\ContaoImmoManagerBundle\\InterfaceMappingModel';
+$GLOBALS['TL_MODELS']['tl_expose_module']          = '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleModel';
+
+// Back end form fields
+$GLOBALS['BE_FFL']['exposeModuleWizard']           = '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleWizard';
 
 // Front end modules
 array_insert($GLOBALS['FE_MOD'], 0, array
@@ -89,6 +98,23 @@ array_insert($GLOBALS['TL_CTE']['includes'], 3, array
     'realEstateFilter'      => '\\Oveleon\\ContaoImmoManagerBundle\\Filter'
 ));
 
+// Expose modules
+$GLOBALS['FE_EXPOSE_MOD'] = array
+(
+    'properties' => array
+    (
+        'title'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTitle'
+    ),
+    'media' => array
+    (
+
+    ),
+    'consumeable' => array
+    (
+
+    )
+);
+
 // Back end real estate filter items
 $GLOBALS['TL_RFI'] = array
 (
@@ -103,7 +129,7 @@ $GLOBALS['TL_RAM'] = array
 (
     'provider'    => array('provider'),
     'filter'      => array('filter', 'type', 'field_format'),
-    'settings'    => array('interface', 'config', 'addon'),
+    'settings'    => array('interface', 'config', 'expose_module', 'addon'),
 );
 
 // Style sheet
