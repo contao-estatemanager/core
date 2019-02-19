@@ -103,7 +103,8 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
 (
     'properties' => array
     (
-        'title'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTitle'
+        'title'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTitle',
+        'address'   => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleAddress',
     ),
     'media' => array
     (

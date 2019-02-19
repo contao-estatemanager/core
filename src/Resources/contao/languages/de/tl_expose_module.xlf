@@ -59,9 +59,9 @@
         <source>Expert settings</source>
         <target>Experten-Einstellungen</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.title_output_legend">
-        <source>Title output</source>
-        <target>Titel Ausgabe</target>
+      <trans-unit id="tl_expose_module.settings_legend">
+        <source>Einstellungen</source>
+        <target>Einstellungen</target>
       </trans-unit>
 
       <trans-unit id="tl_expose_module.name.0">
@@ -135,6 +135,14 @@
       <trans-unit id="tl_expose_module.titleSize.1">
         <source>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</source>
         <target>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceFullAddress.0">
+        <source>Vollständige Adresse erzwingen</source>
+        <target>Vollständige Adresse erzwingen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceFullAddress.1">
+        <source>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</source>
+        <target>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</target>
       </trans-unit>
     </body>
   </file>

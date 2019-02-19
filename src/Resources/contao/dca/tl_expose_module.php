@@ -88,7 +88,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     (
         '__selector__'                => array('type', 'protected'),
         'default'                     => '{title_legend},name,headline,type',
-        'title'                       => '{title_legend},name,headline,type;{title_output_legend},titleSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'title'                       => '{title_legend},name,headline,type;{settings_legend},titleSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -195,6 +196,14 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'options'                 => array('h1', 'h2', 'h3', 'h4', 'h5', 'h6'),
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(2) NOT NULL default ''"
+        ),
+        'forceFullAddress' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['forceFullAddress'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'sql'                     => "char(1) NOT NULL default ''"
         )
     )
 );

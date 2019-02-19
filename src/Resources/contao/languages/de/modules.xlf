@@ -67,6 +67,14 @@
         <source>Gibt den Titel des Objektes aus</source>
         <target>Gibt den Titel des Objektes aus</target>
       </trans-unit>
+      <trans-unit id="FMD.address.0">
+        <source>Object address</source>
+        <target>Objektadresse</target>
+      </trans-unit>
+      <trans-unit id="FMD.address.1">
+        <source>Gibt die Adresse des Objektes aus</source>
+        <target>Gibt die Adresse des Objektes aus</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
