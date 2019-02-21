@@ -1,0 +1,3 @@
+<?php foreach ($this->body as $image): ?>
+    <figure><?php $this->insert('picture_default', $image->picture); ?></figure>
+<?php endforeach; ?>

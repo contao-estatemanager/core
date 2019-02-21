@@ -125,7 +125,7 @@ class RealEstate
             return $this->objRealEstate->titleImageSRC;
         }
 
-        $arrFields = array('imageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC');
+        $arrFields = array('imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
 
         foreach ($arrFields as $field)
         {
@@ -138,44 +138,44 @@ class RealEstate
         return null;
     }
 
-    public function getImageBundle()
+    public function getImageBundle($arrFields = null, $max=null)
     {
         $return = array();
 
-        if ($this->objRealEstate->titleImageSRC)
+        $arrValidFields = array('titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
+
+        if(!$arrFields)
         {
-            $return[] = $this->objRealEstate->titleImageSRC;
+            $arrFields = $arrValidFields;
         }
 
-        $arrFields = array('imageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'panoramaImageSRC');
+        $index = 1;
 
         foreach ($arrFields as $field)
         {
             if ($this->objRealEstate->{$field})
             {
-                $arrImages = \StringUtil::deserialize($this->objRealEstate->{$field});
-
-                foreach ($arrImages as $image)
+                if($field === 'titleImageSRC')
                 {
-                    $return[] = $image;
+                    $return[] = $this->objRealEstate->titleImageSRC;
+
+                    if ($max !== null && intval($max) === $index++){
+                        break;
+                    }
                 }
-            }
-        }
+                else
+                {
+                    $arrImages = \StringUtil::deserialize($this->objRealEstate->{$field});
 
-        return $return;
-    }
+                    foreach ($arrImages as $image)
+                    {
+                        $return[] = $image;
 
-    public function getFloorPlanImages()
-    {
-        $return = array();
-
-        if ($this->objRealEstate->planImageSRC)
-        {
-            $arrImages = \StringUtil::deserialize($this->objRealEstate->planImageSRC);
-
-            foreach ($arrImages as $image)
-            {
-                $return[] = $image;
+                        if ($max !== null && intval($max) === $index++){
+                            break 2;
+                        }
+                    }
+                }
             }
         }
 

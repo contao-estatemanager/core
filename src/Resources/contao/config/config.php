@@ -108,7 +108,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     ),
     'media' => array
     (
-
+        'gallery'   => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleGallery',
     ),
     'consumeable' => array
     (

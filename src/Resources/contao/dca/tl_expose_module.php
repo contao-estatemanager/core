@@ -89,7 +89,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         '__selector__'                => array('type', 'protected'),
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},titleSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,gallerySkipOnEmpty;{image_legend:hide},galleryImgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -204,7 +205,58 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'filter'                  => true,
             'inputType'               => 'checkbox',
             'sql'                     => "char(1) NOT NULL default ''"
-        )
+        ),
+        'galleryModules' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['galleryModules'],
+            'default'                 => array('titleImageSRC', 'imageSRC'),
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC'),
+            'eval'                    => array('mandatory'=>true, 'multiple'=>true),
+            'reference'               => &$GLOBALS['TL_LANG']['FMD'],
+            'sql'                     => "blob NULL"
+        ),
+        'galleryItemTemplate' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['galleryItemTemplate'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options_callback'        => array('tl_expose_module', 'getGalleryItemTemplates'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'galleryImgSize' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['galleryImgSize'],
+            'exclude'                 => true,
+            'inputType'               => 'imageSize',
+            'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+            'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
+            'options_callback' => function ()
+            {
+                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+            },
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'gallerySkipOnEmpty' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['gallerySkipOnEmpty'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'numberOfItems' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['numberOfItems'],
+            'default'                 => 0,
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50'),
+            'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
+        ),
     )
 );
 
@@ -263,6 +315,18 @@ class tl_expose_module extends Backend
      * @return array
      */
     public function getExposeModuleTemplates(DataContainer $dc)
+    {
+        return $this->getTemplateGroup('expose_mod_' . $dc->activeRecord->type);
+    }
+
+    /**
+     * Return all gallery item templates as array
+     *
+     * @param DataContainer $dc
+     *
+     * @return array
+     */
+    public function getGalleryItemTemplates(DataContainer $dc)
     {
         return $this->getTemplateGroup('expose_mod_' . $dc->activeRecord->type);
     }

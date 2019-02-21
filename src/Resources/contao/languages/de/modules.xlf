@@ -24,8 +24,12 @@
         <target>ImmoManager</target>
       </trans-unit>
       <trans-unit id="FMD.properties">
-        <source>properties</source>
+        <source>Properties</source>
         <target>Eigenschaften</target>
+      </trans-unit>
+      <trans-unit id="FMD.media">
+        <source>Media</source>
+        <target>Medien</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.0">
         <source>Expose</source>
@@ -74,6 +78,55 @@
       <trans-unit id="FMD.address.1">
         <source>Gibt die Adresse des Objektes aus</source>
         <target>Gibt die Adresse des Objektes aus</target>
+      </trans-unit>
+      <trans-unit id="FMD.gallery.0">
+        <source>Gallery / Slider</source>
+        <target>Galerie / Slider</target>
+      </trans-unit>
+      <trans-unit id="FMD.gallery.1">
+        <source>Gibt die Bilder des Objektes aus</source>
+        <target>Gibt die Bilder des Objektes aus</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.titleImageSRC.0">
+        <source>Titelbild</source>
+        <target>Titelbild</target>
+      </trans-unit>
+      <trans-unit id="FMD.imageSRC.0">
+        <source>Bilder</source>
+        <target>Bilder</target>
+      </trans-unit>
+      <trans-unit id="FMD.planImageSRC.0">
+        <source>Grundrisse</source>
+        <target>Grundrisse</target>
+      </trans-unit>
+      <trans-unit id="FMD.interiorViewImageSRC.0">
+        <source>Interior-Bilder</source>
+        <target>Interior-Bilder</target>
+      </trans-unit>
+      <trans-unit id="FMD.exteriorViewImageSRC.0">
+        <source>Exterior-Bilder</source>
+        <target>Exterior-Bilder</target>
+      </trans-unit>
+      <trans-unit id="FMD.mapViewImageSRC.0">
+        <source>Kartenansicht</source>
+        <target>Kartenansicht</target>
+      </trans-unit>
+      <trans-unit id="FMD.panoramaImageSRC.0">
+        <source>Panorama</source>
+        <target>Panorama</target>
+      </trans-unit>
+      <trans-unit id="FMD.epassSkalaImageSRC.0">
+        <source>Energieskala</source>
+        <target>Energieskala</target>
+      </trans-unit>
+      <trans-unit id="FMD.logoImageSRC.0">
+        <source>Logo</source>
+        <target>Logo</target>
+      </trans-unit>
+      <trans-unit id="FMD.qrImageSRC.0">
+        <source>QR-Code</source>
+        <target>QR-Code</target>
       </trans-unit>
     </body>
   </file>

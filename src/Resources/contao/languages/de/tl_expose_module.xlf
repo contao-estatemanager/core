@@ -63,6 +63,10 @@
         <source>Einstellungen</source>
         <target>Einstellungen</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.image_legend">
+        <source>Bild-Einstellungen</source>
+        <target>Bild-Einstellungen</target>
+      </trans-unit>
 
       <trans-unit id="tl_expose_module.name.0">
         <source>Titel</source>
@@ -143,6 +147,46 @@
       <trans-unit id="tl_expose_module.forceFullAddress.1">
         <source>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</source>
         <target>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryModules.0">
+        <source>Galerie-Module</source>
+        <target>Galerie-Module</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryModules.1">
+        <source>Wählen und sortieren Sie die Bilder welche von diesem Modul ausgegeben werden sollen</source>
+        <target>Wählen und sortieren Sie die Bilder welche von diesem Modul ausgegeben werden sollen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryItemTemplate.0">
+        <source>Galerie Item-Template</source>
+        <target>Galerie Item-Template</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryItemTemplate.1">
+        <source>Hier können Sie das Standard-Template überschreiben.</source>
+        <target>Hier können Sie das Standard-Template überschreiben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryImgSize.0">
+        <source>Bildgröße</source>
+        <target>Bildgröße</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryImgSize.1">
+        <source>Hier können Sie die Abmessungen der Bilder und den Skalierungsmodus festlegen.</source>
+        <target>Hier können Sie die Abmessungen der Bilder und den Skalierungsmodus festlegen.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.gallerySkipOnEmpty.0">
+        <source>Hide on empty</source>
+        <target>Ausblenden wenn keine Bilder angezeigt werden können</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.gallerySkipOnEmpty.1">
+        <source>Erzwingt das ausblenden des Moduls, sofern keine Bilder gefunden werden. Andernfalls wird immer das in den Einstellungen hinterlegte Standard-Bild ausgegeben.</source>
+        <target>Erzwingt das ausblenden des Moduls, sofern keine Bilder gefunden werden. Andernfalls wird immer das in den Einstellungen hinterlegte Standard-Bild ausgegeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.numberOfItems.0">
+        <source>Number of items</source>
+        <target>Gesamtzahl der Elemente</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.numberOfItems.1">
+        <source>Here you can limit the number of items. Set to 0 to show all.</source>
+        <target>Hier können Sie die Gesamtzahl der Elemente begrenzen. Geben Sie 0 ein, um alle anzuzeigen.</target>
       </trans-unit>
     </body>
   </file>
