@@ -410,6 +410,13 @@ class RealEstate
         return $collection;
     }
 
+    /**
+     * Return main details from real estate
+     *
+     * @param null $max
+     *
+     * @return array
+     */
     public function getMainDetails($max=null)
     {
         $return = array();

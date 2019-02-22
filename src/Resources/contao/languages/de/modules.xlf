@@ -24,13 +24,14 @@
         <target>ImmoManager</target>
       </trans-unit>
       <trans-unit id="FMD.properties">
-        <source>Properties</source>
-        <target>Eigenschaften</target>
+        <source>Real estate properties</source>
+        <target>Objekt-Eigenschaften</target>
       </trans-unit>
       <trans-unit id="FMD.media">
-        <source>Media</source>
-        <target>Medien</target>
+        <source>Real estate media</source>
+        <target>Objekt-Medien</target>
       </trans-unit>
+
       <trans-unit id="FMD.realEstateExpose.0">
         <source>Expose</source>
         <target>Expose</target>
@@ -64,16 +65,16 @@
         <target>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann</target>
       </trans-unit>
       <trans-unit id="FMD.title.0">
-        <source>Object title</source>
-        <target>Objekttitel</target>
+        <source>Title</source>
+        <target>Titel</target>
       </trans-unit>
       <trans-unit id="FMD.title.1">
         <source>Gibt den Titel des Objektes aus</source>
         <target>Gibt den Titel des Objektes aus</target>
       </trans-unit>
       <trans-unit id="FMD.address.0">
-        <source>Object address</source>
-        <target>Objektadresse</target>
+        <source>Address</source>
+        <target>Adresse</target>
       </trans-unit>
       <trans-unit id="FMD.address.1">
         <source>Gibt die Adresse des Objektes aus</source>
@@ -88,20 +89,36 @@
         <target>Gibt die Bilder des Objektes aus</target>
       </trans-unit>
       <trans-unit id="FMD.details.0">
-        <source>Objektdetails</source>
-        <target>Objektdetails</target>
+        <source>Details</source>
+        <target>Details</target>
       </trans-unit>
       <trans-unit id="FMD.details.1">
         <source>Gibt die Details des Objektes aus</source>
         <target>Gibt die Details des Objektes aus</target>
       </trans-unit>
       <trans-unit id="FMD.texts.0">
-        <source>Objekttexte</source>
-        <target>Objekttexte</target>
+        <source>Texts</source>
+        <target>Texte</target>
       </trans-unit>
       <trans-unit id="FMD.texts.1">
         <source>Gibt die Beschreibungen des Objektes aus</source>
         <target>Gibt die Beschreibungen des Objektes aus</target>
+      </trans-unit>
+      <trans-unit id="FMD.texts.0">
+        <source>Texts</source>
+        <target>Texte</target>
+      </trans-unit>
+      <trans-unit id="FMD.texts.1">
+        <source>Gibt die Beschreibungen des Objektes aus</source>
+        <target>Gibt die Beschreibungen des Objektes aus</target>
+      </trans-unit>
+      <trans-unit id="FMD.maindetails.0">
+        <source>Main details</source>
+        <target>Primäre Details</target>
+      </trans-unit>
+      <trans-unit id="FMD.maindetails.1">
+        <source>Gibt die im Objekttypen hinterlegten primären Details aus</source>
+        <target>Gibt die im Objekttypen hinterlegten primären Details aus</target>
       </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">

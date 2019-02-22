@@ -6,7 +6,7 @@
 
     <?php if($text['text']['value']): ?>
 
-        <div class="<?=$text['text']['key']?> <?=$text['text']['class']?>">
+        <div class="<?=$text['text']['key']?><?=$text['text']['class'] ? ' ' . $text['text']['class'] : ''?>">
 
             <?php if($this->addHeadings): ?>
                 <<?=$this->fontSize?>><?=$text['label']?></<?=$this->fontSize?>>
