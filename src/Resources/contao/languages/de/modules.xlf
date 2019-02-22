@@ -95,6 +95,14 @@
         <source>Gibt die Details des Objektes aus</source>
         <target>Gibt die Details des Objektes aus</target>
       </trans-unit>
+      <trans-unit id="FMD.texts.0">
+        <source>Objekttexte</source>
+        <target>Objekttexte</target>
+      </trans-unit>
+      <trans-unit id="FMD.texts.1">
+        <source>Gibt die Beschreibungen des Objektes aus</source>
+        <target>Gibt die Beschreibungen des Objektes aus</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>
@@ -156,6 +164,23 @@
       <trans-unit id="FMD.energie.0">
         <source>Energieausweis</source>
         <target>Energieausweis</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.objektbeschreibung.0">
+        <source>Objektbeschreibung</source>
+        <target>Objektbeschreibung</target>
+      </trans-unit>
+      <trans-unit id="FMD.ausstattBeschr.0">
+        <source>Ausstattung</source>
+        <target>Ausstattung</target>
+      </trans-unit>
+      <trans-unit id="FMD.lage.0">
+        <source>Lage</source>
+        <target>Lage</target>
+      </trans-unit>
+      <trans-unit id="FMD.sonstigeAngaben.0">
+        <source>Sonstige Angaben</source>
+        <target>Sonstige Angaben</target>
       </trans-unit>
     </body>
   </file>

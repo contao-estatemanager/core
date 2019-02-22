@@ -201,8 +201,8 @@
         <target>Detail-Blöcke zusammenfassen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
-        <source>Statt einzelne Blöcke werden die Detail in einer Liste zusammengefasst</source>
-        <target>Statt einzelne Blöcke werden die Detail in einer Liste zusammengefasst</target>
+        <source>Statt einzelne Blöcke werden die Details in einer Liste zusammengefasst ausgegeben</source>
+        <target>Statt einzelne Blöcke werden die Details in einer Liste zusammengefasst ausgegeben</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.0">
         <source>Immobilien-Addresse hinzufügen</source>
@@ -212,13 +212,29 @@
         <source>Fügt die Adresse der Immobilie in die Liste der Details ein</source>
         <target>Fügt die Adresse der Immobilie in die Liste der Details ein</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.addDetailHeadings.0">
+      <trans-unit id="tl_expose_module.addHeadings.0">
         <source>Überschriften ausgeben</source>
         <target>Überschriften ausgeben</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.addDetailHeadings.1">
-        <source>Gibt über jeden definierten Detail-Block die entsprechende Überschrift aus</source>
-        <target>Gibt über jeden definierten Detail-Block die entsprechende Überschrift aus</target>
+      <trans-unit id="tl_expose_module.addHeadings.1">
+        <source>Zeit für die ausgewählten Elemente Überschriften an</source>
+        <target>Zeit für die ausgewählten Elemente Überschriften an</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.textBlocks.0">
+        <source>Texte</source>
+        <target>Texte</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.textBlocks.1">
+        <source>Definieren und sortieren Sie die auszugebenden Texte</source>
+        <target>Definieren und sortieren Sie die auszugebenden Texte</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.maxTextLength.0">
+        <source>max. Textlänge</source>
+        <target>max. Textlänge</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.maxTextLength.1">
+        <source>Geben Sie eine Zahl an, um den Text an einer gewünschten Stelle zu kürzen. Bei Angabe von 0 wird der Text ungekürzt ausgegeben.</source>
+        <target>Geben Sie eine Zahl an, um den Text an einer gewünschten Stelle zu kürzen. Bei Angabe von 0 wird der Text ungekürzt ausgegeben.</target>
       </trans-unit>
     </body>
   </file>

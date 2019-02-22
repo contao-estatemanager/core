@@ -98,24 +98,7 @@ class RealEstate
 
     public function getDescription($maxTextLength=0)
     {
-        if ($maxTextLength > 0)
-        {
-            $description = trim(preg_replace('#[\s\n\r\t]{2,}#', ' ', $this->objRealEstate->objektbeschreibung));
-
-            while (substr($description, $maxTextLength, 1) != " ")
-            {
-                $maxTextLength++;
-
-                if ($maxTextLength > strlen($description))
-                {
-                    break;
-                }
-            }
-
-            return substr($description, 0, $maxTextLength) . '...';
-        }
-
-        return $this->objRealEstate->objektbeschreibung;
+        return $this->formatter->shortenText($this->objRealEstate->objektbeschreibung, $maxTextLength);
     }
 
     public function getMainImage()
@@ -328,7 +311,7 @@ class RealEstate
     }
 
     /**
-     * return all details from real estate
+     * Return details from real estate
      *
      * @param null|array    $separateGroups: area, price, attribute, detail
      * @param bool          $includeAddress
@@ -490,16 +473,30 @@ class RealEstate
         return $return;
     }
 
-    // ToDo: maxLength
-    public function getTexts()
+    /**
+     * Return texts from real estate
+     *
+     * @param array|null $validTexts
+     * @param int $maxTextLength
+     *
+     * @return array
+     */
+    public function getTexts($validTexts=null, $maxTextLength=0)
     {
-        $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben');
+        if(!$validTexts)
+        {
+            $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben');
+        }
 
         $return = array();
 
-        foreach ($validTexts as $text)
+        foreach ($validTexts as $field)
         {
-            $return[] = $this->formatter->getFormattedCollection($text);
+            $textCollection = $this->formatter->getFormattedCollection($field);
+
+            $textCollection['value'] = $this->formatter->shortenText($textCollection['value'], $maxTextLength);
+
+            $return[ $field ] = $textCollection;
         }
 
         return $return;

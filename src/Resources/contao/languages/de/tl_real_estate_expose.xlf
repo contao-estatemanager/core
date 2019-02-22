@@ -22,61 +22,24 @@
         <source>Merkmale</source>
         <target>Merkmale</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_similarObjects">
-        <source>Ähnliche Immobilien</source>
-        <target>Ähnliche Immobilien</target>
+      <trans-unit id="tl_real_estate_expose.headline_objektbeschreibung">
+        <source>Beschreibung</source>
+        <target>Beschreibung</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_futherLinks">
-        <source>Weitere Links</source>
-        <target>Weitere Links</target>
+      <trans-unit id="tl_real_estate_expose.headline_ausstattBeschr">
+        <source>Ausstattung</source>
+        <target>Ausstattung</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_floorPlans">
-        <source>Grundrisse</source>
-        <target>Grundrisse</target>
+      <trans-unit id="tl_real_estate_expose.headline_lage">
+        <source>Lage</source>
+        <target>Lage</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_videos">
-        <source>Videos</source>
-        <target>Videos</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_contactPerson">
-        <source>Ihr Ansprechpartner</source>
-        <target>Ihr Ansprechpartner</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_expose.headline_virtualTour">
-        <source>360° Rundgang</source>
-        <target>360° Rundgang</target>
+      <trans-unit id="tl_real_estate_expose.headline_sonstigeAngaben">
+        <source>Sonstiges</source>
+        <target>Sonstiges</target>
       </trans-unit>
 
 
-      <trans-unit id="tl_real_estate_expose.buttonVirtualTour">
-        <source>Tour starten</source>
-        <target>Tour starten</target>
-      </trans-unit>
-
-
-      <trans-unit id="tl_real_estate_expose.moduleVirtualTour">
-        <source>Sea takimata sanctus est Lorem ipsum dolor sit amet Lorem</source>
-        <target>Sea takimata sanctus est Lorem ipsum dolor sit amet Lorem</target>
-      </trans-unit>
-
-
-      <trans-unit id="tl_real_estate_expose.teaserVirtualTour1">
-        <source>Viel mehr als nur 4 Wände</source>
-        <target>Viel mehr als nur 4 Wände</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_expose.teaserVirtualTour2">
-        <source>Jetzt virtuelle 360° Besichtigung starten</source>
-        <target>Jetzt virtuelle 360° Besichtigung starten</target>
-      </trans-unit>
-
-      <trans-unit id="tl_real_estate_expose.optionPrint">
-        <source>Drucken</source>
-        <target>Drucken</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_expose.optionWatch">
-        <source>Merken</source>
-        <target>Merken</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

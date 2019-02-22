@@ -6,7 +6,7 @@
 
     <div class="<?=$details['key']?>_block">
 
-        <?php if($this->addDetailHeadings): ?>
+        <?php if($this->addHeadings): ?>
             <<?=$this->fontSize?>><?=$details['label']?></<?=$this->fontSize?>>
         <?php endif; ?>
 

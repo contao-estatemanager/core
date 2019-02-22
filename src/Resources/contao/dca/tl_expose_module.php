@@ -86,19 +86,20 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'protected', 'addDetailHeadings'),
+        '__selector__'                => array('type', 'protected', 'addHeadings'),
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,gallerySkipOnEmpty;{image_legend:hide},galleryImgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,addDetailHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
         'protected'                   => 'groups',
-        'addDetailHeadings'           => 'fontSize',
+        'addHeadings'                 => 'fontSize',
     ),
 
     // Fields
@@ -278,9 +279,9 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
         ),
-        'addDetailHeadings' => array
+        'addHeadings' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['addDetailHeadings'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['addHeadings'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -295,6 +296,24 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'textBlocks' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['textBlocks'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben'),
+            'eval'                    => array('mandatory'=>true, 'multiple'=>true),
+            'reference'               => &$GLOBALS['TL_LANG']['FMD'],
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'maxTextLength' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['maxTextLength'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
     )
 );
