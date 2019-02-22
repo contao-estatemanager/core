@@ -86,17 +86,19 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'protected'),
+        '__selector__'                => array('type', 'protected', 'addDetailHeadings'),
         'default'                     => '{title_legend},name,headline,type',
-        'title'                       => '{title_legend},name,headline,type;{settings_legend},titleSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,gallerySkipOnEmpty;{image_legend:hide},galleryImgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,gallerySkipOnEmpty;{image_legend:hide},galleryImgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,addDetailHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
         'protected'                   => 'groups',
+        'addDetailHeadings'           => 'fontSize',
     ),
 
     // Fields
@@ -189,13 +191,13 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'titleSize' => array
+        'fontSize' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['titleSize'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fontSize'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('h1', 'h2', 'h3', 'h4', 'h5', 'h6'),
-            'eval'                    => array('tl_class'=>'w50'),
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true),
             'sql'                     => "varchar(2) NOT NULL default ''"
         ),
         'forceFullAddress' => array
@@ -256,6 +258,43 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50'),
             'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
+        ),
+        'detailBlocks' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['detailBlocks'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('area', 'price', 'attribute', 'detail', 'energie'),
+            'eval'                    => array('mandatory'=>true, 'multiple'=>true),
+            'reference'               => &$GLOBALS['TL_LANG']['FMD'],
+            'sql'                     => "blob NULL"
+        ),
+        'summariseDetailBlocks' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['summariseDetailBlocks'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'addDetailHeadings' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['addDetailHeadings'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'includeAddress' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['includeAddress'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
     )
 );

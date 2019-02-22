@@ -87,6 +87,14 @@
         <source>Gibt die Bilder des Objektes aus</source>
         <target>Gibt die Bilder des Objektes aus</target>
       </trans-unit>
+      <trans-unit id="FMD.details.0">
+        <source>Objektdetails</source>
+        <target>Objektdetails</target>
+      </trans-unit>
+      <trans-unit id="FMD.details.1">
+        <source>Gibt die Details des Objektes aus</source>
+        <target>Gibt die Details des Objektes aus</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>
@@ -127,6 +135,27 @@
       <trans-unit id="FMD.qrImageSRC.0">
         <source>QR-Code</source>
         <target>QR-Code</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.area.0">
+        <source>Flächen</source>
+        <target>Flächen</target>
+      </trans-unit>
+      <trans-unit id="FMD.price.0">
+        <source>Preise</source>
+        <target>Preise</target>
+      </trans-unit>
+      <trans-unit id="FMD.attribute.0">
+        <source>Attribute</source>
+        <target>Attribute</target>
+      </trans-unit>
+      <trans-unit id="FMD.detail.0">
+        <source>Details</source>
+        <target>Details</target>
+      </trans-unit>
+      <trans-unit id="FMD.energie.0">
+        <source>Energieausweis</source>
+        <target>Energieausweis</target>
       </trans-unit>
     </body>
   </file>

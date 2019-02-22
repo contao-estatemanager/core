@@ -330,16 +330,35 @@ class RealEstate
     /**
      * return all details from real estate
      *
-     * @param null|array $separateGroups: area, price, attribute, detail
-     * @param bool       $includeAddress
-     * @param string     $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param null|array    $separateGroups: area, price, attribute, detail
+     * @param bool          $includeAddress
+     * @param null|array    $validGroups
+     * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
      *
      * @return array $details: array('group1' [,group2,group3,...])
      */
-    public function getDetails($separateGroups=null, $includeAddress = false, $defaultGroup='detail')
+    public function getDetails($separateGroups=null, $includeAddress = false, $validGroups=null, $defaultGroup='detail')
     {
+        $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
+
+        $availableGroups = array();
+
         // set available groups and sort order
-        $availableGroups = array('area', 'price', 'attribute', 'detail', 'energie');
+        if(!$validGroups)
+        {
+            $availableGroups = $groupSorting;
+        }
+        else
+        {
+            // we have to sort the fields, which contain several options, to be able to fill the groups correctly
+            foreach ($groupSorting as $index)
+            {
+                if(in_array($index, $validGroups))
+                {
+                    $availableGroups[] = $index;
+                }
+            }
+        }
 
         if($includeAddress)
         {

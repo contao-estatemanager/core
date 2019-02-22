@@ -1,0 +1,22 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php foreach ($this->details as $details): ?>
+
+    <div class="<?=$details['key']?>_block">
+
+        <?php if($this->addDetailHeadings): ?>
+            <<?=$this->fontSize?>><?=$details['label']?></<?=$this->fontSize?>>
+        <?php endif; ?>
+
+        <?php foreach ($details['details'] as $field => $detail): ?>
+            <div class="field <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
+                <span class="label"><?= $detail['label'] ?>:</span>
+                <span class="value"><?= $detail['value'] ?></span>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>
+
+<?php $this->endblock(); ?>

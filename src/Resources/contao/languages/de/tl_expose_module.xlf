@@ -132,13 +132,13 @@
         <source>These groups will be able to see the module.</source>
         <target>Diese Gruppen können das Modul sehen.</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.titleSize.0">
-        <source>Title size</source>
-        <target>Titelgröße</target>
+      <trans-unit id="tl_expose_module.fontSize.0">
+        <source>Fontsize</source>
+        <target>Schriftgröße</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.titleSize.1">
-        <source>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</source>
-        <target>Geben Sie an in welcher größe der Objekttitel angezeigt werden soll.</target>
+      <trans-unit id="tl_expose_module.fontSize.1">
+        <source>Definieren Sie die Schriftgröße der Ausgabe</source>
+        <target>Definieren Sie die Schriftgröße der Ausgabe</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.0">
         <source>Vollständige Adresse erzwingen</source>
@@ -187,6 +187,38 @@
       <trans-unit id="tl_expose_module.numberOfItems.1">
         <source>Here you can limit the number of items. Set to 0 to show all.</source>
         <target>Hier können Sie die Gesamtzahl der Elemente begrenzen. Geben Sie 0 ein, um alle anzuzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.detailBlocks.0">
+        <source>Detail-Blöcke</source>
+        <target>Detail-Blöcke</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.detailBlocks.1">
+        <source>Definieren Sie die Reihenfolge und Ausgabe der Details. Beachten Sie, dass die Reihenfolge der einzelnen Felder über die Objekttypen definiert werden können.</source>
+        <target>Definieren Sie die Reihenfolge und Ausgabe der Details. Beachten Sie, dass die Reihenfolge der einzelnen Felder über die Objekttypen definiert werden können.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
+        <source>Detail-Blöcke zusammenfassen</source>
+        <target>Detail-Blöcke zusammenfassen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
+        <source>Statt einzelne Blöcke werden die Detail in einer Liste zusammengefasst</source>
+        <target>Statt einzelne Blöcke werden die Detail in einer Liste zusammengefasst</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.includeAddress.0">
+        <source>Immobilien-Addresse hinzufügen</source>
+        <target>Immobilien-Addresse hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.includeAddress.1">
+        <source>Fügt die Adresse der Immobilie in die Liste der Details ein</source>
+        <target>Fügt die Adresse der Immobilie in die Liste der Details ein</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.addDetailHeadings.0">
+        <source>Überschriften ausgeben</source>
+        <target>Überschriften ausgeben</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.addDetailHeadings.1">
+        <source>Gibt über jeden definierten Detail-Block die entsprechende Überschrift aus</source>
+        <target>Gibt über jeden definierten Detail-Block die entsprechende Überschrift aus</target>
       </trans-unit>
     </body>
   </file>
