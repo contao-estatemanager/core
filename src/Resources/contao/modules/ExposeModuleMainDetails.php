@@ -20,7 +20,7 @@ class ExposeModuleMainDetails extends ExposeModule
      * Template
      * @var string
      */
-    protected $strTemplate = 'expose_mod_maindetails';
+    protected $strTemplate = 'expose_mod_mainDetails';
 
     /**
      * Do not display the module if there are no real etates
@@ -32,7 +32,7 @@ class ExposeModuleMainDetails extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new \BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['maindetails'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['mainDetails'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;

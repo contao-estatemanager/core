@@ -112,19 +112,19 @@
         <source>Gibt die Beschreibungen des Objektes aus</source>
         <target>Gibt die Beschreibungen des Objektes aus</target>
       </trans-unit>
-      <trans-unit id="FMD.maindetails.0">
+      <trans-unit id="FMD.mainDetails.0">
         <source>Main details</source>
         <target>Primäre Details</target>
       </trans-unit>
-      <trans-unit id="FMD.maindetails.1">
+      <trans-unit id="FMD.mainDetails.1">
         <source>Gibt die im Objekttypen hinterlegten primären Details aus</source>
         <target>Gibt die im Objekttypen hinterlegten primären Details aus</target>
       </trans-unit>
-      <trans-unit id="FMD.mainattributes.0">
+      <trans-unit id="FMD.mainAttributes.0">
         <source>Main attributes</source>
         <target>Primäre Attribute</target>
       </trans-unit>
-      <trans-unit id="FMD.mainattributes.1">
+      <trans-unit id="FMD.mainAttributes.1">
         <source>Gibt die im Objekttypen hinterlegten primären Attribute aus</source>
         <target>Gibt die im Objekttypen hinterlegten primären Attribute aus</target>
       </trans-unit>
