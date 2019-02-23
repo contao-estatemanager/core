@@ -136,6 +136,14 @@
         <source>Gibt den vom System primär ermittelten Preis aus</source>
         <target>Gibt den vom System primär ermittelten Preis aus</target>
       </trans-unit>
+      <trans-unit id="FMD.mainArea.0">
+        <source>Main area</source>
+        <target>Primäre Fläche</target>
+      </trans-unit>
+      <trans-unit id="FMD.mainArea.1">
+        <source>Gibt die vom System primär ermittelte Fläche aus</source>
+        <target>Gibt die vom System primär ermittelte Fläche aus</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>

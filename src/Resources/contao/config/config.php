@@ -109,6 +109,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
         'mainDetails'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainDetails',
         'mainAttributes'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainAttributes',
         'mainPrice'         => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainPrice',
+        'mainArea'          => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainArea',
         'texts'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTexts',
     ),
     'media' => array

@@ -2,7 +2,7 @@
 
 <?php $this->block('content'); ?>
 
-<div class="field <?=$this->mainPrice['key']?> <?=$this->mainPrice['class'] ? ' ' . $this->mainPrice['class'] : ''?>">
+<div class="field <?=$this->mainPrice['key']?><?=$this->mainPrice['class'] ? ' ' . $this->mainPrice['class'] : ''?>">
     <div class="label"><?=$this->mainPrice['label']?></div>
     <div class="value" title="<?=$this->mainPrice['label']?>"><?=$this->mainPrice['value']?></div>
 </div>
