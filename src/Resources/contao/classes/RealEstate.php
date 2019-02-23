@@ -226,17 +226,27 @@ class RealEstate
         return $return;
     }
 
-
+    /**
+     * Return marketing token from real estate
+     *
+     * @return array
+     */
     public function getMarketingToken()
     {
         if($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht)
         {
-            return Translator::translateValue('for_sale');
+            return array(
+                'value' => Translator::translateValue('for_sale'),
+                'class' => 'for_sale'
+            );
         }
 
         if($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing)
         {
-            return Translator::translateValue('for_rent');
+            return array(
+                'value' => Translator::translateValue('for_rent'),
+                'class' => 'for_rent'
+            );
         }
     }
 

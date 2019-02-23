@@ -24,7 +24,7 @@
       </div>
 
       <div class="right-container">
-        <div class="token"><?= $this->marketingToken ?></div>
+        <div class="token <?=$this->marketingToken['class']?>"><?=$this->marketingToken['value']?></div>
         <div class="address"><?= $this->address ?></div>
         <div class="title"><?= $this->linkHeadline ?></div>
         <div class="description"><?= $this->description ?></div>

@@ -156,6 +156,14 @@
         <source>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</source>
         <target>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</target>
       </trans-unit>
+      <trans-unit id="FMD.marketingToken.0">
+        <source>Marketing-Token</source>
+        <target>Vermarktungs-Token</target>
+      </trans-unit>
+      <trans-unit id="FMD.marketingToken.1">
+        <source>Gibt die Vermarktungsart als Token aus (Bspw. Zum Kauf, zur Miete)</source>
+        <target>Gibt die Vermarktungsart als Token aus (Bspw. Zum Kauf, zur Miete)</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>
