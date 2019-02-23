@@ -77,6 +77,16 @@ class RealEstate
         return null;
     }
 
+    public function getType()
+    {
+        return $this->objType;
+    }
+
+    public function getId()
+    {
+        return $this->objRealEstate->id;
+    }
+
     public function generateExposeUrl($pageId)
     {
         $objPage = \PageModel::findByPk($pageId);
@@ -514,16 +524,6 @@ class RealEstate
         }
 
         return $return;
-    }
-
-    public function getType()
-    {
-        return $this->objType;
-    }
-
-    public function getId()
-    {
-        return $this->objRealEstate->id;
     }
 
     public function getContactPerson($forceCompleteAddress=false)
