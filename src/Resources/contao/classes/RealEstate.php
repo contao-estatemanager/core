@@ -445,6 +445,13 @@ class RealEstate
         return $return;
     }
 
+    /**
+     * Return main attributes from real estate
+     *
+     * @param null $max
+     *
+     * @return array
+     */
     public function getMainAttributes($max=null)
     {
         $return = array();

@@ -120,6 +120,14 @@
         <source>Gibt die im Objekttypen hinterlegten primären Details aus</source>
         <target>Gibt die im Objekttypen hinterlegten primären Details aus</target>
       </trans-unit>
+      <trans-unit id="FMD.mainattributes.0">
+        <source>Main attributes</source>
+        <target>Primäre Attribute</target>
+      </trans-unit>
+      <trans-unit id="FMD.mainattributes.1">
+        <source>Gibt die im Objekttypen hinterlegten primären Attribute aus</source>
+        <target>Gibt die im Objekttypen hinterlegten primären Attribute aus</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>
