@@ -31,6 +31,10 @@
         <source>Real estate media</source>
         <target>Objekt-Medien</target>
       </trans-unit>
+      <trans-unit id="FMD.miscellaneous">
+        <source>Miscellaneous</source>
+        <target>Verschiedenes</target>
+      </trans-unit>
 
       <trans-unit id="FMD.realEstateExpose.0">
         <source>Expose</source>
@@ -143,6 +147,14 @@
       <trans-unit id="FMD.mainArea.1">
         <source>Gibt die vom System primär ermittelte Fläche aus</source>
         <target>Gibt die vom System primär ermittelte Fläche aus</target>
+      </trans-unit>
+      <trans-unit id="FMD.statusToken.0">
+        <source>Status-Token</source>
+        <target>Status-Token</target>
+      </trans-unit>
+      <trans-unit id="FMD.statusToken.1">
+        <source>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</source>
+        <target>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</target>
       </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">

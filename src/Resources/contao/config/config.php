@@ -118,7 +118,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     ),
     'miscellaneous' => array
     (
-
+        'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
     )
 );
 

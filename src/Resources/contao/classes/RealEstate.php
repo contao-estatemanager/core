@@ -131,7 +131,7 @@ class RealEstate
         return null;
     }
 
-    public function getImageBundle($arrFields = null, $max=null)
+    public function getImageBundle($arrFields=null, $max=null)
     {
         $return = array();
 
@@ -175,16 +175,22 @@ class RealEstate
         return $return;
     }
 
-    public function getStatusTokens($availableStatusTokens)
+    /**
+     * Return status token from real estate
+     *
+     * @param null $validStatusToken
+     *
+     * @return array
+     */
+    public function getStatusTokens($validStatusToken=null)
     {
         $return = array();
-        $tokens = \StringUtil::deserialize($availableStatusTokens);
 
-        if(!$tokens){
+        if(!$validStatusToken){
             return $return;
         }
 
-        if (in_array('new', $tokens) && strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
+        if (in_array('new', $validStatusToken) && strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (
@@ -192,7 +198,7 @@ class RealEstate
                 'class' => 'new'
             );
         }
-        if (in_array('reserved', $tokens) && $this->objRealEstate->verkaufstatus === 'reserviert')
+        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (
@@ -200,7 +206,7 @@ class RealEstate
                 'class' => 'reserved'
             );
         }
-        if (in_array('sold', $tokens) && $this->objRealEstate->verkaufstatus === 'verkauft')
+        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft')
         {
             $return[] = array
             (
@@ -208,7 +214,7 @@ class RealEstate
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $tokens) && $this->objRealEstate->verkaufstatus === 'vermietet')
+        if (in_array('rented', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'vermietet')
         {
             $return[] = array
             (
@@ -219,6 +225,7 @@ class RealEstate
 
         return $return;
     }
+
 
     public function getMarketingToken()
     {

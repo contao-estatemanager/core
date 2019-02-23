@@ -236,6 +236,14 @@
         <source>Geben Sie eine Zahl an, um den Text an einer gewünschten Stelle zu kürzen. Bei Angabe von 0 wird der Text ungekürzt ausgegeben.</source>
         <target>Geben Sie eine Zahl an, um den Text an einer gewünschten Stelle zu kürzen. Bei Angabe von 0 wird der Text ungekürzt ausgegeben.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.statusTokens.0">
+        <source>Valid status token</source>
+        <target>Erlaubte Status-Token</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.statusTokens.1">
+        <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
+        <target>Wählen Sie die erlaubten Status-Token. Diese werden, sofern diese zutreffen, in unterstützten Templates ausgegeben.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
