@@ -264,6 +264,14 @@
         <source>Wählen Sie die auszugebenden Felder aus</source>
         <target>Wählen Sie die auszugebenden Felder aus</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.form.0">
+        <source>Form</source>
+        <target>Formular</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.form.1">
+        <source>Please select a form.</source>
+        <target>Bitte wählen Sie ein Formular.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

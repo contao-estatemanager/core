@@ -103,7 +103,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'marketingToken'              => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'fieldList'                   => '{title_legend},name,headline,type;{settings_legend},fields;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -240,6 +241,15 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
+        'gallerySkipOnEmpty' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['gallerySkipOnEmpty'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
         'imgSize' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['imgSize'],
@@ -252,15 +262,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
                 return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
             },
             'sql'                     => "varchar(64) NOT NULL default ''"
-        ),
-        'gallerySkipOnEmpty' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['gallerySkipOnEmpty'],
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50 m12'),
-            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'numberOfItems' => array
         (
@@ -367,6 +368,17 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'reference'               => &$GLOBALS['TL_LANG']['FMD'],
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
+        'form' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['form'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'foreignKey'              => 'tl_form.title',
+            'options_callback'        => array('tl_expose_module', 'getForms'),
+            'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
     )
 );
 
@@ -465,4 +477,31 @@ class tl_expose_module extends Backend
 
         return $filterFields;
     }
+
+    /**
+     * Get all forms and return them as array
+     *
+     * @return array
+     */
+    public function getForms()
+    {
+        if (!$this->User->isAdmin && !\is_array($this->User->forms))
+        {
+            return array();
+        }
+
+        $arrForms = array();
+        $objForms = $this->Database->execute("SELECT id, title FROM tl_form ORDER BY title");
+
+        while ($objForms->next())
+        {
+            if ($this->User->hasAccess($objForms->id, 'forms'))
+            {
+                $arrForms[$objForms->id] = $objForms->title;
+            }
+        }
+
+        return $arrForms;
+    }
+
 }

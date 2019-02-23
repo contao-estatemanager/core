@@ -180,6 +180,14 @@
         <source>Ausgabe der zugewiesenen Kontaktperson</source>
         <target>Ausgabe der zugewiesenen Kontaktperson</target>
       </trans-unit>
+      <trans-unit id="FMD.enquiryForm.0">
+        <source>Anfrageformular</source>
+        <target>Anfrageformular</target>
+      </trans-unit>
+      <trans-unit id="FMD.enquiryForm.1">
+        <source>Ermöglicht die Ausgabe eines über den Formulargenerator generierten Formulars, mit berücksichtigung der Einstellungen in den Kontaktperson</source>
+        <target>Ermöglicht die Ausgabe eines über den Formulargenerator generierten Formulars, mit berücksichtigung der Einstellungen in den Kontaktperson</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>

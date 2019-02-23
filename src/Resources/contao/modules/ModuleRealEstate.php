@@ -108,11 +108,13 @@ abstract class ModuleRealEstate extends \Module
 
         $objTemplate->class = $strClass;
 
+        $texts = $realEstate->getTexts(null, $this->maxTextLength);
+
         $objTemplate->realEstateId = $objRealEstate->id;
         $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
         $objTemplate->marketingToken = $realEstate->getMarketingToken();
         $objTemplate->title = $realEstate->getTitle();
-        $objTemplate->description = $realEstate->getDescription($this->maxTextLength);
+        $objTemplate->description = $texts['objektbeschreibung'];
         $objTemplate->linkExpose = $this->generateLink('Expose', $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
         $objTemplate->address = $realEstate->getLocationString();

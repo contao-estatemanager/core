@@ -120,6 +120,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     'miscellaneous' => array
     (
         'contactPerson'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleContactPerson',
+        'enquiryForm'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleEnquiryForm',
         'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
         'marketingToken'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMarketingToken',
     )

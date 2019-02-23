@@ -27,7 +27,7 @@
         <div class="token <?=$this->marketingToken['class']?>"><?=$this->marketingToken['value']?></div>
         <div class="address"><?= $this->address ?></div>
         <div class="title"><?= $this->linkHeadline ?></div>
-        <div class="description"><?= $this->description ?></div>
+        <div class="description"><?= $this->description['value'] ?></div>
         <div class="bottom">
           <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
           <div class="expose-link"><?= $this->linkExpose ?></div>

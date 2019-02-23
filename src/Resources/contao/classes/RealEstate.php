@@ -87,6 +87,13 @@ class RealEstate
         return $this->objRealEstate->id;
     }
 
+    /**
+     * Generate and return the expose url of the real estate
+     *
+     * @param $pageId
+     *
+     * @return mixed
+     */
     public function generateExposeUrl($pageId)
     {
         $objPage = \PageModel::findByPk($pageId);
@@ -101,6 +108,11 @@ class RealEstate
         return ampersand($objPage->getFrontendUrl($params));
     }
 
+    /**
+     * Return the object title of the real estate
+     *
+     * @return mixed
+     */
     public function getTitle()
     {
         return $this->objRealEstate->objekttitel;
@@ -133,11 +145,11 @@ class RealEstate
         return $arrFields;
     }
 
-    public function getDescription($maxTextLength=0)
-    {
-        return $this->formatter->shortenText($this->objRealEstate->objektbeschreibung, $maxTextLength);
-    }
-
+    /**
+     * Return the first assignable image uuid
+     *
+     * @return string|null
+     */
     public function getMainImage()
     {
         if ($this->objRealEstate->titleImageSRC)
@@ -158,6 +170,14 @@ class RealEstate
         return null;
     }
 
+    /**
+     * Return image uuid's of the real estate
+     *
+     * @param null $arrFields
+     * @param null $max
+     *
+     * @return array
+     */
     public function getImageBundle($arrFields=null, $max=null)
     {
         $return = array();
@@ -595,6 +615,13 @@ class RealEstate
         return $return;
     }
 
+    /**
+     * Return data of the assigned person
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return null
+     */
     public function getContactPerson($forceCompleteAddress=false)
     {
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
