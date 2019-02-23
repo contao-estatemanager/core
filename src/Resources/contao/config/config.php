@@ -119,6 +119,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     ),
     'miscellaneous' => array
     (
+        'contactPerson'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleContactPerson',
         'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
         'marketingToken'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMarketingToken',
     )

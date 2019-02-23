@@ -172,6 +172,14 @@
         <source>Ausgabe selbst definierter Objekt-Felder als Liste</source>
         <target>Ausgabe selbst definierter Objekt-Felder als Liste</target>
       </trans-unit>
+      <trans-unit id="FMD.contactPerson.0">
+        <source>Kontaktperson / Ansprechpartner</source>
+        <target>Kontaktperson / Ansprechpartner</target>
+      </trans-unit>
+      <trans-unit id="FMD.contactPerson.1">
+        <source>Ausgabe der zugewiesenen Kontaktperson</source>
+        <target>Ausgabe der zugewiesenen Kontaktperson</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>
@@ -250,6 +258,47 @@
       <trans-unit id="FMD.sonstigeAngaben.0">
         <source>Sonstige Angaben</source>
         <target>Sonstige Angaben</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.kontaktname.0">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="FMD.foto.0">
+        <source>Foto</source>
+        <target>Foto</target>
+      </trans-unit>
+      <trans-unit id="FMD.strasse.0">
+        <source>Straße</source>
+        <target>Straße</target>
+      </trans-unit>
+      <trans-unit id="FMD.hausnummer.0">
+        <source>Hausnummer</source>
+        <target>Hausnummer</target>
+      </trans-unit>
+      <trans-unit id="FMD.plz.0">
+        <source>Postleitzahl</source>
+        <target>Postleitzahl</target>
+      </trans-unit>
+      <trans-unit id="FMD.ort.0">
+        <source>Ort</source>
+        <target>Ort</target>
+      </trans-unit>
+      <trans-unit id="FMD.land.0">
+        <source>Land</source>
+        <target>Land</target>
+      </trans-unit>
+      <trans-unit id="FMD.zusatzfeld.0">
+        <source>Zusätzliches Adressfeld</source>
+        <target>Zusätzliches Adressfeld</target>
+      </trans-unit>
+      <trans-unit id="FMD.email.0">
+        <source>E-Mail</source>
+        <target>E-Mail</target>
+      </trans-unit>
+      <trans-unit id="FMD.telefon.0">
+        <source>Telefon</source>
+        <target>Telefon</target>
       </trans-unit>
     </body>
   </file>

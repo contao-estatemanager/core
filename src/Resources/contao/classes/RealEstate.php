@@ -607,7 +607,7 @@ class RealEstate
 
         $contactPerson = $objContactPerson->row();
 
-        $contactPerson['name'] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
+        $contactPerson['kontaktname'] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
 
         if(!$objContactPerson->adressfreigabe && $forceCompleteAddress === false)
         {
@@ -620,27 +620,27 @@ class RealEstate
         }
 
         if($objProvider->forwardingMode === 'provider') {
-            $contactPerson['mainPhone'] = $objContactPerson->tel_zentrale;
-            $contactPerson['mainEmail'] = $objContactPerson->email_zentrale;
+            $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
+            $contactPerson['email'] = $objContactPerson->email_zentrale;
         }
         else
         {
             if($objContactPerson->email_direkt)
             {
-                $contactPerson['mainEmail'] = $objContactPerson->email_direkt;
+                $contactPerson['email'] = $objContactPerson->email_direkt;
             }
             else
             {
-                $contactPerson['mainEmail'] = $objContactPerson->email_zentrale;
+                $contactPerson['email'] = $objContactPerson->email_zentrale;
             }
 
             if($objContactPerson->tel_durchw)
             {
-                $contactPerson['mainPhone'] = $objContactPerson->tel_durchw;
+                $contactPerson['telefon'] = $objContactPerson->tel_durchw;
             }
             else
             {
-                $contactPerson['mainPhone'] = $objContactPerson->tel_zentrale;
+                $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
             }
         }
 

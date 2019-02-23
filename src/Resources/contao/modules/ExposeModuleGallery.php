@@ -136,7 +136,7 @@ class ExposeModuleGallery extends ExposeModule
                 'name'       => $objFile->basename,
                 'singleSRC'  => $objFiles->path,
                 'filesModel' => $objFiles->current(),
-                'size'       => $this->galleryImgSize,
+                'size'       => $this->imgSize,
             );
 
             $objCell = new \stdClass();

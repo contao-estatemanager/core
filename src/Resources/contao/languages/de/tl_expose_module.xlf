@@ -164,11 +164,11 @@
         <source>Hier können Sie das Standard-Template überschreiben.</source>
         <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.galleryImgSize.0">
+      <trans-unit id="tl_expose_module.imgSize.0">
         <source>Bildgröße</source>
         <target>Bildgröße</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.galleryImgSize.1">
+      <trans-unit id="tl_expose_module.imgSize.1">
         <source>Hier können Sie die Abmessungen der Bilder und den Skalierungsmodus festlegen.</source>
         <target>Hier können Sie die Abmessungen der Bilder und den Skalierungsmodus festlegen.</target>
       </trans-unit>
@@ -255,6 +255,14 @@
       <trans-unit id="tl_expose_module.show_fields.0">
         <source>Anzuzeigende Felder</source>
         <target>Anzuzeigende Felder</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.contactFields.0">
+        <source>Fields</source>
+        <target>Felder</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.contactFields.1">
+        <source>Wählen Sie die auszugebenden Felder aus</source>
+        <target>Wählen Sie die auszugebenden Felder aus</target>
       </trans-unit>
     </body>
   </file>
