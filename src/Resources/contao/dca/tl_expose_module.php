@@ -101,7 +101,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'mainArea'                    => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'statusToken'                 => '{title_legend},name,headline,type;{settings_legend},statusTokens;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'marketingToken'              => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'fieldList'                   => '{title_legend},name,headline,type;{settings_legend},fields;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -334,6 +335,27 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('multiple'=>true),
             'sql'                     => "blob NULL"
         ),
+        'fields'  => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fields'],
+            'inputType' 	          => 'multiColumnWizard',
+            'eval' 			          => array
+            (
+                'dragAndDrop'  => true,
+                'columnFields' => array
+                (
+                    'field' => array
+                    (
+                        'label'             => &$GLOBALS['TL_LANG']['tl_expose_module']['show_fields'],
+                        'exclude'           => true,
+                        'inputType'         => 'select',
+                        'options_callback'  => array('tl_expose_module', 'getRealEstateFields'),
+                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
+                    )
+                )
+            ),
+            'sql'                     => "blob NULL"
+        ),
     )
 );
 
@@ -406,5 +428,30 @@ class tl_expose_module extends Backend
     public function getGalleryItemTemplates(DataContainer $dc)
     {
         return $this->getTemplateGroup('expose_mod_' . $dc->activeRecord->type);
+    }
+
+    /**
+     * Return all details from real estate dca as array
+     *
+     * @return array
+     */
+    public function getRealEstateFields()
+    {
+        $filterFields = array();
+
+        $this->loadDataContainer('tl_real_estate');
+
+        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        {
+            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
+            {
+                if(\is_array($data['realEstate']) && !($data['realEstate']['group'] === 'medien' || $data['realEstate']['group'] === 'neubau'))
+                {
+                    $filterFields[] = $field;
+                }
+            }
+        }
+
+        return $filterFields;
     }
 }

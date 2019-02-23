@@ -244,6 +244,18 @@
         <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
         <target>Wählen Sie die erlaubten Status-Token. Diese werden, sofern diese zutreffen, in unterstützten Templates ausgegeben.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.fields.0">
+        <source>Feldliste</source>
+        <target>Feldliste</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fields.1">
+        <source>Wählen Sie die anzuzeigenden Felder. Sollten Felder keinen Wert beinhalten werden diese übersprungen und nicht ausgegeben.</source>
+        <target>Wählen Sie die anzuzeigenden Felder. Sollten Felder keinen Wert beinhalten werden diese übersprungen und nicht ausgegeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show_fields.0">
+        <source>Anzuzeigende Felder</source>
+        <target>Anzuzeigende Felder</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

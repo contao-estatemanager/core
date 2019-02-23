@@ -164,6 +164,14 @@
         <source>Gibt die Vermarktungsart als Token aus (Bspw. Zum Kauf, zur Miete)</source>
         <target>Gibt die Vermarktungsart als Token aus (Bspw. Zum Kauf, zur Miete)</target>
       </trans-unit>
+      <trans-unit id="FMD.fieldList.0">
+        <source>Feldliste</source>
+        <target>Feldliste</target>
+      </trans-unit>
+      <trans-unit id="FMD.fieldList.1">
+        <source>Ausgabe selbst definierter Objekt-Felder als Liste</source>
+        <target>Ausgabe selbst definierter Objekt-Felder als Liste</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Titelbild</source>

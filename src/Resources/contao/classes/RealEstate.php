@@ -106,6 +106,33 @@ class RealEstate
         return $this->objRealEstate->objekttitel;
     }
 
+    /**
+     * Return a collection of parsed real estate fields
+     *
+     * @param null $fields
+     *
+     * @return array
+     */
+    public function getFields($fields=null)
+    {
+        $arrFields = array();
+
+        if(!$fields)
+        {
+            return $arrFields;
+        }
+
+        foreach ($fields as $field)
+        {
+            if($this->formatter->isFilled($field))
+            {
+                $arrFields[] = $this->formatter->getFormattedCollection($field);
+            }
+        }
+
+        return $arrFields;
+    }
+
     public function getDescription($maxTextLength=0)
     {
         return $this->formatter->shortenText($this->objRealEstate->objektbeschreibung, $maxTextLength);
@@ -250,6 +277,13 @@ class RealEstate
         }
     }
 
+    /**
+     * Return the location from real estate
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return array
+     */
     public function getLocation($forceCompleteAddress=false)
     {
         $arrAddress = array();
@@ -285,6 +319,13 @@ class RealEstate
         return $arrAddress;
     }
 
+    /**
+     * Return marketing token from real estate as string
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return string
+     */
     public function getLocationString($forceCompleteAddress=false)
     {
         $strAddress = '';
@@ -316,6 +357,12 @@ class RealEstate
         return $strAddress;
     }
 
+
+    /**
+     * Returns the price that can be assigned first
+     *
+     * @return mixed
+     */
     public function getMainPrice()
     {
         if($this->objRealEstate->{$this->objType->price})
@@ -332,6 +379,11 @@ class RealEstate
         }
     }
 
+    /**
+     * Returns the area that can be assigned first
+     *
+     * @return mixed
+     */
     public function getMainArea()
     {
         return $this->formatter->getFormattedCollection($this->objType->area);
