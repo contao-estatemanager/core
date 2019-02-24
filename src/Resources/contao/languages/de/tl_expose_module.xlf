@@ -280,6 +280,14 @@
         <source>Wählen Sie die welche Teilen-Optionen zur Verfügung stehen</source>
         <target>Wählen Sie die welche Teilen-Optionen zur Verfügung stehen</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.html.0">
+        <source>HTML code</source>
+        <target>HTML-Code</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.html.1">
+        <source>You can modify the list of allowed HTML tags in the back end settings.</source>
+        <target>Sie können die Liste der erlaubten HTML-Tags in den Backend-Einstellungen ändern.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

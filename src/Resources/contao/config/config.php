@@ -125,6 +125,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
         'enquiryForm'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleEnquiryForm',
         'share'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleShare',
         'print'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModulePrint',
+        'html'              => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleHtml',
     )
 );
 

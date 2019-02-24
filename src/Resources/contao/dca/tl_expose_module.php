@@ -106,7 +106,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'html'                        => '{title_legend},name,headline,type;{settings_legend},html;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -399,6 +400,16 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'options_callback'        => array('tl_expose_module', 'getShareTemplates'),
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'html' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['html'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('allowHtml'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'helpwizard'=>true),
+            'explanation'             => 'insertTags',
+            'sql'                     => "text NULL"
         ),
     )
 );
