@@ -112,6 +112,8 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
         'mainArea'          => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainArea',
         'texts'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTexts',
         'fieldList'         => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleFieldList',
+        'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
+        'marketingToken'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMarketingToken',
     ),
     'media' => array
     (
@@ -121,8 +123,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     (
         'contactPerson'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleContactPerson',
         'enquiryForm'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleEnquiryForm',
-        'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
-        'marketingToken'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMarketingToken',
+        'share'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleShare',
     )
 );
 

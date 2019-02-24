@@ -1,0 +1,1 @@
+<a href="mailto:?subject=<?=$this->subject?>&body=<?=$this->body?>" rel="nofollow"><?=$this->label?></a>

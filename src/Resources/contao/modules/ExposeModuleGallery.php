@@ -109,7 +109,6 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         $images = array();
-
         $body = array();
 
         // parse images
@@ -146,7 +145,7 @@ class ExposeModuleGallery extends ExposeModule
             $body[] = $objCell;
         }
 
-        // use a custom template
+        // set custom template
         if ($this->galleryItemTemplate)
         {
             $strTemplate = $this->galleryItemTemplate;
@@ -156,6 +155,7 @@ class ExposeModuleGallery extends ExposeModule
             $strTemplate = $this->strItemTemplate;
         }
 
+        // create Template
         $objTemplate = new \FrontendTemplate($strTemplate);
         $objTemplate->body = $body;
 

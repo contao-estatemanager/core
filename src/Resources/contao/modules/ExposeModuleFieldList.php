@@ -55,10 +55,12 @@ class ExposeModuleFieldList extends ExposeModule
 
         if($arrFields)
         {
+            // transform to a one dimensional array
             $arrFields = array_map(function ($a){
                 return $a['field'];
             }, $arrFields);
 
+            // add fields to collection
             $arrCollection = $this->realEstate->getFields($arrFields);
         }
 

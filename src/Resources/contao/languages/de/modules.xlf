@@ -308,6 +308,20 @@
         <source>Telefon</source>
         <target>Telefon</target>
       </trans-unit>
+
+      <trans-unit id="FMD.print.0">
+        <source>Print</source>
+        <target>Drucken</target>
+      </trans-unit>
+      <trans-unit id="FMD.share.0">
+        <source>Share</source>
+        <target>Teilen</target>
+      </trans-unit>
+
+      <trans-unit id="FMD.link.0">
+        <source>Link</source>
+        <target>Link</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

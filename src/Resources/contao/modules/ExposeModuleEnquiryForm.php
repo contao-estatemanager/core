@@ -55,6 +55,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
         if ($objForm === null)
         {
             $this->isEmpty = true;
+
             return '';
         }
 

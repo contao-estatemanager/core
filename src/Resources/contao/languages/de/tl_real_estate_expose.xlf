@@ -39,7 +39,27 @@
         <target>Sonstiges</target>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate_expose.button_print">
+        <source>Print</source>
+        <target>Drucken</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_expose.button_share">
+        <source>Share</source>
+        <target>Teilen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_expose.button_per_email">
+        <source>per E-Mail</source>
+        <target>per E-Mail</target>
+      </trans-unit>
 
+      <trans-unit id="tl_real_estate_expose.text_share_mail_subject">
+        <source>Ist diese Immobilie eventuell etwas für dich?</source>
+        <target>Ist diese Immobilie eventuell etwas für dich?</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_expose.text_share_mail_body">
+        <source>Hallo,\rdiese Immobilie könnte etwas für dich sein:\r%s</source>
+        <target>Hallo,\rdiese Immobilie könnte etwas für dich sein:\r%s</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

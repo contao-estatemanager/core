@@ -104,7 +104,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'fieldList'                   => '{title_legend},name,headline,type;{settings_legend},fields;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes
@@ -362,7 +363,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['contactFields'],
             'exclude'                 => true,
-            'inputType'               => 'checkboxWizard',
+            'inputType'               => 'checkbox',
             'options'                 => array('foto', 'kontaktname', 'strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld', 'email', 'telefon'),
             'eval'                    => array('mandatory'=>true, 'multiple'=>true),
             'reference'               => &$GLOBALS['TL_LANG']['FMD'],
@@ -378,6 +379,25 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'share' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['share'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('email'),
+            'eval'                    => array('multiple'=>true),
+            'reference'               => &$GLOBALS['TL_LANG']['FMD'],
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'shareEmailTemplate' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['shareEmailTemplate'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options_callback'        => array('tl_expose_module', 'getShareTemplates'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
     )
 );
@@ -450,7 +470,19 @@ class tl_expose_module extends Backend
      */
     public function getGalleryItemTemplates(DataContainer $dc)
     {
-        return $this->getTemplateGroup('expose_mod_' . $dc->activeRecord->type);
+        return $this->getTemplateGroup('expose_mod_gallery_' . $dc->activeRecord->type);
+    }
+
+    /**
+     * Return all gallery item templates as array
+     *
+     * @param DataContainer $dc
+     *
+     * @return array
+     */
+    public function getShareTemplates(DataContainer $dc)
+    {
+        return $this->getTemplateGroup('expose_mod_share_' . $dc->activeRecord->type);
     }
 
     /**
