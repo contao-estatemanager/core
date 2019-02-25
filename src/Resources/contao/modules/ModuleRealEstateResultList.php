@@ -90,7 +90,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
             $this->Template->filter = $this->getFrontendModule($this->filterModule);
         }
 
-        $this->generateResultList();
+        $this->parseRealEstateList();
 
         if ($this->addSorting)
         {

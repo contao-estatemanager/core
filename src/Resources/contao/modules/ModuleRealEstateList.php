@@ -65,7 +65,7 @@ class ModuleRealEstateList extends ModuleRealEstate
      */
     protected function compile()
     {
-        $this->generateResultList();
+        $this->parseRealEstateList();
     }
 
     /**
