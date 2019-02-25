@@ -54,8 +54,6 @@ class ExposeModuleStatusToken extends ExposeModule
 
         $arrStatusTokens = $this->realEstate->getStatusTokens($arrValidTokens);
 
-        $this->isEmpty = !count($arrStatusTokens);
-
         $this->Template->arrStatusTokens = $arrStatusTokens;
 
         // HOOK: add custom logic for status tokens
@@ -67,5 +65,7 @@ class ExposeModuleStatusToken extends ExposeModule
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $this->realEstate, $this);
             }
         }
+
+        $this->isEmpty = !count($this->Template->arrStatusTokens);
     }
 }
