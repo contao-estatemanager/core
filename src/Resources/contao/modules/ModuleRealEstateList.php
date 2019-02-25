@@ -46,9 +46,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         }
 
         // HOOK: real estate list generate
-        if (isset($GLOBALS['TL_HOOKS']['generateList']) && \is_array($GLOBALS['TL_HOOKS']['generateList']))
+        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['generateList'] as $callback)
+            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this);
@@ -94,9 +94,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         }
 
         // HOOK: real estate list count items
-        if (isset($GLOBALS['TL_HOOKS']['realEstateListCountItems']) && \is_array($GLOBALS['TL_HOOKS']['realEstateListCountItems']))
+        if (isset($GLOBALS['TL_HOOKS']['countItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['countItemsRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateListCountItems'] as $callback)
+            foreach ($GLOBALS['TL_HOOKS']['countItemsRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($intCount, $this);
@@ -141,9 +141,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         }
 
         // HOOK: real estate list fetch items
-        if (isset($GLOBALS['TL_HOOKS']['realEstateListFetchItems']) && \is_array($GLOBALS['TL_HOOKS']['realEstateListFetchItems']))
+        if (isset($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateListFetchItems'] as $callback)
+            foreach ($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objRealEstate, $limit, $offset, $this);
