@@ -116,6 +116,8 @@ abstract class ModuleRealEstate extends \Module
         $this->Template->realEstates = array();
         $this->Template->empty = $GLOBALS['TL_LANG']['MSC']['noRealEstateResults'];
 
+        $this->isEmpty = true;
+
         // Get the total number of items
         $total = $this->countItems();
 
@@ -163,6 +165,8 @@ abstract class ModuleRealEstate extends \Module
 
         if($objRealEstates)
         {
+            $this->isEmpty = false;
+
             $arrRealEstates = array();
             $count = 0;
 
