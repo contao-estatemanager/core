@@ -12,8 +12,8 @@
 
         <?php foreach ($details['details'] as $field => $detail): ?>
             <div class="field <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
-                <span class="label"><?= $detail['label'] ?>:</span>
-                <span class="value"><?= $detail['value'] ?></span>
+                <div class="label"><?= $detail['label'] ?>:</div>
+                <div class="value"><?= $detail['value'] ?></div>
             </div>
         <?php endforeach; ?>
     </div>
