@@ -1,3 +1,9 @@
-<?php foreach ($this->body as $image): ?>
-    <figure><?php $this->insert('picture_default', $image->picture); ?></figure>
+<?php foreach ($this->slides as $slide): ?>
+    <div class="gallery-slide">
+        <?php if($slide->isImage): ?>
+            <figure><?php $this->insert('picture_default', $slide->picture); ?></figure>
+        <?php else: ?>
+            <?=$slide?>
+        <?php endif; ?>
+    </div>
 <?php endforeach; ?>

@@ -60,9 +60,9 @@ class ExposeModuleGallery extends ExposeModule
 
         if($arrModules)
         {
-            $items = $this->parseGallery($arrModules);
+            $items = $this->parseSlides($arrModules);
 
-            $this->Template->images = $items;
+            $this->Template->gallery = $items;
         }
     }
 
@@ -73,7 +73,7 @@ class ExposeModuleGallery extends ExposeModule
      *
      * @return string
      */
-    protected function parseGallery($arrModules)
+    protected function parseSlides($arrModules)
     {
         $limit = null;
 
@@ -82,12 +82,38 @@ class ExposeModuleGallery extends ExposeModule
             $limit = $this->numberOfItems;
         }
 
+        // get real estate image bundle
         $arrImages = $this->realEstate->getImageBundle($arrModules, $limit);
 
         $objFiles = \FilesModel::findMultipleByUuids($arrImages);
+        $arrSlides = array();
 
-        // set default image
-        if($objFiles === null)
+        // parse and add images to the slides array
+        $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
+
+        // set custom template
+        $strTemplate = $this->strItemTemplate;
+
+        if ($this->galleryItemTemplate)
+        {
+            $strTemplate = $this->galleryItemTemplate;
+        }
+
+        // create Template
+        $objTemplate = new \FrontendTemplate($strTemplate);
+
+        // HOOK: add custom logic for gallery slides
+        if (isset($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrSlides, $this);
+            }
+        }
+
+        // set default image on empty results
+        if(!count($arrSlides))
         {
             if($this->gallerySkipOnEmpty)
             {
@@ -95,70 +121,74 @@ class ExposeModuleGallery extends ExposeModule
                 return '';
             }
 
+            // get default image from local config
             $defaultImage = \Config::get('defaultImage');
 
             if($defaultImage)
             {
+                // get default image
                 $objFiles = \FilesModel::findMultipleByUuids([$defaultImage]);
+
+                // add image to slides array
+                $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
             }
 
-            if($objFiles === null){
+            if(!count($arrSlides))
+            {
                 $this->isEmpty = true;
                 return '';
             }
         }
 
-        $images = array();
-        $body = array();
-
-        // parse images
-        while ($objFiles->next())
-        {
-            // continue if the files has been processed or does not exist
-            if (isset($images[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path))
-            {
-                continue;
-            }
-
-            $objFile = new \File($objFiles->path);
-
-            if (!$objFile->isImage)
-            {
-                continue;
-            }
-
-            // add the image
-            $images[$objFiles->path] = array
-            (
-                'id'         => $objFiles->id,
-                'uuid'       => $objFiles->uuid,
-                'name'       => $objFile->basename,
-                'singleSRC'  => $objFiles->path,
-                'filesModel' => $objFiles->current(),
-                'size'       => $this->imgSize,
-            );
-
-            $objCell = new \stdClass();
-
-            $this->addImageToTemplate($objCell, $images[$objFiles->path], null, null, $images[$objFiles->path]['filesModel']);
-
-            $body[] = $objCell;
-        }
-
-        // set custom template
-        if ($this->galleryItemTemplate)
-        {
-            $strTemplate = $this->galleryItemTemplate;
-        }
-        else
-        {
-            $strTemplate = $this->strItemTemplate;
-        }
-
-        // create Template
-        $objTemplate = new \FrontendTemplate($strTemplate);
-        $objTemplate->body = $body;
+        $objTemplate->slides = $arrSlides;
 
         return $objTemplate->parse();
+    }
+
+    /**
+     * Parse images and add them to the slides array
+     *
+     * @param $objFiles
+     * @param $arrSlides
+     */
+    protected function parseImagesAndAddToSlides($objFiles, &$arrSlides)
+    {
+        if($objFiles !== null)
+        {
+            $arrImages = array();
+
+            // parse images
+            while ($objFiles->next())
+            {
+                // continue if the files has been processed or does not exist
+                if (isset($arrImages[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path)) {
+                    continue;
+                }
+
+                $objFile = new \File($objFiles->path);
+
+                if (!$objFile->isImage) {
+                    continue;
+                }
+
+                // add the image
+                $arrImages[$objFiles->path] = array
+                (
+                    'id' => $objFiles->id,
+                    'uuid' => $objFiles->uuid,
+                    'name' => $objFile->basename,
+                    'singleSRC' => $objFiles->path,
+                    'filesModel' => $objFiles->current(),
+                    'size' => $this->imgSize,
+                );
+
+                $objCell = new \stdClass();
+                $objCell->isImage = true;
+
+                $this->addImageToTemplate($objCell, $arrImages[$objFiles->path], null, null, $arrImages[$objFiles->path]['filesModel']);
+
+                $arrSlides[] = $objCell;
+            }
+        }
     }
 }

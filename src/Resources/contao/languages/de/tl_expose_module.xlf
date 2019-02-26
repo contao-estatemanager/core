@@ -288,6 +288,38 @@
         <source>You can modify the list of allowed HTML tags in the back end settings.</source>
         <target>Sie können die Liste der erlaubten HTML-Tags in den Backend-Einstellungen ändern.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnEmpty.0">
+        <source>Hide on empty</source>
+        <target>Ausblenden bei keinen Ergebnissen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnEmpty.1">
+        <source>Dieses Modul wird nur ausgegeben wenn Ergebnisse zum darstellen des Moduls gefunden wurden</source>
+        <target>Dieses Modul wird nur ausgegeben wenn Ergebnisse zum darstellen des Moduls gefunden wurden</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.text.0">
+        <source>Text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.text.1">
+        <source>You can use HTML tags to format the text.</source>
+        <target>Sie können HTML-Tags verwenden, um den Text zu formatieren.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.jumpTo.0">
+        <source>Redirect page</source>
+        <target>Weiterleitungsseite</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.jumpTo.1">
+        <source>Please choose the page to which visitors will be redirected when clicking a link or submitting a form.</source>
+        <target>Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken eines Links oder Abschicken eines Formulars weitergeleitet werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.perPage.0">
+        <source>Items per page</source>
+        <target>Elemente pro Seite</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.perPage.1">
+        <source>The number of items per page. Set to 0 to disable pagination.</source>
+        <target>Die Anzahl an Elementen pro Seite. Geben Sie 0 ein, um den automatischen Seitenumbruch zu deaktivieren.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

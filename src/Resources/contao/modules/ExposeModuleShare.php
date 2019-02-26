@@ -79,7 +79,7 @@ class ExposeModuleShare extends ExposeModule
             foreach ($GLOBALS['TL_HOOKS']['compileExposeShare'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrCollection, $this);
+                $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);
             }
         }
 

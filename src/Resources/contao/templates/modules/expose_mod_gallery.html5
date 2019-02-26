@@ -2,6 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-<?=$this->images?>
+<?=$this->gallery?>
 
 <?php $this->endblock(); ?>

@@ -275,6 +275,24 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50'),
             'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
         ),
+        'perPage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['perPage'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
+            'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
+        ),
+        'jumpTo' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['jumpTo'],
+            'exclude'                 => true,
+            'inputType'               => 'pageTree',
+            'foreignKey'              => 'tl_page.title',
+            'eval'                    => array('mandatory'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'eager')
+        ),
         'detailBlocks' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['detailBlocks'],
@@ -410,6 +428,24 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('allowHtml'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'helpwizard'=>true),
             'explanation'             => 'insertTags',
             'sql'                     => "text NULL"
+        ),
+        'text' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['text'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true),
+            'explanation'             => 'insertTags',
+            'sql'                     => "mediumtext NULL"
+        ),
+        'hideOnEmpty' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['hideOnEmpty'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
     )
 );
