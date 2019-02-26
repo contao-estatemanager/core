@@ -174,7 +174,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.gallerySkipOnEmpty.0">
         <source>Hide on empty</source>
-        <target>Ausblenden wenn keine Bilder angezeigt werden können</target>
+        <target>Ausblenden wenn keine Inhalte angezeigt werden können</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.gallerySkipOnEmpty.1">
         <source>Erzwingt das ausblenden des Moduls, sofern keine Bilder gefunden werden. Andernfalls wird immer das in den Einstellungen hinterlegte Standard-Bild ausgegeben.</source>

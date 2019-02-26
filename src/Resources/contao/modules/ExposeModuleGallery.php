@@ -108,11 +108,11 @@ class ExposeModuleGallery extends ExposeModule
             foreach ($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrSlides, $this);
+                $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrSlides, $this->realEstate, $this);
             }
         }
 
-        // set default image on empty results
+        // set default image on empty
         if(!count($arrSlides))
         {
             if($this->gallerySkipOnEmpty)
@@ -129,8 +129,11 @@ class ExposeModuleGallery extends ExposeModule
                 // get default image
                 $objFiles = \FilesModel::findMultipleByUuids([$defaultImage]);
 
-                // add image to slides array
-                $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
+                if($objFiles !== null)
+                {
+                    // add image to slides array
+                    $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
+                }
             }
 
             if(!count($arrSlides))
