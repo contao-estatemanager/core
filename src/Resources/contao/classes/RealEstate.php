@@ -568,17 +568,32 @@ class RealEstate
         {
             if ($this->formatter->isFilled($attribute['field']))
             {
-                $collection = $this->formatter->getFormattedCollection($attribute['field']);
+                $varValue = $this->objRealEstate->{$attribute['field']};
 
-                $return[] = array_merge(
-                    $collection,
-                    array(
-                        'showValue' => $this->objRealEstate->{$attribute['field']} > 1
-                    )
-                );
+                // Check whether the field must be deserialized
+                $varUnserialized = @unserialize($varValue);
 
-                if ($max !== null && $max === $index++){
-                    break;
+                if (\is_array($varUnserialized))
+                {
+                    $arrFields = $varUnserialized;
+                }
+                else
+                {
+                    $arrFields = array($attribute['field']);
+                }
+
+                foreach ($arrFields as $field)
+                {
+                    $return[] = array(
+                        'value' => $this->formatter->formatValue($attribute['field']),
+                        'label' => Translator::translateAttribute($field, $attribute['field']),
+                        'key'   => $attribute['field'],
+                        'class' => $this->formatter->getClass($attribute['field'])
+                    );
+
+                    if ($max !== null && $max === $index++){
+                        break 2;
+                    }
                 }
             }
         }

@@ -83,6 +83,7 @@ class RealEstateFormatter
         // load translation files
         \System::loadLanguageFile('tl_real_estate_label');
         \System::loadLanguageFile('tl_real_estate_value');
+        \System::loadLanguageFile('tl_real_estate_attribute');
     }
 
     /**

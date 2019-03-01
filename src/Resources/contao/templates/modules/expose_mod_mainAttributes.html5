@@ -3,8 +3,7 @@
 <?php $this->block('content'); ?>
 
 <?php foreach ($this->mainAttributes as $attribute): ?>
-    <div class="attribute <?= $attribute['key'] ?><?= ($attribute['class']) ? ' '.$attribute['class'] : '' ?><?= ($attribute['showValue']) ? ' value' : '' ?>">
-        <span class="value"><?= $attribute['value'] ?></span>
+    <div class="attribute <?= $attribute['key'] ?><?= ($attribute['class']) ? ' '.$attribute['class'] : '' ?>">
         <span class="label"><?= $attribute['label'] ?></span>
     </div>
 <?php endforeach; ?>
