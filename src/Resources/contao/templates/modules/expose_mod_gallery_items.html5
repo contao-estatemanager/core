@@ -1,5 +1,5 @@
 <?php foreach ($this->slides as $slide): ?>
-    <div class="gallery-slide <?=$slide->isImage ? 'image' : 'html'?>">
+    <div class="gallery-item <?=$slide->isImage ? 'image' : 'html'?>">
         <?php if($slide->isImage): ?>
             <figure><?php $this->insert('picture_default', $slide->picture); ?></figure>
         <?php else: ?>
