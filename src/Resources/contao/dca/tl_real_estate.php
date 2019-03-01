@@ -2647,6 +2647,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true,
                 'order'     => 600
             )
@@ -2661,6 +2662,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true,
                 'order'     => 600
             )
@@ -2675,6 +2677,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2701,6 +2704,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2715,6 +2719,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2741,6 +2746,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -2754,6 +2760,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -2779,6 +2786,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'   => true
             )
         ),
@@ -3008,6 +3016,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -3057,6 +3066,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'   => true
             )
         ),
@@ -3131,6 +3141,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
