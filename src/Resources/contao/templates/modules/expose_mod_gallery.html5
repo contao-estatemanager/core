@@ -2,6 +2,8 @@
 
 <?php $this->block('content'); ?>
 
-<?=$this->gallery?>
+<div class="gallery-inner">
+    <?=$this->gallery?>
+</div>
 
 <?php $this->endblock(); ?>
