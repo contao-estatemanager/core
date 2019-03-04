@@ -76,20 +76,14 @@ class ExposeModuleGallery extends ExposeModule
     protected function parseSlides($arrModules)
     {
         $limit = null;
+        $availableSlots = null;
+        $arrSlides = array();
 
         if ($this->numberOfItems > 0)
         {
             $limit = $this->numberOfItems;
+            $availableSlots = $limit;
         }
-
-        // get real estate image bundle
-        $arrImages = $this->realEstate->getImageBundle($arrModules, $limit);
-
-        $objFiles = \FilesModel::findMultipleByUuids($arrImages);
-        $arrSlides = array();
-
-        // parse and add images to the slides array
-        $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
 
         // set custom template
         $strTemplate = $this->strItemTemplate;
@@ -101,6 +95,50 @@ class ExposeModuleGallery extends ExposeModule
 
         // create Template
         $objTemplate = new \FrontendTemplate($strTemplate);
+
+        // valid image fields
+        $arrValidFields = array('titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
+
+        foreach ($arrModules as $module)
+        {
+            if(in_array($module, $arrValidFields))
+            {
+                $arrImages = $this->realEstate->getImageBundle([$module], $availableSlots);
+                $objFiles = \FilesModel::findMultipleByUuids($arrImages);
+
+                // parse and add images to the slides array
+                $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
+
+                // set new available slot count
+                if($availableSlots !== null)
+                {
+                    $availableSlots -= count($arrImages);
+                }
+            }
+            else
+            {
+                // HOOK: add custom logic for gallery single slide
+                if (isset($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']))
+                {
+                    foreach ($GLOBALS['TL_HOOKS']['parseSlideExposeGallery'] as $callback)
+                    {
+                        $this->import($callback[0]);
+                        $this->{$callback[0]}->{$callback[1]}($objTemplate, $module, $arrSlides, $this->realEstate, $this);
+
+                        // set new available slot count
+                        if($availableSlots !== null)
+                        {
+                            $availableSlots--;
+                        }
+                    }
+                }
+            }
+
+            if($availableSlots !== null && $availableSlots <= 0)
+            {
+                break;
+            }
+        }
 
         // HOOK: add custom logic for gallery slides
         if (isset($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']))
