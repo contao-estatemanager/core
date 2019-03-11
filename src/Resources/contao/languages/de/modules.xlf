@@ -37,32 +37,32 @@
       </trans-unit>
 
       <trans-unit id="FMD.realEstateExpose.0">
-        <source>Expose</source>
-        <target>Expose</target>
+        <source>Immobilien-Expose</source>
+        <target>Immobilien-Expose</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.1">
-        <source>Erzeugt ein Expose</source>
-        <target>Erzeugt ein Expose</target>
+        <source>Erzeugt ein Immobilien-Expose</source>
+        <target>Erzeugt ein Immobilien-Expose</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.0">
-        <source>Filter</source>
-        <target>Filter</target>
+        <source>Immobilien-Filter</source>
+        <target>Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.1">
         <source>Erzeugt einen Immobilienfilter</source>
         <target>Erzeugt einen Immobilienfilter</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.0">
-        <source>Liste</source>
-        <target>Liste</target>
+        <source>Immobilien-Liste</source>
+        <target>Immobilien-Liste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.1">
         <source>Erzeugt eine Immobilienliste</source>
         <target>Erzeugt eine Immobilienliste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.0">
-        <source>Ergebnisliste</source>
-        <target>Ergebnisliste</target>
+        <source>Immobilien-Ergebnisliste</source>
+        <target>Immobilien-Ergebnisliste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
         <source>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann</source>
