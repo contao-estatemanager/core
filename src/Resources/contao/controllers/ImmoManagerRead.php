@@ -49,7 +49,7 @@ class ImmoManagerRead extends ImmoManagerSDK
     {
         $data = array(
             'results' => null,
-            'status' => self::STATUS_ZERO_RESULTS,
+            'status' => self::STATUS_ZERO_RESULTS
         );
 
         switch ($module)
@@ -148,38 +148,47 @@ class ImmoManagerRead extends ImmoManagerSDK
      *
      * @return array
      */
-    private function parseRealEstateFields($objRealEstate, $fields){
-
-        if(!$fields)
-        {
-            // default data attributes
-            $fields = array('objekttitel', 'mainDetails');
-        }
-
+    private function parseRealEstateFields($objRealEstate, $fields)
+    {
+        // create RealEstate instance
         $realEstate = new RealEstate($objRealEstate, null);
 
+        // set id, dateAdded, and tstamp as dateChanged by default
         $collection = array(
-            'id'        => $objRealEstate->id,
-            'fields'    => array()
+            'id'          => $objRealEstate->id,
+            'dateAdded'   => $objRealEstate->dateAdded,
+            'dateChanged' => $objRealEstate->tstamp
         );
 
-        // extract special fields
-        foreach ($fields as $field)
+        if(is_array($fields))
         {
-            $value = null;
+            // create fields array
+            $collection['fields'] = array();
 
-            // ToDo: Add custom fields like statusToken, mainAttributes,...
-            switch($field)
+            // extract special fields
+            foreach ($fields as $field)
             {
-                case 'mainDetails':
-                    $collection['fields'][$field] = $realEstate->getMainDetails();
-                    break;
+                $value = null;
 
-                default:
-                    if($realEstate->formatter->isFilled($field))
-                    {
-                        $collection['fields'][$field] = $realEstate->formatter->getFormattedCollection($field);
-                    }
+                // ToDo: Add custom fields like statusToken, mainAttributes,...
+                switch($field)
+                {
+                    case 'mainDetails':    $value = $realEstate->getMainDetails(); break;
+                    case 'mainAttributes': $value = $realEstate->getMainAttributes(); break;
+                    case 'mainArea':       $value = $realEstate->getMainArea(); break;
+                    case 'mainPrice':      $value = $realEstate->getMainPrice(); break;
+                    case 'marketingToken': $value = $realEstate->getMarketingToken(); break;
+                    default:
+                        if($realEstate->formatter->isFilled($field))
+                        {
+                            $value = $realEstate->formatter->getFormattedCollection($field);
+                        }
+                }
+
+                if($value)
+                {
+                    $collection['fields'][$field] = $value;
+                }
             }
         }
 
