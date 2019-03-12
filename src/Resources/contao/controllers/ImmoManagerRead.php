@@ -30,14 +30,6 @@ class ImmoManagerRead extends ImmoManagerSDK
     private $filterMode;
 
     /**
-     * Initialize the object
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Run the controller
      *
      * @param String $module  Plural name of ImmoManager module
@@ -170,7 +162,6 @@ class ImmoManagerRead extends ImmoManagerSDK
             {
                 $value = null;
 
-                // ToDo: Add custom fields like statusToken, mainAttributes,...
                 switch($field)
                 {
                     case 'mainDetails':    $value = $realEstate->getMainDetails(); break;
