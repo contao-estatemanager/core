@@ -95,7 +95,8 @@ class ImmoManagerRead extends ImmoManagerSDK
                 switch($param['dataType'])
                 {
                     case 'geojson':
-                        $data['results'] = $this->parseGeoJsonArray($objRealEstates, $param['fields']);
+                        // To import geojson, the result must be returned without nesting.
+                        $data = $this->parseGeoJsonArray($objRealEstates, $param['fields']);
                         break;
                     default:
                         $data['results'] = $this->parseRealEstatesFields($objRealEstates, $param['fields']);
