@@ -30,6 +30,12 @@ class ImmoManagerRead extends ImmoManagerSDK
     private $filterMode;
 
     /**
+     * Current Parameter
+     * @var string
+     */
+    private $currParam = null;
+
+    /**
      * Run the controller
      *
      * @param String $module  Plural name of ImmoManager module
@@ -64,42 +70,32 @@ class ImmoManagerRead extends ImmoManagerSDK
             case 'estates':
 
                 // validate parameters
-                $validParameters = array('filter', 'fields', 'dataType');
-                $param = $this->getParameters($this->method, $validParameters);
+                $validParameters = array('filterMode', 'pageId', 'fields', 'dataType', 'template', 'jumpTo');
+                $this->currParam = $this->getParameters($this->method, $validParameters);
 
                 // prepare model
                 $arrColumns = null;
                 $arrValues  = null;
                 $arrOptions = $this->getModelParameters($this->method);
 
-                if($param['filter'])
+                // ToDo: Auf Filter reagieren
+                /*if($param['filterMode'] && $param['pageId'])
                 {
-                    // check if all parameters passed for using filter
-                    if(!is_array($param['filter']) || !$param['filter']['pageId'] || !$param['filter']['mode'])
-                    {
-                        $data = $this->error(
-                            'Parameter filter expected parameters pageId and mode',
-                            self::ERR_WRONG_PARAM
-                        );
-
-                        break;
-                    }
-
-                    $this->setFilter($param['filter']['pageId'], $param['filter']['mode']);
+                    $this->setFilter($param['pageId'], $param['filterMode']);
 
                     list($arrColumns, $arrValues) = $this->filter->getParameter($this->filterMode);
-                }
+                }*/
 
                 $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
 
-                switch($param['dataType'])
+                switch($this->currParam['dataType'])
                 {
                     case 'geojson':
-                        // To import geojson, the result must be returned without nesting.
-                        $data = $this->parseGeoJsonArray($objRealEstates, $param['fields']);
+                        // To import valid geojson, the result must be returned without nesting.
+                        $data = $this->parseGeoJsonArray($objRealEstates);
                         break;
                     default:
-                        $data['results'] = $this->parseRealEstatesFields($objRealEstates, $param['fields']);
+                        $data['results'] = $this->parseRealEstatesFields($objRealEstates);
                 }
 
                 break;
@@ -122,12 +118,12 @@ class ImmoManagerRead extends ImmoManagerSDK
      *
      * @return array
      */
-    private function parseRealEstatesFields($objRealEstates, $fields){
+    private function parseRealEstatesFields($objRealEstates){
         $collection = array();
 
         while($objRealEstates->next())
         {
-            $collection[] = $this->parseRealEstateFields($objRealEstates, $fields);
+            $collection[] = $this->parseRealEstateFields($objRealEstates);
         }
 
         return $collection;
@@ -137,11 +133,10 @@ class ImmoManagerRead extends ImmoManagerSDK
      * Parse and return an array of an real estate with given fields
      *
      * @param $objRealEstate
-     * @param $fields
      *
      * @return array
      */
-    private function parseRealEstateFields($objRealEstate, $fields)
+    private function parseRealEstateFields($objRealEstate)
     {
         // create RealEstate instance
         $realEstate = new RealEstate($objRealEstate, null);
@@ -153,13 +148,13 @@ class ImmoManagerRead extends ImmoManagerSDK
             'dateChanged' => $objRealEstate->tstamp
         );
 
-        if(is_array($fields))
+        if(is_array($this->currParam['fields']))
         {
             // create fields array
             $collection['fields'] = array();
 
             // extract special fields
-            foreach ($fields as $field)
+            foreach ($this->currParam['fields'] as $field)
             {
                 $value = null;
 
@@ -170,6 +165,40 @@ class ImmoManagerRead extends ImmoManagerSDK
                     case 'mainArea':       $value = $realEstate->getMainArea(); break;
                     case 'mainPrice':      $value = $realEstate->getMainPrice(); break;
                     case 'marketingToken': $value = $realEstate->getMarketingToken(); break;
+                    case 'exposeUrl':
+                        if($this->currParam['jumpTo'])
+                        {
+                            $value = $realEstate->generateExposeUrl($this->currParam['jumpTo']);
+                        }
+
+                        break;
+                    case 'mainImage':
+                        $fallback = false;
+                        $mainImage = $realEstate->getMainImage();
+                        $defaultImage = \Config::get('defaultImage');
+
+                        if($mainImage)
+                        {
+                            $objFileModel = \FilesModel::findByUuid($mainImage);
+
+                            if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
+                            {
+                                $value = $objFileModel->path;
+                            }
+                            else $fallback = true;
+                        }else $fallback = true;
+
+                        if($fallback && $defaultImage)
+                        {
+                            $objFileModel = \FilesModel::findByUuid($defaultImage);
+
+                            if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
+                            {
+                                $value = $objFileModel->path;
+                            }
+                        }
+
+                        break;
                     default:
                         if($realEstate->formatter->isFilled($field))
                         {
@@ -187,27 +216,39 @@ class ImmoManagerRead extends ImmoManagerSDK
         return $collection;
     }
 
-     /**
+    /**
      * Create and return a GeoJSON format array
      *
      * @param $objRealEstates
+     * @param $fields
+     * @param bool $template
      *
      * @return array
      */
-    private function parseGeoJsonArray($objRealEstates, $fields)
+    private function parseGeoJsonArray($objRealEstates)
     {
         $latCoordinates = array();
         $lngCoordinates = array();
 
         $arrGeoJson = array(
-            'type'       => 'FeatureCollection',
-            'features'   => array()
+            'type'     => 'FeatureCollection',
+            'features' => array()
         );
 
         while($objRealEstates->next())
         {
             if($objRealEstates->breitengrad && $objRealEstates->laengengrad)
             {
+                $template = false;
+                $parsedFields = $this->parseRealEstateFields($objRealEstates, $this->currParam['fields']);
+
+                if($this->currParam['template'])
+                {
+                    $objTemplate = new \FrontendTemplate($this->currParam['template']);
+                    $objTemplate->setData($parsedFields['fields']);
+                    $template = $objTemplate->parse();
+                }
+
                 $arrRealEstate = array(
                     'type'     => 'Feature',
                     'geometry' => array(
@@ -217,7 +258,10 @@ class ImmoManagerRead extends ImmoManagerSDK
                             $objRealEstates->breitengrad
                         )
                     ),
-                    'properties'  => $this->parseRealEstateFields($objRealEstates, $fields)
+                    'properties'  => array_merge(
+                        $parsedFields,
+                        ['popup' => $template]
+                    )
                 );
 
                 $arrGeoJson['features'][] = $arrRealEstate;
