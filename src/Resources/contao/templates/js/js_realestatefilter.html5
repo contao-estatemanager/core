@@ -1,5 +1,196 @@
 <script>
+    var ImmoManager = {
+<?= \Oveleon\ContaoImmoManagerBundle\FilterToggle::getImmoManagerConfig(); ?>
+    };
+</script>
+<script>
+    (function (root, factory) {
+        if (typeof define === 'function' && define.amd) {
+            define(['jovel'], factory(root));
+        } else if (typeof exports === 'object') {
+            module.exports = factory(require('jovel'));
+        } else {
+            root.ImmoManagerFilter = factory(root, root.jovel);
+        }
+    })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
+
+        'use strict';
+
+        var ImmoManagerFilter = {};
+
+        var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+
+        var form, fieldMarketingType, fieldRealEstateType, toggleFilter, switchType, firstSelected;
+
+        var settings, defaults = {
+            addBlankMarketingType: false,
+            addBlankRealEstateType: false,
+            filter: [],
+            submitOnChange: false
+        };
+
+        var marketingTypeChanged = function () {
+            firstSelected = false;
+            switchType = (settings.addBlankRealEstateType) ? ((ImmoManager.types[fieldRealEstateType.value]) ? ImmoManager.types[fieldRealEstateType.value].switchType : 0) : ImmoManager.types[fieldRealEstateType.value].switchType;
+
+            if (settings.addBlankRealEstateType === false) {
+                for (var i=0; i<fieldRealEstateType.options.length;i++) {
+                    if (fieldMarketingType.value) {
+                        if (fieldRealEstateType.options[i].dataset.marketingType === fieldMarketingType.value) {
+                            fieldRealEstateType.options[i].style.display = '';
+                            if (fieldRealEstateType.options[i].value == switchType) {
+                                fieldRealEstateType.options[i].selected = true;
+                                realEstateTypeChanged();
+                            } else if (switchType == 0 && !firstSelected && fieldRealEstateType.selectedOptions[0].dataset.marketingType != fieldMarketingType.value) {
+                                fieldRealEstateType.options[i].selected = true;
+                                firstSelected = true;
+                                realEstateTypeChanged();
+                            }
+                        } else {
+                            fieldRealEstateType.options[i].style.display = 'none';
+                        }
+                    } else {
+                        fieldRealEstateType.options[i].style.display = '';
+                    }
+                }
+            } else {
+                if (settings.addBlankMarketingType === false) {
+                    if (!switchType) {
+                        fieldRealEstateType.options[0].selected = true;
+                        realEstateTypeChanged();
+                    }
+
+                    for (var i=1; i<fieldRealEstateType.options.length;i++) {
+                        if (fieldRealEstateType.options[i].dataset.marketingType === fieldMarketingType.value) {
+                            fieldRealEstateType.options[i].style.display = '';
+                            if (fieldRealEstateType.options[i].value == switchType) {
+                                fieldRealEstateType.options[i].selected = true;
+                                realEstateTypeChanged();
+                            }
+                        } else {
+                            fieldRealEstateType.options[i].style.display = 'none';
+                        }
+                    }
+                } else {
+                    if (!switchType && (fieldRealEstateType.selectedOptions[0].dataset.marketingType != fieldMarketingType.value && fieldMarketingType.value)) {
+                        fieldRealEstateType.options[0].selected = true;
+                        realEstateTypeChanged();
+                    }
+
+                    for (var i=1; i<fieldRealEstateType.options.length;i++) {
+                        if (fieldMarketingType.value) {
+                            if (fieldRealEstateType.options[i].dataset.marketingType === fieldMarketingType.value) {
+                                fieldRealEstateType.options[i].style.display = 'initial';
+                                if (fieldRealEstateType.options[i].value == switchType) {
+                                    fieldRealEstateType.options[i].selected = true;
+                                    realEstateTypeChanged();
+                                }
+                            } else {
+                                fieldRealEstateType.options[i].style.display = 'none';
+                            }
+                        } else {
+                            fieldRealEstateType.options[i].style.display = '';
+                        }
+                    }
+                }
+            }
+        };
+
+        var realEstateTypeChanged = function () {
+            if (settings.submitOnChange) {
+                form.submit();
+            } else {
+                for (let i=0; i<toggleFilter.length; i++) {
+                    if (fieldRealEstateType.selectedOptions[0].value && fieldRealEstateType.selectedOptions[0].value !== 'miete_leasing' && fieldRealEstateType.selectedOptions[0].value !== 'kauf_erbpacht') {
+                        if (ImmoManager.types[fieldRealEstateType.selectedOptions[0].value].filter.indexOf(toggleFilter[i].dataset.group) >= 0) {
+                            toggleFilter[i].style.display = '';
+                        } else {
+                            toggleFilter[i].style.display = 'none';
+                        }
+                    } else {
+                        if (settings.filter.indexOf(toggleFilter[i].dataset.group) >= 0) {
+                            toggleFilter[i].style.display = '';
+                        } else {
+                            toggleFilter[i].style.display = 'none';
+                        }
+                    }
+                }
+            }
+        };
+
+        var setEventListener = function () {
+            if (fieldMarketingType) fieldMarketingType.addEventListener('change', marketingTypeChanged, false);
+            if (fieldRealEstateType) fieldRealEstateType.addEventListener('change', realEstateTypeChanged, false);
+        };
+
+        var removeEventListener = function () {
+            if (fieldMarketingType) fieldMarketingType.removeEventListener('change', marketingTypeChanged, false);
+            if (fieldRealEstateType) fieldRealEstateType.removeEventListener('change', realEstateTypeChanged, false);
+        };
+
+        /**
+         * Destroy the current initialization.
+         *
+         * @public
+         */
+        ImmoManagerFilter.destroy = function () {
+
+            // If plugin isn't already initialized, stop
+            if (!settings) return;
+
+            // Reset variables
+            settings = null;
+
+            // Remove all event listener
+            removeEventListener();
+        };
+
+        /**
+         * Initialize ImmoManagerFilter
+         *
+         * @public
+         *
+         * @param {Object} options   User settings
+         */
+        ImmoManagerFilter.init = function (options) {
+            // feature test and availability
+            if (!supports || !document.querySelector(options.selector)) return;
+
+            // Destroy any existing initializations
+            ImmoManagerFilter.destroy();
+
+            // Merge user options with defaults
+            settings = jovel.extend(true, defaults, options || {});
+
+            form = document.querySelector(settings.selector);
+            fieldMarketingType = document.querySelector(settings.selector + ' .real-estate-marketing-type');
+            fieldRealEstateType = document.querySelector(settings.selector + ' .real-estate-type');
+            toggleFilter = document.querySelectorAll(settings.selector + ' .real-estate-filter');
+
+            // Set all event listener
+            setEventListener();
+        };
+
+        return ImmoManagerFilter;
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        jovel.forEach(ImmoManager.filters, function (settings, id) {
+            settings.selector = 'form[data-filter-id="'+id+'"]';
+            ImmoManagerFilter.init(settings);
+        }, ImmoManagerFilter);
+    });
+</script>
+<script>
 (function() {
+    /*var marketingType = document.querySelector('select.real-estate-marketing-type');
+    var type = document.querySelector('select.real-estate-type');
+    var option = document.querySelectorAll('select.real-estate-type option');
+    var filter = document.querySelectorAll('.real-estate-filter');
+    var filterData = ImmoManager.filters[document.querySelector('[data-filter-id]').getAttribute('data-filter-id')];
+    var defaultType = (filterData.addBlankOption) ? 0 : ImmoManager.defaultType;
+
     var addEventListener = function(el, eventName, handler) {
         if (el.addEventListener) {
             el.addEventListener(eventName, handler);
@@ -21,245 +212,49 @@
         el.dispatchEvent(event);
     };
 
-    var group = document.querySelector('select.real-estate-filter-group'),
-        types = document.querySelectorAll('select.real-estate-filter-type'),
-        filter = document.querySelectorAll('.real-estate-filter > div'),
-        tmpIndex = 0;
-
-    if (group !== null) {
-        addEventListener(group ,'change', function (e) {
-            for (var i=0; i<types.length; i++) {
-                if (types[i].getAttribute('data-group') === e.target.value) {
-                    types[i].style.display = '';
-                    types[i].disabled = false;
-                    tmpIndex = i;
-                } else {
-                    types[i].style.display = 'none';
-                    types[i].disabled = true;
-                }
+    var toggleOptions = function(initial=false) {
+        let activeOption = document.querySelector('select.real-estate-type option:checked').value;
+        activeOption = (activeOption) ? activeOption : 0;
+        let switchType = ImmoManager.types[activeOption].switchType;
+        switchType = (switchType == 0) ? defaultType : switchType;
+        for (let i=0; i<option.length; i++) {
+            if (parseInt(option[i].value) === switchType)
+            {
+                if (!initial) option[i].selected = true;
             }
-            triggerEvent(types[tmpIndex], 'change');
-        });
-    }
-
-    if (types.length) {
-        for (var i=0; i<types.length; i++) {
-            if (types[i].getAttribute('data-reload') == 1) {
-                addEventListener(types[i], 'change', function (e) {
-                    e.currentTarget.form.submit();
-                });
+            if (option[i].value === '0') continue;
+            if (option[i].getAttribute('data-marketing-type') == marketingType.value) {
+                option[i].style.display = '';
             } else {
-                addEventListener(types[i] ,'change', function (e) {
-                    var option = document.querySelector('select.real-estate-filter-type option[value="'+RealEstate.Config.filterCriteria[e.target.value].switchType+'"]');
-                    if (option !== null) {
-                        option.selected = true;
-                    } else {
-                        for (j=0; j<types.length; j++) {
-                            if (e.target !== types[j]) {
-                                if (types[j].options.length) {
-                                  types[j].options[0].selected = true;
-                                }
-                            }
-                        }
-                    }
-                    for (var j=0; j<filter.length; j++) {
-                        if (RealEstate.Config.filterCriteria[e.target.value].fields.indexOf(filter[j].getAttribute('data-group'))>=0) {
-                            filter[j].style.display = '';
-                        } else {
-                            filter[j].style.display = 'none';
-                        }
-                    }
-                });
+                option[i].style.display = 'none';
             }
         }
-    }
-
-    var forEach = function ( collection, callback, scope ) {
-        if ( Object.prototype.toString.call( collection ) === '[object Object]' ) {
-            for ( var prop in collection ) {
-                if ( Object.prototype.hasOwnProperty.call( collection, prop ) ) {
-                    callback.call( scope, collection[prop], prop, collection );
-                }
-            }
-        } else {
-            for ( var i = 0, len = collection.length; i < len; i++ ) {
-                callback.call( scope, collection[i], i, collection );
-            }
-        }
+        triggerEvent(type, 'change');
     };
 
-    var parseRangeInputs = function(group, txtTarget) {
-        var clsMask = ['price', 'room', 'area'],
-            mask = '',
-            from = group.querySelector('.from'),
-            to = group.querySelector('.to');
-
-        for(var i=0; i< clsMask.length; i++){
-            if(txtTarget.offsetParent.classList.contains(clsMask[i])){
-                mask = clsMask[i];
-                break;
-            }
-        }
-
-        if(from.value && to.value) {
-            txtTarget.value = maskInput(from.value, mask) + ' - ' + maskInput(to.value, mask);
-        } else if(from.value) {
-            txtTarget.value = 'ab ' + maskInput(from.value, mask);
-        } else if(to.value) {
-            txtTarget.value = 'bis ' + maskInput(to.value, mask);
-        } else {
-            txtTarget.value = '';
-        }
-
-        if(txtTarget.value){
-            switch (mask) {
-                case 'price':
-                    txtTarget.value += ' €';
-                    break;
-                case 'area':
-                    txtTarget.value += ' m²';
-                    break;
-                case 'room':
-                    txtTarget.value += ' Zi.';
-                    break;
-            }
-        }
-
-        txtTarget.dispatchEvent(new Event('change'));
-    };
-
-    var closeCombineGroups = function(){
-        var combineGroups = document.querySelectorAll('.filter-combine-group.open');
-
-        for (var g=0; g<combineGroups.length; g++) {
-            combineGroups[g].classList.remove('open');
-        }
-    };
-
-    var maskInput = function(val, mask){
-        if (typeof Intl === 'object' && typeof Intl.NumberFormat === 'function') {
-            var newVal = '';
-
-            switch(mask){
-                case 'price':
-                case 'area':
-                    newVal = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 2, useGrouping: true }).format(val);
-                    break;
-                default:
-                    newVal = val;
-            }
-
-            return newVal;
-        }else{
-            return val;
-        }
-    };
-
-    var combineGroups = document.querySelectorAll('.filter-combine-group'),
-        closer = null,
-        txtTarget = null,
-        elRange = null;
-
-    if (combineGroups.length) {
-
-        forEach(combineGroups, function (group, index) {
-
-            addEventListener(group,'click', function (e) {
-                // already open -> close
-                if(e.target.classList.contains('filter-combine-group') && e.target.classList.contains('open')){
-                    closeCombineGroups();
-
-                //open
-                }else if(!e.target.classList.contains('close')){
-                    closeCombineGroups();
-                    e.currentTarget.classList.add('open');
-                }
-            });
-
-            txtTarget = group.querySelector('input');
-            closer = group.querySelector('.close');
-            elRange = group.querySelectorAll('.from, .to');
-
-            for (var r = 0; r < elRange.length; r++) {
-                var event = [];
-
-                elRange[r].txtTarget = txtTarget;
-                elRange[r].evtGroup = group;
-
-                switch (elRange[r].tagName.toLowerCase())
-                {
-                    case 'input':
-                        event = ['keyup', 'change'];
-                        break;
-                    case 'select':
-                        event = ['change'];
-                        break;
-                }
-
-                if(event.length) {
-                    for (var ec=0; ec<event.length; ec++) {
-                        addEventListener(elRange[r], event[ec], function (e) {
-                            parseRangeInputs(e.currentTarget.evtGroup, e.currentTarget.txtTarget);
-                        });
-                    }
-
-                    parseRangeInputs(elRange[r].evtGroup, elRange[r].txtTarget);
-                }
-            }
-
-            // button click
-            addEventListener(closer, 'click', function (e) {
-                group.classList.remove('open');
-            });
+    if (marketingType) {
+        addEventListener(marketingType, 'change', function (e) {
+            toggleOptions();
         });
 
-        // document click
-        addEventListener(document, 'click', function (event) {
-            var hasParent = false;
-            for(var node = event.target; node != document.body; node = node.parentNode) {
-                if(node.classList.contains('filter-combine-group')){
-                    hasParent = true;
-                    break;
+        toggleOptions(true);
+    }
+
+    if (type.getAttribute('data-submit-on-change') == 1) {
+        addEventListener(type, 'change', function (e) {
+            e.currentTarget.form.submit();
+        });
+    } else {
+        addEventListener(type, 'change', function (e) {
+            let value = e.target.value ? e.target.value : 0;
+            for (let i=0; i<filter.length; i++) {
+                if (RealEstate.Config.filterCriteria[value].fields.indexOf(filter[i].getAttribute('data-group'))>=0) {
+                    filter[i].style.display = '';
+                } else {
+                    filter[i].style.display = 'none';
                 }
             }
-            if(!hasParent) {
-                closeCombineGroups();
-            }
         });
-    }
-
-    var roomFrom = document.querySelector('select.room_from');
-    var roomTo = document.querySelector('select.room_to');
-
-    if(roomFrom && roomTo){
-       addEventListener(roomFrom, 'change', function(){
-           if(roomTo.value && roomFrom.value >= roomTo.value){
-               var cnt = parseInt(roomFrom.value) + 1;
-
-               if(roomTo.options[cnt]){
-                   roomTo.options[cnt].selected = true;
-               }else{
-                   roomTo.options[0].selected = true;
-               }
-
-               roomTo.dispatchEvent(new Event('change'));
-           }
-
-           for (var i=0; i<roomTo.options.length; i++){
-               if(roomTo.options[i].value && roomTo.options[i].value <= roomFrom.value){
-                   roomTo.options[i].disabled = true;
-               }else{
-                   roomTo.options[i].disabled = false;
-               }
-           }
-       });
-    }
+    }*/
 })();
-var RealEstate = {
-    Config: {
-        filterCriteria: {
-<?= \Oveleon\ContaoImmoManagerBundle\FilterDefaultFilter::getConfigFilterCriteria(); ?>
-        }
-    }
-};
 </script>

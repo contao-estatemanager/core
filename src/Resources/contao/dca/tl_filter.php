@@ -22,11 +22,20 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             array('tl_filter', 'checkPermission')
         ),
+        'oncreate_callback' => array
+        (
+            array('tl_filter', 'adjustPermissions')
+        ),
+        'oncopy_callback' => array
+        (
+            array('tl_filter', 'adjustPermissions')
+        ),
         'sql' => array
         (
             'keys' => array
             (
-                'id' => 'primary'
+                'id' => 'primary',
+                'alias' => 'index'
             )
         )
     ),
@@ -44,7 +53,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         'label' => array
         (
             'fields'                  => array('title'),
-            'format'                  => '%s'
+            'format'                  => '%s' // ToDo: Wird das noch benötigt?
         ),
         'global_operations' => array
         (
@@ -76,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_filter']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
-                'button_callback'     => array('tl_filter', 'copy')
+                'button_callback'     => array('tl_filter', 'copyFilter')
             ),
             'delete' => array
             (
@@ -84,7 +93,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_filter', 'delete')
+                'button_callback'     => array('tl_filter', 'deleteFilter')
             ),
             'show' => array
             (
@@ -98,7 +107,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,jumpTo;{filter_mode_legend:hide},filterMode,listFilter;{template_legend:hide},customTpl;{expert_legend:hide},method,novalidate,attributes,formID'
+        'default'                     => '{title_legend},title,alias,jumpTo;{config_legend},groups,addBlankMarketingType,addBlankRealEstateType,submitOnChange;{toggle_filter_legend},toggleFilter,roomOptions;{template_legend:hide},customTpl;{expert_legend:hide},attributes,novalidate'
     ),
 
     // Fields
@@ -143,38 +152,106 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
-        'filterMode' => array
+        'addBlankMarketingType' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['filterMode'],
-            'default'                 => 'default',
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankMarketingType'],
             'exclude'                 => true,
-            'inputType'               => 'select',
-            'options'                 => array('default', 'neubau', 'referenz'),
-            'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+            'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
-        'listFilter'  => array
+        'addBlankRealEstateType' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['listFilter'],
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankRealEstateType'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'submitOnChange' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['submitOnChange'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'groups' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['groups'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'foreignKey'              => 'tl_real_estate_group.title',
+            'options_callback'        => array('tl_filter', 'getRealEstateGroups'),
+            'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "blob NULL",
+            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+        ),
+        'toggleFilter'  => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['toggleFilter'],
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('price', 'per', 'room', 'area', 'period'),
+            'toggleFields'            => array
             (
-                'dragAndDrop'  => true,
-                'columnFields' => array
+                'price' => array
                 (
-                    'group' => array
+                    'fields' => array
                     (
-                        'label'       => &$GLOBALS['TL_LANG']['tl_filter']['listFilter'],
-                        'exclude'     => true,
-                        'inputType'   => 'select',
-                        'options'     => array('price', 'per', 'room', 'area', 'period', 'radius'),
-                        'eval' 		  => array('style'=>'width:100%', 'chosen'=>true)
-                    )
+                        'price_from',
+                        'price_to'
+                    ),
+                    'hide' => 'price_from'
                 ),
-                'tl_class' => 'long clr'
+                'per' => array
+                (
+                    'fields' => array
+                    (
+                        'price_per'
+                    ),
+                    'hide' => false
+                ),
+                'room' => array
+                (
+                    'fields' => array
+                    (
+                        'room_from',
+                        'room_to'
+                    ),
+                    'hide' => 'room_to',
+                    'options' => 'roomOptions'
+                ),
+                'area' => array
+                (
+                    'fields' => array
+                    (
+                        'area_from',
+                        'area_to'
+                    ),
+                    'hide' => 'area_to'
+                ),
+                'period' => array
+                (
+                    'fields' => array
+                    (
+                        'period_from',
+                        'period_to'
+                    ),
+                    'hide' => 'period_to'
+                )
             ),
-            'sql'                     => "blob NULL"
+            'reference'               => &$GLOBALS['TL_LANG']['tl_filter'],
+            'eval'                    => array('multiple'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''",
+        ),
+        'roomOptions' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['roomOptions'],
+            'default'                 => '1,2,3,4,5,6,7,8',
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''",
         ),
         'customTpl' => array
         (
@@ -184,17 +261,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'options_callback'        => array('tl_filter', 'getFilterWrapperTemplates'),
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
-        ),
-        'method' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['method'],
-            'default'                 => 'POST',
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'select',
-            'options'                 => array('POST', 'GET'),
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(12) NOT NULL default ''"
         ),
         'novalidate' => array
         (
@@ -211,15 +277,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'inputType'               => 'text',
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'formID' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['formID'],
-            'exclude'                 => true,
-            'search'                  => true,
-            'inputType'               => 'text',
-            'eval'                    => array('nospace'=>true, 'doNotCopy'=>true, 'maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
     )
 );
@@ -253,6 +310,16 @@ class tl_filter extends Backend
     }
 
     /**
+     * Add the new filter to the permissions
+     *
+     * @param $insertId
+     */
+    public function adjustPermissions($insertId)
+    {
+        return;
+    }
+
+    /**
      * Auto-generate a filter alias if it has not been set yet
      *
      * @param mixed         $varValue
@@ -264,30 +331,46 @@ class tl_filter extends Backend
      */
     public function generateAlias($varValue, DataContainer $dc)
     {
-        $autoAlias = false;
+        $aliasExists = function (string $alias) use ($dc): bool
+        {
+            return $this->Database->prepare("SELECT id FROM tl_filter WHERE alias=? AND id!=?")->execute($alias, $dc->id)->numRows > 0;
+        };
 
         // Generate an alias if there is none
         if ($varValue == '')
         {
-            $autoAlias = true;
-            $varValue = StringUtil::generateAlias($dc->activeRecord->title);
+            $varValue = Contao\System::getContainer()->get('contao.slug')->generate($dc->activeRecord->title, $dc->activeRecord->jumpTo, $aliasExists);
         }
-
-        $objAlias = $this->Database->prepare("SELECT id FROM tl_filter WHERE id=? OR alias=?")
-            ->execute($dc->id, $varValue);
-
-        // Check whether the form alias exists
-        if ($objAlias->numRows > 1)
+        elseif ($aliasExists($varValue))
         {
-            if (!$autoAlias)
-            {
-                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
-            }
-
-            $varValue .= '-' . $dc->id;
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
         }
 
         return $varValue;
+    }
+
+    /**
+     * Return a list of real estate groups
+     *
+     * @return array
+     */
+    public function getRealEstateGroups()
+    {
+        $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
+
+        if ($objGroup->numRows < 1)
+        {
+            return array();
+        }
+
+        $return = array();
+
+        while ($objGroup->next())
+        {
+            $return[$objGroup->id] = $objGroup->title;
+        }
+
+        return $return;
     }
 
     /**
@@ -329,9 +412,9 @@ class tl_filter extends Backend
      *
      * @return string
      */
-    public function copy($row, $href, $label, $title, $icon, $attributes)
+    public function copyFilter($row, $href, $label, $title, $icon, $attributes)
     {
-        return $this->User->hasAccess('create', 'filter') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -346,8 +429,8 @@ class tl_filter extends Backend
      *
      * @return string
      */
-    public function delete($row, $href, $label, $title, $icon, $attributes)
+    public function deleteFilter($row, $href, $label, $title, $icon, $attributes)
     {
-        return $this->User->hasAccess('delete', 'filter') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 }

@@ -114,14 +114,6 @@
         <source>Options are displayed merged.</source>
         <target>Die Optionen werden zusammengeführt ausgegeben.</target>
       </trans-unit>
-      <trans-unit id="tl_filter_item.addBlankOption.0">
-        <source>Add blank option</source>
-        <target>Leere Option anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tl_filter_item.addBlankOption.1">
-        <source>Display an empty option on first position.</source>
-        <target>Eine leere Option an erster Stelle anzeigen.</target>
-      </trans-unit>
       <trans-unit id="tl_filter_item.typeItem.0">
         <source>Type field</source>
         <target>Typfeld</target>
@@ -154,14 +146,6 @@
         <source>The filter is sent as soon as a change is made.</source>
         <target>Der Filter wird abgesendet sobald eine Änderung erfolgt.</target>
       </trans-unit>
-      <trans-unit id="tl_filter_item.groups.0">
-        <source>Real estate groups</source>
-        <target>Immobilien-Gruppen</target>
-      </trans-unit>
-      <trans-unit id="tl_filter_item.groups.1">
-        <source>Here you can specify the real estate groups that are to be taken into account.</source>
-        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
-      </trans-unit>
       <trans-unit id="tl_filter_item.options.0">
         <source>Options</source>
         <target>Optionen</target>
@@ -178,6 +162,14 @@
         <source>Here you can specify the display mode.</source>
         <target>Hier können Sie en Anzeige-Modus angeben.</target>
       </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.0">
+        <source>Show label</source>
+        <target>Label enzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.1">
+        <source>Here you can specify if the label should be displayed.</source>
+        <target>Hier können Sie angeben, ob des Label angezeigt werden soll.</target>
+      </trans-unit>
       <trans-unit id="tl_filter_item.showPlaceholder.0">
         <source>Show placeholder</source>
         <target>Placeholder enzeigen</target>
@@ -186,13 +178,13 @@
         <source>Here you can specify if the placeholder should be displayed.</source>
         <target>Hier können Sie angeben, ob der Placeholder angezeigt werden soll.</target>
       </trans-unit>
-      <trans-unit id="tl_filter_item.showLabel.0">
-        <source>Show label</source>
-        <target>Label enzeigen</target>
+      <trans-unit id="tl_filter_item.rangeMode.0">
+        <source></source>
+        <target></target>
       </trans-unit>
-      <trans-unit id="tl_filter_item.showLabel.1">
-        <source>Here you can specify if the label should be displayed.</source>
-        <target>Hier können Sie angeben, ob des Label angezeigt werden soll.</target>
+      <trans-unit id="tl_filter_item.rangeMode.1">
+        <source></source>
+        <target></target>
       </trans-unit>
       <trans-unit id="tl_filter_item.placeholder.0">
         <source>Placeholder</source>

@@ -100,7 +100,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
     'palettes' => array
     (
         '__selector__'                => array('excludeTypes', 'orderFields'),
-        'default'                     => '{title_legend},title,longTitle;{forwarding_legend},referencePage,jumpTo,similarType,excludeTypes;{field_legend},nutzungsart,vermarktungsart,objektart,neubauProjekt,referenz;{filter_legend},price,area,listFilter,advancedFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{publish_legend},defaultType,published'
+        'default'                     => '{title_legend},title,longTitle;{forwarding_legend},referencePage,jumpTo,similarType,excludeTypes;{field_legend},nutzungsart,vermarktungsart,objektart;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{publish_legend},defaultType,published'
     ),
 
     // Subpalettes
@@ -254,26 +254,14 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
-        'listFilter'  => array
+        'toggleFilter'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['listFilter'],
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'dragAndDrop'  => true,
-                'columnFields' => array
-                (
-                    'group' => array
-                    (
-                        'label'       => &$GLOBALS['TL_LANG']['tl_real_estate_type']['listFilter'],
-                        'exclude'     => true,
-                        'inputType'   => 'select',
-                        'options'     => array('price', 'per', 'room', 'area', 'period', 'radius'),
-                        'eval' 		  => array('style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
-            'sql'                     => "blob NULL"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['toggleFilter'],
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('price', 'per', 'room', 'area', 'period'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_filter'],
+            'eval'                    => array('multiple'=>true),
+            'sql'                     => "varchar(255) NOT NULL default ''",
         ),
         'mainDetails'  => array
         (
@@ -312,27 +300,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                         'inputType'   => 'select',
                         'options_callback'  => array('tl_real_estate_type', 'getAttributeFields'),
                         'eval' 		  => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
-            'sql'                     => "blob NULL"
-        ),
-        'advancedFilter'  => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['advancedFilter'],
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'dragAndDrop'  => true,
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['field'],
-                        'exclude'           => true,
-                        'inputType'         => 'select',
-                        'options_callback'  => array('tl_real_estate_type', 'getFilterFields'),
-                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
                     )
                 )
             ),
@@ -386,20 +353,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                 )
             ),
             'sql'                     => "blob NULL"
-        ),
-        'neubauProjekt'  => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['neubauProjekt'],
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class' => 'w50 m12 clr'),
-            'sql'                     => "char(1) NOT NULL default '0'",
-        ),
-        'referenz'  => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['referenz'],
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class' => 'w50 m12'),
-            'sql'                     => "char(1) NOT NULL default '0'",
         ),
         'defaultType' => array
         (

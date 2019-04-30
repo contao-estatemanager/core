@@ -3,7 +3,7 @@
 <?php $this->block('content'); ?>
 
   <div class="result-map-filter">
-    <?php if ($this->addFilter): ?>
+    <?php if ($this->addFilterModule): ?>
         <?= $this->filter ?>
     <?php endif; ?>
   </div>

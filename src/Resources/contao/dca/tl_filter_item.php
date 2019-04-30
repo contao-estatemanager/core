@@ -16,7 +16,7 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         'dataContainer'               => 'Table',
         'ptable'                      => 'tl_filter',
         'enableVersioning'            => true,
-        'markAsCopy'                  => 'title',
+        'markAsCopy'                  => 'label',
         'onload_callback' => array
         (
             array('tl_filter_item', 'checkPermission')
@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
             'mode'                    => 4,
             'fields'                  => array('sorting'),
             'panelLayout'             => 'filter,search,limit',
-            'headerFields'            => array('title', 'tstamp', 'filterId'),
+            'headerFields'            => array('title', 'tstamp'),
             'child_record_callback'   => array('tl_filter_item', 'listFilterItems')
         ),
         'global_operations' => array
@@ -98,21 +98,19 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'          => array('type', 'mode', 'imageSubmit'),
+        '__selector__'          => array('type', 'imageSubmit'),
         'default'               => '{type_legend},type',
-        'type'                  => '{type_legend},type,name,label;{field_config_legend},mandatory;{mode_legend},mode;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
-        'location'              => '{type_legend},type,name,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
-        'defaultFilter'         => '{type_legend},type;{field_config_legend},typeItem,displayMode,showPlaceholder,showLabel;{expert_legend:hide},class;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'location'              => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'unique'                => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'type'                  => '{type_legend},type,label;{field_config_legend},mandatory,showLongTitle,mergeOptions;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'typeSeparated'         => '{type_legend},type,label;{field_config_legend},mandatory,showLongTitle;{expert_legend:hide},class,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'toggle'                => '{type_legend},type;{field_config_legend},showLabel,showPlaceholder,rangeMode;{expert_legend:hide},class,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'submit'                => '{type_legend},type,slabel;{image_legend:hide},imageSubmit;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'mode_group_type'             => 'showLongTitle,mergeOptions,groups,submitOnChange',
-        'mode_group'                  => 'groups',
-        'mode_type_by_group'          => 'showLongTitle,addBlankOption,groupItem,submitOnChange',
-        'mode_type_of_group'          => 'showLongTitle,addBlankOption,group,submitOnChange',
         'imageSubmit'                 => 'singleSRC'
     ),
 
@@ -173,14 +171,7 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
-        'submitOnChange' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['submitOnChange'],
-            'exclude'                 => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50 clr'),
+            'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
         ),
         'placeholder' => array
@@ -192,27 +183,9 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
             'eval'                    => array('decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'mode' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['mode'],
-            'default'                 => 'group_type',
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'options'                 => array('group_type', 'group', 'type_by_group', 'type_of_group'),
-            'eval'                    => array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
-        ),
         'showLongTitle' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showLongTitle'],
-            'exclude'                 => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
-        'addBlankOption' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['addBlankOption'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -226,66 +199,9 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
         ),
-        'groups' => array
+        'rangeMode' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['groups'],
-            'exclude'                 => true,
-            'inputType'               => 'checkboxWizard',
-            'foreignKey'              => 'tl_real_estate_group.title',
-            'options_callback'        => array('tl_filter_item', 'getGroups'),
-            'eval'                    => array('mandatory'=>true, 'multiple'=>true),
-            'sql'                     => "blob NULL",
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
-        'group' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['group'],
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'foreignKey'              => 'tl_real_estate_group.title',
-            'options_callback'        => array('tl_filter_item', 'getGroups'),
-            'eval'                    => array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
-        'groupItem' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['groupItem'],
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'foreignKey'              => 'tl_filter_item.name',
-            'options_callback'        => array('tl_filter_item', 'getGroupItems'),
-            'eval'                    => array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
-        'typeItem' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['typeItem'],
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'foreignKey'              => 'tl_filter_item.name',
-            'options_callback'        => array('tl_filter_item', 'getTypeItems'),
-            'eval'                    => array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
-        'displayMode' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['displayMode'],
-            'default'                 => 'simple',
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'options'                 => array(
-                'simple' => 'Simple',
-                'range'  => 'Range',
-            ),
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(6) NOT NULL default ''",
-        ),
-        'showPlaceholder' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showPlaceholder'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['rangeMode'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -294,6 +210,14 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         'showLabel' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showLabel'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'showPlaceholder' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showPlaceholder'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -449,79 +373,6 @@ class tl_filter_item extends Backend
         }
 
         return $arrItems;
-    }
-
-    /**
-     * Return a list of real estate groups
-     *
-     * @return array
-     */
-    public function getGroups()
-    {
-        $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
-
-        if ($objGroup->numRows < 1)
-        {
-            return array();
-        }
-
-        $return = array();
-
-        while ($objGroup->next())
-        {
-            $return[$objGroup->id] = $objGroup->title;
-        }
-
-        return $return;
-    }
-
-    /**
-     * Return a list of filter items with mode group
-     *
-     * @return array
-     */
-    public function getGroupItems()
-    {
-        $objGroupItems = $this->Database->execute("SELECT id, name FROM tl_filter_item WHERE type='type' AND mode='group'");
-
-        if ($objGroupItems->numRows < 1)
-        {
-            return array();
-        }
-
-        $return = array();
-
-        while ($objGroupItems->next())
-        {
-            $return[$objGroupItems->id] = $objGroupItems->name;
-        }
-
-        return $return;
-    }
-
-    /**
-     * Return a list of filter items with mode group
-     *
-     * @return array
-     */
-    public function getTypeItems($dc)
-    {
-        $objGroupItems = $this->Database->prepare("SELECT id, name FROM tl_filter_item WHERE pid=? AND type='type' AND mode='type_by_group'")
-            ->execute($dc->activeRecord->pid);
-
-        if ($objGroupItems->numRows < 1)
-        {
-            return array();
-        }
-
-        $return = array();
-
-        while ($objGroupItems->next())
-        {
-            $return[$objGroupItems->id] = $objGroupItems->name;
-        }
-
-        return $return;
     }
 
     /**

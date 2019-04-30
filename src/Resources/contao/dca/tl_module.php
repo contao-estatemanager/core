@@ -17,7 +17,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
     'realEstateExpose'      => '{title_legend},name,headline,type;{form_legend:hide},addForm;{template_legend:hide},customTpl,realEstateGalleryTemplate,realEstateFloorPlanGalleryTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,realEstateGalleryImgSize,floorPlanImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{list_mode_legend},listMode,hideOnEmpty;{list_config_legend},jumpTo,numberOfItems,perPage;{include_legend},addForm;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{filter_legend:hide},addFilterModule;{filter_mode_legend:hide},filterMode;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{list_config_legend},jumpTo,numberOfItems,perPage;{filter_legend:hide},addFilterModule;{filter_mode_legend:hide},filterMode;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array

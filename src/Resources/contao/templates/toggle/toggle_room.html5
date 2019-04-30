@@ -1,0 +1,15 @@
+<div class="real-estate-filter <?= $this->name ?>" data-group="<?= $this->name ?>"<?= $this->show ? '' : ' style="display:none;"' ?>>
+  <?php foreach ($this->filters as $filter): ?>
+    <?php if ($filter['show']): ?>
+      <div class="widget widget-select select <?= $filter['name'] ?>">
+        <?php if ($filter['label']): ?><label for="ctrl_<?= $filter['name'] ?>"><?= $filter['label'] ?></label><?php endif; ?>
+        <select name="<?= $filter['name'] ?>" id="ctrl_<?= $filter['name'] ?>" class="select <?= $filter['name'] ?>">
+          <option value><?= $filter['placeholder'] ? $filter['placeholder'] : '' ?></option>
+          <?php foreach ($filter['options'] as $value => $label): ?>
+            <option value="<?= $value ?>"<?= $filter['value'] == $value ? ' selected' : '' ?>><?= $label ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+    <?php endif; ?>
+  <?php endforeach; ?>
+</div>

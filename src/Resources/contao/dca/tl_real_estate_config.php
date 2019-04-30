@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{customer_legend},primaryColour;{output_legend},defaultSorting,defaultImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;'
+		'default'                     => '{customer_legend},primaryColour;{output_legend},defaultSorting,defaultImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
 	),
 
 	// Fields
@@ -62,6 +62,12 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_style']['primaryColour'],
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>6, 'size'=>1, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50 wizard'),
+        ),
+        'roomOptions' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['roomOptions'],
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50')
         ),
 	)
 );

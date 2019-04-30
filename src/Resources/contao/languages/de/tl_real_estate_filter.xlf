@@ -125,11 +125,11 @@
         <source>Zimmer bis</source>
         <target>Zimmer bis</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_filter.from_x_rooms">
+      <trans-unit id="tl_real_estate_filter.room_from_x">
         <source>ab %s Zimmer</source>
         <target>ab %s Zimmer</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_filter.to_x_rooms">
+      <trans-unit id="tl_real_estate_filter.room_to_x">
         <source>bis %s Zimmer</source>
         <target>bis %s Zimmer</target>
       </trans-unit>

@@ -1,0 +1,7 @@
+<?php $this->extend('filter_row'); ?>
+
+<?php $this->block('filter_item'); ?>
+
+<?= implode('', $this->items) ?>
+
+<?php $this->endblock(); ?>

@@ -18,19 +18,9 @@ use Patchwork\Utf8;
  *
  * @property integer $id
  * @property string  $title
- * @property string  $filterID
- * @property string  $method
- * @property boolean $allowTags
  * @property string  $attributes
  * @property boolean $novalidate
  * @property integer $jumpTo
- * @property boolean $sendViaEmail
- * @property boolean $skipEmpty
- * @property string  $format
- * @property string  $recipient
- * @property string  $subject
- * @property boolean $storeValues
- * @property string  $targetTable
  * @property string  $customTpl
  *
  * @author Fabian Ekert <fabian@oveleon.de>
@@ -63,24 +53,7 @@ class Filter extends \Hybrid
     protected $strTemplate = 'filter_wrapper';
 
     /**
-     * Initialize the object
-     *
-     * @param \ContentModel|\ModuleModel|FilterModel $objElement
-     */
-    public function __construct($objElement)
-    {
-        if ($objElement instanceof FilterModel)
-        {
-            $this->strKey = 'id';
-        }
-
-        \System::loadLanguageFile('tl_real_estate_filter');
-
-        parent::__construct($objElement);
-    }
-
-    /**
-     *
+     * Remove name attributes in the back end so the filter is not validated
      *
      * @return string
      */
@@ -88,7 +61,9 @@ class Filter extends \Hybrid
     {
         if (TL_MODE == 'BE')
         {
+            /** @var \BackendTemplate|object $objTemplate */
             $objTemplate = new \BackendTemplate('be_wildcard');
+
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['filter'][0]) . ' ###';
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
@@ -107,13 +82,121 @@ class Filter extends \Hybrid
 
     /**
      * Generate the filter
-     *
-     * @return string
      */
     protected function compile()
     {
-        $this->strKey = 'filter';
+        $filterId = $this->filterID ? 'auto_'.$this->filterID : 'auto_filter_'.$this->id;
 
+        $objFilterItem = FilterItemModel::findPublishedByPid($this->id);
+
+        if ($objFilterItem === null)
+        {
+            return;
+        }
+
+        // HOOK: compile filter items
+
+        $doNotSubmit = false;
+        $arrSubmitted = array();
+        $arrFilterItems = array();
+        $row = 0;
+        $max_row = $objFilterItem->count();
+
+        while ($objFilterItem->next())
+        {
+            $strClass = $GLOBALS['TL_RFI'][$objFilterItem->type];
+
+            // Continue if the class is not defined
+            if (!class_exists($strClass))
+            {
+                continue;
+            }
+
+            $arrData = $objFilterItem->row();
+
+            $arrData['rowClass'] = 'row_'.$row . (($row == 0) ? ' row_first' : (($row == ($max_row - 1)) ? ' row_last' : '')) . ((($row % 2) == 0) ? ' even' : ' odd');
+
+            /** @var FilterWidget $objWidget */
+            $objFilterWidget = new $strClass($arrData, $this->objModel);
+            $objFilterWidget->required = $objFilterItem->mandatory ? true : false;
+
+            // HOOK: load filter item
+
+            // Store values in the session
+            if (\Input::post('FORM_SUBMIT') == $filterId)
+            {
+                $objFilterWidget->validate();
+
+                // HOOK: validate filter item
+
+                if ($objFilterWidget->hasErrors())
+                {
+                    $doNotSubmit = true;
+                }
+                elseif ($objFilterWidget->submitInput())
+                {
+                    $arrSubmitted[$objFilterWidget->name] = $objFilterWidget->value;
+                    $_SESSION['FILTER_DATA'][$objFilterWidget->name] = $objFilterWidget->value;
+                    unset($_POST[$objFilterWidget->name]);
+                }
+            }
+
+            $arrFilterItems[] = $objFilterWidget->parse();
+            ++$row;
+        }
+
+        // Process the form data
+        if (\Input::post('FORM_SUBMIT') == $filterId && !$doNotSubmit)
+        {
+            $this->processFilterData($arrSubmitted);
+        }
+
+        $this->Template->hasError = $doNotSubmit;
+        $this->Template->action = \Environment::get('indexFreeRequest');
+        $this->Template->attributes = $this->getAttributes();
+        $this->Template->novalidate = $this->novalidate ? ' novalidate' : '';
+        $this->Template->filterSubmit = $filterId;
+        $this->Template->items = $arrFilterItems;
+    }
+
+    /**
+     * Process filter data, store it in the session and redirect to the jumpTo or reference page
+     *
+     * @param array $arrSubmitted
+     */
+    protected function processFilterData($arrSubmitted)
+    {
+        // HOOK: prepare filter data
+    }
+
+    /**
+     * Get filter attributes as string
+     *
+     * @return string
+     */
+    protected function getAttributes()
+    {
+        $strAttributes = '';
+        $arrAttributes = \StringUtil::deserialize($this->attributes, true);
+
+        if ($arrAttributes[0] != '')
+        {
+            $strAttributes .= ' id="' . $arrAttributes[0] . '"';
+        }
+
+        if ($arrAttributes[1] != '')
+        {
+            $strAttributes .= ' class="' . $arrAttributes[1] . '"';
+        }
+
+        return $strAttributes;
+    }
+
+    /**
+     * Generate the filter
+     */
+    protected function compile2()
+    {
         $doNotSubmit = false;
         $arrSubmitted = array();
 
@@ -123,97 +206,122 @@ class Filter extends \Hybrid
         $this->Template->items = '';
         $this->Template->hidden = '';
         $this->Template->filterSubmit = $filterId;
-        $this->Template->method = ($this->method == 'GET') ? 'get' : 'post';
 
-        $this->initializeSession($filterId);
+        $this->initializeSession($filterId); // ToDo: Auf Session Service umbauen.
         $arrLabels = array();
 
         // Get all form fields
-        $arrFilterItems = array();
-        $objFilterItems = FilterItemModel::findPublishedByPid($this->id);
+        $arrItems = array();
+        $objItems = FilterItemModel::findPublishedByPid($this->id);
 
-        if ($objFilterItems !== null)
+        if ($objItems !== null)
         {
-            while ($objFilterItems->next())
+            while ($objItems->next())
             {
                 // Ignore the name of form fields which do not use a name (see #1268)
-                if ($objFilterItems->name != '' && isset($GLOBALS['TL_DCA']['tl_filter_item']['palettes'][$objFilterItems->type]) && preg_match('/[,;]name[,;]/', $GLOBALS['TL_DCA']['tl_filter_item']['palettes'][$objFilterItems->type]))
+                if ($objItems->name != '' && isset($GLOBALS['TL_DCA']['tl_filter_item']['palettes'][$objItems->type]) && preg_match('/[,;]name[,;]/', $GLOBALS['TL_DCA']['tl_filter_item']['palettes'][$objItems->type]))
                 {
-                    $arrFilterItems[$objFilterItems->name] = $objFilterItems->current();
+                    $arrItems[$objItems->name] = $objItems->current();
                 }
                 else
                 {
-                    $arrFilterItems[] = $objFilterItems->current();
+                    $arrItems[] = $objItems->current();
                 }
             }
         }
 
-        // HOOK: compile form fields
+        // HOOK: compile filter items
         if (isset($GLOBALS['TL_HOOKS']['compileFilterItems']) && \is_array($GLOBALS['TL_HOOKS']['compileFilterItems']))
         {
             foreach ($GLOBALS['TL_HOOKS']['compileFilterItems'] as $callback)
             {
                 $this->import($callback[0]);
-                $arrFilterItems = $this->{$callback[0]}->{$callback[1]}($arrFilterItems, $filterId, $this);
+                $arrItems = $this->{$callback[0]}->{$callback[1]}($arrItems, $filterId, $this);
             }
         }
 
         // Process the fields
-        if (!empty($arrFilterItems) && \is_array($arrFilterItems)) {
+        if (!empty($arrItems) && \is_array($arrItems)) {
             $row = 0;
-            $max_row = \count($arrFilterItems);
+            $max_row = \count($arrItems);
 
-            foreach ($arrFilterItems as $objFilterItem) {
-                /** @var FilterItemModel $objFilterItem */
-                $strClass = $GLOBALS['TL_RFI'][$objFilterItem->type];
+            foreach ($arrItems as $objItem)
+            {
+                /** @var FilterItemModel $objItem */
+                $strClass = $GLOBALS['TL_RFI'][$objItem->type];
 
                 // Continue if the class is not defined
-                if (!class_exists($strClass)) {
+                if (!class_exists($strClass))
+                {
                     continue;
                 }
 
-                $arrData = $objFilterItem->row();
+                $arrData = $objItem->row();
 
-                $arrData['decodeEntities'] = true;
+                $arrData['decodeEntities'] = true; //ToDo: Wofür wird das übergeben?
                 $arrData['rowClass'] = 'row_'.$row . (($row == 0) ? ' row_first' : (($row == ($max_row - 1)) ? ' row_last' : '')) . ((($row % 2) == 0) ? ' even' : ' odd');
 
+                // Increase the row count if its a password field
+                if ($objItem->type == 'todo')
+                {
+                    ++$row;
+                    ++$max_row;
+
+                    $arrData['rowClassConfirm'] = 'row_'.$row . (($row == ($max_row - 1)) ? ' row_last' : '') . ((($row % 2) == 0) ? ' even' : ' odd');
+                }
+
                 // Submit buttons do not use the name attribute
-                if ($objFilterItem->type == 'submit')
+                if ($objItem->type == 'submit')
                 {
                     $arrData['name'] = '';
                 }
 
-                /** @var \Widget $objWidget */
+                /** @var FilterWidget $objWidget */
                 $objWidget = new $strClass($arrData);
-                $objWidget->required = $objFilterItem->mandatory ? true : false;
+                $objWidget->required = $objItem->mandatory ? true : false;
 
-                if ($objFilterItem->type == 'type')
+                // HOOK: load form field callback
+                if (isset($GLOBALS['TL_HOOKS']['loadFilterItem']) && \is_array($GLOBALS['TL_HOOKS']['loadFilterItem']))
                 {
-                    $objWidget->filterMode = $this->filterMode;
+                    foreach ($GLOBALS['TL_HOOKS']['loadFilterItem'] as $callback)
+                    {
+                        $this->import($callback[0]);
+                        $objWidget = $this->{$callback[0]}->{$callback[1]}($objWidget, $filterId, $this->arrData, $this);
+                    }
                 }
 
                 // Store current value in the session
                 if (\Input::post('FORM_SUBMIT') == $filterId)
                 {
-                    $skip = $objWidget->validate();
+                    $objWidget->validate();
 
-                    // Skip if null
-                    if ($skip !== true)
+                    // HOOK: validate filter item callback
+                    if (isset($GLOBALS['TL_HOOKS']['validateFilterItem']) && \is_array($GLOBALS['TL_HOOKS']['validateFilterItem']))
                     {
-                        $arrSubmitted[$objFilterItem->name] = $objWidget->value;
-                        $_SESSION['FILTER_DATA'][$objFilterItem->name] = $objWidget->value;
-                        unset($_POST[$objFilterItem->name]);
+                        foreach ($GLOBALS['TL_HOOKS']['validateFilterItem'] as $callback)
+                        {
+                            $this->import($callback[0]);
+                            $objWidget = $this->{$callback[0]}->{$callback[1]}($objWidget, $filterId, $this->arrData, $this);
+                        }
                     }
-                }
-                else
-                {
-                    // Restore value from session
-                    $objWidget->value = $_SESSION['FILTER_DATA'][$objFilterItem->name];
+
+                    if ($objWidget->hasErrors())
+                    {
+                        $doNotSubmit = true;
+                    }
+
+                    // Store current value in the session
+                    elseif ($objWidget->submitInput())
+                    {
+                        $arrSubmitted[$objItem->name] = $objWidget->value;
+                        $_SESSION['FILTER_DATA'][$objItem->name] = $objWidget->value;
+                        unset($_POST[$objItem->name]);
+                    }
                 }
 
                 if ($objWidget->name != '' && $objWidget->label != '')
                 {
-                    $arrLabels[$objWidget->name] = $this->replaceInsertTags($objWidget->label); // see #4268
+                    $arrLabels[$objWidget->name] = $this->replaceInsertTags($objWidget->label);
                 }
 
                 $this->Template->items .= $objWidget->parse();
@@ -224,7 +332,7 @@ class Filter extends \Hybrid
         // Process the form data
         if (\Input::post('FORM_SUBMIT') == $filterId && !$doNotSubmit)
         {
-            $this->processFilterData($arrSubmitted, $arrLabels, $arrFilterItems);
+            $this->processFilterData($arrSubmitted, $arrLabels, $arrItems);
         }
 
         // Add a warning to the page title
@@ -251,11 +359,9 @@ class Filter extends \Hybrid
         }
 
         $this->Template->hasError = $doNotSubmit;
-        $this->Template->attributes = $strAttributes;
         $this->Template->action = \Environment::get('indexFreeRequest');
+        $this->Template->attributes = $strAttributes;
         $this->Template->novalidate = $this->novalidate ? ' novalidate' : '';
-
-        return $this->Template->parse();
     }
 
     /**
@@ -265,11 +371,16 @@ class Filter extends \Hybrid
      * @param array $arrLabels
      * @param array $arrFields
      */
-    protected function processFilterData($arrSubmitted, $arrLabels, $arrFields)
+    protected function processFilterData2($arrSubmitted, $arrLabels, $arrFields)
     {
-        if ($this->filterMode == 'neubau' || $this->filterMode == 'referenz')
+        // HOOK: prepare filter data callback
+        if (isset($GLOBALS['TL_HOOKS']['prepareFilterData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFilterData']))
         {
-            $this->reload();
+            foreach ($GLOBALS['TL_HOOKS']['prepareFilterData'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $arrLabels, $arrFields, $this);
+            }
         }
 
         // Store all values in the session
@@ -278,7 +389,7 @@ class Filter extends \Hybrid
             $_SESSION['FILTER_DATA'][$key] = \Input::post($key, true);
         }
 
-        $typeId = $_SESSION['FILTER_DATA']['type'];
+        /*$typeId = $_SESSION['FILTER_DATA']['type'];
 
         if ($typeId)
         {
@@ -305,7 +416,7 @@ class Filter extends \Hybrid
         if (($objJumpTo = $this->objModel->getRelated('jumpTo')) instanceof \PageModel)
         {
             $this->jumpToOrReload($objJumpTo->row());
-        }
+        }*/
 
         $this->reload();
     }
@@ -325,5 +436,3 @@ class Filter extends \Hybrid
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
     }
 }
-
-class_alias(Filter::class, 'Filter');

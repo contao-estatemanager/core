@@ -92,9 +92,11 @@ array_insert($GLOBALS['TL_CTE']['includes'], 3, array
 // Back end real estate filter items
 $GLOBALS['TL_RFI'] = array
 (
-    'type'                  => '\\Oveleon\\ContaoImmoManagerBundle\\FilterType',
     'location'              => '\\Oveleon\\ContaoImmoManagerBundle\\FilterLocation',
-    'defaultFilter'         => '\\Oveleon\\ContaoImmoManagerBundle\\FilterDefaultFilter',
+    'unique'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterUnique',
+    'type'                  => '\\Oveleon\\ContaoImmoManagerBundle\\FilterType',
+    'typeSeparated'         => '\\Oveleon\\ContaoImmoManagerBundle\\FilterTypeSeparated',
+    'toggle'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterToggle',
     'submit'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterSubmit',
 );
 

@@ -33,46 +33,61 @@
         <source>Please choose the page to which visitors will be redirected after submitting the filter.</source>
         <target>Bitte wählen Sie die Seite aus, zu der Besucher nach dem Abschicken des Filters weitergeleitet werden.</target>
       </trans-unit>
-      <trans-unit id="tl_filter.filterMode.0">
-        <source>Filter mode</source>
-        <target>Filtermodus</target>
+      <trans-unit id="tl_filter.groups.0">
+        <source>Real estate groups</source>
+        <target>Immobilien-Gruppen</target>
       </trans-unit>
-      <trans-unit id="tl_filter.filterMode.1">
-        <source>Please enter the filter mode.</source>
-        <target>Bitte geben Sie den Filtermodus ein.</target>
+      <trans-unit id="tl_filter.groups.1">
+        <source>Here you can specify the real estate groups that are to be taken into account.</source>
+        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
       </trans-unit>
-      <trans-unit id="tl_filter.listFilter.0">
-        <source>List filter</source>
-        <target>Listenfilter</target>
+      <trans-unit id="tl_filter.addBlankMarketingType.0">
+        <source>Display blank marketing type</source>
+        <target>Leere Vermarktungsart anzeigen</target>
       </trans-unit>
-      <trans-unit id="tl_filter.listFilter.1">
-        <source>Please enter the list filters.</source>
-        <target>Bitte geben Sie die Listenfilter an.</target>
+      <trans-unit id="tl_filter.addBlankMarketingType.1">
+        <source>Display an empty option for marketing type on first position.</source>
+        <target>Eine leere Option für die Vermarktungsart an erster Stelle anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankRealEstateType.0">
+        <source>Display blank real estate type</source>
+        <target>Leeren Immobilien-Typ anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankRealEstateType.1">
+        <source>Display an empty option for real estate type on first position.</source>
+        <target>Eine leere Option für den Immobilien-Typ an erster Stelle anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.submitOnChange.0">
+        <source>Change page when changing</source>
+        <target>Bei Änderung Seite wechseln</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.submitOnChange.1">
+        <source>The page changes when another type of property is selected.</source>
+        <target>Die Seite wird gewechselt, sobald ein anderer Immobilien-Typ ausgewählt wurde.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggleFilter.0">
+        <source>Default filter</source>
+        <target>Standardfilter</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggleFilter.1">
+        <source>Default filters are displayed if no real estate type is selected.</source>
+        <target>Die Standardfilter werden angezeigt, wenn kein Immobilien-Typ ausgewählt ist.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.roomOptions.0">
+        <source>Available options: Rooms</source>
+        <target>Verfügbare Optionen: Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.roomOptions.1">
+        <source>Here you can enter a comma separated list of options that should be available for the number of rooms.</source>
+        <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
       </trans-unit>
       <trans-unit id="tl_filter.customTpl.0">
-        <source>Filter template</source>
-        <target>Filtertemplate</target>
+        <source>Custom template</source>
+        <target>Individuelles Template</target>
       </trans-unit>
       <trans-unit id="tl_filter.customTpl.1">
-        <source>Here you can select the filter template.</source>
-        <target>Hier können Sie das Filtertemplate auswählen.</target>
-      </trans-unit>
-
-      <trans-unit id="tl_filter.method.0">
-        <source>Submission method</source>
-        <target>Übertragungsmethode</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.method.1">
-        <source>The default form submission method is POST.</source>
-        <target>Die Standard-Übertragungsmethode ist POST.</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.novalidate.0">
-        <source>Disable HTML5 validation</source>
-        <target>HTML5-Validierung deaktivieren</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.novalidate.1">
-        <source>Add the &lt;em&gt;novalidate&lt;/em&gt; attribute to the form tag.</source>
-        <target>Fügt dem Formular das &lt;em&gt;novalidate&lt;/em&gt;-Attribut hinzu.</target>
+        <source>Here you can overwrite the default template.</source>
+        <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>
       <trans-unit id="tl_filter.attributes.0">
         <source>CSS ID/class</source>
@@ -82,13 +97,13 @@
         <source>Here you can set an ID and one or more classes.</source>
         <target>Hier können Sie eine ID und beliebig viele Klassen eingeben.</target>
       </trans-unit>
-      <trans-unit id="tl_filter.formID.0">
-        <source>Form ID</source>
-        <target>Formular-ID</target>
+      <trans-unit id="tl_filter.novalidate.0">
+        <source>Disable HTML5 validation</source>
+        <target>HTML5-Validierung deaktivieren</target>
       </trans-unit>
-      <trans-unit id="tl_filter.formID.1">
-        <source>The filter ID is required to trigger a Contao module.</source>
-        <target>Die Filter-ID wird zur Ansteuerung eines Contao-Moduls benötigt.</target>
+      <trans-unit id="tl_filter.novalidate.1">
+        <source>Add the &lt;em&gt;novalidate&lt;/em&gt; attribute to the form tag.</source>
+        <target>Fügt dem Formular das &lt;em&gt;novalidate&lt;/em&gt;-Attribut hinzu.</target>
       </trans-unit>
       <trans-unit id="tl_filter.tstamp.0">
         <source>Revision date</source>
@@ -103,9 +118,13 @@
         <source>Title and forwarding</source>
         <target>Titel und Weiterleitung</target>
       </trans-unit>
-      <trans-unit id="tl_filter.filter_mode_legend">
-        <source>Filter mode settings</source>
-        <target>Filtermodus-Einstellungen</target>
+      <trans-unit id="tl_filter.config_legend">
+        <source>Filter settings</source>
+        <target>Filter-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle_filter_legend">
+        <source>Default filter settings</source>
+        <target>Standard-Filter Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_filter.template_legend">
         <source>Template settings</source>

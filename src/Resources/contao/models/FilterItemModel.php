@@ -15,9 +15,11 @@ namespace Oveleon\ContaoImmoManagerBundle;
  *
  * @property integer $id
  * @property integer $pid
+ * @property integer $sorting
  * @property integer $tstamp
  * @property string  $type
- * @property string  $title
+ * @property string  $label
+ * @property string  $name
  * @property boolean $published
  *
  * @method static FilterItemModel|null findById($id, array $opt=array())
@@ -99,6 +101,34 @@ class FilterItemModel extends \Model
         }
 
         return static::findBy($arrColumns, $intPid, $arrOptions);
+    }
+
+    /**
+     * Find published filter items by type and their parent ID
+     *
+     * @param string  $strType    The filter type
+     * @param integer $intPid     The filter ID
+     * @param array   $arrOptions An optional options array
+     *
+     * @return \Model\Collection|FilterItemModel[]|FilterItemModel|null A collection of models or null if there are no filter items
+     */
+    public static function findPublishedByTypeAndPid($strType, $intPid, array $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.type=? AND $t.pid=?");
+        $arrValues = array($strType, $intPid);
+
+        if (!static::isPreviewMode($arrOptions))
+        {
+            $arrColumns[] = "$t.invisible=''";
+        }
+
+        if (!isset($arrOptions['order']))
+        {
+            $arrOptions['order'] = "$t.sorting";
+        }
+
+        return static::findBy($arrColumns, $arrValues, $arrOptions);
     }
 }
 

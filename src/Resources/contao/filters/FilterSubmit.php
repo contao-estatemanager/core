@@ -10,9 +10,20 @@
 namespace Oveleon\ContaoImmoManagerBundle;
 
 
-use Contao\Widget;
-
-class FilterSubmit extends Widget
+/**
+ * Class FilterSubmit
+ *
+ * @property string  $name
+ * @property string  $label
+ * @property string  $singleSRC
+ * @property boolean $imageSubmit
+ * @property boolean $required
+ * @property boolean $mandatory
+ * @property string  $src
+ *
+ * @author Fabian Ekert <fabian@oveleon.de>
+ */
+class FilterSubmit extends FilterWidget
 {
 
     /**
@@ -63,6 +74,14 @@ class FilterSubmit extends Widget
     }
 
     /**
+     * Do not validate
+     */
+    public function validate()
+    {
+        return;
+    }
+
+    /**
      * Parse the template file and return it as string
      *
      * @param array $arrAttributes An optional attributes array
@@ -75,7 +94,7 @@ class FilterSubmit extends Widget
         {
             $objModel = \FilesModel::findByUuid($this->singleSRC);
 
-            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path)) // ToDo: Replace TL_ROOT with \System::getContainer()->getParameter('kernel.project_dir'): Check compatibility
             {
                 $this->src = $objModel->path;
             }
@@ -85,9 +104,7 @@ class FilterSubmit extends Widget
     }
 
     /**
-     * Generate the widget and return it as string
-     *
-     * @return string The widget markup
+     * Rudimentary generate method
      */
     public function generate() {}
 }

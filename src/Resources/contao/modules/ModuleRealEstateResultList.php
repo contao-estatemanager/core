@@ -75,7 +75,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function compile()
     {
-        if ($this->addFilter)
+        if ($this->addFilterModule)
         {
             $this->Template->filter = $this->getFrontendModule($this->filterModule);
         }

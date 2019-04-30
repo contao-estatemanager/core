@@ -11,11 +11,11 @@ namespace Oveleon\ContaoImmoManagerBundle;
 
 
 /**
- * Class FilterLocation
+ * Class FilterUnique
  *
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class FilterLocation extends FilterWidget
+class FilterUnique extends FilterWidget
 {
 
     /**
@@ -23,14 +23,14 @@ class FilterLocation extends FilterWidget
      *
      * @var string
      */
-    protected $strTemplate = 'filter_location';
+    protected $strTemplate = 'filter_unique';
 
     /**
      * The CSS class prefix
      *
      * @var string
      */
-    protected $strPrefix = 'widget widget-location';
+    protected $strPrefix = 'widget widget-unique';
 
     /**
      * Initialize the object
@@ -41,7 +41,7 @@ class FilterLocation extends FilterWidget
     {
         if (is_array($arrAttributes))
         {
-            $arrAttributes['name'] = 'location';
+            $arrAttributes['name'] = 'unique';
         }
 
         parent::__construct($arrAttributes);
