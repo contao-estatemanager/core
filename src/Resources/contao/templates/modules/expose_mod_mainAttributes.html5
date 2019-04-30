@@ -1,0 +1,11 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php foreach ($this->mainAttributes as $attribute): ?>
+    <div class="attribute <?= $attribute['key'] ?><?= ($attribute['class']) ? ' '.$attribute['class'] : '' ?>">
+        <span class="label"><?= $attribute['label'] ?></span>
+    </div>
+<?php endforeach; ?>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,9 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="gallery-inner">
+    <?=$this->gallery?>
+</div>
+
+<?php $this->endblock(); ?>

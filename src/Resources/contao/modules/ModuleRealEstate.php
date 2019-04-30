@@ -19,13 +19,90 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
  */
 abstract class ModuleRealEstate extends \Module
 {
-
     /**
-     * Parse real estate items and add it to the template
+     * Parse a real estate and return it as string
+     *
+     * @param RealEstateModel $objRealEstate
+     * @param integer|null    $typeId
+     * @param string          $strClass
      *
      * @return string
      */
-    protected function generateResultList()
+    protected function parseRealEstate($objRealEstate, $typeId=null, $strClass='')
+    {
+        // create real estate object
+        $realEstate = new RealEstate($objRealEstate, $typeId);
+
+        // create template
+        $objTemplate = new \FrontendTemplate($this->realEstateTemplate);
+
+        $objTemplate->class = $strClass;
+        $objTemplate->realEstateId = $objRealEstate->id;
+        $objTemplate->arrExtensions = array();
+
+        // get template information
+        $texts = $realEstate->getTexts(null, $this->maxTextLength);
+        $statusTokens = \StringUtil::deserialize($this->statusTokens);
+
+        // set information to template
+        $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
+        $objTemplate->marketingToken = $realEstate->getMarketingToken();
+        $objTemplate->title = $realEstate->getTitle();
+        $objTemplate->description = $texts['objektbeschreibung'];
+        $objTemplate->linkExpose = $this->generateLink('Expose', $realEstate->generateExposeUrl($this->jumpTo), true);
+        $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
+        $objTemplate->address = $realEstate->getLocationString();
+        $objTemplate->mainDetails = $realEstate->getMainDetails(3);
+        $objTemplate->mainAttributes = $realEstate->getMainAttributes(4);
+        $objTemplate->mainPrice = $realEstate->getMainPrice();
+        $objTemplate->mainArea = $realEstate->getMainArea();
+        $objTemplate->details = $realEstate->getDetails(['price'], true);
+        $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
+
+        // set real estate image
+        $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
+
+        if($objModel === null)
+        {
+            // Set default image
+            $defaultImage = \Config::get('defaultImage');
+
+            if($defaultImage)
+            {
+                $objModel = \FilesModel::findByUuid($defaultImage);
+            }
+        }
+
+        if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+        {
+            $arrItem = array
+            (
+                'size' => $this->imgSize,
+                'singleSRC' => $objModel->path
+            );
+
+            $this->addImageToTemplate($objTemplate, $arrItem, null, null, $objModel);
+        }
+
+        // HOOK: parse real estate
+        if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['parseRealEstate'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objTemplate, $realEstate, $this);
+            }
+        }
+
+        return $objTemplate->parse();
+    }
+
+    /**
+     * Parse one or more real estates
+     *
+     * @param integer|null      $typeId
+     */
+    protected function parseRealEstateList($typeId=null)
     {
         $limit = null;
         $offset = 0;
@@ -38,6 +115,8 @@ abstract class ModuleRealEstate extends \Module
 
         $this->Template->realEstates = array();
         $this->Template->empty = $GLOBALS['TL_LANG']['MSC']['noRealEstateResults'];
+
+        $this->isEmpty = true;
 
         // Get the total number of items
         $total = $this->countItems();
@@ -84,101 +163,22 @@ abstract class ModuleRealEstate extends \Module
 
         $objRealEstates = $this->fetchItems(($limit ?: 0), $offset);
 
-        // Add real estates
-        if ($objRealEstates !== null)
+        if($objRealEstates)
         {
-            $this->Template->realEstates = $this->parseRealEstates($objRealEstates);
-        }
-    }
+            $this->isEmpty = false;
 
-    /**
-     * Parse a real estate and return it as string
-     *
-     * @param RealEstateModel $objRealEstate
-     * @param integer|null    $typeId
-     * @param string          $strClass
-     *
-     * @return string
-     */
-    protected function parseRealEstate($objRealEstate, $typeId=null, $strClass='')
-    {
-        $realEstate = new RealEstate($objRealEstate, $typeId);
+            $arrRealEstates = array();
+            $count = 0;
 
-        $objTemplate = new \FrontendTemplate($this->realEstateTemplate);
+            while ($objRealEstates->next()) {
+                /** @var RealEstateModel $objRealEstate */
+                $objRealEstate = $objRealEstates->current();
 
-        $objTemplate->class = $strClass;
-
-        $objTemplate->realEstateId = $objRealEstate->id;
-        $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
-        $objTemplate->marketingToken = $realEstate->getMarketingToken();
-        $objTemplate->title = $realEstate->getTitle();
-        $objTemplate->description = $realEstate->getDescription($this->maxTextLength);
-        $objTemplate->linkExpose = $this->generateLink('Expose', $realEstate->generateExposeUrl($this->jumpTo), true);
-        $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
-        $objTemplate->address = $realEstate->getLocationString();
-        $objTemplate->mainDetails = $realEstate->getMainDetails(3);
-        $objTemplate->mainAttributes = $realEstate->getMainAttributes(4);
-        $objTemplate->mainPrice = $realEstate->getMainPrice();
-        $objTemplate->mainArea = $realEstate->getMainArea();
-        $objTemplate->details = $realEstate->getDetails(['price'], true);
-        $objTemplate->status = array();
-
-        $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
-
-        if($objModel === null)
-        {
-            // Set default image
-            $defaultImage = \Config::get('defaultImage');
-
-            if($defaultImage)
-            {
-                $objModel = \FilesModel::findByUuid($defaultImage);
+                $arrRealEstates[] = $this->parseRealEstate($objRealEstate, $typeId, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'), $count);
             }
         }
 
-        if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
-        {
-            $arrItem = array
-            (
-                'size' => $this->imgSize,
-                'singleSRC' => $objModel->path
-            );
-
-            $this->addImageToTemplate($objTemplate, $arrItem, null, null, $objModel);
-        }
-
-        return $objTemplate->parse();
-    }
-
-    /**
-     * Parse one or more real estates and return them as array
-     *
-     * @param \Model\Collection $objRealEstates
-     * @param integer|null      $typeId
-     *
-     * @return array
-     */
-    protected function parseRealEstates($objRealEstates, $typeId=null)
-    {
-        $limit = $objRealEstates->count();
-
-        if ($limit < 1)
-        {
-            return array();
-        }
-
-        $count = 0;
-        $arrRealEstates = array();
-
-        while ($objRealEstates->next())
-        {
-            /** @var RealEstateModel $objRealEstate */
-            $objRealEstate = $objRealEstates->current();
-
-            $arrRealEstates[] = $this->parseRealEstate($objRealEstate, $typeId, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'), $count);
-        }
-
-        return $arrRealEstates;
+        $this->Template->realEstates = $arrRealEstates;
     }
 
     /**

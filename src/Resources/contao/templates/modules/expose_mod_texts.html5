@@ -1,0 +1,23 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php foreach ($this->texts as $text): ?>
+
+    <?php if($text['text']['value']): ?>
+
+        <div class="<?=$text['text']['key']?><?=$text['text']['class'] ? ' ' . $text['text']['class'] : ''?>">
+
+            <?php if($this->addHeadings): ?>
+                <<?=$this->fontSize?>><?=$text['label']?></<?=$this->fontSize?>>
+            <?php endif; ?>
+
+            <p><?=$text['text']['value']?></p>
+
+        </div>
+
+    <?php endif; ?>
+
+<?php endforeach; ?>
+
+<?php $this->endblock(); ?>

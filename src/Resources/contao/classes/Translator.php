@@ -9,7 +9,6 @@
 
 namespace Oveleon\ContaoImmoManagerBundle;
 
-
 class Translator
 {
     /**
@@ -21,17 +20,7 @@ class Translator
      */
     public static function translateLabel($field)
     {
-        if(is_array($field))
-        {
-            foreach ($field as $k=>$v)
-            {
-                $field[$k] = static::translateLabel($v);
-            }
-
-            return $field;
-        }
-
-        return $GLOBALS['TL_LANG']['tl_real_estate_label'][$field] ?: $field;
+        return static::translate($field, 'tl_real_estate_label');
     }
 
     /**
@@ -44,25 +33,20 @@ class Translator
      */
     public static function translateValue($value, $field = '')
     {
-        if(is_array($value))
-        {
-            foreach ($value as $k=> $v)
-            {
-                $value[$k] = static::translateValue($v, $field);
-            }
+        return static::translate($value, 'tl_real_estate_value', $field);
+    }
 
-            return $value;
-        }
-
-        $addPrefix = false;
-
-        // set field prefix for multiple values
-        if($field && $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $field ] && ($GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $field ]['inputType'] == 'select' || $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $field ]['inputType'] == 'checkboxWizard'))
-        {
-            $addPrefix = true;
-        }
-
-        return $GLOBALS['TL_LANG']['tl_real_estate_value'][ ($addPrefix ? $field . '_' : '') . $value ] ?: $value;
+    /**
+     * Translate attribute by field
+     *
+     * @param $value
+     * @param string|array $field
+     *
+     * @return string|array
+     */
+    public static function translateAttribute($value, $field = '')
+    {
+        return static::translate($value, 'tl_real_estate_attribute', $field);
     }
 
     /**
@@ -74,17 +58,7 @@ class Translator
      */
     public static function translateExpose($field)
     {
-        if(is_array($field))
-        {
-            foreach ($field as $k=>$v)
-            {
-                $field[$k] = static::translateExpose($v);
-            }
-
-            return $field;
-        }
-
-        return $GLOBALS['TL_LANG']['tl_real_estate_expose'][$field] ?: $field;
+        return static::translate($field, 'tl_real_estate_expose');
     }
 
     /**
@@ -96,16 +70,49 @@ class Translator
      */
     public static function translateFilter($field)
     {
-        if(is_array($field))
+        return static::translate($field, 'tl_real_estate_filter');
+    }
+
+    /**
+     * Translate string or array by dictionary
+     *
+     * @param $strVar
+     * @param $dictionary
+     * @param string $prefixField
+     *
+     * @return string|array
+     */
+    public static function translate($strVar, $dictionary, $prefixField = '')
+    {
+        if(is_array($strVar))
         {
-            foreach ($field as $k=>$v)
+            foreach ($strVar as $k=> $v)
             {
-                $field[$k] = static::translateFilter($v);
+                $strVar[$k] = static::translate($v, $dictionary, $prefixField);
             }
 
-            return $field;
+            return $strVar;
         }
 
-        return $GLOBALS['TL_LANG']['tl_real_estate_filter'][$field] ?: $field;
+        // Get the field from the DCA to check values and add a prefix if necessary
+        $dcaField = $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $prefixField ];
+
+        if(
+            $prefixField &&
+            $dcaField &&
+            (
+                $dcaField['inputType'] == 'select' ||
+                $dcaField['inputType'] == 'checkboxWizard' ||
+                (
+                    $dcaField['inputType'] == 'checkbox' &&
+                    boolval($dcaField['eval']['multiple'])
+                )
+            )
+        )
+        {
+            $strVar = $prefixField . '_' . $strVar;
+        }
+
+        return $GLOBALS['TL_LANG'][ $dictionary ][ $strVar ] ?: $strVar;
     }
 }

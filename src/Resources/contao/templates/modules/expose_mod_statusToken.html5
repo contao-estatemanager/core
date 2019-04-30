@@ -1,0 +1,11 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="status">
+    <?php foreach ($this->arrStatusTokens as $statusToken): ?>
+        <div class="token <?=$statusToken['class']?>"><?=$statusToken['value']?></div>
+    <?php endforeach; ?>
+</div>
+
+<?php $this->endblock(); ?>

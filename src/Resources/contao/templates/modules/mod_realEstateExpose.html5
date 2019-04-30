@@ -2,98 +2,49 @@
 
 <?php $this->block('content'); ?>
 
-  <div class="expose-gallery"><?= $this->gallery ?></div>
-
-  <div class="top-container">
-    <h2><?= $this->title ?></h2>
-    <div class="expose-address"><?= $this->address ?></div>
-    <div class="expose-main-details">
-        <?php foreach ($this->mainDetails as $detail): ?>
-          <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
-              <span class="value"><?= $detail['value'] ?></span>
-              <span class="label"><?= $detail['label'] ?></span>
-          </div>
-        <?php endforeach; ?>
+<?php if($this->header): ?>
+    <div class="object-expose-head">
+        <?= $this->header ?>
     </div>
-    <div class="options">
-        <?php if($this->floorPlanGallery): ?>
-            <a href="#floor-plan" class="option floor-plan" title="<?=$this->headlineFloorPlans?>"></a>
-        <?php endif; ?>
-    </div>
-  </div>
+<?php endif; ?>
 
-  <div class="main-container">
-    <div class="left">
-      <div class="detail-container details">
-        <h5><?=$this->headlineDetails?></h5>
-        <?php foreach ($this->details['detail'] as $field => $detail): ?>
-          <div class="attribute <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
-            <span class="label"><?= $detail['label'] ?>:</span>
-            <span class="value"><?= $detail['value'] ?></span>
-          </div>
-        <?php endforeach; ?>
-      </div>
-      <div class="detail-container price">
-        <h5><?=$this->headlinePrice?></h5>
-        <?php foreach ($this->details['price'] as $field => $detail): ?>
-          <div class="attribute">
-            <span class="label"><?= $detail['label'] ?>:</span>
-            <span class="value"><?= $detail['value'] ?></span>
-          </div>
-        <?php endforeach; ?>
-      </div>
-      <?php if(count($this->texts)): ?>
-      <div class="detail-container expose-texts">
-          <div class="tabs">
-              <?php $i=0; foreach ($this->texts as $text): ?>
-                  <?php if($text['value']): ?>
-                      <a href="#expose_<?= $text['key'] ?>" <?=$i++ === 0 ? 'class="active"' : '' ?>><?= $text['label'] ?></a>
-                  <?php endif; ?>
-              <?php endforeach; ?>
-          </div>
-          <?php $i=0; foreach ($this->texts as $text): ?>
-              <?php if($text['value']): ?>
-                  <div id="expose_<?= $text['key'] ?>" class="tab-content<?=$i++ === 0 ? ' active' : '' ?>"><p><?= $text['value'] ?></p></div>
-              <?php endif; ?>
-          <?php endforeach; ?>
-      </div>
-      <?php endif; ?>
+<?php if($this->contentTop): ?>
+    <div class="object-expose-content-top">
+        <?= $this->contentTop ?>
     </div>
-    <div class="right">
+<?php endif; ?>
 
-        <div class="options">
-            <a href="javascipt:;" class="print" onclick="window.print();"><?=$this->optionPrint?></a>
+<div class="object-expose-content">
+
+    <?php if($this->main): ?>
+        <div class="object-expose-main">
+            <?= $this->main ?>
         </div>
+    <?php endif; ?>
 
-        <div class="expose-module contact">
-          <h5><?=$this->headlineContactPerson?></h5>
-          <?php if ($this->contactPerson): ?>
-            <?= $this->contactPerson ?>
-          <?php endif; ?>
-
-          <?php if ($this->addForm): ?>
-            <?= $this->form ?>
-          <?php endif; ?>
+    <?php if ($this->left): ?>
+        <div class="object-expose-left">
+            <?= $this->left ?>
         </div>
+    <?php endif; ?>
 
-        <?php if($this->links): ?>
-            <div class="expose-module links">
-                <h5><?=$this->headlineFutherLinks?></h5>
-                <ul>
-                    <?php foreach ($this->links as $link): ?>
-                        <li><a href="<?=$link?>" target="_blank"><?=$link?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
+    <?php if($this->right): ?>
+        <div class="object-expose-right">
+            <?= $this->right ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php if($this->contentBottom): ?>
+    <div class="object-expose-content-bottom">
+        <?= $this->contentBottom ?>
     </div>
-  </div>
+<?php endif; ?>
 
-  <?php if($this->floorPlanGallery): ?>
-      <div class="expose-floor-plan" id="floor-plan">
-          <h2><?=$this->headlineFloorPlans?></h2>
-          <div class="expose-floor-plan-gallery"><?= $this->floorPlanGallery ?></div>
-      </div>
-  <?php endif; ?>
+<?php if($this->footer): ?>
+    <div class="object-expose-footer">
+        <?= $this->footer ?>
+    </div>
+<?php endif; ?>
 
 <?php $this->endblock(); ?>

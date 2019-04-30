@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_module.list_mode_legend">
+        <source>Output settings</source>
+        <target>Listen Ausgabe</target>
+      </trans-unit>
+      <trans-unit id="tl_module.list_config_legend">
+        <source>List settings</source>
+        <target>Listen Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.status_token_legend">
+        <source>Status output</source>
+        <target>Statusausgabe</target>
+      </trans-unit>
+      <trans-unit id="tl_module.module_legend">
+        <source>Exposé-Module</source>
+        <target>Exposé-Module</target>
+      </trans-unit>
+
+      <trans-unit id="tl_module.listMode.0">
+        <source>Ausgabe-Modus</source>
+        <target>Ausgabe-Modus</target>
+      </trans-unit>
+      <trans-unit id="tl_module.listMode.1">
+        <source>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</source>
+        <target>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.hideOnEmpty.0">
+        <source>Leere Listen ausblenden</source>
+        <target>Leere Listen ausblenden</target>
+      </trans-unit>
+      <trans-unit id="tl_module.hideOnEmpty.1">
+        <source>Sollten keine Ergebnisse gefunden werden, wird die Liste nicht ausgegeben</source>
+        <target>Sollten keine Ergebnisse gefunden werden, wird die Liste nicht ausgegeben</target>
+      </trans-unit>
+      <trans-unit id="tl_module.statusTokens.0">
+        <source>Valid status token</source>
+        <target>Erlaubte Status-Token</target>
+      </trans-unit>
+      <trans-unit id="tl_module.statusTokens.1">
+        <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
+        <target>Wählen Sie die erlaubten Status-Token. Diese werden, sofern diese zutreffen, in unterstützten Templates ausgegeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTemplate.0">
+        <source>Real estate template</source>
+        <target>Immobilien Template</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTemplate.1">
+        <source>Choose a template to set the representation of a single property</source>
+        <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.0">
+        <source>Exposé-Module</source>
+        <target>Exposé-Module</target>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.1">
+        <source>Platzieren Sie Module an die gewünschte Stelle im Exposé</source>
+        <target>Platzieren Sie Module an die gewünschte Stelle im Exposé</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

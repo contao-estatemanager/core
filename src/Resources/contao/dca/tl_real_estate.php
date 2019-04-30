@@ -86,13 +86,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s,\'tl_real_estate\')"',
                 'button_callback'     => array('tl_real_estate', 'toggleIcon')
             ),
-            'topObjekt' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['topObjekt'],
-                'icon'                => 'featured.svg',
-                'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleTopObjekt(this,%s)"',
-                'button_callback'     => array('tl_real_estate', 'iconTopObjekt')
-            ),
             'show' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['show'],
@@ -105,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{real_estate_legend},provider,contactPerson,alias,nutzungsart,vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,objektart,zimmerTyp,wohnungTyp,hausTyp,grundstTyp,bueroTyp,handelTyp,gastgewTyp,hallenTyp,landTyp,parkenTyp,sonstigeTyp,freizeitTyp,zinsTyp,kaufpreis,kaufpreisnetto,kaufpreisbrutto,nettokaltmiete,kaltmiete,warmmiete,freitextPreis,nebenkosten,heizkostenEnthalten,heizkosten,heizkostennetto,heizkostenust,zzgMehrwertsteuer,mietzuschlaege,hauptmietzinsnetto,hauptmietzinsust,pauschalmiete,betriebskostennetto,betriebskostenust,evbnetto,evbust,gesamtmietenetto,gesamtmieteust,gesamtmietebrutto,gesamtbelastungnetto,gesamtbelastungust,gesamtbelastungbrutto,gesamtkostenprom2von,gesamtkostenprom2bis,monatlichekostennetto,monatlichekostenust,monatlichekostenbrutto,nebenkostenprom2von,nebenkostenprom2bis,ruecklagenetto,ruecklageust,sonstigekostennetto,sonstigekostenust,sonstigemietenetto,sonstigemieteust,summemietenetto,summemieteust,nettomieteprom2von,nettomieteprom2bis,pacht,erbpacht,hausgeld,abstand,preisZeitraumVon,preisZeitraumBis,preisZeiteinheit,mietpreisProQm,kaufpreisProQm,provisionspflichtig,provisionTeilenWert,innenCourtage,innenCourtageMwst,aussenCourtage,aussenCourtageMwst,courtageHinweis,provisionnetto,provisionust,provisionbrutto,mwstSatz,mwstGesamt,xFache,nettorendite,nettorenditeSoll,nettorenditeIst,mieteinnahmenIst,mieteinnahmenIstPeriode,mieteinnahmenSoll,mieteinnahmenSollPeriode,erschliessungskosten,kaution,kautionText,geschaeftsguthaben,richtpreis,richtpreisprom2,stpCarport,stpCarportMietpreis,stpCarportKaufpreis,stpDuplex,stpDuplexMietpreis,stpDuplexKaufpreis,stpFreiplatz,stpFreiplatzMietpreis,stpFreiplatzKaufpreis,stpGarage,stpGarageMietpreis,stpGarageKaufpreis,stpParkhaus,stpParkhausMietpreis,stpParkhausKaufpreis,stpTiefgarage,stpTiefgarageMietpreis,stpTiefgarageKaufpreis,stpSonstige,stpSonstigeMietpreis,stpSonstigeKaufpreis,stpSonstigePlatzart,stpSonstigeBemerkung,plz,ort,strasse,hausnummer,breitengrad,laengengrad,bundesland,flur,flurstueck,gemarkung,etage,anzahlEtagen,lageImBau,lageGebiet,gemeindecode,regionalerZusatz,kartenMakro,kartenMikro,virtuelletour,luftbildern,objekttitel,dreizeiler,lage,ausstattBeschr,objektbeschreibung,sonstigeAngaben,objektText,beginnAngebotsphase,besichtigungstermin,besichtigungstermin2,beginnBietzeit,endeBietzeit,hoechstgebotZeigen,mindestpreis,zwangsversteigerung,aktenzeichen,zvtermin,zusatztermin,amtsgericht,verkehrswert,wohnflaeche,nutzflaeche,gesamtflaeche,ladenflaeche,lagerflaeche,verkaufsflaeche,freiflaeche,bueroflaeche,bueroteilflaeche,fensterfront,verwaltungsflaeche,gastroflaeche,grz,gfz,bmz,bgf,grundstuecksflaeche,sonstflaeche,anzahlZimmer,anzahlSchlafzimmer,anzahlBadezimmer,anzahlSepWc,anzahlBalkone,anzahlTerrassen,anzahlLogia,balkonTerrasseFlaeche,anzahlWohnSchlafzimmer,gartenflaeche,kellerflaeche,fensterfrontQm,grundstuecksfront,dachbodenflaeche,teilbarAb,beheizbareFlaeche,anzahlStellplaetze,plaetzeGastraum,anzahlBetten,anzahlTagungsraeume,vermietbareFlaeche,anzahlWohneinheiten,anzahlGewerbeeinheiten,einliegerwohnung,kubatur,ausnuetzungsziffer,flaechevon,flaechebis,ausstattKategorie,wgGeeignet,raeumeVeraenderbar,bad,kueche,boden,kamin,heizungsart,befeuerung,klimatisiert,fahrstuhlart,stellplatzart,gartennutzung,ausrichtBalkonTerrasse,moebliert,rollstuhlgerecht,kabelSatTv,dvbt,barrierefrei,sauna,swimmingpool,waschTrockenraum,wintergarten,dvVerkabelung,rampe,hebebuehne,kran,gastterrasse,stromanschlusswert,kantineCafeteria,teekueche,hallenhoehe,angeschlGastronomie,brauereibindung,sporteinrichtungen,wellnessbereich,serviceleistungen,telefonFerienimmobilie,breitbandZugang,breitbandGeschw,breitbandArt,umtsEmpfang,sicherheitstechnik,unterkellert,abstellraum,fahrradraum,rolladen,bibliothek,dachboden,gaestewc,kabelkanaele,seniorengerecht,baujahr,letztemodernisierung,zustand,alterAttr,bebaubarNach,erschliessung,erschliessungUmfang,bauzone,altlasten,verkaufstatus,zulieferung,ausblick,distanzFlughafen,distanzFernbahnhof,distanzAutobahn,distanzUsBahn,distanzBus,distanzKindergarten,distanzGrundschule,distanzHauptschule,distanzRealschule,distanzGesamtschule,distanzGymnasium,distanzZentrum,distanzEinkaufsmoeglichkeiten,distanzGaststaetten,distanzSportStrand,distanzSportSee,distanzSportMeer,distanzSportSkigebiet,distanzSportSportanlagen,distanzSportWandergebiete,distanzSportNaherholung,energiepassEpart,energiepassGueltigBis,energiepassEnergieverbrauchkennwert,energiepassMitwarmwasser,energiepassEndenergiebedarf,energiepassPrimaerenergietraeger,energiepassStromwert,energiepassWaermewert,energiepassWertklasse,energiepassBaujahr,energiepassAusstelldatum,energiepassJahrgang,energiepassGebaeudeart,energiepassEpasstext,energiepassHwbwert,energiepassHwbklasse,energiepassFgeewert,energiepassFgeeklasse,objektadresseFreigeben,verfuegbarAb,abdatum,bisdatum,minMietdauer,maxMietdauer,versteigerungstermin,wbsSozialwohnung,vermietet,gruppennummer,zugang,laufzeit,maxPersonen,nichtraucher,haustiere,geschlecht,denkmalgeschuetzt,alsFerien,gewerblicheNutzung,branchen,hochhaus,objektnrIntern,objektnrExtern,referenz,topObjekt,aktivVon,aktivBis,openimmoObid,kennungUrsprung,standVom,weitergabeGenerell,weitergabePositiv,weitergabeNegativ,gruppenKennung,master,masterVisible,sprache,titleImageSRC,imageSRC,planImageSRC,interiorViewImageSRC,exteriorViewImageSRC,mapViewImageSRC,panoramaImageSRC,epassSkalaImageSRC,logoImageSRC,qrImageSRC,documents,links,anbieterobjekturl,published',
+        'default'                     => '{real_estate_legend},provider,contactPerson,alias,nutzungsart,vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,objektart,zimmerTyp,wohnungTyp,hausTyp,grundstTyp,bueroTyp,handelTyp,gastgewTyp,hallenTyp,landTyp,parkenTyp,sonstigeTyp,freizeitTyp,zinsTyp,kaufpreis,kaufpreisnetto,kaufpreisbrutto,nettokaltmiete,kaltmiete,warmmiete,freitextPreis,nebenkosten,heizkostenEnthalten,heizkosten,heizkostennetto,heizkostenust,zzgMehrwertsteuer,mietzuschlaege,hauptmietzinsnetto,hauptmietzinsust,pauschalmiete,betriebskostennetto,betriebskostenust,evbnetto,evbust,gesamtmietenetto,gesamtmieteust,gesamtmietebrutto,gesamtbelastungnetto,gesamtbelastungust,gesamtbelastungbrutto,gesamtkostenprom2von,gesamtkostenprom2bis,monatlichekostennetto,monatlichekostenust,monatlichekostenbrutto,nebenkostenprom2von,nebenkostenprom2bis,ruecklagenetto,ruecklageust,sonstigekostennetto,sonstigekostenust,sonstigemietenetto,sonstigemieteust,summemietenetto,summemieteust,nettomieteprom2von,nettomieteprom2bis,pacht,erbpacht,hausgeld,abstand,preisZeitraumVon,preisZeitraumBis,preisZeiteinheit,mietpreisProQm,kaufpreisProQm,provisionspflichtig,provisionTeilenWert,innenCourtage,innenCourtageMwst,aussenCourtage,aussenCourtageMwst,courtageHinweis,provisionnetto,provisionust,provisionbrutto,mwstSatz,mwstGesamt,xFache,nettorendite,nettorenditeSoll,nettorenditeIst,mieteinnahmenIst,mieteinnahmenIstPeriode,mieteinnahmenSoll,mieteinnahmenSollPeriode,erschliessungskosten,kaution,kautionText,geschaeftsguthaben,richtpreis,richtpreisprom2,stpCarport,stpCarportMietpreis,stpCarportKaufpreis,stpDuplex,stpDuplexMietpreis,stpDuplexKaufpreis,stpFreiplatz,stpFreiplatzMietpreis,stpFreiplatzKaufpreis,stpGarage,stpGarageMietpreis,stpGarageKaufpreis,stpParkhaus,stpParkhausMietpreis,stpParkhausKaufpreis,stpTiefgarage,stpTiefgarageMietpreis,stpTiefgarageKaufpreis,stpSonstige,stpSonstigeMietpreis,stpSonstigeKaufpreis,stpSonstigePlatzart,stpSonstigeBemerkung,plz,ort,strasse,hausnummer,breitengrad,laengengrad,bundesland,flur,flurstueck,gemarkung,etage,anzahlEtagen,lageImBau,lageGebiet,gemeindecode,regionalerZusatz,kartenMakro,kartenMikro,virtuelletour,luftbildern,objekttitel,dreizeiler,lage,ausstattBeschr,objektbeschreibung,sonstigeAngaben,objektText,beginnAngebotsphase,besichtigungstermin,besichtigungstermin2,beginnBietzeit,endeBietzeit,hoechstgebotZeigen,mindestpreis,zwangsversteigerung,aktenzeichen,zvtermin,zusatztermin,amtsgericht,verkehrswert,wohnflaeche,nutzflaeche,gesamtflaeche,ladenflaeche,lagerflaeche,verkaufsflaeche,freiflaeche,bueroflaeche,bueroteilflaeche,fensterfront,verwaltungsflaeche,gastroflaeche,grz,gfz,bmz,bgf,grundstuecksflaeche,sonstflaeche,anzahlZimmer,anzahlSchlafzimmer,anzahlBadezimmer,anzahlSepWc,anzahlBalkone,anzahlTerrassen,anzahlLogia,balkonTerrasseFlaeche,anzahlWohnSchlafzimmer,gartenflaeche,kellerflaeche,fensterfrontQm,grundstuecksfront,dachbodenflaeche,teilbarAb,beheizbareFlaeche,anzahlStellplaetze,plaetzeGastraum,anzahlBetten,anzahlTagungsraeume,vermietbareFlaeche,anzahlWohneinheiten,anzahlGewerbeeinheiten,einliegerwohnung,kubatur,ausnuetzungsziffer,flaechevon,flaechebis,ausstattKategorie,wgGeeignet,raeumeVeraenderbar,bad,kueche,boden,kamin,heizungsart,befeuerung,klimatisiert,fahrstuhlart,stellplatzart,gartennutzung,ausrichtBalkonTerrasse,moebliert,rollstuhlgerecht,kabelSatTv,dvbt,barrierefrei,sauna,swimmingpool,waschTrockenraum,wintergarten,dvVerkabelung,rampe,hebebuehne,kran,gastterrasse,stromanschlusswert,kantineCafeteria,teekueche,hallenhoehe,angeschlGastronomie,brauereibindung,sporteinrichtungen,wellnessbereich,serviceleistungen,telefonFerienimmobilie,breitbandZugang,breitbandGeschw,breitbandArt,umtsEmpfang,sicherheitstechnik,unterkellert,abstellraum,fahrradraum,rolladen,bibliothek,dachboden,gaestewc,kabelkanaele,seniorengerecht,baujahr,letztemodernisierung,zustand,alterAttr,bebaubarNach,erschliessung,erschliessungUmfang,bauzone,altlasten,verkaufstatus,zulieferung,ausblick,distanzFlughafen,distanzFernbahnhof,distanzAutobahn,distanzUsBahn,distanzBus,distanzKindergarten,distanzGrundschule,distanzHauptschule,distanzRealschule,distanzGesamtschule,distanzGymnasium,distanzZentrum,distanzEinkaufsmoeglichkeiten,distanzGaststaetten,distanzSportStrand,distanzSportSee,distanzSportMeer,distanzSportSkigebiet,distanzSportSportanlagen,distanzSportWandergebiete,distanzSportNaherholung,energiepassEpart,energiepassGueltigBis,energiepassEnergieverbrauchkennwert,energiepassMitwarmwasser,energiepassEndenergiebedarf,energiepassPrimaerenergietraeger,energiepassStromwert,energiepassWaermewert,energiepassWertklasse,energiepassBaujahr,energiepassAusstelldatum,energiepassJahrgang,energiepassGebaeudeart,energiepassEpasstext,energiepassHwbwert,energiepassHwbklasse,energiepassFgeewert,energiepassFgeeklasse,objektadresseFreigeben,verfuegbarAb,abdatum,bisdatum,minMietdauer,maxMietdauer,versteigerungstermin,wbsSozialwohnung,vermietet,gruppennummer,zugang,laufzeit,maxPersonen,nichtraucher,haustiere,geschlecht,denkmalgeschuetzt,alsFerien,gewerblicheNutzung,branchen,hochhaus,objektnrIntern,objektnrExtern,referenz,aktivVon,aktivBis,openimmoObid,kennungUrsprung,standVom,weitergabeGenerell,weitergabePositiv,weitergabeNegativ,gruppenKennung,master,masterVisible,sprache,titleImageSRC,imageSRC,planImageSRC,interiorViewImageSRC,exteriorViewImageSRC,mapViewImageSRC,panoramaImageSRC,epassSkalaImageSRC,logoImageSRC,qrImageSRC,documents,links,anbieterobjekturl,published',
     ),
 
     // Fields
@@ -2654,6 +2647,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true,
                 'order'     => 600
             )
@@ -2668,6 +2662,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true,
                 'order'     => 600
             )
@@ -2682,6 +2677,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2708,6 +2704,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2722,6 +2719,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -2748,6 +2746,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -2761,6 +2760,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -2786,6 +2786,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'   => true
             )
         ),
@@ -3015,6 +3016,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'    => true
             )
         ),
@@ -3064,6 +3066,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
+                'attribute' => true,
                 'filter'   => true
             )
         ),
@@ -3138,6 +3141,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
+                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -4116,6 +4120,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
+            'realEstate'                => array()
         ),
         'objektnrExtern'  => array
         (
@@ -4123,17 +4128,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
+            'realEstate'                => array()
         ),
         'referenz'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['referenz'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class' => 'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default '0'",
-        ),
-        'topObjekt'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['topObjekt'],
             'inputType'                 => 'checkbox',
             'eval'                      => array('tl_class' => 'w50 m12'),
             'sql'                       => "char(1) NOT NULL default '0'",
@@ -4641,91 +4640,6 @@ class tl_real_estate extends Backend
                 }
             }
         }
-
-        $objVersions->create();
-    }
-
-    /**
-     * Return the "top object" button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function iconTopObjekt($row, $href, $label, $title, $icon, $attributes)
-    {
-        if (\strlen(Input::get('toid')))
-        {
-            $this->toggleTopObjekt(Input::get('toid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
-            $this->redirect($this->getReferer());
-        }
-
-        // Check permissions AFTER checking the fid, so hacking attempts are logged
-        if (!$this->User->hasAccess('tl_real_estate::topObjekt', 'alexf'))
-        {
-            return '';
-        }
-
-        $href .= '&amp;toid='.$row['id'].'&amp;state='.($row['topObjekt'] ? '' : 1);
-
-        if (!$row['topObjekt'])
-        {
-            $icon = 'featured_.svg';
-        }
-
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['topObjekt'] ? 1 : 0) . '"').'</a> ';
-    }
-
-    /**
-     * Toggle top object flag for a real estate
-     *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
-     *
-     * @throws Contao\CoreBundle\Exception\AccessDeniedException
-     */
-    public function toggleTopObjekt($intId, $blnVisible, DataContainer $dc=null)
-    {
-        // Check permissions to edit
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'topObjekt');
-        $this->checkPermission();
-
-        // Check permissions to feature
-        if (!$this->User->hasAccess('tl_real_estate::topObjekt', 'alexf'))
-        {
-            throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to declare top object flag for item ID ' . $intId . '.');
-        }
-
-        $objVersions = new Versions('tl_real_estate', $intId);
-        $objVersions->initialize();
-
-        // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['topObjekt']['save_callback']))
-        {
-            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['topObjekt']['save_callback'] as $callback)
-            {
-                if (\is_array($callback))
-                {
-                    $this->import($callback[0]);
-                    $blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
-                }
-                elseif (\is_callable($callback))
-                {
-                    $blnVisible = $callback($blnVisible, $this);
-                }
-            }
-        }
-
-        // Update the database
-        $this->Database->prepare("UPDATE tl_real_estate SET tstamp=". time() .", topObjekt='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
-            ->execute($intId);
 
         $objVersions->create();
     }

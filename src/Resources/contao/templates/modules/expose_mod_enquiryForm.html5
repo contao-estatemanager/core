@@ -1,0 +1,8 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+Formular
+<?=$this->form?>
+
+<?php $this->endblock(); ?>

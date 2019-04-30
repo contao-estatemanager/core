@@ -8,21 +8,19 @@
  */
 
 // Add palettes
-$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addForm';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addFilterModule';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 (
-    'realEstateExpose'      => '{title_legend},name,headline,type;{form_legend:hide},addForm;{template_legend:hide},customTpl,realEstateGalleryTemplate,realEstateFloorPlanGalleryTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,realEstateGalleryImgSize,floorPlanImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-    'realEstateList'        => '{title_legend},name,headline,type;{list_mode_legend},listMode,hideOnEmpty;{list_config_legend},jumpTo,numberOfItems,perPage;{include_legend},addForm;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{list_config_legend},jumpTo,numberOfItems,perPage;{filter_legend:hide},addFilterModule;{filter_mode_legend:hide},filterMode;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateList'        => '{title_legend},name,headline,type;{list_mode_legend},listMode,hideOnEmpty;{list_config_legend},jumpTo,numberOfItems,perPage;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{filter_legend:hide},addFilterModule;{filter_mode_legend:hide},filterMode;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
-    'addForm'              => 'form',
     'addFilterModule'      => 'filterModule',
     'listMode_group'       => 'filterGroups,filterMode'
 ));
@@ -32,90 +30,13 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
 (
     'realEstateTemplate' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateListTemplate'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
         'default'                 => 'real_estate_default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateListTemplates'),
+        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateTemplates'),
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateGalleryTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateGalleryTemplate'],
-        'default'                 => 'real_estate_gallery_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateGalleryListTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateFloorPlanGalleryTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstatePlanFloorGalleryTemplate'],
-        'default'                 => 'real_estate_gallery_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateGalleryListTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateContactPersonTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateContactPersonTemplate'],
-        'default'                 => 'real_estate_contact_person_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateContactPersonTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateGalleryImgSize' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateGalleryImgSize'],
-        'exclude'                 => true,
-        'inputType'               => 'imageSize',
-        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
-        'options_callback' => function ()
-        {
-            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-        },
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'floorPlanImgSize' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['planFloorImgSize'],
-        'exclude'                 => true,
-        'inputType'               => 'imageSize',
-        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
-        'options_callback' => function ()
-        {
-            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-        },
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'contactPersonImgSize' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['contactPersonImgSize'],
-        'exclude'                 => true,
-        'inputType'               => 'imageSize',
-        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
-        'options_callback' => function ()
-        {
-            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-        },
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'addForm' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addForm'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true),
-        'sql'                     => "char(1) NOT NULL default ''"
     ),
     'addFilterModule' => array
     (
@@ -153,7 +74,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'select',
         'options'                 => array('visited', 'group'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
         'eval'                    => array('tl_class'=>'w50','submitOnChange'=>true),
         'sql'                     => "varchar(16) NOT NULL default ''"
     ),
@@ -203,6 +124,24 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
         'sql'                     => "int(10) unsigned NOT NULL default '0'"
     ),
+    'statusTokens' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['statusTokens'],
+        'exclude'                 => true,
+        'inputType'               => 'checkboxWizard',
+        'options'                 => array('new', 'reserved', 'rented', 'sold'),
+        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
+        'eval'                    => array('multiple'=>true),
+        'sql'                     => "blob NULL"
+    ),
+    'exposeModules' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['exposeModules'],
+        'default'                 => array(array('mod'=>0, 'col'=>'wrapper_before', 'enable'=>1)),
+        'exclude'                 => true,
+        'inputType'               => 'exposeModuleWizard',
+        'sql'                     => "blob NULL"
+    )
 ));
 
 /**
@@ -228,29 +167,9 @@ class tl_module_immo_manager extends Backend
      *
      * @return array
      */
-    public function getRealEstateListTemplates()
+    public function getRealEstateTemplates()
     {
         return $this->getTemplateGroup('real_estate_');
-    }
-
-    /**
-     * Return all real estate list templates as array
-     *
-     * @return array
-     */
-    public function getRealEstateGalleryListTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_gallery_');
-    }
-
-    /**
-     * Return all contact person templates as array
-     *
-     * @return array
-     */
-    public function getRealEstateContactPersonTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_contact_person_');
     }
 
     /**

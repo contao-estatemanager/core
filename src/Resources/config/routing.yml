@@ -1,0 +1,10 @@
+immomanager_api_read:
+  path: /api/immomanager/v{version}/{module}/{id}
+  defaults:
+    _controller: "ContaoImmoManagerBundle:ImmoManager:read"
+    _scope: frontend
+    _token_check: false
+    id: null
+  requirements:
+    version: '\d+'
+  methods: [GET]

@@ -13,6 +13,10 @@
          <source>Preis</source>
          <target>Preis</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.objektnrExtern">
+        <source>Objektnr.</source>
+        <target>Objektnr.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.kaufpreis">
         <source>Kaufpreis</source>
         <target>Kaufpreis</target>

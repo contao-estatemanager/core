@@ -1,0 +1,7 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<<?=$this->fontSize?>><?=$this->title?></<?=$this->fontSize?>>
+
+<?php $this->endblock(); ?>

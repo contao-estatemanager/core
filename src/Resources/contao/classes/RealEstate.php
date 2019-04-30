@@ -77,6 +77,23 @@ class RealEstate
         return null;
     }
 
+    public function getType()
+    {
+        return $this->objType;
+    }
+
+    public function getId()
+    {
+        return $this->objRealEstate->id;
+    }
+
+    /**
+     * Generate and return the expose url of the real estate
+     *
+     * @param $pageId
+     *
+     * @return mixed
+     */
     public function generateExposeUrl($pageId)
     {
         $objPage = \PageModel::findByPk($pageId);
@@ -91,33 +108,48 @@ class RealEstate
         return ampersand($objPage->getFrontendUrl($params));
     }
 
+    /**
+     * Return the object title of the real estate
+     *
+     * @return mixed
+     */
     public function getTitle()
     {
         return $this->objRealEstate->objekttitel;
     }
 
-    public function getDescription($maxTextLength=0)
+    /**
+     * Return a collection of parsed real estate fields
+     *
+     * @param null $fields
+     *
+     * @return array
+     */
+    public function getFields($fields=null)
     {
-        if ($maxTextLength > 0)
+        $arrFields = array();
+
+        if(!$fields)
         {
-            $description = trim(preg_replace('#[\s\n\r\t]{2,}#', ' ', $this->objRealEstate->objektbeschreibung));
-
-            while (substr($description, $maxTextLength, 1) != " ")
-            {
-                $maxTextLength++;
-
-                if ($maxTextLength > strlen($description))
-                {
-                    break;
-                }
-            }
-
-            return substr($description, 0, $maxTextLength) . '...';
+            return $arrFields;
         }
 
-        return $this->objRealEstate->objektbeschreibung;
+        foreach ($fields as $field)
+        {
+            if($this->formatter->isFilled($field))
+            {
+                $arrFields[] = $this->formatter->getFormattedCollection($field);
+            }
+        }
+
+        return $arrFields;
     }
 
+    /**
+     * Return the first assignable image uuid
+     *
+     * @return string|null
+     */
     public function getMainImage()
     {
         if ($this->objRealEstate->titleImageSRC)
@@ -125,7 +157,7 @@ class RealEstate
             return $this->objRealEstate->titleImageSRC;
         }
 
-        $arrFields = array('imageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC');
+        $arrFields = array('imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
 
         foreach ($arrFields as $field)
         {
@@ -138,26 +170,51 @@ class RealEstate
         return null;
     }
 
-    public function getImageBundle()
+    /**
+     * Return image uuid's of the real estate
+     *
+     * @param null $arrFields
+     * @param null $max
+     *
+     * @return array
+     */
+    public function getImageBundle($arrFields=null, $max=null)
     {
         $return = array();
 
-        if ($this->objRealEstate->titleImageSRC)
+        $arrValidFields = array('titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
+
+        if(!$arrFields)
         {
-            $return[] = $this->objRealEstate->titleImageSRC;
+            $arrFields = $arrValidFields;
         }
 
-        $arrFields = array('imageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'panoramaImageSRC');
+        $index = 1;
 
         foreach ($arrFields as $field)
         {
             if ($this->objRealEstate->{$field})
             {
-                $arrImages = \StringUtil::deserialize($this->objRealEstate->{$field});
-
-                foreach ($arrImages as $image)
+                if($field === 'titleImageSRC')
                 {
-                    $return[] = $image;
+                    $return[] = $this->objRealEstate->titleImageSRC;
+
+                    if ($max !== null && intval($max) === $index++){
+                        break;
+                    }
+                }
+                else
+                {
+                    $arrImages = \StringUtil::deserialize($this->objRealEstate->{$field});
+
+                    foreach ($arrImages as $image)
+                    {
+                        $return[] = $image;
+
+                        if ($max !== null && intval($max) === $index++){
+                            break 2;
+                        }
+                    }
                 }
             }
         }
@@ -165,28 +222,22 @@ class RealEstate
         return $return;
     }
 
-    public function getFloorPlanImages()
+    /**
+     * Return status token from real estate
+     *
+     * @param null $validStatusToken
+     *
+     * @return array
+     */
+    public function getStatusTokens($validStatusToken=null)
     {
         $return = array();
 
-        if ($this->objRealEstate->planImageSRC)
-        {
-            $arrImages = \StringUtil::deserialize($this->objRealEstate->planImageSRC);
-
-            foreach ($arrImages as $image)
-            {
-                $return[] = $image;
-            }
+        if(!$validStatusToken){
+            return $return;
         }
 
-        return $return;
-    }
-
-    public function getStatus()
-    {
-        $return = array();
-
-        if (strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
+        if (in_array('new', $validStatusToken) && strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (
@@ -194,7 +245,7 @@ class RealEstate
                 'class' => 'new'
             );
         }
-        if ($this->objRealEstate->verkaufstatus === 'reserviert')
+        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (
@@ -202,31 +253,57 @@ class RealEstate
                 'class' => 'reserved'
             );
         }
-        if ($this->objRealEstate->verkaufstatus === 'verkauft')
+        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft')
         {
             $return[] = array
             (
                 'value' => Translator::translateValue('verkauft'),
-                'class' => 'saled'
+                'class' => 'sold'
+            );
+        }
+        if (in_array('rented', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'vermietet')
+        {
+            $return[] = array
+            (
+                'value' => Translator::translateValue('vermietet'),
+                'class' => 'rented'
             );
         }
 
         return $return;
     }
 
+    /**
+     * Return marketing token from real estate
+     *
+     * @return array
+     */
     public function getMarketingToken()
     {
         if($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht)
         {
-            return Translator::translateValue('for_sale');
+            return array(
+                'value' => Translator::translateValue('for_sale'),
+                'class' => 'for_sale'
+            );
         }
 
         if($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing)
         {
-            return Translator::translateValue('for_rent');
+            return array(
+                'value' => Translator::translateValue('for_rent'),
+                'class' => 'for_rent'
+            );
         }
     }
 
+    /**
+     * Return the location from real estate
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return array
+     */
     public function getLocation($forceCompleteAddress=false)
     {
         $arrAddress = array();
@@ -262,6 +339,13 @@ class RealEstate
         return $arrAddress;
     }
 
+    /**
+     * Return marketing token from real estate as string
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return string
+     */
     public function getLocationString($forceCompleteAddress=false)
     {
         $strAddress = '';
@@ -293,6 +377,12 @@ class RealEstate
         return $strAddress;
     }
 
+
+    /**
+     * Returns the price that can be assigned first
+     *
+     * @return mixed
+     */
     public function getMainPrice()
     {
         if($this->objRealEstate->{$this->objType->price})
@@ -309,24 +399,48 @@ class RealEstate
         }
     }
 
+    /**
+     * Returns the area that can be assigned first
+     *
+     * @return mixed
+     */
     public function getMainArea()
     {
         return $this->formatter->getFormattedCollection($this->objType->area);
     }
 
     /**
-     * return all details from real estate
+     * Return details from real estate
      *
-     * @param null|array $separateGroups: area, price, attribute, detail
-     * @param bool       $includeAddress
-     * @param string     $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param null|array    $separateGroups: area, price, attribute, detail
+     * @param bool          $includeAddress
+     * @param null|array    $validGroups
+     * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
      *
      * @return array $details: array('group1' [,group2,group3,...])
      */
-    public function getDetails($separateGroups=null, $includeAddress = false, $defaultGroup='detail')
+    public function getDetails($separateGroups=null, $includeAddress = false, $validGroups=null, $defaultGroup='detail')
     {
+        $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
+
+        $availableGroups = array();
+
         // set available groups and sort order
-        $availableGroups = array('area', 'price', 'attribute', 'detail', 'energie');
+        if(!$validGroups)
+        {
+            $availableGroups = $groupSorting;
+        }
+        else
+        {
+            // we have to sort the fields, which contain several options, to be able to fill the groups correctly
+            foreach ($groupSorting as $index)
+            {
+                if(in_array($index, $validGroups))
+                {
+                    $availableGroups[] = $index;
+                }
+            }
+        }
 
         if($includeAddress)
         {
@@ -395,6 +509,13 @@ class RealEstate
         return $collection;
     }
 
+    /**
+     * Return main details from real estate
+     *
+     * @param null $max
+     *
+     * @return array
+     */
     public function getMainDetails($max=null)
     {
         $return = array();
@@ -423,6 +544,13 @@ class RealEstate
         return $return;
     }
 
+    /**
+     * Return main attributes from real estate
+     *
+     * @param null $max
+     *
+     * @return array
+     */
     public function getMainAttributes($max=null)
     {
         $return = array();
@@ -440,17 +568,32 @@ class RealEstate
         {
             if ($this->formatter->isFilled($attribute['field']))
             {
-                $collection = $this->formatter->getFormattedCollection($attribute['field']);
+                $varValue = $this->objRealEstate->{$attribute['field']};
 
-                $return[] = array_merge(
-                    $collection,
-                    array(
-                        'showValue' => $this->objRealEstate->{$attribute['field']} > 1
-                    )
-                );
+                // Check whether the field must be deserialized
+                $varUnserialized = @unserialize($varValue);
 
-                if ($max !== null && $max === $index++){
-                    break;
+                if (\is_array($varUnserialized))
+                {
+                    $arrFields = $varUnserialized;
+                }
+                else
+                {
+                    $arrFields = array($attribute['field']);
+                }
+
+                foreach ($arrFields as $field)
+                {
+                    $return[] = array(
+                        'value' => $this->formatter->formatValue($attribute['field']),
+                        'label' => Translator::translateAttribute($field, $attribute['field']),
+                        'key'   => $attribute['field'],
+                        'class' => $this->formatter->getClass($attribute['field'])
+                    );
+
+                    if ($max !== null && $max === $index++){
+                        break 2;
+                    }
                 }
             }
         }
@@ -458,31 +601,42 @@ class RealEstate
         return $return;
     }
 
-    // ToDo: maxLength
-    public function getTexts()
+    /**
+     * Return texts from real estate
+     *
+     * @param array|null $validTexts
+     * @param int $maxTextLength
+     *
+     * @return array
+     */
+    public function getTexts($validTexts=null, $maxTextLength=0)
     {
-        $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben');
+        if(!$validTexts)
+        {
+            $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben');
+        }
 
         $return = array();
 
-        foreach ($validTexts as $text)
+        foreach ($validTexts as $field)
         {
-            $return[] = $this->formatter->getFormattedCollection($text);
+            $textCollection = $this->formatter->getFormattedCollection($field);
+
+            $textCollection['value'] = $this->formatter->shortenText($textCollection['value'], $maxTextLength);
+
+            $return[ $field ] = $textCollection;
         }
 
         return $return;
     }
 
-    public function getType()
-    {
-        return $this->objType;
-    }
-
-    public function getId()
-    {
-        return $this->objRealEstate->id;
-    }
-
+    /**
+     * Return data of the assigned person
+     *
+     * @param bool $forceCompleteAddress
+     *
+     * @return null
+     */
     public function getContactPerson($forceCompleteAddress=false)
     {
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
@@ -495,7 +649,7 @@ class RealEstate
 
         $contactPerson = $objContactPerson->row();
 
-        $contactPerson['name'] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
+        $contactPerson['kontaktname'] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
 
         if(!$objContactPerson->adressfreigabe && $forceCompleteAddress === false)
         {
@@ -508,27 +662,27 @@ class RealEstate
         }
 
         if($objProvider->forwardingMode === 'provider') {
-            $contactPerson['mainPhone'] = $objContactPerson->tel_zentrale;
-            $contactPerson['mainEmail'] = $objContactPerson->email_zentrale;
+            $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
+            $contactPerson['email'] = $objContactPerson->email_zentrale;
         }
         else
         {
             if($objContactPerson->email_direkt)
             {
-                $contactPerson['mainEmail'] = $objContactPerson->email_direkt;
+                $contactPerson['email'] = $objContactPerson->email_direkt;
             }
             else
             {
-                $contactPerson['mainEmail'] = $objContactPerson->email_zentrale;
+                $contactPerson['email'] = $objContactPerson->email_zentrale;
             }
 
             if($objContactPerson->tel_durchw)
             {
-                $contactPerson['mainPhone'] = $objContactPerson->tel_durchw;
+                $contactPerson['telefon'] = $objContactPerson->tel_durchw;
             }
             else
             {
-                $contactPerson['mainPhone'] = $objContactPerson->tel_zentrale;
+                $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
             }
         }
 

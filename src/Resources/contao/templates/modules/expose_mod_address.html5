@@ -1,0 +1,7 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<address><?=$this->address?></address>
+
+<?php $this->endblock(); ?>

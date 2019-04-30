@@ -1,0 +1,7 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<button class="print" onclick="window.print();"><?=$this->label?></button>
+
+<?php $this->endblock(); ?>

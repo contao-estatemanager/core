@@ -1,0 +1,7 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="token <?=$this->marketingToken['class']?>"><?=$this->marketingToken['value']?></div>
+
+<?php $this->endblock(); ?>

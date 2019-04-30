@@ -1,0 +1,10 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="field <?=$this->mainArea['key']?><?=$this->mainArea['class'] ? ' ' . $this->mainArea['class'] : ''?>">
+    <div class="label"><?=$this->mainArea['label']?></div>
+    <div class="value" title="<?=$this->mainArea['label']?>"><?=$this->mainArea['value']?></div>
+</div>
+
+<?php $this->endblock(); ?>

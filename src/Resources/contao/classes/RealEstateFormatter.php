@@ -83,6 +83,7 @@ class RealEstateFormatter
         // load translation files
         \System::loadLanguageFile('tl_real_estate_label');
         \System::loadLanguageFile('tl_real_estate_value');
+        \System::loadLanguageFile('tl_real_estate_attribute');
     }
 
     /**
@@ -184,6 +185,37 @@ class RealEstateFormatter
     }
 
     /**
+     * Cut text to given max length
+     *
+     * @param $text
+     * @param $max
+     * @param string $textOverflow
+     *
+     * @return null
+     */
+    public function shortenText($text, $max, $textOverflow = '...')
+    {
+        if ($max > 0)
+        {
+            $txt = trim(preg_replace('#[\s\n\r\t]{2,}#', ' ', $text));
+
+            while (substr($txt, $max, 1) != " ")
+            {
+                $max++;
+
+                if ($max > strlen($txt))
+                {
+                    break;
+                }
+            }
+
+            return substr($txt, 0, $max) . $textOverflow;
+        }
+
+        return $text;
+    }
+
+    /**
      * Parse field
      *
      * @param string $field
@@ -199,7 +231,6 @@ class RealEstateFormatter
             switch($action['action'])
             {
                 case 'number_format':
-                    // ToDo: #$newValue = (isset($value) && $value !== '') ? str_replace(\Config::get('numberFormatDecimals') . '00', '', number_format($value, ($action['decimals'] ?: 0), \Config::get('numberFormatDecimals'), \Config::get('numberFormatThousands'))) : $value;
                     $newValue = (isset($value) && $value !== '') ? number_format($value, ($action['decimals'] ?: 0), \Config::get('numberFormatDecimals'), \Config::get('numberFormatThousands')) : $value;
                     break;
                 case 'prepend':
