@@ -13,6 +13,10 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('filter_item'); ?>
+  <?php if ($this->hasErrors()): ?>
+    <p class="error"><?= $this->getErrorAsString() ?></p>
+  <?php endif; ?>
+
   <select name="marketing-type" id="ctrl_<?= $this->id ?>_group" class="<?= $this->marketingType['class'] ?> <?= $this->class ?>"<?= $this->getAttributes() ?>>
     <?php foreach ($this->marketingType['options'] as $option): ?>
       <?php if ($option['type'] == 'option'): ?>

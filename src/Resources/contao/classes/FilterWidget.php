@@ -16,67 +16,30 @@ namespace Oveleon\ContaoImmoManagerBundle;
  */
 abstract class FilterWidget extends \Widget
 {
-	/**
-	 * Set an object property
-	 *
-	 * @param string $strKey   The property name
-	 * @param mixed  $varValue The property value
-	 */
-	public function __set($strKey, $varValue)
-	{
-		switch ($strKey)
-		{
-			case 'foo':
-				$this->strId = $varValue;
-				break;
+    /**
+     * Multiple
+     * @var boolean
+     */
+    protected $blnMultiple = false;
 
-            default:
-                parent::__set($strKey, $varValue);
+    /**
+     * Return an object property
+     *
+     * @param string $strKey The property name
+     *
+     * @return string The property value
+     */
+    public function __get($strKey)
+    {
+        switch ($strKey)
+        {
+            case 'multiple':
+                return $this->blnMultiple;
                 break;
-		}
-	}
+        }
 
-	/**
-	 * Return an object property
-	 *
-	 * @param string $strKey The property name
-	 *
-	 * @return string The property value
-	 */
-	public function __get($strKey)
-	{
-		switch ($strKey)
-		{
-			case 'foo':
-				return $this->strId;
-				break;
-
-            default:
-                return parent::__get($strKey);
-                break;
-		}
-	}
-
-	/**
-	 * Check whether an object property exists
-	 *
-	 * @param string $strKey The property name
-	 *
-	 * @return boolean True if the property exists
-	 */
-	public function __isset($strKey)
-	{
-		switch ($strKey)
-		{
-			case 'foo':
-				return isset($this->strId);
-				break;
-
-            default:
-                return parent::__isset($strKey);
-                break;
-		}
-	}
+        return parent::__get($strKey);
+    }
 
 	/**
 	 * Parse the template file and return it as string
@@ -115,43 +78,69 @@ abstract class FilterWidget extends \Widget
 		return $strBuffer;
 	}
 
-	/**
-	 * Validate the user input and set the value
-	 */
-	public function validate()
-	{
-		$varValue = $this->validator($this->getPost($this->strName));
+    /**
+     * Validate the user input and set the value
+     */
+    public function validate()
+    {
+        $varValue = $this->validator(\Input::post($this->name, true));
 
-		if ($this->hasErrors())
-		{
-			$this->class = 'error';
-		}
+        if ($this->hasErrors())
+        {
+            $this->class = 'error';
+        }
 
-		$this->varValue = $varValue;
-	}
+        $this->varValue = $varValue;
+    }
+
+    /**
+     * Find and return a $_POST variable
+     *
+     * @param string $strKey The variable name
+     *
+     * @return mixed The variable value
+     */
+    protected function getPost($strKey)
+    {
+        if (\is_callable($this->inputCallback))
+        {
+            return \call_user_func($this->inputCallback);
+        }
+
+        $arrParts = explode('[', str_replace(']', '', $strKey));
+        $varValue = \Input::post(array_shift($arrParts), true);
+
+        foreach ($arrParts as $part)
+        {
+            if (!\is_array($varValue))
+            {
+                break;
+            }
+
+            $varValue = $varValue[$part];
+        }
+
+        return $varValue;
+    }
 
 	/**
 	 * Recursively validate an input variable
 	 *
-	 * @param mixed $varInput The user input
+	 * @param mixed  $varInput The user input
+	 * @param string $rgxp     An optional validation method
 	 *
 	 * @return mixed The original or modified user input
 	 */
-	protected function validator($varInput)
+	protected function validator($varInput, $rgxp='')
 	{
 		if (\is_array($varInput))
 		{
 			foreach ($varInput as $k=>$v)
 			{
-				$varInput[$k] = $this->validator($v);
+				$varInput[$k] = $this->validator($v, $rgxp);
 			}
 
 			return $varInput;
-		}
-
-		if (!$this->doNotTrim)
-		{
-			$varInput = trim($varInput);
 		}
 
 		if ($varInput == '')
@@ -173,41 +162,10 @@ abstract class FilterWidget extends \Widget
 			}
 		}
 
-		if ($this->minlength && $varInput != '' && Utf8::strlen($varInput) < $this->minlength)
+		if ($rgxp != '')
 		{
-			$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['minlength'], $this->strLabel, $this->minlength));
-		}
-
-		if ($this->maxlength && $varInput != '' && Utf8::strlen($varInput) > $this->maxlength)
-		{
-			$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['maxlength'], $this->strLabel, $this->maxlength));
-		}
-
-		if ($this->minval && is_numeric($varInput) && $varInput < $this->minval)
-		{
-			$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['minval'], $this->strLabel, $this->minval));
-		}
-
-		if ($this->maxval && is_numeric($varInput) && $varInput > $this->maxval)
-		{
-			$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['maxval'], $this->strLabel, $this->maxval));
-		}
-
-		if ($this->rgxp != '')
-		{
-			switch ($this->rgxp)
+			switch ($rgxp)
 			{
-				// Special validation rule for style sheets
-				case strncmp($this->rgxp, 'digit_', 6) === 0:
-					$textual = explode('_', $this->rgxp);
-					array_shift($textual);
-
-					if (\in_array($varInput, $textual) || strncmp($varInput, '$', 1) === 0)
-					{
-						break;
-					}
-					// DO NOT ADD A break; STATEMENT HERE
-
 				// Numeric characters (including full stop [.] and minus [-])
 				case 'digit':
 					// Support decimal commas and convert them automatically (see #3488)
@@ -215,7 +173,7 @@ abstract class FilterWidget extends \Widget
 					{
 						$varInput = str_replace(',', '.', $varInput);
 					}
-					if (!Validator::isNumeric($varInput))
+					if (!\Validator::isNumeric($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['digit'], $this->strLabel));
 					}
@@ -223,7 +181,7 @@ abstract class FilterWidget extends \Widget
 
 				// Natural numbers (positive integers)
 				case 'natural':
-					if (!Validator::isNatural($varInput))
+					if (!\Validator::isNatural($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['natural'], $this->strLabel));
 					}
@@ -231,7 +189,7 @@ abstract class FilterWidget extends \Widget
 
 				// Alphabetic characters (including full stop [.] minus [-] and space [ ])
 				case 'alpha':
-					if (!Validator::isAlphabetic($varInput))
+					if (!\Validator::isAlphabetic($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alpha'], $this->strLabel));
 					}
@@ -239,7 +197,7 @@ abstract class FilterWidget extends \Widget
 
 				// Alphanumeric characters (including full stop [.] minus [-], underscore [_] and space [ ])
 				case 'alnum':
-					if (!Validator::isAlphanumeric($varInput))
+					if (!\Validator::isAlphanumeric($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alnum'], $this->strLabel));
 					}
@@ -247,7 +205,7 @@ abstract class FilterWidget extends \Widget
 
 				// Do not allow any characters that are usually encoded by class Input ([#<>()\=])
 				case 'extnd':
-					if (!Validator::isExtendedAlphanumeric(html_entity_decode($varInput)))
+					if (!\Validator::isExtendedAlphanumeric(html_entity_decode($varInput)))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['extnd'], $this->strLabel));
 					}
@@ -255,7 +213,7 @@ abstract class FilterWidget extends \Widget
 
 				// Check whether the current value is a valid date format
 				case 'date':
-					if (!Validator::isDate($varInput))
+					if (!\Validator::isDate($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['date'], Date::getInputFormat(Date::getNumericDateFormat())));
 					}
@@ -264,7 +222,7 @@ abstract class FilterWidget extends \Widget
 						// Validate the date (see #5086)
 						try
 						{
-							new Date($varInput, Date::getNumericDateFormat());
+							new \Date($varInput, \Date::getNumericDateFormat());
 						}
 						catch (\OutOfBoundsException $e)
 						{
@@ -275,24 +233,24 @@ abstract class FilterWidget extends \Widget
 
 				// Check whether the current value is a valid time format
 				case 'time':
-					if (!Validator::isTime($varInput))
+					if (!\Validator::isTime($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'], Date::getInputFormat(Date::getNumericTimeFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'], \Date::getInputFormat(\Date::getNumericTimeFormat())));
 					}
 					break;
 
 				// Check whether the current value is a valid date and time format
 				case 'datim':
-					if (!Validator::isDatim($varInput))
+					if (!\Validator::isDatim($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'], Date::getInputFormat(Date::getNumericDatimFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'], \Date::getInputFormat(\Date::getNumericDatimFormat())));
 					}
 					else
 					{
 						// Validate the date (see #5086)
 						try
 						{
-							new Date($varInput, Date::getNumericDatimFormat());
+							new \Date($varInput, \Date::getNumericDatimFormat());
 						}
 						catch (\OutOfBoundsException $e)
 						{
@@ -301,74 +259,9 @@ abstract class FilterWidget extends \Widget
 					}
 					break;
 
-				// Check whether the current value is a valid friendly name e-mail address
-				case 'friendly':
-					list ($strName, $varInput) = StringUtil::splitFriendlyEmail($varInput);
-					// no break;
-
-				// Check whether the current value is a valid e-mail address
-				case 'email':
-					if (!Validator::isEmail($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['email'], $this->strLabel));
-					}
-					if ($this->rgxp == 'friendly' && !empty($strName))
-					{
-						$varInput = $strName . ' [' . $varInput . ']';
-					}
-					break;
-
-				// Check whether the current value is list of valid e-mail addresses
-				case 'emails':
-					$arrEmails = StringUtil::trimsplit(',', $varInput);
-
-					foreach ($arrEmails as $strEmail)
-					{
-						$strEmail = Idna::encodeEmail($strEmail);
-
-						if (!Validator::isEmail($strEmail))
-						{
-							$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['emails'], $this->strLabel));
-							break;
-						}
-					}
-					break;
-
-				// Check whether the current value is a valid URL
-				case 'url':
-					if (!Validator::isUrl($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['url'], $this->strLabel));
-					}
-					break;
-
-				// Check whether the current value is a valid alias
-				case 'alias':
-					if (!Validator::isAlias($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alias'], $this->strLabel));
-					}
-					break;
-
-				// Check whether the current value is a valid folder URL alias
-				case 'folderalias':
-					if (!Validator::isFolderAlias($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['folderalias'], $this->strLabel));
-					}
-					break;
-
-				// Phone numbers (numeric characters, space [ ], plus [+], minus [-], parentheses [()] and slash [/])
-				case 'phone':
-					if (!Validator::isPhone(html_entity_decode($varInput)))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['phone'], $this->strLabel));
-					}
-					break;
-
 				// Check whether the current value is a percent value
 				case 'prcnt':
-					if (!Validator::isPercent($varInput))
+					if (!\Validator::isPercent($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['prcnt'], $this->strLabel));
 					}
@@ -376,7 +269,7 @@ abstract class FilterWidget extends \Widget
 
 				// Check whether the current value is a locale
 				case 'locale':
-					if (!Validator::isLocale($varInput))
+					if (!\Validator::isLocale($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['locale'], $this->strLabel));
 					}
@@ -384,25 +277,9 @@ abstract class FilterWidget extends \Widget
 
 				// Check whether the current value is a language code
 				case 'language':
-					if (!Validator::isLanguage($varInput))
+					if (!\Validator::isLanguage($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['language'], $this->strLabel));
-					}
-					break;
-
-				// Check whether the current value is a Google+ ID or vanity name
-				case 'google+':
-					if (!Validator::isGooglePlusId($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidGoogleId'], $this->strLabel));
-					}
-					break;
-
-				// Check whether the current value is a field name
-				case 'fieldname':
-					if (!Validator::isFieldName($varInput))
-					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidFieldName'], $this->strLabel));
 					}
 					break;
 
@@ -413,7 +290,7 @@ abstract class FilterWidget extends \Widget
 						foreach ($GLOBALS['TL_HOOKS']['addCustomRegexp'] as $callback)
 						{
 							$this->import($callback[0]);
-							$break = $this->{$callback[0]}->{$callback[1]}($this->rgxp, $varInput, $this);
+							$break = $this->{$callback[0]}->{$callback[1]}($rgxp, $varInput, $this);
 
 							// Stop the loop if a callback returned true
 							if ($break === true)
@@ -424,26 +301,6 @@ abstract class FilterWidget extends \Widget
 					}
 					break;
 			}
-		}
-
-		if ($this->isHexColor && $varInput != '' && strncmp($varInput, '$', 1) !== 0)
-		{
-			$varInput = preg_replace('/[^a-f0-9]+/i', '', $varInput);
-		}
-
-		if ($this->nospace && preg_match('/[\t ]+/', $varInput))
-		{
-			$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['noSpace'], $this->strLabel));
-		}
-
-		if ($this->spaceToUnderscore)
-		{
-			$varInput = preg_replace('/\s+/', '_', trim($varInput));
-		}
-
-		if (\is_bool($this->trailingSlash) && $varInput != '')
-		{
-			$varInput = preg_replace('/\/+$/', '', $varInput) . ($this->trailingSlash ? '/' : '');
 		}
 
 		return $varInput;

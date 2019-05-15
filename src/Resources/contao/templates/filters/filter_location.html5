@@ -13,5 +13,9 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('filter_item'); ?>
+  <?php if ($this->hasErrors()): ?>
+    <p class="error"><?= $this->getErrorAsString() ?></p>
+  <?php endif; ?>
+
   <input type="text" name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="text<?php if ($this->class) echo ' ' . $this->class; ?>" value="<?= StringUtil::specialchars($this->value) ?>"<?= $this->getAttributes() ?>>
 <?php $this->endblock(); ?>

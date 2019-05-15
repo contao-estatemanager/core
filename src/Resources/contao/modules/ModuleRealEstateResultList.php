@@ -22,6 +22,12 @@ use Patchwork\Utf8;
 class ModuleRealEstateResultList extends ModuleRealEstate
 {
     /**
+     * Filter session object
+     * @var FilterSession
+     */
+    protected $objFilterSession;
+
+    /**
      * Template
      * @var string
      */
@@ -52,29 +58,11 @@ class ModuleRealEstateResultList extends ModuleRealEstate
             return $objTemplate->parse();
         }
 
-        /** @var PageModel $objPage */
-        global $objPage;
+        $this->objFilterSession = FilterSession::getInstance();
 
-        $this->initializeFilterSession();
-        $this->initializeSortingSession();
-
-        $this->filter = RealEstateFilter::getInstance();
-
-        if (!$this->filter->isUsable())
+        if ($this->customTpl != '')
         {
-            return ''; // ToDo: Exception werfen. Einer Ergebnisliste muss immer eine Gruppe oder ein Typ zugrunde liegen.
-        }
-
-        \System::loadLanguageFile('tl_real_estate_filter');
-
-        // HOOK: real estate result list generate
-        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateResultList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateResultList']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateResultList'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($this);
-            }
+            $this->strTemplate = $this->customTpl;
         }
 
         return parent::generate();
@@ -85,30 +73,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function compile()
     {
-        if ($this->addFilterModule)
-        {
-            $this->Template->filter = $this->getFrontendModule($this->filterModule);
-        }
-
         $this->parseRealEstateList();
-
-        if ($this->addSorting)
-        {
-            $sortingOptions = \StringUtil::deserialize($this->filter->type->sortingOptions);
-            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
-
-            foreach ($sortingOptions as $option)
-            {
-                $asc = $option['field'].'_asc';
-                $desc = $option['field'].'_desc';
-
-                $arrOptions[$asc] = Translator::translateFilter($asc);
-                $arrOptions[$desc] = Translator::translateFilter($desc);
-            }
-
-            $this->Template->sortingOptions = $arrOptions;
-            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
-        }
     }
 
     /**
@@ -118,11 +83,6 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function parseFilter()
     {
-        // ToDO:
-        //  Eki, ich glaube das Model vor dem laden zu holen und zu prüfen ob es vorhanden ist, ist überflüssig.
-        //  Dies wird bereits von "getFrontendModule" gemacht wenn ich das richtig sehe
-        //  Ansonsten kannst du auch direkt das komplette Model übergeben, dann wird es nicht zwei mal abgeholt
-
         $objModule = \ModuleModel::findByPk($this->filterModule);
 
         if ($objModule === null)
@@ -140,7 +100,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function countItems()
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->filter->getParameter($this->filterMode);
+        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
 
         return RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
     }
@@ -155,7 +115,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function fetchItems($limit, $offset)
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->filter->getParameter($this->filterMode);
+        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
 
         $arrOptions['limit']  = $limit;
         $arrOptions['offset'] = $offset;

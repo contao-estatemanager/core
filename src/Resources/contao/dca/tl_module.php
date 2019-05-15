@@ -8,7 +8,6 @@
  */
 
 // Add palettes
-$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addFilterModule';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
@@ -16,13 +15,12 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
     'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{list_mode_legend},listMode,hideOnEmpty;{list_config_legend},jumpTo,numberOfItems,perPage;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{filter_legend:hide},addFilterModule;{filter_mode_legend:hide},filterMode;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{list_config_legend},numberOfItems,perPage;{real_estate_groups_legend},realEstateGroups;{filter_legend},filter;{filter_mode_legend:hide},filterMode;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
-    'addFilterModule'      => 'filterModule',
-    'listMode_group'       => 'filterGroups,filterMode'
+    'listMode_group'       => 'realEstateGroups,filterMode'
 ));
 
 // Add immo manager fields
@@ -38,14 +36,6 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
-    'addFilterModule' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addFilterModule'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
     'filter' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filter'],
@@ -53,17 +43,6 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'inputType'               => 'select',
         'foreignKey'              => 'tl_filter.title',
         'options_callback'        => array('tl_module_immo_manager', 'getFilter'),
-        'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
-        'sql'                     => "int(10) unsigned NOT NULL default '0'",
-        'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
-    ),
-    'filterModule' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterModule'],
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'foreignKey'              => 'tl_module.name',
-        'options_callback'        => array('tl_module_immo_manager', 'getFilterModules'),
         'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
         'sql'                     => "int(10) unsigned NOT NULL default '0'",
         'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
@@ -86,15 +65,15 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'eval'                    => array('tl_class'=>'w50 m12'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
-    'filterGroups' => array
+    'realEstateGroups' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['filterGroups'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateGroups'],
         'exclude'                 => true,
-        'inputType'               => 'select',
+        'inputType'               => 'checkboxWizard',
         'foreignKey'              => 'tl_real_estate_group.title',
-        'options_callback'        => array('tl_module_immo_manager', 'getFilterGroups'),
-        'eval'                    => array('mandatory'=>true,'tl_class'=>'w50'),
-        'sql'                     => "varchar(16) NOT NULL default ''",
+        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateGroups'),
+        'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+        'sql'                     => "blob NULL",
         'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
     ),
     'addSorting' => array
@@ -111,7 +90,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'default'                 => 'default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options'                 => array('default', 'neubau', 'referenz'),
+        'options'                 => array('default'),
         'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(16) NOT NULL default ''"
@@ -199,34 +178,11 @@ class tl_module_immo_manager extends Backend
     }
 
     /**
-     * Get all filter frontend modules and return them as array
-     *
-     * @return array
-     */
-    public function getFilterModules()
-    {
-        if (!$this->User->isAdmin)
-        {
-            return array();
-        }
-
-        $arrModules = array();
-        $objModule = $this->Database->execute("SELECT id, name FROM tl_module WHERE type='realEstateFilter' ORDER BY name");
-
-        while ($objModule->next())
-        {
-            $arrModules[$objModule->id] = $objModule->name;
-        }
-
-        return $arrModules;
-    }
-
-    /**
      * Return a list of real estate groups
      *
      * @return array
      */
-    public function getFilterGroups()
+    public function getRealEstateGroups()
     {
         $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
 

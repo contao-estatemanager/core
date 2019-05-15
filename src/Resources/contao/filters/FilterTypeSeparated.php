@@ -22,6 +22,31 @@ class FilterTypeSeparated extends FilterWidget
 {
 
     /**
+     * Submit user input
+     *
+     * @var boolean
+     */
+    protected $blnSubmitInput = true;
+
+    /**
+     * Multiple
+     * @var boolean
+     */
+    protected $blnMultiple = true;
+
+    /**
+     * Value marketing type
+     * @var mixed
+     */
+    protected $varValueMarketingType;
+
+    /**
+     * Value real estate type
+     * @var mixed
+     */
+    protected $varValueRealEstateType;
+    
+    /**
      * Template
      *
      * @var string
@@ -44,6 +69,8 @@ class FilterTypeSeparated extends FilterWidget
     public function __construct($arrAttributes, $objFilter=null)
     {
         $this->objFilter = $objFilter;
+
+        $this->objFilterSession = FilterSession::getInstance();
 
         parent::__construct($arrAttributes);
     }
@@ -130,7 +157,7 @@ class FilterTypeSeparated extends FilterWidget
             (
                 'type'          => 'option',
                 'value'         => $objGroups->vermarktungsart,
-                'selected'      => $selected,
+                'selected'      => $selected ? ' selected' : '',
                 'label'         => Translator::translateFilter($objGroups->vermarktungsart),
                 'marketingType' => $objGroups->vermarktungsart
             );
@@ -202,6 +229,37 @@ class FilterTypeSeparated extends FilterWidget
     }
 
     /**
+     * Validate the user input and set the value
+     */
+    public function validate()
+    {
+        $varMarketingType = $this->validator(\Input::post('marketing-type', true));
+        $varRealEstateType = $this->validator(\Input::post('real-estate-type', true));
+
+        if ($this->hasErrors())
+        {
+            $this->class = 'error';
+        }
+        
+        $this->varValueMarketingType = $varMarketingType;
+        $this->varValueRealEstateType = $varRealEstateType;
+    }
+
+    /**
+     * Return submitted fields and values
+     *
+     * @return array
+     */
+    public function getSubmitted()
+    {
+        return array
+        (
+            'marketing-type' => $this->varValueMarketingType,
+            'real-estate-type' => $this->varValueRealEstateType
+        );
+    }
+
+    /**
      * Get current real estate type by a collection of types
      *
      * @return RealEstateTypeModel|null
@@ -210,7 +268,7 @@ class FilterTypeSeparated extends FilterWidget
     {
         if (!$this->objFilter->addBlankRealEstateType)
         {
-            return RealEstateTypeModel::findOneByDefaultType(1);
+            return $this->objFilterSession->getCurrentRealEstateType();
         }
 
         return null;
@@ -250,7 +308,7 @@ class FilterTypeSeparated extends FilterWidget
      */
     protected function isMarketingOptionSelected($marketingType)
     {
-        return false;
+        return $_SESSION['FILTER_DATA']['marketing-type'] === $marketingType;
     }
 
     /**

@@ -23,6 +23,25 @@ class FilterToggle extends FilterWidget
 {
 
     /**
+     * Submit user input
+     *
+     * @var boolean
+     */
+    protected $blnSubmitInput = true;
+
+    /**
+     * Values
+     * @var array
+     */
+    protected $arrValues;
+
+    /**
+     * Multiple
+     * @var boolean
+     */
+    protected $blnMultiple = true;
+
+    /**
      * Template
      * @var string
      */
@@ -200,7 +219,7 @@ class FilterToggle extends FilterWidget
             // Add options array if needed
             if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])
             {
-                $options = explode(',', \Config::get($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options']));
+                $options = array_map('trim', explode(',', \Config::get($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])));
                 $arrOptions = array();
 
                 foreach ($options as $value)
@@ -231,6 +250,42 @@ class FilterToggle extends FilterWidget
         }
 
         return $objTemplate->parse();
+    }
+
+    /**
+     * Validate the user input and set the value
+     */
+    public function validate()
+    {
+        $arrValues = array();
+
+        $this->loadDataContainer('tl_filter');
+        $arrToggleGroups = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'];
+
+        foreach ($arrToggleGroups as $group)
+        {
+            foreach ($group['fields'] as $field)
+            {
+                $arrValues[$field] = $this->validator(\Input::post($field, true), $group['rgxp']);
+            }
+        }
+
+        if ($this->hasErrors())
+        {
+            $this->class = 'error';
+        }
+
+        $this->arrValues = $arrValues;
+    }
+
+    /**
+     * Return submitted fields and values
+     *
+     * @return array
+     */
+    public function getSubmitted()
+    {
+        return $this->arrValues;
     }
 
     /**
@@ -298,15 +353,6 @@ class FilterToggle extends FilterWidget
      * @return string The widget markup
      */
     public function generate() {}
-
-
-    /**
-     * Skip validation
-     */
-    public function validate()
-    {
-        return true;
-    }
 
     /**
      * Get list filter of all real estate filter

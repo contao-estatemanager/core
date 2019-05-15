@@ -22,6 +22,13 @@ class FilterType extends FilterWidget
 {
 
     /**
+     * Submit user input
+     *
+     * @var boolean
+     */
+    protected $blnSubmitInput = true;
+
+    /**
      * Template
      *
      * @var string
@@ -62,11 +69,6 @@ class FilterType extends FilterWidget
      */
     public function __construct($arrAttributes, $objFilter=null)
     {
-        if (is_array($arrAttributes))
-        {
-            $arrAttributes['name'] = 'type';
-        }
-
         $this->objFilter = $objFilter;
 
         parent::__construct($arrAttributes);
@@ -82,6 +84,10 @@ class FilterType extends FilterWidget
     {
         switch ($strKey)
         {
+            case 'name':
+                $this->strName = 'real-estate-type';
+                break;
+
             case 'mandatory':
                 if ($varValue)
                 {

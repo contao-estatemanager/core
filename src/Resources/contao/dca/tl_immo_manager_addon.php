@@ -70,6 +70,7 @@ class tl_immo_manager_addon extends Backend
                     array('tl_immo_manager_addon', 'checkAddonLicense')
                 ),
                 'addonManager'  => $strClass,
+                'addonName'  => $strClass::$name,
                 'eval'          => array('tl_class'=>'w50')
             );
 
@@ -90,7 +91,7 @@ class tl_immo_manager_addon extends Backend
 
         $strClass = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['addonManager'];
 
-        if(!Oveleon\ContaoImmoManagerBundle\ImmoManager::checkLicenses($varValue, $strClass::getLicenses())){
+        if(!Oveleon\ContaoImmoManagerBundle\ImmoManager::checkLicenses($varValue, $strClass::getLicenses(), $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['addonName'])){
             throw new Exception('Die angegebene Lizenz ist nicht gültig. Bitte prüfen Sie Ihre Eingabe und beachten Sie 0 (Null) und O (Buchstabe)');
         }else{
             // highlight valid licenses

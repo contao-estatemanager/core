@@ -12,7 +12,19 @@ namespace Oveleon\ContaoImmoManagerBundle;
 class ImmoManager
 {
 
-    public static function checkLicenses($licenceKey, $arrLicences){
+    public static function checkLicenses($licenceKey, $arrLicences, $strAddon){
+        if ($licenceKey === '')
+        {
+            $strAddon = 'ImmoManagerAddon' . $strAddon;
+
+            if (!\Config::get($strAddon))
+            {
+                \Config::set($strAddon, time());
+            }
+
+            return strtotime('+4 weeks', \Config::get($strAddon)) > time() && \Config::get($strAddon) < time();
+        }
+
         return in_array(md5($licenceKey), $arrLicences);
     }
 }

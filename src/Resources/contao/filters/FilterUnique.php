@@ -17,6 +17,13 @@ namespace Oveleon\ContaoImmoManagerBundle;
  */
 class FilterUnique extends FilterWidget
 {
+    
+    /**
+     * Submit user input
+     *
+     * @var boolean
+     */
+    protected $blnSubmitInput = true;
 
     /**
      * Template
@@ -33,21 +40,6 @@ class FilterUnique extends FilterWidget
     protected $strPrefix = 'widget widget-unique';
 
     /**
-     * Initialize the object
-     *
-     * @param array $arrAttributes An optional attributes array
-     */
-    public function __construct($arrAttributes=null)
-    {
-        if (is_array($arrAttributes))
-        {
-            $arrAttributes['name'] = 'unique';
-        }
-
-        parent::__construct($arrAttributes);
-    }
-
-    /**
      * Add specific attributes
      *
      * @param string $strKey   The attribute key
@@ -57,6 +49,10 @@ class FilterUnique extends FilterWidget
     {
         switch ($strKey)
         {
+            case 'name':
+                $this->strName = 'unique';
+                break;
+
             case 'mandatory':
                 if ($varValue)
                 {

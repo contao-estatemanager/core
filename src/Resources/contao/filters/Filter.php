@@ -10,7 +10,6 @@
 namespace Oveleon\ContaoImmoManagerBundle;
 
 
-use Contao\PageModel;
 use Patchwork\Utf8;
 
 /**
@@ -33,6 +32,12 @@ class Filter extends \Hybrid
      * @var FilterModel
      */
     protected $objModel;
+
+    /**
+     * Filter session object
+     * @var FilterSession
+     */
+    protected $objFilterSession;
 
     /**
      * Key
@@ -72,7 +77,9 @@ class Filter extends \Hybrid
             return $objTemplate->parse();
         }
 
-        if ($this->customTpl != '' && TL_MODE == 'FE')
+        $this->objFilterSession = FilterSession::getInstance();
+
+        if ($this->customTpl != '')
         {
             $this->strTemplate = $this->customTpl;
         }
@@ -96,8 +103,11 @@ class Filter extends \Hybrid
 
         // HOOK: compile filter items
 
+        $this->Template->items = '';
+
         $doNotSubmit = false;
         $arrSubmitted = array();
+        $arrLabels = array();
         $arrFilterItems = array();
         $row = 0;
         $max_row = $objFilterItem->count();
@@ -133,12 +143,33 @@ class Filter extends \Hybrid
                 {
                     $doNotSubmit = true;
                 }
+
+                // Store current value in the session
                 elseif ($objFilterWidget->submitInput())
                 {
-                    $arrSubmitted[$objFilterWidget->name] = $objFilterWidget->value;
-                    $_SESSION['FILTER_DATA'][$objFilterWidget->name] = $objFilterWidget->value;
-                    unset($_POST[$objFilterWidget->name]);
+                    if ($objFilterWidget->multiple)
+                    {
+                        $submitted = $objFilterWidget->getSubmitted();
+
+                        foreach ($submitted as $field => $value)
+                        {
+                            $arrSubmitted[$field] = $value;
+                            $_SESSION['FILTER_DATA'][$field] = $value;
+                            unset($_POST[$field]);
+                        }
+                    }
+                    else
+                    {
+                        $arrSubmitted[$objFilterWidget->name] = $objFilterWidget->value;
+                        $_SESSION['FILTER_DATA'][$objFilterWidget->name] = $objFilterWidget->value;
+                        unset($_POST[$objFilterWidget->name]);
+                    }
                 }
+            }
+
+            if ($objFilterWidget->name != '' && $objFilterWidget->label != '')
+            {
+                $arrLabels[$objFilterWidget->name] = $this->replaceInsertTags($objFilterWidget->label); // see #4268
             }
 
             $arrFilterItems[] = $objFilterWidget->parse();
@@ -148,7 +179,7 @@ class Filter extends \Hybrid
         // Process the form data
         if (\Input::post('FORM_SUBMIT') == $filterId && !$doNotSubmit)
         {
-            $this->processFilterData($arrSubmitted);
+            $this->processFilterData($arrSubmitted, $arrLabels);
         }
 
         $this->Template->hasError = $doNotSubmit;
@@ -163,10 +194,50 @@ class Filter extends \Hybrid
      * Process filter data, store it in the session and redirect to the jumpTo or reference page
      *
      * @param array $arrSubmitted
+     * @param array $arrLabels
      */
-    protected function processFilterData($arrSubmitted)
+    protected function processFilterData($arrSubmitted, $arrLabels)
     {
         // HOOK: prepare filter data
+        if (isset($GLOBALS['TL_HOOKS']['prepareFilterData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFilterData']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['prepareFilterData'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $arrLabels, $this);
+            }
+        }
+
+        // Store all values in the session
+        foreach (array_keys($_POST) as $key)
+        {
+            $_SESSION['FILTER_DATA'][$key] = \Input::post($key, true);
+        }
+
+        // HOOK: process filter data
+        if (isset($GLOBALS['TL_HOOKS']['processFilterData']) && \is_array($GLOBALS['TL_HOOKS']['processFilterData']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['processFilterData'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $this->arrData, $arrLabels, $this);
+            }
+        }
+
+        $objJumpTo = $this->objFilterSession->getReferencePage();
+
+        if ($objJumpTo === null && $this->jumpTo)
+        {
+            $objJumpTo = \PageModel::findByPk($this->jumpTo);
+        }
+
+        // Redirect if there is a reference page
+        if ($objJumpTo instanceof \PageModel)
+        {
+            $this->jumpToOrReload($objJumpTo->row());
+        }
+
+        $this->reload();
     }
 
     /**
@@ -338,7 +409,7 @@ class Filter extends \Hybrid
         // Add a warning to the page title
         if ($doNotSubmit && !\Environment::get('isAjaxRequest'))
         {
-            /** @var PageModel $objPage */
+            /** @var \PageModel $objPage */
             global $objPage;
 
             $title = $objPage->pageTitle ?: $objPage->title;

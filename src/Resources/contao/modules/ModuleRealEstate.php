@@ -20,6 +20,25 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
 abstract class ModuleRealEstate extends \Module
 {
     /**
+     * Return an object property
+     *
+     * @param string $strKey The property name
+     *
+     * @return string The property value
+     */
+    public function __get($strKey)
+    {
+        switch ($strKey)
+        {
+            case 'realEstateGroups':
+                return \StringUtil::deserialize($this->objModel->realEstateGroups, true);
+                break;
+        }
+
+        return parent::__get($strKey);
+    }
+
+    /**
      * Parse a real estate and return it as string
      *
      * @param RealEstateModel $objRealEstate

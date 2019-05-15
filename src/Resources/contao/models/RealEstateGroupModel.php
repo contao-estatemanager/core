@@ -31,7 +31,7 @@ namespace Oveleon\ContaoImmoManagerBundle;
  * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findMultipleByIds($val, array $opt=array())
  * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTstamp($val, array $opt=array())
  * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTitle($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByVemarktungsart($val, array $opt=array())
+ * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByVermarktungsart($val, array $opt=array())
  * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByReferencePage($val, array $opt=array())
  * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByPublished($val, array $opt=array())
  *

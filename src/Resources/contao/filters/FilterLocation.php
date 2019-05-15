@@ -19,6 +19,13 @@ class FilterLocation extends FilterWidget
 {
 
     /**
+     * Submit user input
+     *
+     * @var boolean
+     */
+    protected $blnSubmitInput = true;
+
+    /**
      * Template
      *
      * @var string
@@ -33,21 +40,6 @@ class FilterLocation extends FilterWidget
     protected $strPrefix = 'widget widget-location';
 
     /**
-     * Initialize the object
-     *
-     * @param array $arrAttributes An optional attributes array
-     */
-    public function __construct($arrAttributes=null)
-    {
-        if (is_array($arrAttributes))
-        {
-            $arrAttributes['name'] = 'location';
-        }
-
-        parent::__construct($arrAttributes);
-    }
-
-    /**
      * Add specific attributes
      *
      * @param string $strKey   The attribute key
@@ -57,6 +49,10 @@ class FilterLocation extends FilterWidget
     {
         switch ($strKey)
         {
+            case 'name':
+                $this->strName = 'location';
+                break;
+
             case 'mandatory':
                 if ($varValue)
                 {

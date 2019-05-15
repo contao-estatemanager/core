@@ -1,7 +1,10 @@
 <?php $this->extend('filter_row'); ?>
 
 <?php $this->block('filter_item'); ?>
+  <?php if ($this->hasErrors()): ?>
+    <p class="error"><?= $this->getErrorAsString() ?></p>
+  <?php endif; ?>
 
-<?= implode('', $this->items) ?>
+  <?= implode('', $this->items) ?>
 
 <?php $this->endblock(); ?>

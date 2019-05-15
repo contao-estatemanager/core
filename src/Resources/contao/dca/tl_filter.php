@@ -201,7 +201,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                         'price_from',
                         'price_to'
                     ),
-                    'hide' => 'price_from'
+                    'hide' => 'price_from',
+                    'rgxp' => 'natural'
                 ),
                 'per' => array
                 (
@@ -209,7 +210,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                     (
                         'price_per'
                     ),
-                    'hide' => false
+                    'hide' => false,
+                    'rgxp' => 'alnum'
                 ),
                 'room' => array
                 (
@@ -219,7 +221,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                         'room_to'
                     ),
                     'hide' => 'room_to',
-                    'options' => 'roomOptions'
+                    'options' => 'roomOptions',
+                    'rgxp' => 'digit'
                 ),
                 'area' => array
                 (
@@ -228,7 +231,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                         'area_from',
                         'area_to'
                     ),
-                    'hide' => 'area_to'
+                    'hide' => 'area_to',
+                    'rgxp' => 'natural'
                 ),
                 'period' => array
                 (
@@ -237,7 +241,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
                         'period_from',
                         'period_to'
                     ),
-                    'hide' => 'period_to'
+                    'hide' => 'period_to',
+                    'rgxp' => 'date'
                 )
             ),
             'reference'               => &$GLOBALS['TL_LANG']['tl_filter'],
