@@ -42,8 +42,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('objekttitel', 'objektart', 'nutzungsart'),
-            'showColumns'             => true
+            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart'),
+            'showColumns'             => true,
+            'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
         ),
         'global_operations' => array
         (
@@ -4643,4 +4644,43 @@ class tl_real_estate extends Backend
 
         $objVersions->create();
     }
+
+    /**
+     * Add an image to each record
+     *
+     * @param array         $row
+     * @param string        $label
+     * @param DataContainer $dc
+     * @param array         $args
+     *
+     * @return array
+     */
+    public function addPreviewImageAndInformation($row, $label, DataContainer $dc, $args)
+    {
+        $objFile = null;
+
+        if ($row['titleImageSRC'] != '') {
+            $objFile = \FilesModel::findByUuid($row['titleImageSRC']);
+        }
+
+        if ($objFile === null && \Config::get('defaultImage'))
+        {
+            $objFile = \FilesModel::findByUuid(\Config::get('defaultImage'));
+        }
+
+        if ($objFile !== null)
+        {
+            // add preview image
+            $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="immo_preview"') . ' ' . $label;
+        }
+
+        // add address information
+        $args[1] = $args[1] . '<span style="color:#999;display:block;margin-top: 5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</span>';
+
+        // translate date
+        $args[4] = date(\Config::get('datimFormat'), $args[4]);
+
+        return $args;
+    }
+
 }
