@@ -1,0 +1,290 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao-immo-manager-bundle/languages/en/tl_real_estate.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_real_estate.real_estate_legend">
+        <source>Title / Veröffentlichung</source>
+        <target>Titel / Veröffentlichung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_address_legend">
+        <source>Address / Geo-Information</source>
+        <target>Adresse / Geo-Informationen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_contact_legend">
+        <source>Provider and Contactperson</source>
+        <target>Anbieter und Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_basic_legend">
+        <source>Marketing</source>
+        <target>Vermarktung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_text_legend">
+        <source>Texte</source>
+        <target>Texte</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_price_legend">
+        <source>Preise</source>
+        <target>Preise</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_area_legend">
+        <source>Area</source>
+        <target>Flächen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_parking_legend">
+        <source>Stellplätze</source>
+        <target>Stellplätze</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_features_legend">
+        <source>Features</source>
+        <target>Ausstattung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_props_legend">
+        <source>Weitere Eigenschaften</source>
+        <target>Weitere Eigenschaften</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_energie_legend">
+        <source>Energieausweis / Bausubstanz</source>
+        <target>Energieausweis / Bausubstanz</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_media_legend">
+        <source>Medien / Dateien</source>
+        <target>Medien / Dateien</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.image.0">
+        <source>Image</source>
+        <target>Bild</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.tstamp.0">
+        <source>Geändert am</source>
+        <target>Geändert am</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.dateAdded.0">
+        <source>Added</source>
+        <target>Hinzugefügt am</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.published.0">
+        <source>Veröffentlichen</source>
+        <target>Veröffentlichen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.published.1">
+        <source>Die Immobilie wird auf der Homepage ausgegeben</source>
+        <target>Die Immobilie wird auf der Homepage ausgegeben</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.provider.0">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.provider.1">
+        <source>Wählen Sie den Anbieter der Immobilie</source>
+        <target>Wählen Sie den Anbieter der Immobilie</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.contactPerson.0">
+        <source>Contact Person</source>
+        <target>Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.contactPerson.1">
+        <source>Wählen Sie den Ansprechpartner der Immobilie</source>
+        <target>Wählen Sie den Ansprechpartner der Immobilie</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.alias.0">
+        <source>Alias</source>
+        <target>Alias / SEO-Url</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.alias.1">
+        <source>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen</source>
+        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen</target>
+      </trans-unit>
+
+
+      <trans-unit id="tl_real_estate.vermarktungsartKauf.0">
+        <source>Vermarktung: Kaufen</source>
+        <target>Vermarktung: Kaufen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartKauf.1">
+        <source>Die Immobilie steht zum Kauf zur Verfügung</source>
+        <target>Die Immobilie steht zum Kauf zur Verfügung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartMietePacht.0">
+        <source>Vermarktung: Mieten / Pachten</source>
+        <target>Vermarktung: Mieten / Pachten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartMietePacht.1">
+        <source>Die Immobilie steht zur Miete / Pacht zur Verfügung</source>
+        <target>Die Immobilie steht zur Miete / Pacht zur Verfügung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartErbpacht.0">
+        <source>Vermarktung: Erbpacht</source>
+        <target>Vermarktung: Erbpacht</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartErbpacht.1">
+        <source>Die Immobilie steht zur Erbpacht zur Verfügung</source>
+        <target>Die Immobilie steht zur Erbpacht zur Verfügung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartLeasing.0">
+        <source>Vermarktung: Leasing</source>
+        <target>Vermarktung: Leasing</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.vermarktungsartLeasing.1">
+        <source>Die Immobilie steht zum Leasen zur Verfügung</source>
+        <target>Die Immobilie steht zum Leasen zur Verfügung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.objekttitel.0">
+        <source>Title</source>
+        <target>Objekttitel</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.objekttitel.1">
+        <source>Geben Sie hier den Titel der Immobilie an</source>
+        <target>Geben Sie hier den Titel der Immobilie an</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.objektart.0">
+        <source>Objektart</source>
+        <target>Objektart</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.objektart.1">
+        <source>Geben Sie hier die Objektart der Immobilie an</source>
+        <target>Geben Sie hier die Objektart der Immobilie an</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.nutzungsart.0">
+        <source>Nutzungsart</source>
+        <target>Nutzungsart</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.nutzungsart.1">
+        <source>Geben Sie hier die Nutzungsart der Immobilie an</source>
+        <target>Geben Sie hier die Nutzungsart der Immobilie an</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.alsFerien.0">
+        <source>Ferienimmobilie</source>
+        <target>Ferienimmobilie</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.alsFerien.1">
+        <source>Die Immobilie steht als Ferienimmobilie zur Verfügung</source>
+        <target>Die Immobilie steht als Ferienimmobilie zur Verfügung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gewerblicheNutzung.0">
+        <source>Gewerbliche Nutzung</source>
+        <target>Gewerbliche Nutzung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gewerblicheNutzung.1">
+        <source>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht</source>
+        <target>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.zimmerTyp.0">
+        <source>Zimmer-Typ</source>
+        <target>Zimmer-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zimmerTyp.1">
+        <source>Definieren Sie hier, um welche Art Zimmer es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Zimmer es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.wohnungTyp.0">
+        <source>Wohnung-Typ</source>
+        <target>Wohnung-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.wohnungTyp.1">
+        <source>Definieren Sie hier, um welche Art Wohnung es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Wohnung es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hausTyp.0">
+        <source>Haus-Typ</source>
+        <target>Haus-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hausTyp.1">
+        <source>Definieren Sie hier, um welche Art Haus es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Haus es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.grundstTyp.0">
+        <source>Grundstück-Typ</source>
+        <target>Grundstück-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.grundstTyp.1">
+        <source>Definieren Sie hier, um welche Art Grundstück es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Grundstück es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.bueroTyp.0">
+        <source>Büro-Typ</source>
+        <target>Büro-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.bueroTyp.1">
+        <source>Definieren Sie hier, um welche Art Büro es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Büro es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.handelTyp.0">
+        <source>Handel-Typ</source>
+        <target>Handel-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.handelTyp.1">
+        <source>Definieren Sie hier, um welche Art Handel es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Handel es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gastgewTyp.0">
+        <source>Gastgewerbe-Typ</source>
+        <target>Gastgewerbe-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gastgewTyp.1">
+        <source>Definieren Sie hier, um welche Art Gastgewerbe es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Gastgewerbe es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hallenTyp.0">
+        <source>Hallen-Typ</source>
+        <target>Hallen-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hallenTyp.1">
+        <source>Definieren Sie hier, um welche Art Halle / Prod. es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Halle / Prod. es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.landTyp.0">
+        <source>Landwirtschaft-Typ</source>
+        <target>Landwirtschaft-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.landTyp.1">
+        <source>Definieren Sie hier, um welche Art Landwirtschaft es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Landwirtschaft es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.parkenTyp.0">
+        <source>Parkplatz-Typ</source>
+        <target>Parkplatz-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.parkenTyp.1">
+        <source>Definieren Sie hier, um welche Art Parkplatz es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Parkplatz es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.sonstigeTyp.0">
+        <source>Spezielle- / Sonstige-Typ</source>
+        <target>Spezielle- / Sonstige-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.sonstigeTyp.1">
+        <source>Definieren Sie hier, um welche Art es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.freizeitTyp.0">
+        <source>Freizeit-Typ</source>
+        <target>Freizeit-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.freizeitTyp.1">
+        <source>Definieren Sie hier, um welche Art Freizeitfläche es sich handelt</source>
+        <target>Definieren Sie hier, um welche Art Freizeitfläche es sich handelt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zinsTyp.0">
+        <source>Zins-Typ</source>
+        <target>Zins-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zinsTyp.1">
+        <source>Definieren Sie hier, um welchen Zins-Typen es sich handelt</source>
+        <target>Definieren Sie hier, um welchen Zins-Typen es sich handelt</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.kaufpreis.0">
+        <source>Kaufpreis</source>
+        <target>Kaufpreis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.kaufpreis.1">
+        <source>Definieren Sie hier den Kaufpreis der Immobilie</source>
+        <target>Definieren Sie hier den Kaufpreis der Immobilie</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>
