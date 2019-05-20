@@ -142,7 +142,8 @@
         position: relative;
         padding: 20px 20px 20px 55px;
         border-bottom: 1px solid #e6e6e8;
-        color: #868686;
+        color: #191919;
+        font-weight: 500;
 
         &:before{
           position: absolute;
@@ -165,14 +166,29 @@
           background-image: url('/bundles/contaoimmomanager/icons/filter.svg');
         }
 
-        &.interface:before{
+        &.configuration:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/link.svg');
+          background-image: url('/bundles/contaoimmomanager/icons/settings.svg');
         }
 
         &.settings:before{
           content: '';
           background-image: url('/bundles/contaoimmomanager/icons/settings.svg');
+        }
+
+        &.addons:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/catalog.svg');
+        }
+
+        &.realestate:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/estate.svg');
+        }
+
+        &.visualization:before{
+          content: '';
+          background-image: url('/bundles/contaoimmomanager/icons/visualization.svg');
         }
       }
 

@@ -60,7 +60,7 @@ class tl_immo_manager_addon extends Backend
                 'inputType'       => 'text',
                 'save_callback'   => [['tl_immo_manager_addon', 'checkLicense']],
                 'load_callback'   => [['tl_immo_manager_addon', 'loadLicenseField']],
-                'eval'            => ['tl_class'=>'w50'],
+                'eval'            => ['tl_class'=>'w50 clr'],
                 'addonManager'    => $strClass
             );
 
