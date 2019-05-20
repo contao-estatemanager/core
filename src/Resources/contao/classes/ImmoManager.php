@@ -1,30 +1,34 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: dscia
- * Date: 11.02.2019
- * Time: 15:36
+ * This file is part of Oveleon ImmoManager.
+ *
+ * @link      https://github.com/oveleon/contao-immo-manager-bundle
+ * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
  */
 
 namespace Oveleon\ContaoImmoManagerBundle;
 
-
 class ImmoManager
 {
-
     public static function checkLicenses($licenceKey, $arrLicences, $strAddon){
-        if ($licenceKey === '')
+        // Demo
+        if (strtolower($licenceKey) === 'demo')
         {
-            $strAddon = 'ImmoManagerAddon' . $strAddon;
+            $expAddon = $strAddon . '_demo';
+            $expTime  = \Config::get($expAddon);
+            $curTime  = time();
 
-            if (!\Config::get($strAddon))
+            if (!$expTime)
             {
-                \Config::set($strAddon, time());
+                \Config::persist($expAddon, $curTime);
+                $expTime = $curTime;
             }
 
-            return strtotime('+4 weeks', \Config::get($strAddon)) > time() && \Config::get($strAddon) < time();
+            return strtotime('+2 weeks', $expTime) > $curTime && $expTime <= $curTime;
         }
 
+        // License
         return in_array(md5($licenceKey), $arrLicences);
     }
 }

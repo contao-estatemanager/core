@@ -17,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_immo_manager_addon'] = array
 		'closed'                      => true,
         'onload_callback'             => array
         (
-            array('tl_immo_manager_addon', 'checkInstalledAddons'),
+            array('tl_immo_manager_addon', 'createInstalledAddonFields'),
         )
 	),
 
@@ -42,39 +42,28 @@ $GLOBALS['TL_DCA']['tl_immo_manager_addon'] = array
 class tl_immo_manager_addon extends Backend
 {
 
-    public function checkInstalledAddons()
+    public function createInstalledAddonFields()
     {
-
-        foreach ($GLOBALS['TL_IMMOMANAGER_ADDONS'] as list($namespace, $className)){
-
+        foreach ($GLOBALS['TL_IMMOMANAGER_ADDONS'] as list($namespace, $className))
+        {
             $strClass = $namespace . '\\' . $className;
 
-            // Continue if the class is not defined
-            if (!class_exists($strClass) || !$strClass::$name)
+            if (!class_exists($strClass) || !$strClass::$key)
             {
                 continue;
             }
 
-            $fieldName = 'addon_' . trim($strClass::$name) . '_license';
+            $fieldName = $strClass::$key;
 
-            // create field
             $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $fieldName ] = array(
-                'label'         => &$GLOBALS['TL_LANG']['tl_immo_manager_addon'][ $fieldName ],
-                'inputType'     => 'text',
-                'save_callback' => array
-                (
-                    array('tl_immo_manager_addon', 'checkAddonLicense')
-                ),
-                'load_callback' => array
-                (
-                    array('tl_immo_manager_addon', 'checkAddonLicense')
-                ),
-                'addonManager'  => $strClass,
-                'addonName'  => $strClass::$name,
-                'eval'          => array('tl_class'=>'w50')
+                'label'           => &$GLOBALS['TL_LANG']['tl_immo_manager_addon'][ $fieldName ],
+                'inputType'       => 'text',
+                'save_callback'   => [['tl_immo_manager_addon', 'checkLicense']],
+                'load_callback'   => [['tl_immo_manager_addon', 'loadLicenseField']],
+                'eval'            => ['tl_class'=>'w50'],
+                'addonManager'    => $strClass
             );
 
-            // add field to palette
             $GLOBALS['TL_DCA']['tl_immo_manager_addon']['palettes']['default'] = str_replace(
                 "{license_legend}",
                 "{license_legend}," . $fieldName,
@@ -83,21 +72,65 @@ class tl_immo_manager_addon extends Backend
         }
     }
 
-    public function checkAddonLicense($varValue, DataContainer $dc)
+    public function checkLicense($varValue, DataContainer $dc)
     {
-        if(!$varValue){
+        if(!$varValue)
+        {
             return $varValue;
         }
 
         $strClass = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['addonManager'];
 
-        if(!Oveleon\ContaoImmoManagerBundle\ImmoManager::checkLicenses($varValue, $strClass::getLicenses(), $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['addonName'])){
-            throw new Exception('Die angegebene Lizenz ist nicht gültig. Bitte prüfen Sie Ihre Eingabe und beachten Sie 0 (Null) und O (Buchstabe)');
-        }else{
-            // highlight valid licenses
-            $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['style'] = 'border-color: green';
+        if(!Oveleon\ContaoImmoManagerBundle\ImmoManager::checkLicenses($varValue, $strClass::getLicenses(), $strClass::$key))
+        {
+            if(strtolower($varValue) === 'demo')
+            {
+                throw new Exception($GLOBALS['TL_LANG']['tl_immo_manager_addon']['demo_used']);
+            }
+            else
+            {
+                throw new Exception($GLOBALS['TL_LANG']['tl_immo_manager_addon']['invalid_license']);
+            }
+        }
 
+        return $varValue;
+    }
+
+    public function loadLicenseField($varValue, DataContainer $dc)
+    {
+        if(!$varValue)
+        {
             return $varValue;
         }
+
+        $strClass = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['addonManager'];
+
+        // Check if it is a demo
+        if(strtolower($varValue) === 'demo' && $expTime = \Config::get($dc->field . '_demo'))
+        {
+            $curTime = time();
+
+            $expTimeEnd = strtotime('+2 weeks', $expTime);
+            if($expTimeEnd > $curTime && $expTime <= $curTime)
+            {
+                $info = sprintf($GLOBALS['TL_LANG']['tl_immo_manager_addon']['demo_expiration_date'], date(\Config::get('datimFormat'), $expTimeEnd));
+                $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' validLicense demo';
+            }
+            else
+            {
+                $info = $GLOBALS['TL_LANG']['tl_immo_manager_addon']['demo_expired'];
+                $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' expiredLicense';
+            }
+
+            $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['label'] = array($GLOBALS['TL_LANG']['tl_immo_manager_addon'][ $dc->field ][0], $info);
+        }
+        // Check valid license
+        elseif(Oveleon\ContaoImmoManagerBundle\ImmoManager::checkLicenses($varValue, $strClass::getLicenses(), $strClass::$key))
+        {
+            $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' validLicense';
+            $GLOBALS['TL_DCA']['tl_immo_manager_addon']['fields'][ $dc->field ]['label'] = array($GLOBALS['TL_LANG']['tl_immo_manager_addon'][ $dc->field ][0], $GLOBALS['TL_LANG']['tl_immo_manager_addon']['valid_license']);
+        }
+
+        return $varValue;
     }
 }
