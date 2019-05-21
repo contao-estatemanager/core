@@ -47,6 +47,12 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'global_operations' => array
         (
+            'administration' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['MSC']['administration'],
+                'href'                => 'do=administration',
+                'icon'                => 'header.svg'
+            ),
             'all' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
