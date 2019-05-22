@@ -214,6 +214,8 @@ class Filter extends \Hybrid
             $_SESSION['FILTER_DATA'][$key] = \Input::post($key, true);
         }
 
+        $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] = true;
+
         // HOOK: process filter data
         if (isset($GLOBALS['TL_HOOKS']['processFilterData']) && \is_array($GLOBALS['TL_HOOKS']['processFilterData']))
         {

@@ -67,9 +67,7 @@ class FilterToggle extends FilterWidget
      */
     public function __construct($arrAttributes=null, $objFilter=null)
     {
-        $this->objFilter = $objFilter;
-
-        parent::__construct($arrAttributes);
+        parent::__construct($arrAttributes, $objFilter);
     }
 
     /**
@@ -139,14 +137,13 @@ class FilterToggle extends FilterWidget
     public function parse($arrAttributes=null)
     {
         $objCurrentTyp = $this->getCurrentType();
-        $objFilter = FilterModel::findByPk($this->pid);
 
-        if ($objFilter === null)
+        if ($this->objFilter === null)
         {
             return '';
         }
 
-        $this->outputAllItems = !$objFilter->submitOnChange;
+        $this->outputAllItems = !$this->objFilter->submitOnChange;
 
         // Determine actual used toggle filter
         if ($objCurrentTyp !== null)
@@ -155,13 +152,13 @@ class FilterToggle extends FilterWidget
         }
         else
         {
-            $arrToggleFilter = \StringUtil::deserialize($objFilter->toggleFilter, true);
+            $arrToggleFilter = \StringUtil::deserialize($this->objFilter->toggleFilter, true);
         }
 
         $this->loadDataContainer('tl_filter');
         $arrAvailableFilters = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'];
 
-        if ($objFilter->submitOnChange)
+        if ($this->objFilter->submitOnChange)
         {
             // Remove not used available filters if no interactive toggle is needed
             foreach ($arrAvailableFilters as $group => $groupData)
@@ -178,7 +175,7 @@ class FilterToggle extends FilterWidget
         // Parse leftover filter items
         foreach ($arrAvailableFilters as $group => $groupData)
         {
-            $arrItems[] = $this->parseFilterItem($group, $groupData, in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $objFilter->submitOnChange);
+            $arrItems[] = $this->parseFilterItem($group, $groupData, in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $this->objFilter->submitOnChange);
         }
 
         $this->items = $arrItems;
@@ -295,7 +292,23 @@ class FilterToggle extends FilterWidget
      */
     protected function getCurrentType()
     {
-        if (!$this->objFilter->addBlankMarketingType && !$this->objFilter->addBlankRealEstateType)
+        if (!$this->objFilter->addBlankRealEstateType && $this->objFilterSession->getCurrentRealEstateType() === null)
+        {
+            $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
+
+            if ($this->objFilterSession->getCurrentMarketingType() === $objDefaultType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing')
+            {
+                return $objDefaultType;
+            }
+            else
+            {
+                return $objDefaultType->getRelated('similarType');
+            }
+        }
+
+        return $this->objFilterSession->getCurrentRealEstateType();
+
+        /*if (!$this->objFilter->addBlankMarketingType && !$this->objFilter->addBlankRealEstateType)
         {
             return RealEstateTypeModel::findOneByDefaultType(1);
         }
@@ -309,7 +322,7 @@ class FilterToggle extends FilterWidget
             }
         }
 
-        return null;
+        return null;*/
     }
 
     /**

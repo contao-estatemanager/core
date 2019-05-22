@@ -40,6 +40,17 @@ class FilterLocation extends FilterWidget
     protected $strPrefix = 'widget widget-location';
 
     /**
+     * Initialize the object
+     *
+     * @param array       $arrAttributes Attributes array
+     * @param FilterModel $objFilter     Parent filter model
+     */
+    public function __construct($arrAttributes, $objFilter=null)
+    {
+        parent::__construct($arrAttributes, $objFilter);
+    }
+
+    /**
      * Add specific attributes
      *
      * @param string $strKey   The attribute key

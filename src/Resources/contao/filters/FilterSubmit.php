@@ -41,6 +41,17 @@ class FilterSubmit extends FilterWidget
     protected $strPrefix = 'widget widget-submit';
 
     /**
+     * Initialize the object
+     *
+     * @param array       $arrAttributes Attributes array
+     * @param FilterModel $objFilter     Parent filter model
+     */
+    public function __construct($arrAttributes, $objFilter=null)
+    {
+        parent::__construct($arrAttributes, $objFilter);
+    }
+
+    /**
      * Add specific attributes
      *
      * @param string $strKey   The attribute name

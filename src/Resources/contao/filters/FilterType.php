@@ -69,9 +69,7 @@ class FilterType extends FilterWidget
      */
     public function __construct($arrAttributes, $objFilter=null)
     {
-        $this->objFilter = $objFilter;
-
-        parent::__construct($arrAttributes);
+        parent::__construct($arrAttributes, $objFilter);
     }
 
     /**
@@ -135,7 +133,6 @@ class FilterType extends FilterWidget
         }
 
         $objTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
-        $objCurrentType = $this->getCurrentType();
 
         if ($objTypes === null)
         {
@@ -146,6 +143,8 @@ class FilterType extends FilterWidget
 
         if ($this->objFilter->addBlankMarketingType)
         {
+            $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
+
             $arrOptions[] = array
             (
                 'type'     => 'option',
@@ -190,7 +189,7 @@ class FilterType extends FilterWidget
                 (
                     'type'     => 'option',
                     'value'    => $objGroupTypes->id,
-                    'selected' => $this->isOptionSelected($objGroupTypes, $objCurrentType) ? ' selected' : '',
+                    'selected' => $this->isOptionSelected($objGroupTypes, $this->objFilterSession->getCurrentRealEstateType()) ? ' selected' : '',
                     'label'    => $this->showLongTitle ? $objGroupTypes->longTitle : $objGroupTypes->title
                 );
             }

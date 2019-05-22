@@ -17,10 +17,32 @@ namespace Oveleon\ContaoImmoManagerBundle;
 abstract class FilterWidget extends \Widget
 {
     /**
+     * Filter object
+     *
+     * @var Filter
+     */
+    protected $objFilter;
+
+    /**
      * Multiple
      * @var boolean
      */
     protected $blnMultiple = false;
+
+    /**
+     * Initialize the object
+     *
+     * @param array $arrAttributes An optional attributes array
+     * @param FilterModel $objFilter     Parent filter model
+     */
+    public function __construct($arrAttributes, $objFilter=null)
+    {
+        $this->objFilter = $objFilter;
+
+        $this->objFilterSession = FilterSession::getInstance();
+
+        parent::__construct($arrAttributes);
+    }
 
     /**
      * Return an object property
@@ -31,6 +53,7 @@ abstract class FilterWidget extends \Widget
      */
     public function __get($strKey)
     {
+
         switch ($strKey)
         {
             case 'multiple':
@@ -305,4 +328,16 @@ abstract class FilterWidget extends \Widget
 
 		return $varInput;
 	}
+
+    /**
+     * Check whether a marketing option is selected
+     *
+     * @param string $marketingType
+     *
+     * @return boolean
+     */
+    protected function isMarketingOptionSelected($marketingType)
+    {
+        return $this->objFilterSession->getCurrentMarketingType() === $marketingType;
+    }
 }
