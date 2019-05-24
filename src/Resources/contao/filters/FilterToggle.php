@@ -292,6 +292,37 @@ class FilterToggle extends FilterWidget
      */
     protected function getCurrentType()
     {
+        if ($this->objFilterSession->getCurrentRealEstateType() === null)
+        {
+            if ($this->objFilter->toggleMode === 'typeSeparated' && !$this->objFilter->addBlankRealEstateType)
+            {
+                $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
+
+                if ($this->objFilterSession->getCurrentMarketingType() === $objDefaultType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing')
+                {
+                    return $objDefaultType;
+                }
+                else
+                {
+                    return $objDefaultType->getRelated('similarType');
+                }
+            }
+
+            if ($this->objFilter->toggleMode === 'type' && !$this->objFilter->addBlankMarketingType)
+            {
+                return RealEstateTypeModel::findOneByDefaultType(1);
+            }
+        }
+
+        return $this->objFilterSession->getCurrentRealEstateType();
+
+        /*if (!$this->objFilter->addBlankMarketingType && $this->objFilterSession->getCurrentRealEstateType() === null)
+        {
+            return RealEstateTypeModel::findOneByDefaultType(1);
+        }
+
+        return $this->objFilterSession->getCurrentRealEstateType();
+
         if (!$this->objFilter->addBlankRealEstateType && $this->objFilterSession->getCurrentRealEstateType() === null)
         {
             $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
@@ -304,25 +335,9 @@ class FilterToggle extends FilterWidget
             {
                 return $objDefaultType->getRelated('similarType');
             }
-        }
+        }*/
 
-        return $this->objFilterSession->getCurrentRealEstateType();
 
-        /*if (!$this->objFilter->addBlankMarketingType && !$this->objFilter->addBlankRealEstateType)
-        {
-            return RealEstateTypeModel::findOneByDefaultType(1);
-        }
-        elseif ($this->objFilter->addBlankMarketingType && !$this->objFilter->addBlankRealEstateType)
-        {
-            $objTypeSeparated = FilterItemModel::findPublishedByTypeAndPid('typeSeparated', $this->objFilter->id);
-
-            if ($objTypeSeparated !== null)
-            {
-                return RealEstateTypeModel::findOneByDefaultType(1);
-            }
-        }
-
-        return null;*/
     }
 
     /**

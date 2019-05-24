@@ -21,6 +21,10 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         (
             array('tl_filter_item', 'checkPermission')
         ),
+        'onsubmit_callback' => array
+        (
+            array('tl_filter_item', 'setFilterToggleMode')
+        ),
         'sql' => array
         (
             'keys' => array
@@ -320,6 +324,20 @@ class tl_filter_item extends Backend
     public function checkPermission()
     {
         return;
+    }
+
+    /**
+     * Set toggle mode field in type and typeSeparated filter items
+     *
+     * @param DataContainer $dc
+     */
+    public function setFilterToggleMode($dc)
+    {
+        if ($dc->activeRecord->type === 'typeSeparated' || $dc->activeRecord->type === 'type')
+        {
+            $this->Database->prepare("UPDATE tl_filter SET toggleMode=? WHERE id=?")
+                ->execute($dc->activeRecord->type, $dc->activeRecord->pid);
+        }
     }
 
     /**

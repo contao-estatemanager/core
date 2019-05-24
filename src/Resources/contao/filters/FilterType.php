@@ -62,6 +62,13 @@ class FilterType extends FilterWidget
     protected $select = array();
 
     /**
+     * Marketing type matched flag
+     *
+     * @var boolean
+     */
+    private $blnMarketingTypeMatched = false;
+
+    /**
      * Initialize the object
      *
      * @param array       $arrAttributes Attributes array
@@ -149,7 +156,7 @@ class FilterType extends FilterWidget
             (
                 'type'     => 'option',
                 'value'    => '',
-                'selected' => '',
+                'selected' => $selected ? ' selected' : '',
                 'label'    => '---'
             );
         }
@@ -167,11 +174,13 @@ class FilterType extends FilterWidget
 
             if ($this->objFilter->addBlankRealEstateType)
             {
+                $selected = $this->isMarketingOptionSelected($objGroups->vermarktungsart);
+
                 $arrOptions[] = array
                 (
                     'type'     => 'option',
                     'value'    => $objGroups->vermarktungsart,
-                    'selected' => '',
+                    'selected' => $selected ? ' selected' : '',
                     'label'    => 'Alle (' . $objGroups->title . ')'
                 );
             }
@@ -189,7 +198,7 @@ class FilterType extends FilterWidget
                 (
                     'type'     => 'option',
                     'value'    => $objGroupTypes->id,
-                    'selected' => $this->isOptionSelected($objGroupTypes, $this->objFilterSession->getCurrentRealEstateType()) ? ' selected' : '',
+                    'selected' => $this->isRealEstateOptionSelected($objGroupTypes) ? ' selected' : '',
                     'label'    => $this->showLongTitle ? $objGroupTypes->longTitle : $objGroupTypes->title
                 );
             }
@@ -253,21 +262,25 @@ class FilterType extends FilterWidget
     }
 
     /**
-     * Datermine current real estate type by a collection of types
+     * Is real estate type option selected
      *
      * @param RealEstateTypeModel $objType
-     * @param RealEstateTypeModel $objCurrentType
      *
      * @return boolean
      */
-    protected function isOptionSelected($objType, $objCurrentType)
+    protected function isRealEstateOptionSelected($objType)
     {
-        if ($objCurrentType === null)
+        if ($this->objFilterSession->getCurrentRealEstateType() === null)
         {
+            if (!$this->objFilter->addBlankMarketingType && $objType->defaultType)
+            {
+                return true;
+            }
+
             return false;
         }
 
-        if ($objType->id === $objCurrentType->id)
+        if ($objType->id === $this->objFilterSession->getCurrentRealEstateType()->id)
         {
             return true;
         }

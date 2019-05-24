@@ -283,6 +283,13 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
+        'toggleMode' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['toggleMode'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'sql'                     => "varchar(32) NOT NULL default 'typeSeparated'"
+        ),
     )
 );
 
