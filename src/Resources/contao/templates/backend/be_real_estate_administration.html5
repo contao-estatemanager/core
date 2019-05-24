@@ -4,7 +4,7 @@
 <div class="re_administration">
     <div class="im_logo">
         <div class="im_logo_inner">
-            <img src="/bundles/contaoimmomanager/logo/logo_immomanager.png"/>
+            <img src="/bundles/core/logo/logo_immomanager.png"/>
             <div>powered by <a href="https://www.oveleon.de" target="_blank">oveleon</a></div>
         </div>
     </div>

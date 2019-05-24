@@ -1,7 +1,7 @@
-immomanager_api_read:
-  path: /api/immomanager/v{version}/{module}/{id}
+estatemanager_api_read:
+  path: /api/estatemanager/v{version}/{module}/{id}
   defaults:
-    _controller: "ContaoImmoManagerBundle:ImmoManager:read"
+    _controller: "Core:EstateManager:read"
     _scope: frontend
     _token_check: false
     id: null

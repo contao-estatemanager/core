@@ -1,15 +1,15 @@
 <?php
 
-namespace Oveleon\ContaoImmoManagerBundle;
+namespace ContaoEstateManager;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * ImmoManager read api controller.
+ * EstateManager read api controller.
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
-class ImmoManagerRead extends ImmoManagerSDK
+class EstateManagerRead extends EstateManagerSDK
 {
     /**
      * Method
@@ -38,7 +38,7 @@ class ImmoManagerRead extends ImmoManagerSDK
     /**
      * Run the controller
      *
-     * @param String $module  Plural name of ImmoManager module
+     * @param String $module  Plural name of EstateManager module
      * @param int    $id      Id
      *
      * @return JsonResponse

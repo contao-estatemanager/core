@@ -1,6 +1,6 @@
 <script>
-    var ImmoManager = {
-<?= \Oveleon\ContaoImmoManagerBundle\FilterToggle::getImmoManagerConfig(); ?>
+    var EstateManager = {
+<?= \ContaoEstateManager\FilterToggle::getEstateManagerConfig(); ?>
     };
 </script>
 <script>
@@ -10,13 +10,13 @@
         } else if (typeof exports === 'object') {
             module.exports = factory(require('jovel'));
         } else {
-            root.ImmoManagerFilter = factory(root, root.jovel);
+            root.EstateManagerFilter = factory(root, root.jovel);
         }
     })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
         'use strict';
 
-        var ImmoManagerFilter = {};
+        var EstateManagerFilter = {};
 
         var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 
@@ -31,7 +31,7 @@
 
         var marketingTypeChanged = function () {
             firstSelected = false;
-            switchType = (settings.addBlankRealEstateType) ? ((ImmoManager.types[fieldRealEstateType.value]) ? ImmoManager.types[fieldRealEstateType.value].switchType : 0) : ImmoManager.types[fieldRealEstateType.value].switchType;
+            switchType = (settings.addBlankRealEstateType) ? ((EstateManager.types[fieldRealEstateType.value]) ? EstateManager.types[fieldRealEstateType.value].switchType : 0) : EstateManager.types[fieldRealEstateType.value].switchType;
 
             if (settings.addBlankRealEstateType === false) {
                 for (var i=0; i<fieldRealEstateType.options.length;i++) {
@@ -102,7 +102,7 @@
             } else {
                 for (let i=0; i<toggleFilter.length; i++) {
                     if (fieldRealEstateType.selectedOptions[0].value && fieldRealEstateType.selectedOptions[0].value !== 'miete_leasing' && fieldRealEstateType.selectedOptions[0].value !== 'kauf_erbpacht') {
-                        if (ImmoManager.types[fieldRealEstateType.selectedOptions[0].value].filter.indexOf(toggleFilter[i].dataset.group) >= 0) {
+                        if (EstateManager.types[fieldRealEstateType.selectedOptions[0].value].filter.indexOf(toggleFilter[i].dataset.group) >= 0) {
                             toggleFilter[i].style.display = '';
                         } else {
                             toggleFilter[i].style.display = 'none';
@@ -133,7 +133,7 @@
          *
          * @public
          */
-        ImmoManagerFilter.destroy = function () {
+        EstateManagerFilter.destroy = function () {
 
             // If plugin isn't already initialized, stop
             if (!settings) return;
@@ -146,18 +146,18 @@
         };
 
         /**
-         * Initialize ImmoManagerFilter
+         * Initialize EstateManagerFilter
          *
          * @public
          *
          * @param {Object} options   User settings
          */
-        ImmoManagerFilter.init = function (options) {
+        EstateManagerFilter.init = function (options) {
             // feature test and availability
             if (!supports || !document.querySelector(options.selector)) return;
 
             // Destroy any existing initializations
-            ImmoManagerFilter.destroy();
+            EstateManagerFilter.destroy();
 
             // Merge user options with defaults
             settings = jovel.extend(true, defaults, options || {});
@@ -171,15 +171,15 @@
             setEventListener();
         };
 
-        return ImmoManagerFilter;
+        return EstateManagerFilter;
     });
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        jovel.forEach(ImmoManager.filters, function (settings, id) {
+        jovel.forEach(EstateManager.filters, function (settings, id) {
             settings.selector = 'form[data-filter-id="'+id+'"]';
-            ImmoManagerFilter.init(settings);
-        }, ImmoManagerFilter);
+            EstateManagerFilter.init(settings);
+        }, EstateManagerFilter);
     });
 </script>
 <script>

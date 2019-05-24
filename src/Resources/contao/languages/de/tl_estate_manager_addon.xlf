@@ -1,28 +1,28 @@
 <?xml version="1.0" ?>
 <xliff version="1.1">
-  <file datatype="php" original="src/Resources/contao/languages/en/tl_immo_manager_addon.php" source-language="en" target-language="de">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_estate_manager_addon.php" source-language="en" target-language="de">
     <body>
-      <trans-unit id="tl_immo_manager_addon.license_legend">
+      <trans-unit id="tl_estate_manager_addon.license_legend">
         <source>Addon Licenses</source>
         <target>Addon Lizenzen</target>
       </trans-unit>
-      <trans-unit id="tl_immo_manager_addon.demo_expiration_date">
+      <trans-unit id="tl_estate_manager_addon.demo_expiration_date">
         <source>This Demo ends on %s</source>
         <target>Diese Demo endet am %s Uhr</target>
       </trans-unit>
-      <trans-unit id="tl_immo_manager_addon.demo_expired">
+      <trans-unit id="tl_estate_manager_addon.demo_expired">
         <source>This demo has expired to continue using the addon please purchase a license.</source>
         <target>Diese Demo ist abgelaufen, um das Addon weiterhin zu nutzen erwerben Sie bitte eine Lizenz.</target>
       </trans-unit>
-      <trans-unit id="tl_immo_manager_addon.demo_used">
+      <trans-unit id="tl_estate_manager_addon.demo_used">
         <source>The period for a demo version of this addon has already expired, to continue to use the addon please purchase a license.</source>
         <target>Der Zeitraum für eine Demoversion dieses Addons wurde bereits ausgeschöpft, um das Addon weiterhin zu nutzen erwerben Sie bitte eine Lizenz.</target>
       </trans-unit>
-      <trans-unit id="tl_immo_manager_addon.valid_license">
+      <trans-unit id="tl_estate_manager_addon.valid_license">
         <source>License valid - The addon was successfully unlocked.</source>
         <target>Lizenz gültig - Das Addon wurde erfolgreich freigeschaltet.</target>
       </trans-unit>
-      <trans-unit id="tl_immo_manager_addon.invalid_license">
+      <trans-unit id="tl_estate_manager_addon.invalid_license">
         <source>The specified license is invalid. Please check your input and pay attention to 0 (zero) and O (letter) as well as upper and lower case.</source>
         <target>Die angegebene Lizenz ist ungültig. Bitte prüfen Sie Ihre Eingabe und beachten Sie 0 (Null) und O (Buchstabe) sowie Groß- und Kleinschreibung.</target>
       </trans-unit>

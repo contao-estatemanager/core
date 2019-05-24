@@ -1,10 +1,11 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/core
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
 // Back end modules
@@ -48,7 +49,7 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         ),
         'addon' => array
         (
-            'tables'            => array('tl_immo_manager_addon'),
+            'tables'            => array('tl_estate_manager_addon'),
             'hideInNavigation'  => true,
         ),
         'expose_module' => array
@@ -58,44 +59,44 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         ),
         'administration' => array
         (
-            'callback'          => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateAdministration'
+            'callback'          => '\\ContaoEstateManager\\ModuleRealEstateAdministration'
         ),
     )
 ));
 
 // Models
-$GLOBALS['TL_MODELS']['tl_provider']               = '\\Oveleon\\ContaoImmoManagerBundle\\ProviderModel';
-$GLOBALS['TL_MODELS']['tl_contact_person']         = '\\Oveleon\\ContaoImmoManagerBundle\\ContactPersonModel';
-$GLOBALS['TL_MODELS']['tl_real_estate']            = '\\Oveleon\\ContaoImmoManagerBundle\\RealEstateModel';
-$GLOBALS['TL_MODELS']['tl_real_estate_group']      = '\\Oveleon\\ContaoImmoManagerBundle\\RealEstateGroupModel';
-$GLOBALS['TL_MODELS']['tl_real_estate_type']       = '\\Oveleon\\ContaoImmoManagerBundle\\RealEstateTypeModel';
-$GLOBALS['TL_MODELS']['tl_filter']                 = '\\Oveleon\\ContaoImmoManagerBundle\\FilterModel';
-$GLOBALS['TL_MODELS']['tl_filter_item']            = '\\Oveleon\\ContaoImmoManagerBundle\\FilterItemModel';
-$GLOBALS['TL_MODELS']['tl_field_format']           = '\\Oveleon\\ContaoImmoManagerBundle\\FieldFormatModel';
-$GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\Oveleon\\ContaoImmoManagerBundle\\FieldFormatActionModel';
-$GLOBALS['TL_MODELS']['tl_interface']              = '\\Oveleon\\ContaoImmoManagerBundle\\InterfaceModel';
-$GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\Oveleon\\ContaoImmoManagerBundle\\InterfaceMappingModel';
-$GLOBALS['TL_MODELS']['tl_expose_module']          = '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleModel';
+$GLOBALS['TL_MODELS']['tl_provider']               = '\\ContaoEstateManager\\ProviderModel';
+$GLOBALS['TL_MODELS']['tl_contact_person']         = '\\ContaoEstateManager\\ContactPersonModel';
+$GLOBALS['TL_MODELS']['tl_real_estate']            = '\\ContaoEstateManager\\RealEstateModel';
+$GLOBALS['TL_MODELS']['tl_real_estate_group']      = '\\ContaoEstateManager\\RealEstateGroupModel';
+$GLOBALS['TL_MODELS']['tl_real_estate_type']       = '\\ContaoEstateManager\\RealEstateTypeModel';
+$GLOBALS['TL_MODELS']['tl_filter']                 = '\\ContaoEstateManager\\FilterModel';
+$GLOBALS['TL_MODELS']['tl_filter_item']            = '\\ContaoEstateManager\\FilterItemModel';
+$GLOBALS['TL_MODELS']['tl_field_format']           = '\\ContaoEstateManager\\FieldFormatModel';
+$GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\ContaoEstateManager\\FieldFormatActionModel';
+$GLOBALS['TL_MODELS']['tl_interface']              = '\\ContaoEstateManager\\InterfaceModel';
+$GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\ContaoEstateManager\\InterfaceMappingModel';
+$GLOBALS['TL_MODELS']['tl_expose_module']          = '\\ContaoEstateManager\\ExposeModuleModel';
 
 // Back end form fields
-$GLOBALS['BE_FFL']['exposeModuleWizard']           = '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleWizard';
+$GLOBALS['BE_FFL']['exposeModuleWizard']           = '\\ContaoEstateManager\\ExposeModuleWizard';
 
 // Front end modules
 array_insert($GLOBALS['FE_MOD'], 0, array
 (
-    'immomanager' => array
+    'estatemanager' => array
     (
-        'realEstateExpose'       => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateExpose',
-        'realEstateFilter'       => '\\Oveleon\\ContaoImmoManagerBundle\\Filter',
-        'realEstateList'         => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateList',
-        'realEstateResultList'   => '\\Oveleon\\ContaoImmoManagerBundle\\ModuleRealEstateResultList',
+        'realEstateExpose'       => '\\ContaoEstateManager\\ModuleRealEstateExpose',
+        'realEstateFilter'       => '\\ContaoEstateManager\\Filter',
+        'realEstateList'         => '\\ContaoEstateManager\\ModuleRealEstateList',
+        'realEstateResultList'   => '\\ContaoEstateManager\\ModuleRealEstateResultList',
     )
 ));
 
 // Content elements
 array_insert($GLOBALS['TL_CTE']['includes'], 3, array
 (
-    'realEstateFilter'      => '\\Oveleon\\ContaoImmoManagerBundle\\Filter'
+    'realEstateFilter'      => '\\ContaoEstateManager\\Filter'
 ));
 
 // Expose modules
@@ -103,41 +104,41 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
 (
     'properties' => array
     (
-        'title'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTitle',
-        'address'           => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleAddress',
-        'details'           => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleDetails',
-        'mainDetails'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainDetails',
-        'mainAttributes'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainAttributes',
-        'mainPrice'         => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainPrice',
-        'mainArea'          => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMainArea',
-        'texts'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleTexts',
-        'fieldList'         => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleFieldList',
-        'statusToken'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleStatusToken',
-        'marketingToken'    => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleMarketingToken',
+        'title'             => '\\ContaoEstateManager\\ExposeModuleTitle',
+        'address'           => '\\ContaoEstateManager\\ExposeModuleAddress',
+        'details'           => '\\ContaoEstateManager\\ExposeModuleDetails',
+        'mainDetails'       => '\\ContaoEstateManager\\ExposeModuleMainDetails',
+        'mainAttributes'    => '\\ContaoEstateManager\\ExposeModuleMainAttributes',
+        'mainPrice'         => '\\ContaoEstateManager\\ExposeModuleMainPrice',
+        'mainArea'          => '\\ContaoEstateManager\\ExposeModuleMainArea',
+        'texts'             => '\\ContaoEstateManager\\ExposeModuleTexts',
+        'fieldList'         => '\\ContaoEstateManager\\ExposeModuleFieldList',
+        'statusToken'       => '\\ContaoEstateManager\\ExposeModuleStatusToken',
+        'marketingToken'    => '\\ContaoEstateManager\\ExposeModuleMarketingToken',
     ),
     'media' => array
     (
-        'gallery'           => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleGallery',
+        'gallery'           => '\\ContaoEstateManager\\ExposeModuleGallery',
     ),
     'miscellaneous' => array
     (
-        'contactPerson'     => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleContactPerson',
-        'enquiryForm'       => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleEnquiryForm',
-        'share'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleShare',
-        'print'             => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModulePrint',
-        'html'              => '\\Oveleon\\ContaoImmoManagerBundle\\ExposeModuleHtml',
+        'contactPerson'     => '\\ContaoEstateManager\\ExposeModuleContactPerson',
+        'enquiryForm'       => '\\ContaoEstateManager\\ExposeModuleEnquiryForm',
+        'share'             => '\\ContaoEstateManager\\ExposeModuleShare',
+        'print'             => '\\ContaoEstateManager\\ExposeModulePrint',
+        'html'              => '\\ContaoEstateManager\\ExposeModuleHtml',
     )
 );
 
 // Back end real estate filter items
 $GLOBALS['TL_RFI'] = array
 (
-    'location'              => '\\Oveleon\\ContaoImmoManagerBundle\\FilterLocation',
-    'unique'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterUnique',
-    'type'                  => '\\Oveleon\\ContaoImmoManagerBundle\\FilterType',
-    'typeSeparated'         => '\\Oveleon\\ContaoImmoManagerBundle\\FilterTypeSeparated',
-    'toggle'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterToggle',
-    'submit'                => '\\Oveleon\\ContaoImmoManagerBundle\\FilterSubmit',
+    'location'              => '\\ContaoEstateManager\\FilterLocation',
+    'unique'                => '\\ContaoEstateManager\\FilterUnique',
+    'type'                  => '\\ContaoEstateManager\\FilterType',
+    'typeSeparated'         => '\\ContaoEstateManager\\FilterTypeSeparated',
+    'toggle'                => '\\ContaoEstateManager\\FilterToggle',
+    'submit'                => '\\ContaoEstateManager\\FilterSubmit',
 );
 
 // Back end real estate administration modules
@@ -154,7 +155,7 @@ $GLOBALS['TL_RAM'] = array
 // Style sheet
 if (TL_MODE == 'BE')
 {
-    $GLOBALS['TL_CSS'][] = 'bundles/contaoimmomanager/real_estate_administration.css|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/core/real_estate_administration.css|static';
 }
 
 // Add permissions

@@ -1,17 +1,17 @@
 <?php
 
-namespace Oveleon\ContaoImmoManagerBundle\Controller;
+namespace ContaoEstateManager\Core\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Oveleon\ContaoImmoManagerBundle\ImmoManagerRead;
+use ContaoEstateManager\Core\EstateManagerRead;
 
 /**
- * Handles the immomanager api routes.
+ * Handles the EstateManager api routes.
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
-class ImmoManagerController extends Controller
+class EstateManagerController extends Controller
 {
     /**
      * Runs the command scheduler. (READ)
@@ -22,7 +22,7 @@ class ImmoManagerController extends Controller
     {
         $this->container->get('contao.framework')->initialize();
 
-        $controller = new ImmoManagerRead();
+        $controller = new EstateManagerRead();
 
         return $controller->run($module, $id);
     }

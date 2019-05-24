@@ -1,11 +1,4 @@
-<?xml version="1.0" ?><!--
-  ~ This file is part of Oveleon ImmoManager.
-  ~
-  ~ @link      https://github.com/oveleon/contao-immo-manager-bundle
-  ~ @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
-  ~ @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
-  -->
-
+<?xml version="1.0" ?>
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_filter.php" source-language="en" target-language="de">
     <body>

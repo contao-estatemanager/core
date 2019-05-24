@@ -1,11 +1,13 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/core
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
+
 
 // Add palettes
 array_insert($GLOBALS['TL_DCA']['tl_content']['palettes'], 0, array
@@ -21,11 +23,11 @@ array_insert($GLOBALS['TL_DCA']['tl_content']['fields'], 0, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_content']['filter'],
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_content_immo_manager', 'getFilter'),
+        'options_callback'        => array('tl_content_estate_manager', 'getFilter'),
         'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50 wizard'),
         'wizard' => array
         (
-            array('tl_content_immo_manager', 'editFilter')
+            array('tl_content_estate_manager', 'editFilter')
         ),
         'sql'                     => "int(10) unsigned NOT NULL default '0'"
     ),
@@ -36,7 +38,7 @@ array_insert($GLOBALS['TL_DCA']['tl_content']['fields'], 0, array
  *
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class tl_content_immo_manager extends Backend
+class tl_content_estate_manager extends Backend
 {
 
     /**

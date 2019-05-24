@@ -1,10 +1,11 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/core
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
 // Add palettes
@@ -23,7 +24,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
     'listMode_group'       => 'realEstateGroups,filterMode'
 ));
 
-// Add immo manager fields
+// Add estate manager fields
 array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
 (
     'realEstateTemplate' => array
@@ -32,7 +33,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'default'                 => 'real_estate_default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateTemplates'),
+        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateTemplates'),
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
@@ -42,7 +43,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'select',
         'foreignKey'              => 'tl_filter.title',
-        'options_callback'        => array('tl_module_immo_manager', 'getFilter'),
+        'options_callback'        => array('tl_module_estate_manager', 'getFilter'),
         'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
         'sql'                     => "int(10) unsigned NOT NULL default '0'",
         'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
@@ -71,7 +72,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'checkboxWizard',
         'foreignKey'              => 'tl_real_estate_group.title',
-        'options_callback'        => array('tl_module_immo_manager', 'getRealEstateGroups'),
+        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateGroups'),
         'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
         'sql'                     => "blob NULL",
         'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
@@ -129,7 +130,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class tl_module_immo_manager extends Backend
+class tl_module_estate_manager extends Backend
 {
 
     /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace Oveleon\ContaoImmoManagerBundle;
+namespace ContaoEstateManager;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * ImmoManager SDK.
+ * EstateManager SDK.
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
-class ImmoManagerSDK extends \Frontend
+class EstateManagerSDK extends \Frontend
 {
     /** Method Contants */
     const METHOD_GET  = 'GET';

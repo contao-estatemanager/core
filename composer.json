@@ -1,14 +1,14 @@
 {
-  "name":"oveleon/contao-immo-manager-bundle",
+  "name":"contao-estatemanager/core",
   "type":"contao-bundle",
-  "description":"Manage real estate properties in Cotnao.",
-  "keywords":["contao","immo-manager","immo","real-estate","real estate","estate","property"],
-  "homepage":"https://ovealeon.de/",
+  "description":"EstateManager for Contao - Manage real estate properties in Cotnao.",
+  "keywords":["contao","immo-manager","estate-manager","estate","real-estate","real estate","property"],
+  "homepage":"https://www.contao-estatemanager.com/",
   "license":"AGPLv3",
   "authors":[
     {
       "name":"Oveleon",
-      "homepage":"https://ovealeon.de/",
+      "homepage":"https://www.oveleon.de/",
       "role":"Developer"
     }
   ],
@@ -27,7 +27,7 @@
   },
   "autoload":{
     "psr-4": {
-      "Oveleon\\ContaoImmoManagerBundle\\": "src/"
+      "ContaoEstateManager\\Core\\": "src/"
     },
     "classmap": [
       "src/Resources/contao/"
@@ -40,6 +40,6 @@
     ]
   },
   "extra":{
-    "contao-manager-plugin": "Oveleon\\ContaoImmoManagerBundle\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "ContaoEstateManager\\Core\\ContaoManager\\Plugin"
   }
 }

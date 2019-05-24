@@ -1,11 +1,11 @@
 <?php
-
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/core
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setMarketingType';
@@ -13,8 +13,8 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setRealEstateType
 
 // Extend the regular palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('immo_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
-    ->addField(array('setMarketingType', 'setRealEstateType'), 'immo_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addField(array('setMarketingType', 'setRealEstateType'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('regular', 'tl_page')
 ;
 
@@ -56,7 +56,7 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_page']['realEstateType'],
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_page_immo_manager', 'getRealEstateTypes'),
+        'options_callback'        => array('tl_page_estate_manager', 'getRealEstateTypes'),
         'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
         'sql'                     => "int(10) unsigned NOT NULL default '0'",
     ),
@@ -67,7 +67,7 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
  *
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class tl_page_immo_manager extends Backend
+class tl_page_estate_manager extends Backend
 {
 
     /**

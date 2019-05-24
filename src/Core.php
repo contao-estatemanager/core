@@ -8,5 +8,15 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-// Real estate config
-$GLOBALS['TL_CONFIG']['roomOptions'] = '1,2,3,4,5,6,7,8';
+
+declare(strict_types=1);
+
+
+
+namespace ContaoEstateManager\Core;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class Core extends Bundle
+{
+}

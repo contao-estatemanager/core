@@ -49,7 +49,7 @@
         height: 12px;
         margin-left: 5px;
 
-        background-image: url('/bundles/contaoimmomanager/icons/check.svg');
+        background-image: url('/bundles/core/icons/check.svg');
         background-position: center;
         background-repeat: no-repeat;
 
@@ -60,7 +60,7 @@
     &.demo{
 
       label:not(.error):after {
-        background-image: url('/bundles/contaoimmomanager/icons/demo.svg');
+        background-image: url('/bundles/core/icons/demo.svg');
       }
     }
 
@@ -87,7 +87,7 @@
         height: 12px;
         margin-left: 5px;
 
-        background-image: url('/bundles/contaoimmomanager/icons/warn.svg');
+        background-image: url('/bundles/core/icons/warn.svg');
         background-position: center;
         background-repeat: no-repeat;
 
@@ -158,37 +158,37 @@
 
         &.provider:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/user.svg');
+          background-image: url('/bundles/core/icons/user.svg');
         }
 
         &.filter:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/filter.svg');
+          background-image: url('/bundles/core/icons/filter.svg');
         }
 
         &.configuration:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/settings.svg');
+          background-image: url('/bundles/core/icons/settings.svg');
         }
 
         &.settings:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/settings.svg');
+          background-image: url('/bundles/core/icons/settings.svg');
         }
 
         &.addons:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/catalog.svg');
+          background-image: url('/bundles/core/icons/catalog.svg');
         }
 
         &.realestate:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/estate.svg');
+          background-image: url('/bundles/core/icons/estate.svg');
         }
 
         &.visualization:before{
           content: '';
-          background-image: url('/bundles/contaoimmomanager/icons/visualization.svg');
+          background-image: url('/bundles/core/icons/visualization.svg');
         }
       }
 
