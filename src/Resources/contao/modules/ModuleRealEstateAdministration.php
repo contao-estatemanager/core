@@ -24,6 +24,12 @@ class ModuleRealEstateAdministration extends \BackendModule
 	protected $strTemplate = 'be_real_estate_administration';
 
 	/**
+	 * Catalog URL
+	 * @var string
+	 */
+	protected $strCatalogUrl = 'https://oveleon.de';
+
+	/**
 	 * Generate the module
 	 *
 	 * @throws \Exception
@@ -50,10 +56,19 @@ class ModuleRealEstateAdministration extends \BackendModule
 
             foreach ($modules as $module)
             {
+                if($module == 'addon_catalog')
+                {
+                    $link = $this->strCatalogUrl;
+                }
+                else
+                {
+                    $link = 'contao/main.php?do=' . $module;
+                }
+
                 $gp['modules'][] = array(
                     'title' => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0],
                     'desc'  => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1],
-                    'link'  => 'contao/main.php?do=' . $module
+                    'link'  => $link
                 );
             }
 

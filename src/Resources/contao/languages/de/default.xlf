@@ -6,6 +6,10 @@
         <source>Es konnten keine passenden Angebote gefunden werden.</source>
         <target>Es konnten keine passenden Angebote gefunden werden.</target>
       </trans-unit>
+      <trans-unit id="MSC.administration">
+        <source>Immobilien Verwaltung</source>
+        <target>Immobilien Verwaltung</target>
+      </trans-unit>
 
       <trans-unit id="COLS.contentTop">
         <source>Über dem Inhaltsbereich</source>
