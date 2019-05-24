@@ -1,1 +1,1 @@
-# contao-immo-manager-bundle
+# EstateManager for Contao
