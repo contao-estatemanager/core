@@ -53,7 +53,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['MSC']['administration'],
                 'href'                => 'do=administration',
-                'icon'                => 'header.svg'
+                'icon'                => 'back.svg'
             ),
             'all' => array
             (
@@ -4169,6 +4169,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['objektnrExtern'],
             'inputType'                 => 'text',
+            'search'                    => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array()

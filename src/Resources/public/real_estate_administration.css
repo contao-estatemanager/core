@@ -1,26 +1,44 @@
 .navigation.provider, .navigation.type, .navigation.filter, .navigation.field_format, .navigation.interface, .navigation.config, .navigation.addon, .navigation.expose_module {
   display: none !important; }
 
-.im_logo {
-  text-align: center;
-  padding: 20px 10px;
-  border-bottom: 1px solid #e6e6e8; }
-  .im_logo .im_logo_inner {
+#tl_navigation .group-real_estate {
+  background: url("/bundles/core/icons/navi.svg") 4px 1px no-repeat; }
+
+.em_head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 1px solid #e6e6e8;
+  background: #0A73F2; }
+  .em_head .em_logo_inner {
     display: inline-block; }
-    .im_logo .im_logo_inner img {
+    .em_head .em_logo_inner img {
       max-width: 100%;
       height: auto; }
-    .im_logo .im_logo_inner div {
-      text-align: right;
+    .em_head .em_logo_inner div {
       color: #999;
       font-weight: 400;
       font-size: .85em;
       margin-top: 4px; }
-      .im_logo .im_logo_inner div a {
+      .em_head .em_logo_inner div a {
         color: #999;
         text-decoration: none;
         font-weight: 400;
         line-height: 1; }
+  .em_head .em_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    padding: 20px 10px;
+    color: #bdebee; }
+    .em_head .em_info a {
+      color: #bdebee; }
+    .em_head .em_info span {
+      display: block;
+      font-size: .9em;
+      color: #95c7d6;
+      text-align: right; }
 
 .widget.validLicense label:not(.error):after {
   display: inline-block;

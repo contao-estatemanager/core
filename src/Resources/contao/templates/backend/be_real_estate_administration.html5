@@ -2,10 +2,13 @@
   <a href="<?/*= $this->href */?>" class="header_back" title="<?/*= $this->title */?>"><?/*= $this->button */?></a>
 </div>-->
 <div class="re_administration">
-    <div class="im_logo">
-        <div class="im_logo_inner">
-            <img src="/bundles/core/logo/logo_immomanager.png"/>
-            <div>powered by <a href="https://www.oveleon.de" target="_blank">oveleon</a></div>
+    <div class="em_head">
+        <div class="em_logo_inner">
+            <img src="/bundles/core/logo/estatemanager_logo.jpg"/>
+        </div>
+        <div class="em_info">
+            <span>Version: 0.0.0</span>
+            <div>Der <a href="<?=$this->catalogUrl?>" target="_blank">EstateManager</a> ist ein Produkt von <a href="https://www.oveleon.de" target="_blank">Oveleon</a></div>
         </div>
     </div>
     <div class="re_listing_container">

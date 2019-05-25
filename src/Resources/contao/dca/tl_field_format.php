@@ -53,7 +53,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['MSC']['administration'],
                 'href'                => 'do=administration',
-                'icon'                => 'header.svg'
+                'icon'                => 'back.svg'
             ),
             'reset' => array
             (

@@ -29,7 +29,7 @@ class ModuleRealEstateAdministration extends \BackendModule
 	 * Catalog URL
 	 * @var string
 	 */
-	protected $strCatalogUrl = 'https://oveleon.de';
+	protected $strCatalogUrl = 'https://www.contao-estatemanager.com/';
 
 	/**
 	 * Generate the module
@@ -45,6 +45,7 @@ class ModuleRealEstateAdministration extends \BackendModule
 		$this->Template->title = \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
 		$this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
         $this->Template->headline = $GLOBALS['TL_LANG']['tl_real_estate_administration']['title'];
+        $this->Template->catalogUrl = $this->strCatalogUrl;
 
         $groups = array();
 

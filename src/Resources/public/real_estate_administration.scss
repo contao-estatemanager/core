@@ -5,12 +5,18 @@
   }
 }
 
-.im_logo{
-  text-align: center;
-  padding: 20px 10px;
-  border-bottom: 1px solid #e6e6e8;
+#tl_navigation .group-real_estate {
+  background:url("/bundles/core/icons/navi.svg") 4px 1px no-repeat;
+}
 
-  .im_logo_inner{
+.em_head{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 1px solid #e6e6e8;
+  background: #0A73F2;
+
+  .em_logo_inner{
     display: inline-block;
 
     img{
@@ -19,7 +25,7 @@
     }
 
     div{
-      text-align: right;
+
       color: #999;
       font-weight: 400;
       font-size: .85em;
@@ -31,6 +37,27 @@
         font-weight: 400;
         line-height: 1;
       }
+    }
+  }
+
+  .em_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    text-align: right;
+    padding: 20px 10px;
+    color: #bdebee;
+
+    a{
+      color: #bdebee;
+    }
+
+    span{
+      display: block;
+      font-size: .9em;
+      color: #95c7d6;
+      text-align: right;
     }
   }
 }
