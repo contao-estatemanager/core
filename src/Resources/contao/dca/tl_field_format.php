@@ -113,7 +113,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
     'palettes' => array
     (
         '__selector__'  => array('useCondition'),
-        'default'       => 'fieldname,cssClass,useCondition;'
+        'default'       => '{format_legend},fieldname,cssClass,useCondition;'
     ),
 
     // Subpalettes

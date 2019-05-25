@@ -30,7 +30,7 @@ class RealEstateFormatter
         $objFieldFormats = FieldFormatModel::findAll();
         $objFieldFormatActions = FieldFormatActionModel::findAll(array('order'=>'pid,sorting'));
 
-        if ($objFieldFormats === null)
+        if ($objFieldFormats === null || $objFieldFormatActions === null)
         {
             return;
         }
