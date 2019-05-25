@@ -26,10 +26,16 @@ class ModuleRealEstateAdministration extends \BackendModule
 	protected $strTemplate = 'be_real_estate_administration';
 
 	/**
+	 * EstateManager URL
+	 * @var string
+	 */
+	protected $strEstateManagerUrl = 'https://www.contao-estatemanager.com/';
+
+	/**
 	 * Catalog URL
 	 * @var string
 	 */
-	protected $strCatalogUrl = 'https://www.contao-estatemanager.com/';
+	protected $strCompanyUrl = 'https://www.oveleon.de/';
 
 	/**
 	 * Generate the module
@@ -40,12 +46,17 @@ class ModuleRealEstateAdministration extends \BackendModule
 	{
 		\System::loadLanguageFile('tl_real_estate_administration');
 
+        $packages = \System::getContainer()->getParameter('kernel.packages');
+
 		$this->Template->content = '';
 		$this->Template->href = $this->getReferer(true);
 		$this->Template->title = \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
 		$this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
         $this->Template->headline = $GLOBALS['TL_LANG']['tl_real_estate_administration']['title'];
-        $this->Template->catalogUrl = $this->strCatalogUrl;
+        $this->Template->catalogUrl = $this->strEstateManagerUrl;
+
+        $this->Template->version = $GLOBALS['TL_LANG']['MSC']['version'] . ': ' . (isset($packages['contao-estatemanager/core']) ? $packages['contao-estatemanager/core'] : '0.0.0');
+        $this->Template->descritption = sprintf($GLOBALS['TL_LANG']['MSC']['estatemanager_description'], '<a href="' . $this->strCompanyUrl . '" target="_blank">' . $GLOBALS['TL_LANG']['MSC']['estatemanager_company'] . '</a>');
 
         $groups = array();
 
@@ -61,7 +72,7 @@ class ModuleRealEstateAdministration extends \BackendModule
             {
                 if($module == 'addon_catalog')
                 {
-                    $link = $this->strCatalogUrl;
+                    $link = $this->strEstateManagerUrl;
                 }
                 else
                 {

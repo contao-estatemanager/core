@@ -9,59 +9,6 @@
   background:url("/bundles/core/icons/navi.svg") 4px 1px no-repeat;
 }
 
-.em_head{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
-  border-bottom: 1px solid #e6e6e8;
-  background: #0A73F2;
-
-  .em_logo_inner{
-    display: inline-block;
-
-    img{
-      max-width: 100%;
-      height: auto;
-    }
-
-    div{
-
-      color: #999;
-      font-weight: 400;
-      font-size: .85em;
-      margin-top: 4px;
-
-      a{
-        color: #999;
-        text-decoration: none;
-        font-weight: 400;
-        line-height: 1;
-      }
-    }
-  }
-
-  .em_info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-    text-align: right;
-    padding: 20px 10px;
-    color: #bdebee;
-
-    a{
-      color: #bdebee;
-    }
-
-    span{
-      display: block;
-      font-size: .9em;
-      color: #95c7d6;
-      text-align: right;
-    }
-  }
-}
-
 .widget {
 
   &.validLicense {
@@ -152,6 +99,56 @@
     font-weight: bold;
   }
 
+  .em_head{
+    padding: 0 10px;
+    border-bottom: 1px solid #e6e6e8;
+    background: #0A73F2;
+    text-align: center;
+
+    .em_logo_inner{
+
+      img{
+        max-width: 100%;
+        height: auto;
+      }
+
+      div{
+
+        color: #999;
+        font-weight: 400;
+        font-size: .85em;
+        margin-top: 4px;
+
+        a{
+          color: #999;
+          text-decoration: none;
+          font-weight: 400;
+          line-height: 1;
+        }
+      }
+    }
+
+    .em_info{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 20px 10px;
+      color: #bdebee;
+
+      a{
+        color: #bdebee;
+      }
+
+      span{
+        display: block;
+        font-size: .9em;
+        color: #95c7d6;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
   .re_listing_container{
     display: flex;
     flex-wrap: wrap;
@@ -234,6 +231,19 @@
 
 @media (min-width: 992px) {
   .re_administration{
+
+    .em_head {
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+
+      .em_info{
+
+        span{
+          text-align: right;
+        }
+      }
+    }
 
     .re_listing_container {
 

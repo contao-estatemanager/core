@@ -10,6 +10,14 @@
         <source>Immobilien Verwaltung</source>
         <target>Immobilien Verwaltung</target>
       </trans-unit>
+      <trans-unit id="MSC.estatemanager_description">
+        <source>Der EstateManager ist ein Produkt von %s</source>
+        <target>Der EstateManager ist ein Produkt von %s</target>
+      </trans-unit>
+      <trans-unit id="MSC.estatemanager_company">
+        <source>Oveleon</source>
+        <target>Oveleon</target>
+      </trans-unit>
 
       <trans-unit id="COLS.contentTop">
         <source>Über dem Inhaltsbereich</source>
