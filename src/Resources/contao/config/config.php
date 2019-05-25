@@ -144,8 +144,8 @@ $GLOBALS['TL_RFI'] = array
 // Back end real estate administration modules
 $GLOBALS['TL_RAM'] = array
 (
-    'configuration' => array('interface'),
-    'realestate'    => array('type', 'real_estate', 'config'),
+    'configuration' => array('interface', 'config'),
+    'realestate'    => array('type', 'real_estate'),
     'provider'      => array('provider'),
     'filter'        => array('filter'),
     'visualization' => array('field_format', 'expose_module'),

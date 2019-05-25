@@ -53,6 +53,10 @@
   padding: 0 10px;
   border-bottom: 1px solid #e6e6e8;
   background: #0A73F2;
+  background: -moz-linear-gradient(45deg, #0a73f2 0%, #4c98ef 100%, #1578ea 100%);
+  background: -webkit-linear-gradient(45deg, #0a73f2 0%, #4c98ef 100%, #1578ea 100%);
+  background: linear-gradient(45deg, #0a73f2 0%, #4c98ef 100%, #1578ea 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a73f2', endColorstr='#1578ea',GradientType=1 );
   text-align: center; }
   .re_administration .em_head .em_logo_inner img {
     max-width: 100%;
@@ -78,7 +82,7 @@
     .re_administration .em_head .em_info span {
       display: block;
       font-size: .9em;
-      color: #95c7d6;
+      color: #b2ddef;
       margin-bottom: 5px; }
 .re_administration .re_listing_container {
   display: flex;
