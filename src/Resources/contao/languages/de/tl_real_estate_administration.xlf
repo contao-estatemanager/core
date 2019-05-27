@@ -41,8 +41,8 @@
         <target>Anbieter / Kontaktpersonen verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.provider.1">
-        <source>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien zu diesem Portal zu übertragen.</source>
-        <target>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien zu diesem Portal zu übertragen.</target>
+        <source>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien in dieses System zu übertragen.</source>
+        <target>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien in dieses System zu übertragen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.filter.0">
@@ -66,8 +66,8 @@
         <target>Feldformatierung verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.field_format.1">
-        <source>Hier kann die Darstellung und Formatierung der einzelnen Immobilien-Felder verwalten werden.</source>
-        <target>Hier kann die Darstellung und Formatierung der einzelnen Immobilien-Felder verwalten werden.</target>
+        <source>Hier kann die Darstellung und Formatierung der Immobilien-Details / Felder verwalten werden.</source>
+        <target>Hier kann die Darstellung und Formatierung der Immobilien-Details / Felder verwalten werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.interface.0">
         <source>Schnittstellen verwalten</source>
@@ -82,8 +82,8 @@
         <target>Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.config.1">
-        <source>Allgemeine Immobilien Einstellungen von Standardwerten bis zu Darstellungsoptionen</source>
-        <target>Allgemeine Immobilien Einstellungen von Standardwerten bis zu Darstellungsoptionen</target>
+        <source>Allgemeine Einstellungen</source>
+        <target>Allgemeine Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.expose_module.0">
         <source>Exposé-Module verwalten</source>
@@ -98,8 +98,8 @@
         <target>Lizenzen verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon.1">
-        <source>Verwaltung Ihrer Add-On Lizenzen oder Demo-Zugängen</source>
-        <target>Verwaltung Ihrer Add-On Lizenzen oder Demo-Zugängen</target>
+        <source>Hier können Sie Lizenzen für Erweiterungen verwalten sowie Demoversionen starten</source>
+        <target>Hier können Sie Lizenzen für Erweiterungen verwalten sowie Demoversionen starten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon_catalog.0">
         <source>Weitere Add-Ons finden</source>
@@ -114,8 +114,8 @@
         <target>Immobilien verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.real_estate.1">
-        <source>Verwalten Sie die im System vorhandenen Immobilien</source>
-        <target>Verwalten Sie die im System vorhandenen Immobilien</target>
+        <source>Hier können die im System vorhandenen Immobilien verwaltet werden</source>
+        <target>Hier können die im System vorhandenen Immobilien verwaltet werden</target>
       </trans-unit>
     </body>
   </file>
