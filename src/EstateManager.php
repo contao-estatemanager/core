@@ -11,12 +11,10 @@
 
 declare(strict_types=1);
 
-
-
-namespace ContaoEstateManager\Core;
+namespace ContaoEstateManager\EstateManager;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class Core extends Bundle
+class EstateManager extends Bundle
 {
 }

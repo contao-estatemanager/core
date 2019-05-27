@@ -27,7 +27,7 @@
   },
   "autoload":{
     "psr-4": {
-      "ContaoEstateManager\\Core\\": "src/"
+      "ContaoEstateManager\\EstateManager\\": "src/"
     },
     "classmap": [
       "src/Resources/contao/"
@@ -40,6 +40,6 @@
     ]
   },
   "extra":{
-    "contao-manager-plugin": "ContaoEstateManager\\Core\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "ContaoEstateManager\\EstateManager\\ContaoManager\\Plugin"
   }
 }

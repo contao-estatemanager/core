@@ -11,7 +11,7 @@
 declare(strict_types=1);
 
 
-namespace ContaoEstateManager\Core\ContaoManager;
+namespace ContaoEstateManager\EstateManager\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
@@ -19,7 +19,7 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
 
-use ContaoEstateManager\Core\Core;
+use ContaoEstateManager\EstateManager\EstateManager;
 
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -32,9 +32,9 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(Core::class)
+            BundleConfig::create(EstateManager::class)
                 ->setLoadAfter([ContaoCoreBundle::class])
-                ->setReplace(['core']),
+                ->setReplace(['estatemanager']),
         ];
     }
 

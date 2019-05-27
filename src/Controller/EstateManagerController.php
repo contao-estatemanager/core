@@ -1,10 +1,10 @@
 <?php
 
-namespace ContaoEstateManager\Core\Controller;
+namespace ContaoEstateManager\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use ContaoEstateManager\Core\EstateManagerRead;
+use ContaoEstateManager\EstateManagerRead;
 
 /**
  * Handles the EstateManager api routes.

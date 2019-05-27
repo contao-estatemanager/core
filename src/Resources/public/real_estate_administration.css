@@ -2,7 +2,7 @@
   display: none !important; }
 
 #tl_navigation .group-real_estate {
-  background: url("/bundles/core/icons/navi.svg") 4px 1px no-repeat; }
+  background: url("/bundles/estatemanager/icons/navi.svg") 4px 1px no-repeat; }
 
 .widget.validLicense label:not(.error):after {
   display: inline-block;
@@ -10,12 +10,12 @@
   width: 12px;
   height: 12px;
   margin-left: 5px;
-  background-image: url("/bundles/core/icons/check.svg");
+  background-image: url("/bundles/estatemanager/icons/check.svg");
   background-position: center;
   background-repeat: no-repeat;
   pointer-events: none; }
 .widget.validLicense.demo label:not(.error):after {
-  background-image: url("/bundles/core/icons/demo.svg"); }
+  background-image: url("/bundles/estatemanager/icons/demo.svg"); }
 .widget.validLicense input {
   border-color: green;
   outline-color: green; }
@@ -28,7 +28,7 @@
   width: 12px;
   height: 12px;
   margin-left: 5px;
-  background-image: url("/bundles/core/icons/warn.svg");
+  background-image: url("/bundles/estatemanager/icons/warn.svg");
   background-position: center;
   background-repeat: no-repeat;
   pointer-events: none; }
@@ -112,25 +112,25 @@
         height: 25px; }
       .re_administration .re_listing_container .re_group h3.provider:before {
         content: '';
-        background-image: url("/bundles/core/icons/user.svg"); }
+        background-image: url("/bundles/estatemanager/icons/user.svg"); }
       .re_administration .re_listing_container .re_group h3.filter:before {
         content: '';
-        background-image: url("/bundles/core/icons/filter.svg"); }
+        background-image: url("/bundles/estatemanager/icons/filter.svg"); }
       .re_administration .re_listing_container .re_group h3.configuration:before {
         content: '';
-        background-image: url("/bundles/core/icons/settings.svg"); }
+        background-image: url("/bundles/estatemanager/icons/settings.svg"); }
       .re_administration .re_listing_container .re_group h3.settings:before {
         content: '';
-        background-image: url("/bundles/core/icons/settings.svg"); }
+        background-image: url("/bundles/estatemanager/icons/settings.svg"); }
       .re_administration .re_listing_container .re_group h3.addons:before {
         content: '';
-        background-image: url("/bundles/core/icons/catalog.svg"); }
+        background-image: url("/bundles/estatemanager/icons/catalog.svg"); }
       .re_administration .re_listing_container .re_group h3.realestate:before {
         content: '';
-        background-image: url("/bundles/core/icons/estate.svg"); }
+        background-image: url("/bundles/estatemanager/icons/estate.svg"); }
       .re_administration .re_listing_container .re_group h3.visualization:before {
         content: '';
-        background-image: url("/bundles/core/icons/visualization.svg"); }
+        background-image: url("/bundles/estatemanager/icons/visualization.svg"); }
     .re_administration .re_listing_container .re_group .re_group_inner {
       padding: 20px; }
 .re_administration .re_header {

@@ -155,7 +155,7 @@ $GLOBALS['TL_RAM'] = array
 // Style sheet
 if (TL_MODE == 'BE')
 {
-    $GLOBALS['TL_CSS'][] = 'bundles/core/real_estate_administration.css|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/real_estate_administration.css|static';
 }
 
 // Add permissions
