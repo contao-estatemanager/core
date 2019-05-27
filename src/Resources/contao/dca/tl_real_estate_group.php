@@ -137,19 +137,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'alias' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['alias'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'search'                  => true,
-            'eval'                    => array('rgxp'=>'alias', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50 hidden'),
-            'save_callback' => array
-            (
-                array('tl_real_estate_group', 'generateAlias')
-            ),
-            'sql'                     => "varchar(128) BINARY NOT NULL default ''"
-        ),
         'similarGroup' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['similarGroup'],

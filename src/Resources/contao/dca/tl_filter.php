@@ -351,19 +351,28 @@ class tl_filter extends Backend
      */
     public function generateAlias($varValue, DataContainer $dc)
     {
-        $aliasExists = function (string $alias) use ($dc): bool
-        {
-            return $this->Database->prepare("SELECT id FROM tl_filter WHERE alias=? AND id!=?")->execute($alias, $dc->id)->numRows > 0;
-        };
+        $autoAlias = false;
 
-        // Generate an alias if there is none
+        // Generate alias if there is none
         if ($varValue == '')
         {
-            $varValue = Contao\System::getContainer()->get('contao.slug')->generate($dc->activeRecord->title, $dc->activeRecord->jumpTo, $aliasExists);
+            $autoAlias = true;
+
+            $varValue = System::getContainer()->get('contao.slug.generator')->generate(StringUtil::stripInsertTags($dc->activeRecord->title));
         }
-        elseif ($aliasExists($varValue))
+
+        $objAlias = $this->Database->prepare("SELECT id FROM tl_filter WHERE alias=? AND id!=?")
+            ->execute($varValue, $dc->id);
+
+        // Check whether the filter alias exists
+        if ($objAlias->numRows)
         {
-            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+            if (!$autoAlias)
+            {
+                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+            }
+
+            $varValue .= '-' . $dc->id;
         }
 
         return $varValue;

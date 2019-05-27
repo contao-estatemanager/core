@@ -18,6 +18,14 @@
         <source>Please enter a detailed real estate type title.</source>
         <target>Bitte geben Sie den detaillierten Titel des Immobilien-Typs ein.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_type.similarType.0">
+        <source>Equivalent real estate type</source>
+        <target>Äquivalenter Immobilientyp</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.similarType.1">
+        <source>Please enter the equivalent real estate type.</source>
+        <target>Bitte geben Sie die äquivalenten Immobilientyp an.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.0">
         <source>Reference-Page</source>
         <target>Referenz-Seite</target>
@@ -33,30 +41,6 @@
       <trans-unit id="tl_real_estate_type.jumpTo.1">
         <source>Here you can navigate to a real estate type specific expose page.</source>
         <target>Hier können Sie eine Immobilientyp spezifische Expose-Seite ansteuern.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.similarType.0">
-        <source>Equivalent real estate type</source>
-        <target>Äquivalenter Immobilientyp</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.similarType.1">
-        <source>Please enter the equivalent real estate type.</source>
-        <target>Bitte geben Sie die äquivalenten Immobilientyp an.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.excludeTypes.0">
-        <source>Exclude real estate types</source>
-        <target>Immobilientypen ausschließen</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.excludeTypes.1">
-        <source>If the field configuration overlaps in real estate types, you can exclude real estate types from the search here.</source>
-        <target>Bei Überschneidungen der Feld-Konfiguration bei Immobilientypen können Sie einzelne Immobilientypen für die Suche hier ausschließen.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.excludedTypes.0">
-        <source>Excluded real estate types</source>
-        <target>Ausgeschlossene Immobilientypen</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.excludedTypes.1">
-        <source>Excluded real estate types are not taken into account when searching for this explicit real estate type.</source>
-        <target>Ausgeschlossene Immobilientypen werden bei der Suche dieses expliziten Immobilientyps nicht berücksichtigt.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.0">
         <source>Type of use</source>
@@ -82,6 +66,22 @@
         <source>Please enter an object type.</source>
         <target>Bitte geben Sie die Objektart an.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludeTypes.0">
+        <source>Exclude real estate types</source>
+        <target>Immobilientypen ausschließen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludeTypes.1">
+        <source>If the field configuration overlaps in real estate types, you can exclude real estate types from the search here.</source>
+        <target>Bei Überschneidungen der Feld-Konfiguration bei Immobilientypen können Sie einzelne Immobilientypen für die Suche hier ausschließen.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludedTypes.0">
+        <source>Excluded real estate types</source>
+        <target>Ausgeschlossene Immobilientypen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludedTypes.1">
+        <source>Excluded real estate types are not taken into account when searching for this explicit real estate type.</source>
+        <target>Ausgeschlossene Immobilientypen werden bei der Suche dieses expliziten Immobilientyps nicht berücksichtigt.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_type.price.0">
         <source>Primary price field</source>
         <target>Primäres Preisfeld</target>
@@ -98,21 +98,13 @@
         <source>Please enter the primary area field.</source>
         <target>Bitte geben Sie das primäre Flächenfeld an.</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_type.listFilter.0">
-        <source>List filter</source>
-        <target>Listen-Filter</target>
+      <trans-unit id="tl_real_estate_type.toggleFilter.0">
+        <source>Primary filter</source>
+        <target>Primäre Filter</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_type.listFilter.1">
-        <source>Please enter the list filter.</source>
-        <target>Bitte geben Sie die Listen-Filter an.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.advancedFilter.0">
-        <source>Advanced filter</source>
-        <target>Erweiterte Filter</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.advancedFilter.1">
-        <source>Please enter the advanced filter.</source>
-        <target>Bitte geben Sie die erweiterten Filter an.</target>
+      <trans-unit id="tl_real_estate_type.toggleFilter.1">
+        <source>Please choose the primary filter.</source>
+        <target>Bitte wählen Sie die primären Filter an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.0">
         <source>Sorting option</source>
@@ -170,14 +162,13 @@
         <source>Publish real estate type</source>
         <target>Immobilien-Typ veröffentlichen</target>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_type.title_legend">
-        <source>Title</source>
-        <target>Titel</target>
+        <source>Title &amp; type settings</source>
+        <target>Titel- &amp; Typ-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.forwarding_legend">
-        <source>Forwarding &amp; type settings</source>
-        <target>Weiterleitungs- &amp; Typ-Einstellungen</target>
+        <source>Forwarding</source>
+        <target>Weiterleitung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.field_legend">
         <source>Field configuration</source>
@@ -195,7 +186,6 @@
         <source>Publish</source>
         <target>Veröffentlichen</target>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_type.new.0">
         <source>New real estate type</source>
         <target>Neuen Immobilientyp</target>

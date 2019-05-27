@@ -15,6 +15,7 @@
   "require":{
     "php":">=7.1",
     "contao/core-bundle":"^4.4",
+    "ausi/contao-slug-backport":"^1.0",
     "menatwork/contao-multicolumnwizard-bundle": "^3.3"
   },
   "require-dev": {

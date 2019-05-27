@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
     'palettes' => array
     (
         '__selector__'                => array('excludeTypes', 'orderFields'),
-        'default'                     => '{title_legend},title,longTitle;{forwarding_legend},referencePage,jumpTo,similarType,excludeTypes;{field_legend},nutzungsart,vermarktungsart,objektart;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{publish_legend},defaultType,published'
+        'default'                     => '{title_legend},title,longTitle,similarType;{forwarding_legend},referencePage,jumpTo;{field_legend},nutzungsart,vermarktungsart,objektart,excludeTypes;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{publish_legend},defaultType,published'
     ),
 
     // Subpalettes
@@ -164,7 +164,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'search'                  => true,
             'options_callback'        => array('tl_real_estate_type', 'getRealEstateTypes'),
             'foreignKey'              => 'tl_real_estate_type.title',
-            'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
+            'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
@@ -174,7 +174,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
-            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'clr'),
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
@@ -184,7 +184,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
-            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'clr'),
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
@@ -269,8 +269,29 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'inputType'               => 'checkboxWizard',
             'options'                 => array('price', 'per', 'room', 'area', 'period'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_filter'],
-            'eval'                    => array('multiple'=>true),
+            'eval'                    => array('multiple'=>true, 'tl_class'=>'clr'),
             'sql'                     => "varchar(255) NOT NULL default ''",
+        ),
+        'sortingOptions'  => array
+        (
+
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['sortingOptions'],
+            'inputType' 	          => 'multiColumnWizard',
+            'eval' 			          => array
+            (
+                'columnFields' => array
+                (
+                    'field' => array
+                    (
+                        'label'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['field'],
+                        'exclude'           => true,
+                        'inputType'         => 'select',
+                        'options_callback'  => array('tl_real_estate_type', 'getSortingFields'),
+                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
+                    )
+                )
+            ),
+            'sql'                     => "blob NULL"
         ),
         'mainDetails'  => array
         (
@@ -309,27 +330,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                         'inputType'   => 'select',
                         'options_callback'  => array('tl_real_estate_type', 'getAttributeFields'),
                         'eval' 		  => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
-            'sql'                     => "blob NULL"
-        ),
-        'sortingOptions'  => array
-        (
-
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['sortingOptions'],
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['field'],
-                        'exclude'           => true,
-                        'inputType'         => 'select',
-                        'options_callback'  => array('tl_real_estate_type', 'getSortingFields'),
-                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
                     )
                 )
             ),

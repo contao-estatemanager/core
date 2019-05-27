@@ -194,14 +194,6 @@
         <source>Here you can enter an additional address detail.</source>
         <target>Hier können Sie eine zusätzliche Adressangabe eingeben.</target>
       </trans-unit>
-      <trans-unit id="tl_contact_person.zusatzfeld.0">
-        <source>Additional field</source>
-        <target>Zusatzfeld</target>
-      </trans-unit>
-      <trans-unit id="tl_contact_person.zusatzfeld.1">
-        <source>Here you can enter an additional address detail.</source>
-        <target>Hier können Sie eine zusätzliche Adressangabe eingeben.</target>
-      </trans-unit>
       <trans-unit id="tl_contact_person.freitextfeld.0">
         <source>Address (free text)</source>
         <target>Anschrift (Freitext)</target>
@@ -258,7 +250,6 @@
         <source>Make the contact person publicly visible on the website.</source>
         <target>Den Ansprechpartner auf der Webseite veröffentlichen.</target>
       </trans-unit>
-
       <trans-unit id="tl_contact_person.title_legend">
         <source>General</source>
         <target>Allgemein</target>
@@ -279,7 +270,6 @@
         <source>Publish settings</source>
         <target>Veröffentlichung</target>
       </trans-unit>
-
       <trans-unit id="tl_contact_person.new.0">
         <source>New contact person</source>
         <target>Neue Kontaktperson</target>

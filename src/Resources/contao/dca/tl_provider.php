@@ -129,23 +129,11 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
-
         'anbieternr' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['anbieternr'],
             'exclude'                 => true,
             'search'                  => true,
-            'flag'                    => 1,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'firma' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firma'],
-            'exclude'                 => true,
-            'search'                  => true,
-            'sorting'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -169,6 +157,14 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'eval'                    => array('maxlength'=>8, 'tl_class'=>'w50'),
             'sql'                     => "varchar(8) NOT NULL default ''"
         ),
+        'singleSRC' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['singleSRC'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+            'sql'                     => "binary(16) NULL"
+        ),
         'forwardingMode' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['forwardingMode'],
@@ -182,29 +178,16 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(8) NOT NULL default ''"
         ),
-        'singleSRC' => array
+        'firma' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['singleSRC'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firma'],
             'exclude'                 => true,
-            'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
-            'sql'                     => "binary(16) NULL"
-        ),
-        'impressum' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['impressum'],
-            'exclude'                 => true,
-            'inputType'               => 'textarea',
-            'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
-            'sql'                     => "text NULL"
-        ),
-        'firmenanschrift' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firmenanschrift'],
-            'exclude'                 => true,
-            'inputType'               => 'textarea',
-            'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
-            'sql'                     => "text NULL"
+            'search'                  => true,
+            'sorting'                 => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'postleitzahl' => array
         (
@@ -260,7 +243,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'land' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_member']['land'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['land'],
             'exclude'                 => true,
             'filter'                  => true,
             'search'                  => true,
@@ -287,6 +270,14 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'firmenanschrift' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firmenanschrift'],
+            'exclude'                 => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
+            'sql'                     => "text NULL"
         ),
         'vertretungsberechtigter' => array
         (
@@ -344,7 +335,14 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-
+        'impressum' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['impressum'],
+            'exclude'                 => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
+            'sql'                     => "text NULL"
+        ),
         'published' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['published'],

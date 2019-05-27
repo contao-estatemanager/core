@@ -116,16 +116,25 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
-        'name' => array
+        'anrede' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['name'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
             'exclude'                 => true,
-            'search'                  => true,
-            'sorting'                 => true,
-            'flag'                    => 1,
+            'inputType'               => 'select',
+            'options'                 => array(
+                'herr'    => 'Herr',
+                'frau'    => 'Frau',
+            ),
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(4) NOT NULL default ''"
+        ),
+        'firma' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['firma'],
+            'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'vorname' => array
         (
@@ -138,17 +147,16 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'anrede' => array
+        'name' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['name'],
             'exclude'                 => true,
-            'inputType'               => 'select',
-            'options'                 => array(
-                'herr'    => 'Herr',
-                'frau'    => 'Frau',
-            ),
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(4) NOT NULL default ''"
+            'search'                  => true,
+            'sorting'                 => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'titel' => array
         (
@@ -177,86 +185,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             (
                 array('tl_contact_person', 'generateSalutation')
             ),
-        ),
-        'firma' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['firma'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
-        ),
-        'zusatzfeld' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['zusatzfeld'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'strasse' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['strasse'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'hausnummer' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['hausnummer'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
-        ),
-        'plz' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['plz'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
-        ),
-        'ort' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['ort'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'postfach' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfach'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
-        ),
-        'postf_plz' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postf_plz'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
-        ),
-        'postf_ort' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postf_ort'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'land' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['land'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'email_zentrale' => array
         (
@@ -346,13 +274,61 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''"
         ),
-        'url' => array
+        'strasse' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['url'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['strasse'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'hausnummer' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['hausnummer'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(16) NOT NULL default ''"
+        ),
+        'plz' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['plz'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(16) NOT NULL default ''"
+        ),
+        'ort' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['ort'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'land' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['land'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'zusatzfeld' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['zusatzfeld'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'freitextfeld' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['freitextfeld'],
+            'exclude'                 => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "text NULL"
         ),
         'adressfreigabe' => array
         (
@@ -361,6 +337,22 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'singleSRC' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['singleSRC'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes')),
+            'sql'                     => "binary(16) NULL"
+        ),
+        'postfach' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfach'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'personennummer' => array
         (
@@ -377,22 +369,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''"
-        ),
-        'singleSRC' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['singleSRC'],
-            'exclude'                 => true,
-            'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes')),
-            'sql'                     => "binary(16) NULL"
-        ),
-        'freitextfeld' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['freitextfeld'],
-            'exclude'                 => true,
-            'inputType'               => 'textarea',
-            'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true, 'tl_class'=>'clr'),
-            'sql'                     => "text NULL"
         ),
         'published' => array
         (

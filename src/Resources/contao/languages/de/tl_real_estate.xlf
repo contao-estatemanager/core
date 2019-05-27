@@ -2235,6 +2235,54 @@
         <target>Geben Sie hier die Gesamtanzahl der Gewerbeeinheiten an</target>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate.new.0">
+        <source>New property</source>
+        <target>Neue Immobilie</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.new.1">
+        <source>Create a new property</source>
+        <target>Eine neue Immobilie erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.edit.0">
+        <source>Edit property</source>
+        <target>Immobilie bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.edit.1">
+        <source>Edit property ID %s</source>
+        <target>Immobilie ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.copy.0">
+        <source>Duplicate property</source>
+        <target>Immobilie duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.copy.1">
+        <source>Duplicate property ID %s</source>
+        <target>Immobilie ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.delete.0">
+        <source>Delete property</source>
+        <target>Immobilie löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.delete.1">
+        <source>Delete property ID %s</source>
+        <target>Immobilie ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.toggle.0">
+        <source>Activate/deactivate property</source>
+        <target>Immobilie aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.toggle.1">
+        <source>Activate/deactivate property ID %s</source>
+        <target>Immobilie ID %s aktivieren/deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.show.0">
+        <source>Property details</source>
+        <target>Immobiliedetails</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.show.1">
+        <source>Show the details of property ID %s</source>
+        <target>Die Details der Immobilie ID %s anzeigen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

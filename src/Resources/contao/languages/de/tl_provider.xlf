@@ -194,7 +194,6 @@
         <source>Make the provider publicly visible on the website.</source>
         <target>Den Anbieter auf der Webseite veröffentlichen.</target>
       </trans-unit>
-
       <trans-unit id="tl_provider.general_legend">
         <source>General</source>
         <target>Allgemein</target>
@@ -223,7 +222,6 @@
         <source>Publish settings</source>
         <target>Veröffentlichung</target>
       </trans-unit>
-
       <trans-unit id="tl_provider.new.0">
         <source>New provider</source>
         <target>Neuer Anbieter</target>
