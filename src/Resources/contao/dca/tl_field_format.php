@@ -119,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
     // Subpalettes
     'subpalettes' => array
     (
-        'useCondition'  => 'conditionFields;'
+        'useCondition'  => 'conditionFields'
     ),
 
     // Fields
