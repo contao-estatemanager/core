@@ -55,12 +55,13 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
                 'href'                => 'do=administration',
                 'icon'                => 'back.svg'
             ),
-            'reset' => array
+            'importFieldFormats' => array
             (
-                'label'             => &$GLOBALS['TL_LANG']['tl_field_format']['reset'],
-                'href'              => 'key=reset',
-                'class'             => 'header_field_format_reset',
-                'icon'              => 'settings.svg',
+                'label'             => &$GLOBALS['TL_LANG']['tl_field_format']['importFieldFormats'],
+                'href'              => 'key=importFieldFormats',
+                'class'             => 'header_field_format_import',
+                'icon'              => 'sync.svg',
+                'attributes'        => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_field_format']['importConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'all' => array
             (

@@ -35,6 +35,7 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         'field_format' => array
         (
             'tables'            => array('tl_field_format', 'tl_field_format_action'),
+            'importFieldFormats'=> array('\\ContaoEstateManager\\EstateManager', 'importFieldFormats'),
             'hideInNavigation'  => true,
         ),
         'interface' => array
