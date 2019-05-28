@@ -314,6 +314,58 @@ class FilterSession
 
         return array($arrColumns, $arrValues, $arrOptions);
     }
+
+    /**
+     * Collect and return parameter by a given set of groups
+     *
+     * @param array  $arrGroups
+     * @param string $mode
+     *
+     * @return array
+     */
+    public function getParameterByGroups($arrGroups, $mode)
+    {
+        $t = static::$strTable;
+
+        $arrColumns = array("$t.published='1'");
+        $arrValues = array();
+        $arrOptions = array();
+
+        $arrTypeColumns = array();
+
+        $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
+
+        if ($objRealEstateTypes === null)
+        {
+            // Exception
+        }
+
+        while ($objRealEstateTypes->next())
+        {
+            $arrColumn = array();
+
+            $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+
+            // Hook zum ergänzen von neuen Toggle Filtern
+
+            $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+        }
+
+        $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
+
+        // HOOK: get type parameter by groups
+        if (isset($GLOBALS['TL_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByGroups']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['getParameterByGroups'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $this);
+            }
+        }
+
+        return array($arrColumns, $arrValues, $arrOptions);
+    }
+
     /**
      * Add basic real estate type query fragment information
      *

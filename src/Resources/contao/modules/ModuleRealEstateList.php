@@ -87,7 +87,7 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $intCount = is_array($_SESSION['REAL_ESTATE_VISITED']) ? count($_SESSION['REAL_ESTATE_VISITED']) : 0;
                 break;
             case 'group':
-                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
+                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
                 $intCount = RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
                 break;
@@ -131,7 +131,7 @@ class ModuleRealEstateList extends ModuleRealEstate
                 }
                 break;
             case 'group':
-                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
+                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
                 $arrOptions = array_merge($arrOptions, $options);
 

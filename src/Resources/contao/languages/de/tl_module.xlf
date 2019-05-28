@@ -27,6 +27,22 @@
         <source>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</source>
         <target>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</target>
       </trans-unit>
+      <trans-unit id="tl_module.realEstateGroups.0">
+        <source>Real estate groups</source>
+        <target>Immobilien-Gruppen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateGroups.1">
+        <source>Here you can specify the real estate groups that are to be taken into account.</source>
+        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.filterMode.0">
+        <source>Filter mode</source>
+        <target>Filter-Modus</target>
+      </trans-unit>
+      <trans-unit id="tl_module.filterMode.1">
+        <source>The filter mode can be used to limit the list to a certain type of real estate.</source>
+        <target>Über den Filter-Modus kann die Liste auf einen bestimmten Typ an Immobilien begrenzt werden.</target>
+      </trans-unit>
       <trans-unit id="tl_module.hideOnEmpty.0">
         <source>Leere Listen ausblenden</source>
         <target>Leere Listen ausblenden</target>
@@ -58,6 +74,14 @@
       <trans-unit id="tl_module.exposeModules.1">
         <source>Platzieren Sie Module an die gewünschte Stelle im Exposé</source>
         <target>Platzieren Sie Module an die gewünschte Stelle im Exposé</target>
+      </trans-unit>
+      <trans-unit id="tl_module.maxTextLength.0">
+        <source>Maximum text length</source>
+        <target>Maximale Textlänge</target>
+      </trans-unit>
+      <trans-unit id="tl_module.maxTextLength.1">
+        <source>Here texts can be limited to a maximum number of letters.</source>
+        <target>Hier können Texte auf eine maximale anzahl an Buchstaben beschränkt werden.</target>
       </trans-unit>
     </body>
   </file>

@@ -15,8 +15,8 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 (
     'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-    'realEstateList'        => '{title_legend},name,headline,type;{list_mode_legend},listMode,hideOnEmpty;{list_config_legend},jumpTo,numberOfItems,perPage;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{list_config_legend},numberOfItems,perPage;{real_estate_groups_legend},realEstateGroups;{filter_legend},filter;{filter_mode_legend:hide},filterMode;{status_token_legend},statusTokens;{template_legend:hide},realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
@@ -55,7 +55,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'inputType'               => 'select',
         'options'                 => array('visited', 'group'),
         'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
-        'eval'                    => array('tl_class'=>'w50','submitOnChange'=>true),
+        'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
         'sql'                     => "varchar(16) NOT NULL default ''"
     ),
     'hideOnEmpty' => array
@@ -102,7 +102,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'text',
         'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
-        'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        'sql'                     => "int(10) unsigned NULL"
     ),
     'statusTokens' => array
     (
