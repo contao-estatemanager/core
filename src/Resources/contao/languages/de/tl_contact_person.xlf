@@ -75,7 +75,7 @@
         <target>Bitte geben Sie die E-Mail Adresse (Direkt) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.0">
-        <source>E-Mail (private)</source>
+        <source>Email (private)</source>
         <target>E-Mail (Privat)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.1">
@@ -83,7 +83,7 @@
         <target>Bitte geben Sie die E-Mail Adresse (Privat) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.0">
-        <source>E-Mail (other)</source>
+        <source>Email (other)</source>
         <target>E-Mail (Sonstige)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.1">
@@ -91,7 +91,7 @@
         <target>Bitte geben Sie die E-Mail Adresse (Sonstige) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.0">
-        <source>E-Mail (feedback)</source>
+        <source>Email (feedback)</source>
         <target>E-Mail (Feedback)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.1">

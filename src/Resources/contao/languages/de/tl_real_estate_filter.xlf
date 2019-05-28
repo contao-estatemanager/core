@@ -3,33 +3,33 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_filter.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_filter.miete_leasing">
-        <source>Mieten</source>
+        <source>Rent</source>
         <target>Mieten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kauf_erbpacht">
-        <source>Kaufen</source>
+        <source>Buy</source>
         <target>Kaufen</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_filter.from">
-        <source>ab</source>
+        <source>min</source>
         <target>ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.to">
-        <source>bis</source>
+        <source>max</source>
         <target>bis</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_filter.price">
-        <source>Preis</source>
+        <source>Price</source>
         <target>Preis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.price_from">
-        <source>Preis ab</source>
+        <source>Price min</source>
         <target>Preis ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.price_to">
-        <source>Preis bis</source>
+        <source>Price max</source>
         <target>Preis bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.nettokaltmiete">

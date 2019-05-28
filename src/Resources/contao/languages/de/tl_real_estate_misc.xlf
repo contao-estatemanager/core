@@ -7,7 +7,7 @@
         <target>Neu</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.default">
-        <source>Standard</source>
+        <source>Default</source>
         <target>Standard</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.reserved">

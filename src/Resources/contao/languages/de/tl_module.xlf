@@ -15,16 +15,16 @@
         <target>Statusausgabe</target>
       </trans-unit>
       <trans-unit id="tl_module.module_legend">
-        <source>Exposé-Module</source>
+        <source>Exposé Modules</source>
         <target>Exposé-Module</target>
       </trans-unit>
 
       <trans-unit id="tl_module.listMode.0">
-        <source>Ausgabe-Modus</source>
+        <source>Output mode</source>
         <target>Ausgabe-Modus</target>
       </trans-unit>
       <trans-unit id="tl_module.listMode.1">
-        <source>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</source>
+        <source>Select a mode to determine the contents of the list</source>
         <target>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.0">
@@ -44,11 +44,11 @@
         <target>Über den Filter-Modus kann die Liste auf einen bestimmten Typ an Immobilien begrenzt werden.</target>
       </trans-unit>
       <trans-unit id="tl_module.hideOnEmpty.0">
-        <source>Leere Listen ausblenden</source>
+        <source>Hide empty lists</source>
         <target>Leere Listen ausblenden</target>
       </trans-unit>
       <trans-unit id="tl_module.hideOnEmpty.1">
-        <source>Sollten keine Ergebnisse gefunden werden, wird die Liste nicht ausgegeben</source>
+        <source>If no results are found, the list will not be displayed.</source>
         <target>Sollten keine Ergebnisse gefunden werden, wird die Liste nicht ausgegeben</target>
       </trans-unit>
       <trans-unit id="tl_module.statusTokens.0">
@@ -68,11 +68,11 @@
         <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
-        <source>Exposé-Module</source>
+        <source>Exposé Modules</source>
         <target>Exposé-Module</target>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.1">
-        <source>Platzieren Sie Module an die gewünschte Stelle im Exposé</source>
+        <source>Place modules at the desired position in the exposé</source>
         <target>Platzieren Sie Module an die gewünschte Stelle im Exposé</target>
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.0">

@@ -123,63 +123,63 @@
         <target>Hier können Sie optional die Adresse als Freitext angeben.</target>
       </trans-unit>
       <trans-unit id="tl_provider.vertretungsberechtigter.0">
-        <source>Vertretungsberechtigter</source>
+        <source>Authorized representative</source>
         <target>Vertretungsberechtigter</target>
       </trans-unit>
       <trans-unit id="tl_provider.vertretungsberechtigter.1">
-        <source>Bitte geben Sie den Vertretungsberechtigter ein.</source>
+        <source>Please indicate the authorised representative.</source>
         <target>Bitte geben Sie den Vertretungsberechtigter ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.berufsaufsichtsbehoerde.0">
-        <source>Berufsaufsichtsbehörde</source>
+        <source>Professional supervisory authority</source>
         <target>Berufsaufsichtsbehörde</target>
       </trans-unit>
       <trans-unit id="tl_provider.berufsaufsichtsbehoerde.1">
-        <source>Bitte geben Sie die Berufsaufsichtsbehörde ein.</source>
+        <source>Please enter the professional supervisory authority.</source>
         <target>Bitte geben Sie die Berufsaufsichtsbehörde ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.handelsregister.0">
-        <source>Handelsregister</source>
+        <source>Commercial register</source>
         <target>Handelsregister</target>
       </trans-unit>
       <trans-unit id="tl_provider.handelsregister.1">
-        <source>Bitte geben Sie das Handelsregister ein.</source>
+        <source>Please enter the commercial register.</source>
         <target>Bitte geben Sie das Handelsregister ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.handelsregister_nr.0">
-        <source>Handelsregisternummer</source>
+        <source>Commercial register number</source>
         <target>Handelsregisternummer</target>
       </trans-unit>
       <trans-unit id="tl_provider.handelsregister_nr.1">
-        <source>Bitte geben Sie die Handelsregisternummer ein.</source>
+        <source>Please enter the commercial register number.</source>
         <target>Bitte geben Sie die Handelsregisternummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.umsstid.0">
-        <source>Umsatzsteuer-Identifikationsnummer</source>
+        <source>Sales tax identification number</source>
         <target>Umsatzsteuer-Identifikationsnummer</target>
       </trans-unit>
       <trans-unit id="tl_provider.umsstid.1">
-        <source>Bitte geben Sie die Umsatzsteuer-Identifikationsnummer ein.</source>
+        <source>Please enter the sales tax identification number.</source>
         <target>Bitte geben Sie die Umsatzsteuer-Identifikationsnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.steuernummer.0">
-        <source>Steuernummer</source>
+        <source>Tax number</source>
         <target>Steuernummer</target>
       </trans-unit>
       <trans-unit id="tl_provider.steuernummer.1">
-        <source>Bitte geben Sie die Steuernummer ein.</source>
+        <source>Please enter the tax number.</source>
         <target>Bitte geben Sie die Steuernummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.weiteres.0">
-        <source>Weitere Angaben</source>
+        <source>Further information</source>
         <target>Weitere Angaben</target>
       </trans-unit>
       <trans-unit id="tl_provider.weiteres.1">
-        <source>Hier können Sie weitere Angaben eintragen.</source>
+        <source>Here you can enter further information.</source>
         <target>Hier können Sie weitere Angaben eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum.0">
-        <source>Impressum</source>
+        <source>Imprint</source>
         <target>Impressum</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum.1">

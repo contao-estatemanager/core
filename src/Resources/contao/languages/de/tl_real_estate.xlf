@@ -3,7 +3,7 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate.real_estate_legend">
-        <source>Title / Veröffentlichung</source>
+        <source>Title / Publication</source>
         <target>Titel / Veröffentlichung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_address_legend">
@@ -19,11 +19,11 @@
         <target>Vermarktung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_text_legend">
-        <source>Texte</source>
+        <source>Texts</source>
         <target>Texte</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_price_legend">
-        <source>Preise</source>
+        <source>Prices</source>
         <target>Preise</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_room_legend">
@@ -31,11 +31,11 @@
         <target>Zimmer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_area_legend">
-        <source>Area</source>
+        <source>Areas</source>
         <target>Flächen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_parking_legend">
-        <source>Stellplätze</source>
+        <source>Parking spaces</source>
         <target>Stellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_features_legend">
@@ -43,19 +43,19 @@
         <target>Ausstattung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_props_legend">
-        <source>Immobilien Eigenschaften</source>
+        <source>Real Estate Properties</source>
         <target>Immobilien Eigenschaften</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_more_props_legend">
-        <source>Weitere Eigenschaften</source>
+        <source>Further features</source>
         <target>Weitere Eigenschaften</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_energie_legend">
-        <source>Energieausweis / Bausubstanz</source>
+        <source>Energy Performance Certificate / Building fabric</source>
         <target>Energieausweis / Bausubstanz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_media_legend">
-        <source>Medien / Dateien</source>
+        <source>Media / Files</source>
         <target>Medien / Dateien</target>
       </trans-unit>
 
@@ -64,7 +64,7 @@
         <target>Bild</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.tstamp.0">
-        <source>Geändert am</source>
+        <source>Modified</source>
         <target>Geändert am</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.dateAdded.0">
@@ -72,35 +72,35 @@
         <target>Hinzugefügt am</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.published.0">
-        <source>Veröffentlichen</source>
-        <target>Veröffentlichen</target>
+        <source>publish</source>
+        <target>veröffentlichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.published.1">
-        <source>Die Immobilie wird auf der Homepage ausgegeben</source>
+        <source>The property is displayed on the homepage</source>
         <target>Die Immobilie wird auf der Homepage ausgegeben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektnrIntern.0">
-        <source>Interne Objektnummer</source>
+        <source>Internal object number</source>
         <target>Interne Objektnummer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektnrIntern.1">
-        <source>Geben Sie hier die interne Objektnummer an</source>
-        <target>Geben Sie hier die interne Objektnummer an</target>
+        <source>Enter the internal object number here.</source>
+        <target>Geben Sie hier die interne Objektnummer an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektnrExtern.0">
-        <source>Externe Objektnummer</source>
+        <source>External object number</source>
         <target>Externe Objektnummer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektnrExtern.1">
-        <source>Geben Sie hier die externe Objektnummer an</source>
+        <source>Enter the external object number here.</source>
         <target>Geben Sie hier die externe Objektnummer an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.openimmoObid.0">
-        <source>OpenImmo Objekt-Id</source>
+        <source>OpenImmo object ID</source>
         <target>OpenImmo Objekt-Id</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.openimmoObid.1">
-        <source>Geben Sie hier die OpenImmo Objekt-Id an</source>
+        <source>Enter the OpenImmo object ID here</source>
         <target>Geben Sie hier die OpenImmo Objekt-Id an</target>
       </trans-unit>
 
@@ -109,7 +109,7 @@
         <target>Anbieter</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provider.1">
-        <source>Wählen Sie den Anbieter der Immobilie</source>
+        <source>Select the provider of the property</source>
         <target>Wählen Sie den Anbieter der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.contactPerson.0">
@@ -117,32 +117,32 @@
         <target>Kontaktperson</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.contactPerson.1">
-        <source>Wählen Sie den Ansprechpartner der Immobilie</source>
-        <target>Wählen Sie den Ansprechpartner der Immobilie</target>
+        <source>Select the contact person for the property.</source>
+        <target>Wählen Sie den Ansprechpartner der Immobilie.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.0">
         <source>Alias</source>
         <target>Alias / SEO-Url</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.1">
-        <source>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen</source>
-        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen</target>
+        <source>Enter the alias of the real estate here or leave the field blank to generate the alias automatically.</source>
+        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.plz.0">
-        <source>Postleitzahl</source>
+        <source>Postcode</source>
         <target>Postleitzahl</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.plz.1">
-        <source>Geben Sie hier die Postleitzahl der Immobilie ein</source>
+        <source>Enter the postcode of the property here</source>
         <target>Geben Sie hier die Postleitzahl der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ort.0">
-        <source>Ort</source>
+        <source>Location</source>
         <target>Ort</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ort.1">
-        <source>Geben Sie hier den Ort der Immobilie ein</source>
+        <source>Enter the location of the property here</source>
         <target>Geben Sie hier den Ort der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.strasse.0">
@@ -150,399 +150,399 @@
         <target>Strasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.strasse.1">
-        <source>Geben Sie hier die Straße der Immobilie ein</source>
+        <source>Enter the street of the property here</source>
         <target>Geben Sie hier die Straße der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausnummer.0">
-        <source>Hausnummer</source>
+        <source>House number</source>
         <target>Hausnummer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausnummer.1">
-        <source>Geben Sie hier die Hausnummer der Immobilie ein</source>
+        <source>Enter the house number of the property here</source>
         <target>Geben Sie hier die Hausnummer der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.regionalerZusatz.0">
-        <source>Regionaler Zusatz</source>
+        <source>Regional addition</source>
         <target>Regionaler Zusatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.regionalerZusatz.1">
-        <source>Geben Sie hier den regionalen Zusatz der Immobilie ein</source>
+        <source>Enter the regional addition of the property here</source>
         <target>Geben Sie hier den regionalen Zusatz der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bundesland.0">
-        <source>Bundesland</source>
+        <source>Federal state</source>
         <target>BundeslandZusatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bundesland.1">
-        <source>Geben Sie hier das Bundesland der Immobilie ein</source>
+        <source>Enter the state of the property here</source>
         <target>Geben Sie hier das Bundesland der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.breitengrad.0">
-        <source>Breitengrad</source>
+        <source>Latitude</source>
         <target>Breitengrad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.breitengrad.1">
-        <source>Geben Sie hier den Breitengrad der Immobilie ein</source>
+        <source>Enter the latitude of the property here</source>
         <target>Geben Sie hier den Breitengrad der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.laengengrad.0">
-        <source>Längengrad</source>
+        <source>Longitude</source>
         <target>Längengrad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.laengengrad.1">
-        <source>Geben Sie hier den Längengrad der Immobilie ein</source>
+        <source>Enter the longitude of the property here</source>
         <target>Geben Sie hier den Längengrad der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lageImBau.0">
-        <source>Lage im Bau</source>
+        <source>Situation under construction</source>
         <target>Lage im Bau</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lageImBau.1">
-        <source>Geben Sie hier die Lage der Immobilie ein</source>
+        <source>Enter the situation under construction of the property here</source>
         <target>Geben Sie hier die Lage der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lageGebiet.0">
-        <source>Lage / Gebiet</source>
+        <source>Location / Area</source>
         <target>Lage / Gebiet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lageGebiet.1">
-        <source>Geben Sie hier die Art der Lage / das Gebiet der Immobilie ein</source>
+        <source>Enter the type of location / area of the property here</source>
         <target>Geben Sie hier die Art der Lage / das Gebiet der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gemeindecode.0">
-        <source>Gemeindecode</source>
+        <source>Community code</source>
         <target>Gemeindecode</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gemeindecode.1">
-        <source>Geben Sie hier den Gemeindecode der Immobilie ein</source>
+        <source>Enter the community code of the property here</source>
         <target>Geben Sie hier den Gemeindecode der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektadresseFreigeben.0">
-        <source>Objektadresse freigeben</source>
+        <source>Release object address</source>
         <target>Objektadresse freigeben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektadresseFreigeben.1">
-        <source>Geben Sie hier an, ob die Objektadresse für Besucher / auf der Homepage sichtbar sein darf</source>
+        <source>Specify here whether the object address may be visible for visitors / on the homepage</source>
         <target>Geben Sie hier an, ob die Objektadresse für Besucher / auf der Homepage sichtbar sein darf</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.vermarktungsartKauf.0">
-        <source>Vermarktung: Kaufen</source>
+        <source>Marketing: Buy</source>
         <target>Vermarktung: Kaufen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartKauf.1">
-        <source>Die Immobilie steht zum Kauf zur Verfügung</source>
+        <source>The property is available for purchase</source>
         <target>Die Immobilie steht zum Kauf zur Verfügung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartMietePacht.0">
-        <source>Vermarktung: Mieten / Pachten</source>
+        <source>Marketing: Rents / Leases</source>
         <target>Vermarktung: Mieten / Pachten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartMietePacht.1">
-        <source>Die Immobilie steht zur Miete / Pacht zur Verfügung</source>
+        <source>The property is available for rent / lease</source>
         <target>Die Immobilie steht zur Miete / Pacht zur Verfügung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartErbpacht.0">
-        <source>Vermarktung: Erbpacht</source>
+        <source>Marketing: hereditary leasehold</source>
         <target>Vermarktung: Erbpacht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartErbpacht.1">
-        <source>Die Immobilie steht zur Erbpacht zur Verfügung</source>
+        <source>The property is available for hereditary lease</source>
         <target>Die Immobilie steht zur Erbpacht zur Verfügung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartLeasing.0">
-        <source>Vermarktung: Leasing</source>
+        <source>Marketing: Leasing</source>
         <target>Vermarktung: Leasing</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartLeasing.1">
-        <source>Die Immobilie steht zum Leasen zur Verfügung</source>
+        <source>The property is available for lease</source>
         <target>Die Immobilie steht zum Leasen zur Verfügung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objekttitel.0">
-        <source>Title</source>
+        <source>Object title</source>
         <target>Objekttitel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objekttitel.1">
-        <source>Geben Sie hier den Titel der Immobilie an</source>
+        <source>Enter the title of the property here</source>
         <target>Geben Sie hier den Titel der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektart.0">
-        <source>Objektart</source>
+        <source>Object type</source>
         <target>Objektart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektart.1">
-        <source>Geben Sie hier die Objektart der Immobilie an</source>
+        <source>Enter the object type of the real estate here</source>
         <target>Geben Sie hier die Objektart der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzungsart.0">
-        <source>Nutzungsart</source>
+        <source>Type of use</source>
         <target>Nutzungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzungsart.1">
-        <source>Geben Sie hier die Nutzungsart der Immobilie an</source>
+        <source>Enter the type of use for the property here</source>
         <target>Geben Sie hier die Nutzungsart der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alsFerien.0">
-        <source>Ferienimmobilie</source>
+        <source>Holiday property</source>
         <target>Ferienimmobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alsFerien.1">
-        <source>Die Immobilie steht als Ferienimmobilie zur Verfügung</source>
+        <source>The property is available as a holiday property</source>
         <target>Die Immobilie steht als Ferienimmobilie zur Verfügung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gewerblicheNutzung.0">
-        <source>Gewerbliche Nutzung möglich</source>
+        <source>Commercial use possible</source>
         <target>Gewerbliche Nutzung möglich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gewerblicheNutzung.1">
-        <source>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht</source>
+        <source>When residential real estate is also available for commercial use</source>
         <target>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.zimmerTyp.0">
-        <source>Zimmer-Typ</source>
+        <source>Room type</source>
         <target>Zimmer-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zimmerTyp.1">
-        <source>Definieren Sie hier, um welche Art Zimmer es sich handelt</source>
+        <source>Define the type of room here</source>
         <target>Definieren Sie hier, um welche Art Zimmer es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.wohnungTyp.0">
-        <source>Wohnung-Typ</source>
+        <source>Apartment type</source>
         <target>Wohnung-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.wohnungTyp.1">
-        <source>Definieren Sie hier, um welche Art Wohnung es sich handelt</source>
+        <source>Define here what type of apartment it is</source>
         <target>Definieren Sie hier, um welche Art Wohnung es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausTyp.0">
-        <source>Haus-Typ</source>
+        <source>House type</source>
         <target>Haus-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausTyp.1">
-        <source>Definieren Sie hier, um welche Art Haus es sich handelt</source>
+        <source>Define the type of house here</source>
         <target>Definieren Sie hier, um welche Art Haus es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.grundstTyp.0">
-        <source>Grundstück-Typ</source>
+        <source>Property type</source>
         <target>Grundstück-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.grundstTyp.1">
-        <source>Definieren Sie hier, um welche Art Grundstück es sich handelt</source>
+        <source>Here you can define the type of property involved.</source>
         <target>Definieren Sie hier, um welche Art Grundstück es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroTyp.0">
-        <source>Büro-Typ</source>
+        <source>Office type</source>
         <target>Büro-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroTyp.1">
-        <source>Definieren Sie hier, um welche Art Büro es sich handelt</source>
+        <source>Define the type of office you are dealing with here</source>
         <target>Definieren Sie hier, um welche Art Büro es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.handelTyp.0">
-        <source>Handel-Typ</source>
+        <source>Trade type</source>
         <target>Handel-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.handelTyp.1">
-        <source>Definieren Sie hier, um welche Art Handel es sich handelt</source>
+        <source>Here you define the type of trade involved</source>
         <target>Definieren Sie hier, um welche Art Handel es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gastgewTyp.0">
-        <source>Gastgewerbe-Typ</source>
+        <source>Hospitality type</source>
         <target>Gastgewerbe-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gastgewTyp.1">
-        <source>Definieren Sie hier, um welche Art Gastgewerbe es sich handelt</source>
+        <source>Here you can define the type of hotel and restaurant you are dealing with.</source>
         <target>Definieren Sie hier, um welche Art Gastgewerbe es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hallenTyp.0">
-        <source>Hallen-Typ</source>
+        <source>Hall type</source>
         <target>Hallen-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hallenTyp.1">
-        <source>Definieren Sie hier, um welche Art Halle / Prod. es sich handelt</source>
+        <source>Define here, what kind of hall / product it is</source>
         <target>Definieren Sie hier, um welche Art Halle / Prod. es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.landTyp.0">
-        <source>Landwirtschaft-Typ</source>
+        <source>Agriculture type</source>
         <target>Landwirtschaft-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.landTyp.1">
-        <source>Definieren Sie hier, um welche Art Landwirtschaft es sich handelt</source>
+        <source>Here you can define the type of agriculture concerned</source>
         <target>Definieren Sie hier, um welche Art Landwirtschaft es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.parkenTyp.0">
-        <source>Parkplatz-Typ</source>
+        <source>Parking Type</source>
         <target>Parkplatz-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.parkenTyp.1">
-        <source>Definieren Sie hier, um welche Art Parkplatz es sich handelt</source>
+        <source>Define the type of parking space here</source>
         <target>Definieren Sie hier, um welche Art Parkplatz es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigeTyp.0">
-        <source>Spezielle- / Sonstige-Typ</source>
+        <source>Special / Other Type</source>
         <target>Spezielle- / Sonstige-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigeTyp.1">
-        <source>Definieren Sie hier, um welche Art es sich handelt</source>
+        <source>Define the type here</source>
         <target>Definieren Sie hier, um welche Art es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freizeitTyp.0">
-        <source>Freizeit-Typ</source>
+        <source>Leisure type</source>
         <target>Freizeit-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freizeitTyp.1">
-        <source>Definieren Sie hier, um welche Art Freizeitfläche es sich handelt</source>
+        <source>Here you can define the type of leisure area concerned</source>
         <target>Definieren Sie hier, um welche Art Freizeitfläche es sich handelt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zinsTyp.0">
-        <source>Zins-Typ</source>
+        <source>Interest type</source>
         <target>Zins-Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zinsTyp.1">
-        <source>Definieren Sie hier, um welchen Zins-Typen es sich handelt</source>
+        <source>Here you define which interest rate types are involved</source>
         <target>Definieren Sie hier, um welchen Zins-Typen es sich handelt</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.dreizeiler.0">
-        <source>Dreizeiler / Teaser</source>
+        <source>Three-liner / Teaser</source>
         <target>Dreizeiler / Teaser</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.dreizeiler.1">
-        <source>Definieren Sie hier einen Dreizeiler- / Teasertext für die Immobilie</source>
+        <source>Define here a three-liner / teaser text for the property</source>
         <target>Definieren Sie hier einen Dreizeiler- / Teasertext für die Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lage.0">
-        <source>Lagebeschreibung</source>
+        <source>Location description</source>
         <target>Lagebeschreibung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ausstattBeschr.0">
-        <source>Ausstattungsbeschreibung</source>
+        <source>Equipment description</source>
         <target>Ausstattungsbeschreibung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektbeschreibung.0">
-        <source>Objektbeschreibung</source>
+        <source>Object description</source>
         <target>Objektbeschreibung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigeAngaben.0">
-        <source>Sonstige Angaben</source>
+        <source>Other information</source>
         <target>Sonstige Angaben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektText.0">
-        <source>Objekt-Text</source>
+        <source>Object text</source>
         <target>Objekt-Text</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.kaufpreis.0">
-        <source>Kaufpreis</source>
+        <source>Purchase price</source>
         <target>Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreis.1">
-        <source>Definieren Sie hier den Kaufpreis der Immobilie</source>
+        <source>Define the purchase price of the property here</source>
         <target>Definieren Sie hier den Kaufpreis der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisnetto.0">
-        <source>Kaufpreis (Netto)</source>
+        <source>Purchase price (net)</source>
         <target>Kaufpreis (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisnetto.1">
-        <source>Definieren Sie hier den Kaufpreis (Netto) der Immobilie</source>
+        <source>Define the purchase price (net) of the property here.</source>
         <target>Definieren Sie hier den Kaufpreis (Netto) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisbrutto.0">
-        <source>Kaufpreis (Brutto)</source>
+        <source>Purchase price (gross)</source>
         <target>Kaufpreis (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisbrutto.1">
-        <source>Definieren Sie hier den Kaufpreis (Brutto) der Immobilie</source>
+        <source>Define the purchase price (gross) of the property here.</source>
         <target>Definieren Sie hier den Kaufpreis (Brutto) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaltmiete.0">
-        <source>Kaltmiete</source>
+        <source>Base rent</source>
         <target>Kaltmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaltmiete.1">
-        <source>Definieren Sie hier die Kaltmiete der Immobilie</source>
+        <source>Define the basic rent of the property here</source>
         <target>Definieren Sie hier die Kaltmiete der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettokaltmiete.0">
-        <source>Kaltmiete (Netto)</source>
+        <source>Base rent (net)</source>
         <target>Kaltmiete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettokaltmiete.1">
-        <source>Definieren Sie hier die Kaltmiete (Netto) der Immobilie</source>
+        <source>Here you define the base rent (net) of the property.</source>
         <target>Definieren Sie hier die Kaltmiete (Netto) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.warmmiete.0">
-        <source>Warmmiete</source>
+        <source>Rent</source>
         <target>Warmmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.warmmiete.1">
-        <source>Definieren Sie hier die Warmmiete der Immobilie</source>
+        <source>Here you define the rent for the property</source>
         <target>Definieren Sie hier die Warmmiete der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freitextPreis.0">
-        <source>Preis (Freitext)</source>
+        <source>Price (free text)</source>
         <target>Preis (Freitext)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freitextPreis.1">
-        <source>Definieren Sie hier den Preis der Immobilie als Freitext</source>
+        <source>Here you define the price of the property as free text</source>
         <target>Definieren Sie hier den Preis der Immobilie als Freitext</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkosten.0">
-        <source>Nebenkosten</source>
+        <source>Ancillary costs</source>
         <target>Nebenkosten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkosten.1">
-        <source>Definieren Sie hier die Nebenkosten der Immobilie</source>
+        <source>Define the service charges for the property here.</source>
         <target>Definieren Sie hier die Nebenkosten der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostenEnthalten.0">
-        <source>Heizkosten enthalten</source>
+        <source>Heating costs included</source>
         <target>Heizkosten enthalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostenEnthalten.1">
-        <source>Sind die Heizkosten in den Nebenkosten enthalten?</source>
+        <source>Are the heating costs included in the ancillary costs?</source>
         <target>Sind die Heizkosten in den Nebenkosten enthalten?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkosten.0">
-        <source>Heizkosten</source>
+        <source>Heating expenses</source>
         <target>Heizkosten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkosten.1">
-        <source>Definieren Sie hier die Heizkosten der Immobilie</source>
+        <source>Define the heating costs of the property here</source>
         <target>Definieren Sie hier die Heizkosten der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostennetto.0">
-        <source>Heizkosten (Netto)</source>
+        <source>Heating costs (net)</source>
         <target>Heizkosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostennetto.1">
-        <source>Definieren Sie hier die Heizkosten (Netto) der Immobilie</source>
+        <source>Define the heating costs (net) of the property here.</source>
         <target>Definieren Sie hier die Heizkosten (Netto) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostenust.0">
-        <source>Heizkosten Umsatzsteuer</source>
+        <source>Heating costs sales tax</source>
         <target>Heizkosten Umsatzsteuer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.heizkostenust.1">
-        <source>Definieren Sie hier die Heizkosten Umsatzsteuer</source>
+        <source>Define the heating costs sales tax here</source>
         <target>Definieren Sie hier die Heizkosten Umsatzsteuer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zzgMehrwertsteuer.0">
-        <source>zzgl. MwSt.</source>
+        <source>plus VAT</source>
         <target>zzgl. MwSt.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zzgMehrwertsteuer.1">
-        <source>kommt eine MwSt. dazu, einmal pro Immobilie</source>
+        <source>a VAT is added, once per property</source>
         <target>kommt eine MwSt. dazu, einmal pro Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietzuschlaege.0">
-        <source>weitere Mietzuschläge</source>
+        <source>Additional rents</source>
         <target>weitere Mietzuschläge</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietzuschlaege.1">
-        <source>Definieren Sie hier weitere Mietzuschläge</source>
+        <source>Define further rent supplements here</source>
         <target>Definieren Sie hier weitere Mietzuschläge</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hauptmietzinsnetto.0">
@@ -550,7 +550,7 @@
         <target>Hauptmietzins (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hauptmietzinsnetto.1">
-        <source>Differenziert u.a. in Österreich wegen unterschiedlicher Umst.</source>
+        <source>Differentiated in Austria, among others, because of different conversion rates.</source>
         <target>Differenziert u.a. in Österreich wegen unterschiedlicher Umst.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hauptmietzinsust.0">
@@ -562,605 +562,605 @@
         <target>Definieren Sie hier die Hauptmietzins Umsatzsteuer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.pauschalmiete.0">
-        <source>Pauschalmiete</source>
+        <source>Flat-rate rent</source>
         <target>Pauschalmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.pauschalmiete.1">
-        <source>Definieren Sie hier eine Pauschalmiete der Immobilie</source>
+        <source>Here you can define a flat rate rent for the property.</source>
         <target>Definieren Sie hier eine Pauschalmiete der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.betriebskostennetto.0">
-        <source>Betriebskosten (Netto)</source>
+        <source>Operating costs (net)</source>
         <target>Betriebskosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.betriebskostennetto.1">
-        <source>Definieren Sie hier die Betriebskosten (Netto) der Immobilie</source>
+        <source>Define the operating costs (net) of the property here.</source>
         <target>Definieren Sie hier die Betriebskosten (Netto) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.betriebskostenust.0">
-        <source>Betriebskosten (Umst.)</source>
+        <source>Operating costs (sales tax)</source>
         <target>Betriebskosten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.betriebskostenust.1">
-        <source>Definieren Sie hier die Betriebskosten (Umst.) der Immobilie</source>
+        <source>Define the operating costs (sales tax) of the property here.</source>
         <target>Definieren Sie hier die Betriebskosten (Umst.) der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.evbnetto.0">
-        <source>Erhaltungs- und Verbesserungsbeitrag</source>
+        <source>Maintenance and improvement contribution</source>
         <target>Erhaltungs- und Verbesserungsbeitrag</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.evbnetto.1">
-        <source>Erhaltungs- und Verbesserungsbeitrag. Ähnlich Instanthaltungsrücklage.</source>
+        <source>Maintenance and improvement contribution. Similar to maintenance reserve.</source>
         <target>Erhaltungs- und Verbesserungsbeitrag. Ähnlich Instanthaltungsrücklage.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.evbust.0">
-        <source>Erhaltungs- und Verbesserungsbeitrag (Umst.)</source>
+        <source>Maintenance and improvement contribution (sales tax)</source>
         <target>Erhaltungs- und Verbesserungsbeitrag (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.evbust.1">
-        <source>Erhaltungs- und Verbesserungsbeitrag Umst.</source>
+        <source>Maintenance and improvement contribution sales tax.</source>
         <target>Erhaltungs- und Verbesserungsbeitrag Umst.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmietenetto.0">
-        <source>Gesamtmiete (Netto)</source>
+        <source>Total rent (net)</source>
         <target>Gesamtmiete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmietenetto.1">
-        <source>Summe alle Mietzins Zahlungen</source>
+        <source>Total all rent payments</source>
         <target>Summe alle Mietzins Zahlungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmieteust.0">
-        <source>Gesamtmiete (Umst.)</source>
+        <source>Total rent (sales tax)</source>
         <target>Gesamtmiete (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmieteust.1">
-        <source>Definieren Sie hier die Umsatzsteuer der Gesamtmiete</source>
+        <source>Define the sales tax for the total rent here.</source>
         <target>Definieren Sie hier die Umsatzsteuer der Gesamtmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmietebrutto.0">
-        <source>Gesamtmiete (Brutto)</source>
+        <source>Total rent (gross)</source>
         <target>Gesamtmiete (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtmietebrutto.1">
-        <source>Definieren Sie hier die Gesamtmiete (Brutto)</source>
+        <source>Define the total rent here (gross)</source>
         <target>Definieren Sie hier die Gesamtmiete (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungnetto.0">
-        <source>Gesamtbelastung (Netto)</source>
+        <source>Total load (net)</source>
         <target>Gesamtbelastung (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungnetto.1">
-        <source>Definieren Sie hier die Gesamtbelastung (Netto)</source>
+        <source>Define the total load here (net)</source>
         <target>Definieren Sie hier die Gesamtbelastung (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungust.0">
-        <source>Gesamtbelastung (Umst.)</source>
+        <source>Total load (sales tax)</source>
         <target>Gesamtbelastung (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungust.1">
-        <source>Definieren Sie hier die Gesamtbelastung (Umst.)</source>
+        <source>Define the total load here (sales tax)</source>
         <target>Definieren Sie hier die Gesamtbelastung (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungbrutto.0">
-        <source>Gesamtbelastung (Brutto)</source>
+        <source>Total load (gross)</source>
         <target>Gesamtbelastung (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtbelastungbrutto.1">
-        <source>Definieren Sie hier die Gesamtbelastung (Brutto)</source>
+        <source>Define the total load here (gross)</source>
         <target>Definieren Sie hier die Gesamtbelastung (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2von.0">
-        <source>Gesamtkosten pro m² von</source>
+        <source>Total costs per m² of</source>
         <target>Gesamtkosten pro m² von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2von.1">
-        <source>Definieren Sie hier die Startwert der Gesamtkosten pro m²</source>
+        <source>Here you define the starting value of the total costs per m².</source>
         <target>Definieren Sie hier die Startwert der Gesamtkosten pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2bis.0">
-        <source>Gesamtkosten pro m² bis</source>
+        <source>Total costs per m² up to</source>
         <target>Gesamtkosten pro m² bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2bis.1">
-        <source>Definieren Sie hier die Endwert der Gesamtkosten pro m²</source>
+        <source>Here you define the final value of the total costs per m².</source>
         <target>Definieren Sie hier die Endwert der Gesamtkosten pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostennetto.0">
-        <source>monatliche Kosten (Netto)</source>
+        <source>Monthly costs (net)</source>
         <target>monatliche Kosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostennetto.1">
-        <source>Definieren Sie hier die monatliche Kosten (Netto)</source>
+        <source>Define here the monthly costs (net)</source>
         <target>Definieren Sie hier die monatliche Kosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenust.0">
-        <source>monatliche Kosten (Umst.)</source>
+        <source>Monthly costs (sales tax)</source>
         <target>monatliche Kosten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenust.1">
-        <source>Definieren Sie hier die monatliche Kosten (Umst.)</source>
+        <source>Define the monthly costs here (salex tax)</source>
         <target>Definieren Sie hier die monatliche Kosten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenbrutto.0">
-        <source>monatliche Kosten (Brutto)</source>
+        <source>Monthly costs (gross)</source>
         <target>monatliche Kosten (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenbrutto.1">
-        <source>Definieren Sie hier die monatliche Kosten (Brutto)</source>
+        <source>Define the monthly costs here (gross)</source>
         <target>Definieren Sie hier die monatliche Kosten (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2von.0">
-        <source>Nebenkosten pro m² von</source>
+        <source>Additional costs per m² of</source>
         <target>Nebenkosten pro m² von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2von.1">
-        <source>Definieren Sie hier die Startwert der Nebenkosten pro m²</source>
+        <source>Here you define the starting value of the additional costs per m².</source>
         <target>Definieren Sie hier die Startwert der Nebenkosten pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2bis.0">
-        <source>Nebenkosten pro m² bis</source>
+        <source>Additional costs per m² up to</source>
         <target>Nebenkosten pro m² bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2bis.1">
-        <source>Definieren Sie hier die Endwert der Nebenkosten pro m²</source>
+        <source>Here you define the final value of the additional costs per m².</source>
         <target>Definieren Sie hier die Endwert der Nebenkosten pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ruecklagenetto.0">
-        <source>Rücklagen (Netto)</source>
+        <source>Reserves (net)</source>
         <target>Rücklagen (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ruecklagenetto.1">
-        <source>Definieren Sie hier die Rücklagen (Netto)</source>
+        <source>Define the reserves here (net)</source>
         <target>Definieren Sie hier die Rücklagen (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ruecklageust.0">
-        <source>Rücklagen (Umst.)</source>
+        <source>Reserves (salex tax)</source>
         <target>Rücklagen (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ruecklageust.1">
-        <source>Definieren Sie hier die Rücklagen (Umst.)</source>
+        <source>Define the reserves here (salex tax)</source>
         <target>Definieren Sie hier die Rücklagen (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigekostennetto.0">
-        <source>Sonstige Kosten (Netto)</source>
+        <source>Other costs (net)</source>
         <target>Sonstige Kosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigekostennetto.1">
-        <source>Definieren Sie hier sonstige Kosten (Netto)</source>
+        <source>Define other costs here (net)</source>
         <target>Definieren Sie hier sonstige Kosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigekostenust.0">
-        <source>Sonstige Kosten (Umst.)</source>
+        <source>Other costs (salex tax)</source>
         <target>Sonstige Kosten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigekostenust.1">
-        <source>Definieren Sie hier sonstige Kosten (Umst.)</source>
+        <source>Define other costs here (salex tax)</source>
         <target>Definieren Sie hier sonstige Kosten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigemietenetto.0">
-        <source>Sonstige Mieten (Netto)</source>
+        <source>Other rents (net)</source>
         <target>Sonstige Mieten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigemietenetto.1">
-        <source>Definieren Sie hier sonstige Mieten (Netto)</source>
+        <source>Define other rents here (net)</source>
         <target>Definieren Sie hier sonstige Mieten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigemieteust.0">
-        <source>Sonstige Mieten (Umst.)</source>
+        <source>Other rents (sale tax)</source>
         <target>Sonstige Mieten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sonstigemieteust.1">
-        <source>Definieren Sie hier sonstige Mieten (Umst.)</source>
+        <source>Define other rents here (sale tax)</source>
         <target>Definieren Sie hier sonstige Mieten (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.summemietenetto.0">
-        <source>Summe Miete (Netto)</source>
+        <source>Total rent (net)</source>
         <target>Summe Miete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.summemietenetto.1">
-        <source>Definieren Sie hier die Summe Miete (Netto)</source>
+        <source>Define the total rent here (net)</source>
         <target>Definieren Sie hier die Summe Miete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.summemieteust.0">
-        <source>Summe Miete (Umst.)</source>
+        <source>sum Rent (salex tax)</source>
         <target>Summe Miete (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.summemieteust.1">
-        <source>Definieren Sie hier die Summe Miete (Umst.)</source>
+        <source>Define the sum of rent here (salex tax)</source>
         <target>Definieren Sie hier die Summe Miete (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2von.0">
-        <source>Miete pro m² von (Netto)</source>
+        <source>Rent per m² of (net)</source>
         <target>Miete pro m² von (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2von.1">
-        <source>Definieren Sie hier den Startwert der Miete pro m² (Netto)</source>
+        <source>Here you define the starting value of the rent per m². (net)</source>
         <target>Definieren Sie hier den Startwert der Miete pro m² (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2bis.0">
-        <source>Miete pro m² bis (Netto)</source>
+        <source>Rent per m² up to (net)</source>
         <target>Miete pro m² bis (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2bis.1">
-        <source>Definieren Sie hier den Endwert der Miete pro m² (Netto)</source>
+        <source>Here you define the final value of the rent per m². (net)</source>
         <target>Definieren Sie hier den Endwert der Miete pro m² (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.pacht.0">
-        <source>Pacht</source>
+        <source>Lease</source>
         <target>Pacht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.pacht.1">
-        <source>Definieren Sie hier den Pacht-Wert der Immobilie</source>
+        <source>Define the lease value of the property here.</source>
         <target>Definieren Sie hier den Pacht-Wert der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.erbpacht.0">
-        <source>Erbpacht</source>
+        <source>Leasehold</source>
         <target>Erbpacht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.erbpacht.1">
-        <source>Definieren Sie hier den Erbpacht-Wert der Immobilie</source>
+        <source>Define the leasehold value of the property here.</source>
         <target>Definieren Sie hier den Erbpacht-Wert der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausgeld.0">
-        <source>Hausgeld</source>
+        <source>House money</source>
         <target>Hausgeld</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hausgeld.1">
-        <source>Definieren Sie hier das Hausgeld der Immobilie</source>
+        <source>Define the house money of the property here</source>
         <target>Definieren Sie hier das Hausgeld der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.abstand.0">
-        <source>Abstand</source>
+        <source>Installments</source>
         <target>Abstand</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.abstand.1">
-        <source>Abstand oder Abschlagszahlungen</source>
+        <source>Distance or Installments</source>
         <target>Abstand oder Abschlagszahlungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeitraumVon.0">
-        <source>Preis-Zeitraum von</source>
+        <source>Price period from</source>
         <target>Preis-Zeitraum von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeitraumVon.1">
-        <source>Definieren Sie hier den Startwert des Preis-Zeitraumes</source>
+        <source>Define the start value of the price period here.</source>
         <target>Definieren Sie hier den Startwert des Preis-Zeitraumes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeitraumBis.0">
-        <source>Preis-Zeitraum bis</source>
+        <source>Price period until</source>
         <target>Preis-Zeitraum bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeitraumBis.1">
-        <source>Definieren Sie hier den Endwert des Preis-Zeitraumes</source>
+        <source>Define the end value of the price period here.</source>
         <target>Definieren Sie hier den Endwert des Preis-Zeitraumes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeiteinheit.0">
-        <source>Preis Zeiteinheit</source>
+        <source>Price Time unit</source>
         <target>Preis Zeiteinheit</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.preisZeiteinheit.1">
-        <source>Definieren Sie hier Zeiteinheit des Preises</source>
+        <source>Here you define the time unit of the price.</source>
         <target>Definieren Sie hier Zeiteinheit des Preises</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietpreisProQm.0">
-        <source>Mietpreis pro m²</source>
+        <source>Rental price per m²</source>
         <target>Mietpreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietpreisProQm.1">
-        <source>Definieren Sie hier den Mietpreis pro m²</source>
+        <source>Define the rental price per m² here</source>
         <target>Definieren Sie hier den Mietpreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisProQm.0">
-        <source>Kaufpreis pro m²</source>
+        <source>Purchase price per m²</source>
         <target>Kaufpreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisProQm.1">
-        <source>Definieren Sie hier den Kaufpreis pro m²</source>
+        <source>Define the purchase price per m² here</source>
         <target>Definieren Sie hier den Kaufpreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionspflichtig.0">
-        <source>Provisionspflichtig</source>
+        <source>Commission payable</source>
         <target>Provisionspflichtig</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionspflichtig.1">
-        <source>Ist die Immobilie provisionspflichtig?</source>
+        <source>Is the property subject to commission?</source>
         <target>Ist die Immobilie provisionspflichtig?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionTeilenWert.0">
-        <source>Provision teilen</source>
+        <source>Share commission</source>
         <target>Provision teilen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionTeilenWert.1">
-        <source>Aufteilen der provision bei Partnergeschäften. Auch "A Meta" Geschäft.</source>
+        <source>Splitting the commission for partner transactions. Also "A Meta" business.</source>
         <target>Aufteilen der provision bei Partnergeschäften. Auch "A Meta" Geschäft.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtage.0">
-        <source>Innen Courtage</source>
+        <source>Inside Brokerage</source>
         <target>Innen Courtage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtage.1">
-        <source>Maklercourtage, bei Vermittlungs- bzw. Nachweisgeschäften als Betrag in ? / % / MM</source>
+        <source>Brokerage fee, in case of brokerage or proof transactions as amount in ? / % / MM</source>
         <target>Maklercourtage, bei Vermittlungs- bzw. Nachweisgeschäften als Betrag in ? / % / MM</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtageMwst.0">
-        <source>Innen Courtage (MwSt.)</source>
+        <source>Inside brokerage (VAT)</source>
         <target>Innen Courtage (MwSt.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtageMwst.1">
-        <source>Mehrwertsteuer der innen Courtage</source>
+        <source>Value added tax on the inside brokerage fee</source>
         <target>Mehrwertsteuer der innen Courtage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.aussenCourtage.0">
-        <source>Außen Courtage (MwSt.)</source>
+        <source>Outside brokerage (VAT)</source>
         <target>Außen Courtage (MwSt.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.aussenCourtage.1">
-        <source>Courtage, die der Kunde zu zahlen hat, als Betrag in ? / % / MM</source>
+        <source>Brokerage, which the customer has to pay as amount in ? / % / MM</source>
         <target>Courtage, die der Kunde zu zahlen hat, als Betrag in ? / % / MM</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.aussenCourtageMwst.0">
-        <source>Außen Courtage (MwSt.)</source>
+        <source>Outside brokerage (VAT)</source>
         <target>Außen Courtage (MwSt.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.aussenCourtageMwst.1">
-        <source>Mehrwertsteuer der außen Courtage</source>
+        <source>Value added tax on the outside brokerage fee</source>
         <target>Mehrwertsteuer der außen Courtage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.courtageHinweis.0">
-        <source>Courtage Hinweistext</source>
+        <source>Brokerage information text</source>
         <target>Courtage Hinweistext</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.courtageHinweis.1">
-        <source>Definieren Sie hier einen Courtage Hinweistext</source>
+        <source>Define a brokerage fee hint text here</source>
         <target>Definieren Sie hier einen Courtage Hinweistext</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionnetto.0">
-        <source>Provision (Netto)</source>
+        <source>Commission (net)</source>
         <target>Provision (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionnetto.1">
-        <source>Definieren Sie hier die Provision in Netto</source>
+        <source>Define the commission in net here.</source>
         <target>Definieren Sie hier die Provision in Netto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionust.0">
-        <source>Provision (Umst.)</source>
+        <source>Commission (sales tax)</source>
         <target>Provision (Umst.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionust.1">
-        <source>Definieren Sie hier die Provision Umsatzsteuer</source>
+        <source>Here you define the commission sales tax</source>
         <target>Definieren Sie hier die Provision Umsatzsteuer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionbrutto.0">
-        <source>Provision (Brutto)</source>
+        <source>Commission (gross)</source>
         <target>Provision (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionbrutto.1">
-        <source>Definieren Sie hier die Provision in Brutto</source>
+        <source>Define the commission in gross here.</source>
         <target>Definieren Sie hier die Provision in Brutto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mwstSatz.0">
-        <source>Mehrwertsteuersatz</source>
+        <source>VAT rate</source>
         <target>Mehrwertsteuersatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mwstSatz.1">
-        <source>Mehrwertsteuersatz, z.B. 19,00</source>
+        <source>VAT rate, e.g. 19,00</source>
         <target>Mehrwertsteuersatz, z.B. 19,00</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mwstGesamt.0">
-        <source>Mehrwertsteuer Gesamt</source>
+        <source>Value added tax Total</source>
         <target>Mehrwertsteuer Gesamt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mwstGesamt.1">
-        <source>Bei unterschiedlichen Mehrwertsteuersätzen</source>
+        <source>In the case of different VAT rates</source>
         <target>Bei unterschiedlichen Mehrwertsteuersätzen</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.xFache.0">
-        <source>X-fache</source>
+        <source>X-fold</source>
         <target>X-fache</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.xFache.1">
-        <source>X-fache, Kaufpreis bezogen auf Jahresmiete</source>
+        <source>X-fold, purchase price based on annual rent</source>
         <target>X-fache, Kaufpreis bezogen auf Jahresmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorendite.0">
-        <source>Nettorendite (%)</source>
+        <source>Net yield (%)</source>
         <target>Nettorendite (%)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorendite.1">
-        <source>Definieren Sie hier die Nettorendite in %</source>
+        <source>Here you define the net yield in %.</source>
         <target>Definieren Sie hier die Nettorendite in %</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorenditeSoll.0">
-        <source>Nettorendite "Soll" (%)</source>
+        <source>Net yield "Target" (%)</source>
         <target>Nettorendite "Soll" (%)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorenditeSoll.1">
-        <source>Definieren Sie hier die Nettorendite "Soll" in %</source>
+        <source>Here you define the net yield "target" in %.</source>
         <target>Definieren Sie hier die Nettorendite "Soll" in %</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorenditeIst.0">
-        <source>Nettorendite "Ist" (%)</source>
+        <source>Net yield "Actual" (%)</source>
         <target>Nettorendite "Ist" (%)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettorenditeIst.1">
-        <source>Definieren Sie hier die Nettorendite "Ist" in %</source>
+        <source>Here you define the net yield "Actual" in %.</source>
         <target>Definieren Sie hier die Nettorendite "Ist" in %</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenIst.0">
-        <source>Mieteinnahmen pro Periode "Ist"</source>
+        <source>Rental income per "Actual" period</source>
         <target>Mieteinnahmen pro Periode "Ist"</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenIst.1">
-        <source>Momentan-/Isteinnahmen</source>
+        <source>Current / actual receipts</source>
         <target>Momentan-/Isteinnahmen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenIstPeriode.0">
-        <source>Mieteinnahmen Ist-Periode</source>
+        <source>Rental income actual period</source>
         <target>Mieteinnahmen Ist-Periode</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenIstPeriode.1">
-        <source>Definieren Sie hier die Periode der Mieteinnahmen</source>
+        <source>Define the rental income period here.</source>
         <target>Definieren Sie hier die Periode der Mieteinnahmen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenSoll.0">
-        <source>Mieteinnahmen Soll-Periode</source>
+        <source>Rental income target period</source>
         <target>Mieteinnahmen Soll-Periode</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenSoll.1">
-        <source>Normal-/Solleinnahmen</source>
+        <source>Normal/target revenue</source>
         <target>Normal-/Solleinnahmen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenSollPeriode.0">
-        <source>Mieteinnahmen Soll-Periode</source>
+        <source>Rental income target period</source>
         <target>Mieteinnahmen Soll-Periode</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mieteinnahmenSollPeriode.1">
-        <source>Definieren Sie hier die Periode der Mieteinnahmen</source>
+        <source>Define the rental income period here.</source>
         <target>Definieren Sie hier die Periode der Mieteinnahmen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.erschliessungskosten.0">
-        <source>Erschließungskosten</source>
+        <source>Development costs</source>
         <target>Erschließungskosten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.erschliessungskosten.1">
-        <source>Definieren Sie hier die Erschließungskosten des Grundstücks</source>
+        <source>Define the development costs of the property here.</source>
         <target>Definieren Sie hier die Erschließungskosten des Grundstücks</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaution.0">
-        <source>Kaution</source>
+        <source>Bail</source>
         <target>Kaution</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaution.1">
-        <source>Definieren Sie hier die Kaution der Immobilie</source>
+        <source>Define the bail for the property here</source>
         <target>Definieren Sie hier die Kaution der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kautionText.0">
-        <source>Kaution Text</source>
+        <source>Bail Text</source>
         <target>Kaution Text</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kautionText.1">
-        <source>Definieren Sie hier einen Text für die Kaution der Immobilie</source>
+        <source>Define the bail text for the property here</source>
         <target>Definieren Sie hier einen Text für die Kaution der Immobilie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.geschaeftsguthaben.0">
-        <source>Geschäftsguthaben (Gewerbe)</source>
+        <source>Credit balances (commercial)</source>
         <target>Geschäftsguthaben (Gewerbe)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.geschaeftsguthaben.1">
-        <source>Definieren Sie hier das Geschäftsguthaben (Gewerbe)</source>
+        <source>Here you define the Credit balances (commercial)</source>
         <target>Definieren Sie hier das Geschäftsguthaben (Gewerbe)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.richtpreis.0">
-        <source>Richtpreis</source>
+        <source>Indicative price</source>
         <target>Richtpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.richtpreis.1">
-        <source>Ein Wert für Kaufpreis/Mietpreis der für eine Einsortierung angegeben werden kann, wenn keine Kauf/Mietpreis angegeben wird</source>
+        <source>A value for purchase price/rental price that can be specified for sorting if no purchase price/rental price is specified.</source>
         <target>Ein Wert für Kaufpreis/Mietpreis der für eine Einsortierung angegeben werden kann, wenn keine Kauf/Mietpreis angegeben wird</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.richtpreisprom2.0">
-        <source>Richtpreis pro m²</source>
+        <source>Indicative price per m²</source>
         <target>Richtpreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.richtpreisprom2.1">
-        <source>Ein Wert pro m² für Kaufpreis/Mietpreis der für eine Einsortierung angegeben werden kann, wenn keine Kauf/Mietpreis angegeben wird</source>
+        <source>A value per m² for purchase price/rental price that can be given for sorting if no purchase price/rental price is given.</source>
         <target>Ein Wert pro m² für Kaufpreis/Mietpreis der für eine Einsortierung angegeben werden kann, wenn keine Kauf/Mietpreis angegeben wird</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.wohnflaeche.0">
-        <source>Wohnfläche</source>
+        <source>Living space</source>
         <target>Wohnfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.wohnflaeche.1">
-        <source>Geben Sie hier die Wohnfläche der Immobilie an</source>
+        <source>Enter the living space of the property here</source>
         <target>Geben Sie hier die Wohnfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzflaeche.0">
-        <source>Nutzfläche</source>
+        <source>Usable area</source>
         <target>Nutzfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzflaeche.1">
-        <source>Geben Sie hier die Nutzfläche der Immobilie an</source>
+        <source>Enter the usable space of the property here</source>
         <target>Geben Sie hier die Nutzfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtflaeche.0">
-        <source>Gesamtfläche</source>
+        <source>Total area</source>
         <target>Gesamtfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtflaeche.1">
-        <source>Geben Sie hier die Gesamtfläche der Immobilie an</source>
+        <source>Enter the total area of the property here</source>
         <target>Geben Sie hier die Gesamtfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ladenflaeche.0">
-        <source>Ladenfläche</source>
+        <source>Retail space</source>
         <target>Ladenfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ladenflaeche.1">
-        <source>Geben Sie hier die Ladenfläche der Immobilie an</source>
+        <source>Enter the retail space of the property here</source>
         <target>Geben Sie hier die Ladenfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lagerflaeche.0">
-        <source>Lagerfläche</source>
+        <source>Storage area</source>
         <target>Lagerfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.lagerflaeche.1">
-        <source>Geben Sie hier die Lagerfläche der Immobilie an</source>
+        <source>Enter the storage area of the property here</source>
         <target>Geben Sie hier die Lagerfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.verkaufsflaeche.0">
-        <source>Verkaufsfläche</source>
+        <source>Sales area</source>
         <target>Verkaufsfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.verkaufsflaeche.1">
-        <source>Geben Sie hier die Verkaufsfläche der Immobilie an</source>
+        <source>Enter the sales area of the property here</source>
         <target>Geben Sie hier die Verkaufsfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freiflaeche.0">
-        <source>Freifläche</source>
+        <source>Open space</source>
         <target>Freifläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.freiflaeche.1">
-        <source>Geben Sie hier die Freifläche der Immobilie an</source>
+        <source>Enter the open space of the property here</source>
         <target>Geben Sie hier die Freifläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroflaeche.0">
-        <source>Bürofläche</source>
+        <source>Office space</source>
         <target>Bürofläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroflaeche.1">
-        <source>Geben Sie hier die Bürofläche der Immobilie an</source>
+        <source>Enter the office space of the property here</source>
         <target>Geben Sie hier die Bürofläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroteilflaeche.0">
-        <source>Büro Teilfläche</source>
+        <source>Office partial area</source>
         <target>Büro Teilfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bueroteilflaeche.1">
-        <source>Geben Sie hier die Büro Teilfläche der Immobilie an</source>
+        <source>Enter the office partial area of the property here</source>
         <target>Geben Sie hier die Büro Teilfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.fensterfront.0">
-        <source>Fensterfront</source>
+        <source>Window front</source>
         <target>Fensterfront</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.fensterfront.1">
-        <source>Geben Sie hier die Fensterfront der Immobilie an</source>
+        <source>Enter the window front of the property here</source>
         <target>Geben Sie hier die Fensterfront der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.verwaltungsflaeche.0">
-        <source>Verwaltungsfläche</source>
+        <source>Administration area</source>
         <target>Verwaltungsfläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.verwaltungsflaeche.1">
-        <source>Geben Sie hier die Verwaltungsfläche der Immobilie an</source>
+        <source>Enter the administrative area of the property here</source>
         <target>Geben Sie hier die Verwaltungsfläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gastroflaeche.0">
-        <source>Gastrofläche</source>
+        <source>Gastronomy area</source>
         <target>Gastrofläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gastroflaeche.1">
-        <source>Geben Sie hier die Gastrofläche der Immobilie an</source>
+        <source>Enter the gastronomy area of the property here</source>
         <target>Geben Sie hier die Gastrofläche der Immobilie an</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.grz.0">

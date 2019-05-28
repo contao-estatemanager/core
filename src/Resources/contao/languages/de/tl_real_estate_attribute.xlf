@@ -3,11 +3,11 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_attribute.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_attribute.anzahlBalkone">
-         <source>Balkon/Terrasse</source>
+         <source>Balcony/Terrace</source>
          <target>Balkon/Terrasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.barrierefrei">
-         <source>Barrierefrei</source>
+         <source>Barrier-free</source>
          <target>Barrierefrei</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dvbt">
@@ -15,27 +15,27 @@
          <target>DVBT</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kabelSatTv">
-         <source>Kabelanschluss</source>
+         <source>Cable connection</source>
          <target>Kabelanschluss</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kran">
-         <source>Kran</source>
+         <source>Crane</source>
          <target>Kran</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kantineCafeteria">
-         <source>Kantine/Cafeteria</source>
+         <source>Canteen/Cafeteria</source>
          <target>Kantine/Cafeteria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wellnessbereich">
-         <source>Wellnessbereich</source>
+         <source>wellness area</source>
          <target>Wellnessbereich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_ebk">
-         <source>Einbauküche</source>
+         <source>fitted kitchen</source>
          <target>Einbauküche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_offen">
-         <source>offene Küche</source>
+         <source>open kitchen</source>
          <target>offene Küche</target>
       </trans-unit>
     </body>
