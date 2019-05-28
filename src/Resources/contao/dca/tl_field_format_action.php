@@ -142,8 +142,8 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
                 'boolToWord'        => 'boolToWord',
                 'custom'            => 'custom'
             ),
-            'reference'                 => &$GLOBALS['TL_LANG']['FMD'],
-            'eval'                      => array('tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
+            'reference'                 => &$GLOBALS['TL_LANG']['tl_field_format_action'],
+            'eval'                      => array('helpwizard'=>true, 'tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
             'sql'                       => "varchar(255) NOT NULL default ''"
         ),
         'decimals'  => array

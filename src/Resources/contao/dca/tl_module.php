@@ -8,6 +8,9 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+// Load translations
+\System::loadLanguageFile('tl_real_estate_misc');
+
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
 
@@ -92,7 +95,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'select',
         'options'                 => array('default'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(16) NOT NULL default ''"
     ),

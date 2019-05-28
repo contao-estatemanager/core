@@ -6,6 +6,10 @@
         <source>New</source>
         <target>Neu</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_misc.default">
+        <source>Standard</source>
+        <target>Standard</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_misc.reserved">
         <source>Reserved</source>
         <target>Reserviert</target>

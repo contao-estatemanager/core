@@ -382,7 +382,7 @@ return array
         'field' => array('fahrstuhlart', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -390,7 +390,7 @@ return array
         'field' => array('stellplatzart', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -398,7 +398,7 @@ return array
         'field' => array('befeuerung', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -406,7 +406,7 @@ return array
         'field' => array('heizungsart', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -414,7 +414,7 @@ return array
         'field' => array('boden', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -422,7 +422,7 @@ return array
         'field' => array('kueche', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
@@ -430,7 +430,7 @@ return array
         'field' => array('bad', '', '', NULL),
         'actions' => array
         (
-            array('unserialize', '', '', '', '', NULL, '')
+            array('unserialize', '', '', ', ', '', NULL, '')
         )
     ),
     array
