@@ -85,32 +85,33 @@ class EstateManager
                 $objFieldFormat = $objFieldFormat->save();
                 $actionIndex = 0;
 
-                foreach ($data['actions'] AS $actions)
+                if($data['actions'] != null)
                 {
-                    $objMarkupAction = new FieldFormatActionModel();
+                    foreach ($data['actions'] AS $actions)
+                    {
+                        $objMarkupAction = new FieldFormatActionModel();
 
-                    $objMarkupAction->pid = $objFieldFormat->id;
-                    $objMarkupAction->tstamp = time();
-                    $objMarkupAction->action = $actions[0];
-                    $objMarkupAction->decimals = $actions[1];
-                    $objMarkupAction->text = $actions[2];
-                    $objMarkupAction->seperator = $actions[3];
-                    $objMarkupAction->necessary = $actions[4];
-                    $objMarkupAction->elements = \StringUtil::deserialize($actions[5]);
-                    $objMarkupAction->customFunction = $actions[6];
-                    $objMarkupAction->sorting = $actionIndex;
+                        $objMarkupAction->pid = $objFieldFormat->id;
+                        $objMarkupAction->tstamp = time();
+                        $objMarkupAction->action = $actions[0];
+                        $objMarkupAction->decimals = $actions[1];
+                        $objMarkupAction->text = $actions[2];
+                        $objMarkupAction->seperator = $actions[3];
+                        $objMarkupAction->necessary = $actions[4];
+                        $objMarkupAction->elements = \StringUtil::deserialize($actions[5]);
+                        $objMarkupAction->customFunction = $actions[6];
+                        $objMarkupAction->sorting = $actionIndex;
 
-                    $objMarkupAction->save();
+                        $objMarkupAction->save();
 
-                    $actionIndex++;
+                        $actionIndex++;
+                    }
                 }
             }
 
-            // Notify the user
             \Message::addConfirmation($GLOBALS['TL_LANG']['tl_field_format']['imported'][0]);
             $message = $GLOBALS['TL_LANG']['tl_field_format']['imported'][1];
         }else{
-            // Notify the user
             \Message::addError($GLOBALS['TL_LANG']['tl_field_format']['import_error'][0]);
             $message = $GLOBALS['TL_LANG']['tl_field_format']['import_error'][1];
         }

@@ -432,5 +432,190 @@ return array
         (
             array('unserialize', '', '', '', '', NULL, '')
         )
+    ),
+    array
+    (
+        'field' => array('energiepassEnergieverbrauchkennwert', '', '', NULL),
+        'actions' => array
+        (
+            array('append', '', ' kWh/(m²*a)', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('energiepassEndenergiebedarf', '', '', NULL),
+        'actions' => array
+        (
+            array('append', '', ' kWh/(m²*a)', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('nettorenditeIst', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' %', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('nettorenditeSoll', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' %', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('aussenCourtage', '', '', NULL),
+        'actions' => array
+        (
+            array('append', '', ' inkl. MwSt.', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('breitbandArt', '', '1', 'a:1:{i:0;a:2:{s:5:"field";s:15:"breitbandZugang";s:5:"value";s:1:"1";}}'),
+        'actions' => null
+    ),
+    array
+    (
+        'field' => array('breitbandGeschw', '', '1', 'a:1:{i:0;a:2:{s:5:"field";s:15:"breitbandZugang";s:5:"value";s:1:"1";}}'),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' Mbit/s', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('anzahlSepWc', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('pacht', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' € / Jahr', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('gesamtmietenetto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('abdatum', '', '', NULL),
+        'actions' => array
+        (
+            array('date_format', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('anzahlStellplaetze', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('mietpreisProQm', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €/m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('verkaufsflaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('teilbarAb', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('balkonTerrasseFlaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('kaufpreisProQm', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €/m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('objektart', '', '', NULL),
+        'actions' => array
+        (
+            array('custom', '', '', '', '', NULL, 're_ac_openimmo_objektart')
+        )
+    ),
+    array
+    (
+        'field' => array('plz', '', '', NULL),
+        'actions' => array
+        (
+            array('combine', '', '', ' ', '', 'a:2:{i:0;a:2:{s:5:"field";s:3:"plz";s:6:"remove";s:1:"1";}i:1;a:2:{s:5:"field";s:3:"ort";s:6:"remove";s:1:"1";}}', '')
+        )
+    ),
+    array
+    (
+        'field' => array('strasse', '', '1', 'a:1:{i:0;a:2:{s:5:"field";s:22:"objektadresseFreigeben";s:5:"value";s:1:"1";}}'),
+        'actions' => array
+        (
+            array('combine', '', '', ' ', '', 'a:2:{i:0;a:2:{s:5:"field";s:7:"strasse";s:6:"remove";s:1:"1";}i:1;a:2:{s:5:"field";s:10:"hausnummer";s:6:"remove";s:1:"1";}}', '')
+        )
+    ),
+    array
+    (
+        'field' => array('hausnummer', '', '1', 'a:1:{i:0;a:2:{s:5:"field";s:22:"objektadresseFreigeben";s:5:"value";s:1:"1";}}'),
+        'actions' => null
+    ),
+    array
+    (
+        'field' => array('wohnungsnr', '', '1', 'a:1:{i:0;a:2:{s:5:"field";s:22:"objektadresseFreigeben";s:5:"value";s:1:"1";}}'),
+        'actions' => null
+    ),
+    array
+    (
+        'field' => array('ort', '', '', NULL),
+        'actions' => array
+        (
+            array('combine', '', '', ' ', '', 'a:2:{i:0;a:2:{s:5:"field";s:3:"ort";s:6:"remove";s:1:"1";}i:1;a:2:{s:5:"field";s:16:"regionalerZusatz";s:6:"remove";s:1:"1";}}', '')
+        )
     )
 );
