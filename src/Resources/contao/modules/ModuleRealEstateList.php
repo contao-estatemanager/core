@@ -84,7 +84,7 @@ class ModuleRealEstateList extends ModuleRealEstate
         switch ($this->listMode)
         {
             case 'visited':
-                $intCount = count($_SESSION['REAL_ESTATE_VISITED']);
+                $intCount = is_array($_SESSION['REAL_ESTATE_VISITED']) ? count($_SESSION['REAL_ESTATE_VISITED']) : 0;
                 break;
             case 'group':
                 list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
@@ -92,8 +92,6 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $intCount = RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
                 break;
         }
-
-
 
         // HOOK: real estate list count items
         if (isset($GLOBALS['TL_HOOKS']['countItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['countItemsRealEstateList']))
@@ -127,7 +125,10 @@ class ModuleRealEstateList extends ModuleRealEstate
         switch ($this->listMode)
         {
             case 'visited':
-                $objRealEstate = RealEstateModel::findMultipleByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
+                if (is_array($_SESSION['REAL_ESTATE_VISITED']))
+                {
+                    $objRealEstate = RealEstateModel::findMultipleByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
+                }
                 break;
             case 'group':
                 list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
