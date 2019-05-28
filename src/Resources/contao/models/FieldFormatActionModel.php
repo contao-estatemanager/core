@@ -23,6 +23,7 @@ namespace ContaoEstateManager;
  * @property string $seperator
  * @property string $necessary
  * @property string $elements
+ * @property string $customFunction
  * @property integer $sorting
  *
  * @method static FieldFormatActionModel|null findById($id, array $opt=array())
@@ -36,6 +37,7 @@ namespace ContaoEstateManager;
  * @method static FieldFormatActionModel|null findOneBySeperator($val, $opt=array())
  * @method static FieldFormatActionModel|null findOneByNecessary($val, $opt=array())
  * @method static FieldFormatActionModel|null findOneByElements($val, $opt=array())
+ * @method static FieldFormatActionModel|null findOneByCustomFunction($val, $opt=array())
  * @method static FieldFormatActionModel|null findOneBySorting($val, $opt=array())
  *
  * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findByPid($val, array $opt=array())
@@ -46,6 +48,7 @@ namespace ContaoEstateManager;
  * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findBySeperator($val, array $opt=array())
  * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findByNecessary($val, array $opt=array())
  * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findByElements($val, array $opt=array())
+ * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findByCustomFunction($val, array $opt=array())
  * @method static \Model\Collection|FieldFormatActionModel[]|FieldFormatActionModel|null findBySorting($val, array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
@@ -57,6 +60,7 @@ namespace ContaoEstateManager;
  * @method static integer countBySeperator($val, $opt=array())
  * @method static integer countByNecessary($val, $opt=array())
  * @method static integer countByElements($val, $opt=array())
+ * @method static integer countByCustomFunction($val, $opt=array())
  * @method static integer countBySorting($val, $opt=array())
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>

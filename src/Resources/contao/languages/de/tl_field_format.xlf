@@ -10,13 +10,33 @@
         <source>Neue Feldformatierung anlegen</source>
         <target>Neue Feldformatierung anlegen</target>
       </trans-unit>
-      <trans-unit id="tl_field_format.reset.0">
-        <source>Zurücksetzen</source>
-        <target>Zurücksetzen</target>
+      <trans-unit id="tl_field_format.importFieldFormats.0">
+        <source>Feldformatierungen zurücksetzen</source>
+        <target>Feldformatierungen zurücksetzen</target>
       </trans-unit>
-      <trans-unit id="tl_field_format.reset.1">
+      <trans-unit id="tl_field_format.importFieldFormats.1">
         <source>Standardformatierungen wiederherstellen</source>
         <target>Standardformatierungen wiederherstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.importConfirm">
+        <source>Sind Sie sicher, dass alle Feldformatierungen zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</source>
+        <target>Sind Sie sicher, dass alle Feldformatierungen zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.imported.0">
+        <source>Feldformatierungen wurden erfolgreich zurückgesetzt</source>
+        <target>Feldformatierungen wurden erfolgreich zurückgesetzt</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.imported.1">
+        <source>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</source>
+        <target>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.import_error.0">
+        <source>Keine oder fehlerhafte Datei</source>
+        <target>Keine oder fehlerhafte Datei</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.import_error.1">
+        <source>Bitte stellen Sie sicher, dass die Datei "data/import_field_formats.php" abgerufen werden kann.</source>
+        <target>Bitte stellen Sie sicher, dass die Datei "data/import_field_formats.php" abgerufen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
         <source>Formataktionen bearbeiten</source>
