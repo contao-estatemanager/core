@@ -47,6 +47,8 @@ class ModuleRealEstateList extends ModuleRealEstate
             return $objTemplate->parse();
         }
 
+        $this->objFilterSession = FilterSession::getInstance();
+
         // HOOK: real estate list generate
         if (isset($GLOBALS['TL_HOOKS']['generateRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateList']))
         {
@@ -85,15 +87,13 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $intCount = count($_SESSION['REAL_ESTATE_VISITED']);
                 break;
             case 'group':
-                // ToDo: Derzeit kann nur eine Gruppe selektiert werden. Umbau in checkboxWizard und entgegennahmen mehrerer Gruppen
-                $filter = RealEstateFilter::getInstance();
-                $filter->setCurrentGroup(RealEstateGroupModel::findByPk($this->filterGroups));
-
-                list($arrColumns, $arrValues, $arrOptions) = $filter->getParameter($this->filterMode);
+                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
 
                 $intCount = RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
                 break;
         }
+
+
 
         // HOOK: real estate list count items
         if (isset($GLOBALS['TL_HOOKS']['countItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['countItemsRealEstateList']))
@@ -130,11 +130,7 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $objRealEstate = RealEstateModel::findMultipleByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
                 break;
             case 'group':
-                // ToDo: Derzeit kann nur eine Gruppe selektiert werden. Umbau in checkboxWizard und entgegennahmen mehrerer Gruppen
-                $filter = RealEstateFilter::getInstance();
-                $filter->setCurrentGroup(RealEstateGroupModel::findByPk($this->filterGroups));
-
-                list($arrColumns, $arrValues, $options) = $filter->getParameter($this->filterMode);
+                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
 
                 $arrOptions = array_merge($arrOptions, $options);
 
