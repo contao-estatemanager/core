@@ -71,6 +71,104 @@
         <source>Umwandlung erzwingen, selbst wenn kein Wert vorhanden ist.</source>
         <target>Umwandlung erzwingen, selbst wenn kein Wert vorhanden ist.</target>
       </trans-unit>
+      <trans-unit id="tl_field_format_action.customFunction.0">
+        <source>Funktion</source>
+        <target>Funktion</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.customFunction.1">
+        <source>Wählen Sie eine eigene Funktion.</source>
+        <target>Wählen Sie eine eigene Funktion.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_field_format_action.field">
+        <source>Feld</source>
+        <target>Feld</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.remove">
+        <source>entfernen</source>
+        <target>entfernen</target>
+      </trans-unit>
+
+      <trans-unit id="tl_field_format_action.prepend.0">
+        <source>prepend</source>
+        <target>prepend</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.prepend.1">
+        <source>Fügt einen beliebigen Text vor den Wert ein.</source>
+        <target>Fügt einen beliebigen Text vor den Wert ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.append.0">
+        <source>append</source>
+        <target>append</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.append.1">
+        <source>Fügt einen beliebigen Text nach den Wert ein.</source>
+        <target>Fügt einen beliebigen Text nach den Wert ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.number_format.0">
+        <source>number_format</source>
+        <target>number_format</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.number_format.1">
+        <source>Formatiert einen Zahlenwert anhand der angegebenen Nachkommastellen.</source>
+        <target>Formatiert einen Zahlenwert anhand der angegebenen Nachkommastellen.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.date_format.0">
+        <source>date_format</source>
+        <target>date_format</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.date_format.1">
+        <source>Wandelt einen UNIX-Timestamp in ein leserliches Datums-Format um.</source>
+        <target>Wandelt einen UNIX-Timestamp in ein leserliches Datums-Format um.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.ucfirst.0">
+        <source>ucfirst</source>
+        <target>ucfirst</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.ucfirst.1">
+        <source>Verwandelt das erste Zeichen eines Strings in einen Großbuchstaben.</source>
+        <target>Verwandelt das erste Zeichen eines Strings in einen Großbuchstaben.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.wrap.0">
+        <source>wrap</source>
+        <target>wrap</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.wrap.1">
+        <source>Umschließt den Wert mit dem angegebenen Text/HTML-Code. Die Verwendung des Platzhalter "%s" ist dabei zwingend notwendig. (s. "sprintf" PHP-Funktion)</source>
+        <target>Umschließt den Wert mit dem angegebenen Text/HTML-Code. Die Verwendung des Platzhalter "%s" ist dabei zwingend notwendig. (s. "sprintf" PHP-Funktion)</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.unserialize.0">
+        <source>unserialize</source>
+        <target>unserialize</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.unserialize.1">
+        <source>Validiert eine in der Datenbank serialisierte Liste und gibt diese anhand des angegebenen Trennzeichens aus.</source>
+        <target>Validiert eine in der Datenbank serialisierte Liste und gibt diese anhand des angegebenen Trennzeichens aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.combine.0">
+        <source>combine</source>
+        <target>combine</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.combine.1">
+        <source>Ermöglicht die Kombination belibiger Felder und die Ausgabe anhand eines Trennzeichens. Um kombinierte Felder nicht doppelt in einer Detailliste auszugeben, können diese über die Checkbox "entfernen" übersprungen werden.</source>
+        <target>Ermöglicht die Kombination belibiger Felder und die Ausgabe anhand eines Trennzeichens. Um kombinierte Felder nicht doppelt in einer Detailliste auszugeben, können diese über die Checkbox "entfernen" übersprungen werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.boolToWord.0">
+        <source>boolToWord</source>
+        <target>boolToWord</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.boolToWord.1">
+        <source>Wandelt Werte mit "0" oder "1" in "Nein" oder "Ja".</source>
+        <target>Wandelt Werte mit "0" oder "1" in "Nein" oder "Ja".</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.custom.0">
+        <source>custom</source>
+        <target>custom</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.custom.1">
+        <source>Verwendung einer eigenen Funktion. Eigene Funktionen müssen dabei als Template mit dem Prefix "re_ac_" angelegt werden. (Beispiel: re_ac_openimmo_objektart.html5)</source>
+        <target>Verwendung einer eigenen Funktion. Eigene Funktionen müssen dabei als Template mit dem Prefix "re_ac_" angelegt werden. (Beispiel: re_ac_openimmo_objektart.html5)</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

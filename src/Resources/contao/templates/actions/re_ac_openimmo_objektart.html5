@@ -8,7 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedCollection){
 
     if($field !== 'objektart')
