@@ -160,6 +160,17 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
+        'groups' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['groups'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'foreignKey'              => 'tl_real_estate_group.title',
+            'options_callback'        => array('tl_filter', 'getRealEstateGroups'),
+            'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "blob NULL",
+            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+        ),
         'addBlankMarketingType' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankMarketingType'],
@@ -183,17 +194,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
-        ),
-        'groups' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['groups'],
-            'exclude'                 => true,
-            'inputType'               => 'checkboxWizard',
-            'foreignKey'              => 'tl_real_estate_group.title',
-            'options_callback'        => array('tl_filter', 'getRealEstateGroups'),
-            'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
-            'sql'                     => "blob NULL",
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
         ),
         'toggleFilter'  => array
         (
@@ -275,14 +275,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
-        'novalidate' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['novalidate'],
-            'exclude'                 => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50 m12'),
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
         'attributes' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['attributes'],
@@ -291,11 +283,17 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
+        'novalidate' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['novalidate'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
         'toggleMode' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['toggleMode'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
             'sql'                     => "varchar(32) NOT NULL default 'typeSeparated'"
         ),
     )

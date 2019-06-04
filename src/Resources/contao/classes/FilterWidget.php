@@ -88,6 +88,8 @@ abstract class FilterWidget extends \Widget
 			$this->strTemplate = $this->customTpl;
 		}
 
+        \System::loadLanguageFile('tl_real_estate_filter');
+
 		$strBuffer = $this->inherit();
 
 		if (isset($GLOBALS['TL_HOOKS']['parseFilterWidget']) && \is_array($GLOBALS['TL_HOOKS']['parseFilterWidget']))
