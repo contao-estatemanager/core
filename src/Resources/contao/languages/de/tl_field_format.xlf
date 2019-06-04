@@ -3,87 +3,87 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_field_format.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_field_format.new.0">
-        <source>Neues Feld</source>
+        <source>New field</source>
         <target>Neues Feld</target>
       </trans-unit>
       <trans-unit id="tl_field_format.new.1">
-        <source>Neue Feldformatierung anlegen</source>
+        <source>Create new field formatting</source>
         <target>Neue Feldformatierung anlegen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.importFieldFormats.0">
-        <source>Feldformatierungen zurücksetzen</source>
+        <source>Reset Field Formats</source>
         <target>Feldformatierungen zurücksetzen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.importFieldFormats.1">
-        <source>Standardformatierungen wiederherstellen</source>
+        <source>Restoring Standard Formats</source>
         <target>Standardformatierungen wiederherstellen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.importConfirm">
-        <source>Sind Sie sicher, dass alle Feldformatierungen zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</source>
+        <source>Are you sure you want to reset all field formats? Your own adjustments will be lost.</source>
         <target>Sind Sie sicher, dass alle Feldformatierungen zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.imported.0">
-        <source>Feldformatierungen wurden erfolgreich zurückgesetzt</source>
+        <source>Field formatting successfully reset</source>
         <target>Feldformatierungen wurden erfolgreich zurückgesetzt</target>
       </trans-unit>
       <trans-unit id="tl_field_format.imported.1">
-        <source>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</source>
+        <source>All standard field formats and actions have been successfully imported.</source>
         <target>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.0">
-        <source>Keine oder fehlerhafte Datei</source>
+        <source>No or faulty file</source>
         <target>Keine oder fehlerhafte Datei</target>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.1">
-        <source>Bitte stellen Sie sicher, dass die Datei "data/import_field_formats.php" abgerufen werden kann.</source>
+        <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
         <target>Bitte stellen Sie sicher, dass die Datei "data/import_field_formats.php" abgerufen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
-        <source>Formataktionen bearbeiten</source>
+        <source>Edit Format Actions</source>
         <target>Formataktionen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
-        <source>Feld bearbeiten</source>
+        <source>Edit field</source>
         <target>Feld bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_field_format.delete.0">
-        <source>Feld löschen</source>
+        <source>Delete field</source>
         <target>Feld löschen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.show.0">
-        <source>Feldinformationen anzeigen</source>
+        <source>Display field information</source>
         <target>Feldinformationen anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.fieldname.0">
-        <source>Feld</source>
+        <source>Field</source>
         <target>Feld</target>
       </trans-unit>
       <trans-unit id="tl_field_format.fieldname.1">
-        <source>Bitte wählen Sie ein Feld.</source>
+        <source>Please select a field.</source>
         <target>Bitte wählen Sie ein Feld.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.0">
-        <source>CSS Klasse</source>
+        <source>CSS Class</source>
         <target>CSS Klasse</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.1">
-        <source>Es können mehrere Klassen per Leerzeichen getrennt angegeben werden.</source>
+        <source>Several classes can be specified separated by blanks.</source>
         <target>Es können mehrere Klassen per Leerzeichen getrennt angegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.useCondition.0">
-        <source>Bedingung</source>
-        <target>Bedingung</target>
+        <source>Add condition</source>
+        <target>Bedingung hinzufügen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.useCondition.1">
-        <source>Dieses Feld darf nur angezeigt werden, wenn ein anderes Feld einen (bestimmten) Wert hat.</source>
+        <source>This field may only be displayed if another field has a (specific) value.</source>
         <target>Dieses Feld darf nur angezeigt werden, wenn ein anderes Feld einen (bestimmten) Wert hat.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.0">
-        <source>Bedingungsfelder</source>
+        <source>Condition fields</source>
         <target>Bedingungsfelder</target>
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.1">
-        <source>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt ist oder gefüllt nicht.</source>
+        <source>Select the fields to which the condition is attached and optionally specify a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
         <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt ist oder gefüllt nicht.</target>
       </trans-unit>
     </body>

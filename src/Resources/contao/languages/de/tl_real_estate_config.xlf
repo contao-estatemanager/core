@@ -7,24 +7,24 @@
         <target>Listen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.number_legend">
-        <source>Preis- / Flächenformatierung</source>
+        <source>Price/area formatting</source>
         <target>Preis- / Flächenformatierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.real_estate_visualization_legend">
-        <source>Darstellung</source>
+        <source>Visualization</source>
         <target>Darstellung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config">
-        <source>Filter</source>
+        <source>Filters</source>
         <target>Filter</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.0">
-        <source>Dezimal-Trennzeichen</source>
+        <source>Decimal separator</source>
         <target>Dezimal-Trennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.0">
-        <source>Tausender-Trennzeichen</source>
+        <source>Thousand separators</source>
         <target>Tausender-Trennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.0">
@@ -32,7 +32,7 @@
         <target>Standard Sortierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.1">
-        <source>Geben Sie hier an, welche Sortierreihenfolge im Standard beachtet werden soll</source>
+        <source>Specify here which sort sequence is to be observed in the standard system.</source>
         <target>Geben Sie hier an, welche Sortierreihenfolge im Standard beachtet werden soll</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultImage.0">
@@ -40,7 +40,7 @@
         <target>Standard-Bild</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultImage.1">
-        <source>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten</source>
+        <source>Select here the default image which will be displayed if properties do not contain images</source>
         <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">

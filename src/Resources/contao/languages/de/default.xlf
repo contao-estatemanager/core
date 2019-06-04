@@ -3,15 +3,15 @@
   <file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="MSC.noRealEstateResults">
-        <source>Es konnten keine passenden Angebote gefunden werden.</source>
+        <source>No matching offers could be found.</source>
         <target>Es konnten keine passenden Angebote gefunden werden.</target>
       </trans-unit>
       <trans-unit id="MSC.administration">
-        <source>Immobilien Verwaltung</source>
+        <source>Real estate management</source>
         <target>Immobilien Verwaltung</target>
       </trans-unit>
       <trans-unit id="MSC.estatemanager_description">
-        <source>Der EstateManager ist ein Produkt von %s</source>
+        <source>The EstateManager is a product of %s</source>
         <target>Der EstateManager ist ein Produkt von %s</target>
       </trans-unit>
       <trans-unit id="MSC.estatemanager_company">
@@ -20,11 +20,11 @@
       </trans-unit>
 
       <trans-unit id="COLS.contentTop">
-        <source>Über dem Inhaltsbereich</source>
+        <source>Above the content area</source>
         <target>Über dem Inhaltsbereich</target>
       </trans-unit>
       <trans-unit id="COLS.contentBottom">
-        <source>Unter dem Inhaltsbereich</source>
+        <source>Below the content area</source>
         <target>Unter dem Inhaltsbereich</target>
       </trans-unit>
     </body>
