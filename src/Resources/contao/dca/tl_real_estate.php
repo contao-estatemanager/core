@@ -120,7 +120,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                                          '{real_estate_parking_legend:hide},stellplatzart,anzahlStellplaetze,stpCarport,stpCarportMietpreis,stpCarportKaufpreis,stpDuplex,stpDuplexMietpreis,stpDuplexKaufpreis,stpFreiplatz,stpFreiplatzMietpreis,stpFreiplatzKaufpreis,stpGarage,stpGarageMietpreis,stpGarageKaufpreis,stpParkhaus,stpParkhausMietpreis,stpParkhausKaufpreis,stpTiefgarage,stpTiefgarageMietpreis,stpTiefgarageKaufpreis,stpSonstige,stpSonstigeMietpreis,stpSonstigeKaufpreis,stpSonstigePlatzart,stpSonstigeBemerkung;'.
                                          '{real_estate_energie_legend:hide},baujahr,letztemodernisierung,zustand,alterAttr,bebaubarNach,erschliessung,erschliessungUmfang,bauzone,energiepassEpart,energiepassGueltigBis,energiepassEnergieverbrauchkennwert,energiepassMitwarmwasser,energiepassEndenergiebedarf,energiepassPrimaerenergietraeger,energiepassStromwert,energiepassWaermewert,energiepassWertklasse,energiepassBaujahr,energiepassAusstelldatum,energiepassJahrgang,energiepassGebaeudeart,energiepassEpasstext,energiepassHwbwert,energiepassHwbklasse,energiepassFgeewert,energiepassFgeeklasse;'.
                                          '{real_estate_media_legend:hide},titleImageSRC,imageSRC,planImageSRC,interiorViewImageSRC,exteriorViewImageSRC,mapViewImageSRC,panoramaImageSRC,epassSkalaImageSRC,logoImageSRC,qrImageSRC,documents,links;' .
-                                         '{real_estate_more_props_legend:hide},flur,flurstueck,gemarkung,beginnAngebotsphase,besichtigungstermin,besichtigungstermin2,beginnBietzeit,endeBietzeit,hoechstgebotZeigen,mindestpreis,zwangsversteigerung,aktenzeichen,zvtermin,zusatztermin,amtsgericht,verkehrswert,plaetzeGastraum,anzahlBetten,kubatur,ausnuetzungsziffer,flaechevon,flaechebis,stromanschlusswert,hallenhoehe,altlasten,ausblick,distanzFlughafen,distanzFernbahnhof,distanzAutobahn,distanzUsBahn,distanzBus,distanzKindergarten,distanzGrundschule,distanzHauptschule,distanzRealschule,distanzGesamtschule,distanzGymnasium,distanzZentrum,distanzEinkaufsmoeglichkeiten,distanzGaststaetten,distanzSportStrand,distanzSportSee,distanzSportMeer,distanzSportSkigebiet,distanzSportSportanlagen,distanzSportWandergebiete,distanzSportNaherholung,verfuegbarAb,abdatum,bisdatum,minMietdauer,maxMietdauer,versteigerungstermin,gruppennummer,zugang,laufzeit,maxPersonen,geschlecht,branchen,aktivVon,aktivBis,kennungUrsprung,standVom,gruppenKennung,master,masterVisible,sprache,anbieterobjekturl;'
+                                         '{real_estate_more_props_legend:hide},flur,flurstueck,gemarkung,beginnAngebotsphase,besichtigungstermin,besichtigungstermin2,beginnBietzeit,endeBietzeit,hoechstgebotZeigen,mindestpreis,zwangsversteigerung,aktenzeichen,zvtermin,zusatztermin,amtsgericht,verkehrswert,plaetzeGastraum,anzahlBetten,kubatur,ausnuetzungsziffer,flaechevon,flaechebis,stromanschlusswert,hallenhoehe,altlasten,ausblick,distanzFlughafen,distanzFernbahnhof,distanzAutobahn,distanzUsBahn,distanzBus,distanzKindergarten,distanzGrundschule,distanzHauptschule,distanzRealschule,distanzGesamtschule,distanzGymnasium,distanzZentrum,distanzEinkaufsmoeglichkeiten,distanzGaststaetten,distanzSportStrand,distanzSportSee,distanzSportMeer,distanzSportSkigebiet,distanzSportSportanlagen,distanzSportWandergebiete,distanzSportNaherholung,verfuegbarAb,abdatum,bisdatum,minMietdauer,maxMietdauer,versteigerungstermin,gruppennummer,zugang,laufzeit,maxPersonen,geschlecht,branchen,aktivVon,aktivBis,kennungUrsprung,standVom,sprache,anbieterobjekturl;'
     ),
 
     // Subpalettes
@@ -4236,37 +4236,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
-        ),
-        'gruppenKennung'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['gruppenKennung'],
-            'inputType'                 => 'text',
-            'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array(
-                'group'    => 'neubau'
-            )
-        ),
-        'master'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['master'],
-            'inputType'                 => 'text',
-            'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array(
-                'group'    => 'neubau',
-                'filter'   => true,
-            )
-        ),
-        'masterVisible'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['masterVisible'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class' => 'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default '0'",
-            'realEstate'                => array(
-                'group'    => 'neubau'
-            )
         ),
         'sprache' => array
         (
