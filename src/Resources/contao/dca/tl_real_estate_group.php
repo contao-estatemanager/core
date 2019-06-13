@@ -83,7 +83,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
             'copy' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['copy'],
-                'href'                => 'act=paste&amp;mode=copy',
+                'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_real_estate_group', 'copy')
             ),

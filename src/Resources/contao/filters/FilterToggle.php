@@ -217,7 +217,10 @@ class FilterToggle extends FilterWidget
             // Add options array if needed
             if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])
             {
-                $options = array_map('trim', explode(',', \Config::get($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])));
+                $strOptionsField = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'];
+                $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : \Config::get($strOptionsField);
+
+                $options = array_map('trim', explode(',', $strOptions));
                 $arrOptions = array();
 
                 foreach ($options as $value)
@@ -316,29 +319,6 @@ class FilterToggle extends FilterWidget
         }
 
         return $this->objFilterSession->getCurrentRealEstateType();
-
-        /*if (!$this->objFilter->addBlankMarketingType && $this->objFilterSession->getCurrentRealEstateType() === null)
-        {
-            return RealEstateTypeModel::findOneByDefaultType(1);
-        }
-
-        return $this->objFilterSession->getCurrentRealEstateType();
-
-        if (!$this->objFilter->addBlankRealEstateType && $this->objFilterSession->getCurrentRealEstateType() === null)
-        {
-            $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
-
-            if ($this->objFilterSession->getCurrentMarketingType() === $objDefaultType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing')
-            {
-                return $objDefaultType;
-            }
-            else
-            {
-                return $objDefaultType->getRelated('similarType');
-            }
-        }*/
-
-
     }
 
     /**
@@ -346,21 +326,31 @@ class FilterToggle extends FilterWidget
      *
      * @param string                   $type
      * @param string                   $field
-     * @param RealEstateTypeModel|null $objCurrentTyp
+     * @param RealEstateTypeModel|null $objCurrentType
      * @param boolean                  $submitOnChange
      *
      * @return string
      */
-    protected function translateLabel($type, $field, $objCurrentTyp=null, $submitOnChange=false)
+    protected function translateLabel($type, $field, $objCurrentType=null, $submitOnChange=false)
     {
-        if (!$submitOnChange || $objCurrentTyp === null)
+        if (!$submitOnChange)
         {
             return Translator::translateFilter($field);
         }
-        else
+
+        if ($objCurrentType !== null)
         {
-            return Translator::translateFilter($objCurrentTyp->{$type}.'_'.$field);
+            $label = '';
+
+            if ($type === 'price' || $type === 'area')
+            {
+                $label .= $objCurrentType->{$type}.'_';
+            }
+
+            $field = $label . $field;
         }
+
+        return Translator::translateFilter($field);
     }
 
     /**

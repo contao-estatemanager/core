@@ -10,8 +10,6 @@
 
 namespace ContaoEstateManager;
 
-use Contao\CoreBundle\Exception\PageNotFoundException;
-use Contao\Model\Collection;
 use Patchwork\Utf8;
 
 
@@ -75,24 +73,29 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function compile()
     {
-        $this->parseRealEstateList();
-    }
-
-    /**
-     * Parse a real estate filter and return it as string
-     *
-     * @return string
-     */
-    protected function parseFilter()
-    {
-        $objModule = \ModuleModel::findByPk($this->filterModule);
-
-        if ($objModule === null)
+        if ($this->addSorting)
         {
-            return '';
+            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
+
+            if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
+            {
+                $sortingOptions = \StringUtil::deserialize($objCurrentType->sortingOptions);
+
+                foreach ($sortingOptions as $option)
+                {
+                    $asc = $option['field'].'_asc';
+                    $desc = $option['field'].'_desc';
+
+                    $arrOptions[$asc] = Translator::translateFilter($asc);
+                    $arrOptions[$desc] = Translator::translateFilter($desc);
+                }
+            }
+
+            $this->Template->sortingOptions = $arrOptions;
+            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
         }
 
-        return $this->getFrontendModule($objModule->id);
+        $this->parseRealEstateList();
     }
 
     /**

@@ -19,7 +19,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
     'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addSorting;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
