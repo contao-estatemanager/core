@@ -183,12 +183,12 @@ abstract class ModuleRealEstate extends \Module
         }
 
         $objRealEstates = $this->fetchItems(($limit ?: 0), $offset);
+        $arrRealEstates = array();
 
         if($objRealEstates)
         {
             $this->isEmpty = false;
 
-            $arrRealEstates = array();
             $count = 0;
 
             while ($objRealEstates->next()) {
@@ -203,6 +203,54 @@ abstract class ModuleRealEstate extends \Module
     }
 
     /**
+     * Adding sorting options to a list
+     */
+    protected function addSorting(){
+        if ($this->addSorting)
+        {
+            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
+
+            if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
+            {
+                $sortingOptions = \StringUtil::deserialize($objCurrentType->sortingOptions);
+
+                foreach ($sortingOptions as $option)
+                {
+                    $asc = $option['field'].'_asc';
+                    $desc = $option['field'].'_desc';
+
+                    $arrOptions[$asc] = Translator::translateFilter($asc);
+                    $arrOptions[$desc] = Translator::translateFilter($desc);
+                }
+            }
+
+            $this->Template->sortingOptions = $arrOptions;
+            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
+        }
+    }
+
+    /**
+     * Return the order option as string
+     *
+     * @return string
+     */
+    protected function getOrderOption()
+    {
+        $strOrder = $_SESSION['SORTING'];
+
+        if (strpos($strOrder, '_asc'))
+        {
+            $strOrder = str_replace('_asc', '', $strOrder) . ' ASC';
+        }
+        elseif (strpos($strOrder, '_desc'))
+        {
+            $strOrder = str_replace('_desc', '', $strOrder) . ' DESC';
+        }
+
+        return $strOrder;
+    }
+
+    /**
      * Generate a link and return it as string
      *
      * @param string  $strTitle
@@ -210,7 +258,7 @@ abstract class ModuleRealEstate extends \Module
      *
      * @return string
      */
-    protected function generateLink($strTitle, $strLink)
+    public function generateLink($strTitle, $strLink)
     {
         return sprintf('<a href="%s" title="%s"><span>%s</span></a>',
             $strLink,

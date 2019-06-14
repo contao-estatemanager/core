@@ -308,7 +308,7 @@ class RealEstate
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'vermietet')
+        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet)
         {
             $return[] = array
             (

@@ -73,28 +73,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function compile()
     {
-        if ($this->addSorting)
-        {
-            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
-
-            if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
-            {
-                $sortingOptions = \StringUtil::deserialize($objCurrentType->sortingOptions);
-
-                foreach ($sortingOptions as $option)
-                {
-                    $asc = $option['field'].'_asc';
-                    $desc = $option['field'].'_desc';
-
-                    $arrOptions[$asc] = Translator::translateFilter($asc);
-                    $arrOptions[$desc] = Translator::translateFilter($desc);
-                }
-            }
-
-            $this->Template->sortingOptions = $arrOptions;
-            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
-        }
-
+        $this->addSorting();
         $this->parseRealEstateList();
     }
 
@@ -127,26 +106,5 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         $arrOptions['order']  = $this->getOrderOption();
 
         return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
-    }
-
-    /**
-     * Return the order option as string
-     *
-     * @return string
-     */
-    protected function getOrderOption()
-    {
-        $strOrder = $_SESSION['SORTING'];
-
-        if (strpos($strOrder, '_asc'))
-        {
-            $strOrder = str_replace('_asc', '', $strOrder) . ' ASC';
-        }
-        elseif (strpos($strOrder, '_desc'))
-        {
-            $strOrder = str_replace('_desc', '', $strOrder) . ' DESC';
-        }
-
-        return $strOrder;
     }
 }
