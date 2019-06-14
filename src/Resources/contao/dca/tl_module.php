@@ -33,7 +33,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
     'realEstateTemplate' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
-        'default'                 => 'real_estate_default',
+        'default'                 => 'real_estate_item_default',
         'exclude'                 => true,
         'inputType'               => 'select',
         'options_callback'        => array('tl_module_estate_manager', 'getRealEstateTemplates'),
@@ -152,7 +152,7 @@ class tl_module_estate_manager extends Backend
      */
     public function getRealEstateTemplates()
     {
-        return $this->getTemplateGroup('real_estate_');
+        return $this->getTemplateGroup('real_estate_item_');
     }
 
     /**

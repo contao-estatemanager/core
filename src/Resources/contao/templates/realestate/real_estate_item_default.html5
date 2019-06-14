@@ -1,4 +1,4 @@
-<div class="real_estate_default block<?= $this->class ?>">
+<div class="real_estate_item_default block<?= $this->class ?>">
     <div class="inner">
 
       <?php if(count($this->arrStatusTokens)): ?>
