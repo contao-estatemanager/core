@@ -10,6 +10,11 @@
 
 namespace ContaoEstateManager;
 
+/**
+ * Provide methods to handle real estates translations.
+ *
+ * @author Daniele Sciannimanica <daniele@oveleon.de>
+ */
 class Translator
 {
     /**

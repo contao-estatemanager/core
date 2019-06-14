@@ -8,9 +8,7 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 namespace ContaoEstateManager;
-
 
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Patchwork\Utf8;

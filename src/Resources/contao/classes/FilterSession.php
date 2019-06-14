@@ -17,7 +17,7 @@ use Model\Collection;
  *
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class FilterSession
+class FilterSession extends \System
 {
 
     /**

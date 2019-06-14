@@ -19,6 +19,14 @@
         <target>Exposé-Module</target>
       </trans-unit>
 
+      <trans-unit id="tl_module.addSorting.0">
+        <source>Add sorting</source>
+        <target>Sortierung hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addSorting.1">
+        <source>Adds a sort option</source>
+        <target>Fügt eine Sortiermöglichkeit hinzu</target>
+      </trans-unit>
       <trans-unit id="tl_module.listMode.0">
         <source>Output mode</source>
         <target>Ausgabe-Modus</target>
