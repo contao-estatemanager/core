@@ -70,7 +70,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->marketingToken = $realEstate->getMarketingToken();
         $objTemplate->title = $realEstate->getTitle();
         $objTemplate->description = $texts['objektbeschreibung'];
-        $objTemplate->linkExpose = $this->generateLink('Expose', $realEstate->generateExposeUrl($this->jumpTo), true);
+        $objTemplate->linkExpose = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
         $objTemplate->address = $realEstate->getLocationString();
         $objTemplate->mainDetails = $realEstate->getMainDetails(3);
@@ -214,7 +214,7 @@ abstract class ModuleRealEstate extends \Module
     {
         return sprintf('<a href="%s" title="%s"><span>%s</span></a>',
             $strLink,
-            \StringUtil::specialchars(sprintf('Expose aufrufen: %s', $strTitle), true),
+            \StringUtil::specialchars(sprintf('%s', $strTitle), true),
             $strTitle);
     }
 

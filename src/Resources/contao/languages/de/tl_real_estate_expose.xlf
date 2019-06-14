@@ -51,6 +51,10 @@
         <source>by Email</source>
         <target>per E-Mail</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_expose.button_expose">
+        <source>Show exposé</source>
+        <target>Zum Exposé</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.text_share_mail_subject">
         <source>Is this property something for you?</source>
