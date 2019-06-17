@@ -81,6 +81,29 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
 
         // set real estate image
+        $this->parseMainImage($objTemplate, $realEstate);
+
+        // HOOK: parse real estate
+        if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['parseRealEstate'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objTemplate, $realEstate, $this);
+            }
+        }
+
+        return $objTemplate->parse();
+    }
+
+    /**
+     * Parse and set main image to template
+     *
+     * @param $objTemplate
+     * @param $realEstate
+     */
+    protected function parseMainImage($objTemplate, $realEstate)
+    {
         $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
 
         if($objModel === null)
@@ -104,18 +127,6 @@ abstract class ModuleRealEstate extends \Module
 
             $this->addImageToTemplate($objTemplate, $arrItem, null, null, $objModel);
         }
-
-        // HOOK: parse real estate
-        if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['parseRealEstate'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($objTemplate, $realEstate, $this);
-            }
-        }
-
-        return $objTemplate->parse();
     }
 
     /**
