@@ -442,7 +442,12 @@ class RealEstate
         }
         else
         {
-            return $this->formatter->getFormattedCollection('auf_anfrage');
+            return array(
+                'value' => Translator::translateValue('auf_anfrage'),
+                'label' => Translator::translateLabel('auf_anfrage'),
+                'key'   => 'auf_anfrage',
+                'class' => 'auf_anfrage'
+            );
         }
     }
 
