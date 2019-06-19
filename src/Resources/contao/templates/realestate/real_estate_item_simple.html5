@@ -1,0 +1,30 @@
+<div class="real_estate_item_simple block<?= $this->class ?>">
+    <div class="inner">
+
+      <div class="main-image">
+        <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+          <?php $this->insert('image', $this->arrData); ?>
+        </a>
+      </div>
+
+      <div class="title"><?= $this->linkHeadline ?></div>
+
+      <div class="main-details">
+          <div class="detail <?= $this->mainPrice['key'] ?> <?= $this->mainPrice['class'] ?>">
+              <span class="label"><?= $this->mainPrice['label'] ?></span>
+              <span class="value"><?= $this->mainPrice['value'] ?></span>
+          </div>
+
+          <?php foreach ($this->mainDetails as $detail): ?>
+            <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
+              <span class="label"><?= $detail['label'] ?></span>
+              <span class="value"><?= $detail['value'] ?></span>
+            </div>
+          <?php endforeach; ?>
+      </div>
+
+      <?php foreach ($this->arrExtensions as $extension): ?>
+          <?= $extension ?>
+      <?php endforeach; ?>
+    </div>
+</div>
