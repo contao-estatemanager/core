@@ -9,11 +9,13 @@
         </div>
       <?php endif; ?>
 
-      <div class="main-image">
-        <a href="<?= $this->link ?>" title="<?= $this->title ?>">
-          <?php $this->insert('image', $this->arrData); ?>
-        </a>
-      </div>
+      <?php if ($this->addImage): ?>
+          <div class="main-image">
+            <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+                <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
+            </a>
+          </div>
+      <?php endif; ?>
 
       <div class="title"><?= $this->linkHeadline ?></div>
       <div class="address"><?= $this->address ?></div>
@@ -31,6 +33,14 @@
         <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
         <div class="expose-link"><?= $this->linkExpose ?></div>
       </div>
+
+      <?php if ($this->addProvider): ?>
+        <?= $this->provider ?>
+      <?php endif; ?>
+
+      <?php if ($this->addContactPerson): ?>
+        <?= $this->contactPerson ?>
+      <?php endif; ?>
 
       <?php foreach ($this->arrExtensions as $extension): ?>
           <?= $extension ?>

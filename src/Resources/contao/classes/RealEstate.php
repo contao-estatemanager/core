@@ -683,6 +683,23 @@ class RealEstate
     }
 
     /**
+     * Return data of the assigned provider
+     *
+     * @return null
+     */
+    public function getProvider()
+    {
+        $objProvider = $this->objRealEstate->getRelated('provider');
+
+        if($objProvider === null)
+        {
+            return null;
+        }
+
+       return $objProvider->row();
+    }
+
+    /**
      * Return data of the assigned person
      *
      * @param bool $forceCompleteAddress
@@ -691,6 +708,7 @@ class RealEstate
      */
     public function getContactPerson($forceCompleteAddress=false)
     {
+        // ToDo: Fehler nach löschen einer noch zugewiesenen Kontaktperson (getRelated)
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
         $objProvider = $objContactPerson->getRelated('pid');
 
@@ -790,7 +808,7 @@ class RealEstate
      *
      * @return array
      */
-    public function sort($arrList){
+    private function sort($arrList){
         $ordered = array();
 
         foreach ($this->arrFieldOrder as $index => $key) {

@@ -55,35 +55,11 @@ class ExposeModuleContactPerson extends ExposeModule
 
         $contactPerson = $this->realEstate->getContactPerson(!!$this->forceFullAddress);
 
-        $addImage = false;
-
         foreach ($arrFields as $field)
         {
             if($field === 'foto')
             {
-                if ($contactPerson['singleSRC'] != '')
-                {
-                    $objModel = \FilesModel::findByUuid($contactPerson['singleSRC']);
-
-                    if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
-                    {
-                        $addImage = true;
-
-                        $image = array
-                        (
-                            'id'         => $objModel->id,
-                            'uuid'       => $objModel->uuid,
-                            'name'       => $objModel->basename,
-                            'singleSRC'  => $objModel->path,
-                            'filesModel' => $objModel->current(),
-                            'size'       => $this->imgSize,
-                        );
-
-                        $this->addImageToTemplate($this->Template, $image, null, null, $objModel);
-                    }
-
-                    $this->Template->addImage = $addImage;
-                }
+                $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $contactPerson['singleSRC'], $this->imgSize);
             }
             else
             {

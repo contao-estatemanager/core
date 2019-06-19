@@ -189,9 +189,10 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
-            'options_callback'        => array('tl_real_estate', 'getAllProvider'),
+            'foreignKey'              => 'tl_provider.firma',
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                     => "varchar(32) NOT NULL default ''",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
         'contactPerson' => array
         (
