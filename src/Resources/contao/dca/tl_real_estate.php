@@ -193,6 +193,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+            // Todo: option_callback getAllProvider statt related?
         ),
         'contactPerson' => array
         (

@@ -320,6 +320,14 @@
         <source>The number of items per page. Set to 0 to disable pagination.</source>
         <target>Die Anzahl an Elementen pro Seite. Geben Sie 0 ein, um den automatischen Seitenumbruch zu deaktivieren.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.realEstateTemplate.0">
+        <source>Real estate template</source>
+        <target>Immobilien Template</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.realEstateTemplate.1">
+        <source>Choose a template to set the representation of a single property</source>
+        <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
