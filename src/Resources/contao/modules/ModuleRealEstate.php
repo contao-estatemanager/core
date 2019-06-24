@@ -290,7 +290,7 @@ abstract class ModuleRealEstate extends \Module
     {
         if ($varSingleSrc)
         {
-            if (\Validator::isUuid($varSingleSrc))
+            if (!($varSingleSrc instanceof \FilesModel) && \Validator::isUuid($varSingleSrc))
             {
                 $objModel = \FilesModel::findByUuid($varSingleSrc);
             }
