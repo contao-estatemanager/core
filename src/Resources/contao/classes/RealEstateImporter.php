@@ -121,7 +121,9 @@ class RealEstateImporter extends \BackendModule
 
         $this->Template->setData(array
         (
-            'files' => $this->getSyncFiles($this->objImportFolder->path)
+            'syncAvailable' => $this->objInterface->type === 'wib',
+            'syncUrl'       => 'syncUrl',
+            'files'         => $this->getSyncFiles($this->objImportFolder->path)
         ));
 
 
@@ -383,6 +385,7 @@ class RealEstateImporter extends \BackendModule
                             continue;
                         }
 
+                        // Save image if needed
                         if ($interfaceMapping->saveImage)
                         {
                             $format = current($tmpGroup->format);

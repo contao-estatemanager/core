@@ -22,6 +22,10 @@
         <source>User</source>
         <target>Benutzer</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_sync.sync">
+        <source>Load XML file</source>
+        <target>XML-Datei laden</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

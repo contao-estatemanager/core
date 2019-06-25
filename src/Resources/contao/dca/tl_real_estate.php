@@ -3945,7 +3945,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['abdatum'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3957,7 +3957,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bisdatum'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3997,7 +3997,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['versteigerungstermin'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'realEstate'                => array(
                 'detail'   => true,
                 'sorting'  => true,
