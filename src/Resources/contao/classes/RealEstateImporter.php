@@ -385,17 +385,35 @@ class RealEstateImporter extends \BackendModule
 
                         if ($interfaceMapping->saveImage)
                         {
+                            $format = current($tmpGroup->format);
+                            $check = next($tmpGroup->check);
+
                             if ($this->objInterface->type === 'wib')
                             {
                                 $fileName = $this->getValueFromStringUrl($value, 'imageId');
-                                $format = current($tmpGroup->format);
-                                $check = next($tmpGroup->check);
+
                                 $extension = $this->getExtension($format);
                                 $completeFileName = $fileName . $extension;
+
+                                $existingFile = FilesModel::findByPath($this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $completeFileName);
+
+                                if ($existingFile !== null && $existingFile->hash === $check)
+                                {
+                                    continue;
+                                }
 
                                 $this->downloadFile($value, $this->objImportFolder, $completeFileName);
 
                                 $value = $completeFileName;
+                            }
+                            else
+                            {
+                                $existingFile = FilesModel::findByPath($this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $value);
+
+                                if ($existingFile !== null && $existingFile->hash === $check)
+                                {
+                                    continue;
+                                }
                             }
 
                             $objFile = $this->copyFile($value, $uniqueProviderValue, $uniqueValue);
