@@ -18,7 +18,35 @@
         <source>Exposé Modules</source>
         <target>Exposé-Module</target>
       </trans-unit>
+      <trans-unit id="tl_module.item_extension_legend">
+        <source>Rest Estate Item Extensions</source>
+        <target>Immobilien Erweiterung</target>
+      </trans-unit>
 
+      <trans-unit id="tl_module.addSorting.0">
+        <source>Add sorting</source>
+        <target>Sortierung hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addSorting.1">
+        <source>Adds a sort option</source>
+        <target>Fügt eine Sortiermöglichkeit hinzu</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addProvider.0">
+        <source>Add provider</source>
+        <target>Anbieter hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addProvider.1">
+        <source>Adds the provider to the property</source>
+        <target>Fügt den Anbieter zur Immobilie hinzu</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addContactPerson.0">
+        <source>Add contact person</source>
+        <target>Kontaktperson hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addContactPerson.1">
+        <source>Adds the contact person to the property</source>
+        <target>Fügt die Kontaktperson zur Immobilie hinzu</target>
+      </trans-unit>
       <trans-unit id="tl_module.listMode.0">
         <source>Output mode</source>
         <target>Ausgabe-Modus</target>
@@ -67,6 +95,22 @@
         <source>Choose a template to set the representation of a single property</source>
         <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
       </trans-unit>
+      <trans-unit id="tl_module.realEstateProviderTemplate.0">
+        <source>Real Estate Template Extension: Provider</source>
+        <target>Immobilien Template Erweiterung: Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateProviderTemplate.1">
+        <source>Here you can overwrite the standard template for displaying providers within a real estate template.</source>
+        <target>Hier können Sie das Standard-Template für die Darstellung von Anbietern innerhalb eines Immobilien Templates überschreiben</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateContactPersonTemplate.0">
+        <source>Real Estate Template Extension: Contact Person</source>
+        <target>Immobilien Template Erweiterung: Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateContactPersonTemplate.1">
+        <source>Here you can overwrite the standard template for displaying contact persons within a real estate template.</source>
+        <target>Hier können Sie das Standard-Template für die Darstellung von Kontaktpersonen innerhalb eines Immobilien Templates überschreiben</target>
+      </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
         <source>Exposé Modules</source>
         <target>Exposé-Module</target>
@@ -82,6 +126,22 @@
       <trans-unit id="tl_module.maxTextLength.1">
         <source>Here texts can be limited to a maximum number of letters.</source>
         <target>Hier können Texte auf eine maximale anzahl an Buchstaben beschränkt werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.contactPersonImgSize.0">
+        <source>Contact person image size</source>
+        <target>Kontaktperson Bildgröße</target>
+      </trans-unit>
+      <trans-unit id="tl_module.contactPersonImgSize.1">
+        <source>Here you can set the image dimensions and the resize mode.</source>
+        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.providerImgSize.0">
+        <source>Provider image size</source>
+        <target>Anbieter Bildgröße</target>
+      </trans-unit>
+      <trans-unit id="tl_module.providerImgSize.1">
+        <source>Here you can set the image dimensions and the resize mode.</source>
+        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
       </trans-unit>
     </body>
   </file>

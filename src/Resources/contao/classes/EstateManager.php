@@ -10,6 +10,11 @@
 
 namespace ContaoEstateManager;
 
+/**
+ * Collection of core functions for EstateManager.
+ *
+ * @author Daniele Sciannimanica <daniele@oveleon.de>
+ */
 class EstateManager
 {
     /**

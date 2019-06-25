@@ -12,18 +12,48 @@ namespace ContaoEstateManager;
 
 use Contao\PageModel;
 
+/**
+ * Provide methods to handle real estates.
+ *
+ * @author Daniele Sciannimanica <daniele@oveleon.de>
+ */
 class RealEstate
 {
+    /**
+     * RealEstate Object
+     * @var null
+     */
     private $objRealEstate = null;
 
+    /**
+     * Type Object
+     * @var RealEstateType|null
+     */
     private $objType = null;
 
+    /**
+     * Formatter Object
+     * @var RealEstateFormatter|null
+     */
     private $formatter = null;
 
+    /**
+     * Sort order
+     * @var array|null
+     */
     private $arrFieldOrder = null;
 
+    /**
+     * Object links
+     * @var null
+     */
     private $links = null;
 
+    /**
+     * RealEstate
+     *
+     * Initialize the object
+     */
     public function __construct($objRealEstate, $typeId)
     {
         $this->objRealEstate = $objRealEstate;
@@ -43,7 +73,6 @@ class RealEstate
         $this->formatter = RealEstateFormatter::getInstance();
         $this->formatter->setRealEstateModel($objRealEstate);
 
-        // load dca
         \Controller::loadDataContainer('tl_real_estate');
 
         // collect default order fields
@@ -63,6 +92,13 @@ class RealEstate
         }
     }
 
+    /**
+     * Return a parameter/value
+     *
+     * @param string $name The field name
+     *
+     * @return mixed The field value
+     */
     public function __get($name)
     {
         if(property_exists($this, $name))
@@ -78,18 +114,28 @@ class RealEstate
         return null;
     }
 
+    /**
+     * Returns the current type
+     *
+     * @return RealEstateType|null
+     */
     public function getType()
     {
         return $this->objType;
     }
 
+    /**
+     * Returns the object id
+     *
+     * @return mixed
+     */
     public function getId()
     {
         return $this->objRealEstate->id;
     }
 
     /**
-     * Generate and return the expose url of the real estate
+     * Generate and return the expose url
      *
      * @param $pageId
      *
@@ -112,7 +158,7 @@ class RealEstate
     /**
      * Return the object title of the real estate
      *
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -224,7 +270,7 @@ class RealEstate
     }
 
     /**
-     * Return status token from real estate
+     * Return status token
      *
      * @param null $validStatusToken
      *
@@ -262,7 +308,7 @@ class RealEstate
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'vermietet')
+        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet)
         {
             $return[] = array
             (
@@ -275,7 +321,7 @@ class RealEstate
     }
 
     /**
-     * Return marketing token from real estate
+     * Return marketing token
      *
      * @return array
      */
@@ -299,7 +345,7 @@ class RealEstate
     }
 
     /**
-     * Return the location from real estate
+     * Return the location
      *
      * @param bool $forceCompleteAddress
      *
@@ -341,7 +387,7 @@ class RealEstate
     }
 
     /**
-     * Return marketing token from real estate as string
+     * Return location as string
      *
      * @param bool $forceCompleteAddress
      *
@@ -396,7 +442,12 @@ class RealEstate
         }
         else
         {
-            return $this->formatter->getFormattedCollection('auf_anfrage');
+            return array(
+                'value' => Translator::translateValue('auf_anfrage'),
+                'label' => Translator::translateLabel('auf_anfrage'),
+                'key'   => 'auf_anfrage',
+                'class' => 'auf_anfrage'
+            );
         }
     }
 
@@ -632,6 +683,23 @@ class RealEstate
     }
 
     /**
+     * Return data of the assigned provider
+     *
+     * @return null
+     */
+    public function getProvider()
+    {
+        $objProvider = $this->objRealEstate->getRelated('provider');
+
+        if($objProvider === null)
+        {
+            return null;
+        }
+
+       return $objProvider->row();
+    }
+
+    /**
      * Return data of the assigned person
      *
      * @param bool $forceCompleteAddress
@@ -640,6 +708,7 @@ class RealEstate
      */
     public function getContactPerson($forceCompleteAddress=false)
     {
+        // ToDo: Fehler nach löschen einer noch zugewiesenen Kontaktperson (getRelated)
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
         $objProvider = $objContactPerson->getRelated('pid');
 
@@ -739,7 +808,7 @@ class RealEstate
      *
      * @return array
      */
-    public function sort($arrList){
+    private function sort($arrList){
         $ordered = array();
 
         foreach ($this->arrFieldOrder as $index => $key) {

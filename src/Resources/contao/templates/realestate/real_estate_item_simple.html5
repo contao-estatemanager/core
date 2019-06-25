@@ -1,13 +1,5 @@
-<div class="real_estate_default block<?= $this->class ?>">
+<div class="real_estate_item_simple block<?= $this->class ?>">
     <div class="inner">
-
-      <?php if(count($this->arrStatusTokens)): ?>
-        <div class="status">
-            <?php foreach ($this->arrStatusTokens as $statusToken): ?>
-                <div class="token <?=$statusToken['class']?>"><?=$statusToken['value']?></div>
-            <?php endforeach; ?>
-        </div>
-      <?php endif; ?>
 
       <div class="main-image">
         <a href="<?= $this->link ?>" title="<?= $this->title ?>">
@@ -16,20 +8,19 @@
       </div>
 
       <div class="title"><?= $this->linkHeadline ?></div>
-      <div class="address"><?= $this->address ?></div>
 
       <div class="main-details">
+          <div class="detail <?= $this->mainPrice['key'] ?> <?= $this->mainPrice['class'] ?>">
+              <span class="label"><?= $this->mainPrice['label'] ?></span>
+              <span class="value"><?= $this->mainPrice['value'] ?></span>
+          </div>
+
           <?php foreach ($this->mainDetails as $detail): ?>
             <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
               <span class="label"><?= $detail['label'] ?></span>
               <span class="value"><?= $detail['value'] ?></span>
             </div>
           <?php endforeach; ?>
-      </div>
-
-      <div class="bottom">
-        <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
-        <div class="expose-link"><?= $this->linkExpose ?></div>
       </div>
 
       <?php foreach ($this->arrExtensions as $extension): ?>

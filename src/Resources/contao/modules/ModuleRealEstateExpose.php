@@ -192,7 +192,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         // Check the visibility (see #6311)
-        if (!static::isVisibleElement($objRow))
+        if (!static::isVisibleExposeElement($objRow))
         {
             return '';
         }
@@ -238,7 +238,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      *
      * @return boolean True if the element is visible
      */
-    public static function isVisibleElement(ExposeModuleModel $objElement)
+    public static function isVisibleExposeElement(ExposeModuleModel $objElement)
     {
         $blnReturn = true;
 

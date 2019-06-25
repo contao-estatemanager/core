@@ -1,0 +1,43 @@
+<div class="real_estate_itemext_contact_person">
+    <?php if ($this->addImage): ?>
+        <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
+    <?php endif; ?>
+
+    <address>
+        <?php if($this->kontaktname): ?>
+            <span class="name"><?=$this->kontaktname?></span>
+        <?php endif; ?>
+
+        <?php if($this->strasse): ?>
+            <span class="street"><?=$this->strasse?></span>
+        <?php endif; ?>
+
+        <?php if($this->hausnummer): ?>
+            <span class="number"><?=$this->hausnummer?></span>
+        <?php endif; ?>
+
+        <?php if($this->plz): ?>
+            <span class="postal"><?=$this->plz?></span>
+        <?php endif; ?>
+
+        <?php if($this->ort): ?>
+            <span class="city"><?=$this->ort?></span>
+        <?php endif; ?>
+
+        <?php if($this->zusatzfeld): ?>
+            <span class="extra"><?=$this->zusatzfeld?></span>
+        <?php endif; ?>
+
+        <?php if($this->land): ?>
+            <span class="country"><?=$this->land?></span>
+        <?php endif; ?>
+
+        <?php if($this->telefon): ?>
+            <span class="phone"><?=$this->telefon?></span>
+        <?php endif; ?>
+
+        <?php if($this->email): ?>
+            <span class="email"><?=$this->email?></span>
+        <?php endif; ?>
+    </address>
+</div>

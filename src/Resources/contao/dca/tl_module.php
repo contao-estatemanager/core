@@ -18,8 +18,8 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 (
     'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-    'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addSorting;{redirect_legend},jumpTo;{template_legend:hide},statusTokens,realEstateTemplate,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addSorting;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
@@ -33,10 +33,30 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
     'realEstateTemplate' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
-        'default'                 => 'real_estate_default',
+        'default'                 => 'real_estate_item_default',
         'exclude'                 => true,
         'inputType'               => 'select',
         'options_callback'        => array('tl_module_estate_manager', 'getRealEstateTemplates'),
+        'eval'                    => array('tl_class'=>'w50'),
+        'sql'                     => "varchar(64) NOT NULL default ''"
+    ),
+    'realEstateContactPersonTemplate' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateContactPersonTemplate'],
+        'default'                 => 'real_estate_itemext_contact_person_default',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
+        'eval'                    => array('tl_class'=>'w50'),
+        'sql'                     => "varchar(64) NOT NULL default ''"
+    ),
+    'realEstateProviderTemplate' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateProviderTemplate'],
+        'default'                 => 'real_estate_itemext_provider_default',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
@@ -88,6 +108,22 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'eval'                    => array('tl_class'=>'w50 m12'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
+    'addProvider' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addProvider'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => array('tl_class'=>'w50 m12'),
+        'sql'                     => "char(1) NOT NULL default ''"
+    ),
+    'addContactPerson' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addContactPerson'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => array('tl_class'=>'w50 m12'),
+        'sql'                     => "char(1) NOT NULL default ''"
+    ),
     'filterMode' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterMode'],
@@ -124,6 +160,32 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'exclude'                 => true,
         'inputType'               => 'exposeModuleWizard',
         'sql'                     => "blob NULL"
+    ),
+    'contactPersonImgSize' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['contactPersonImgSize'],
+        'exclude'                 => true,
+        'inputType'               => 'imageSize',
+        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
+        'options_callback' => function ()
+        {
+            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+        },
+        'sql'                     => "varchar(64) NOT NULL default ''"
+    ),
+    'providerImgSize' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['providerImgSize'],
+        'exclude'                 => true,
+        'inputType'               => 'imageSize',
+        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
+        'options_callback' => function ()
+        {
+            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+        },
+        'sql'                     => "varchar(64) NOT NULL default ''"
     )
 ));
 
@@ -152,7 +214,17 @@ class tl_module_estate_manager extends Backend
      */
     public function getRealEstateTemplates()
     {
-        return $this->getTemplateGroup('real_estate_');
+        return $this->getTemplateGroup('real_estate_item_');
+    }
+
+    /**
+     * Return all real estate item extension templates as array
+     *
+     * @return array
+     */
+    public function getRealEstateExtensionTemplates()
+    {
+        return $this->getTemplateGroup('real_estate_itemext_');
     }
 
     /**

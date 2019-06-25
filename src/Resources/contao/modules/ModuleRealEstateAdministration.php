@@ -10,7 +10,6 @@
 
 namespace ContaoEstateManager;
 
-
 /**
  * Back end module "real estate administration".
  *

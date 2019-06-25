@@ -10,18 +10,49 @@
 
 namespace ContaoEstateManager;
 
+/**
+ * Provide methods to handle real estate formats.
+ *
+ * @author Daniele Sciannimanica <daniele@oveleon.de>
+ */
 class RealEstateFormatter
 {
+    /**
+     * RealEstateFormatter Instance
+     * @var null
+     */
     private static $instance = null;
 
+    /**
+     * RealEstate Object
+     * @var null
+     */
     private $objRealEstate = null;
 
+    /**
+     * Field formats and actions
+     * @var array
+     */
     private $arrFieldFormats = array();
 
+    /**
+     * Field format conditions
+     * @var array
+     */
     private $arrFieldConditions = array();
 
+    /**
+     * Removed fields collection
+     * @var array
+     */
     private $arrRemovedCollection = array();
 
+
+    /**
+     * RealEstateFormatter
+     *
+     * Initialize the object
+     */
     private function __construct()
     {
         $arrFieldFormats = array();
@@ -84,12 +115,13 @@ class RealEstateFormatter
         \System::loadLanguageFile('tl_real_estate_label');
         \System::loadLanguageFile('tl_real_estate_value');
         \System::loadLanguageFile('tl_real_estate_attribute');
+        \System::loadLanguageFile('tl_real_estate_expose');
     }
 
     /**
-     * return formatter instance
+     * Instantiate the RealEstateFormatter object
      *
-     * @return null
+     * @return RealEstateFormatter The object instance
      */
     public static function getInstance()
     {
@@ -100,13 +132,13 @@ class RealEstateFormatter
     }
 
     /**
-     * set real estate model and check field conditions
+     * Set real estate model and check field conditions
      *
      * @param $objRealEtate
      */
     public function setRealEstateModel($objRealEtate)
     {
-        // set real estate
+        // set current real estate
         $this->objRealEstate = $objRealEtate;
 
         // determine fields that may not be displayed
@@ -136,7 +168,7 @@ class RealEstateFormatter
     }
 
     /**
-     * return field format class
+     * Return field format class
      *
      * @param $field
      *
@@ -230,15 +262,22 @@ class RealEstateFormatter
         {
             switch($action['action'])
             {
+                // Format a number e.g (PHP number_format)
                 case 'number_format':
                     $newValue = (isset($value) && $value !== '') ? number_format($value, ($action['decimals'] ?: 0), \Config::get('numberFormatDecimals'), \Config::get('numberFormatThousands')) : $value;
                     break;
+
+                // Adds text at the beginning of the value
                 case 'prepend':
                     $newValue = (isset($value) && $value !== '') ? $action['text'] . $value : '';
                     break;
+
+                // Adds text at the end of the value
                 case 'append':
                     $newValue = (isset($value) && $value !== '') ? $value . $action['text'] : '';
                     break;
+
+                // Deserialized a value to an array and displays it in a list separated by a given seperator
                 case 'unserialize':
                     $arrValues = \StringUtil::deserialize($value);
 
@@ -249,21 +288,31 @@ class RealEstateFormatter
                     }
 
                     break;
+
+                // Converts boolean values to readable values
                 case 'boolToWord':
                     $newValue = boolval($value) ? Translator::translateValue(1) : ($action['necessary'] ? Translator::translateValue(0) : $value);
                     break;
+
+                // Make a string's first character uppercase (PHP ucfirst)
                 case 'ucfirst':
                     $newValue = ucfirst( strtolower( $value ) );
                     break;
+
+                // Format a local time/date (PHP date)
                 case 'date_format':
                     $newValue = date( \Config::get('dateFormat'), $value );
                     break;
+
+                // Wrap a value with its own content using PHP sprintf function
                 case 'wrap':
                     if(substr_count($action['text'],'%s') === 1)
                     {
                         $newValue = sprintf($action['text'], $value);
                     }
                     break;
+
+                // Merges multiple fields by a seperator
                 case 'combine':
                     $arrValues = \StringUtil::deserialize($action['elements'], true);
 
@@ -290,6 +339,8 @@ class RealEstateFormatter
 
                     $newValue = implode($action['seperator'], $list);
                     break;
+
+                // Custom function (see templates/actions)
                 case 'custom':
                     $template = \Controller::getTemplate($action['customFunction']);
                     $customFunc = include $template;

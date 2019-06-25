@@ -70,7 +70,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->marketingToken = $realEstate->getMarketingToken();
         $objTemplate->title = $realEstate->getTitle();
         $objTemplate->description = $texts['objektbeschreibung'];
-        $objTemplate->linkExpose = $this->generateLink('Expose', $realEstate->generateExposeUrl($this->jumpTo), true);
+        $objTemplate->linkExpose = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
         $objTemplate->address = $realEstate->getLocationString();
         $objTemplate->mainDetails = $realEstate->getMainDetails(3);
@@ -80,30 +80,24 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->details = $realEstate->getDetails(['price'], true);
         $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
 
+        // add provider
+        $objTemplate->addProvider = !!$this->addProvider;
+
+        if($this->addProvider)
+        {
+            $objTemplate->provider = $this->parseProvider($realEstate);
+        }
+
+        // add contact person
+        $objTemplate->addContactPerson = !!$this->addContactPerson;
+
+        if($this->addContactPerson)
+        {
+            $objTemplate->contactPerson = $this->parseContactPerson($realEstate);
+        }
+
         // set real estate image
-        $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
-
-        if($objModel === null)
-        {
-            // Set default image
-            $defaultImage = \Config::get('defaultImage');
-
-            if($defaultImage)
-            {
-                $objModel = \FilesModel::findByUuid($defaultImage);
-            }
-        }
-
-        if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
-        {
-            $arrItem = array
-            (
-                'size' => $this->imgSize,
-                'singleSRC' => $objModel->path
-            );
-
-            $this->addImageToTemplate($objTemplate, $arrItem, null, null, $objModel);
-        }
+        $objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
 
         // HOOK: parse real estate
         if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
@@ -183,12 +177,12 @@ abstract class ModuleRealEstate extends \Module
         }
 
         $objRealEstates = $this->fetchItems(($limit ?: 0), $offset);
+        $arrRealEstates = array();
 
         if($objRealEstates)
         {
             $this->isEmpty = false;
 
-            $arrRealEstates = array();
             $count = 0;
 
             while ($objRealEstates->next()) {
@@ -203,6 +197,178 @@ abstract class ModuleRealEstate extends \Module
     }
 
     /**
+     * Parse provider
+     *
+     * @param $realEstate
+     *
+     * @return string: parsed provider template
+     */
+    public function parseProvider($realEstate)
+    {
+        $arrProvider = $realEstate->getProvider();
+
+        if($arrProvider === null)
+        {
+            return '';
+        }
+
+        $objTemplate = new \FrontendTemplate($this->realEstateProviderTemplate);
+        $objTemplate->setData($arrProvider);
+
+        if($arrProvider['singleSRC'])
+        {
+            $objTemplate->addImage = $this->addSingleImageToTemplate($objTemplate, $arrProvider['singleSRC'], $this->providerImgSize);
+        }
+
+        return $objTemplate->parse();
+    }
+
+    /**
+     * Parse contact person
+     *
+     * @param $realEstate
+     * @param bool $forceCompleteAddress
+     *
+     * @return string: parsed contact person template
+     */
+    public function parseContactPerson($realEstate, $forceCompleteAddress=false)
+    {
+        $arrContactPerson = $realEstate->getContactPerson($forceCompleteAddress);
+
+        if($arrContactPerson === null)
+        {
+            return '';
+        }
+
+        $objTemplate = new \FrontendTemplate($this->realEstateContactPersonTemplate);
+        $objTemplate->setData($arrContactPerson);
+
+        if($arrContactPerson['singleSRC'])
+        {
+            $objTemplate->addImage = $this->addSingleImageToTemplate($objTemplate, $arrContactPerson['singleSRC'], $this->contactPersonImgSize);
+        }
+
+        return $objTemplate->parse();
+    }
+
+    /**
+     * Add main image to template
+     *
+     * @param $objTemplate
+     * @param $realEstate
+     *
+     * @return boolean
+     */
+    protected function addMainImageToTemplate($objTemplate, $realEstate)
+    {
+        $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
+
+        if($objModel === null)
+        {
+            // Set default image
+            $defaultImage = \Config::get('defaultImage');
+
+            if($defaultImage)
+            {
+                $objModel = \FilesModel::findByUuid($defaultImage);
+            }
+        }
+
+        return $this->addSingleImageToTemplate($objTemplate, $objModel, $this->imgSize);
+    }
+
+    /**
+     * Add image to template
+     *
+     * @param $objTemplate
+     * @param $varSingleSrc
+     * @param $imgSize
+     *
+     * @return boolean
+     */
+    public function addSingleImageToTemplate($objTemplate, $varSingleSrc, $imgSize)
+    {
+        if ($varSingleSrc)
+        {
+            if (!($varSingleSrc instanceof \FilesModel) && \Validator::isUuid($varSingleSrc))
+            {
+                $objModel = \FilesModel::findByUuid($varSingleSrc);
+            }
+            else
+            {
+                $objModel = $varSingleSrc;
+            }
+
+            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+            {
+                $image = array
+                (
+                    'id'         => $objModel->id,
+                    'uuid'       => $objModel->uuid,
+                    'name'       => $objModel->basename,
+                    'singleSRC'  => $objModel->path,
+                    'filesModel' => $objModel->current(),
+                    'size'       => $imgSize,
+                );
+
+                $this->addImageToTemplate($objTemplate, $image, null, null, $objModel);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Adding sorting options to a list
+     */
+    protected function addSorting(){
+        if ($this->addSorting)
+        {
+            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
+
+            if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
+            {
+                $sortingOptions = \StringUtil::deserialize($objCurrentType->sortingOptions);
+
+                foreach ($sortingOptions as $option)
+                {
+                    $asc = $option['field'].'_asc';
+                    $desc = $option['field'].'_desc';
+
+                    $arrOptions[$asc] = Translator::translateFilter($asc);
+                    $arrOptions[$desc] = Translator::translateFilter($desc);
+                }
+            }
+
+            $this->Template->sortingOptions = $arrOptions;
+            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
+        }
+    }
+
+    /**
+     * Return the order option as string
+     *
+     * @return string
+     */
+    protected function getOrderOption()
+    {
+        $strOrder = $_SESSION['SORTING'];
+
+        if (strpos($strOrder, '_asc'))
+        {
+            $strOrder = str_replace('_asc', '', $strOrder) . ' ASC';
+        }
+        elseif (strpos($strOrder, '_desc'))
+        {
+            $strOrder = str_replace('_desc', '', $strOrder) . ' DESC';
+        }
+
+        return $strOrder;
+    }
+
+    /**
      * Generate a link and return it as string
      *
      * @param string  $strTitle
@@ -210,11 +376,11 @@ abstract class ModuleRealEstate extends \Module
      *
      * @return string
      */
-    protected function generateLink($strTitle, $strLink)
+    public function generateLink($strTitle, $strLink)
     {
         return sprintf('<a href="%s" title="%s"><span>%s</span></a>',
             $strLink,
-            \StringUtil::specialchars(sprintf('Expose aufrufen: %s', $strTitle), true),
+            \StringUtil::specialchars(sprintf('%s', $strTitle), true),
             $strTitle);
     }
 

@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Default field formats with action
+ *
+ * @version 0.0.1
+ * @author  Daniele Sciannimanica <daniele@oveleon.de>
+ */
 return array
 (
     array

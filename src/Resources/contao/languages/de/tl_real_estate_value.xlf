@@ -22,6 +22,14 @@
         <source>zur Miete</source>
         <target>zur Miete</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_value.sold">
+        <source>Sold</source>
+        <target>Verkauft</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.rented">
+        <source>Rented</source>
+        <target>Vermietet</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_value.nutzungsart_wohnen">
         <source>Wohnen</source>

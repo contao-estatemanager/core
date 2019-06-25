@@ -17,7 +17,7 @@ use Model\Collection;
  *
  * @author Fabian Ekert <fabian@oveleon.de>
  */
-class FilterSession
+class FilterSession extends \System
 {
 
     /**
@@ -187,19 +187,20 @@ class FilterSession
     /**
      * Collect all filter parameter by group and return it as array
      *
-     * @param array  $arrGroups Array of real estate group ids
-     * @param string $mode      filter mode
+     * @param array $arrGroups Array of real estate group ids
+     * @param string $mode filter mode
+     * @param bool $addFragments
      *
      * @return array
      */
-    public function getParameter($arrGroups, $mode)
+    public function getParameter($arrGroups, $mode, $addFragments=true)
     {
         if ($this->objCurrentType !== null)
         {
-            return $this->getTypeParameter($this->objCurrentType, $mode);
+            return $this->getTypeParameter($this->objCurrentType, $mode, $addFragments);
         }
 
-        if ($this->strMarketingType !== 'kauf_erbpacht_miete_leasing')
+        if ($arrGroups !== null && $this->strMarketingType !== 'kauf_erbpacht_miete_leasing')
         {
             // Unset real estate groups if marketing type not apply
             while ($this->objRealEstateGroups->next())
@@ -217,18 +218,19 @@ class FilterSession
         // Reset collection for further functions
         $this->objRealEstateGroups->reset();
 
-        return $this->getTypeParameterByGroups($arrGroups, $mode);
+        return $this->getTypeParameterByGroups($arrGroups, $mode, $addFragments);
     }
 
     /**
      * Collect type filter parameter and return them as array
      *
      * @param RealEstateTypeModel $objRealEstateType
-     * @param string              $mode
+     * @param string $mode
+     * @param bool $addFragments
      *
      * @return array
      */
-    private function getTypeParameter($objRealEstateType, $mode)
+    private function getTypeParameter($objRealEstateType, $mode, $addFragments=true)
     {
         $t = static::$strTable;
 
@@ -241,11 +243,14 @@ class FilterSession
             // Exception
         }
 
-        $this->addQueryFragmentBasics($objRealEstateType, $arrColumns, $arrValues);
-        $this->addQueryFragmentPrice($objRealEstateType, $arrColumns, $arrValues);
-        $this->addQueryFragmentRoom($arrColumns, $arrValues);
-        $this->addQueryFragmentArea($objRealEstateType, $arrColumns, $arrValues);
-        $this->addQueryFragmentPeriod($arrColumns, $arrValues);
+        if($addFragments)
+        {
+            $this->addQueryFragmentBasics($objRealEstateType, $arrColumns, $arrValues);
+            $this->addQueryFragmentPrice($objRealEstateType, $arrColumns, $arrValues);
+            $this->addQueryFragmentRoom($arrColumns, $arrValues);
+            $this->addQueryFragmentArea($objRealEstateType, $arrColumns, $arrValues);
+            $this->addQueryFragmentPeriod($arrColumns, $arrValues);
+        }
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameter']))
@@ -253,7 +258,7 @@ class FilterSession
             foreach ($GLOBALS['TL_HOOKS']['getTypeParameter'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
             }
         }
 
@@ -263,12 +268,13 @@ class FilterSession
     /**
      * Collect type filter parameter and return them as array
      *
-     * @param array  $arrGroups
+     * @param array $arrGroups
      * @param string $mode
      *
+     * @param bool $addFragments
      * @return array
      */
-    private function getTypeParameterByGroups($arrGroups, $mode)
+    private function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true)
     {
         $t = static::$strTable;
 
@@ -278,29 +284,35 @@ class FilterSession
 
         $arrTypeColumns = array();
 
-        $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
-
-        if ($objRealEstateTypes === null)
+        if($arrGroups !== null)
         {
-            // Exception
+            $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
+
+            if ($objRealEstateTypes === null)
+            {
+                // Exception
+            }
+
+            if($addFragments)
+            {
+                while ($objRealEstateTypes->next())
+                {
+                    $arrColumn = array();
+
+                    $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                    $this->addQueryFragmentPrice($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                    $this->addQueryFragmentRoom($arrColumn, $arrValues);
+                    $this->addQueryFragmentArea($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                    $this->addQueryFragmentPeriod($arrColumn, $arrValues);
+
+                    // Hook zum ergänzen von neuen Toggle Filtern
+
+                    $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+                }
+
+                $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
+            }
         }
-
-        while ($objRealEstateTypes->next())
-        {
-            $arrColumn = array();
-
-            $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
-            $this->addQueryFragmentPrice($objRealEstateTypes->current(), $arrColumn, $arrValues);
-            $this->addQueryFragmentRoom($arrColumn, $arrValues);
-            $this->addQueryFragmentArea($objRealEstateTypes->current(), $arrColumn, $arrValues);
-            $this->addQueryFragmentPeriod($arrColumn, $arrValues);
-
-            // Hook zum ergänzen von neuen Toggle Filtern
-
-            $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
-        }
-
-        $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']))
@@ -308,7 +320,7 @@ class FilterSession
             foreach ($GLOBALS['TL_HOOKS']['getTypeParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
             }
         }
 
@@ -318,12 +330,13 @@ class FilterSession
     /**
      * Collect and return parameter by a given set of groups
      *
-     * @param array  $arrGroups
+     * @param array $arrGroups
      * @param string $mode
+     * @param bool $addFragments
      *
      * @return array
      */
-    public function getParameterByGroups($arrGroups, $mode)
+    public function getParameterByGroups($arrGroups, $mode, $addFragments=true)
     {
         $t = static::$strTable;
 
@@ -340,18 +353,21 @@ class FilterSession
             // Exception
         }
 
-        while ($objRealEstateTypes->next())
+        if($addFragments)
         {
-            $arrColumn = array();
+            while ($objRealEstateTypes->next())
+            {
+                $arrColumn = array();
 
-            $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
 
-            // Hook zum ergänzen von neuen Toggle Filtern
+                // Hook zum ergänzen von neuen Toggle Filtern
 
-            $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+                $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+            }
+
+            $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
         }
-
-        $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByGroups']))
@@ -359,7 +375,7 @@ class FilterSession
             foreach ($GLOBALS['TL_HOOKS']['getParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
             }
         }
 
