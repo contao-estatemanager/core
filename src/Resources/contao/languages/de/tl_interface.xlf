@@ -1,0 +1,306 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_interface.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_interface.title.0">
+        <source>Title</source>
+        <target>Titel</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.title.1">
+        <source>Please enter a title for the interface.</source>
+        <target>Bitte geben Sie einen Titel für die Schnittstelle ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.type.0">
+        <source>Type</source>
+        <target>Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.type.1">
+        <source>Please enter the type to be used for the import.</source>
+        <target>Bitte geben Sie den Typ an, der für den Import verwendet werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.provider.0">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.provider.1">
+        <source>Please select the assigned provider.</source>
+        <target>Bitte wählen Sie den zugeordneten Anbieter aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.anbieternr.0">
+        <source>Provider number</source>
+        <target>Anbieternummer</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.anbieternr.1">
+        <source>Please enter the provider number.</source>
+        <target>Bitte geben Sie die Anbieternummer ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.uniqueField.0">
+        <source>Unique field</source>
+        <target>Eindeutiges Feld</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.uniqueField.1">
+        <source>A unique field need to be selected here to identify a real estate record.</source>
+        <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Immobilie-Datensatz identifiziert werden kann.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.importPath.0">
+        <source>Import directory</source>
+        <target>Importverzeichnis</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.importPath.1">
+        <source>Please enter the import directory where transmissions are stored and cached.</source>
+        <target>Bitte geben Sie das Importverzeichnis an, in dem eine Übertragungen abgelegt und zwischengespeichert werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.filesPath.0">
+        <source>Target directory</source>
+        <target>Zielverzeichnis</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.filesPath.1">
+        <source>Please enter the target directory where imported files are to be stored.</source>
+        <target>Bitte geben Sie das Zielverzeichnis an, in das importierte Dateien abgelegt werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.contactPersonActions.0">
+        <source>Contact person</source>
+        <target>Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.contactPersonActions.1">
+        <source>Here you can specify what should happen with contact person information during an import.</source>
+        <target>Hier können Sie angeben, was mit Informationen zu Kontaktpersonen während eines Imports geschehen soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.contactPersonUniqueField.0">
+        <source>Unique field of contact person</source>
+        <target>Eindeutiges Feld der Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.contactPersonUniqueField.1">
+        <source>A unique field need to be selected here to identify a contact person record.</source>
+        <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Kontaktperson-Datensatz identifiziert wird.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.importThirdPartyProvider.0">
+        <source>Import real estate records from other providers</source>
+        <target>Immobilien anderer Anbieter importieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.importThirdPartyProvider.1">
+        <source>Here you can specify if a contact person should be assigned to real estate records of other providers.</source>
+        <target>Hier können Sie angeben, ob und welcher Kontaktperson Immobilien anderer Anbieter zugewiesen werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonKauf.0">
+        <source>Contact person properties for sale</source>
+        <target>Kontaktperson Kauf-Objekte</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonKauf.1">
+        <source>Here you must specify a contact person who will assigned to real estate records for sale.</source>
+        <target>Hier müssen Sie eine Kontaktperson angeben, der Immobilien zum Kauf zugewiesen werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonMietePacht.0">
+        <source>Contact person properties for rent</source>
+        <target>Kontaktperson Miet-Objekte</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonMietePacht.1">
+        <source>Here you must specify a contact person who will assigned to real estate records for rent.</source>
+        <target>Hier müssen Sie eine Kontaktperson angeben, der Immobilien zur Miete zugewiesen werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonErbpacht.0">
+        <source>Contact person properties for leasehold</source>
+        <target>Kontaktperson Erbpacht-Objekte</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonErbpacht.1">
+        <source>Here you must specify a contact person who will assigned to real estate records for leasehold.</source>
+        <target>Hier müssen Sie eine Kontaktperson angeben, der Erbpacht-Immobilien zugewiesen werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonLeasing.0">
+        <source>Contact person properties for leasing</source>
+        <target>Kontaktperson Leasing-Objekte</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assignContactPersonLeasing.1">
+        <source>Here you must specify a contact person who will assigned to real estate records for leasing.</source>
+        <target>Hier müssen Sie eine Kontaktperson angeben, der Leasing-Immobilien zugewiesen werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.autoSync.0">
+        <source>Automated synchronization</source>
+        <target>Automatische Synchronisierung</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.autoSync.1">
+        <source>Here you can specify how often the synchronization should be performed.</source>
+        <target>Hier können Sie angeben, wie oft die Synchronisierung ausgeführt werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen.0">
+        <source>Delete files older then</source>
+        <target>Dateien älter als löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen.1">
+        <source>Here you can specify when old synchronization files should be finally deleted.</source>
+        <target>Hier können Sie angeben, wann alte Synchronisierungsdateien endgükltig gelöscht werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.syncUrl.0">
+        <source>Sync url</source>
+        <target>Sync-URL</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.syncUrl.1">
+        <source>URL of the interface for the real estate import.</source>
+        <target>URL zur Live-Schnittstelle für den Immobilien-Import.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.testMode.0">
+        <source>Test mode</source>
+        <target>Testmodus</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.testMode.1">
+        <source>Synchronizes records without updating the interface session counter.</source>
+        <target>Synchronisiert Datensätze, ohne den Session-Zähler der Schnittstelle zu aktualisieren.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.syncRealEstates.0">
+        <source>Synchronize real estates</source>
+        <target>Immobilien synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.syncRealEstates.1">
+        <source>Synchronize real estates</source>
+        <target>Immobilien synchronisieren</target>
+      </trans-unit>
+
+      <trans-unit id="tl_interface.openimmo">
+        <source>OpenImmo</source>
+        <target>OpenImmo</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.wib">
+        <source>WIB</source>
+        <target>WIB</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.create">
+        <source>Create if record does not exist</source>
+        <target>Erstellen, wenn Datensatz nicht vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.update">
+        <source>Update on changes</source>
+        <target>Aktualisieren, bei Änderungen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.never">
+        <source>Never</source>
+        <target>Niemals</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.hourly">
+        <source>Hourly</source>
+        <target>Stündlich</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.daily">
+        <source>Daily</source>
+        <target>Täglich</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.weekly">
+        <source>Weekly</source>
+        <target>Wöchentlich</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_none">
+        <source>Never</source>
+        <target>Niemals</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_day">
+        <source>After one day</source>
+        <target>Nach einem Tag</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_three_days">
+        <source>After three days</source>
+        <target>Nach drei Tagen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_week">
+        <source>After one week</source>
+        <target>Nach einer Woche</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_two_weeks">
+        <source>After two weeks</source>
+        <target>Nach zwei Tagen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_month">
+        <source>After one month</source>
+        <target>Nach einem Monat</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_three_months">
+        <source>After three months</source>
+        <target>Nach drei Monaten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_half_year">
+        <source>After a half year</source>
+        <target>Nach einem halben Jahr</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.deleteFilesOlderThen_year">
+        <source>After one year</source>
+        <target>Nach einem Jahr</target>
+      </trans-unit>
+
+      <trans-unit id="tl_interface.title_legend">
+        <source>Title &amp; type</source>
+        <target>Titel &amp; Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.oi_field_legend">
+        <source>OpenImmo filed config</source>
+        <target>OpenImmo Feld-Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.related_records_legend">
+        <source>Create &amp; update</source>
+        <target>Etstellen &amp; Aktualisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.sync_legend">
+        <source>Synchronize settings</source>
+        <target>Synchronisierungs-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.expert_legend">
+        <source>Expert-settings</source>
+        <target>Experteneinstellungen</target>
+      </trans-unit>
+      
+      <trans-unit id="tl_interface.new.0">
+        <source>New interface</source>
+        <target>Neue Schnitstelle</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.new.1">
+        <source>Create a new interface</source>
+        <target>Eine neue Schnitstelle erstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.editheader.0">
+        <source>Edit interface</source>
+        <target>Schnitstelle bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.editheader.1">
+        <source>Edit interface ID %s</source>
+        <target>Schnitstelle ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.edit.0">
+        <source>Edit interface mappings</source>
+        <target>Schnittstellen-Mappings bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.edit.1">
+        <source>Edit assigned interface mappings</source>
+        <target>Zugehörige Schnittstellen-Mappings bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.copy.0">
+        <source>Duplicate interface</source>
+        <target>Schnitstelle duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.copy.1">
+        <source>Duplicate interface ID %s</source>
+        <target>Schnitstelle ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.delete.0">
+        <source>Delete interface</source>
+        <target>Schnitstelle löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.delete.1">
+        <source>Delete interface ID %s</source>
+        <target>Schnitstelle ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.show.0">
+        <source>interface details</source>
+        <target>Schnitstellendetails</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.show.1">
+        <source>Show the details of interface ID %s</source>
+        <target>Die Details der Schnitstelle ID %s anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.sync.0">
+        <source>Synchronize interface</source>
+        <target>Schnittstelle synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.sync.1">
+        <source>Synchronize interface ID %s</source>
+        <target>Schnitstelle ID %s synchronisieren</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

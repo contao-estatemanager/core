@@ -1539,5 +1539,3 @@ class RealEstateModel extends \Model
         return static::findOneBy($arrColumns, $varId, $arrOptions);
     }
 }
-
-class_alias(RealEstateModel::class, 'RealEstateModel');

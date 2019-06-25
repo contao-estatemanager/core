@@ -48,5 +48,3 @@ class FilterModel extends \Model
      */
     protected static $strTable = 'tl_filter';
 }
-
-class_alias(FilterModel::class, 'FilterModel');

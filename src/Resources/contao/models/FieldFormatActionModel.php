@@ -75,5 +75,3 @@ class FieldFormatActionModel extends \Model
      */
     protected static $strTable = 'tl_field_format_action';
 }
-
-class_alias(FieldFormatActionModel::class, 'FieldFormatActionModel');

@@ -105,5 +105,3 @@ class RealEstateGroupModel extends \Model
         return null;
     }
 }
-
-class_alias(RealEstateGroupModel::class, 'RealEstateGroupModel');

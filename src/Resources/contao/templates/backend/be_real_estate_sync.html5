@@ -1,0 +1,43 @@
+
+<div id="tl_buttons">
+    <a href="<?= $this->getReferer(true) ?>" class="header_back" title="<?= StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b" onclick="Backend.getScrollOffset()"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+</div>
+
+<form action="<?= ampersand(\Environment::get('request'), true) ?>" id="tl_real_estate_import" class="tl_form" method="post" enctype="multipart/form-data">
+  <div class="tl_formbody_edit">
+    <input type="hidden" name="FORM_SUBMIT" value="tl_real_estate_import">
+    <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+    <div class="tl_listing_container list_view" id="tl_listing">
+      <table class="tl_listing showColumns">
+        <tbody>
+          <tr>
+            <th class="tl_folder_tlist col_status"></th>
+            <th class="tl_folder_tlist col_file"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncFile'] ?></th>
+            <th class="tl_folder_tlist col_file_time"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['fileTime'] ?></th>
+            <th class="tl_folder_tlist col_file_size"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['fileSize'] ?></th>
+            <th class="tl_folder_tlist col_sync_time"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncTime'] ?></th>
+            <th class="tl_folder_tlist col_user"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncUser'] ?></th>
+            <th class="tl_folder_tlist tl_right_nowrap"></th>
+          </tr>
+          <?php foreach ($this->files as $i => $file): ?>
+            <tr class="<?= ($i%2==0)?'even':'odd'; ?> click2edit toggle_select hover_row">
+              <td colspan="1" class="tl_file_list col_status">
+                <div class="list_icon_status" style="background-image:url('bundles/estatemanager/icons/status_<?= $file['status'] ?>.svg')">&nbsp;</div>
+              </td>
+              <td colspan="1" class="tl_file_list col_file"><?= $file['file'] ?></td>
+              <td colspan="1" class="tl_file_list col_file_time"><?= date('H:i:s d.m.Y', $file['time']); ?></td>
+              <td colspan="1" class="tl_file_list col_file_size"><?= $file['size'] ?></td>
+              <td colspan="1" class="tl_file_list col_sync_time"><?= ($file['synctime']) ? date('H:i:s d.m.Y', $file['synctime']) : ''; ?></td>
+              <td colspan="1" class="tl_file_list col_user"><?= $file['user'] ?></td>
+              <td class="tl_file_list tl_right_nowrap">
+                <button type="submit" name="file" value="<?= $file['file'] ?>">
+                  <img src="system/themes/flexible/icons/sync.svg" width="16" height="16" alt="sync">
+                </button>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

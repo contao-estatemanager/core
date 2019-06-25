@@ -43,5 +43,3 @@ class InterfaceModel extends \Model
      */
     protected static $strTable = 'tl_interface';
 }
-
-class_alias(InterfaceModel::class, 'InterfaceModel');

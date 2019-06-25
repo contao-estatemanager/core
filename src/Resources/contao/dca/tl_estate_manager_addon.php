@@ -46,6 +46,11 @@ class tl_estate_manager_addon extends Backend
 
     public function createInstalledAddonFields()
     {
+        if (!array_key_exists('TL_ESTATEMANAGER_ADDONS', $GLOBALS))
+        {
+            return;
+        }
+
         foreach ($GLOBALS['TL_ESTATEMANAGER_ADDONS'] as list($namespace, $className))
         {
             $strClass = $namespace . '\\' . $className;

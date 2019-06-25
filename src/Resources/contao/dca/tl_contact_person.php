@@ -192,7 +192,10 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
+            'sql'                     => "varchar(64) NOT NULL default ''",
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'email_direkt' => array
         (
@@ -200,7 +203,10 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
+            'sql'                     => "varchar(64) NOT NULL default ''",
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'email_privat' => array
         (
@@ -360,7 +366,10 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'sql'                     => "varchar(16) NOT NULL default ''",
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'immobilientreuhaenderid' => array
         (

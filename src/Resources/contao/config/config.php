@@ -15,52 +15,54 @@ array_insert($GLOBALS['BE_MOD'], 1, array
     (
         'provider' => array
         (
-            'tables'            => array('tl_provider', 'tl_contact_person'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_provider', 'tl_contact_person'),
+            'hideInNavigation'      => true,
         ),
         'real_estate' => array
         (
-            'tables'            => array('tl_real_estate'),
+            'tables'                => array('tl_real_estate'),
         ),
         'type' => array
         (
-            'tables'            => array('tl_real_estate_group', 'tl_real_estate_type'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_real_estate_group', 'tl_real_estate_type'),
+            'hideInNavigation'      => true,
         ),
         'filter' => array
         (
-            'tables'            => array('tl_filter', 'tl_filter_item'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_filter', 'tl_filter_item'),
+            'hideInNavigation'      => true,
         ),
         'field_format' => array
         (
-            'tables'            => array('tl_field_format', 'tl_field_format_action'),
-            'importFieldFormats'=> array('\\ContaoEstateManager\\EstateManager', 'importFieldFormats'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_field_format', 'tl_field_format_action'),
+            'importFieldFormats'    => array('\\ContaoEstateManager\\EstateManager', 'importFieldFormats'),
+            'hideInNavigation'      => true,
         ),
         'interface' => array
         (
-            'tables'            => array('tl_interface', 'tl_interface_mapping'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_interface', 'tl_interface_mapping'),
+            'syncRealEstates'       => array('\\ContaoEstateManager\\RealEstateImporter', 'sync'),
+            'importDefaultMappings' => array('\\ContaoEstateManager\\EstateManager', 'importDefaultMappings'),
+            'hideInNavigation'      => true,
         ),
         'config' => array
         (
-            'tables'            => array('tl_real_estate_config'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_real_estate_config'),
+            'hideInNavigation'      => true,
         ),
         'addon' => array
         (
-            'tables'            => array('tl_estate_manager_addon'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_estate_manager_addon'),
+            'hideInNavigation'      => true,
         ),
         'expose_module' => array
         (
-            'tables'            => array('tl_expose_module'),
-            'hideInNavigation'  => true,
+            'tables'                => array('tl_expose_module'),
+            'hideInNavigation'      => true,
         ),
         'administration' => array
         (
-            'callback'          => '\\ContaoEstateManager\\ModuleRealEstateAdministration'
+            'callback'              => '\\ContaoEstateManager\\ModuleRealEstateAdministration'
         ),
     )
 ));

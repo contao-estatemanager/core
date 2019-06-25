@@ -132,5 +132,3 @@ class FilterItemModel extends \Model
         return static::findBy($arrColumns, $arrValues, $arrOptions);
     }
 }
-
-class_alias(FilterItemModel::class, 'FilterItemModel');

@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart'),
+            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
             'showColumns'             => true,
             'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
         ),
@@ -190,8 +190,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'search'                  => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getAllProvider'),
-            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''",
         ),
         'contactPerson' => array
         (
@@ -199,6 +199,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
+            'options_callback'        => array('tl_real_estate', 'getContactPerson'),
             'foreignKey'              => 'tl_contact_person.name',
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
@@ -4163,7 +4164,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
-            'realEstate'                => array()
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'objektnrExtern'  => array
         (
@@ -4172,7 +4175,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'search'                    => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array()
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'referenz'  => array
         (
@@ -4527,6 +4532,32 @@ class tl_real_estate extends Backend
      *
      * @return array
      */
+    public function getContactPerson(DataContainer $dc)
+    {
+        $objContactPersons = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
+
+        if ($objContactPersons->numRows < 1)
+        {
+            return array();
+        }
+
+        $arrContactPersons = array();
+
+        while ($objContactPersons->next())
+        {
+            $arrContactPersons[$objContactPersons->id] = $objContactPersons->vorname . ' ' . $objContactPersons->name;
+        }
+
+        return $arrContactPersons;
+    }
+
+    /**
+     * Return all provider as array
+     *
+     * @param DataContainer $dc
+     *
+     * @return array
+     */
     public function getAllProvider(DataContainer $dc)
     {
         $objProviders = $this->Database->execute("SELECT id, anbieternr, firma FROM tl_provider");
@@ -4540,7 +4571,7 @@ class tl_real_estate extends Backend
 
         while ($objProviders->next())
         {
-            $arrProviders[$objProviders->anbieternr] = $objProviders->firma;
+            $arrProviders[$objProviders->id] = $objProviders->firma;
         }
 
         return $arrProviders;

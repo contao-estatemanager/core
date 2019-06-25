@@ -127,5 +127,3 @@ class ProviderModel extends \Model
      */
     protected static $strTable = 'tl_provider';
 }
-
-class_alias(ProviderModel::class, 'ProviderModel');

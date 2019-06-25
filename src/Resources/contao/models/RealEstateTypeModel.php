@@ -174,5 +174,3 @@ class RealEstateTypeModel extends \Model
         return null;
     }
 }
-
-class_alias(RealEstateTypeModel::class, 'RealEstateTypeModel');

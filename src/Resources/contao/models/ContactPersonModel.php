@@ -17,33 +17,33 @@ namespace ContaoEstateManager;
  * @property integer $id
  * @property integer $pid
  * @property integer $tstamp
- * @property string $name
- * @property string $vorname
- * @property string $anrede
- * @property string $titel
- * @property string $position
- * @property string $anrede_brief
- * @property string $firma
- * @property string $zusatzfeld
- * @property string $strasse
- * @property string $hausnummer
- * @property string $plz
- * @property string $ort
- * @property string $postfach
- * @property string $postf_plz
- * @property string $postf_ort
- * @property string $land
- * @property string $email_privat
- * @property string $email_sonstige
- * @property string $email_feedback
- * @property string $tel_privat
- * @property string $tel_sonstige
- * @property string $url
- * @property string $adressfreigabe
- * @property string $personennummer
- * @property string $immobilientreuhaenderid
- * @property string $singleSRC
- * @property string $freitextfeld
+ * @property string  $name
+ * @property string  $vorname
+ * @property string  $anrede
+ * @property string  $titel
+ * @property string  $position
+ * @property string  $anrede_brief
+ * @property string  $firma
+ * @property string  $zusatzfeld
+ * @property string  $strasse
+ * @property string  $hausnummer
+ * @property string  $plz
+ * @property string  $ort
+ * @property string  $postfach
+ * @property string  $postf_plz
+ * @property string  $postf_ort
+ * @property string  $land
+ * @property string  $email_privat
+ * @property string  $email_sonstige
+ * @property string  $email_feedback
+ * @property string  $tel_privat
+ * @property string  $tel_sonstige
+ * @property string  $url
+ * @property string  $adressfreigabe
+ * @property string  $personennummer
+ * @property string  $immobilientreuhaenderid
+ * @property string  $singleSRC
+ * @property string  $freitextfeld
  * @property boolean $published
  *
  * @method static ContactPersonModel|null findById($id, array $opt=array())

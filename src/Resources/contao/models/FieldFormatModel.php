@@ -55,5 +55,3 @@ class FieldFormatModel extends \Model
      */
     protected static $strTable = 'tl_field_format';
 }
-
-class_alias(FieldFormatModel::class, 'FieldFormatModel');

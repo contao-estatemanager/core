@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('title'),
+            'fields'                  => array('title', 'type', 'lastSync'),
             'flag'                    => 1,
             'panelLayout'             => 'filter;search,limit'
         ),
@@ -98,6 +98,12 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
+            ),
+            'sync' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
+                'href'                => 'key=syncRealEstates',
+                'icon'                => 'sync.svg'
             )
         )
     ),
@@ -105,7 +111,16 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title'
+        '__selector__'   => array('type', 'importThirdPartyProvider'),
+        'deault'         => '{title_legend},title,type;',
+        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
+        'wib'            => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen;{expert_legend:hide},syncUrl,testMode'
+    ),
+
+    // Subpalettes
+    'subpalettes' => array
+    (
+        'importThirdPartyProvider'   => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
     ),
 
     // Fields
@@ -119,6 +134,10 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
+        'lastSync' => array
+        (
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        ),
         'title' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['title'],
@@ -127,7 +146,170 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
-        )
+        ),
+        'type' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['type'],
+            'default'                 => 'openimmo',
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'options'				  => array ('openimmo', 'wib'),
+            'eval'					  => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'provider' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['provider'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'foreignKey'              => 'tl_provider.firma',
+            'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'anbieternr' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['anbieternr'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'clr w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'uniqueField' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueField'],
+            'exclude'				  => true,
+            'search'                  => true,
+            'inputType'				  => 'select',
+            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'		  => array('tl_interface', 'getUniqueFieldOptions'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'importPath' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importPath'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('mandatory'=>true, 'fieldType'=>'radio', 'tl_class'=>'w50'),
+            'sql'                     => "binary(16) NULL"
+        ),
+        'filesPath' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPath'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
+            'sql'                     => "binary(16) NULL"
+        ),
+        'contactPersonActions' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['contactPersonActions'],
+            'exclude'                 => true,
+            'inputType'               => 'checkboxWizard',
+            'options'                 => array('create', 'update'),
+            'eval'                    => array('multiple'=>true, 'tl_class'=>'w50'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'contactPersonUniqueField' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['contactPersonUniqueField'],
+            'default'                 => 'personennummer',
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'		  => array('tl_interface', 'getContactPersonUniqueFieldOptions'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'importThirdPartyProvider' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importThirdPartyProvider'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12 clr'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'assignContactPersonKauf' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonKauf'],
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'foreignKey'              => 'tl_contact_person.name',
+            'eval'					  => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_interface', 'getContactPerson'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'assignContactPersonMietePacht' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonMietePacht'],
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'foreignKey'              => 'tl_contact_person.name',
+            'eval'					  => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_interface', 'getContactPerson'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'assignContactPersonErbpacht' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonErbpacht'],
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'foreignKey'              => 'tl_contact_person.name',
+            'eval'					  => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_interface', 'getContactPerson'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'assignContactPersonLeasing' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonLeasing'],
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'foreignKey'              => 'tl_contact_person.name',
+            'eval'					  => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_interface', 'getContactPerson'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+        ),
+        'autoSync' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['autoSync'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options'                 => array('never', 'hourly', 'daily', 'weekly'),
+            'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        ),
+        'deleteFilesOlderThen' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_interface', 'getDeleteFilesOlderThenOptions'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        ),
+        'syncUrl' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['syncUrl'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'testMode' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['testMode'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
     )
 );
 
@@ -147,6 +329,8 @@ class tl_interface extends Backend
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
+
+        $this->loadDataContainer('tl_real_estate');
     }
 
     /**
@@ -208,5 +392,102 @@ class tl_interface extends Backend
     public function deleteInterface($row, $href, $label, $title, $icon, $attributes)
     {
         return $this->User->hasAccess('delete', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+    }
+
+    /**
+     * Return all unique field options as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getUniqueFieldOptions($dc)
+    {
+        $return = array();
+
+        foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
+        {
+            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            {
+                $return[] = $field;
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return all unique field options as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getContactPersonUniqueFieldOptions($dc)
+    {
+        $this->loadDataContainer('tl_contact_person');
+
+        $return = array();
+
+        foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
+        {
+            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            {
+                $return[] = $field;
+            }
+        }
+
+        $return[] = 'name_vorname';
+
+        return $return;
+    }
+
+    /**
+     * Return all contact person of assigned provider as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getContactPerson($dc)
+    {
+        $objContactPerson = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
+
+        if ($objContactPerson->numRows < 1)
+        {
+            return array();
+        }
+
+        $arrContactPerson = array();
+
+        while ($objContactPerson->next())
+        {
+            $arrContactPerson[$objContactPerson->id] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
+        }
+
+        return $arrContactPerson;
+    }
+
+    /**
+     * Return delete files older than options as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getDeleteFilesOlderThenOptions($dc)
+    {
+        return array
+        (
+            '0'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_none'],
+            '1'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_day'],
+            '3'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_three_days'],
+            '7'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_week'],
+            '14'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_two_weeks'],
+            '30'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_month'],
+            '90'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_three_months'],
+            '183' => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_half_year'],
+            '365' => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_year'],
+        );
     }
 }

@@ -118,4 +118,55 @@ class EstateManager
 
         return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=field_format" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
     }
+
+    /**
+     * Resotes interface default mappings
+     *
+     * @return string
+     */
+    public function importDefaultMappings()
+    {
+        $bundleResources = \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/contao-estatemanager/core/src/Resources';
+
+        $importData = include $bundleResources . '/contao/data/import_interface_mappings.php';
+
+        $pid = \Input::get('id');
+
+        if ($importData != null && count($importData))
+        {
+            // Delete all existing mappings of interface
+            if (($objInterfaceMappings = InterfaceMappingModel::findByPid($pid)) != null)
+            {
+                while ($objInterfaceMappings->next())
+                {
+                    $objInterfaceMappings->delete();
+                }
+            }
+
+            foreach ($importData as $data)
+            {
+                $objInterfaceMapping = new InterfaceMappingModel();
+
+                $objInterfaceMapping->pid = $pid;
+                $objInterfaceMapping->tstamp = time();
+                $objInterfaceMapping->attribute = $data[0];
+                $objInterfaceMapping->oiField = $data[1];
+                $objInterfaceMapping->oiFieldGroup = $data[2];
+                $objInterfaceMapping->oiConditionField = $data[3];
+                $objInterfaceMapping->oiConditionValue = $data[4];
+
+                $objInterfaceMapping->save();
+            }
+
+            \Message::addConfirmation($GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][0]);
+            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][1];
+        }
+        else
+        {
+            \Message::addError($GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][0]);
+            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][1];
+        }
+
+        return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
+    }
 }
