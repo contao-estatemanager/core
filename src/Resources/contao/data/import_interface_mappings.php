@@ -428,4 +428,3 @@ return array
     array('tl_real_estate', 'masterVisible',                 'verwaltung_techn', 'master@visible'),
     array('tl_real_estate', 'sprache',                       'verwaltung_techn', 'sprache'),
 );
-
