@@ -104,8 +104,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         '__selector__'                => array('type', 'formatType'),
         'default'                     => '{type_legend},type;',
         'tl_real_estate'              => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage',
-        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage',
-        'tl_provider'                 => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage',
+        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage'
     ),
 
     // Subpalettes
@@ -140,7 +139,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'default'                 => 'tl_real_estate',
             'exclude'				  => true,
             'inputType'				  => 'select',
-            'options'				  => array('tl_real_estate', 'tl_contact_person', 'tl_provider'),
+            'options'				  => array('tl_real_estate', 'tl_contact_person'),
             'eval'					  => array('submitOnChange'=>true, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface_mapping'],
             'sql'                     => "varchar(32) NOT NULL default ''"

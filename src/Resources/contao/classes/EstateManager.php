@@ -154,11 +154,51 @@ class EstateManager
 
                 $objInterfaceMapping->pid = $pid;
                 $objInterfaceMapping->tstamp = time();
-                $objInterfaceMapping->attribute = $data[0];
-                $objInterfaceMapping->oiField = $data[1];
-                $objInterfaceMapping->oiFieldGroup = $data[2];
-                $objInterfaceMapping->oiConditionField = $data[3];
-                $objInterfaceMapping->oiConditionValue = $data[4];
+                $objInterfaceMapping->type = $data[0];
+                $objInterfaceMapping->attribute = $data[1];
+                $objInterfaceMapping->oiField = $data[2];
+                $objInterfaceMapping->oiFieldGroup = $data[3];
+
+                // format action
+                if($data[4])
+                {
+                    $objInterfaceMapping->formatType = $data[4][0];
+
+                    switch($data[4][0])
+                    {
+                        case 'boolean':
+                            $objInterfaceMapping->booleanCompareValue = $data[4][1];
+                            break;
+                        case 'number':
+                            $objInterfaceMapping->decimals = $data[4][1];
+                            break;
+                        case 'date':
+                            $objInterfaceMapping->dateFormat = $data[4][1];
+                            break;
+                        case 'text':
+                            $objInterfaceMapping->textTransform = $data[4][1];
+                            break;
+                    }
+                }
+
+                // condition
+                if($data[5])
+                {
+                    $objInterfaceMapping->oiConditionField = $data[5][0];
+                    $objInterfaceMapping->oiConditionValue = $data[5][1];
+                }
+
+                // serialize
+                if($data[6])
+                {
+                    $objInterfaceMapping->serialize = $data[6];
+                }
+
+                // save
+                if($data[7])
+                {
+                    $objInterfaceMapping->saveImage = true;
+                }
 
                 $objInterfaceMapping->save();
             }

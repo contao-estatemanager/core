@@ -360,6 +360,22 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
+        'postfPlz' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfPlz'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'postfOrt' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfOrt'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
         'personennummer' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['personennummer'],
