@@ -357,3 +357,4 @@ return array
     array('qrImageSRC', 'anhang/daten/pfad', 'anhaenge', 'anhaenge/anhang@gruppe', 'QRCODE'),
     array('linkAttachments', 'anhang/daten/pfad', 'anhaenge', 'anhaenge/anhang@gruppe', 'LINKS')
 );
+
