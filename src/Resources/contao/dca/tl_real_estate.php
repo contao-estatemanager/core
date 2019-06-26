@@ -1017,8 +1017,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['preisZeitraumVon'],
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(20) NOT NULL default ''",
+            'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50'),
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 800
@@ -1028,8 +1028,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['preisZeitraumBis'],
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(20) NOT NULL default ''",
+            'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50'),
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 800
@@ -1922,7 +1922,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['beginnAngebotsphase'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'     => 'bieterverfahren',
                 'detail'    => true
@@ -1933,7 +1933,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['besichtigungstermin'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'     => 'bieterverfahren',
                 'detail'    => true
@@ -1944,7 +1944,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['besichtigungstermin2'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'     => 'bieterverfahren',
                 'detail'    => true
@@ -1955,7 +1955,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['beginnBietzeit'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'datim', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'     => 'bieterverfahren',
                 'detail'    => true
@@ -1966,7 +1966,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['endeBietzeit'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'     => 'bieterverfahren',
                 'detail'    => true
@@ -2027,7 +2027,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['zvtermin'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'datim', 'tl_class'=> 'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'    => 'versteigerung',
                 'detail'   => true,
@@ -2040,7 +2040,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['zusatztermin'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'datim', 'tl_class'=> 'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(255) NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'group'    => 'versteigerung',
                 'detail'   => true,
@@ -3831,8 +3831,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['energiepassAusstelldatum'],
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'energie'  => true,
                 'order'    => 700
@@ -3945,7 +3945,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['abdatum'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3957,7 +3957,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bisdatum'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3997,7 +3997,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['versteigerungstermin'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'sorting'  => true,
@@ -4192,14 +4192,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aktivVon'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''"
         ),
         'aktivBis'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aktivBis'],
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'sql'                       => "varchar(10) NOT NULL default ''"
         ),
         'openimmoObid'  => array
         (
@@ -4219,8 +4219,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['standVom'],
             'inputType'                 => 'text',
-            'eval'                      => array('tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
+            'sql'                       => "int(10) unsigned NOT NULL default '0'",
         ),
         'weitergabeGenerell'  => array
         (
@@ -4715,7 +4715,7 @@ class tl_real_estate extends Backend
         if ($objFile !== null)
         {
             // add preview image
-            $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
+            //$args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
         }
 
         // add address information

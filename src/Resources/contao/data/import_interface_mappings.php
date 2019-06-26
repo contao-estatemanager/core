@@ -38,10 +38,10 @@ return array
 
     /** Objektkategorie */
     array('tl_real_estate', 'nutzungsart',                 'objektkategorie', 'nutzungsart@+', array('text', 'lowercase')),
-    array('tl_real_estate', 'vermarktungsart_kauf',        'objektkategorie', 'vermarktungsart@KAUF', array('boolean')),
-    array('tl_real_estate', 'vermarktungsart_miete_pacht', 'objektkategorie', 'vermarktungsart@MIETE_PACHT', array('boolean')),
-    array('tl_real_estate', 'vermarktungsart_erbpacht',    'objektkategorie', 'vermarktungsart@ERBPACHT', array('boolean')),
-    array('tl_real_estate', 'vermarktungsart_leasing',     'objektkategorie', 'vermarktungsart@LEASING', array('boolean')),
+    array('tl_real_estate', 'vermarktungsartKauf',         'objektkategorie', 'vermarktungsart@KAUF', array('boolean')),
+    array('tl_real_estate', 'vermarktungsartMietePacht',   'objektkategorie', 'vermarktungsart@MIETE_PACHT', array('boolean')),
+    array('tl_real_estate', 'vermarktungsartErbpacht',     'objektkategorie', 'vermarktungsart@ERBPACHT', array('boolean')),
+    array('tl_real_estate', 'vermarktungsartLeasing',      'objektkategorie', 'vermarktungsart@LEASING', array('boolean')),
     array('tl_real_estate', 'objektart',                   'objektkategorie', 'objektart@[1]'),
     array('tl_real_estate', 'objektart_zusatz',            'objektkategorie', 'objektart/objektart_zusatz', array('text', 'lowercase')),
     array('tl_real_estate', 'zimmerTyp',                   'objektkategorie', 'objektart/zimmer@zimmertyp', array('text', 'lowercase')),
@@ -322,7 +322,7 @@ return array
 
     /** Zustand Angaben: Energieausweis */
     array('tl_real_estate', 'energiepassEpart',                    'zustand_angaben/energiepass', 'epart'),
-    array('tl_real_estate', 'energiepassGueltig_bis',              'zustand_angaben/energiepass', 'gueltig_bis'),
+    array('tl_real_estate', 'energiepassGueltigBis',               'zustand_angaben/energiepass', 'gueltig_bis'),
     array('tl_real_estate', 'energiepassEnergieverbrauchkennwert', 'zustand_angaben/energiepass', 'energieverbrauchkennwert'),
     array('tl_real_estate', 'energiepassMitwarmwasser',            'zustand_angaben/energiepass', 'mitwarmwasser', array('boolean')),
     array('tl_real_estate', 'energiepassEndenergiebedarf',         'zustand_angaben/energiepass', 'endenergiebedarf'),
@@ -376,22 +376,22 @@ return array
 
     /** Anhänge */
     array('tl_real_estate', 'titleImageSRC',                 'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'TITELBILD'), false, true),
-    array('tl_real_estate', 'imageSRC',                      'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'BILD'), false, true),
-    array('tl_real_estate', 'planImageSRC',                  'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'GRUNDRISS'), false, true),
-    array('tl_real_estate', 'interiorViewImageSRC',          'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'INNENANSICHTEN'), false, true),
-    array('tl_real_estate', 'exteriorViewImageSRC',          'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'AUSSENANSICHTEN'), false, true),
-    array('tl_real_estate', 'mapViewImageSRC',               'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'KARTEN_LAGEPLAN'), false, true),
-    array('tl_real_estate', 'panoramaImageSRC',              'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'PANORAMA'), false, true),
-    array('tl_real_estate', 'epassSkalaImageSRC',            'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'EPASS-SKALA'), false, true),
-    array('tl_real_estate', 'logoImageSRC',                  'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'ANBIETERLOGO'), false, true),
-    array('tl_real_estate', 'qrImageSRC',                    'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'QRCODE'), false, true),
-    array('tl_real_estate', 'documents',                     'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'DOKUMENTE')),
-    array('tl_real_estate', 'links',                         'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'LINKS')),
+    array('tl_real_estate', 'imageSRC',                      'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'BILD'), true, true),
+    array('tl_real_estate', 'planImageSRC',                  'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'GRUNDRISS'), true, true),
+    array('tl_real_estate', 'interiorViewImageSRC',          'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'INNENANSICHTEN'), true, true),
+    array('tl_real_estate', 'exteriorViewImageSRC',          'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'AUSSENANSICHTEN'), true, true),
+    array('tl_real_estate', 'mapViewImageSRC',               'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'KARTEN_LAGEPLAN'), true, true),
+    array('tl_real_estate', 'panoramaImageSRC',              'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'PANORAMA'), true, true),
+    array('tl_real_estate', 'epassSkalaImageSRC',            'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'EPASS-SKALA'), true, true),
+    array('tl_real_estate', 'logoImageSRC',                  'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'ANBIETERLOGO'), true, true),
+    array('tl_real_estate', 'qrImageSRC',                    'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'QRCODE'), true, true),
+    array('tl_real_estate', 'documents',                     'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'DOKUMENTE'), true),
+    array('tl_real_estate', 'links',                         'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'LINKS'), true),
     array('tl_real_estate', 'anbieterobjekturl',             'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'ANBOBJURL')),
 
     /** Verwaltung Objekt */
     array('tl_real_estate', 'objektadresseFreigeben',        'verwaltung_objekt', 'objektadresse_freigeben', array('boolean')),
-    array('tl_real_estate', 'verfuegbarAb',                  'verwaltung_objekt', 'verfuegbar_ab', array('date')),
+    array('tl_real_estate', 'verfuegbarAb',                  'verwaltung_objekt', 'verfuegbar_ab'),
     array('tl_real_estate', 'abdatum',                       'verwaltung_objekt', 'abdatum', array('date')),
     array('tl_real_estate', 'bisdatum',                      'verwaltung_objekt', 'bisdatum', array('date')),
     array('tl_real_estate', 'minMietdauer',                  'verwaltung_objekt', 'min_mietdauer@min_dauer', array('text', 'lowercase')),
@@ -426,5 +426,5 @@ return array
     array('tl_real_estate', 'gruppenKennung',                'verwaltung_techn', 'gruppen_kennung'),
     array('tl_real_estate', 'master',                        'verwaltung_techn', 'master'),
     array('tl_real_estate', 'masterVisible',                 'verwaltung_techn', 'master@visible'),
-    array('tl_real_estate', 'sprache',                       'verwaltung_techn', 'sprache'),
+    array('tl_real_estate', 'sprache',                       'verwaltung_techn', 'sprache')
 );

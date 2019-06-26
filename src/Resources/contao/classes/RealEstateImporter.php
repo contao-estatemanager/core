@@ -85,6 +85,29 @@ class RealEstateImporter extends \BackendModule
 
         \System::loadLanguageFile('tl_real_estate_sync');
 
+        if (\Input::get('downloadWibXml'))
+        {
+            $syncTime = time();
+            $syncUrl = html_entity_decode($this->objInterface->syncUrl) . '&lastChange=' . $this->objInterface->lastSync;
+            $fileName = 'export_' . $syncTime . '.xml';
+
+            $content = $this->getFileContent($syncUrl);
+
+            if (strpos($content, 'uebertragung') !== false)
+            {
+                \File::putContent($this->objImportFolder->path . '/' . $fileName, $content);
+
+                $this->objInterface->lastSync = $syncTime;
+                $this->objInterface->save();
+
+                $this->addMessage('OpenImmo file downloaded: ' . $fileName);
+            }
+            else
+            {
+                $this->addMessage('OpenImmo file empty');
+            }
+        }
+
         if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = \Input::post('file')) !== '')
         {
             ini_set('max_execution_time', -1);
@@ -123,7 +146,8 @@ class RealEstateImporter extends \BackendModule
         (
             'syncAvailable' => $this->objInterface->type === 'wib',
             'syncUrl'       => 'syncUrl',
-            'files'         => $this->getSyncFiles($this->objImportFolder->path)
+            'files'         => $this->getSyncFiles($this->objImportFolder->path),
+            'messages'      => $this->messages
         ));
 
 
@@ -369,6 +393,11 @@ class RealEstateImporter extends \BackendModule
 
                         $field = $interfaceMapping->oiField;
 
+                        if ($field === 'vermarktungsart@KAUF' || $field === 'vermarktungsart@MIETE_PACHT' || $field === 'vermarktungsart@ERBPACHT' || $field === 'vermarktungsart@LEASING')
+                        {
+                            $test = 'test';
+                        }
+
                         if (strrpos($field, '/') !== false)
                         {
                             $tmpGroup = $group;
@@ -406,6 +435,11 @@ class RealEstateImporter extends \BackendModule
                                 }
 
                                 $this->downloadFile($value, $this->objImportFolder, $completeFileName);
+
+                                if (FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $completeFileName) > 2500000)
+                                {
+                                    continue;
+                                }
 
                                 $value = $completeFileName;
                             }
@@ -508,8 +542,7 @@ class RealEstateImporter extends \BackendModule
 
         foreach ($contactPersonRecords as $i => $contactPerson)
         {
-            $arrColumns = array($this->objInterface->contactPersonUniqueField.'=?');
-            $arrValues  = array($contactPerson[$this->objInterface->contactPersonUniqueField]);
+            list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson);
 
             $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
 
@@ -573,10 +606,32 @@ class RealEstateImporter extends \BackendModule
 
             $objRealEstate->provider = $this->objInterface->provider;
             $objRealEstate->contactPerson = $objContactPerson->id;
+            $objRealEstate->tstamp = time();
             $objRealEstate->published = 1;
 
             $objRealEstate->save();
         }
+    }
+
+    protected function getContactPersonParameters($contactPerson)
+    {
+        $arrColumns = array('pid=?');
+        $arrValues = array($this->objInterface->provider);
+
+        switch ($this->objInterface->contactPersonUniqueField)
+        {
+            case 'name_vorname':
+                $arrColumns[] = 'name=? && vorname=?';
+                $arrValues[] = $contactPerson['name'];
+                $arrValues[] = $contactPerson['vorname'];
+                break;
+
+            default:
+                $arrColumns[] = $this->objInterface->contactPersonUniqueField.'=?';
+                $arrValues[] = $contactPerson[$this->objInterface->contactPersonUniqueField];
+        }
+
+        return array($arrColumns, $arrValues);
     }
 
     protected function getValueFromStringUrl($url, $parameter)
@@ -594,11 +649,11 @@ class RealEstateImporter extends \BackendModule
         return null;
     }
 
-    protected function downloadFile($path, $targetDirectory, $fileName)
+    protected function downloadFile($path, $targetDirectory, $fileName, $tmpFolder=true)
     {
         $content = $this->getFileContent($path);
 
-        \File::putContent($targetDirectory->path . '/tmp/' . $fileName, $content);
+        \File::putContent($targetDirectory->path . '/' . ($tmpFolder ? 'tmp/' : '') . $fileName, $content);
     }
 
     protected function getFileContent($path)
@@ -660,7 +715,7 @@ class RealEstateImporter extends \BackendModule
                         $value = '';
                     }
                 }
-                elseif (boolval($value))
+                elseif ($value && ($value === '1' || $value === 'true'))
                 {
                     $value = '1';
                 }

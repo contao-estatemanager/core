@@ -156,8 +156,8 @@ class EstateManager
                 $objInterfaceMapping->tstamp = time();
                 $objInterfaceMapping->type = $data[0];
                 $objInterfaceMapping->attribute = $data[1];
-                $objInterfaceMapping->oiField = $data[2];
-                $objInterfaceMapping->oiFieldGroup = $data[3];
+                $objInterfaceMapping->oiFieldGroup = $data[2];
+                $objInterfaceMapping->oiField = $data[3];
 
                 // format action
                 if($data[4])
