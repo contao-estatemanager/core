@@ -284,7 +284,7 @@ class RealEstate
             return $return;
         }
 
-        if (in_array('new', $validStatusToken) && strtotime('+7 day', $this->objRealEstate->dateAdded) > time())
+        if (in_array('new', $validStatusToken) && strtotime(\Config::get('statusTokenNewDisplayDuration'), $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (

@@ -8,6 +8,8 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+// Load translations
+\System::loadLanguageFile('tl_real_estate_misc');
 
 $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 (
@@ -22,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_visualization_legend},defaultImage;{real_estate_list_legend},defaultSorting;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
+		'default'                     => '{real_estate_visualization_legend},defaultImage;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
 	),
 
 	// Fields
@@ -47,11 +49,18 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		'defaultSorting' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
-            'default'                 => '.',
             'inputType'               => 'select',
             'options'                 => array('tstamp' => 'Aktualität'), // ToDo: Auf sorting reagieren und options erweitern
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),
+        'statusTokenNewDisplayDuration' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['statusTokenNewDisplayDuration'],
+            'inputType'               => 'select',
+            'options'                 => array('+1 days' => 'oneDay', '+3 days' => 'threeDays', '+1 week' => 'oneWeek', '+2 weeks' => 'twoWeeks', '+3 weeks' => 'threeWeeks', '+4 weeks' => 'oneMonth'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
+        ),
         'defaultImage' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultImage'],

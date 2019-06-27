@@ -27,6 +27,14 @@
         <source>Thousand separators</source>
         <target>Tausender-Trennzeichen</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.0">
+        <source>Display duration for status token "new"</source>
+        <target>Anzeigedauer des "Neu" Status-Token</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.1">
+        <source>Specify here how long the status token "New" is to be displayed for new properties</source>
+        <target>Geben Sie hier an, wie lange der Status-Token "Neu" für neue Immobilien angezeigt werden soll</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.0">
         <source>Default sorting</source>
         <target>Standard Sortierung</target>
