@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     'config' => array
     (
         'dataContainer'               => 'Table',
-        'ctable'                      => array('tl_interface_mapping'),
+        'ctable'                      => array('tl_interface_mapping', 'tl_interface_log'),
         'switchToEdit'                => true,
         'enableVersioning'            => true,
         'markAsCopy'                  => 'title',
@@ -104,6 +104,12 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
                 'href'                => 'key=syncRealEstates',
                 'icon'                => 'sync.svg'
+            ),
+            'log' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['log'],
+                'href'                => 'table=tl_interface_log',
+                'icon'                => 'changelog.svg',
             )
         )
     ),

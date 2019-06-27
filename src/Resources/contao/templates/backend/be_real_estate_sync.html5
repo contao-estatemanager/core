@@ -1,9 +1,9 @@
-
+<?php echo \Message::generate(); ?>
 <div id="tl_buttons">
+  <a href="<?= $this->getReferer(true) ?>" class="header_back" title="<?= StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b" onclick="Backend.getScrollOffset()"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
   <?php if ($this->syncAvailable): ?>
     <a href="<?= ampersand(str_replace('&downloadWibXml=1', '', \Environment::get('request'))) . '&downloadWibXml=1' ?>" class="header_sync"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['sync'] ?></a>
   <?php endif; ?>
-  <a href="<?= $this->getReferer(true) ?>" class="header_back" title="<?= StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b" onclick="Backend.getScrollOffset()"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
 </div>
 
 <form action="<?= ampersand(\Environment::get('request'), true) ?>" id="tl_real_estate_import" class="tl_form" method="post" enctype="multipart/form-data">

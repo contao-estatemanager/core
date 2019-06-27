@@ -40,7 +40,7 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         ),
         'interface' => array
         (
-            'tables'                => array('tl_interface', 'tl_interface_mapping'),
+            'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_log'),
             'syncRealEstates'       => array('\\ContaoEstateManager\\RealEstateImporter', 'sync'),
             'importDefaultMappings' => array('\\ContaoEstateManager\\EstateManager', 'importDefaultMappings'),
             'hideInNavigation'      => true,
@@ -79,6 +79,7 @@ $GLOBALS['TL_MODELS']['tl_field_format']           = '\\ContaoEstateManager\\Fie
 $GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\ContaoEstateManager\\FieldFormatActionModel';
 $GLOBALS['TL_MODELS']['tl_interface']              = '\\ContaoEstateManager\\InterfaceModel';
 $GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\ContaoEstateManager\\InterfaceMappingModel';
+$GLOBALS['TL_MODELS']['tl_interface_log']          = '\\ContaoEstateManager\\InterfaceLogModel';
 $GLOBALS['TL_MODELS']['tl_expose_module']          = '\\ContaoEstateManager\\ExposeModuleModel';
 
 // Back end form fields

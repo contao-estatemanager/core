@@ -9,6 +9,28 @@
   background:url("/bundles/estatemanager/icons/navi.svg") 4px 1px no-repeat;
 }
 
+.tl_listing{
+
+  .tl_file_list{
+
+    .log_level_0{
+      font-weight: bold;
+    }
+
+    @for $i from 1 through 7 {
+      .log_level_#{$i}{
+        padding-left: 10px * $i;
+        //border-left: 10px * $i solid lighten(#cbcbcb, 5% * $i);
+
+        > span:first-child{
+          //padding-right: 10px * $i;
+          //display: none;
+        }
+      }
+    }
+  }
+}
+
 .widget {
 
   &.validLicense {
