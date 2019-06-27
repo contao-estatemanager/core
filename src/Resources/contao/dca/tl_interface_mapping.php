@@ -326,6 +326,8 @@ class tl_interface_mapping extends Backend
             $arrFields[$field] = $field . ($config['label'][0] ? ': ' . $config['label'][0] : '');
         }
 
+        $arrFields['AUFTRAGSART'] = 'AUFTRAGSART';
+
         return $arrFields;
     }
 }

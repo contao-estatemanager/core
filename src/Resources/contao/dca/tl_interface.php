@@ -99,6 +99,12 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             ),
+            'history' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['history'],
+                'href'                => 'table=tl_interface_history',
+                'icon'                => 'show.svg'
+            ),
             'sync' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],

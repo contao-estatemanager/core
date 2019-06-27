@@ -13,12 +13,17 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
 // Config
     'config' => array
     (
-        'dataContainer'             => 'Table',
+        'dataContainer'               => 'Table',
+        'ptable'                      => 'tl_interface',
+        'closed'                      => true,
+        'notEditable'                 => true,
+        'notCopyable'                 => true,
         'sql' => array
         (
             'keys' => array
             (
-                'id' => 'primary'
+                'id' => 'primary',
+                'pid' => 'index'
             )
         )
     ),
@@ -28,17 +33,35 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
     (
         'sorting' => array
         (
-            'mode'                    => 1,
-            'fields'                  => array('id'),
-            'flag'                    => 1
+            'mode'                    => 2,
+            'fields'                  => array('tstamp DESC', 'id DESC'),
+            'panelLayout'             => 'filter;sort,search,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('id'),
-            'format'                  => '%s'
+            'fields'                  => array('tstamp', 'text'),
+            'format'                  => '<span style="color:#999;padding-right:3px">[%s]</span> %s',
+            'label_callback'          => array('tl_interface_history', 'colorize')
+        ),
+        'global_operations' => array
+        (
+            'all' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
+                'href'                => 'act=select',
+                'class'               => 'header_edit_all',
+                'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+            )
         ),
         'operations' => array
         (
+            'delete' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface_history']['delete'],
+                'href'                => 'act=delete',
+                'icon'                => 'delete.svg',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+            ),
             'show' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface_history']['show'],
@@ -55,25 +78,103 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
         ),
-        'file' => array
+        'pid' => array
         (
-            'sql'                     => "varchar(1024) NOT NULL default ''"
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
         ),
-        'synctime' => array
+        'tstamp' => array
         (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['tstamp'],
+            'filter'                  => true,
+            'sorting'                 => true,
+            'flag'                    => 6,
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
-        'filetime' => array
+        'source' => array
         (
-            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['source'],
+            'filter'                  => true,
+            'sorting'                 => true,
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface_history'],
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'user' => array
+        'action' => array
         (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['action'],
+            'filter'                  => true,
+            'sorting'                 => true,
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'username' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['username'],
+            'search'                  => true,
+            'filter'                  => true,
+            'sorting'                 => true,
             'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'text' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['text'],
+            'search'                  => true,
+            'sql'                     => "text NULL"
         ),
         'status' => array
         (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['username'],
+            'search'                  => true,
+            'filter'                  => true,
             'sql'                     => "int(1) NOT NULL default '0'"
         ),
     )
 );
+
+
+/**
+ * Provide miscellaneous methods that are used by the data configuration array.
+ *
+ * @author Fabian Ekert <fabian@oveleon.de>
+ */
+class tl_interface_history extends Backend
+{
+
+    /**
+     * Colorize the log entries depending on their category
+     *
+     * @param array  $row
+     * @param string $label
+     *
+     * @return string
+     */
+    public function colorize($row, $label)
+    {
+        switch ($row['action'])
+        {
+            case 'CONFIGURATION':
+            case 'REPOSITORY':
+                $label = preg_replace('@^(.*</span> )(.*)$@U', '$1 <span class="tl_blue">$2</span>', $label);
+                break;
+
+            case 'CRON':
+                $label = preg_replace('@^(.*</span> )(.*)$@U', '$1 <span class="tl_green">$2</span>', $label);
+                break;
+
+            case 'ERROR':
+                $label = preg_replace('@^(.*</span> )(.*)$@U', '$1 <span class="tl_red">$2</span>', $label);
+                break;
+
+            default:
+                if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && \is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
+                {
+                    foreach ($GLOBALS['TL_HOOKS']['colorizeLogEntries'] as $callback)
+                    {
+                        $this->import($callback[0]);
+                        $label = $this->{$callback[0]}->{$callback[1]}($row, $label);
+                    }
+                }
+                break;
+        }
+
+        return '<div class="ellipsis">' . $label . '</div>';
+    }
+}

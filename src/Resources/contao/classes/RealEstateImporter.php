@@ -65,6 +65,11 @@ class RealEstateImporter extends \BackendModule
     protected $data;
 
     /**
+     * @var integer
+     */
+    protected $startTime;
+
+    /**
      * Generate module
      */
     protected function compile() {}
@@ -110,6 +115,8 @@ class RealEstateImporter extends \BackendModule
 
         if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = \Input::post('file')) !== '')
         {
+            $this->startTime = time();
+
             ini_set('max_execution_time', -1);
 
             if (($this->syncFile = $this->getSyncFile($this->objImportFolder->path, $this->syncFile)) !== false)
@@ -142,11 +149,13 @@ class RealEstateImporter extends \BackendModule
 
         $this->Template = new \BackendTemplate($this->strTemplate);
 
+        $files = $this->getSyncFiles($this->objImportFolder->path);
+
         $this->Template->setData(array
         (
             'syncAvailable' => $this->objInterface->type === 'wib',
             'syncUrl'       => 'syncUrl',
-            'files'         => $this->getSyncFiles($this->objImportFolder->path),
+            'files'         => $files,
             'messages'      => $this->messages
         ));
 
@@ -175,22 +184,21 @@ class RealEstateImporter extends \BackendModule
             return array();
         }
 
-        $arrSynced = array();
+        $arrFiles = array();
+        $lasttime = time();
 
-        $objHistory = InterfaceHistoryModel::findAll();
+        $syncFiles = FilesHelper::scandirByExt($importPath, $searchForZip ? array('zip', 'xml') : array('xml'));
+
+        $arrSynced = array();
+        $objHistory = InterfaceHistoryModel::findMultipleBySources($syncFiles);
 
         if ($objHistory !== null)
         {
             while ($objHistory->next())
             {
-                $arrSynced[$objHistory->file] = $objHistory->current();
+                $arrSynced[$objHistory->source] = $objHistory->current();
             }
         }
-
-        $arrFiles = array();
-        $lasttime = time();
-
-        $syncFiles = FilesHelper::scandirByExt($importPath, $searchForZip ? array('zip', 'xml') : array('xml'));
 
         foreach ($syncFiles as $i => $file)
         {
@@ -199,21 +207,14 @@ class RealEstateImporter extends \BackendModule
 
             if (array_key_exists($file, $arrSynced))
             {
-                $syncedMtime = intval($arrSynced[$file]->filetime);
+                $syncedMtime = intval($arrSynced[$file]->tstamp);
 
                 if ($syncedMtime > 0) {
                     $mtime = $syncedMtime;
                 }
-
-                $user = $arrSynced[$file]->user;
-                $status = intval($arrSynced[$file]->status);
-                $synctime = intval($arrSynced[$file]->synctime);
             }
             else
             {
-                $user = '';
-                $status = 0;
-                $synctime = 0;
                 if ($lasttime > $mtime) {
                     $lasttime = $mtime;
                 }
@@ -223,9 +224,9 @@ class RealEstateImporter extends \BackendModule
                 "file" => $file,
                 "time" => $mtime,
                 "size" => $size,
-                "user" => $user,
-                "status" => $status,
-                "synctime" => $synctime,
+                "user" => $arrSynced[$file]->username,
+                "status" => intval($arrSynced[$file]->status),
+                "synctime" => intval($arrSynced[$file]->tstamp),
                 "checked" => false
             );
         }
@@ -371,11 +372,20 @@ class RealEstateImporter extends \BackendModule
                 $uniqueValue = $this->getUniqueValue($realEstate);
 
                 $contactPerson = array();
-                $re = array();
+                $re = array
+                (
+                    'ANBIETER' => $uniqueProviderValue,
+                    'AKTIONART' => current($realEstate->verwaltung_techn->aktion)['aktionart']
+                );
 
                 while ($this->objInterfaceMapping->next())
                 {
                     $interfaceMapping = $this->objInterfaceMapping->current();
+
+                    if ($interfaceMapping->attribute === 'referenz' || $interfaceMapping->oiConditionValue == 'auftragsart' || $interfaceMapping->oiConditionField == '@feldname')
+                    {
+                        $test = 'test';
+                    }
 
                     $groups = $realEstate->xpath($interfaceMapping->oiFieldGroup);
                     $values = array();
@@ -392,11 +402,6 @@ class RealEstateImporter extends \BackendModule
                         }
 
                         $field = $interfaceMapping->oiField;
-
-                        if ($field === 'vermarktungsart@KAUF' || $field === 'vermarktungsart@MIETE_PACHT' || $field === 'vermarktungsart@ERBPACHT' || $field === 'vermarktungsart@LEASING')
-                        {
-                            $test = 'test';
-                        }
 
                         if (strrpos($field, '/') !== false)
                         {
@@ -431,6 +436,7 @@ class RealEstateImporter extends \BackendModule
 
                                 if ($existingFile !== null && $existingFile->hash === $check)
                                 {
+                                    $values[] = $existingFile->uuid;
                                     continue;
                                 }
 
@@ -501,8 +507,6 @@ class RealEstateImporter extends \BackendModule
 
                 $this->objInterfaceMapping->reset();
 
-                $re['aktionart'] = current($realEstate->verwaltung_techn->aktion)['aktionart'];
-
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
             }
@@ -542,36 +546,63 @@ class RealEstateImporter extends \BackendModule
 
         foreach ($contactPersonRecords as $i => $contactPerson)
         {
-            list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson);
-
-            $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
-
-            // Skip if no contact person found and not allowed to create
-            if (!$allowCreate && !$exists)
+            if ($realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr && $this->objInterface->importThirdPartyProvider)
             {
-                continue;
-            }
+                if (in_array($realEstateRecords[$i]['AUFTRAGSART'], array('R', 'V', 'S')))
+                {
+                    continue;
+                }
 
-            if (!$exists)
-            {
-                // Create new contact person
-                $objContactPerson = new ContactPersonModel();
-                $objContactPerson->setRow($contactPerson);
-                $objContactPerson->pid = $this->objInterface->provider;
-                $objContactPerson->published = 1;
-                $objContactPerson->save();
+                if ($realEstateRecords[$i]['vermarktungsartKauf'])
+                {
+                    $objContactPerson = ContactPersonModel::findByPk($this->objInterface->assignContactPersonKauf);
+                }
+                else if ($realEstateRecords[$i]['vermarktungsartMietePacht'])
+                {
+                    $objContactPerson = ContactPersonModel::findByPk($this->objInterface->assignContactPersonMietePacht);
+                }
+                else if ($realEstateRecords[$i]['vermarktungsartErbpacht'])
+                {
+                    $objContactPerson = ContactPersonModel::findByPk($this->objInterface->assignContactPersonErbpacht);
+                }
+                else if ($realEstateRecords[$i]['vermarktungsartLeasing'])
+                {
+                    $objContactPerson = ContactPersonModel::findByPk($this->objInterface->assignContactPersonLeasing);
+                }
             }
             else
             {
-                // Find contact person
-                $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
-            }
+                list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson);
 
-            if ($allowUpdate)
-            {
-                // Update contact person
-                $objContactPerson->mergeRow($contactPerson);
-                $objContactPerson->save();
+                $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
+
+                // Skip if no contact person found and not allowed to create
+                if (!$allowCreate && !$exists)
+                {
+                    continue;
+                }
+
+                if (!$exists)
+                {
+                    // Create new contact person
+                    $objContactPerson = new ContactPersonModel();
+                    $objContactPerson->setRow($contactPerson);
+                    $objContactPerson->pid = $this->objInterface->provider;
+                    $objContactPerson->published = 1;
+                    $objContactPerson->save();
+                }
+                else
+                {
+                    // Find contact person
+                    $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
+                }
+
+                if ($allowUpdate)
+                {
+                    // Update contact person
+                    $objContactPerson->mergeRow($contactPerson);
+                    $objContactPerson->save();
+                }
             }
 
 
@@ -591,13 +622,24 @@ class RealEstateImporter extends \BackendModule
                 // Find real estate
                 $objRealEstate = RealEstateModel::findOneBy($arrColumns, $arrValues);
 
-                if ($realEstateRecords[$i]['aktionart'] === 'DELETE')
+                if ($realEstateRecords[$i]['AKTIONART'] === 'DELETE')
                 {
                     // Delete real estate
                     $objRealEstate->delete();
                     continue;
                 }
             }
+
+            if ($realEstateRecords[$i]['AKTIONART'] === 'REFERENZ')
+            {
+                $objRealEstate->referenz = 1;
+            }
+
+            $realEstateRecords[$i]['anbieternr'] = $realEstateRecords[$i]['ANBIETER'];
+
+            unset($realEstateRecords[$i]['ANBIETER']);
+            unset($realEstateRecords[$i]['AUFTRAGSART']);
+            unset($realEstateRecords[$i]['AKTIONART']);
 
             foreach ($realEstateRecords[$i] as $field => $value)
             {
@@ -611,6 +653,35 @@ class RealEstateImporter extends \BackendModule
 
             $objRealEstate->save();
         }
+
+        if ($this->objInterface->type === 'openimmo')
+        {
+            $this->objInterface->lastSync = time();
+            $this->objInterface->save();
+        }
+
+        try {
+            $tmpFolder = new \Folder($this->objImportFolder->path . '/tmp');
+        } catch (\Exception $e) {
+            return;
+        }
+
+        // Clear tmp folder
+        $tmpFolder->purge();
+
+        $this->import('BackendUser', 'User');
+
+        // Create history entry
+        $objInterfaceHistory = new InterfaceHistoryModel();
+        $objInterfaceHistory->pid = $this->objInterface->id;
+        $objInterfaceHistory->tstamp = time();
+        $objInterfaceHistory->source = $this->syncFile;
+        $objInterfaceHistory->action = 'SUCCESS';
+        $objInterfaceHistory->username = $this->User->username;
+        $objInterfaceHistory->text = 'Die Datei "' . $this->syncFile . '" wurde erfolgreich importiert.';
+        $objInterfaceHistory->status = 1;
+        $objInterfaceHistory->save();
+
     }
 
     protected function getContactPersonParameters($contactPerson)
