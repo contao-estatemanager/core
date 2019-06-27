@@ -4,6 +4,23 @@
 #tl_navigation .group-real_estate {
   background: url("/bundles/estatemanager/icons/navi.svg") 4px 1px no-repeat; }
 
+.tl_listing .tl_file_list .log_level_0 {
+  font-weight: bold; }
+.tl_listing .tl_file_list .log_level_1 {
+  padding-left: 10px; }
+.tl_listing .tl_file_list .log_level_2 {
+  padding-left: 20px; }
+.tl_listing .tl_file_list .log_level_3 {
+  padding-left: 30px; }
+.tl_listing .tl_file_list .log_level_4 {
+  padding-left: 40px; }
+.tl_listing .tl_file_list .log_level_5 {
+  padding-left: 50px; }
+.tl_listing .tl_file_list .log_level_6 {
+  padding-left: 60px; }
+.tl_listing .tl_file_list .log_level_7 {
+  padding-left: 70px; }
+
 .widget.validLicense label:not(.error):after {
   display: inline-block;
   content: '';

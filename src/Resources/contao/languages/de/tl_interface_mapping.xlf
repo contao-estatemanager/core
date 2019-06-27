@@ -209,6 +209,35 @@
         <source>Show the details of mapping ID %s</source>
         <target>Die Details der Mapping ID %s anzeigen</target>
       </trans-unit>
+
+      <trans-unit id="tl_interface_mapping.importDefaultMappings.0">
+        <source>Restoring Fields</source>
+        <target>Felder zurücksetzen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.importDefaultMappings.1">
+        <source>Restoring OpenImmo standard mapping fields</source>
+        <target>Standard OpenImmo Feldzuweisung wiederherstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.importConfirm">
+        <source>Are you sure you want to reset all mapping fields? Your own adjustments will be lost.</source>
+        <target>Sind Sie sicher, dass alle Felder zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.imported.0">
+        <source>All fields successfully reset</source>
+        <target>Alle Felder wurden erfolgreich zurückgesetzt</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.imported.1">
+        <source>All OpenImmo standard fields have been successfully imported.</source>
+        <target>Alle Standard OpenImmo Felder wurden erfolgreich importiert.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.import_error.0">
+        <source>No or faulty file</source>
+        <target>Keine oder fehlerhafte Datei</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.import_error.1">
+        <source>Please make sure that the file "data/import_interface_mappings.php" can be retrieved.</source>
+        <target>Bitte stellen Sie sicher, dass die Datei "data/import_interface_mappings.php" abgerufen werden kann.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
