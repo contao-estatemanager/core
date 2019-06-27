@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_visualization_legend},defaultImage;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
+		'default'                     => '{real_estate_visualization_legend},defaultImage;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
 	),
 
 	// Fields
@@ -74,6 +74,20 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'default'                 => '1,2,3,4,5,6,7,8,9,10',
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50')
+        ),
+        'defaultNumberOfMainDetails' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainDetails'],
+            'default'                 => '3',
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50')
+        ),
+        'defaultNumberOfMainAttr' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainAttr'],
+            'default'                 => '4',
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50')
         ),
 	)
 );

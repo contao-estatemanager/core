@@ -27,6 +27,22 @@
         <source>Thousand separators</source>
         <target>Tausender-Trennzeichen</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.0">
+        <source>Default number of main details</source>
+        <target>Anzahl der Main-Details</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.1">
+        <source>Specifies how many Main details are displayed in lists within a property.</source>
+        <target>Gibt an wie viele Main-Details in Listen innerhalb einer Immobilie ausgegeben werden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.0">
+        <source>Default number of main attributes</source>
+        <target>Anzahl der Main-Attribute</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.1">
+        <source>Specifies how many main attributes are displayed in lists within a property.</source>
+        <target>Gibt an wie viele Main-Attribute in Listen innerhalb einer Immobilie ausgegeben werden</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.0">
         <source>Display duration for status token "new"</source>
         <target>Anzeigedauer des "Neu" Status-Token</target>
