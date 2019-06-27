@@ -44,6 +44,9 @@ namespace ContaoEstateManager;
  * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByUsername($val, array $opt=array())
  * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByText($val, array $opt=array())
  * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByData($val, array $opt=array())
+ * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findMultipleByIds($val, array $opt=array())
+ * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findBy($col, $val, array $opt=array())
+ * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
