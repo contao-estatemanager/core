@@ -7,7 +7,11 @@
         <?= $this->filter ?>
     <?php endif; ?>
   </div>
-
+  <?php if ($this->addCountLabel): ?>
+    <div class="result-count">
+        <?= $this->Template->labelObjectsFound ?>
+    </div>
+  <?php endif; ?>
   <?php if ($this->addSorting): ?>
     <div class="result-sorting">
       <form method="post" enctype="application/x-www-form-urlencoded" novalidate="">

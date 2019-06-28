@@ -76,6 +76,11 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         $this->initializeSortingSession();
         $this->addSorting();
         $this->parseRealEstateList();
+
+        if($this->addCountLabel)
+        {
+            $this->Template->labelObjectsFound = sprintf(Translator::translateLabel('labelObjectsFound'), $this->totalItems);
+        }
     }
 
     /**
