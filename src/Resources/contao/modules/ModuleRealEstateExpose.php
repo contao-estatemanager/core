@@ -101,6 +101,8 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
         $realEstate = new RealEstate($objRealEstate, null);
 
+        $this->updateVisitedSession($realEstate->getId());
+
         $arrCustomSections = array();
         $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');
         $arrModules = \StringUtil::deserialize($this->exposeModules);

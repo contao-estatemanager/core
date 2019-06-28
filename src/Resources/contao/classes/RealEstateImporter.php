@@ -544,13 +544,10 @@ class RealEstateImporter extends \BackendModule
 
     protected function getExtension($format)
     {
-        $extension = '.jpg';
-
         switch ($format)
         {
             case 'image/jpeg':
             case 'image/jpg':
-            case 'JPEG':
                 $extension = '.jpg';
                 break;
             case 'image/png':
@@ -559,6 +556,15 @@ class RealEstateImporter extends \BackendModule
             case 'image/gif':
                 $extension = '.gif';
                 break;
+            default:
+                if (strpos('/', $extension) === false)
+                {
+                    $extension = '.' . strtolower($extension);
+                }
+                else
+                {
+                    $extension = '.jpg';
+                }
         }
 
         return $extension;
