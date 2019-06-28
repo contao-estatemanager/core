@@ -23,7 +23,6 @@
       </form>
     </div>
   <?php endif; ?>
-
   <?php if (empty($this->realEstates)): ?>
     <p class="empty"><?= $this->empty ?></p>
   <?php else: ?>
@@ -34,5 +33,4 @@
     </div>
       <?= $this->pagination ?>
   <?php endif; ?>
-
 <?php $this->endblock(); ?>
