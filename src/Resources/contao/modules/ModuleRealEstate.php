@@ -73,8 +73,8 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->linkExpose = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
         $objTemplate->address = $realEstate->getLocationString();
-        $objTemplate->mainDetails = $realEstate->getMainDetails(3);
-        $objTemplate->mainAttributes = $realEstate->getMainAttributes(4);
+        $objTemplate->mainDetails = $realEstate->getMainDetails(\Config::get('defaultNumberOfMainDetails') ?: 3);
+        $objTemplate->mainAttributes = $realEstate->getMainAttributes(\Config::get('defaultNumberOfMainAttr') ?: 3);
         $objTemplate->mainPrice = $realEstate->getMainPrice();
         $objTemplate->mainArea = $realEstate->getMainArea();
         $objTemplate->details = $realEstate->getDetails(['price'], true);

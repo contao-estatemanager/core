@@ -10,3 +10,6 @@
 
 // Real estate config
 $GLOBALS['TL_CONFIG']['roomOptions'] = '1,2,3,4,5,6,7,8';
+$GLOBALS['TL_CONFIG']['statusTokenNewDisplayDuration'] = '+1 week';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainDetails'] = '3';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainAttr'] = '4';
