@@ -73,6 +73,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function compile()
     {
+        $this->initializeSortingSession();
         $this->addSorting();
         $this->parseRealEstateList();
     }

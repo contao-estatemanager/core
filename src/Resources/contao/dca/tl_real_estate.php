@@ -4724,7 +4724,7 @@ class tl_real_estate extends Backend
         if ($objFile !== null)
         {
             // add preview image
-            //$args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
+            $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
         }
 
         // add address information

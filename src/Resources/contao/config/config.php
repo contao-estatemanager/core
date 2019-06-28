@@ -68,18 +68,20 @@ array_insert($GLOBALS['BE_MOD'], 1, array
 ));
 
 // Models
-$GLOBALS['TL_MODELS']['tl_provider']               = '\\ContaoEstateManager\\ProviderModel';
 $GLOBALS['TL_MODELS']['tl_contact_person']         = '\\ContaoEstateManager\\ContactPersonModel';
-$GLOBALS['TL_MODELS']['tl_real_estate']            = '\\ContaoEstateManager\\RealEstateModel';
-$GLOBALS['TL_MODELS']['tl_real_estate_group']      = '\\ContaoEstateManager\\RealEstateGroupModel';
-$GLOBALS['TL_MODELS']['tl_real_estate_type']       = '\\ContaoEstateManager\\RealEstateTypeModel';
-$GLOBALS['TL_MODELS']['tl_filter']                 = '\\ContaoEstateManager\\FilterModel';
-$GLOBALS['TL_MODELS']['tl_filter_item']            = '\\ContaoEstateManager\\FilterItemModel';
-$GLOBALS['TL_MODELS']['tl_field_format']           = '\\ContaoEstateManager\\FieldFormatModel';
-$GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\ContaoEstateManager\\FieldFormatActionModel';
-$GLOBALS['TL_MODELS']['tl_interface']              = '\\ContaoEstateManager\\InterfaceModel';
-$GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\ContaoEstateManager\\InterfaceMappingModel';
 $GLOBALS['TL_MODELS']['tl_expose_module']          = '\\ContaoEstateManager\\ExposeModuleModel';
+$GLOBALS['TL_MODELS']['tl_field_format_action']    = '\\ContaoEstateManager\\FieldFormatActionModel';
+$GLOBALS['TL_MODELS']['tl_field_format']           = '\\ContaoEstateManager\\FieldFormatModel';
+$GLOBALS['TL_MODELS']['tl_filter_item']            = '\\ContaoEstateManager\\FilterItemModel';
+$GLOBALS['TL_MODELS']['tl_filter']                 = '\\ContaoEstateManager\\FilterModel';
+$GLOBALS['TL_MODELS']['tl_interface_history']      = '\\ContaoEstateManager\\InterfaceHistoryModel';
+$GLOBALS['TL_MODELS']['tl_interface_log']          = '\\ContaoEstateManager\\InterfaceLogModel';
+$GLOBALS['TL_MODELS']['tl_interface_mapping']      = '\\ContaoEstateManager\\InterfaceMappingModel';
+$GLOBALS['TL_MODELS']['tl_interface']              = '\\ContaoEstateManager\\InterfaceModel';
+$GLOBALS['TL_MODELS']['tl_provider']               = '\\ContaoEstateManager\\ProviderModel';
+$GLOBALS['TL_MODELS']['tl_real_estate_group']      = '\\ContaoEstateManager\\RealEstateGroupModel';
+$GLOBALS['TL_MODELS']['tl_real_estate']            = '\\ContaoEstateManager\\RealEstateModel';
+$GLOBALS['TL_MODELS']['tl_real_estate_type']       = '\\ContaoEstateManager\\RealEstateTypeModel';
 
 // Back end form fields
 $GLOBALS['BE_FFL']['exposeModuleWizard']           = '\\ContaoEstateManager\\ExposeModuleWizard';

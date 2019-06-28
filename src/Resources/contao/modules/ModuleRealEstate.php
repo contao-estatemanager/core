@@ -323,7 +323,8 @@ abstract class ModuleRealEstate extends \Module
     /**
      * Adding sorting options to a list
      */
-    protected function addSorting(){
+    protected function addSorting()
+    {
         if ($this->addSorting)
         {
             $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
