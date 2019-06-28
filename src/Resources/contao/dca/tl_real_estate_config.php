@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_visualization_legend},defaultImage;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
+		'default'                     => '{real_estate_list_legend},defaultImage,defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
 	),
 
 	// Fields
@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
             'inputType'               => 'select',
             'options'                 => array('tstamp' => 'Aktualität'), // ToDo: Auf sorting reagieren und options erweitern
-			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr')
 		),
         'statusTokenNewDisplayDuration' => array
         (
