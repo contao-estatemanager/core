@@ -45,12 +45,6 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         ),
         'global_operations' => array
         (
-            'administration' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['administration'],
-                'href'                => 'do=administration',
-                'icon'                => 'back.svg'
-            ),
             'importDefaultMappings' => array
             (
                 'label'             => &$GLOBALS['TL_LANG']['tl_interface_mapping']['importDefaultMappings'],

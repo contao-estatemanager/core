@@ -49,12 +49,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'global_operations' => array
         (
-            'administration' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['administration'],
-                'href'                => 'do=administration',
-                'icon'                => 'back.svg'
-            ),
             'importFieldFormats' => array
             (
                 'label'             => &$GLOBALS['TL_LANG']['tl_field_format']['importFieldFormats'],
