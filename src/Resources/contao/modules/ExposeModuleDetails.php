@@ -55,31 +55,36 @@ class ExposeModuleDetails extends ExposeModule
 
         $arrCollection = array();
 
-        $seperateBlocks = null;
-
         if($arrBlocks)
         {
-            if(!$this->summariseDetailBlocks)
-            {
-                $seperateBlocks = $arrBlocks;
-            }
+            $seperateBlocks = $arrBlocks;
 
             $arrDetails = $this->realEstate->getDetails($seperateBlocks, $this->includeAddress, $arrBlocks);
 
             // sort by user preference
+            $orderedDetails = array();
+
+            foreach ($arrBlocks as $index)
+            {
+                if(array_key_exists($index, $arrDetails))
+                {
+                    $orderedDetails[ $index ] = $arrDetails[ $index ];
+                }
+            }
+
+            $arrDetails = $orderedDetails;
+
+            // combine all the blocks into one
             if(!$this->summariseDetailBlocks)
             {
-                $orderedDetails = array();
+                $mergedBlocks = array();
 
-                foreach ($arrBlocks as $index)
+                foreach ($arrDetails as $block => $details)
                 {
-                    if(array_key_exists($index, $arrDetails))
-                    {
-                        $orderedDetails[ $index ] = $arrDetails[ $index ];
-                    }
+                    $mergedBlocks = array_merge($mergedBlocks, $details);
                 }
 
-                $arrDetails = $orderedDetails;
+                $arrDetails = array('detail' => $mergedBlocks);
             }
 
             // set headline
