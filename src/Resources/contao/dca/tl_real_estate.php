@@ -1377,8 +1377,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpCarportMietpreis'  => array
@@ -1413,10 +1412,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
-
         ),
         'stpDuplexMietpreis'  => array
         (
@@ -1450,8 +1447,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpFreiplatzMietpreis'  => array
@@ -1486,8 +1482,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpGarageMietpreis'  => array
@@ -1522,8 +1517,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpParkhausMietpreis'  => array
@@ -1558,8 +1552,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpTiefgarageMietpreis'  => array
@@ -1594,8 +1587,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "int(8) NULL default NULL",
             'realEstate'                => array(
                 'group'     => 'stellplatz',
-                'attribute' => true,
-                'detail'    => true
+                'attribute' => true
             )
         ),
         'stpSonstigeMietpreis'  => array
@@ -2807,7 +2799,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
-                'attribute' => true,
                 'filter'    => true
             )
         ),
