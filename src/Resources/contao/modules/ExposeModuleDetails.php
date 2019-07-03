@@ -75,7 +75,7 @@ class ExposeModuleDetails extends ExposeModule
             $arrDetails = $orderedDetails;
 
             // combine all the blocks into one
-            if(!$this->summariseDetailBlocks)
+            if(!!$this->summariseDetailBlocks)
             {
                 $mergedBlocks = array();
 
