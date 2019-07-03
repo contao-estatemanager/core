@@ -2,7 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-Formular
 <?=$this->form?>
 
 <?php $this->endblock(); ?>
