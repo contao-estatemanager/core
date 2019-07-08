@@ -1,6 +1,6 @@
 <?php
 
-namespace ContaoEstateManager\Controller;
+namespace ContaoEstateManager\EstateManager\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
