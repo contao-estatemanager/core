@@ -2,6 +2,11 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_label.php" source-language="en" target-language="de">
     <body>
+      <trans-unit id="tl_real_estate_label.labelObjectsFound">
+         <source>%s Objects found</source>
+         <target>%s Immobilien gefunden</target>
+      </trans-unit>
+
       <trans-unit id="tl_real_estate_label.auf_anfrage">
          <source>Preis</source>
          <target>Preis</target>
@@ -19,6 +24,10 @@
         <target>Kaupreis pro m²</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.nettokaltmiete">
+        <source>Kaltmiete (Netto)</source>
+        <target>Kaltmiete (Netto)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.kaltmiete">
         <source>Kaltmiete</source>
         <target>Kaltmiete</target>
       </trans-unit>

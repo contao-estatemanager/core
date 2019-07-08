@@ -80,14 +80,14 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainDetails'],
             'default'                 => '3',
             'inputType'               => 'text',
-            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50')
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
         ),
         'defaultNumberOfMainAttr' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainAttr'],
             'default'                 => '4',
             'inputType'               => 'text',
-            'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50')
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
         ),
 	)
 );

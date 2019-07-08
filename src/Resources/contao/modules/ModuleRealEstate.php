@@ -134,7 +134,7 @@ abstract class ModuleRealEstate extends \Module
         $this->isEmpty = true;
 
         // Get the total number of items
-        $total = $this->countItems();
+        $total = $this->Template->totalItems = $this->totalItems = $this->countItems();
 
         if ($total === 0)
         {

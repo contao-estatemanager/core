@@ -23,6 +23,14 @@
         <target>Immobilien Erweiterung</target>
       </trans-unit>
 
+      <trans-unit id="tl_module.addCountLabel.0">
+        <source>Add counting</source>
+        <target>Anzahl der Immobilien ausgeben</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addCountLabel.1">
+        <source>Adds a counting label</source>
+        <target>Gibt die Anzahl der gefundenen Immobilien aus</target>
+      </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>
         <target>Sortierung hinzufügen</target>

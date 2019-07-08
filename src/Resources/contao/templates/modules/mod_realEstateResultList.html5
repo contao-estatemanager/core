@@ -1,13 +1,11 @@
 <?php $this->extend('block_unsearchable'); ?>
 
 <?php $this->block('content'); ?>
-
-  <div class="result-map-filter">
-    <?php if ($this->addFilterModule): ?>
-        <?= $this->filter ?>
-    <?php endif; ?>
-  </div>
-
+  <?php if ($this->addCountLabel): ?>
+    <div class="result-count">
+        <?= $this->Template->labelObjectsFound ?>
+    </div>
+  <?php endif; ?>
   <?php if ($this->addSorting): ?>
     <div class="result-sorting">
       <form method="post" enctype="application/x-www-form-urlencoded" novalidate="">
@@ -25,7 +23,6 @@
       </form>
     </div>
   <?php endif; ?>
-
   <?php if (empty($this->realEstates)): ?>
     <p class="empty"><?= $this->empty ?></p>
   <?php else: ?>
@@ -36,5 +33,4 @@
     </div>
       <?= $this->pagination ?>
   <?php endif; ?>
-
 <?php $this->endblock(); ?>
