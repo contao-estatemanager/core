@@ -10,8 +10,6 @@
 
 namespace ContaoEstateManager;
 
-use Model\Collection;
-
 /**
  * Loads and writes filter information
  *
@@ -246,10 +244,12 @@ class FilterSession extends \System
         if($addFragments)
         {
             $this->addQueryFragmentBasics($objRealEstateType, $arrColumns, $arrValues);
+            $this->addQueryFragmentLocation($arrColumns, $arrValues);
             $this->addQueryFragmentPrice($objRealEstateType, $arrColumns, $arrValues);
             $this->addQueryFragmentRoom($arrColumns, $arrValues);
             $this->addQueryFragmentArea($objRealEstateType, $arrColumns, $arrValues);
             $this->addQueryFragmentPeriod($arrColumns, $arrValues);
+            $this->addQueryFragmentUnique($arrColumns, $arrValues);
         }
 
         // HOOK: get type parameter by groups
@@ -300,10 +300,12 @@ class FilterSession extends \System
                     $arrColumn = array();
 
                     $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                    $this->addQueryFragmentLocation($arrColumn, $arrValues);
                     $this->addQueryFragmentPrice($objRealEstateTypes->current(), $arrColumn, $arrValues);
                     $this->addQueryFragmentRoom($arrColumn, $arrValues);
                     $this->addQueryFragmentArea($objRealEstateTypes->current(), $arrColumn, $arrValues);
                     $this->addQueryFragmentPeriod($arrColumn, $arrValues);
+                    $this->addQueryFragmentUnique($arrColumn, $arrValues);
 
                     // Hook zum ergänzen von neuen Toggle Filtern
 
@@ -415,6 +417,35 @@ class FilterSession extends \System
         }
     }
 
+    /**
+     * Add query fragment for the location field
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentLocation(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['location'])
+        {
+            $location = $_SESSION['FILTER_DATA']['location'];
+            $matches = array();
+
+            if (preg_match('/[0-9]{3,5}/', $location, $matches, PREG_UNMATCHED_AS_NULL))
+            {
+                $arrColumn[] = "$t.plz LIKE ?";
+                $arrValues[] = $matches[0].'%';
+                $location = trim(str_replace($matches[0], '', $location));
+            }
+
+            if ($location)
+            {
+                $arrColumn[] = "$t.ort LIKE ?";
+                $arrValues[] = $location.'%';
+            }
+        }
+    }
 
     /**
      * Add query fragment for price fields
@@ -431,7 +462,8 @@ class FilterSession extends \System
         {
             if ($_SESSION['FILTER_DATA']['price_from'])
             {
-                if ($objRealEstateType->vermarktungsart === 'miete_leasing') {
+                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                {
                     $arrColumn[] = "$t.mietpreisProQm>=?";
                     $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
                 }
@@ -443,7 +475,8 @@ class FilterSession extends \System
             }
             if ($_SESSION['FILTER_DATA']['price_to'])
             {
-                if ($objRealEstateType->vermarktungsart === 'miete_leasing') {
+                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                {
                     $arrColumn[] = "$t.mietpreisProQm<=?";
                     $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
                 }
@@ -543,6 +576,25 @@ class FilterSession extends \System
                 $date = new \Date($_SESSION['FILTER_DATA']['period_to']);
                 $arrValues[] = $date->tstamp;
             }
+        }
+    }
+
+    /**
+     * Add query fragment for the unique field
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentUnique(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['unique'])
+        {
+            $arrColumn = array("$t.objektnrExtern=?");
+            $arrValues = array($_SESSION['FILTER_DATA']['unique']);
+
+            unset($_SESSION['FILTER_DATA']['unique']);
         }
     }
 

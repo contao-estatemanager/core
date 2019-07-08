@@ -1,7 +1,7 @@
 estatemanager_api_read:
   path: /api/estatemanager/v{version}/{module}/{id}
   defaults:
-    _controller: "Core:EstateManager:read"
+    _controller: "EstateManager:EstateManager:read"
     _scope: frontend
     _token_check: false
     id: null

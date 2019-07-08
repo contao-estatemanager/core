@@ -88,6 +88,20 @@ class FilterLocation extends FilterWidget
     }
 
     /**
+     * Parse the template file and return it as string
+     *
+     * @param array $arrAttributes An optional attributes array
+     *
+     * @return string The template markup
+     */
+    public function parse($arrAttributes=null)
+    {
+        $this->value = $_SESSION['FILTER_DATA']['location'];
+
+        return parent::parse($arrAttributes);
+    }
+
+    /**
      * Rudimentary generate method
      */
     public function generate() {}
