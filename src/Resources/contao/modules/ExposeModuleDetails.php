@@ -43,7 +43,9 @@ class ExposeModuleDetails extends ExposeModule
             return $objTemplate->parse();
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+
+        return ($this->skipDetails) ? '' : $strBuffer;
     }
 
     /**
@@ -51,6 +53,8 @@ class ExposeModuleDetails extends ExposeModule
      */
     protected function compile()
     {
+        $this->skipDetails = false;
+
         $arrBlocks = \StringUtil::deserialize($this->detailBlocks);
 
         $arrCollection = array();
@@ -106,6 +110,11 @@ class ExposeModuleDetails extends ExposeModule
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);
             }
+        }
+
+        if(!count($arrCollection))
+        {
+            $this->skipDetails = true;
         }
 
         $this->Template->details = $arrCollection;
