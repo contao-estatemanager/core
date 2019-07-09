@@ -127,9 +127,17 @@
         <source>Garage</source>
         <target>Garage</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpGarageKaufpreis">
+        <source>Garage Kaufpreis</source>
+        <target>Garage Kaufpreis</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
         <source>Freistellplatz</source>
         <target>Freistellplatz</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpFreiplatzKaufpreis">
+        <source>Freistellplatz Kaufpreis</source>
+        <target>Freistellplatz Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
         <source>Stellplätze</source>
@@ -138,6 +146,10 @@
       <trans-unit id="tl_real_estate_label.kamin">
         <source>Kamin</source>
         <target>Kamin</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.waschTrockenraum">
+        <source>Wasch- / Trockenraum</source>
+        <target>Wasch- / Trockenraum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.rolladen">
         <source>Rolladen</source>
@@ -202,6 +214,10 @@
       <trans-unit id="tl_real_estate_label.klimatisiert">
         <source>Klimatisiert</source>
         <target>Klimatisiert</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.seniorengerecht">
+        <source>Seniorengerecht</source>
+        <target>Seniorengerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.heizungsart">
         <source>Heizungsart</source>
