@@ -18,18 +18,6 @@ class EstateManagerRead extends EstateManagerSDK
     private $method = self::METHOD_GET;
 
     /**
-     * Filter Instance
-     * @var RealEstateFilter
-     */
-    private $filter;
-
-    /**
-     * Filter Mode
-     * @var string
-     */
-    private $filterMode;
-
-    /**
      * Current Parameter
      * @var string
      */
@@ -70,21 +58,22 @@ class EstateManagerRead extends EstateManagerSDK
             case 'estates':
 
                 // validate parameters
-                $validParameters = array('filterMode', 'pageId', 'fields', 'dataType', 'template', 'jumpTo');
+                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo');
                 $this->currParam = $this->getParameters($this->method, $validParameters);
 
                 // prepare model
-                $arrColumns = null;
-                $arrValues  = null;
+                $arrColumns = array();
+                $arrValues  = array();
                 $arrOptions = $this->getModelParameters($this->method);
 
-                // ToDo: Auf Filter reagieren
-                /*if($param['filterMode'] && $param['pageId'])
+                if($this->currParam['filter'] && $this->currParam['filterMode'])
                 {
-                    $this->setFilter($param['pageId'], $param['filterMode']);
+                    $objSessionFilter = FilterSession::getInstance();
 
-                    list($arrColumns, $arrValues) = $this->filter->getParameter($this->filterMode);
-                }*/
+                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode']);
+
+                    $arrOptions = array_merge($arrOptions, $options);
+                }
 
                 $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
 
@@ -277,17 +266,5 @@ class EstateManagerRead extends EstateManagerSDK
         );
 
         return $arrGeoJson;
-    }
-
-    /**
-     * Set filter instance
-     *
-     * @param $pageId
-     * @param $filterMode
-     */
-    private function setFilter($pageId, $filterMode)
-    {
-        $this->filter = RealEstateFilter::getInstance($pageId);
-        $this->filterMode = $filterMode;
     }
 }
