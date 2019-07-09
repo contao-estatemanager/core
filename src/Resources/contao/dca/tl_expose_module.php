@@ -605,5 +605,4 @@ class tl_expose_module extends Backend
 
         return $arrForms;
     }
-
 }

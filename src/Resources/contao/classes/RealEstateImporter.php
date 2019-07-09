@@ -86,6 +86,7 @@ class RealEstateImporter extends \BackendModule
         $this->objInterface = InterfaceModel::findByPk($dc->id);
         $this->objImportFolder = \FilesModel::findByUuid($this->objInterface->importPath);
         $this->objFilesFolder = \FilesModel::findByUuid($this->objInterface->filesPath);
+        $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
         $this->objInterfaceMapping = InterfaceMappingModel::findByPid($dc->id);
 
         \System::loadLanguageFile('tl_real_estate_sync');
@@ -425,6 +426,8 @@ class RealEstateImporter extends \BackendModule
                         // Save image if needed
                         if ($interfaceMapping->saveImage)
                         {
+                            $objFilesFolder = $interfaceMapping->attribute === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
+
                             $format = current($tmpGroup->format);
                             $check = next($tmpGroup->check);
 
@@ -441,13 +444,13 @@ class RealEstateImporter extends \BackendModule
                                 $extension = $this->getExtension($format);
                                 $completeFileName = $fileName . $extension;
 
-                                $existingFile = FilesModel::findByPath($this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $completeFileName);
+                                $existingFile = FilesModel::findByPath($objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $completeFileName);
 
                                 if ($existingFile !== null && $existingFile->hash === $check)
                                 {
                                     $values[] = $existingFile->uuid;
                                     $this->addLog('Skip image: Image already exists and has not changed', 3, 'info', array(
-                                        'filePath' => $this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
+                                        'filePath' => $objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
                                         'fileName' => $completeFileName
                                     ));
                                     continue;
@@ -467,19 +470,19 @@ class RealEstateImporter extends \BackendModule
                             }
                             else
                             {
-                                $existingFile = FilesModel::findByPath($this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $value);
+                                $existingFile = FilesModel::findByPath($objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $value);
 
                                 if ($existingFile !== null && $existingFile->hash === $check)
                                 {
                                     $this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
-                                        'filePath' => $this->objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
+                                        'filePath' => $objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
                                         'fileName' => $value
                                     ));
                                     continue;
                                 }
                             }
 
-                            $objFile = $this->copyFile($value, $uniqueProviderValue, $uniqueValue);
+                            $objFile = $this->copyFile($value, $objFilesFolder, $uniqueProviderValue, $uniqueValue);
 
                             if (($titel = current($tmpGroup->anhangtitel)) !== '')
                             {
@@ -860,13 +863,13 @@ class RealEstateImporter extends \BackendModule
         return $this->getFieldData($interfaceMappingUniqueField->oiField, $groups[0]);
     }
 
-    protected function copyFile($fileName, $providerDirectoryName, $directoryName)
+    protected function copyFile($fileName, $objFolder, $providerDirectoryName, $directoryName)
     {
-        if (FilesHelper::isWritable($this->objFilesFolder->path))
+        if (FilesHelper::isWritable($objFolder->path))
         {
             $objFiles = \Files::getInstance();
 
-            $filePathProvider = $this->objFilesFolder->path . '/' . $providerDirectoryName;
+            $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
             $filePathRecord = $filePathProvider . '/' . $directoryName;
             $filePath = $filePathRecord . '/' . $fileName;
 

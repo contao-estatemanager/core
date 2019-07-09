@@ -119,8 +119,8 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     (
         '__selector__'   => array('type', 'importThirdPartyProvider'),
         'deault'         => '{title_legend},title,type;',
-        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
-        'wib'            => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen;{expert_legend:hide},syncUrl,testMode'
+        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
+        'wib'            => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen;{expert_legend:hide},syncUrl,testMode'
     ),
 
     // Subpalettes
@@ -204,6 +204,14 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         'filesPath' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPath'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
+            'sql'                     => "binary(16) NULL"
+        ),
+        'filesPathContactPerson' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPathContactPerson'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),

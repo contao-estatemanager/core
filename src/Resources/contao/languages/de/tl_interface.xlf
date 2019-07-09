@@ -58,6 +58,14 @@
         <source>Please enter the target directory where imported files are to be stored.</source>
         <target>Bitte geben Sie das Zielverzeichnis an, in das importierte Dateien abgelegt werden sollen.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.filesPathContactPerson.0">
+        <source>Import directory contact person</source>
+        <target>Importverzeichnis Kontaktperson</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.filesPathContactPerson.1">
+        <source>Please enter the target directory where contact person files should be stored.</source>
+        <target>Bitte geben Sie das Zielverzeichnis an, in das Dateien von Kontaktpersonen abgelegt werden sollen.</target>
+      </trans-unit>
       <trans-unit id="tl_interface.contactPersonActions.0">
         <source>Contact person</source>
         <target>Kontaktperson</target>

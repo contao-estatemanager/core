@@ -35,6 +35,7 @@ return array
     array('tl_contact_person', 'postfOrt',                 'kontaktperson', 'postf_ort'),
     array('tl_contact_person', 'personennummer',           'kontaktperson', 'personennummer'),
     array('tl_contact_person', 'immobilientreuhaenderid',  'kontaktperson', 'immobilientreuhaenderid'),
+    array('tl_contact_person', 'singleSRC',                'kontaktperson/foto', 'daten/pfad', null, null, false, true),
 
     /** Objektkategorie */
     array('tl_real_estate', 'nutzungsart',                 'objektkategorie', 'nutzungsart@+', array('text', 'lowercase')),
