@@ -240,6 +240,14 @@ return array
     ),
     array
     (
+        'field' => array('anzahlWohneinheiten', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('anzahlBalkone', '', '', NULL),
         'actions' => array
         (

@@ -256,7 +256,7 @@ return array
     array('tl_real_estate', 'flaechebis',                  'flaechen', 'flaechebis'),
 
     /** Ausstattung */
-    array('tl_real_estate', 'ausstattKategorie',           'ausstattung', 'ausstatt_kategorie'),
+    array('tl_real_estate', 'ausstattKategorie',           'ausstattung', 'ausstatt_kategorie', array('text', 'lowercase')),
     array('tl_real_estate', 'wgGeeignet',                  'ausstattung', 'wg_geeignet', array('boolean')),
     array('tl_real_estate', 'raeumeVeraenderbar',          'ausstattung', 'raeume_veraenderbar', array('boolean')),
     array('tl_real_estate', 'bad',                         'ausstattung', 'bad@#', array('text', 'lowercase')),
@@ -322,7 +322,7 @@ return array
     array('tl_real_estate', 'verkaufstatus',               'zustand_angaben', 'verkaufstatus@stand', array('text', 'lowercase')),
 
     /** Zustand Angaben: Energieausweis */
-    array('tl_real_estate', 'energiepassEpart',                    'zustand_angaben/energiepass', 'epart'),
+    array('tl_real_estate', 'energiepassEpart',                    'zustand_angaben/energiepass', 'epart', array('text', 'lowercase')),
     array('tl_real_estate', 'energiepassGueltigBis',               'zustand_angaben/energiepass', 'gueltig_bis'),
     array('tl_real_estate', 'energiepassEnergieverbrauchkennwert', 'zustand_angaben/energiepass', 'energieverbrauchkennwert'),
     array('tl_real_estate', 'energiepassMitwarmwasser',            'zustand_angaben/energiepass', 'mitwarmwasser', array('boolean')),
