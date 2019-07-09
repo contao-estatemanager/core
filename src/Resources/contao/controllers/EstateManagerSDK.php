@@ -74,7 +74,6 @@ class EstateManagerSDK extends \Frontend
      * @return array
      */
     public function getModelParameters($method){
-        // ToDo: Wird es benötigt hier zu prüfen ob die limit und offset parameter wirklich vom typ integer sind?
         return $this->getParameters($method, array('limit', 'offset'));
     }
 
