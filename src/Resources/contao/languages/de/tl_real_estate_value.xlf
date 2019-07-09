@@ -796,16 +796,16 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.ausstattKategorie_standard">
-        <source>Standardausstattung</source>
-        <target>Standardausstattung</target>
+        <source>standard</source>
+        <target>standard</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausstattKategorie_gehoben">
-        <source>gehobene Ausstattung</source>
-        <target>gehobene Ausstattung</target>
+        <source>gehoben</source>
+        <target>gehoben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausstattKategorie_luxus">
-        <source>Luxusausstattung</source>
-        <target>Luxusausstattung</target>
+        <source>luxus</source>
+        <target>luxus</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.bad_dusche">
