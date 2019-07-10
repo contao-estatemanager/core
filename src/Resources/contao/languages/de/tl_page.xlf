@@ -1,0 +1,54 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_page.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_page.setMarketingType.0">
+        <source>Define marketing type</source>
+        <target>Vermarktungsart festlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_page.setMarketingType.1">
+        <source>Here you can specify whether the marketing type should be automatically set to a fixed value when the page is entered.</source>
+        <target>Hier können Sie festlegen, ob die Vermartkungsart automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.marketingType.0">
+        <source>Marketing type</source>
+        <target>Vermarktungsart</target>
+      </trans-unit>
+      <trans-unit id="tl_page.marketingType.1">
+        <source>Here you can specify the marketing type to be automatically selected when the page is entered.</source>
+        <target>Hier können Sie die Vermarktungsart festlegen, die automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.setRealEstateType.0">
+        <source>Define real estate type</source>
+        <target>Immobilien-Typ festlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_page.setRealEstateType.1">
+        <source>Here you can specify whether the real estate type should be automatically set to a fixed value when the page is entered.</source>
+        <target>Hier können Sie festlegen, ob der Immobilien-Typ automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateType.0">
+        <source>Real estate type</source>
+        <target>Immobilien-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateType.1">
+        <source>Here you can specify the real estate type to be automatically selected when the page is entered.</source>
+        <target>Hier können Sie den Immobilien-Typ festlegen, der automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.estate_manager_legend">
+        <source>Real estate settings</source>
+        <target>Immobilien-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_page.kauf_erbpacht_miete_leasing">
+        <source>Buy / Rent</source>
+        <target>Kaufen / Mieten</target>
+      </trans-unit>
+      <trans-unit id="tl_page.kauf_erbpacht">
+        <source>Buy</source>
+        <target>Kaufen</target>
+      </trans-unit>
+      <trans-unit id="tl_page.miete_leasing">
+        <source>Rent</source>
+        <target>Mieten</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

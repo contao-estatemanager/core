@@ -13,7 +13,7 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setRealEstateType
 
 // Extend the regular palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addLegend('estate_manager_legend', 'tabnav_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
     ->addField(array('setMarketingType', 'setRealEstateType'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('regular', 'tl_page')
 ;
@@ -39,7 +39,7 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
         'exclude'                 => true,
         'inputType'               => 'select',
         'options'                 => array('kauf_erbpacht_miete_leasing' ,'kauf_erbpacht', 'miete_leasing'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
+        'reference'               => &$GLOBALS['TL_LANG']['tl_page'],
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(32) NOT NULL default ''",
     ),

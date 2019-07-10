@@ -10,14 +10,13 @@
 
 namespace ContaoEstateManager;
 
-use Contao\PageModel;
 
 /**
  * Provide methods to handle real estates.
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
-class RealEstate
+class RealEstate extends \System
 {
     /**
      * RealEstate Object
@@ -111,7 +110,7 @@ class RealEstate
             return $this->objRealEstate->{$name};
         }
 
-        return null;
+        return parent::__get($name);
     }
 
     /**
@@ -587,11 +586,16 @@ class RealEstate
     {
         $return = array();
 
-        $arrMainDetails = \StringUtil::deserialize($this->objType->mainDetails);
+        $arrMainDetails = \StringUtil::deserialize($this->objType->mainDetails, true);
 
-        if($arrMainDetails === null)
+        // HOOK: get main details
+        if (isset($GLOBALS['TL_HOOKS']['getMainDetails']) && \is_array($GLOBALS['TL_HOOKS']['getMainDetails']))
         {
-            return $return;
+            foreach ($GLOBALS['TL_HOOKS']['getMainDetails'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrMainDetails, $this->objRealEstate, $max, $this);
+            }
         }
 
         $index = 1;
@@ -602,7 +606,8 @@ class RealEstate
             {
                 $return[] = $this->formatter->getFormattedCollection($detail['field']);
 
-                if ($max !== null && $max === $index++){
+                if ($max !== null && $max === $index++)
+                {
                     break;
                 }
             }
