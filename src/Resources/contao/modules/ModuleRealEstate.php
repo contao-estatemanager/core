@@ -66,6 +66,7 @@ abstract class ModuleRealEstate extends \Module
         $statusTokens = \StringUtil::deserialize($this->statusTokens);
 
         // set information to template
+        $objTemplate->jumpTo = $this->jumpTo;
         $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
         $objTemplate->marketingToken = $realEstate->getMarketingToken();
         $objTemplate->title = $realEstate->getTitle();
