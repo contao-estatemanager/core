@@ -34,12 +34,6 @@ class ModuleRealEstateResultList extends ModuleRealEstate
     protected $strTemplate = 'mod_realEstateResultList';
 
     /**
-     * Real estate filter object
-     * @var RealEstateFilter
-     */
-    protected $filter;
-
-    /**
      * Do not display the module if there are no real etates
      *
      * @return string
