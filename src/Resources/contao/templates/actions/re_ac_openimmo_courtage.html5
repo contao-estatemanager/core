@@ -19,11 +19,6 @@ return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedC
     if($objRealEstate->aussenCourtage)
     {
         $strValue = $objRealEstate->aussenCourtage;
-
-        if($objRealEstate->aussenCourtageMwst)
-        {
-            $strValue .= ' ' . ContaoEstateManager\Translator::translateValue('incl_mwst');
-        }
     }
     else
     {
