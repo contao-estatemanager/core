@@ -565,7 +565,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'price'    => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 810
             )
         ),
         'heizkostenEnthalten'  => array
@@ -578,7 +578,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'     => true,
                 'filter'    => true,
                 'sorting'   => true,
-                'order'     => 800
+                'order'     => 810
             )
         ),
         'heizkosten'  => array
@@ -590,7 +590,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'price'     => true,
                 'sorting'   => true,
-                'order'     => 800
+                'order'     => 810
             )
         ),
         'heizkostennetto'  => array
@@ -602,7 +602,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'price'     => true,
                 'sorting'   => true,
-                'order'     => 800
+                'order'     => 815
             )
         ),
         'heizkostenust'  => array
@@ -632,7 +632,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'price'     => true,
                 'filter'    => true,
-                'order'     => 800
+                'order'     => 815
             )
         ),
 
@@ -645,7 +645,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'     => true,
-                'order'     => 800
+                'order'     => 815
             )
         ),
         'hauptmietzinsust'  => array
@@ -678,7 +678,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'sorting'  => true,
                 'filter'   => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'betriebskostenust'  => array
@@ -698,7 +698,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'sorting'  => true,
                 'filter'   => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'evbust'  => array
@@ -718,7 +718,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'gesamtmieteust'  => array
@@ -738,7 +738,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'gesamtbelastungnetto'  => array
@@ -751,7 +751,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'gesamtbelastungust'  => array
@@ -771,7 +771,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'gesamtkostenprom2von'  => array
@@ -784,7 +784,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'gesamtkostenprom2bis'  => array
@@ -797,7 +797,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'monatlichekostennetto'  => array
@@ -810,7 +810,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'monatlichekostenust'  => array
@@ -830,7 +830,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'nebenkostenprom2von'  => array
@@ -843,7 +843,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'nebenkostenprom2bis'  => array
@@ -856,7 +856,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'ruecklagenetto'  => array
@@ -869,7 +869,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'ruecklageust'  => array
@@ -889,7 +889,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'sonstigekostenust'  => array
@@ -909,7 +909,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'sonstigemieteust'  => array
@@ -929,7 +929,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'summemieteust'  => array
@@ -949,7 +949,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'nettomieteprom2bis'  => array
@@ -962,7 +962,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'pacht'  => array
@@ -1001,7 +1001,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'abstand'  => array
@@ -1012,7 +1012,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'preisZeitraumVon'  => array
@@ -1023,7 +1023,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'preisZeitraumBis'  => array
@@ -1034,7 +1034,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(10) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'preisZeiteinheit'  => array
@@ -1048,7 +1048,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 820
             )
         ),
         'mietpreisProQm'  => array
@@ -1087,7 +1087,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'provisionTeilen'  => array // ToDo: Feld kann nicht eindeutig zugeordnet werden. Ist ein Boolean, scheinbar aber auch ein String.
@@ -1098,7 +1098,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'provisionTeilenWert'  => array
@@ -1111,7 +1111,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'innenCourtage'  => array
@@ -1136,18 +1136,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
-            )
-        ),
-        'aussenCourtageMwst'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aussenCourtageMwst'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class' => 'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default '0'",
-            'realEstate'                => array(
-                'price'    => true,
-                'order'    => 800
+                'order'    => 830
             )
         ),
         'courtageHinweis'  => array
@@ -1158,7 +1147,18 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 830
+            )
+        ),
+        'aussenCourtageMwst'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aussenCourtageMwst'],
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class' => 'w50 m12'),
+            'sql'                       => "char(1) NOT NULL default '0'",
+            'realEstate'                => array(
+                'price'    => true,
+                'order'    => 830
             )
         ),
         'provisionnetto'  => array
@@ -1169,7 +1169,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'provisionust'  => array
@@ -1187,7 +1187,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'waehrung'  => array // ToDo: Select -> Alle Währungen
@@ -1219,7 +1219,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(20) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'nettorendite'  => array
@@ -1230,7 +1230,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'nettorenditeSoll'  => array
@@ -1241,7 +1241,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'nettorenditeIst'  => array
@@ -1252,7 +1252,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'mieteinnahmenIst'  => array
@@ -1263,7 +1263,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'mieteinnahmenIstPeriode'  => array
@@ -1276,7 +1276,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'mieteinnahmenSoll'  => array
@@ -1287,7 +1287,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'mieteinnahmenSollPeriode'  => array
@@ -1300,7 +1300,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'erschliessungskosten'  => array
@@ -1313,7 +1313,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'    => true,
                 'filter'   => true,
                 'sorting'  => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'kaution'  => array
@@ -1324,7 +1324,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 830
             )
         ),
         'kautionText'  => array
@@ -1335,7 +1335,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(20) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 830
             )
         ),
         'geschaeftsguthaben'  => array
@@ -1346,7 +1346,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 800
+                'order'    => 825
             )
         ),
         'richtpreis'  => array
@@ -2335,7 +2335,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'group'    => 'balkon_terrassen',
                 'detail'   => true,
-                'attribute'=> true,
                 'filter'   => true,
                 'sorting'  => true,
                 'order'    => 400
@@ -2350,7 +2349,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'group'    => 'balkon_terrassen',
                 'detail'   => true,
-                'attribute'=> true,
                 'filter'   => true,
                 'sorting'  => true,
                 'order'    => 400
@@ -2364,7 +2362,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
                 'detail'   => true,
-                'attribute'=> true,
                 'filter'   => true,
                 'sorting'  => true,
                 'order'    => 400
@@ -2756,7 +2753,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
-                'attribute' => true,
                 'filter'   => true,
                 'order'    => 600
             )
@@ -3191,8 +3187,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'detail'   => true,
-                'filter'   => true
+                'detail'    => true,
+                'attribute' => true,
+                'filter'    => true
             )
         ),
         'abstellraum' => array
