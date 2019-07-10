@@ -132,12 +132,12 @@
         <target>Garage Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
-        <source>Freistellplatz</source>
-        <target>Freistellplatz</target>
+        <source>Außenstellplatz</source>
+        <target>Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatzKaufpreis">
-        <source>Freistellplatz Kaufpreis</source>
-        <target>Freistellplatz Kaufpreis</target>
+        <source>Außenstellplatz Kaufpreis</source>
+        <target>Außenstellplatz Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
         <source>Stellplätze</source>

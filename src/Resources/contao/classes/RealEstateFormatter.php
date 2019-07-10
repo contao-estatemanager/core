@@ -299,7 +299,7 @@ class RealEstateFormatter
 
                 // Converts boolean values to readable values
                 case 'boolToWord':
-                    $newValue = boolval($value) ? Translator::translateValue(1) : ($action['necessary'] ? Translator::translateValue(0) : $value);
+                    $newValue = boolval($value) ? Translator::translateValue('yes') : ($action['necessary'] ? Translator::translateValue('no') : $value);
                     break;
 
                 // Make a string's first character uppercase (PHP ucfirst)
