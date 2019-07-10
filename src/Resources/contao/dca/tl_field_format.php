@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
     'palettes' => array
     (
         '__selector__'  => array('useCondition'),
-        'default'       => '{format_legend},fieldname,cssClass,useCondition;'
+        'default'       => '{format_legend},fieldname,cssClass,forceOutput,useCondition;'
     ),
 
     // Subpalettes
@@ -154,6 +154,13 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             'search'                    => true,
             'eval'                      => array('tl_class'=>'w50', 'maxlength'=>255),
             'sql'                       => "varchar(255) NOT NULL default ''"
+        ),
+        'forceOutput'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['forceOutput'],
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class'=>'w50 m12'),
+            'sql'                       => "char(1) NOT NULL default ''"
         ),
         'useCondition'  => array
         (

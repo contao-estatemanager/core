@@ -185,7 +185,12 @@ class RealEstate
         {
             if($this->formatter->isFilled($field))
             {
-                $arrFields[] = $this->formatter->getFormattedCollection($field);
+                $val = $this->formatter->getFormattedCollection($field);
+
+                if($val !== null)
+                {
+                    $arrFields[] = $val;
+                }
             }
         }
 
@@ -522,7 +527,12 @@ class RealEstate
             // check if the fields have to be assigned to groups
             if($separateGroups === null)
             {
-                $collection[ $defaultGroup ][ $field ] = $this->formatter->getFormattedCollection($field);
+                $val = $this->formatter->getFormattedCollection($field);
+
+                if($val !== null)
+                {
+                    $collection[ $defaultGroup ][ $field ] = $val;
+                }
             }
             else
             {
@@ -549,7 +559,12 @@ class RealEstate
                     }
                 }
 
-                $collection[ $allocationGroup ][ $field ] = $this->formatter->getFormattedCollection($field);
+                $val = $this->formatter->getFormattedCollection($field);
+
+                if($val !== null)
+                {
+                    $collection[ $allocationGroup ][ $field ] = $val;
+                }
             }
         }
 
@@ -674,9 +689,12 @@ class RealEstate
         {
             $textCollection = $this->formatter->getFormattedCollection($field);
 
-            $textCollection['value'] = $this->formatter->shortenText($textCollection['value'], $maxTextLength);
+            if($textCollection !== null)
+            {
+                $textCollection['value'] = $this->formatter->shortenText($textCollection['value'], $maxTextLength);
 
-            $return[ $field ] = $textCollection;
+                $return[ $field ] = $textCollection;
+            }
         }
 
         return $return;

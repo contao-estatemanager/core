@@ -70,6 +70,14 @@
         <source>Several classes can be specified separated by blanks.</source>
         <target>Es können mehrere Klassen per Leerzeichen getrennt angegeben werden.</target>
       </trans-unit>
+      <trans-unit id="tl_field_format.forceOutput.0">
+        <source>Force output</source>
+        <target>Ausgabe erzwingen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.forceOutput.1">
+        <source>Forces the output of the field, even if no value was transmitted.</source>
+        <target>Erzwingt die Ausgabe des Feldes, auch wenn kein Wert übermittelt wurde.</target>
+      </trans-unit>
       <trans-unit id="tl_field_format.useCondition.0">
         <source>Add condition</source>
         <target>Bedingung hinzufügen</target>
@@ -84,7 +92,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.1">
         <source>Select the fields to which the condition is attached and optionally specify a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
-        <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt ist oder gefüllt nicht.</target>
+        <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt oder nicht gefüllt ist.</target>
       </trans-unit>
     </body>
   </file>

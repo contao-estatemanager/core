@@ -10,9 +10,10 @@
 
 return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedCollection){
 
-    if($field !== 'aussenCourtage' && $field !== 'aussenCourtageMwst' && $field !== 'courtageHinweis')
+    if($objRealEstate->vermarktungsartKauf !== '1' || ($field !== 'aussenCourtage' && $field !== 'aussenCourtageMwst' && $field !== 'courtageHinweis'))
     {
-        return $varValue;
+        // return false for skipping this field
+        return false;
     }
 
     if($objRealEstate->aussenCourtage)

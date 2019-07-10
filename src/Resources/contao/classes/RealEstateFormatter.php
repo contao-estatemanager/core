@@ -93,6 +93,7 @@ class RealEstateFormatter
                 // create field format array
                 $arrFieldFormats[ $objFieldFormats->fieldname ] = array(
                     'class'     => $objFieldFormats->cssClass,
+                    'force'     => !!$objFieldFormats->forceOutput,
                     'actions'   => null
                 );
 
@@ -180,15 +181,22 @@ class RealEstateFormatter
     }
 
     /**
-     * returns a full formatted collection
+     * returns a fully formatted collection or null for values that should be skipped afterwards
      *
      * @param $field
-     * @return array
+     * @return array|null
      */
     public function getFormattedCollection($field)
     {
+        $val = $this->formatValue($field);
+
+        if($val === false)
+        {
+            return null;
+        }
+
         return array(
-            'value' => $this->formatValue($field),
+            'value' => $val,
             'label' => Translator::translateLabel($field),
             'key'   => $field,
             'class' => $this->getClass($field)
@@ -388,7 +396,7 @@ class RealEstateFormatter
      */
     public function isFilled($field)
     {
-        if ($this->objRealEstate->{$field})
+        if ($this->objRealEstate->{$field} || $this->arrFieldFormats[ $field ]['force'])
         {
             return true;
         }
