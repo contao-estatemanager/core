@@ -11,13 +11,17 @@
 
       <?php if ($this->addImage): ?>
           <div class="main-image">
-            <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+            <?php if ($this->jumpTo): ?>
+                <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+            <?php endif; ?>
                 <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
-            </a>
+            <?php if ($this->jumpTo): ?>
+                </a>
+            <?php endif; ?>
           </div>
       <?php endif; ?>
 
-      <div class="title"><?= $this->linkHeadline ?></div>
+      <div class="title"><?= $this->jumpTo ? $this->linkHeadline : $this->title ?></div>
       <div class="address"><?= $this->address ?></div>
 
       <div class="main-details">
@@ -31,7 +35,9 @@
 
       <div class="bottom">
         <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
-        <div class="expose-link"><?= $this->linkExpose ?></div>
+          <?php if ($this->jumpTo): ?>
+            <div class="expose-link"><?= $this->linkExpose ?></div>
+          <?php endif; ?>
       </div>
 
       <?php if ($this->addProvider): ?>

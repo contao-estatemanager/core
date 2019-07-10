@@ -24,8 +24,8 @@
         <target>Provisionspflichtig</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.aussenCourtage">
-        <source>Käuferprovision</source>
-        <target>Käuferprovision</target>
+        <source>Provision für Käufer</source>
+        <target>Provision für Käufer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.aussenCourtageMwst">
         <source>Käuferprovision mit MwSt.</source>
@@ -127,9 +127,17 @@
         <source>Garage</source>
         <target>Garage</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpGarageKaufpreis">
+        <source>Garage Kaufpreis</source>
+        <target>Garage Kaufpreis</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
-        <source>Freistellplatz</source>
-        <target>Freistellplatz</target>
+        <source>Außenstellplatz</source>
+        <target>Außenstellplatz</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpFreiplatzKaufpreis">
+        <source>Außenstellplatz Kaufpreis</source>
+        <target>Außenstellplatz Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
         <source>Stellplätze</source>
@@ -139,9 +147,17 @@
         <source>Kamin</source>
         <target>Kamin</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.waschTrockenraum">
+        <source>Wasch- / Trockenraum</source>
+        <target>Wasch- / Trockenraum</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.rolladen">
         <source>Rolladen</source>
         <target>Rolladen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.dachboden">
+        <source>Dachboden</source>
+        <target>Dachboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gaestewc">
         <source>Gäste-WC</source>
@@ -202,6 +218,10 @@
       <trans-unit id="tl_real_estate_label.klimatisiert">
         <source>Klimatisiert</source>
         <target>Klimatisiert</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.seniorengerecht">
+        <source>Seniorengerecht</source>
+        <target>Seniorengerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.heizungsart">
         <source>Heizungsart</source>

@@ -38,6 +38,30 @@
          <source>open kitchen</source>
          <target>offene Küche</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_garage">
+        <source>Garage</source>
+        <target>Garage</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_tiefgarage">
+        <source>Tiefgarage</source>
+        <target>Tiefgarage</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_carport">
+        <source>Carport</source>
+        <target>Carport</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_freiplatz">
+        <source>Außenstellplatz</source>
+        <target>Außenstellplatz</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_parkhaus">
+        <source>Parkhaus</source>
+        <target>Parkhaus</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_duplex">
+        <source>Duplex</source>
+        <target>Duplex</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
