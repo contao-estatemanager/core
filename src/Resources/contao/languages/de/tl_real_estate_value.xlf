@@ -30,6 +30,10 @@
         <source>Rented</source>
         <target>Vermietet</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_value.incl_mwst">
+        <source>incl. MwSt.</source>
+        <target>inkl. MwSt.</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_value.nutzungsart_wohnen">
         <source>Wohnen</source>

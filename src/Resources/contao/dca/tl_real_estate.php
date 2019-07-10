@@ -1125,9 +1125,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'innenCourtageMwst'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['innenCourtageMwst'],
-            'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 32, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class' => 'w50 m12'),
+            'sql'                       => "char(1) NOT NULL default '0'"
         ),
         'aussenCourtage'  => array
         (
@@ -1143,9 +1143,9 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'aussenCourtageMwst'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aussenCourtageMwst'],
-            'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 32, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class' => 'w50 m12'),
+            'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 800

@@ -24,8 +24,8 @@
         <target>Provisionspflichtig</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.aussenCourtage">
-        <source>Käuferprovision</source>
-        <target>Käuferprovision</target>
+        <source>Provision für Käufer</source>
+        <target>Provision für Käufer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.aussenCourtageMwst">
         <source>Käuferprovision mit MwSt.</source>
@@ -154,6 +154,10 @@
       <trans-unit id="tl_real_estate_label.rolladen">
         <source>Rolladen</source>
         <target>Rolladen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.dachboden">
+        <source>Dachboden</source>
+        <target>Dachboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gaestewc">
         <source>Gäste-WC</source>
