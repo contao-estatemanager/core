@@ -1,10 +1,161 @@
+
 <script>
     var EstateManager = {
 <?= \ContaoEstateManager\FilterToggle::getEstateManagerConfig(); ?>
     };
 </script>
 <script>
-    (function (root, factory) {
+  var EstateManagerFilter = (function () {
+
+      'use strict';
+
+      var EstateManagerFilter = function (options) {
+          debugger;
+          this.supports = !!document.querySelector; // Feature test
+
+          // feature test and availability
+          if (!this.supports || !document.querySelector(options.selector)) return;
+
+          // Destroy any existing initializations
+          this.destroy();
+
+          this.defaults = {
+              addBlankMarketingType: false,
+              addBlankRealEstateType: false,
+              filter: [],
+              submitOnChange: false
+          };
+
+          this.settings = this.defaults;
+
+              // Merge user options with defaults
+          this.settings = jovel.extend(true, this.defaults, options || {});
+
+          this.form = document.querySelector(this.settings.selector);
+          this.fieldMarketingType = document.querySelector(this.settings.selector + ' .real-estate-marketing-type');
+          this.fieldRealEstateType = document.querySelector(this.settings.selector + ' .real-estate-type');
+          this.toggleFilter = document.querySelectorAll(this.settings.selector + ' .real-estate-filter');
+
+          // Set all event listener
+          this.setEventListener();
+      };
+
+      EstateManagerFilter.prototype.destroy = function () {
+          // If plugin isn't already initialized, stop
+          if (!this.settings) return;
+
+          // Reset variables
+          this.settings = null;
+
+          // Remove all event listener
+          this.removeEventListener();
+      };
+
+      EstateManagerFilter.prototype.setEventListener = function () {
+          if (this.fieldMarketingType)  this.fieldMarketingType.addEventListener('change', this.marketingTypeChanged.bind(this), false);
+          if (this.fieldRealEstateType) this.fieldRealEstateType.addEventListener('change', this.realEstateTypeChanged.bind(this), false);
+      };
+
+      EstateManagerFilter.prototype.removeEventListener = function () {
+          if (this.fieldMarketingType)  this.fieldMarketingType.removeEventListener('change', this.marketingTypeChanged, false);
+          if (this.fieldRealEstateType) this.fieldRealEstateType.removeEventListener('change', this.realEstateTypeChanged, false);
+      };
+
+      EstateManagerFilter.prototype.marketingTypeChanged = function () {
+          let firstSelected = false;
+          let switchType = (this.settings.addBlankRealEstateType) ? ((EstateManager.types[this.fieldRealEstateType.value]) ? EstateManager.types[this.fieldRealEstateType.value].switchType : 0) : EstateManager.types[this.fieldRealEstateType.value].switchType;
+
+          if (this.settings.addBlankRealEstateType === false) {
+              for (var i=0; i<this.fieldRealEstateType.options.length;i++) {
+                  if (this.fieldMarketingType.value) {
+                      if (this.fieldRealEstateType.options[i].dataset.marketingType === this.fieldMarketingType.value) {
+                          this.fieldRealEstateType.options[i].style.display = '';
+                          if (this.fieldRealEstateType.options[i].value == switchType) {
+                              this.fieldRealEstateType.options[i].selected = true;
+                              this.realEstateTypeChanged();
+                          } else if (switchType == 0 && !firstSelected && this.fieldRealEstateType.selectedOptions[0].dataset.marketingType != this.fieldMarketingType.value) {
+                              this.fieldRealEstateType.options[i].selected = true;
+                              firstSelected = true;
+                              this.realEstateTypeChanged();
+                          }
+                      } else {
+                          this.fieldRealEstateType.options[i].style.display = 'none';
+                      }
+                  } else {
+                      this.fieldRealEstateType.options[i].style.display = '';
+                  }
+              }
+          } else {
+              if (this.settings.addBlankMarketingType === false) {
+                  if (!switchType) {
+                      this.fieldRealEstateType.options[0].selected = true;
+                      this.realEstateTypeChanged();
+                  }
+
+                  for (var i=1; i<this.fieldRealEstateType.options.length;i++) {
+                      if (this.fieldRealEstateType.options[i].dataset.marketingType === this.fieldMarketingType.value) {
+                          this.fieldRealEstateType.options[i].style.display = '';
+                          if (this.fieldRealEstateType.options[i].value == switchType) {
+                              this.fieldRealEstateType.options[i].selected = true;
+                              this.realEstateTypeChanged();
+                          }
+                      } else {
+                          this.fieldRealEstateType.options[i].style.display = 'none';
+                      }
+                  }
+              } else {
+                  if (!switchType && (this.fieldRealEstateType.selectedOptions[0].dataset.marketingType != this.fieldMarketingType.value && this.fieldMarketingType.value)) {
+                      this.fieldRealEstateType.options[0].selected = true;
+                      this.realEstateTypeChanged();
+                  }
+
+                  for (var i=1; i<this.fieldRealEstateType.options.length;i++) {
+                      if (this.fieldMarketingType.value) {
+                          if (this.fieldRealEstateType.options[i].dataset.marketingType === this.fieldMarketingType.value) {
+                              this.fieldRealEstateType.options[i].style.display = 'initial';
+                              if (this.fieldRealEstateType.options[i].value == switchType) {
+                                  this.fieldRealEstateType.options[i].selected = true;
+                                  this.realEstateTypeChanged();
+                              }
+                          } else {
+                              this.fieldRealEstateType.options[i].style.display = 'none';
+                          }
+                      } else {
+                          this.fieldRealEstateType.options[i].style.display = '';
+                      }
+                  }
+              }
+          }
+      };
+
+      EstateManagerFilter.prototype.realEstateTypeChanged = function () {
+          if (this.settings.submitOnChange) {
+              this.form.submit();
+          } else {
+              for (let i=0; i<this.toggleFilter.length; i++) {
+                  if (this.fieldRealEstateType.selectedOptions[0].value && this.fieldRealEstateType.selectedOptions[0].value !== 'miete_leasing' && this.fieldRealEstateType.selectedOptions[0].value !== 'kauf_erbpacht') {
+                      if (EstateManager.types[this.fieldRealEstateType.selectedOptions[0].value].filter.indexOf(this.toggleFilter[i].dataset.group) >= 0) {
+                          this.toggleFilter[i].style.display = '';
+                      } else {
+                          this.toggleFilter[i].style.display = 'none';
+                      }
+                  } else {
+                      if (this.settings.filter.indexOf(this.toggleFilter[i].dataset.group) >= 0) {
+                          this.toggleFilter[i].style.display = '';
+                      } else {
+                          this.toggleFilter[i].style.display = 'none';
+                      }
+                  }
+              }
+          }
+      };
+
+      return EstateManagerFilter;
+
+  })();
+</script>
+<script>
+    /*(function (root, factory) {
         if (typeof define === 'function' && define.amd) {
             define(['jovel'], factory(root));
         } else if (typeof exports === 'object') {
@@ -30,6 +181,7 @@
         };
 
         var marketingTypeChanged = function () {
+            debugger;
             firstSelected = false;
             switchType = (settings.addBlankRealEstateType) ? ((EstateManager.types[fieldRealEstateType.value]) ? EstateManager.types[fieldRealEstateType.value].switchType : 0) : EstateManager.types[fieldRealEstateType.value].switchType;
 
@@ -97,6 +249,7 @@
         };
 
         var realEstateTypeChanged = function () {
+            debugger;
             if (settings.submitOnChange) {
                 form.submit();
             } else {
@@ -128,11 +281,11 @@
             if (fieldRealEstateType) fieldRealEstateType.removeEventListener('change', realEstateTypeChanged, false);
         };
 
-        /**
+        /!**
          * Destroy the current initialization.
          *
          * @public
-         */
+         *!/
         EstateManagerFilter.destroy = function () {
 
             // If plugin isn't already initialized, stop
@@ -145,13 +298,13 @@
             removeEventListener();
         };
 
-        /**
+        /!**
          * Initialize EstateManagerFilter
          *
          * @public
          *
          * @param {Object} options   User settings
-         */
+         *!/
         EstateManagerFilter.init = function (options) {
             // feature test and availability
             if (!supports || !document.querySelector(options.selector)) return;
@@ -172,89 +325,14 @@
         };
 
         return EstateManagerFilter;
-    });
+    });*/
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
+        var estateManagerFilter = [];
         jovel.forEach(EstateManager.filters, function (settings, id) {
             settings.selector = 'form[data-filter-id="'+id+'"]';
-            EstateManagerFilter.init(settings);
+            estateManagerFilter[i] = new EstateManagerFilter(settings);
         }, EstateManagerFilter);
     });
-</script>
-<script>
-(function() {
-    /*var marketingType = document.querySelector('select.real-estate-marketing-type');
-    var type = document.querySelector('select.real-estate-type');
-    var option = document.querySelectorAll('select.real-estate-type option');
-    var filter = document.querySelectorAll('.real-estate-filter');
-    var filterData = ImmoManager.filters[document.querySelector('[data-filter-id]').getAttribute('data-filter-id')];
-    var defaultType = (filterData.addBlankOption) ? 0 : ImmoManager.defaultType;
-
-    var addEventListener = function(el, eventName, handler) {
-        if (el.addEventListener) {
-            el.addEventListener(eventName, handler);
-        } else {
-            el.attachEvent('on' + eventName, function() {
-                handler.call(el);
-            });
-        }
-    };
-
-    var triggerEvent = function(el, eventName, options) {
-        var event;
-        if (window.CustomEvent) {
-            event = new CustomEvent(eventName, options);
-        } else {
-            event = document.createEvent('CustomEvent');
-            event.initCustomEvent(eventName, true, true, options);
-        }
-        el.dispatchEvent(event);
-    };
-
-    var toggleOptions = function(initial=false) {
-        let activeOption = document.querySelector('select.real-estate-type option:checked').value;
-        activeOption = (activeOption) ? activeOption : 0;
-        let switchType = ImmoManager.types[activeOption].switchType;
-        switchType = (switchType == 0) ? defaultType : switchType;
-        for (let i=0; i<option.length; i++) {
-            if (parseInt(option[i].value) === switchType)
-            {
-                if (!initial) option[i].selected = true;
-            }
-            if (option[i].value === '0') continue;
-            if (option[i].getAttribute('data-marketing-type') == marketingType.value) {
-                option[i].style.display = '';
-            } else {
-                option[i].style.display = 'none';
-            }
-        }
-        triggerEvent(type, 'change');
-    };
-
-    if (marketingType) {
-        addEventListener(marketingType, 'change', function (e) {
-            toggleOptions();
-        });
-
-        toggleOptions(true);
-    }
-
-    if (type.getAttribute('data-submit-on-change') == 1) {
-        addEventListener(type, 'change', function (e) {
-            e.currentTarget.form.submit();
-        });
-    } else {
-        addEventListener(type, 'change', function (e) {
-            let value = e.target.value ? e.target.value : 0;
-            for (let i=0; i<filter.length; i++) {
-                if (RealEstate.Config.filterCriteria[value].fields.indexOf(filter[i].getAttribute('data-group'))>=0) {
-                    filter[i].style.display = '';
-                } else {
-                    filter[i].style.display = 'none';
-                }
-            }
-        });
-    }*/
-})();
 </script>
