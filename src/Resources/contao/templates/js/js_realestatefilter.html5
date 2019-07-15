@@ -25,9 +25,7 @@
               submitOnChange: false
           };
 
-          this.settings = this.defaults;
-
-              // Merge user options with defaults
+          // Merge user options with defaults
           this.settings = jovel.extend(true, this.defaults, options || {});
 
           this.form = document.querySelector(this.settings.selector);
