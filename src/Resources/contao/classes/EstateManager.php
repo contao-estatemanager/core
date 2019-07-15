@@ -86,6 +86,7 @@ class EstateManager
                 $objFieldFormat->cssClass = $data['field'][1];
                 $objFieldFormat->useCondition = $data['field'][2];
                 $objFieldFormat->conditionFields = $data['field'][3];
+                $objFieldFormat->forceOutput = $data['field'][4];
 
                 $objFieldFormat = $objFieldFormat->save();
                 $actionIndex = 0;

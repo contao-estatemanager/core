@@ -2,7 +2,7 @@
 /**
  * Default field formats with action
  *
- * @version 0.0.1
+ * @version 0.0.3
  * @author  Daniele Sciannimanica <daniele@oveleon.de>
  */
 return array
@@ -37,6 +37,15 @@ return array
     array
     (
         'field' => array('nebenkosten', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('heizkosten', '', '', NULL),
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
@@ -272,6 +281,46 @@ return array
     ),
     array
     (
+        'field' => array('provisionspflichtig', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('kabelSatTv', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('dachboden', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('kamin', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('rolladen', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('waschTrockenraum', '', '', NULL),
         'actions' => array
         (
@@ -482,10 +531,10 @@ return array
     ),
     array
     (
-        'field' => array('aussenCourtage', '', '', NULL),
+        'field' => array('aussenCourtage', '', '', NULL, '1'),
         'actions' => array
         (
-            array('append', '', ' inkl. MwSt.', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_openimmo_courtage')
         )
     ),
     array
@@ -595,6 +644,14 @@ return array
         'actions' => array
         (
             array('custom', '', '', '', '', NULL, 're_ac_openimmo_objektart')
+        )
+    ),
+    array
+    (
+        'field' => array('etage', '', '', NULL),
+        'actions' => array
+        (
+            array('combine', '', '', ' / ', '', 'a:2:{i:0;a:2:{s:5:"field";s:5:"etage";s:6:"remove";s:0:"";}i:1;a:2:{s:5:"field";s:12:"anzahlEtagen";s:6:"remove";s:1:"1";}}', '')
         )
     ),
     array

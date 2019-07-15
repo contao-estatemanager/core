@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Default interface mapping
+ *
+ * @version 0.0.1
+ * @author  Daniele Sciannimanica <daniele@oveleon.de>
+ * @author  Fabian Ekert <fabian@oveleon.de>
+ */
 return array
 (
     /** Kontaktperson */

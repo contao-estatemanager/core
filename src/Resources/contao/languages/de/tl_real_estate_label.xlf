@@ -131,6 +131,10 @@
         <source>Garage Kaufpreis</source>
         <target>Garage Kaufpreis</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpGarageMietpreis">
+        <source>Miete Garage</source>
+        <target>Miete Garage</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
         <source>Außenstellplatz</source>
         <target>Außenstellplatz</target>
@@ -139,6 +143,10 @@
         <source>Außenstellplatz Kaufpreis</source>
         <target>Außenstellplatz Kaufpreis</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpFreiplatzMietpreis">
+        <source>Miete Außenstellplatz</source>
+        <target>Miete Außenstellplatz</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
         <source>Stellplätze</source>
         <target>Stellplätze</target>
@@ -146,6 +154,10 @@
       <trans-unit id="tl_real_estate_label.kamin">
         <source>Kamin</source>
         <target>Kamin</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.kabelSatTv">
+        <source>Kabel- / Sat-TV</source>
+        <target>Kabel- / Sat-TV</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.waschTrockenraum">
         <source>Wasch- / Trockenraum</source>
