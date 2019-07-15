@@ -9,7 +9,6 @@
       'use strict';
 
       var EstateManagerFilter = function (options) {
-          debugger;
           this.supports = !!document.querySelector; // Feature test
 
           // feature test and availability
