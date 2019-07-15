@@ -570,10 +570,7 @@ class tl_expose_module extends Backend
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && !($data['realEstate']['group'] === 'medien' || $data['realEstate']['group'] === 'neubau'))
-                {
-                    $filterFields[] = $field;
-                }
+                $filterFields[] = $field;
             }
         }
 
