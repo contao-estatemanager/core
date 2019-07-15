@@ -257,10 +257,11 @@ abstract class ModuleRealEstate extends \Module
      *
      * @param $objTemplate
      * @param $realEstate
+     * @param null $size
      *
      * @return boolean
      */
-    protected function addMainImageToTemplate($objTemplate, $realEstate)
+    protected function addMainImageToTemplate($objTemplate, $realEstate, $size = null)
     {
         $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
 
@@ -275,7 +276,16 @@ abstract class ModuleRealEstate extends \Module
             }
         }
 
-        return $this->addSingleImageToTemplate($objTemplate, $objModel, $this->imgSize);
+        if($size !== null)
+        {
+            $imgSize = $size;
+        }
+        else
+        {
+            $imgSize = $this->imgSize;
+        }
+
+        return $this->addSingleImageToTemplate($objTemplate, $objModel, $imgSize);
     }
 
     /**
