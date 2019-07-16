@@ -4462,12 +4462,9 @@ class tl_real_estate extends Backend
      */
     public function generateAlias($varValue, DataContainer $dc, $title='')
     {
-        $autoAlias = false;
-
         // Generate alias if there is none
         if ($varValue == '')
         {
-            $autoAlias = true;
             $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
             $varValue = System::getContainer()->get('contao.slug.generator')->generate($title);
         }
@@ -4475,14 +4472,8 @@ class tl_real_estate extends Backend
         $objAlias = $this->Database->prepare("SELECT id FROM tl_real_estate WHERE alias=? AND id!=?")
             ->execute($varValue, $dc->id);
 
-        // Check whether the news alias exists
-        if ($objAlias->numRows > 1 && !$autoAlias)
-        {
-            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
-        }
-
-        // Check whether the news alias exists
-        if ($objAlias->numRows && $autoAlias)
+        // Check whether the real estate alias exists
+        if ($objAlias->numRows)
         {
             $varValue .= '-' . $dc->id;
         }
