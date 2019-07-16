@@ -493,7 +493,7 @@ class RealEstateImporter extends \BackendModule
                                 $this->downloadFile($value, $this->objImportFolder, $completeFileName);
 
                                 $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $completeFileName);
-                                if ($fileSize > 2000000 || $fileSize === 0)
+                                if ($fileSize > 3000000 || $fileSize === 0)
                                 {
                                     $this->addLog('Skip image: File size is too large or the image is broken', 3, 'error', array(
                                         'fileSize' => $fileSize

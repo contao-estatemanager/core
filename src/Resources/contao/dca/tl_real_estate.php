@@ -4457,13 +4457,14 @@ class tl_real_estate extends Backend
             ->execute($varValue, $dc->id);
 
         // Check whether the news alias exists
-        if ($objAlias->numRows)
+        if ($objAlias->numRows > 1 && !$autoAlias)
         {
-            if (!$autoAlias)
-            {
-                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
-            }
+            throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+        }
 
+        // Check whether the news alias exists
+        if ($objAlias->numRows && $autoAlias)
+        {
             $varValue .= '-' . $dc->id;
         }
 
