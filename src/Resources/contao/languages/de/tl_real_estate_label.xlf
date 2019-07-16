@@ -43,6 +43,10 @@
         <source>Kaltmiete</source>
         <target>Kaltmiete</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.preisZeiteinheit">
+        <source>Preis Zeiteinheit</source>
+        <target>Preis Zeiteinheit</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.pacht">
         <source>Pacht</source>
         <target>Pacht</target>
@@ -87,6 +91,10 @@
         <source>Schlafzimmer</source>
         <target>Schlafzimmer</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.anzahlWohnSchlafzimmer">
+        <source>Wohn- / Schlafzimmer</source>
+        <target>Wohn- / Schlafzimmer</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlBadezimmer">
         <source>Badezimmer</source>
         <target>Badezimmer</target>
@@ -114,6 +122,18 @@
       <trans-unit id="tl_real_estate_label.befeuerung">
         <source>Befeuerung</source>
         <target>Befeuerung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.zzgMehrwertsteuer">
+        <source>zzgl. MwSt.</source>
+        <target>zzgl. MwSt.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.alterAttr">
+        <source>Alter</source>
+        <target>Alter</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.letztemodernisierung">
+        <source>letzte Modernisierung</source>
+        <target>letzte Modernisierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.objektart">
         <source>Objektart</source>
@@ -190,6 +210,10 @@
       <trans-unit id="tl_real_estate_label.gastterrasse">
         <source>Gastterrasse</source>
         <target>Gastterrasse</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.anzahlSepWc">
+        <source>Sep. WC's</source>
+        <target>Sep. WC's</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlEtagen">
         <source>Etagenanzahl</source>

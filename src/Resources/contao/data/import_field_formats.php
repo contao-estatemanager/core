@@ -289,6 +289,14 @@ return array
     ),
     array
     (
+        'field' => array('zzgMehrwertsteuer', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('provisionspflichtig', '', '', NULL),
         'actions' => array
         (
