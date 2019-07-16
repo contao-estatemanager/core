@@ -179,9 +179,17 @@
         <source>Anzahl Balkone</source>
         <target>Anzahl Balkone</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.anzahlBetten">
+        <source>Anzahl Betten</source>
+        <target>Anzahl Betten</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlTerrassen">
         <source>Anzahl Terrassen</source>
         <target>Anzahl Terrassen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.gastterrasse">
+        <source>Gastterrasse</source>
+        <target>Gastterrasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlEtagen">
         <source>Etagenanzahl</source>
