@@ -81,7 +81,7 @@ class EstateManagerRead extends EstateManagerSDK
                     foreach ($GLOBALS['TL_HOOKS']['readEstatesControllerParameter'] as $callback)
                     {
                         $this->import($callback[0]);
-                        $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $this);
+                        $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $this->currParam, $this);
                     }
                 }
 
