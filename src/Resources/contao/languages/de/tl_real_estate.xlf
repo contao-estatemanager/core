@@ -63,6 +63,10 @@
         <source>Image</source>
         <target>Bild</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.anbieternr.0">
+        <source>Provider Number</source>
+        <target>Anbieternummer</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.tstamp.0">
         <source>Modified</source>
         <target>Geändert am</target>
@@ -136,6 +140,14 @@
       <trans-unit id="tl_real_estate.plz.1">
         <source>Enter the postcode of the property here</source>
         <target>Geben Sie hier die Postleitzahl der Immobilie ein</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.land.0">
+        <source>Country</source>
+        <target>Land</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.land.1">
+        <source>Enter the country of the property here</source>
+        <target>Geben Sie hier das Land der Immobilie ein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ort.0">
         <source>Location</source>
