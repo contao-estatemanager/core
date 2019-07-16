@@ -71,7 +71,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         $this->addSorting();
         $this->parseRealEstateList();
 
-        if($this->addCountLabel)
+        if($this->addCountLabel && $this->totalItems)
         {
             $this->Template->labelObjectsFound = sprintf(Translator::translateLabel('labelObjectsFound'), $this->totalItems);
         }
