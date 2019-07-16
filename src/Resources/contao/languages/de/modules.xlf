@@ -259,6 +259,14 @@
         <source>Other information</source>
         <target>Sonstige Angaben</target>
       </trans-unit>
+      <trans-unit id="FMD.dreizeiler.0">
+        <source>Short description</source>
+        <target>Kurzbeschreibung</target>
+      </trans-unit>
+      <trans-unit id="FMD.objektText.0">
+        <source>Object text</source>
+        <target>Objekttext</target>
+      </trans-unit>
 
       <trans-unit id="FMD.kontaktname.0">
         <source>Name</source>

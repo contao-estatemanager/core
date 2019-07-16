@@ -70,6 +70,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
         $objTemplate->marketingToken = $realEstate->getMarketingToken();
         $objTemplate->title = $realEstate->getTitle();
+        $objTemplate->teaser = $texts['dreizeiler'];
         $objTemplate->description = $texts['objektbeschreibung'];
         $objTemplate->linkExpose = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));

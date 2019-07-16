@@ -298,6 +298,14 @@
         <source>When residential real estate is also available for commercial use</source>
         <target>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.verfuegbarAb.0">
+        <source>Available from</source>
+        <target>Verfügbar ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.verfuegbarAb.1">
+        <source>Enter the availability date here</source>
+        <target>Geben Sie hier das Verfügbarkeitsdatum an</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate.zimmerTyp.0">
         <source>Room type</source>

@@ -75,7 +75,15 @@ class EstateManagerRead extends EstateManagerSDK
                     $arrOptions = array_merge($arrOptions, $options);
                 }
 
-
+                // HOOK: Modify parameters for module estates
+                if (isset($GLOBALS['TL_HOOKS']['readEstatesControllerParameter']) && \is_array($GLOBALS['TL_HOOKS']['readEstatesControllerParameter']))
+                {
+                    foreach ($GLOBALS['TL_HOOKS']['readEstatesControllerParameter'] as $callback)
+                    {
+                        $this->import($callback[0]);
+                        $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $this->currParam, $this);
+                    }
+                }
 
                 $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
 

@@ -4,7 +4,7 @@
 
 <?php foreach ($this->arrFields as $field): ?>
     <div class="field <?= $field['key'] ?><?= ($field['class']) ? ' '.$field['class'] : '' ?>">
-        <span class="label"><?= $field['label'] ?>:</span>
+        <span class="label"><?= $field['label'] ?></span>
         <span class="value"><?= $field['value'] ?></span>
     </div>
 <?php endforeach; ?>
