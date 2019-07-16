@@ -383,6 +383,20 @@ class RealEstateImporter extends \BackendModule
                     'ANBIETER' => $uniqueProviderValue,
                     'AKTIONART' => current($realEstate->verwaltung_techn->aktion)['aktionart']
                 );
+
+                if ($this->objInterface->type === 'wib')
+                {
+                    $re['AUFTRAGSART'] = $this->getWibAuftragsart($realEstate);
+
+                    if ($uniqueProviderValue !== $this->objInterface->anbieternr)
+                    {
+                        if (in_array($re['AUFTRAGSART'], array('R', 'V', 'S', 'SB', 'Z', 'G')))
+                        {
+                            continue;
+                        }
+                    }
+                }
+
                 $addImageLog = true;
 
                 $this->addLog('Import real estate: ' . $uniqueValue, 1, 'highlight', $realEstate);
@@ -401,6 +415,19 @@ class RealEstateImporter extends \BackendModule
                         {
                             if ($interfaceMapping->oiConditionValue !== $this->getFieldData($interfaceMapping->oiConditionField, $group))
                             {
+                                if ($interfaceMapping->forceActive)
+                                {
+                                    switch ($interfaceMapping->type)
+                                    {
+                                        case 'tl_contact_person':
+                                            $contactPerson[$interfaceMapping->attribute] = $interfaceMapping->forceValue;
+                                            break;
+                                        case 'tl_real_estate':
+                                            $re[$interfaceMapping->attribute] = $interfaceMapping->forceValue;
+                                            break;
+                                    }
+                                }
+
                                 continue;
                             }
                         }
@@ -442,6 +469,13 @@ class RealEstateImporter extends \BackendModule
                                 $fileName = $this->getValueFromStringUrl($value, 'imageId');
 
                                 $extension = $this->getExtension($format);
+
+                                // Skip image if no file extension could be determined
+                                if ($extension === false)
+                                {
+                                    continue;
+                                }
+
                                 $completeFileName = $fileName . $extension;
 
                                 $existingFile = FilesModel::findByPath($objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $completeFileName);
@@ -458,7 +492,8 @@ class RealEstateImporter extends \BackendModule
 
                                 $this->downloadFile($value, $this->objImportFolder, $completeFileName);
 
-                                if ($fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $completeFileName) > 2500000)
+                                $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $completeFileName);
+                                if ($fileSize > 2000000 || $fileSize === 0)
                                 {
                                     $this->addLog('Skip image: File size is too large or the image is broken', 3, 'error', array(
                                         'fileSize' => $fileSize
@@ -483,6 +518,13 @@ class RealEstateImporter extends \BackendModule
                             }
 
                             $objFile = $this->copyFile($value, $objFilesFolder, $uniqueProviderValue, $uniqueValue);
+
+                            // Delete file, if hash dont match
+                            if ($objFile->hash !== $check)
+                            {
+                                $objFile->delete();
+                                continue;
+                            }
 
                             if (($titel = current($tmpGroup->anhangtitel)) !== '')
                             {
@@ -559,18 +601,50 @@ class RealEstateImporter extends \BackendModule
             case 'image/gif':
                 $extension = '.gif';
                 break;
+            case 'application/pdf':
+                $extension = '.pdf';
+                break;
+            case 'application/octet-stream':
+                return false;
+                break;
             default:
-                if (strpos('/', $extension) === false)
+                if (strpos('/', $format) === false)
                 {
-                    $extension = '.' . strtolower($extension);
+                    $extension = '.' . strtolower($format);
                 }
                 else
                 {
-                    $extension = '.jpg';
+                    return false;
                 }
         }
 
         return $extension;
+    }
+
+    protected function getWibAuftragsart($realEstate)
+    {
+        $groups = $realEstate->xpath('verwaltung_objekt');
+
+        foreach ($groups as $group)
+        {
+            // Skip if condition dont match
+            if ($this->getFieldData('user_defined_simplefield@feldname', $group) !== 'auftragsart')
+            {
+                continue;
+            }
+
+            $value = $this->getFieldData('user_defined_simplefield', $group);
+
+            // Skip if value is not set
+            if ($value === null)
+            {
+                continue;
+            }
+
+            return $value;
+        }
+
+        return '';
     }
 
     protected function updateCatalog($contactPersonRecords, $realEstateRecords)
@@ -586,11 +660,6 @@ class RealEstateImporter extends \BackendModule
         {
             if ($realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr && $this->objInterface->importThirdPartyProvider)
             {
-                if (in_array($realEstateRecords[$i]['AUFTRAGSART'], array('R', 'V', 'S')))
-                {
-                    continue;
-                }
-
                 if ($realEstateRecords[$i]['vermarktungsartKauf'])
                 {
                     $objContactPerson = ContactPersonModel::findByPk($this->objInterface->assignContactPersonKauf);
@@ -697,6 +766,28 @@ class RealEstateImporter extends \BackendModule
             $objRealEstate->contactPerson = $objContactPerson->id;
             $objRealEstate->tstamp = time();
             $objRealEstate->published = 1;
+
+            $this->loadDataContainer('tl_real_estate');
+
+            // Trigger the save_callback
+            if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback']))
+            {
+                $dc = new \DC_Table('tl_real_estate');
+                $dc->id = $objRealEstate->id;
+
+                foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
+                {
+                    if (\is_array($callback))
+                    {
+                        $this->import($callback[0]);
+                        $objRealEstate->alias = $this->{$callback[0]}->{$callback[1]}($objRealEstate->alias, $dc, $objRealEstate->objekttitel);
+                    }
+                    elseif (\is_callable($callback))
+                    {
+                        $objRealEstate->alias = $callback($objRealEstate->alias, $dc, $objRealEstate->objekttitel);
+                    }
+                }
+            }
 
             $objRealEstate->save();
         }
@@ -836,7 +927,7 @@ class RealEstateImporter extends \BackendModule
                     }
                     else
                     {
-                        $value = '';
+                        $value = '0';
                     }
                 }
                 elseif ($value && ($value === '1' || $value === 'true'))
@@ -845,7 +936,7 @@ class RealEstateImporter extends \BackendModule
                 }
                 else
                 {
-                    $value = '';
+                    $value = '0';
                 }
                 break;
         }

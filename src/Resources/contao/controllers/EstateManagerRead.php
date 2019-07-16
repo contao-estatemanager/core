@@ -75,6 +75,8 @@ class EstateManagerRead extends EstateManagerSDK
                     $arrOptions = array_merge($arrOptions, $options);
                 }
 
+
+
                 $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
 
                 switch($this->currParam['dataType'])
