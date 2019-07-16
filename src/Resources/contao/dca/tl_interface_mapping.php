@@ -95,15 +95,16 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'formatType'),
+        '__selector__'                => array('type', 'forceActive', 'formatType'),
         'default'                     => '{type_legend},type;',
-        'tl_real_estate'              => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage',
-        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize;{format_legend},formatType;{expert_legend},saveImage'
+        'tl_real_estate'              => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,forceActive;{format_legend},formatType;{expert_legend},saveImage',
+        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,forceActive;{format_legend},formatType;{expert_legend},saveImage'
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
+        'forceActive'                 => 'forceValue',
         'formatType_number'           => 'decimals',
         'formatType_date'             => 'dateFormat',
         'formatType_text'             => 'textTransform,trim',
@@ -190,6 +191,22 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'forceActive' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['forceActive'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'forceValue'  => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['forceValue'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'formatType' => array
         (
