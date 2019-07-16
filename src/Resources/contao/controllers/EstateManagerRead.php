@@ -58,7 +58,7 @@ class EstateManagerRead extends EstateManagerSDK
             case 'estates':
 
                 // validate parameters
-                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo');
+                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode');
                 $this->currParam = $this->getParameters($this->method, $validParameters);
 
                 // prepare model

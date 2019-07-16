@@ -225,6 +225,14 @@ return array
     ),
     array
     (
+        'field' => array('anzahlBetten', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('anzahlZimmer', '', '', NULL),
         'actions' => array
         (
@@ -274,6 +282,14 @@ return array
     array
     (
         'field' => array('klimatisiert', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('zzgMehrwertsteuer', '', '', NULL),
         'actions' => array
         (
             array('boolToWord', '', '', '', '', NULL, '')
