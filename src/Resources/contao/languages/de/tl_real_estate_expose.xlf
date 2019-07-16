@@ -38,6 +38,14 @@
         <source>Other</source>
         <target>Sonstiges</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_expose.headline_objektText">
+        <source>Object text</source>
+        <target>Objekttext</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_expose.headline_dreizeiler">
+        <source>Short description</source>
+        <target>Kurzbeschreibung</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.button_print">
         <source>Print</source>

@@ -685,7 +685,7 @@ class RealEstate extends \System
     {
         if(!$validTexts)
         {
-            $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben');
+            $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler');
         }
 
         $return = array();

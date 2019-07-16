@@ -337,7 +337,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['textBlocks'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
-            'options'                 => array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben'),
+            'options'                 => array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'),
             'eval'                    => array('mandatory'=>true, 'multiple'=>true),
             'reference'               => &$GLOBALS['TL_LANG']['FMD'],
             'sql'                     => "varchar(255) NOT NULL default ''"
