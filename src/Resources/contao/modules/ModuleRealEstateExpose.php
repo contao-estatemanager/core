@@ -96,9 +96,6 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      */
     protected function compile()
     {
-        /** @var \PageModel $objPage */
-        global $objPage;
-
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
 
         if (!$this->allowReferences && $objRealEstate->referenz)

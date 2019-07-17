@@ -241,7 +241,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'default'                 => 'lowercase',
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('none', 'lowercase', 'uppercase', 'capitalize'),
+            'options'                 => array('none', 'lowercase', 'uppercase', 'capitalize', 'removespecialchar'),
             'eval'                    => array('tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface_mapping'],
             'sql'                     => "varchar(64) NOT NULL default ''"

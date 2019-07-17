@@ -912,6 +912,9 @@ class RealEstateImporter extends \BackendModule
                     case 'capitalize';
                         $value = ucfirst($value);
                         break;
+                    case 'removespecialchar':
+                        $value = $this->standardizeSpecialChars($value);
+                        break;
                 }
                 if ($this->objInterfaceMapping->trim)
                 {
@@ -1172,5 +1175,32 @@ class RealEstateImporter extends \BackendModule
         // ToDo: username= Username | Cron
 
         $objLog->save();
+    }
+
+    protected function standardizeSpecialChars($content)
+    {
+        // Convert microsoft special characters
+        $replace = array(
+            "‘" => "'",
+            "’" => "'",
+            "”" => '"',
+            "“" => '"',
+            "" => '"',
+            "" => '"',
+            "–" => "-",
+            "—" => "-",
+            "" => "-",
+            "…" => "&#8230;"
+        );
+
+        foreach($replace as $k => $v)
+        {
+            $content = str_replace($k, $v, $content);
+        }
+
+        // Remove any non-ascii character
+        // $content = preg_replace('/[^\x20-\x7E]*/','', $content);
+
+        return $content;
     }
 }
