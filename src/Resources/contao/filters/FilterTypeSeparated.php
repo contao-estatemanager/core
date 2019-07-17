@@ -154,8 +154,17 @@ class FilterTypeSeparated extends FilterWidget
             $showAllTypes = true;
         }
 
+        $addedMarketingTypes = array();
+
         while ($objGroups->next())
         {
+            if (in_array($objGroups->vermarktungsart, $addedMarketingTypes))
+            {
+                continue;
+            }
+
+            $addedMarketingTypes[] = $objGroups->vermarktungsart;
+
             $selected = $this->isMarketingOptionSelected($objGroups->vermarktungsart);
 
             // Select marketing type of current real estate type if no marketing type will match

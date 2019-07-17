@@ -441,7 +441,8 @@ class FilterSession extends \System
 
             if ($location)
             {
-                $arrColumn[] = "$t.ort LIKE ?";
+                $arrColumn[] = "$t.ort LIKE ? OR $t.regionalerZusatz LIKE ?";
+                $arrValues[] = $location.'%';
                 $arrValues[] = $location.'%';
             }
         }
