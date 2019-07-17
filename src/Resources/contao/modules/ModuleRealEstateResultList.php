@@ -115,6 +115,11 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         $arrOptions['offset'] = $offset;
         $arrOptions['order']  = $this->getOrderOption();
 
+        if ($this->addCustomOrder)
+        {
+            $arrOptions['order'] = $this->customOrder . ', ' . $arrOptions['order'];
+        }
+
         return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
     }
 }

@@ -22,6 +22,10 @@
         <source>Rest Estate Item Extensions</source>
         <target>Immobilien Erweiterung</target>
       </trans-unit>
+      <trans-unit id="tl_module.sorting_legend">
+        <source>Sorting</source>
+        <target>Sortierung</target>
+      </trans-unit>
 
       <trans-unit id="tl_module.addCountLabel.0">
         <source>Add counting</source>
@@ -38,6 +42,22 @@
       <trans-unit id="tl_module.addSorting.1">
         <source>Adds a sort option</source>
         <target>Fügt eine Sortiermöglichkeit hinzu</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addCustomOrder.0">
+        <source>Add custom order</source>
+        <target>Benutzerdefinierte Sortierung hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addCustomOrder.1">
+        <source>Subsequent sorting of the result</source>
+        <target>Nachträgliche Sortierung des Ergebnisses</target>
+      </trans-unit>
+      <trans-unit id="tl_module.customOrder.0">
+        <source>Custom order</source>
+        <target>Benutzerdefinierte Sortierung</target>
+      </trans-unit>
+      <trans-unit id="tl_module.customOrder.1">
+        <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
+        <target>Hier muss das Benutzerdefinierte SQL-Order-Statement eingetragen werden (z.B. FIELD(anbieternr, 'xyz').</target>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.0">
         <source>Add provider</source>

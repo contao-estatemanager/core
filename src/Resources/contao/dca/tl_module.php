@@ -13,18 +13,20 @@
 
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 (
     'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addSorting,addCountLabel;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
-    'listMode_group'       => 'realEstateGroups,filterMode'
+    'listMode_group'       => 'realEstateGroups,filterMode',
+    'addCustomOrder'       => 'customOrder'
 ));
 
 // Add estate manager fields
@@ -100,6 +102,14 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'sql'                     => "blob NULL",
         'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
     ),
+    'addCountLabel' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCountLabel'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => array('tl_class'=>'w50 m12'),
+        'sql'                     => "char(1) NOT NULL default ''"
+    ),
     'addSorting' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addSorting'],
@@ -108,13 +118,21 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'eval'                    => array('tl_class'=>'w50 m12'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
-    'addCountLabel' => array
+    'addCustomOrder' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCountLabel'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCustomOrder'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr'),
         'sql'                     => "char(1) NOT NULL default ''"
+    ),
+    'customOrder' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['customOrder'],
+        'exclude'                 => true,
+        'inputType'               => 'text',
+        'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+        'sql'                     => "varchar(255) NOT NULL default ''"
     ),
     'addProvider' => array
     (
