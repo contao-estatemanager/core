@@ -17,18 +17,22 @@
     <p class="error"><?= $this->getErrorAsString() ?></p>
   <?php endif; ?>
 
-  <select name="marketing-type" id="ctrl_<?= $this->id ?>_group" class="<?= $this->marketingType['class'] ?> <?= $this->class ?>"<?= $this->getAttributes() ?>>
-    <?php foreach ($this->marketingType['options'] as $option): ?>
-      <?php if ($option['type'] == 'option'): ?>
-        <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
-      <?php endif; ?>
-    <?php endforeach; ?>
-  </select>
-  <select name="real-estate-type" id="ctrl_<?= $this->id ?>_type" class="<?= $this->realEstateType['class'] ?> <?= $this->class ?>"<?= $this->realEstateType['disabled'] ? ' disabled' : '' ?><?= $this->getAttributes() ?>>
-    <?php foreach ($this->realEstateType['options'] as $option): ?>
-      <?php if ($option['type'] == 'option'): ?>
-        <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['show'] ? '' : ' style="display:none;"' ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
-      <?php endif; ?>
-    <?php endforeach; ?>
-  </select>
+  <div class="widget widget-select select <?= $this->marketingType['class'] ?>">
+    <select name="marketing-type" id="ctrl_<?= $this->id ?>_group" class="select <?= $this->marketingType['class'] ?> <?= $this->class ?>"<?= $this->getAttributes() ?>>
+      <?php foreach ($this->marketingType['options'] as $option): ?>
+        <?php if ($option['type'] == 'option'): ?>
+          <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </select>
+  </div>
+  <div class="widget widget-select select <?= $this->realEstateType['class'] ?>">
+    <select name="real-estate-type" id="ctrl_<?= $this->id ?>_type" class="select <?= $this->realEstateType['class'] ?> <?= $this->class ?>"<?= $this->realEstateType['disabled'] ? ' disabled' : '' ?><?= $this->getAttributes() ?>>
+      <?php foreach ($this->realEstateType['options'] as $option): ?>
+        <?php if ($option['type'] == 'option'): ?>
+          <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['show'] ? '' : ' style="display:none;"' ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </select>
+  </div>
 <?php $this->endblock(); ?>

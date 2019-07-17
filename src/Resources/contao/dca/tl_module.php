@@ -115,7 +115,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addSorting'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
+        'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
     'addCustomOrder' => array
@@ -123,7 +123,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCustomOrder'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
     'customOrder' => array
