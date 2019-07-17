@@ -599,6 +599,7 @@ class RealEstate extends \System
         }
 
         $index = 1;
+        $max = $max !== null ? intval($max) : $max;
 
         foreach ($arrMainDetails as $detail)
         {
