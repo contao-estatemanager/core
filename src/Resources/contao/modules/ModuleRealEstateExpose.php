@@ -11,6 +11,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\CoreBundle\Exception\PageNotFoundException;
 use Patchwork\Utf8;
 
 /**
@@ -99,6 +100,12 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         global $objPage;
 
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+
+        if (!$this->allowReferences && $objRealEstate->referenz)
+        {
+            throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
+        }
+
         $realEstate = new RealEstate($objRealEstate, null);
 
         $this->updateVisitedSession($realEstate->getId());

@@ -139,6 +139,14 @@
         <source>Here you can overwrite the standard template for displaying contact persons within a real estate template.</source>
         <target>Hier können Sie das Standard-Template für die Darstellung von Kontaktpersonen innerhalb eines Immobilien Templates überschreiben</target>
       </trans-unit>
+      <trans-unit id="tl_module.allowReferences.0">
+        <source>Allow references</source>
+        <target>Referenzen erlauben</target>
+      </trans-unit>
+      <trans-unit id="tl_module.allowReferences.1">
+        <source>Here you can specify whether references are allowed in the exposé.</source>
+        <target>Hier können Sie angeben, ob Referenzen über das Exposé aufrufbar sind.</target>
+      </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
         <source>Exposé Modules</source>
         <target>Exposé-Module</target>

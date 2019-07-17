@@ -17,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCusto
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 (
-    'realEstateExpose'      => '{title_legend},name,headline,type;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateExpose'      => '{title_legend},name,headline,type;{config_legend},allowReferences;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
     'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -178,6 +178,14 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
         'eval'                    => array('multiple'=>true),
         'sql'                     => "blob NULL"
+    ),
+    'allowReferences' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowReferences'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => array('tl_class'=>'w50'),
+        'sql'                     => "char(1) NOT NULL default ''"
     ),
     'exposeModules' => array
     (
