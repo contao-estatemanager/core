@@ -19,6 +19,10 @@
         <source>Kaufpreis</source>
         <target>Kaufpreis</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.erbpacht">
+        <source>Erbpacht</source>
+        <target>Erbpacht</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.provisionspflichtig">
         <source>Provisionspflichtig</source>
         <target>Provisionspflichtig</target>
@@ -58,6 +62,26 @@
       <trans-unit id="tl_real_estate_label.wohnflaeche">
         <source>Wohnfläche</source>
         <target>Wohnfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.freiflaeche">
+        <source>Freifläche</source>
+        <target>Freifläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.vermietbareFlaeche">
+        <source>vermietbare Fläche</source>
+        <target>vermietbare Fläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.gastroflaeche">
+        <source>Gastrofläche</source>
+        <target>Gastrofläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.lagerflaeche">
+        <source>Lagerfläche</source>
+        <target>Lagerfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.sonstflaeche">
+        <source>Sonstige Fläche</source>
+        <target>Sonstige Fläche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gesamtflaeche">
         <source>Gesamtfläche</source>
@@ -99,6 +123,10 @@
         <source>Badezimmer</source>
         <target>Badezimmer</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.anzahlGewerbeeinheiten">
+        <source>Anzahl Gewerbeeinheiten</source>
+        <target>Anzahl Gewerbeeinheiten</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.bad">
         <source>Badezimmer</source>
         <target>Badezimmer</target>
@@ -119,6 +147,22 @@
         <source>Möbliert</source>
         <target>Möbliert</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.altlasten">
+        <source>Altlasten</source>
+        <target>Altlasten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.wintergarten">
+        <source>Wintergarten</source>
+        <target>Wintergarten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.einliegerwohnung">
+        <source>Einliegerwohnung</source>
+        <target>Einliegerwohnung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.denkmalgeschuetzt">
+        <source>Denkmalgeschützt</source>
+        <target>Denkmalgeschützt</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.barrierefrei">
         <source>Barrierefrei</source>
         <target>Barrierefrei</target>
@@ -127,6 +171,14 @@
         <source>Befeuerung</source>
         <target>Befeuerung</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.swimmingpool">
+        <source>Pool</source>
+        <target>Pool</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.sauna">
+        <source>Sauna</source>
+        <target>Sauna</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.zzgMehrwertsteuer">
         <source>zzgl. MwSt.</source>
         <target>zzgl. MwSt.</target>
@@ -134,6 +186,10 @@
       <trans-unit id="tl_real_estate_label.alterAttr">
         <source>Alter</source>
         <target>Alter</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.rollstuhlgerecht">
+        <source>Rollstuhlgerecht</source>
+        <target>Rollstuhlgerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.hausgeld">
         <source>Hausgeld</source>
@@ -156,8 +212,8 @@
         <target>Garage / Stellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpGarage">
-        <source>Garage</source>
-        <target>Garage</target>
+        <source>Anzahl Garagen</source>
+        <target>Anzahl Garagen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpGarageKaufpreis">
         <source>Garage Kaufpreis</source>
@@ -168,8 +224,8 @@
         <target>Miete Garage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
-        <source>Außenstellplatz</source>
-        <target>Außenstellplatz</target>
+        <source>Anzahl Außenstellplätze</source>
+        <target>Anzahl Außenstellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatzKaufpreis">
         <source>Außenstellplatz Kaufpreis</source>
@@ -180,8 +236,8 @@
         <target>Miete Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
-        <source>Stellplätze</source>
-        <target>Stellplätze</target>
+        <source>Anzahl Stellplätze</source>
+        <target>Anzahl Stellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kamin">
         <source>Kamin</source>
@@ -290,6 +346,10 @@
       <trans-unit id="tl_real_estate_label.gesamtmietenetto">
         <source>Gesamtmiete</source>
         <target>Gesamtmiete</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.mieteinnahmenIst">
+        <source>Mieteinnahmen (Ist)</source>
+        <target>Mieteinnahmen (Ist)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.mietpreisProQm">
         <source>Miete pro m²</source>

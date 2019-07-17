@@ -604,8 +604,8 @@
         <target>Krankenhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_sonstige">
-        <source>vorhanden</source>
-        <target>vorhanden</target>
+        <source>Sonstige</source>
+        <target>Sonstige</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.freizeitTyp_sportanlagen">

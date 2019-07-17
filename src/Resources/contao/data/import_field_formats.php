@@ -18,7 +18,25 @@ return array
     ),
     array
     (
+        'field' => array('erbpacht', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('kaltmiete', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('mieteinnahmenIst', '', '', NULL),
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
@@ -153,6 +171,33 @@ return array
     ),
     array
     (
+        'field' => array('gastroflaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('freiflaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('sonstflaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('vermietbareFlaeche', '', '', NULL),
         'actions' => array
         (
@@ -241,6 +286,14 @@ return array
     ),
     array
     (
+        'field' => array('anzahlGewerbeeinheiten', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('anzahlSchlafzimmer', '', '', NULL),
         'actions' => array
         (
@@ -282,6 +335,30 @@ return array
     array
     (
         'field' => array('klimatisiert', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('denkmalgeschuetzt', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('rollstuhlgerecht', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('swimmingpool', '', '', NULL),
         'actions' => array
         (
             array('boolToWord', '', '', '', '', NULL, '')
