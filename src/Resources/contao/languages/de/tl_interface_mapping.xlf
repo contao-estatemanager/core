@@ -143,6 +143,14 @@
         <source>Capitalize</source>
         <target>Erster Buchstabe groß</target>
       </trans-unit>
+      <trans-unit id="tl_interface_mapping.uppercase">
+        <source>Uppercase</source>
+        <target>Großbuchstaben</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.removespecialchar">
+        <source>Replace special characters</source>
+        <target>Sonderzeichen ersetzen</target>
+      </trans-unit>
 
       <trans-unit id="tl_interface_mapping.type_legend">
         <source>Type</source>
