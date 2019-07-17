@@ -115,6 +115,10 @@
         <source>Fahrstuhlart</source>
         <target>Fahrstuhlart</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.moebliert">
+        <source>Möbliert</source>
+        <target>Möbliert</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.barrierefrei">
         <source>Barrierefrei</source>
         <target>Barrierefrei</target>
@@ -130,6 +134,14 @@
       <trans-unit id="tl_real_estate_label.alterAttr">
         <source>Alter</source>
         <target>Alter</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.hausgeld">
+        <source>Hausgeld</source>
+        <target>Hausgeld</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.haustiere">
+        <source>Pets</source>
+        <target>Haustiere</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.letztemodernisierung">
         <source>letzte Modernisierung</source>

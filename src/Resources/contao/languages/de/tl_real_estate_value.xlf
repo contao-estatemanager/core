@@ -114,6 +114,10 @@
         <target>Zimmer</target>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate_value.wohnung">
+        <source>Wohnung</source>
+        <target>Wohnung</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_dachgeschoss">
         <source>Dachgeschosswohnung</source>
         <target>Dachgeschosswohnung</target>
