@@ -180,6 +180,15 @@ return array
     ),
     array
     (
+        'field' => array('beheizbareFlaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('gastroflaeche', '', '', NULL),
         'actions' => array
         (
@@ -344,6 +353,22 @@ return array
     array
     (
         'field' => array('klimatisiert', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('dvVerkabelung', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('aussenCourtageMwst', '', '', NULL),
         'actions' => array
         (
             array('boolToWord', '', '', '', '', NULL, '')
