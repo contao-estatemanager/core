@@ -39,7 +39,16 @@ return array
         'field' => array('mieteinnahmenIst', '', '', NULL),
         'actions' => array
         (
-            array('number_format', '0', '', '', '', NULL, ''),
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('mieteinnahmenSoll', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
             array('append', '', ' €', '', '', NULL, '')
         )
     ),
@@ -602,6 +611,15 @@ return array
         'actions' => array
         (
             array('append', '', ' kWh/(m²*a)', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('nettorendite', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' %', '', '', NULL, '')
         )
     ),
     array

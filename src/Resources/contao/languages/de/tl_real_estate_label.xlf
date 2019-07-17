@@ -63,6 +63,10 @@
         <source>Wohnfläche</source>
         <target>Wohnfläche</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.ladenflaeche">
+        <source>Ladenfläche</source>
+        <target>Ladenfläche</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.freiflaeche">
         <source>Freifläche</source>
         <target>Freifläche</target>
@@ -138,6 +142,10 @@
       <trans-unit id="tl_real_estate_label.ausstattKategorie">
         <source>Ausstattung</source>
         <target>Ausstattung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.lageGebiet">
+        <source>Lage / Gebiet</source>
+        <target>Lage / Gebiet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.fahrstuhlart">
         <source>Fahrstuhlart</source>
@@ -350,6 +358,14 @@
       <trans-unit id="tl_real_estate_label.mieteinnahmenIst">
         <source>Mieteinnahmen (Ist)</source>
         <target>Mieteinnahmen (Ist)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.mieteinnahmenSoll">
+        <source>Mieteinnahmen (Soll)</source>
+        <target>Mieteinnahmen (Soll)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.nettorendite">
+        <source>Nettorendite</source>
+        <target>Nettorendite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.mietpreisProQm">
         <source>Miete pro m²</source>

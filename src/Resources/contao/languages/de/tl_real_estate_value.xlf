@@ -108,6 +108,58 @@
         <source>Zinshaus / Renditeobjekt</source>
         <target>Zinshaus / Renditeobjekt</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_value.zimmer">
+        <source>Zimmer</source>
+        <target>Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.wohnung">
+        <source>Wohnung</source>
+        <target>Wohnung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.haus">
+        <source>Haus</source>
+        <target>Haus</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.grundstueck">
+        <source>Grundstück</source>
+        <target>Grundstück</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.buero_praxen">
+        <source>Büro / Praxis</source>
+        <target>Büro / Praxis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.einzelhandel">
+        <source>Einzelhandel</source>
+        <target>Einzelhandel</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.gastgewerbe">
+        <source>Gastgewerbe</source>
+        <target>Gastgewerbe</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.hallen_lager_prod">
+        <source>Hallen / Lager / Prod.</source>
+        <target>Hallen / Lager / Prod.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.land_und_forstwirtschaft">
+        <source>Land und Forstwirtschaft</source>
+        <target>Land und Forstwirtschaft</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.parken">
+        <source>Parken</source>
+        <target>Parken</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.sonstige">
+        <source>Sonstige</source>
+        <target>Sonstige</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.freizeitimmobilie_gewerblich">
+        <source>Freizeitimmobilie (gewerblich)</source>
+        <target>Freizeitimmobilie (gewerblich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.zinshaus_renditeobjekt">
+        <source>Zinshaus / Renditeobjekt</source>
+        <target>Zinshaus / Renditeobjekt</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zimmerTyp_zimmer">
         <source>Zimmer</source>
@@ -595,6 +647,10 @@
         <source>Parkhaus</source>
         <target>Parkhaus</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_value.sonstigeTyp_garagen">
+        <source>Garage</source>
+        <target>Garage</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_tankstelle">
         <source>Tankstelle</source>
         <target>Tankstelle</target>
@@ -802,7 +858,7 @@
         <source>1A</source>
         <target>1A</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_value.lageGebiet_1B">
+      <trans-unit id="tl_real_estate_value.lageGebiet_1b">
         <source>1B</source>
         <target>1B</target>
       </trans-unit>

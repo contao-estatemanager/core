@@ -1210,11 +1210,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['xFache'],
             'inputType'                 => 'text',
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(20) NOT NULL default ''",
-            'realEstate'                => array(
-                'price'    => true,
-                'order'    => 825
-            )
+            'sql'                       => "varchar(20) NOT NULL default ''"
         ),
         'nettorendite'  => array
         (
