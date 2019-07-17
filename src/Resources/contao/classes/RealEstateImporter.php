@@ -906,7 +906,6 @@ class RealEstateImporter extends \BackendModule
                         $value = strtolower($value);
                         break;
                     case 'uppercase';
-
                         $value = strtoupper($value);
                         break;
                     case 'capitalize';
