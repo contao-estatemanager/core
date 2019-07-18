@@ -66,5 +66,5 @@ return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedC
         return ContaoEstateManager\Translator::translateValue($objRealEstate->{$objectType}, $objectType);
     }
 
-    return $varValue;
+    return ContaoEstateManager\Translator::translateValue($varValue);
 });

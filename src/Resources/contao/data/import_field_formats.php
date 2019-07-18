@@ -39,7 +39,16 @@ return array
         'field' => array('mieteinnahmenIst', '', '', NULL),
         'actions' => array
         (
-            array('number_format', '0', '', '', '', NULL, ''),
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('mieteinnahmenSoll', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
             array('append', '', ' €', '', '', NULL, '')
         )
     ),
@@ -163,6 +172,15 @@ return array
     array
     (
         'field' => array('wohnflaeche', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' m²', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('beheizbareFlaeche', '', '', NULL),
         'actions' => array
         (
             array('number_format', '2', '', '', '', NULL, ''),
@@ -335,6 +353,22 @@ return array
     array
     (
         'field' => array('klimatisiert', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('dvVerkabelung', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('aussenCourtageMwst', '', '', NULL),
         'actions' => array
         (
             array('boolToWord', '', '', '', '', NULL, '')
@@ -602,6 +636,15 @@ return array
         'actions' => array
         (
             array('append', '', ' kWh/(m²*a)', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('nettorendite', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, ''),
+            array('append', '', ' %', '', '', NULL, '')
         )
     ),
     array

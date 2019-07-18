@@ -81,7 +81,7 @@ return array
     array('tl_real_estate', 'anzahlEtagen',                'geo', 'anzahl_etagen'),
     array('tl_real_estate', 'lageImBau',                   'geo', 'lage_im_bau@+'),
     array('tl_real_estate', 'wohnungsnr',                  'geo', 'wohnungsnr'),
-    array('tl_real_estate', 'lageGebiet',                  'geo', 'lage_gebiet@gebiete'),
+    array('tl_real_estate', 'lageGebiet',                  'geo', 'lage_gebiet@gebiete', array('text', 'lowercase')),
     array('tl_real_estate', 'gemeindecode',                'geo', 'gemeindecode'),
     array('tl_real_estate', 'regionalerZusatz',            'geo', 'regionaler_zusatz'),
     array('tl_real_estate', 'kartenMakro',                 'geo', 'karten_makro', array('boolean')),
