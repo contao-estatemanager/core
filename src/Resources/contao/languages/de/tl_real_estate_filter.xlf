@@ -223,6 +223,22 @@
         <source>Verkaufsfläche bis</source>
         <target>Verkaufsfläche bis</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_area_from">
+        <source>Lagerfläche ab</source>
+        <target>Lagerfläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_area_to">
+        <source>Lagerfläche bis</source>
+        <target>Lagerfläche bis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_area_from">
+        <source>Gastrofläche ab</source>
+        <target>Gastrofläche ab</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_area_to">
+        <source>Gastrofläche bis</source>
+        <target>Gastrofläche bis</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_filter.period">
         <source>Bezugsfrei</source>
