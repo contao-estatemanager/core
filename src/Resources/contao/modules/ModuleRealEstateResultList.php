@@ -117,7 +117,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
 
         if ($this->addCustomOrder)
         {
-            $arrOptions['order'] = $this->customOrder . ', ' . $arrOptions['order'];
+            $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
         }
 
         return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
