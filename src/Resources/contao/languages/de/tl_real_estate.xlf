@@ -27,8 +27,8 @@
         <target>Preise</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_room_legend">
-        <source>Rooms</source>
-        <target>Zimmer</target>
+        <source>Rooms / Units</source>
+        <target>Zimmer / Wohneinheiten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_area_legend">
         <source>Areas</source>
