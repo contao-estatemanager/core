@@ -78,10 +78,11 @@ class RealEstateImporter extends \BackendModule
      * Syncs OpenImmo export data with database
      *
      * @param \DataContainer $dc
+     * @param boolean        $silent
      *
      * @return string
      */
-    protected function sync($dc)
+    public function sync($dc, $silent=false)
     {
         $this->objInterface = InterfaceModel::findByPk($dc->id);
         $this->objImportFolder = \FilesModel::findByUuid($this->objInterface->importPath);
@@ -106,11 +107,25 @@ class RealEstateImporter extends \BackendModule
                 $this->objInterface->lastSync = $syncTime;
                 $this->objInterface->save();
 
-                \Message::addConfirmation('The file was downloaded successfully: ' . $fileName);
+                if ($silent)
+                {
+                    \Input::setPost('file', $this->objImportFolder->path . '/' . $fileName);
+                }
+                else
+                {
+                    //\Message::addConfirmation('The file was downloaded successfully: ' . $fileName);
+                }
             }
             else
             {
-                \Message::addInfo('The downloaded file was empty and was skipped.');
+                if ($silent)
+                {
+                    return;
+                }
+                else
+                {
+                    //\Message::addInfo('The downloaded file was empty and has been skipped.');
+                }
             }
         }
 
@@ -131,23 +146,28 @@ class RealEstateImporter extends \BackendModule
                     if ($this->syncData())
                     {
                         $this->addLog('Import and synchronization was successful', 0, 'success');
-                        \Message::addConfirmation('Import and synchronization was successful');
+                        //\Message::addConfirmation('Import and synchronization was successful');
+
+                        if ($silent)
+                        {
+                            return;
+                        }
                     }
                     else
                     {
                         $this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
-                        \Message::addError('OpenImmo data could not be synchronized.');
+                        //\Message::addError('OpenImmo data could not be synchronized.');
                     }
                 }
                 else
                 {
-                    \Message::addError('OpenImmo data could not be loaded.');
+                    //\Message::addError('OpenImmo data could not be loaded.');
                     $this->addLog('OpenImmo data could not be loaded.', 0, 'error');
                 }
             }
             else
             {
-                \Message::addError('OpenImmo file could not be loaded.');
+                //\Message::addError('OpenImmo file could not be loaded.');
                 $this->addLog('OpenImmo file could not be loaded.', 0, 'error');
             }
         }
@@ -721,6 +741,11 @@ class RealEstateImporter extends \BackendModule
             $arrValues  = array($realEstateRecords[$i][$this->objInterface->uniqueField]);
 
             $exists = RealEstateModel::countBy($arrColumns, $arrValues);
+
+            if (!$exists && $realEstateRecords[$i]['AKTIONART'] === 'DELETE')
+            {
+                continue;
+            }
 
             if (!$exists)
             {
