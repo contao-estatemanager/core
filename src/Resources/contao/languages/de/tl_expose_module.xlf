@@ -296,6 +296,14 @@
         <source>This module is only output if results to display have been found.</source>
         <target>Dieses Modul wird nur ausgegeben wenn Ergebnisse zum darstellen gefunden wurden.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnReferences.0">
+        <source>Hide on references</source>
+        <target>Ausblenden bei Referenzen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnReferences.1">
+        <source>Hides the module for reference objects.</source>
+        <target>Blendet das Modul bei Referenz-Objekten aus.</target>
+      </trans-unit>
       <trans-unit id="tl_expose_module.text.0">
         <source>Text</source>
         <target>Text</target>

@@ -43,6 +43,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
         }
 
         $strBuffer = parent::generate();
+
         return $this->isEmpty ? '' : $strBuffer;
     }
 
@@ -53,7 +54,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
     {
         $objForm = \FormModel::findByPk($this->form);
 
-        if ($objForm === null)
+        if ($objForm === null || ($this->hideOnReferences && !!$this->realEstate->referenz))
         {
             $this->isEmpty = true;
 
