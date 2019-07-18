@@ -22,6 +22,12 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
 abstract class ModuleRealEstate extends \Module
 {
     /**
+     * Force empty list
+     * @var boolean
+     */
+    protected $forceEmpty = false;
+    
+    /**
      * Return an object property
      *
      * @param string $strKey The property name
@@ -132,6 +138,12 @@ abstract class ModuleRealEstate extends \Module
 
         $this->Template->realEstates = array();
         $this->Template->empty = $GLOBALS['TL_LANG']['MSC']['noRealEstateResults'];
+
+        if ($this->forceEmpty)
+        {
+            $this->Template->empty = sprintf($GLOBALS['TL_LANG']['MSC']['noUniqueRealEstateResult'], '<span class="unique">'.$_SESSION['FILTER_DATA']['last_unique'].'</span>');
+            return;
+        }
 
         $this->isEmpty = true;
 
@@ -337,6 +349,12 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function addSorting()
     {
+        if ($this->forceEmpty)
+        {
+            $this->Template->addSorting = false;
+            return;
+        }
+
         if ($this->addSorting)
         {
             $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
@@ -395,6 +413,32 @@ abstract class ModuleRealEstate extends \Module
             $strLink,
             \StringUtil::specialchars(sprintf('%s', $strTitle), true),
             $strTitle);
+    }
+    
+    protected function redirectIfUnique()
+    {
+        if ($_SESSION['FILTER_DATA']['unique'])
+        {
+            $objRealEstate = RealEstateModel::findOneBy('objektnrExtern', $_SESSION['FILTER_DATA']['unique']);
+            $_SESSION['FILTER_DATA']['last_unique'] = $_SESSION['FILTER_DATA']['unique'];
+            unset($_SESSION['FILTER_DATA']['unique']);
+
+            if ($objRealEstate === null)
+            {
+                $this->forceEmpty = true;
+            }
+            else
+            {
+                $objJumpTo = \PageModel::findByPk($this->jumpTo);
+
+                if ($objJumpTo instanceof \PageModel)
+                {
+                    $realEstate = new RealEstate($objRealEstate, null);
+
+                    $this->redirect($realEstate->generateExposeUrl($objJumpTo->id));
+                }
+            }
+        }
     }
 
     /**

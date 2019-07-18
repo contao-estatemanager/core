@@ -1152,6 +1152,9 @@ class RealEstateImporter extends \BackendModule
 
     protected function addLog($strMessage, $level=0, $strType='raw', $data=null)
     {
+        // ToDo: In Datei auslagern
+        return;
+
         if($data !== null)
         {
             if(is_object($data))
