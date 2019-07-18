@@ -219,8 +219,6 @@ class EstateManagerRead extends EstateManagerSDK
      * Create and return a GeoJSON format array
      *
      * @param $objRealEstates
-     * @param $fields
-     * @param bool $template
      *
      * @return array
      */
@@ -234,46 +232,49 @@ class EstateManagerRead extends EstateManagerSDK
             'features' => array()
         );
 
-        while($objRealEstates->next())
+        if($objRealEstates !== null)
         {
-            if($objRealEstates->breitengrad && $objRealEstates->laengengrad)
+            while($objRealEstates->next())
             {
-                $template = false;
-                $parsedFields = $this->parseRealEstateFields($objRealEstates, $this->currParam['fields']);
-
-                if($this->currParam['template'])
+                if($objRealEstates->breitengrad && $objRealEstates->laengengrad)
                 {
-                    $objTemplate = new \FrontendTemplate($this->currParam['template']);
-                    $objTemplate->setData($parsedFields['fields']);
-                    $template = $objTemplate->parse();
-                }
+                    $template = false;
+                    $parsedFields = $this->parseRealEstateFields($objRealEstates, $this->currParam['fields']);
 
-                $arrRealEstate = array(
-                    'type'     => 'Feature',
-                    'geometry' => array(
-                        'type'        => 'Point',
-                        'coordinates' => array(
-                            $objRealEstates->laengengrad,
-                            $objRealEstates->breitengrad
+                    if($this->currParam['template'])
+                    {
+                        $objTemplate = new \FrontendTemplate($this->currParam['template']);
+                        $objTemplate->setData($parsedFields['fields']);
+                        $template = $objTemplate->parse();
+                    }
+
+                    $arrRealEstate = array(
+                        'type'     => 'Feature',
+                        'geometry' => array(
+                            'type'        => 'Point',
+                            'coordinates' => array(
+                                $objRealEstates->laengengrad,
+                                $objRealEstates->breitengrad
+                            )
+                        ),
+                        'properties'  => array_merge(
+                            $parsedFields,
+                            ['popup' => $template]
                         )
-                    ),
-                    'properties'  => array_merge(
-                        $parsedFields,
-                        ['popup' => $template]
-                    )
-                );
+                    );
 
-                $arrGeoJson['features'][] = $arrRealEstate;
+                    $arrGeoJson['features'][] = $arrRealEstate;
 
-                $latCoordinates[] = $objRealEstates->breitengrad;
-                $lngCoordinates[] = $objRealEstates->laengengrad;
+                    $latCoordinates[] = $objRealEstates->breitengrad;
+                    $lngCoordinates[] = $objRealEstates->laengengrad;
+                }
             }
-        }
 
-        $arrGeoJson['bbox'] = array(
-            [min($lngCoordinates),min($latCoordinates)],
-            [max($lngCoordinates),max($latCoordinates)]
-        );
+            $arrGeoJson['bbox'] = array(
+                [min($lngCoordinates),min($latCoordinates)],
+                [max($lngCoordinates),max($latCoordinates)]
+            );
+        }
 
         return $arrGeoJson;
     }
