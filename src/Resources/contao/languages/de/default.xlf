@@ -15,6 +15,10 @@
         <source>No matching offers could be found.</source>
         <target>Es konnten keine passenden Angebote gefunden werden.</target>
       </trans-unit>
+      <trans-unit id="MSC.noUniqueRealEstateResult">
+        <source>No matching offers could be found with the given object number %s.</source>
+        <target>Es konnten kein passendes Angebot mit der Objektnummer %s gefunden werden.</target>
+      </trans-unit>
       <trans-unit id="MSC.administration">
         <source>Real estate management</source>
         <target>Immobilien Verwaltung</target>

@@ -249,7 +249,6 @@ class FilterSession extends \System
             $this->addQueryFragmentRoom($arrColumns, $arrValues);
             $this->addQueryFragmentArea($objRealEstateType, $arrColumns, $arrValues);
             $this->addQueryFragmentPeriod($arrColumns, $arrValues);
-            $this->addQueryFragmentUnique($arrColumns, $arrValues);
         }
 
         // HOOK: get type parameter by groups
@@ -305,7 +304,6 @@ class FilterSession extends \System
                     $this->addQueryFragmentRoom($arrColumn, $arrValues);
                     $this->addQueryFragmentArea($objRealEstateTypes->current(), $arrColumn, $arrValues);
                     $this->addQueryFragmentPeriod($arrColumn, $arrValues);
-                    $this->addQueryFragmentUnique($arrColumn, $arrValues);
 
                     // Hook zum ergänzen von neuen Toggle Filtern
 
