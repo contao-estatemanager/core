@@ -13,7 +13,7 @@
                 <?php endif; ?>
 
                 <?php if ($slide->caption): ?>
-                    <figcaption class="caption"><?= $col->caption ?></figcaption>
+                    <figcaption class="caption"><?= $slide->caption ?></figcaption>
                 <?php endif; ?>
             </figure>
         <?php else: ?>
