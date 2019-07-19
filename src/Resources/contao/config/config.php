@@ -157,6 +157,9 @@ $GLOBALS['TL_RAM'] = array
     'addons'        => array('addon', 'addon_catalog'),
 );
 
+// Cron jobs
+$GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\CronHandler', 'run');
+
 // Style sheet
 if (TL_MODE == 'BE')
 {

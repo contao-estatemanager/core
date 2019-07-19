@@ -294,10 +294,10 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['autoSync'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('never', 'hourly', 'daily', 'weekly'),
+            'options'                 => array('never', '10min', '30min', 'hourly', 'daily', 'weekly'),
             'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
-            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+            'sql'                     => "varchar(8) NOT NULL default ''"
         ),
         'deleteFilesOlderThen' => array
         (
