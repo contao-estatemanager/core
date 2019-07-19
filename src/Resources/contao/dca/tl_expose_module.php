@@ -95,7 +95,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,gallerySkipOnEmpty;{image_legend:hide},imgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,fullsize,gallerySkipOnEmpty;{image_legend:hide},imgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'mainDetails'                 => '{title_legend},name,headline,type;{settings_legend},numberOfItems;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'mainAttributes'              => '{title_legend},name,headline,type;{settings_legend},numberOfItems;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -444,6 +444,14 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'hideOnEmpty' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['hideOnEmpty'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'fullsize' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fullsize'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),

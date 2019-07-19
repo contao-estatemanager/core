@@ -199,6 +199,7 @@ class ExposeModuleGallery extends ExposeModule
         if($objFiles !== null)
         {
             $arrImages = array();
+            $strLightboxId = 'lightbox[lb' . $this->id . ']';
 
             // parse images
             while ($objFiles->next())
@@ -223,12 +224,13 @@ class ExposeModuleGallery extends ExposeModule
                     'singleSRC' => $objFiles->path,
                     'filesModel' => $objFiles->current(),
                     'size' => $this->imgSize,
+                    'fullsize' => $this->fullsize
                 );
 
                 $objCell = new \stdClass();
                 $objCell->isImage = true;
 
-                $this->addImageToTemplate($objCell, $arrImages[$objFiles->path], null, null, $arrImages[$objFiles->path]['filesModel']);
+                $this->addImageToTemplate($objCell, $arrImages[$objFiles->path], null, $strLightboxId, $arrImages[$objFiles->path]['filesModel']);
 
                 $arrSlides[] = $objCell;
             }

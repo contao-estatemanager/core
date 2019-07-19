@@ -336,6 +336,14 @@
         <source>Choose a template to set the representation of a single property</source>
         <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.fullsize.0">
+        <source>Full-size view/new window</source>
+        <target>Großansicht/Neues Fenster</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fullsize.1">
+        <source>Open the full-size image in a lightbox or the link in a new browser window.</source>
+        <target>Großansicht des Bildes in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
