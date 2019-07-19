@@ -8,11 +8,11 @@
 
                 <?php $this->insert('picture_default', $slide->picture); ?>
 
-                <?php if ($col->href): ?>
+                <?php if ($slide->href): ?>
                     </a>
                 <?php endif; ?>
 
-                <?php if ($col->caption): ?>
+                <?php if ($slide->caption): ?>
                     <figcaption class="caption"><?= $col->caption ?></figcaption>
                 <?php endif; ?>
             </figure>
