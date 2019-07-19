@@ -229,6 +229,7 @@ class ExposeModuleGallery extends ExposeModule
 
                 $objCell = new \stdClass();
                 $objCell->isImage = true;
+                $objCell->galId = $this->id;
 
                 $this->addImageToTemplate($objCell, $arrImages[$objFiles->path], null, $strLightboxId, $arrImages[$objFiles->path]['filesModel']);
 
