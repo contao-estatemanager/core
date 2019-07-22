@@ -4456,7 +4456,7 @@ class tl_real_estate extends Backend
      *
      * @throws Exception
      */
-    public function generateAlias($varValue, DataContainer $dc, $title='')
+    public function generateAlias($varValue, $dc, $title='')
     {
         // Generate alias if there is none
         if ($varValue == '')

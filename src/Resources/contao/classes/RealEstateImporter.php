@@ -259,6 +259,21 @@ class RealEstateImporter extends \BackendModule
             $this->syncFile = $syncFile;
         }
 
+        @ini_set('max_execution_time', 0);
+
+        // Consider the suhosin.memory_limit (see #7035)
+        if (\extension_loaded('suhosin'))
+        {
+            if (($limit = ini_get('suhosin.memory_limit')) !== '')
+            {
+                @ini_set('memory_limit', $limit);
+            }
+        }
+        else
+        {
+            @ini_set('memory_limit', -1);
+        }
+
         //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
 
         if (($this->loadData()))
@@ -601,7 +616,7 @@ class RealEstateImporter extends \BackendModule
             // Trigger the save_callback
             if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback']))
             {
-                $dc = new \DC_Table('tl_real_estate');
+                $dc = new \stdClass();
                 $dc->id = $objRealEstate->id;
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
