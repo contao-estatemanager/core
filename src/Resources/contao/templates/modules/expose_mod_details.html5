@@ -11,8 +11,8 @@
         <?php endif; ?>
 
         <?php foreach ($details['details'] as $field => $detail): ?>
-            <div class="field <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
-                <div class="label" title="<?= $detail['label'] ?>"><?= $detail['label'] ?>:</div>
+            <div class="field <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?= $detail['value'] ?>">
+                <div class="label"><?= $detail['label'] ?>:</div>
                 <div class="value"><?= $detail['value'] ?></div>
             </div>
         <?php endforeach; ?>
