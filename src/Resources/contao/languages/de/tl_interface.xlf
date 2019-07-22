@@ -138,22 +138,6 @@
         <source>Here you can specify when old synchronization files should be finally deleted.</source>
         <target>Hier können Sie angeben, wann alte Synchronisierungsdateien endgükltig gelöscht werden sollen.</target>
       </trans-unit>
-      <trans-unit id="tl_interface.syncUrl.0">
-        <source>Sync url</source>
-        <target>Sync-URL</target>
-      </trans-unit>
-      <trans-unit id="tl_interface.syncUrl.1">
-        <source>URL of the interface for the real estate import.</source>
-        <target>URL zur Live-Schnittstelle für den Immobilien-Import.</target>
-      </trans-unit>
-      <trans-unit id="tl_interface.testMode.0">
-        <source>Test mode</source>
-        <target>Testmodus</target>
-      </trans-unit>
-      <trans-unit id="tl_interface.testMode.1">
-        <source>Synchronizes records without updating the interface session counter.</source>
-        <target>Synchronisiert Datensätze, ohne den Session-Zähler der Schnittstelle zu aktualisieren.</target>
-      </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.0">
         <source>Synchronize real estates</source>
         <target>Immobilien synchronisieren</target>

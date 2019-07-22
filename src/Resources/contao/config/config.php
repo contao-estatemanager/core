@@ -158,7 +158,7 @@ $GLOBALS['TL_RAM'] = array
 );
 
 // Cron jobs
-$GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\CronHandler', 'run');
+$GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\RealEstateCronImporter', 'run');
 
 // Style sheet
 if (TL_MODE == 'BE')

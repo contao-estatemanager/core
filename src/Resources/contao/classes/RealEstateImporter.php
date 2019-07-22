@@ -48,6 +48,12 @@ class RealEstateImporter extends \BackendModule
     protected $objFilesFolder;
 
     /**
+     * Import folder model for contact person
+     * @var \FilesModel
+     */
+    protected $objFilesFolderContactPerson;
+
+    /**
      * Import folder model
      * @var \Model\Collection
      */
@@ -65,9 +71,82 @@ class RealEstateImporter extends \BackendModule
     protected $data;
 
     /**
-     * @var integer
+     * @var boolean
      */
-    protected $startTime;
+    public $updateSyncTime = true;
+
+    /**
+     * @var string
+     */
+    protected $uniqueProviderValue;
+
+    /**
+     * @var string
+     */
+    protected $uniqueValue;
+
+    /**
+     * @var string
+     */
+    protected $username;
+
+    /**
+     * Set an object property
+     *
+     * @param string $strKey
+     * @param mixed  $varValue
+     */
+    public function __set($strKey, $varValue)
+    {
+        switch ($strKey)
+        {
+            case 'username':
+                $this->username = $varValue;
+                break;
+        }
+
+        return parent::__set($strKey, $varValue);
+    }
+
+    /**
+     * Return an object property
+     *
+     * @param string $strKey
+     *
+     * @return mixed
+     */
+    public function __get($strKey)
+    {
+        switch ($strKey)
+        {
+            case 'interface':
+                return $this->objInterface;
+                break;
+            case 'importFolder':
+                return $this->objImportFolder;
+                break;
+            case 'filesFolder':
+                return $this->objFilesFolder;
+                break;
+            case 'filesFolderContactPerson':
+                return $this->objFilesFolderContactPerson;
+                break;
+            case 'interfaceMapping':
+                return $this->objInterfaceMapping;
+                break;
+            case 'uniqueProviderValue':
+                return $this->uniqueProviderValue;
+                break;
+            case 'uniqueValue':
+                return $this->uniqueValue;
+                break;
+            case 'username':
+                return $this->username;
+                break;
+        }
+
+        return parent::__get($strKey);
+    }
 
     /**
      * Generate module
@@ -75,106 +154,87 @@ class RealEstateImporter extends \BackendModule
     protected function compile() {}
 
     /**
+     * Prepare interface, file models and interface mappings
+     *
+     * @param integer $id
+     *
+     * @return boolean
+     */
+    public function initializeInterface($id)
+    {
+        $this->objInterface = InterfaceModel::findByPk($id);
+
+        if ($this->objInterface === null)
+        {
+            return false;
+        }
+
+        $this->objImportFolder = \FilesModel::findByUuid($this->objInterface->importPath);
+        $this->objFilesFolder = \FilesModel::findByUuid($this->objInterface->filesPath);
+
+        if ($this->objImportFolder === null || $this->objFilesFolder === null)
+        {
+            return false;
+        }
+
+        $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
+
+        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($id);
+
+        if ($this->objInterfaceMapping === null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Syncs OpenImmo export data with database
      *
      * @param \DataContainer $dc
-     * @param boolean        $silent
      *
      * @return string
      */
-    public function sync($dc, $silent=false)
+    public function sync($dc)
     {
-        $this->objInterface = InterfaceModel::findByPk($dc->id);
-        $this->objImportFolder = \FilesModel::findByUuid($this->objInterface->importPath);
-        $this->objFilesFolder = \FilesModel::findByUuid($this->objInterface->filesPath);
-        $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
-        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($dc->id);
-
-        \System::loadLanguageFile('tl_real_estate_sync');
-
-        if (\Input::get('downloadWibXml'))
+        if (!$this->initializeInterface($dc->id))
         {
-            $syncTime = time();
-            $syncUrl = html_entity_decode($this->objInterface->syncUrl) . '&lastChange=' . $this->objInterface->lastSync;
-            $fileName = 'export_' . $syncTime . '.xml';
+            //\Message::addInfo('Interface could not been initialized.');
+            return;
+        }
 
-            $content = $this->getFileContent($syncUrl);
-
-            if (strpos($content, 'uebertragung') !== false)
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync'] as $callback)
             {
-                \File::putContent($this->objImportFolder->path . '/' . $fileName, $content);
-
-                $this->objInterface->lastSync = $syncTime;
-                $this->objInterface->save();
-
-                if ($silent)
-                {
-                    \Input::setPost('file', $this->objImportFolder->path . '/' . $fileName);
-                }
-                else
-                {
-                    //\Message::addConfirmation('The file was downloaded successfully: ' . $fileName);
-                }
-            }
-            else
-            {
-                if ($silent)
-                {
-                    return;
-                }
-                else
-                {
-                    //\Message::addInfo('The downloaded file was empty and has been skipped.');
-                }
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($this);
             }
         }
 
+        $this->import('BackendUser', 'User');
+        $this->username = $this->User->username;
+
         if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = \Input::post('file')) !== '')
         {
-            $this->startTime = time();
-
-            ini_set('max_execution_time', -1);
-
-            $this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
-
-            if (($this->syncFile = $this->getSyncFile($this->objImportFolder->path, $this->syncFile)) !== false)
+            if (($this->syncFile = $this->getSyncFile($this->syncFile)) !== false)
             {
-                if (($this->loadData()))
-                {
-                    $this->addLog('OpenImmo data loaded', 1, 'success');
-
-                    if ($this->syncData())
-                    {
-                        $this->addLog('Import and synchronization was successful', 0, 'success');
-                        //\Message::addConfirmation('Import and synchronization was successful');
-
-                        if ($silent)
-                        {
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        $this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
-                        //\Message::addError('OpenImmo data could not be synchronized.');
-                    }
-                }
-                else
-                {
-                    //\Message::addError('OpenImmo data could not be loaded.');
-                    $this->addLog('OpenImmo data could not be loaded.', 0, 'error');
-                }
+                $this->startSync();
             }
             else
             {
                 //\Message::addError('OpenImmo file could not be loaded.');
-                $this->addLog('OpenImmo file could not be loaded.', 0, 'error');
+                //$this->addLog('OpenImmo file could not be loaded.', 0, 'error');
             }
         }
 
+        \System::loadLanguageFile('tl_real_estate_sync');
+
         $this->Template = new \BackendTemplate($this->strTemplate);
 
-        $files = $this->getSyncFiles($this->objImportFolder->path);
+        $files = $this->getSyncFiles();
 
         $this->Template->setData(array
         (
@@ -184,149 +244,42 @@ class RealEstateImporter extends \BackendModule
             'messages'      => $this->messages
         ));
 
-
         return $this->Template->parse();
     }
 
     /**
-     * Returns a list of syncable files
+     * Syncs OpenImmo export data with database
      *
-     * @param string  $importPath
-     * @param boolean $searchForZip
-     *
-     * @return array
+     * @param string $syncFile
      */
-    public function getSyncFiles($importPath, $searchForZip=true)
+    public function startSync($syncFile='')
     {
-        try {
-            $folder = new \Folder($importPath);
-        } catch (\Exception $e) {
-            return array();
+        if ($syncFile !== '')
+        {
+            $this->syncFile = $syncFile;
         }
 
-        if ($folder->isEmpty())
+        //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
+
+        if (($this->loadData()))
         {
-            return array();
-        }
+            //$this->addLog('OpenImmo data loaded', 1, 'success');
 
-        $arrFiles = array();
-        $lasttime = time();
-
-        $syncFiles = FilesHelper::scandirByExt($importPath, $searchForZip ? array('zip', 'xml') : array('xml'));
-
-        $arrSynced = array();
-        $objHistory = InterfaceHistoryModel::findMultipleBySources($syncFiles);
-
-        if ($objHistory !== null)
-        {
-            while ($objHistory->next())
+            if ($this->syncData())
             {
-                $arrSynced[$objHistory->source] = $objHistory->current();
-            }
-        }
-
-        foreach ($syncFiles as $i => $file)
-        {
-            $mtime = FilesHelper::fileModTime($file);
-            $size = FilesHelper::fileSizeFormated($file);
-
-            if (array_key_exists($file, $arrSynced))
-            {
-                $syncedMtime = intval($arrSynced[$file]->tstamp);
-
-                if ($syncedMtime > 0) {
-                    $mtime = $syncedMtime;
-                }
+                //$this->addLog('Import and synchronization was successful', 0, 'success');
+                //\Message::addConfirmation('Import and synchronization was successful');
             }
             else
             {
-                if ($lasttime > $mtime) {
-                    $lasttime = $mtime;
-                }
+                //$this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
+                //\Message::addError('OpenImmo data could not be synchronized.');
             }
-
-            $arrFiles[] = array(
-                "file" => $file,
-                "time" => $mtime,
-                "size" => $size,
-                "user" => $arrSynced[$file]->username,
-                "status" => intval($arrSynced[$file]->status),
-                "synctime" => intval($arrSynced[$file]->tstamp),
-                "checked" => false
-            );
         }
-
-        usort($arrFiles, array('\ContaoEstateManager\RealEstateImporter', 'sortFilesByTime'));
-
-        return $arrFiles;
-    }
-
-    public function getSyncFile($importPath, $file)
-    {
-        if (FilesHelper::fileExt($file) === 'ZIP')
+        else
         {
-            $this->unzipArchive($file);
-
-            $syncFile = FilesHelper::scandirByExt($importPath . '/tmp', array('xml'));
-
-            if (count($syncFile) === 0)
-            {
-                $this->addLog('No OpenImmo file was found in archive.', 0, 'error');
-                return false;
-            }
-
-            if (count($syncFile) > 1)
-            {
-                $this->addLog('More than one OpenImmo file was found in archive. Only one OpenImmo file is allowed per transfer.', 0, 'error');
-                return false;
-            }
-
-            return $this->getSyncFile($importPath, $syncFile[0]);
-        }
-
-        return $file;
-    }
-
-    /**
-     * Unpack zip archive by path
-     *
-     * @param string $path path to zip file
-     *
-     * @throws \Exception
-     */
-    public function unzipArchive($path)
-    {
-        try {
-            $tmpFolder = new \Folder(FilesHelper::fileDirPath($path) . 'tmp');
-        } catch (\Exception $e) {
-            return;
-        }
-
-        // Clear tmp folder if not empty
-        if (!$tmpFolder->isEmpty())
-        {
-            $tmpFolder->purge();
-        }
-
-        $tmpPath = $tmpFolder->__get('value');
-
-        $zip = new \ZipReader($path);
-        $files = $zip->getFileList();
-        $zip->first();
-
-        foreach ($files as $file)
-        {
-            $content = $zip->unzip();
-            $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
-            $dir = dirname($filePath);
-
-            if (!file_exists($dir))
-            {
-                mkdir($dir);
-            }
-
-            file_put_contents(TL_ROOT . '/' . $tmpPath . '/' . $file, $content);
-            $zip->next();
+            //\Message::addError('OpenImmo data could not be loaded.');
+            //$this->addLog('OpenImmo data could not be loaded.', 0, 'error');
         }
     }
 
@@ -366,7 +319,7 @@ class RealEstateImporter extends \BackendModule
     {
         if ($this->data->getName() !== 'openimmo')
         {
-            $this->addLog('Invalid OpenImmo data.', 1, 'error');
+            //$this->addLog('Invalid OpenImmo data.', 1, 'error');
             return false;
         }
 
@@ -374,7 +327,7 @@ class RealEstateImporter extends \BackendModule
 
         if (count($arrProvider) === 0)
         {
-            $this->addLog('No provider data available.', 1, 'error');
+            //$this->addLog('No provider data available.', 1, 'error');
             return false;
         }
 
@@ -383,11 +336,11 @@ class RealEstateImporter extends \BackendModule
 
         foreach ($arrProvider as $provider)
         {
-            $uniqueProviderValue = trim(current($provider->anbieternr));
+            $this->uniqueProviderValue = trim(current($provider->anbieternr));
 
-            if ($this->objInterface->anbieternr !== $uniqueProviderValue && !$this->objInterface->importThirdPartyProvider)
+            if ($this->objInterface->anbieternr !== $this->uniqueProviderValue && !$this->objInterface->importThirdPartyProvider)
             {
-                $this->addLog('Skip real estate due to missing provider', 1, 'info');
+                //$this->addLog('Skip real estate due to missing provider', 1, 'info');
                 continue;
             }
 
@@ -395,31 +348,32 @@ class RealEstateImporter extends \BackendModule
 
             foreach ($arrRealEstate as $realEstate)
             {
-                $uniqueValue = $this->getUniqueValue($realEstate);
+                $skip = false;
+                $this->uniqueValue = $this->getUniqueValue($realEstate);
 
                 $contactPerson = array();
                 $re = array
                 (
-                    'ANBIETER' => $uniqueProviderValue,
+                    'ANBIETER' => $this->uniqueProviderValue,
                     'AKTIONART' => current($realEstate->verwaltung_techn->aktion)['aktionart']
                 );
 
-                if ($this->objInterface->type === 'wib')
+                // HOOK: add custom logic
+                if (isset($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord']))
                 {
-                    $re['AUFTRAGSART'] = $this->getWibAuftragsart($realEstate);
-
-                    if ($uniqueProviderValue !== $this->objInterface->anbieternr)
+                    foreach ($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord'] as $callback)
                     {
-                        if (in_array($re['AUFTRAGSART'], array('R', 'V', 'S', 'SB', 'Z', 'G')))
-                        {
-                            continue;
-                        }
+                        $this->import($callback[0]);
+                        $this->{$callback[0]}->{$callback[1]}($realEstate, $re, $contactPerson, $skip, $this);
                     }
                 }
 
-                $addImageLog = true;
+                if ($skip)
+                {
+                    continue;
+                }
 
-                $this->addLog('Import real estate: ' . $uniqueValue, 1, 'highlight', $realEstate);
+                //$this->addLog('Import real estate: ' . $this->uniqueValue, 1, 'highlight', $realEstate);
 
                 while ($this->objInterfaceMapping->next())
                 {
@@ -457,8 +411,6 @@ class RealEstateImporter extends \BackendModule
                         if (strrpos($field, '/') !== false)
                         {
                             $tmpGroup = $group;
-                            $tmpField = $field;
-
                             list($group, $field) = $this->getPath($group, $field);
                         }
 
@@ -471,105 +423,9 @@ class RealEstateImporter extends \BackendModule
                         }
 
                         // Save image if needed
-                        if ($interfaceMapping->saveImage)
+                        if ($re['AKTIONART'] !== 'DELETE' && $interfaceMapping->saveImage && !$this->saveImage($interfaceMapping, $tmpGroup, $value, $values))
                         {
-                            $objFilesFolder = $interfaceMapping->attribute === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
-
-                            $format = current($tmpGroup->format);
-                            $check = next($tmpGroup->check);
-
-                            if($addImageLog)
-                            {
-                                $this->addLog('Add images', 2);
-                                $addImageLog = false;
-                            }
-
-                            if ($this->objInterface->type === 'wib')
-                            {
-                                $fileName = $this->getValueFromStringUrl($value, 'imageId');
-
-                                $extension = $this->getExtension($format);
-
-                                // Skip image if no file extension could be determined
-                                if ($extension === false)
-                                {
-                                    continue;
-                                }
-
-                                $completeFileName = $fileName . $extension;
-
-                                $existingFile = FilesModel::findByPath($objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $completeFileName);
-
-                                if ($existingFile !== null && $existingFile->hash === $check)
-                                {
-                                    $values[] = $existingFile->uuid;
-                                    $this->addLog('Skip image: Image already exists and has not changed', 3, 'info', array(
-                                        'filePath' => $objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
-                                        'fileName' => $completeFileName
-                                    ));
-                                    continue;
-                                }
-
-                                $this->downloadFile($value, $this->objImportFolder, $completeFileName);
-
-                                $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $completeFileName);
-                                if ($fileSize > 3000000 || $fileSize === 0)
-                                {
-                                    $this->addLog('Skip image: File size is too large or the image is broken', 3, 'error', array(
-                                        'fileSize' => $fileSize
-                                    ));
-                                    continue;
-                                }
-
-                                $value = $completeFileName;
-                            }
-                            else
-                            {
-                                $existingFile = FilesModel::findByPath($objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/' . $value);
-
-                                if ($existingFile !== null && $existingFile->hash === $check)
-                                {
-                                    $this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
-                                        'filePath' => $objFilesFolder->path . '/' . $uniqueProviderValue . '/' . $uniqueValue . '/',
-                                        'fileName' => $value
-                                    ));
-                                    continue;
-                                }
-                            }
-
-                            $objFile = $this->copyFile($value, $objFilesFolder, $uniqueProviderValue, $uniqueValue);
-
-                            // Delete file, if hash dont match
-                            if ($objFile->hash !== $check)
-                            {
-                                $objFile->delete();
-                                continue;
-                            }
-
-                            if (($titel = current($tmpGroup->anhangtitel)) !== '')
-                            {
-                                $this->addLog('Image added: ' . $value, 3, 'success', array(
-                                    'title' => $titel,
-                                    'fileName' => $value
-                                ));
-
-                                $meta = array
-                                (
-                                    'de' => array
-                                    (
-                                        'title'   => $titel,
-                                        'alt'     => $titel,
-                                        'link'    => '',
-                                        'caption' => ''
-                                    )
-                                );
-
-                                $objFile->meta = serialize($meta);
-
-                                $objFile->save();
-                            }
-
-                            $value = $objFile->uuid;
+                            continue;
                         }
 
                         $value = $this->formatValue($value);
@@ -607,66 +463,14 @@ class RealEstateImporter extends \BackendModule
         return $this->updateCatalog($contactPersonRecords, $realEstateRecords);
     }
 
-    protected function getExtension($format)
-    {
-        switch ($format)
-        {
-            case 'image/jpeg':
-            case 'image/jpg':
-                $extension = '.jpg';
-                break;
-            case 'image/png':
-                $extension = '.png';
-                break;
-            case 'image/gif':
-                $extension = '.gif';
-                break;
-            case 'application/pdf':
-                $extension = '.pdf';
-                break;
-            case 'application/octet-stream':
-                return false;
-                break;
-            default:
-                if (strpos('/', $format) === false)
-                {
-                    $extension = '.' . strtolower($format);
-                }
-                else
-                {
-                    return false;
-                }
-        }
-
-        return $extension;
-    }
-
-    protected function getWibAuftragsart($realEstate)
-    {
-        $groups = $realEstate->xpath('verwaltung_objekt');
-
-        foreach ($groups as $group)
-        {
-            // Skip if condition dont match
-            if ($this->getFieldData('user_defined_simplefield@feldname', $group) !== 'auftragsart')
-            {
-                continue;
-            }
-
-            $value = $this->getFieldData('user_defined_simplefield', $group);
-
-            // Skip if value is not set
-            if ($value === null)
-            {
-                continue;
-            }
-
-            return $value;
-        }
-
-        return '';
-    }
-
+    /**
+     * Sync OpenImmo data with database
+     *
+     * @param array $contactPersonRecords
+     * @param array $realEstateRecords
+     *
+     * @return boolean
+     */
     protected function updateCatalog($contactPersonRecords, $realEstateRecords)
     {
         $actions = \StringUtil::deserialize($this->objInterface->contactPersonActions, true);
@@ -817,7 +621,7 @@ class RealEstateImporter extends \BackendModule
             $objRealEstate->save();
         }
 
-        if ($this->objInterface->type === 'openimmo')
+        if ($this->updateSyncTime)
         {
             $this->objInterface->lastSync = time();
             $this->objInterface->save();
@@ -832,15 +636,13 @@ class RealEstateImporter extends \BackendModule
         // Clear tmp folder
         $tmpFolder->purge();
 
-        $this->import('BackendUser', 'User');
-
         // Create history entry
         $objInterfaceHistory = new InterfaceHistoryModel();
         $objInterfaceHistory->pid = $this->objInterface->id;
         $objInterfaceHistory->tstamp = time();
         $objInterfaceHistory->source = $this->syncFile;
         $objInterfaceHistory->action = 'SUCCESS';
-        $objInterfaceHistory->username = $this->User->username;
+        $objInterfaceHistory->username = $this->username;
         $objInterfaceHistory->text = 'Die Datei "' . $this->syncFile . '" wurde erfolgreich importiert.';
         $objInterfaceHistory->status = 1;
         $objInterfaceHistory->save();
@@ -848,127 +650,148 @@ class RealEstateImporter extends \BackendModule
         return true;
     }
 
-    protected function getContactPersonParameters($contactPerson)
+    /**
+     * Returns a list of syncable files
+     *
+     * @param boolean $searchForZip
+     *
+     * @return array
+     */
+    public function getSyncFiles($searchForZip=true)
     {
-        $arrColumns = array('pid=?');
-        $arrValues = array($this->objInterface->provider);
-
-        switch ($this->objInterface->contactPersonUniqueField)
-        {
-            case 'name_vorname':
-                $arrColumns[] = 'name=? && vorname=?';
-                $arrValues[] = $contactPerson['name'];
-                $arrValues[] = $contactPerson['vorname'];
-                break;
-
-            default:
-                $arrColumns[] = $this->objInterface->contactPersonUniqueField.'=?';
-                $arrValues[] = $contactPerson[$this->objInterface->contactPersonUniqueField];
+        try {
+            $folder = new \Folder($this->objImportFolder->path);
+        } catch (\Exception $e) {
+            return array();
         }
 
-        return array($arrColumns, $arrValues);
-    }
-
-    protected function getValueFromStringUrl($url, $parameter)
-    {
-        $parts = parse_url($url);
-        if (isset($parts['query']))
+        if ($folder->isEmpty())
         {
-            parse_str($parts['query'], $query);
-            if (isset($query[$parameter]))
+            return array();
+        }
+
+        $arrFiles = array();
+        $lasttime = time();
+
+        $syncFiles = FilesHelper::scandirByExt($this->objImportFolder->path, $searchForZip ? array('zip', 'xml') : array('xml'));
+
+        $arrSynced = array();
+        $objHistory = InterfaceHistoryModel::findMultipleBySources($syncFiles);
+
+        if ($objHistory !== null)
+        {
+            while ($objHistory->next())
             {
-                return $query[$parameter];
+                $arrSynced[$objHistory->source] = $objHistory->current();
             }
         }
 
-        return null;
-    }
-
-    protected function downloadFile($path, $targetDirectory, $fileName, $tmpFolder=true)
-    {
-        $content = $this->getFileContent($path);
-
-        $this->addLog('Download: ' . $path, 3, 'raw', array(
-            'source' => $path,
-            'target' => $targetDirectory->path . '/' . ($tmpFolder ? 'tmp/' : '') . $fileName)
-        );
-
-        \File::putContent($targetDirectory->path . '/' . ($tmpFolder ? 'tmp/' : '') . $fileName, $content);
-    }
-
-    protected function getFileContent($path)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $path);
-        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-        $content = curl_exec($ch);
-        curl_close($ch);
-        return $content;
-    }
-
-    protected function formatValue($value)
-    {
-        switch ($this->objInterfaceMapping->formatType)
+        foreach ($syncFiles as $i => $file)
         {
-            case 'number':
-                $value = number_format(floatval($value), $this->objInterfaceMapping->decimals, '.', '');
+            $mtime = FilesHelper::fileModTime($file);
+            $size = FilesHelper::fileSizeFormated($file);
 
-                if ($this->objInterfaceMapping->decimals == 0)
-                {
-                    $value = intval($value);
+            if (array_key_exists($file, $arrSynced))
+            {
+                $syncedMtime = intval($arrSynced[$file]->tstamp);
+
+                if ($syncedMtime > 0) {
+                    $mtime = $syncedMtime;
                 }
-                break;
-            case 'date':
-                $value = strtotime($value);
-                break;
-            case 'text':
-                switch ($this->objInterfaceMapping->textTransform)
-                {
-                    case 'lowercase';
-                        $value = strtolower($value);
-                        break;
-                    case 'uppercase';
-                        $value = strtoupper($value);
-                        break;
-                    case 'capitalize';
-                        $value = ucfirst($value);
-                        break;
-                    case 'removespecialchar':
-                        $value = $this->standardizeSpecialChars($value);
-                        break;
+            }
+            else
+            {
+                if ($lasttime > $mtime) {
+                    $lasttime = $mtime;
                 }
-                if ($this->objInterfaceMapping->trim)
-                {
-                    $value = trim($value);
-                }
-                break;
-            case 'boolean':
-                if ($this->objInterfaceMapping->booleanCompareValue)
-                {
-                    if ($this->objInterfaceMapping->booleanCompareValue === $value)
-                    {
-                        $value = '1';
-                    }
-                    else
-                    {
-                        $value = '0';
-                    }
-                }
-                elseif ($value && ($value === '1' || $value === 'true'))
-                {
-                    $value = '1';
-                }
-                else
-                {
-                    $value = '0';
-                }
-                break;
+            }
+
+            $arrFiles[] = array(
+                "file" => $file,
+                "time" => $mtime,
+                "size" => $size,
+                "user" => $arrSynced[$file]->username,
+                "status" => intval($arrSynced[$file]->status),
+                "synctime" => intval($arrSynced[$file]->tstamp),
+                "checked" => false
+            );
         }
 
-        return $value;
+        usort($arrFiles, function($a, $b) {
+            if ($a == $b) return 0;
+            return ($a["time"] > $b["time"]) ? -1 : 1;
+        });
+
+        return $arrFiles;
+    }
+
+    public function getSyncFile($file)
+    {
+        if (FilesHelper::fileExt($file) === 'ZIP')
+        {
+            $this->unzipArchive($file);
+
+            $syncFile = FilesHelper::scandirByExt($this->objImportFolder->path . '/tmp', array('xml'));
+
+            if (count($syncFile) === 0)
+            {
+                $this->addLog('No OpenImmo file was found in archive.', 0, 'error');
+                return false;
+            }
+
+            if (count($syncFile) > 1)
+            {
+                $this->addLog('More than one OpenImmo file was found in archive. Only one OpenImmo file is allowed per transfer.', 0, 'error');
+                return false;
+            }
+
+            return $this->getSyncFile($syncFile[0]);
+        }
+
+        return $file;
+    }
+
+    /**
+     * Unpack zip archive by path
+     *
+     * @param string $path path to zip file
+     *
+     * @throws \Exception
+     */
+    public function unzipArchive($path)
+    {
+        try {
+            $tmpFolder = new \Folder(FilesHelper::fileDirPath($path) . 'tmp');
+        } catch (\Exception $e) {
+            return;
+        }
+
+        // Clear tmp folder if not empty
+        if (!$tmpFolder->isEmpty())
+        {
+            $tmpFolder->purge();
+        }
+
+        $tmpPath = $tmpFolder->__get('value');
+
+        $zip = new \ZipReader($path);
+        $files = $zip->getFileList();
+        $zip->first();
+
+        foreach ($files as $file)
+        {
+            $content = $zip->unzip();
+            $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
+            $dir = dirname($filePath);
+
+            if (!file_exists($dir))
+            {
+                mkdir($dir);
+            }
+
+            file_put_contents(TL_ROOT . '/' . $tmpPath . '/' . $file, $content);
+            $zip->next();
+        }
     }
 
     protected function getUniqueValue($realEstate)
@@ -981,35 +804,7 @@ class RealEstateImporter extends \BackendModule
         return $this->getFieldData($interfaceMappingUniqueField->oiField, $groups[0]);
     }
 
-    protected function copyFile($fileName, $objFolder, $providerDirectoryName, $directoryName)
-    {
-        if (FilesHelper::isWritable($objFolder->path))
-        {
-            $objFiles = \Files::getInstance();
-
-            $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
-            $filePathRecord = $filePathProvider . '/' . $directoryName;
-            $filePath = $filePathRecord . '/' . $fileName;
-
-            if (!file_exists($filePathProvider))
-            {
-                mkdir($filePathProvider);
-            }
-
-            if (!file_exists($filePathRecord))
-            {
-                mkdir($filePathRecord);
-            }
-
-            $objFiles->copy($this->objImportFolder->path . '/tmp/' . $fileName, $filePath);
-
-            $objFile = Dbafs::addResource($filePath);
-
-            return $objFile;
-        }
-    }
-
-    protected function getFieldData($field, $group)
+    public function getFieldData($field, $group)
     {
         $attr = false;
         $attr_pos = strrpos($field, '@');
@@ -1131,48 +926,217 @@ class RealEstateImporter extends \BackendModule
         return array($group->xpath($path)[0], $field);
     }
 
+    protected function formatValue($value)
+    {
+        switch ($this->objInterfaceMapping->formatType)
+        {
+            case 'number':
+                $value = number_format(floatval($value), $this->objInterfaceMapping->decimals, '.', '');
+
+                if ($this->objInterfaceMapping->decimals == 0)
+                {
+                    $value = intval($value);
+                }
+                break;
+            case 'date':
+                $value = strtotime($value);
+                break;
+            case 'text':
+                switch ($this->objInterfaceMapping->textTransform)
+                {
+                    case 'lowercase';
+                        $value = strtolower($value);
+                        break;
+                    case 'uppercase';
+                        $value = strtoupper($value);
+                        break;
+                    case 'capitalize';
+                        $value = ucfirst($value);
+                        break;
+                    case 'removespecialchar':
+                        $value = $this->standardizeSpecialChars($value);
+                        break;
+                }
+                if ($this->objInterfaceMapping->trim)
+                {
+                    $value = trim($value);
+                }
+                break;
+            case 'boolean':
+                if ($this->objInterfaceMapping->booleanCompareValue)
+                {
+                    if ($this->objInterfaceMapping->booleanCompareValue === $value)
+                    {
+                        $value = '1';
+                    }
+                    else
+                    {
+                        $value = '0';
+                    }
+                }
+                elseif ($value && ($value === '1' || $value === 'true'))
+                {
+                    $value = '1';
+                }
+                else
+                {
+                    $value = '0';
+                }
+                break;
+        }
+
+        return $value;
+    }
+
+    protected function standardizeSpecialChars($content)
+    {
+        // Convert microsoft special characters
+        $replace = array(
+            "‘" => "'",
+            "’" => "'",
+            "”" => '"',
+            "“" => '"',
+            "" => '"',
+            "" => '"',
+            "–" => "-",
+            "—" => "-",
+            "" => "-",
+            "…" => "&#8230;"
+        );
+
+        foreach($replace as $k => $v)
+        {
+            $content = str_replace($k, $v, $content);
+        }
+
+        // Remove any non-ascii character
+        // $content = preg_replace('/[^\x20-\x7E]*/','', $content);
+
+        return $content;
+    }
+
+    protected function getContactPersonParameters($contactPerson)
+    {
+        $arrColumns = array('pid=?');
+        $arrValues = array($this->objInterface->provider);
+
+        switch ($this->objInterface->contactPersonUniqueField)
+        {
+            case 'name_vorname':
+                $arrColumns[] = 'name=? && vorname=?';
+                $arrValues[] = $contactPerson['name'];
+                $arrValues[] = $contactPerson['vorname'];
+                break;
+
+            default:
+                $arrColumns[] = $this->objInterface->contactPersonUniqueField.'=?';
+                $arrValues[] = $contactPerson[$this->objInterface->contactPersonUniqueField];
+        }
+
+        return array($arrColumns, $arrValues);
+    }
+
     /**
-     * Sync files with database
-     *
-     * @param string $file
-     * @param string $filesPath
+     * Download and save a file
      *
      * @return boolean
      */
-    protected function syncFiles($file, $filesPath)
+    protected function saveImage($interfaceMapping, $tmpGroup, &$value, &$values)
     {
-        $dataPath = dirname($file);
+        $skip = false;
 
-        $syncFiles = FilesHelper::scandirByExt($dataPath, array('jpg', 'jpeg', 'png', 'gif', 'pdf'));
+        $objFilesFolder = $interfaceMapping->attribute === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
 
-        if (FilesHelper::isWritable($filesPath))
+        $check = next($tmpGroup->check);
+
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']))
         {
-            $objFiles = \Files::getInstance();
-
-            foreach ($syncFiles as $file)
+            foreach ($GLOBALS['TL_HOOKS']['realEstateImportSaveImage'] as $callback)
             {
-                $strName = FilesHelper::filename($file);
-                $objFiles->copy($dataPath . '/' . $strName, $filesPath . '/' . $strName);
-                $objFiles->delete($dataPath . '/' . $strName);
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objFilesFolder, $value, $tmpGroup, $values, $skip, $this);
             }
-
-            $this->addLog(count($syncFiles) . ' files copied from "' . $dataPath . '" to "' . $filesPath . '".');
-
-            \Dbafs::syncFiles();
         }
-        else
+
+        if ($skip)
         {
-            $this->addLog('Cannot copy import files. Directory "' . $filesPath . '" is not writable.', 0, 'error');
             return false;
         }
 
-        return true;
+        $existingFile = \FilesModel::findByPath($objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/' . $value);
+
+        if ($existingFile !== null && $existingFile->hash === $check)
+        {
+            $values[] = $existingFile->uuid;
+            //$this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
+            //    'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
+            //    'fileName' => $value
+            //));
+            return false;
+        }
+
+        $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $this->uniqueValue);
+
+        // Delete file, if hash dont match
+        if ($objFile->hash !== $check)
+        {
+            $objFile->delete();
+            return false;
+        }
+
+        if (($titel = current($tmpGroup->anhangtitel)) !== '')
+        {
+            //$this->addLog('Image added: ' . $value, 3, 'success', array(
+            //    'title' => $titel,
+            //    'fileName' => $value
+            //));
+
+            $meta = array
+            (
+                'de' => array
+                (
+                    'title'   => $titel,
+                    'alt'     => $titel,
+                    'link'    => '',
+                    'caption' => ''
+                )
+            );
+
+            $objFile->meta = serialize($meta);
+
+            $objFile->save();
+        }
+
+        $value = $objFile->uuid;
     }
 
-    public static function sortFilesByTime($a, $b)
+    protected function copyFile($fileName, $objFolder, $providerDirectoryName, $directoryName)
     {
-        if ($a == $b) return 0;
-        return ($a["time"] > $b["time"]) ? -1 : 1;
+        if (FilesHelper::isWritable($objFolder->path))
+        {
+            $objFiles = \Files::getInstance();
+
+            $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
+            $filePathRecord = $filePathProvider . '/' . $directoryName;
+            $filePath = $filePathRecord . '/' . $fileName;
+
+            if (!file_exists($filePathProvider))
+            {
+                mkdir($filePathProvider);
+            }
+
+            if (!file_exists($filePathRecord))
+            {
+                mkdir($filePathRecord);
+            }
+
+            $objFiles->copy($this->objImportFolder->path . '/tmp/' . $fileName, $filePath);
+
+            $objFile = Dbafs::addResource($filePath);
+
+            return $objFile;
+        }
     }
 
     protected function addLog($strMessage, $level=0, $strType='raw', $data=null)
@@ -1202,32 +1166,5 @@ class RealEstateImporter extends \BackendModule
         // ToDo: username= Username | Cron
 
         $objLog->save();
-    }
-
-    protected function standardizeSpecialChars($content)
-    {
-        // Convert microsoft special characters
-        $replace = array(
-            "‘" => "'",
-            "’" => "'",
-            "”" => '"',
-            "“" => '"',
-            "" => '"',
-            "" => '"',
-            "–" => "-",
-            "—" => "-",
-            "" => "-",
-            "…" => "&#8230;"
-        );
-
-        foreach($replace as $k => $v)
-        {
-            $content = str_replace($k, $v, $content);
-        }
-
-        // Remove any non-ascii character
-        // $content = preg_replace('/[^\x20-\x7E]*/','', $content);
-
-        return $content;
     }
 }

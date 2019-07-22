@@ -118,9 +118,8 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     'palettes' => array
     (
         '__selector__'   => array('type', 'importThirdPartyProvider'),
-        'deault'         => '{title_legend},title,type;',
+        'default'        => '{title_legend},title,type',
         'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
-        'wib'            => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen;{expert_legend:hide},syncUrl,testMode'
     ),
 
     // Subpalettes
@@ -159,7 +158,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'default'                 => 'openimmo',
             'exclude'				  => true,
             'inputType'				  => 'select',
-            'options'				  => array ('openimmo', 'wib'),
+            'options'				  => array ('openimmo'),
             'eval'					  => array('submitOnChange'=>true, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -307,22 +306,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
             'options_callback'        => array('tl_interface', 'getDeleteFilesOlderThenOptions'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
-        ),
-        'syncUrl' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['syncUrl'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'testMode' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['testMode'],
-            'exclude'                 => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
         ),
     )
 );
