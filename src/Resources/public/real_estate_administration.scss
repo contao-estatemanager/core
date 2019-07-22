@@ -29,6 +29,18 @@
       }
     }
   }
+
+  .list_icon_status{
+    width: 27px;
+    height: 27px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  button.clrbtn{
+    border: 0 none;
+    background: transparent;
+  }
 }
 
 .widget {

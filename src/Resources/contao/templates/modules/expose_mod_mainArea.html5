@@ -2,9 +2,9 @@
 
 <?php $this->block('content'); ?>
 
-<div class="field <?=$this->mainArea['key']?><?=$this->mainArea['class'] ? ' ' . $this->mainArea['class'] : ''?>">
+<div class="field <?=$this->mainArea['key']?><?=$this->mainArea['class'] ? ' ' . $this->mainArea['class'] : ''?>"  title="<?= $this->mainArea['label'] ?>: <?= $this->mainArea['value'] ?>">
     <div class="label"><?=$this->mainArea['label']?></div>
-    <div class="value" title="<?=$this->mainArea['label']?>"><?=$this->mainArea['value']?></div>
+    <div class="value"><?=$this->mainArea['value']?></div>
 </div>
 
 <?php $this->endblock(); ?>

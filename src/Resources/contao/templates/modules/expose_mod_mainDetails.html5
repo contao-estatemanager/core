@@ -3,7 +3,7 @@
 <?php $this->block('content'); ?>
 
 <?php foreach ($this->mainDetails as $detail): ?>
-    <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>">
+    <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?= $detail['value'] ?>">
         <span class="value"><?= $detail['value'] ?></span>
         <span class="label"><?= $detail['label'] ?></span>
     </div>
