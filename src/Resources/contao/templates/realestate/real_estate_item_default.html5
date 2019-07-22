@@ -26,7 +26,7 @@
 
       <div class="main-details">
           <?php foreach ($this->mainDetails as $detail): ?>
-            <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?= $detail['value'] ?>">
+            <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?=strip_tags($detail['value'])?>">
               <span class="label"><?= $detail['label'] ?></span>
               <span class="value"><?= $detail['value'] ?></span>
             </div>

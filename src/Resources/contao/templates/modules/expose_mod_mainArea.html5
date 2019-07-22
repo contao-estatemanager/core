@@ -2,7 +2,7 @@
 
 <?php $this->block('content'); ?>
 
-<div class="field <?=$this->mainArea['key']?><?=$this->mainArea['class'] ? ' ' . $this->mainArea['class'] : ''?>"  title="<?= $this->mainArea['label'] ?>: <?= $this->mainArea['value'] ?>">
+<div class="field <?=$this->mainArea['key']?><?=$this->mainArea['class'] ? ' ' . $this->mainArea['class'] : ''?>"  title="<?= $this->mainArea['label'] ?>: <?=strip_tags($this->mainArea['value'])?>">
     <div class="label"><?=$this->mainArea['label']?></div>
     <div class="value"><?=$this->mainArea['value']?></div>
 </div>
