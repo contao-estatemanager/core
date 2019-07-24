@@ -263,9 +263,17 @@
         <target>%s km</target>
       </trans-unit>
 
-      <trans-unit id="tl_real_estate_filter.dateAdded_asc">
+      <trans-unit id="tl_real_estate_filter.dateAdded_desc">
         <source>Aktualität (neueste zuerst)</source>
         <target>Aktualität (neueste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.tstamp_desc">
+        <source>Aktualität (aktuelle zuerst)</source>
+        <target>Aktualität (aktuelle zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.standVom_desc">
+        <source>Aktualität (aktuelle zuerst)</source>
+        <target>Aktualität (aktuelle zuerst)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.nettokaltmiete_asc">
         <source>Kaltmiete (niedrigste zuerst)</source>

@@ -147,6 +147,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'tstamp' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['tstamp'],
+            'sorting'                 => true,
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'realEstate'              => array(
                 'sorting'   => true

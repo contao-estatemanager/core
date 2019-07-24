@@ -64,8 +64,6 @@ class RealEstateCronImporter extends \Frontend
 
     /**
      * Synchronize an interface
-     *
-     * @param InterfaceModel $objInterface
      */
     protected function sync()
     {

@@ -13,6 +13,7 @@
 
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addSorting';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
@@ -26,7 +27,8 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
     'listMode_group'       => 'realEstateGroups,filterMode',
-    'addCustomOrder'       => 'customOrder'
+    'addSorting'           => 'sortingField',
+    'addCustomOrder'       => 'customOrder',
 ));
 
 // Add estate manager fields
@@ -115,15 +117,26 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addSorting'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50'),
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
         'sql'                     => "char(1) NOT NULL default ''"
+    ),
+    'sortingField' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['sortingField'],
+        'default'                 => 'dateAdded',
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'options'                 => array('dateAdded', 'tstamp', 'standVom'),
+        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+        'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+        'sql'                     => "varchar(16) NOT NULL default ''"
     ),
     'addCustomOrder' => array
     (
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCustomOrder'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr m12'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
     'customOrder' => array

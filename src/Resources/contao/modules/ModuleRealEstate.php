@@ -357,7 +357,7 @@ abstract class ModuleRealEstate extends \Module
 
         if ($this->addSorting)
         {
-            $arrOptions = array('dateAdded_asc' => Translator::translateFilter('dateAdded_asc'));
+            $arrOptions = array('dateAdded_asc' => Translator::translateFilter($this->sortingField . '_desc'));
 
             if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
             {
@@ -386,6 +386,11 @@ abstract class ModuleRealEstate extends \Module
     protected function getOrderOption()
     {
         $strOrder = $_SESSION['SORTING'];
+
+        if ($strOrder === null)
+        {
+            return $this->sortingField . ' DESC';
+        }
 
         if (strpos($strOrder, '_asc'))
         {
