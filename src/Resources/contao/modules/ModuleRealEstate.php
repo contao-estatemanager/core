@@ -379,32 +379,6 @@ abstract class ModuleRealEstate extends \Module
     }
 
     /**
-     * Return the order option as string
-     *
-     * @return string
-     */
-    protected function getOrderOption()
-    {
-        $strOrder = $_SESSION['SORTING'];
-
-        if ($strOrder === null)
-        {
-            return \Config::get('defaultSorting') . ' DESC';
-        }
-
-        if (strpos($strOrder, '_asc'))
-        {
-            $strOrder = str_replace('_asc', '', $strOrder) . ' ASC';
-        }
-        elseif (strpos($strOrder, '_desc'))
-        {
-            $strOrder = str_replace('_desc', '', $strOrder) . ' DESC';
-        }
-
-        return $strOrder;
-    }
-
-    /**
      * Generate a link and return it as string
      *
      * @param string  $strTitle

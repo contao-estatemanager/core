@@ -251,6 +251,8 @@ class FilterSession extends \System
             $this->addQueryFragmentPeriod($arrColumns, $arrValues);
         }
 
+        $arrOptions['order']  = $this->getOrderOption();
+
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameter']))
         {
@@ -314,6 +316,8 @@ class FilterSession extends \System
             }
         }
 
+        $arrOptions['order']  = $this->getOrderOption();
+
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']))
         {
@@ -368,6 +372,8 @@ class FilterSession extends \System
 
             $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
         }
+
+        $arrOptions['order']  = $this->getOrderOption();
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByGroups']))
@@ -579,22 +585,29 @@ class FilterSession extends \System
     }
 
     /**
-     * Add query fragment for the unique field
+     * Return the order option as string
      *
-     * @param array               $arrColumn
-     * @param array               $arrValues
+     * @return string
      */
-    protected function addQueryFragmentUnique(&$arrColumn, &$arrValues)
+    protected function getOrderOption()
     {
-        $t = static::$strTable;
+        $strOrder = $_SESSION['SORTING'];
 
-        if ($_SESSION['FILTER_DATA']['unique'])
+        if ($strOrder === null)
         {
-            $arrColumn = array("$t.objektnrExtern=?");
-            $arrValues = array($_SESSION['FILTER_DATA']['unique']);
-
-            unset($_SESSION['FILTER_DATA']['unique']);
+            return \Config::get('defaultSorting') . ' DESC';
         }
+
+        if (strpos($strOrder, '_asc'))
+        {
+            $strOrder = str_replace('_asc', '', $strOrder) . ' ASC';
+        }
+        elseif (strpos($strOrder, '_desc'))
+        {
+            $strOrder = str_replace('_desc', '', $strOrder) . ' DESC';
+        }
+
+        return $strOrder;
     }
 
     /**

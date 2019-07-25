@@ -113,7 +113,6 @@ class ModuleRealEstateResultList extends ModuleRealEstate
 
         $arrOptions['limit']  = $limit;
         $arrOptions['offset'] = $offset;
-        $arrOptions['order']  = $this->getOrderOption();
 
         if ($this->addCustomOrder)
         {
