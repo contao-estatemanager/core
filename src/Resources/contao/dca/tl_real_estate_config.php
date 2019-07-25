@@ -50,7 +50,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
             'inputType'               => 'select',
-            'options'                 => array('tstamp' => 'Aktualität'), // ToDo: Auf sorting reagieren und options erweitern
+            'options'                 => array('dateAdded', 'tstamp', 'standVom'),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr')
 		),
         'statusTokenNewDisplayDuration' => array

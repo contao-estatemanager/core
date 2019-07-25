@@ -144,6 +144,7 @@ namespace ContaoEstateManager;
  * @method static integer countByFreitextfeld($val, $opt=array())
  * @method static integer countByPublished($val, $opt=array())
  *
+ * @author Fabian Ekert <fabian@oveleon.de>
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
 

@@ -13,7 +13,6 @@
 
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addSorting';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
@@ -27,7 +26,6 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
     'listMode_group'       => 'realEstateGroups,filterMode',
-    'addSorting'           => 'sortingField',
     'addCustomOrder'       => 'customOrder',
 ));
 
@@ -119,17 +117,6 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'inputType'               => 'checkbox',
         'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
         'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'sortingField' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['sortingField'],
-        'default'                 => 'dateAdded',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('dateAdded', 'tstamp', 'standVom'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
-        'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-        'sql'                     => "varchar(16) NOT NULL default ''"
     ),
     'addCustomOrder' => array
     (

@@ -115,6 +115,7 @@ namespace ContaoEstateManager;
  * @method static integer countByWeiteres($id, array $opt=array())
  * @method static integer countByPublished$id, array $opt=array())
  *
+ * @author Fabian Ekert <fabian@oveleon.de>
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
 

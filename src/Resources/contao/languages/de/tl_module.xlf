@@ -43,14 +43,6 @@
         <source>Adds a sort option</source>
         <target>Fügt eine Sortiermöglichkeit hinzu</target>
       </trans-unit>
-      <trans-unit id="tl_module.sortingField.0">
-        <source>Default sorting</source>
-        <target>Standardsortierung</target>
-      </trans-unit>
-      <trans-unit id="tl_module.sortingField.1">
-        <source>Here you can define the field the list is sorted by.</source>
-        <target>Hier kann das Feld definiert werden, anhand die Liste Standardmäßig sortiert ist.</target>
-      </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.0">
         <source>Add custom order</source>
         <target>Benutzerdefinierte Sortierung hinzufügen</target>
