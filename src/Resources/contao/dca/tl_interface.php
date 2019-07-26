@@ -119,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     (
         '__selector__'   => array('type', 'importThirdPartyProvider'),
         'default'        => '{title_legend},title,type',
-        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
+        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
     ),
 
     // Subpalettes
@@ -177,10 +177,18 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['anbieternr'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'clr w50'),
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'uniqueProviderField' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueProviderField'],
+            'exclude'				  => true,
+            'inputType'				  => 'select',
+            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'		  => array('tl_interface', 'getUniqueProviderFieldOptions'),
+            'sql'                     => "varchar(64) NOT NULL default 'anbieternr'"
         ),
         'uniqueField' => array
         (
@@ -327,6 +335,7 @@ class tl_interface extends Backend
         parent::__construct();
         $this->import('BackendUser', 'User');
 
+        $this->loadDataContainer('tl_provider');
         $this->loadDataContainer('tl_real_estate');
     }
 
@@ -389,6 +398,28 @@ class tl_interface extends Backend
     public function deleteInterface($row, $href, $label, $title, $icon, $attributes)
     {
         return $this->User->hasAccess('delete', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+    }
+
+    /**
+     * Return all unique provider field options as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getUniqueProviderFieldOptions($dc)
+    {
+        $return = array();
+
+        foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
+        {
+            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            {
+                $return[] = $field;
+            }
+        }
+
+        return $return;
     }
 
     /**

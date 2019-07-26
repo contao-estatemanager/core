@@ -351,7 +351,7 @@ class RealEstateImporter extends \BackendModule
 
         foreach ($arrProvider as $provider)
         {
-            $this->uniqueProviderValue = trim(current($provider->anbieternr));
+            $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
 
             if ($this->objInterface->anbieternr !== $this->uniqueProviderValue && !$this->objInterface->importThirdPartyProvider)
             {

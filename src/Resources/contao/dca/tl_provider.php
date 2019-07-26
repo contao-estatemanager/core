@@ -131,7 +131,10 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'sql'                     => "varchar(255) NOT NULL default ''",
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'openimmo_anid' => array
         (
@@ -141,7 +144,10 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(32) NOT NULL default ''"
+            'sql'                     => "varchar(32) NOT NULL default ''",
+            'realEstate'                => array(
+                'unique' => true
+            )
         ),
         'lizenzkennung' => array
         (
