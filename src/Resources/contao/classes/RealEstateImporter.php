@@ -1094,7 +1094,7 @@ class RealEstateImporter extends \BackendModule
         $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $this->uniqueValue);
 
         // Delete file, if hash dont match
-        if ($objFile->hash !== $check)
+        if ($check !== false && $objFile->hash !== $check)
         {
             $objFile->delete();
             return false;
@@ -1124,6 +1124,8 @@ class RealEstateImporter extends \BackendModule
         }
 
         $value = $objFile->uuid;
+
+        return true;
     }
 
     protected function copyFile($fileName, $objFolder, $providerDirectoryName, $directoryName)
