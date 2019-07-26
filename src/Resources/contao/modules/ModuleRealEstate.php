@@ -357,7 +357,10 @@ abstract class ModuleRealEstate extends \Module
 
         if ($this->addSorting)
         {
-            $arrOptions = array('dateAdded_desc' => Translator::translateFilter(\Config::get('defaultSorting') . '_desc'));
+            \System::loadLanguageFile('tl_real_estate_filter');
+
+            $defaultSorting = \Config::get('defaultSorting').'_desc';
+            $arrOptions = array($defaultSorting => Translator::translateFilter($defaultSorting));
 
             if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
             {
