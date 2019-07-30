@@ -104,6 +104,7 @@ class ExposeForm extends \Form
         $recipients = $this->getRecipients($objProvider, $objContactPerson);
 
         $email = new \Email();
+        $email->subject = $this->subject;
 
         // Get subject and message
         if ($this->format == 'email')

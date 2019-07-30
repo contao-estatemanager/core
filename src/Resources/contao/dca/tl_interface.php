@@ -188,7 +188,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'inputType'				  => 'select',
             'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
             'options_callback'		  => array('tl_interface', 'getUniqueProviderFieldOptions'),
-            'sql'                     => "varchar(64) NOT NULL default 'anbieternr'"
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'uniqueField' => array
         (
