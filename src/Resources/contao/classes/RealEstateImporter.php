@@ -1079,6 +1079,12 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
+        $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
+        if ($fileSize > 2000000 || $fileSize === 0)
+        {
+            return false;
+        }
+
         $existingFile = \FilesModel::findByPath($objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/' . $value);
 
         if ($existingFile !== null && $existingFile->hash === $check)
