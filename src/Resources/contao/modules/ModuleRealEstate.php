@@ -349,6 +349,12 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function addSorting()
     {
+        if (\Input::post('FORM_SUBMIT') == 'sorting')
+        {
+            $_SESSION['SORTING'] = \Input::post('sorting');
+            unset($_POST['sorting']);
+        }
+
         if ($this->forceEmpty)
         {
             $this->Template->addSorting = false;
@@ -420,30 +426,6 @@ abstract class ModuleRealEstate extends \Module
                     $this->redirect($realEstate->generateExposeUrl($objJumpTo->id));
                 }
             }
-        }
-    }
-
-    /**
-     * Initialize the filter in the current session
-     */
-    protected function initializeFilterSession()
-    {
-        $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
-    }
-
-    /**
-     * Initialize the sorting in the current session
-     */
-    protected function initializeSortingSession()
-    {
-        if (\Input::post('FORM_SUBMIT') == 'sorting')
-        {
-            $_SESSION['SORTING'] = \Input::post('sorting');
-            unset($_POST['sorting']);
-        }
-        elseif (!$_SESSION['SORTING'])
-        {
-            $_SESSION['SORTING'] = 'dateAdded_asc';
         }
     }
 
