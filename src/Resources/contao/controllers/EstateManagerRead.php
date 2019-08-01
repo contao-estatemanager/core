@@ -40,21 +40,6 @@ class EstateManagerRead extends EstateManagerSDK
 
         switch ($module)
         {
-            case 'estate':
-
-                if(!$id)
-                {
-                    $data = $this->error(
-                        'Module estate expected parameter id',
-                        self::ERR_WRONG_PARAM
-                    );
-
-                    break;
-                }
-
-                // ToDo: Module estate stuff
-
-                break;
             case 'estates':
 
                 // validate parameters
@@ -85,7 +70,20 @@ class EstateManagerRead extends EstateManagerSDK
                     }
                 }
 
+                if($id)
+                {
+                    $arrColumns[] = 'id=?';
+                    $arrValues[]  = $id;
+                }
+
                 $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
+
+                if($objRealEstates === null){
+                    return new JsonResponse($this->error(
+                        'No results found',
+                        self::STATUS_ZERO_RESULTS
+                    ));
+                }
 
                 switch($this->currParam['dataType'])
                 {
@@ -94,7 +92,7 @@ class EstateManagerRead extends EstateManagerSDK
                         $data = $this->parseGeoJsonArray($objRealEstates);
                         break;
                     default:
-                        $data['results'] = $this->parseRealEstatesFields($objRealEstates);
+                        $data['results'] = $this->parseRealEstates($objRealEstates);
                 }
 
                 break;
@@ -117,12 +115,12 @@ class EstateManagerRead extends EstateManagerSDK
      *
      * @return array
      */
-    private function parseRealEstatesFields($objRealEstates){
+    private function parseRealEstates($objRealEstates){
         $collection = array();
 
         while($objRealEstates->next())
         {
-            $collection[] = $this->parseRealEstateFields($objRealEstates);
+            $collection[] = $this->parseRealEstateCollection($objRealEstates);
         }
 
         return $collection;
@@ -135,7 +133,7 @@ class EstateManagerRead extends EstateManagerSDK
      *
      * @return array
      */
-    private function parseRealEstateFields($objRealEstate)
+    private function parseRealEstateCollection($objRealEstate)
     {
         // create RealEstate instance
         $realEstate = new RealEstate($objRealEstate, null);
@@ -212,6 +210,14 @@ class EstateManagerRead extends EstateManagerSDK
             }
         }
 
+        // add template
+        if($this->currParam['template'])
+        {
+            $objTemplate = new \FrontendTemplate($this->currParam['template']);
+            $objTemplate->setData($collection['fields']);
+            $collection['template'] = $objTemplate->parse();
+        }
+
         return $collection;
     }
 
@@ -238,15 +244,7 @@ class EstateManagerRead extends EstateManagerSDK
             {
                 if($objRealEstates->breitengrad && $objRealEstates->laengengrad)
                 {
-                    $template = false;
-                    $parsedFields = $this->parseRealEstateFields($objRealEstates, $this->currParam['fields']);
-
-                    if($this->currParam['template'])
-                    {
-                        $objTemplate = new \FrontendTemplate($this->currParam['template']);
-                        $objTemplate->setData($parsedFields['fields']);
-                        $template = $objTemplate->parse();
-                    }
+                    $parsedFields = $this->parseRealEstateCollection($objRealEstates);
 
                     $arrRealEstate = array(
                         'type'     => 'Feature',
@@ -257,10 +255,7 @@ class EstateManagerRead extends EstateManagerSDK
                                 $objRealEstates->breitengrad
                             )
                         ),
-                        'properties'  => array_merge(
-                            $parsedFields,
-                            ['popup' => $template]
-                        )
+                        'properties'  => $parsedFields
                     );
 
                     $arrGeoJson['features'][] = $arrRealEstate;
