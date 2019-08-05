@@ -67,26 +67,30 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->realEstateId = $objRealEstate->id;
         $objTemplate->arrExtensions = array();
 
-        // get template information
         $texts = $realEstate->getTexts(null, $this->maxTextLength);
         $statusTokens = \StringUtil::deserialize($this->statusTokens);
 
         // set information to template
-        $objTemplate->jumpTo = $this->jumpTo;
-        $objTemplate->link = $realEstate->generateExposeUrl($this->jumpTo);
-        $objTemplate->marketingToken = $realEstate->getMarketingToken();
-        $objTemplate->title = $realEstate->getTitle();
-        $objTemplate->teaser = $texts['dreizeiler'];
-        $objTemplate->description = $texts['objektbeschreibung'];
-        $objTemplate->linkExpose = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
+        $objTemplate->title        = $realEstate->getTitle();
+        $objTemplate->jumpTo       = $this->jumpTo;
+        $objTemplate->link         = $realEstate->generateExposeUrl($this->jumpTo);
+        $objTemplate->linkExpose   = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
         $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
-        $objTemplate->address = $realEstate->getLocationString();
-        $objTemplate->mainDetails = $realEstate->getMainDetails(\Config::get('defaultNumberOfMainDetails') ?: 3);
-        $objTemplate->mainAttributes = $realEstate->getMainAttributes(\Config::get('defaultNumberOfMainAttr') ?: 3);
-        $objTemplate->mainPrice = $realEstate->getMainPrice();
-        $objTemplate->mainArea = $realEstate->getMainArea();
-        $objTemplate->details = $realEstate->getDetails(['price'], true);
+
+        $objTemplate->address      = $realEstate->getLocationString();
+        $objTemplate->teaser       = $texts['dreizeiler'];
+        $objTemplate->description  = $texts['objektbeschreibung'];
+
+        $objTemplate->marketingToken  = $realEstate->getMarketingToken();
         $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
+
+        $objTemplate->mainDetails    = $realEstate->getMainDetails(\Config::get('defaultNumberOfMainDetails') ?: 3);
+        $objTemplate->mainAttributes = $realEstate->getMainAttributes(\Config::get('defaultNumberOfMainAttr') ?: 3);
+        $objTemplate->mainPrice      = $realEstate->getMainPrice();
+        $objTemplate->mainArea       = $realEstate->getMainArea();
+
+        $objTemplate->details        = $realEstate->getDetails(['price'], true);
+        $objTemplate->objektart      = $realEstate->getFields(['objektart']);
 
         // add provider
         $objTemplate->addProvider = !!$this->addProvider;
