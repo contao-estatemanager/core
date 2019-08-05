@@ -90,7 +90,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->mainArea       = $realEstate->getMainArea();
 
         $objTemplate->details        = $realEstate->getDetails(['price'], true);
-        $objTemplate->objektart      = $realEstate->getFields(['objektart']);
+        $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
 
         // add provider
         $objTemplate->addProvider = !!$this->addProvider;
