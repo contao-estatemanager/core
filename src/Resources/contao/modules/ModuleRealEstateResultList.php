@@ -83,7 +83,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
 
         if($this->addCountLabel && $this->totalItems)
         {
-            $this->Template->labelObjectsFound = sprintf(Translator::translateLabel('labelObjectsFound'), $this->totalItems);
+            $this->Template->labelObjectsFound = sprintf(Translator::translateLabel('labelObjectsFound'), '<span>' . $this->totalItems . '</span>');
         }
     }
 
