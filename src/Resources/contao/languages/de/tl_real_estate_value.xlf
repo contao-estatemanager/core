@@ -11,8 +11,8 @@
         <target>Ja</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nicht_noetig">
-        <source>Für diese Objekt nicht nötig</source>
-        <target>Für diese Objekt nicht nötig</target>
+        <source>Für dieses Objekt nicht nötig</source>
+        <target>Für dieses Objekt nicht nötig</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.auf_anfrage">
         <source>auf Anfrage</source>
