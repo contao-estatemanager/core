@@ -26,6 +26,38 @@
          <source>Barrier-free</source>
          <target>Barrierefrei</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.haustiere">
+         <source>Pets</source>
+         <target>Haustiere</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.seniorengerecht">
+         <source>Senior-friendly</source>
+         <target>Seniorengerecht</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
+         <source>historical monument</source>
+         <target>Denkmalgeschützt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrradraum">
+         <source>bike room</source>
+         <target>Fahrradraum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gartennutzung">
+         <source>garden use</source>
+         <target>Gartennutzung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.klimatisiert">
+         <source>air-conditioned</source>
+         <target>Klimatisiert</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wgGeeignet">
+         <source>flat-sharing</source>
+         <target>WG geeignet</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gaestewc">
+         <source>Guest WC</source>
+         <target>Gäste WC</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dvbt">
          <source>DVBT</source>
          <target>DVBT</target>
