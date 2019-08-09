@@ -6,6 +6,22 @@
          <source>Balcony/Terrace</source>
          <target>Balkon/Terrasse</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
+         <source>passenger elevator</source>
+         <target>Personenaufzug</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sauna">
+         <source>sauna</source>
+         <target>Sauna</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.swimmingpool">
+         <source>swimmingpool</source>
+         <target>Pool</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.waschTrockenraum">
+         <source>Washing / drying room</source>
+         <target>Wasch- / Trockenraum</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.barrierefrei">
          <source>Barrier-free</source>
          <target>Barrierefrei</target>
