@@ -34,6 +34,10 @@
          <source>Senior-friendly</source>
          <target>Seniorengerecht</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.rollstuhlgerecht">
+         <source>Wheelchair accessible</source>
+         <target>Rollstuhlgerecht</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
          <source>historical monument</source>
          <target>Denkmalgeschützt</target>
