@@ -30,6 +30,10 @@
          <source>Pets</source>
          <target>Haustiere</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.moebliert_moebliert">
+         <source>Furnished</source>
+         <target>Möbliert</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.seniorengerecht">
          <source>Senior-friendly</source>
          <target>Seniorengerecht</target>
@@ -61,6 +65,10 @@
       <trans-unit id="tl_real_estate_attribute.gaestewc">
          <source>Guest WC</source>
          <target>Gäste WC</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wintergarten">
+         <source>Wintergarten</source>
+         <target>Wintergarten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dvbt">
          <source>DVBT</source>

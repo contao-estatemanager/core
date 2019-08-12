@@ -90,6 +90,15 @@ return array
     ),
     array
     (
+        'field' => array('heizkostennetto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('kaution', '', '', NULL),
         'actions' => array
         (
@@ -118,6 +127,42 @@ return array
     array
     (
         'field' => array('stpGarageMietpreis', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('stpCarportKaufpreis', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('stpCarportMietpreis', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('stpDuplexKaufpreis', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('stpDuplexMietpreis', '', '', NULL),
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
@@ -360,6 +405,30 @@ return array
     ),
     array
     (
+        'field' => array('wellnessbereich', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('fahrradraum', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('gewerblicheNutzung', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('dvVerkabelung', '', '', NULL),
         'actions' => array
         (
@@ -385,6 +454,14 @@ return array
     array
     (
         'field' => array('rollstuhlgerecht', '', '', NULL),
+        'actions' => array
+        (
+            array('boolToWord', '', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('wgGeeignet', '', '', NULL),
         'actions' => array
         (
             array('boolToWord', '', '', '', '', NULL, '')
@@ -600,6 +677,14 @@ return array
     ),
     array
     (
+        'field' => array('ausrichtBalkonTerrasse', '', '', NULL),
+        'actions' => array
+        (
+            array('unserialize', '', '', ', ', '', NULL, '')
+        )
+    ),
+    array
+    (
         'field' => array('boden', '', '', NULL),
         'actions' => array
         (
@@ -715,6 +800,42 @@ return array
     ),
     array
     (
+        'field' => array('gesamtbelastungbrutto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('gesamtbelastungnetto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('betriebskostennetto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('summemietenetto', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, ''),
+            array('append', '', ' €', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
         'field' => array('abdatum', '', '', NULL),
         'actions' => array
         (
@@ -724,6 +845,14 @@ return array
     array
     (
         'field' => array('anzahlStellplaetze', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '0', '', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('anzahlTagungsraeume', '', '', NULL),
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, '')
@@ -772,6 +901,14 @@ return array
         (
             array('number_format', '0', '', '', '', NULL, ''),
             array('append', '', ' €/m²', '', '', NULL, ''),
+        )
+    ),
+    array
+    (
+        'field' => array('hallenhoehe', '', '', NULL),
+        'actions' => array
+        (
+            array('number_format', '2', '', '', '', NULL, '')
         )
     ),
     array
