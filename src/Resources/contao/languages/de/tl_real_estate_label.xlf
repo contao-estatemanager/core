@@ -75,6 +75,10 @@
         <source>Kaution</source>
         <target>Kaution</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.kautionText">
+        <source>Kautions Hinweis</source>
+        <target>Kautions Hinweis</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.wohnflaeche">
         <source>Wohnfläche</source>
         <target>Wohnfläche</target>
@@ -148,8 +152,8 @@
         <target>Badezimmer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlGewerbeeinheiten">
-        <source>Anzahl Gewerbeeinheiten</source>
-        <target>Anzahl Gewerbeeinheiten</target>
+        <source>Gewerbeeinheiten</source>
+        <target>Gewerbeeinheiten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bad">
         <source>Badezimmer</source>
@@ -252,56 +256,80 @@
         <target>Garage / Stellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpGarage">
-        <source>Anzahl Garagen</source>
-        <target>Anzahl Garagen</target>
+        <source>Garagenstellplätze</source>
+        <target>Garagenstellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpGarageKaufpreis">
-        <source>Garage Kaufpreis</source>
-        <target>Garage Kaufpreis</target>
+        <source>Kaufpreis Garage</source>
+        <target>Kaufpreis Garage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpGarageMietpreis">
         <source>Miete Garage</source>
         <target>Miete Garage</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpTiefgarage">
+        <source>Tiefgaragenstellplätze</source>
+        <target>Tiefgaragenstellplätze</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpTiefgarageKaufpreis">
+        <source>Kaufpreis Tiefgarage</source>
+        <target>Kaufpreis Tiefgarage</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpTiefgarageMietpreis">
+        <source>Miete Tiefgarage</source>
+        <target>Miete Tiefgarage</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpParkhaus">
-        <source>Anzahl Parkhausstellplätze</source>
-        <target>Anzahl Parkhausstellplätze</target>
+        <source>Parkhausstellplätze</source>
+        <target>Parkhausstellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpParkhausKaufpreis">
-        <source>Parkhausstellplatz Kaufpreis</source>
-        <target>Parkhausstellplatz Kaufpreis</target>
+        <source>Kaufpreis Parkhausstellplatz</source>
+        <target>Kaufpreis Parkhausstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpParkhausMietpreis">
         <source>Miete Parkhausstellplatz</source>
         <target>Miete Parkhausstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpCarport">
-        <source>Anzahl Carports</source>
-        <target>Anzahl Carports</target>
+        <source>Carports</source>
+        <target>Carports</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpCarportKaufpreis">
-        <source>Carport Kaufpreis</source>
-        <target>Carport Kaufpreis</target>
+        <source>Kaufpreis Carport</source>
+        <target>Kaufpreis Carport</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpCarportMietpreis">
         <source>Miete Carport</source>
         <target>Miete Carport</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpDuplex">
+        <source>Duplex</source>
+        <target>Duplex</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpDuplexKaufpreis">
+        <source>Kaufpreis Duplex</source>
+        <target>Kaufpreis Duplex</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpDuplexMietpreis">
+        <source>Miete Duplex</source>
+        <target>Miete Duplex</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatz">
-        <source>Anzahl Außenstellplätze</source>
-        <target>Anzahl Außenstellplätze</target>
+        <source>Außenstellplätze</source>
+        <target>Außenstellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatzKaufpreis">
-        <source>Außenstellplatz Kaufpreis</source>
-        <target>Außenstellplatz Kaufpreis</target>
+        <source>Kaufpreis Außenstellplatz</source>
+        <target>Kaufpreis Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.stpFreiplatzMietpreis">
         <source>Miete Außenstellplatz</source>
         <target>Miete Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlStellplaetze">
-        <source>Anzahl Stellplätze</source>
-        <target>Anzahl Stellplätze</target>
+        <source>Stellplätze</source>
+        <target>Stellplätze</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kamin">
         <source>Kamin</source>
@@ -328,16 +356,16 @@
         <target>Gäste-WC</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlBalkone">
-        <source>Anzahl Balkone</source>
-        <target>Anzahl Balkone</target>
+        <source>Balkone</source>
+        <target>Balkone</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlBetten">
-        <source>Anzahl Betten</source>
-        <target>Anzahl Betten</target>
+        <source>Betten</source>
+        <target>Betten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.anzahlTerrassen">
-        <source>Anzahl Terrassen</source>
-        <target>Anzahl Terrassen</target>
+        <source>Terrassen</source>
+        <target>Terrassen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gastterrasse">
         <source>Gastterrasse</source>
@@ -350,6 +378,10 @@
       <trans-unit id="tl_real_estate_label.anzahlEtagen">
         <source>Etagenanzahl</source>
         <target>Etagenanzahl</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.wellnessbereich">
+        <source>Wellnessbereich</source>
+        <target>Wellnessbereich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.nutzungsart">
         <source>Nutzungsart</source>
@@ -371,6 +403,10 @@
         <source>Baujahr</source>
         <target>Baujahr</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.hallenhoehe">
+        <source>Hallenhöhe</source>
+        <target>Hallenhöhe</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.verfuegbarAb">
         <source>Verfügbar ab</source>
         <target>Verfügbar ab</target>
@@ -382,6 +418,10 @@
       <trans-unit id="tl_real_estate_label.zustand">
         <source>Zustand</source>
         <target>Zustand</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.heizkostennetto">
+        <source>Heizkosten (Netto)</source>
+        <target>Heizkosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.boden">
         <source>Boden</source>
@@ -514,6 +554,18 @@
       <trans-unit id="tl_real_estate_label.gewerblicheNutzung">
         <source>Gewerbliche Nutzung</source>
         <target>Gewerbliche Nutzung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.anzahlTagungsraeume">
+        <source>Tagungsräume</source>
+        <target>Tagungsräume</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.fahrradraum">
+        <source>Fahrradraum</source>
+        <target>Fahrradraum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.summemietenetto">
+        <source>Summe Miete (Netto)</source>
+        <target>Summe Miete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.freitextPreis">
         <source>Preis</source>

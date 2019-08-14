@@ -564,6 +564,18 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'order'    => 810
             )
         ),
+        'heizkosten'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['heizkosten'],
+            'inputType'                 => 'text',
+            'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
+            'sql'                       => "decimal(10,2) NULL default NULL",
+            'realEstate'                => array(
+                'price'     => true,
+                'sorting'   => true,
+                'order'     => 815
+            )
+        ),
         'heizkostenEnthalten'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['heizkostenEnthalten'],
@@ -574,19 +586,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'price'     => true,
                 'filter'    => true,
                 'sorting'   => true,
-                'order'     => 810
-            )
-        ),
-        'heizkosten'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['heizkosten'],
-            'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
-            'sql'                       => "decimal(10,2) NULL default NULL",
-            'realEstate'                => array(
-                'price'     => true,
-                'sorting'   => true,
-                'order'     => 810
+                'order'     => 817
             )
         ),
         'heizkostennetto'  => array
@@ -598,7 +598,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'realEstate'                => array(
                 'price'     => true,
                 'sorting'   => true,
-                'order'     => 815
+                'order'     => 816
             )
         ),
         'heizkostenust'  => array
@@ -1326,7 +1326,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                       => "varchar(20) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
-                'order'    => 830
+                'order'    => 831
             )
         ),
         'geschaeftsguthaben'  => array
