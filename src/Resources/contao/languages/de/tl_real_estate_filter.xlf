@@ -356,6 +356,10 @@
         <target>Vermietbare Fläche (größste zuerst)</target>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate_filter.country">
+        <source>Country</source>
+        <target>Land</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.kauf_erbpacht_miete_leasing">
         <source>Kaufen / Mieten</source>
         <target>Kaufen / Mieten</target>

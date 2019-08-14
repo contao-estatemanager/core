@@ -103,8 +103,9 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'          => array('type', 'imageSubmit'),
+        '__selector__'          => array('type', 'countrySource', 'imageSubmit'),
         'default'               => '{type_legend},type',
+        'country'               => '{type_legend},type,label;{field_config_legend},mandatory;{country_options_legend},countrySource;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'location'              => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'unique'                => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'type'                  => '{type_legend},type,label;{field_config_legend},mandatory,showLongTitle,mergeOptions;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
@@ -116,7 +117,8 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
     // Subpalettes
     'subpalettes' => array
     (
-        'imageSubmit'                 => 'singleSRC'
+        'imageSubmit'                 => 'singleSRC',
+        'countrySource_selection'     => 'countryOptions'
     ),
 
     // Fields
@@ -178,6 +180,37 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'countrySource' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['countrySource'],
+            'default'                 => 'pool',
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options'                 => array('pool', 'selection'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_filter_item'],
+            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'countryOptions'  => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
+            'inputType' 	          => 'multiColumnWizard',
+            'eval' 			          => array
+            (
+                'columnFields' => array
+                (
+                    'country' => array
+                    (
+                        'label'             => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
+                        'exclude'           => true,
+                        'inputType'         => 'select',
+                        'options_callback'  => array('tl_filter_item', 'getRealEstateCountries'),
+                        'eval' 		        => array('style'=>'width:100%', 'chosen'=>true)
+                    )
+                )
+            ),
+            'sql'                     => "blob NULL"
         ),
         'placeholder' => array
         (
@@ -382,16 +415,29 @@ class tl_filter_item extends Backend
      */
     public function getFilterItems()
     {
+        return array_keys($GLOBALS['TL_RFI']);
+
         $arrItems = $GLOBALS['TL_RFI'];
 
         // Add the translation
         foreach (array_keys($arrItems) as $key)
         {
-            //$arrItems[$key] = $GLOBALS['TL_LANG']['RFI'][$key][0];
             $arrItems[$key] = $key;
         }
 
         return $arrItems;
+    }
+
+    /**
+     * Return all real estate countries as array
+     *
+     * @return array
+     */
+    public function getRealEstateCountries()
+    {
+        \System::loadLanguageFile('tl_real_estate_countries');
+
+        return $GLOBALS['TL_LANG']['tl_real_estate_countries'];
     }
 
     /**

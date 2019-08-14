@@ -138,6 +138,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
 // Back end real estate filter items
 $GLOBALS['TL_RFI'] = array
 (
+    'country'               => '\\ContaoEstateManager\\FilterCountry',
     'location'              => '\\ContaoEstateManager\\FilterLocation',
     'unique'                => '\\ContaoEstateManager\\FilterUnique',
     'type'                  => '\\ContaoEstateManager\\FilterType',

@@ -244,6 +244,7 @@ class FilterSession extends \System
         if($addFragments)
         {
             $this->addQueryFragmentBasics($objRealEstateType, $arrColumns, $arrValues);
+            $this->addQueryFragmentCountry($arrColumns, $arrValues);
             $this->addQueryFragmentLocation($arrColumns, $arrValues);
             $this->addQueryFragmentPrice($objRealEstateType, $arrColumns, $arrValues);
             $this->addQueryFragmentRoom($arrColumns, $arrValues);
@@ -301,6 +302,7 @@ class FilterSession extends \System
                     $arrColumn = array();
 
                     $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+                    $this->addQueryFragmentCountry($arrColumn, $arrValues);
                     $this->addQueryFragmentLocation($arrColumn, $arrValues);
                     $this->addQueryFragmentPrice($objRealEstateTypes->current(), $arrColumn, $arrValues);
                     $this->addQueryFragmentRoom($arrColumn, $arrValues);
@@ -418,6 +420,23 @@ class FilterSession extends \System
         {
             $arrColumn[] = "$t.objektart=?";
             $arrValues[] = $objRealEstateType->objektart;
+        }
+    }
+
+    /**
+     * Add query fragment for the country field
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentCountry(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['country'])
+        {
+            $arrColumn[] = "$t.land=?";
+            $arrValues[] = $_SESSION['FILTER_DATA']['country'];
         }
     }
 

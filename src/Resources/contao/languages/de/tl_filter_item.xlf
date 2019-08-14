@@ -2,6 +2,14 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_filter_item.php" source-language="en" target-language="de">
     <body>
+      <trans-unit id="RFI.country.0">
+        <source>Country</source>
+        <target>Land</target>
+      </trans-unit>
+      <trans-unit id="RFI.country.1">
+        <source>A field for filtering properties by country.</source>
+        <target>Ein Feld zum Filtern von Immobilien anhand des Landes.</target>
+      </trans-unit>
       <trans-unit id="RFI.location.0">
         <source>Addressfield</source>
         <target>Adressfeld</target>
@@ -82,6 +90,22 @@
       <trans-unit id="tl_filter_item.mandatory.1">
         <source>The form will not submit if the field is empty.</source>
         <target>Das Feld muss zum Abschicken des Formulars ausgefüllt werden.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countrySource.0">
+        <source>Source</source>
+        <target>Quelle</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countrySource.1">
+        <source>Here you can define the source for the country options.</source>
+        <target>Hier können Sie die Quelle definieren, die für die Länderauswahl ausgegeben werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countryOptions.0">
+        <source>Countries</source>
+        <target>Länder</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countryOptions.1">
+        <source>Here you can manually define the country options.</source>
+        <target>Hier können Sie die Länderauswahl manuell definieren.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.mode.0">
         <source>Mode</source>
@@ -171,14 +195,6 @@
         <source>Here you can specify if the placeholder should be displayed.</source>
         <target>Hier können Sie angeben, ob der Placeholder angezeigt werden soll.</target>
       </trans-unit>
-      <trans-unit id="tl_filter_item.rangeMode.0">
-        <source></source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="tl_filter_item.rangeMode.1">
-        <source></source>
-        <target></target>
-      </trans-unit>
       <trans-unit id="tl_filter_item.placeholder.0">
         <source>Placeholder</source>
         <target>Platzhalter</target>
@@ -240,6 +256,15 @@
         <target>Das Filterfeld auf der Webseite nicht anzeigen.</target>
       </trans-unit>
 
+      <trans-unit id="tl_filter_item.pool">
+        <source>Existing data stock</source>
+        <target>Vorhandener Datenbestand</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.selection">
+        <source>Define manually</source>
+        <target>Manuell definieren</target>
+      </trans-unit>
+
       <trans-unit id="tl_filter_item.type_legend">
         <source>Field type and name</source>
         <target>Feldtyp und -name</target>
@@ -247,6 +272,10 @@
       <trans-unit id="tl_filter_item.field_config_legend">
         <source>Field configuration</source>
         <target>Feldkonfiguration</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.country_options_legend">
+        <source>Country options</source>
+        <target>Länder-Optionen</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.image_legend">
         <source>Image button</source>
