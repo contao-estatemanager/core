@@ -550,25 +550,21 @@ class tl_expose_module extends Backend
     /**
      * Return all gallery item templates as array
      *
-     * @param DataContainer $dc
-     *
      * @return array
      */
-    public function getGalleryItemTemplates(DataContainer $dc)
+    public function getGalleryItemTemplates()
     {
-        return $this->getTemplateGroup('expose_mod_gallery_' . $dc->activeRecord->type);
+        return $this->getTemplateGroup('expose_mod_gallery_items_');
     }
 
     /**
      * Return all gallery item templates as array
      *
-     * @param DataContainer $dc
-     *
      * @return array
      */
-    public function getShareTemplates(DataContainer $dc)
+    public function getShareTemplates()
     {
-        return $this->getTemplateGroup('expose_mod_share_' . $dc->activeRecord->type);
+        return $this->getTemplateGroup('expose_mod_share_');
     }
 
     /**
