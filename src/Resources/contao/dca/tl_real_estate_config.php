@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultImage,defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config:hide},roomOptions'
+		'default'                     => '{real_estate_list_legend},defaultImage,defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields

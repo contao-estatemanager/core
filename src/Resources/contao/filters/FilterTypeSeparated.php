@@ -147,7 +147,7 @@ class FilterTypeSeparated extends FilterWidget
                 'type'     => 'option',
                 'value'    => '',
                 'selected' => $selected ? ' selected' : '',
-                'label'    => Translator::translateFilter('kauf_erbpacht_miete_leasing')
+                'label'    => $this->showPlaceholder ? Translator::translateFilter('kauf_erbpacht_miete_leasing') : ''
             );
 
             $selectedMarketingType = 'kauf_erbpacht_miete_leasing';
@@ -208,7 +208,7 @@ class FilterTypeSeparated extends FilterWidget
                 'type'     => 'option',
                 'value'    => '',
                 'selected' => '',
-                'label'    => '---',
+                'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : '',
                 'show'     => true
             );
         }
@@ -244,6 +244,13 @@ class FilterTypeSeparated extends FilterWidget
             'class'    => 'real-estate-type'
         );
         // Objektart Stop
+
+        // Add labels
+        if ($this->showLabel)
+        {
+            $this->labelMarketingType  = Translator::translateFilter('marketingType');
+            $this->labelRealEstateType = Translator::translateFilter('realEstateType');
+        }
 
         return parent::parse($arrAttributes);
     }

@@ -10,7 +10,7 @@
         <source>Price/area formatting</source>
         <target>Preis- / Flächenformatierung</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_config.filter_config">
+      <trans-unit id="tl_real_estate_config.filter_config_legend">
         <source>Filters</source>
         <target>Filter</target>
       </trans-unit>
@@ -64,12 +64,12 @@
         <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">
-        <source>Room options</source>
-        <target>Auwahloptionen für Zimmer</target>
+        <source>Available options: Rooms</source>
+        <target>Verfügbare Optionen: Zimmer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.1">
-        <source>Specify a comma-separated list of the number of rooms to be selected in filters. (e.g. 1,1.5,2,3,...)</source>
-        <target>Geben Sie eine mit Komma getrennte Liste an, welche Zimmeranzahl in Filtern zur Auswahl stehen soll. (Bspw. 1,1.5,2,3,...)</target>
+        <source>Here you can enter a comma separated list of options that should be available for the number of rooms.</source>
+        <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
       </trans-unit>
     </body>
   </file>

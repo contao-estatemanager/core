@@ -129,7 +129,7 @@ class FilterCountry extends FilterWidget
         (
             'value'    => '',
             'selected' => '',
-            'label'    => $GLOBALS['TL_LANG']['tl_real_estate_filter']['country']
+            'label'    => $this->placeholder
         ));
 
         $this->options = $arrOptions;
