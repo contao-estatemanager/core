@@ -372,6 +372,18 @@
         <source>Mieten</source>
         <target>Mieten</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.all_types">
+        <source>All</source>
+        <target>Alle</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.marketingType">
+        <source>Marketing type</source>
+        <target>Vermarktungsart</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.realEstateType">
+        <source>Type</source>
+        <target>Objektart</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

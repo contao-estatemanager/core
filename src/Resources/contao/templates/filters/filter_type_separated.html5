@@ -1,23 +1,16 @@
 <?php $this->extend('filter_row'); ?>
 
-<?php $this->block('filter_label'); ?>
-  <?php if ($this->label): ?>
-    <label for="ctrl_<?= $this->id ?>_group"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
-      <?php if ($this->mandatory): ?>
-        <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label ?><span class="mandatory">*</span>
-      <?php else: ?>
-        <?= $this->label ?>
-      <?php endif; ?>
-    </label>
-  <?php endif; ?>
-<?php $this->endblock(); ?>
-
 <?php $this->block('filter_item'); ?>
-  <?php if ($this->hasErrors()): ?>
-    <p class="error"><?= $this->getErrorAsString() ?></p>
-  <?php endif; ?>
-
   <div class="widget widget-select select <?= $this->marketingType['class'] ?>">
+    <?php if ($this->showLabel): ?>
+      <label for="ctrl_<?= $this->id ?>_group">
+          <?php if ($this->mandatory): ?>
+            <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->labelMarketingType ?><span class="mandatory">*</span>
+          <?php else: ?>
+              <?= $this->labelMarketingType ?>
+          <?php endif; ?>
+      </label>
+    <?php endif; ?>
     <select name="marketing-type" id="ctrl_<?= $this->id ?>_group" class="select <?= $this->marketingType['class'] ?> <?= $this->class ?>"<?= $this->getAttributes() ?>>
       <?php foreach ($this->marketingType['options'] as $option): ?>
         <?php if ($option['type'] == 'option'): ?>
@@ -27,6 +20,15 @@
     </select>
   </div>
   <div class="widget widget-select select <?= $this->realEstateType['class'] ?>">
+    <?php if ($this->showLabel): ?>
+      <label for="ctrl_<?= $this->id ?>_group">
+          <?php if ($this->mandatory): ?>
+            <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->labelRealEstateType ?><span class="mandatory">*</span>
+          <?php else: ?>
+              <?= $this->labelRealEstateType ?>
+          <?php endif; ?>
+      </label>
+    <?php endif; ?>
     <select name="real-estate-type" id="ctrl_<?= $this->id ?>_type" class="select <?= $this->realEstateType['class'] ?> <?= $this->class ?>"<?= $this->realEstateType['disabled'] ? ' disabled' : '' ?><?= $this->getAttributes() ?>>
       <?php foreach ($this->realEstateType['options'] as $option): ?>
         <?php if ($option['type'] == 'option'): ?>

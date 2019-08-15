@@ -105,11 +105,11 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
     (
         '__selector__'          => array('type', 'countrySource', 'imageSubmit'),
         'default'               => '{type_legend},type',
-        'country'               => '{type_legend},type,label;{field_config_legend},mandatory;{country_options_legend},countrySource;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'country'               => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{country_options_legend},countrySource;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'location'              => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'unique'                => '{type_legend},type,label;{field_config_legend},mandatory,placeholder;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'type'                  => '{type_legend},type,label;{field_config_legend},mandatory,showLongTitle,mergeOptions;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
-        'typeSeparated'         => '{type_legend},type,label;{field_config_legend},mandatory,showLongTitle;{expert_legend:hide},class,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
+        'typeSeparated'         => '{type_legend},type;{field_config_legend},mandatory,showLongTitle,showLabel,showPlaceholder;{expert_legend:hide},class,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'toggle'                => '{type_legend},type;{field_config_legend},showLabel,showPlaceholder,rangeMode;{expert_legend:hide},class,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
         'submit'                => '{type_legend},type,slabel;{image_legend:hide},imageSubmit;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{invisible_legend:hide},invisible',
     ),
