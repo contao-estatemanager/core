@@ -34,7 +34,7 @@ namespace ContaoEstateManager;
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByTstamp($id, array $opt=array())
  * @method static integer countByTitle($id, array $opt=array())
- * @method static integer countByPublished$id, array $opt=array())
+ * @method static integer countByPublished($id, array $opt=array())
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
