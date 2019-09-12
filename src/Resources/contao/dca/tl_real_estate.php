@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         '__selector__'                => array('objektart', 'breitbandZugang','weitergabeGenerell'),
         'default'                     => '{real_estate_legend},objekttitel,alias,objektnrIntern,objektnrExtern,openimmoObid,published,weitergabeGenerell;'.
                                          '{real_estate_contact_legend},provider,anbieternr,contactPerson;'.
-                                         '{real_estate_basic_legend},vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,vermietet,referenz,verkaufstatus,verfuegbarAb,nutzungsart,objektart;'.
+                                         '{real_estate_basic_legend},vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,vermietet,verkaufstatus,verfuegbarAb,nutzungsart,objektart;'.
                                          '{real_estate_address_legend},plz,ort,strasse,hausnummer,regionalerZusatz,bundesland,land,breitengrad,laengengrad,lageImBau,lageGebiet,gemeindecode,objektadresseFreigeben;'.
                                          '{real_estate_props_legend:hide},etage,anzahlEtagen,alsFerien,gewerblicheNutzung,denkmalgeschuetzt,wbsSozialwohnung,einliegerwohnung,raeumeVeraenderbar,barrierefrei,rollstuhlgerecht,seniorengerecht,wgGeeignet,nichtraucher,hochhaus,haustiere;'.
                                          '{real_estate_text_legend:hide},dreizeiler,lage,ausstattBeschr,objektbeschreibung,sonstigeAngaben,objektText;'.
@@ -202,7 +202,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['anbieternr'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -213,6 +212,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzungsart'],
             'inputType'                 => 'select',
+            'sorting'                   => true,
             'options'                   => array('wohnen', 'gewerbe', 'anlage', 'waz'),
             'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value'],
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
@@ -226,7 +226,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['vermarktungsartKauf'],
             'inputType'                 => 'checkbox',
-            'sorting'                   => true,
             'eval'                      => array('tl_class' => 'w50'),
             'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
@@ -237,7 +236,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['vermarktungsartMietePacht'],
             'inputType'                 => 'checkbox',
-            'sorting'                   => true,
             'eval'                      => array('tl_class' => 'w50'),
             'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
@@ -248,7 +246,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['vermarktungsartErbpacht'],
             'inputType'                 => 'checkbox',
-            'sorting'                   => true,
             'eval'                      => array('tl_class' => 'w50'),
             'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
@@ -259,7 +256,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['vermarktungsartLeasing'],
             'inputType'                 => 'checkbox',
-            'sorting'                   => true,
             'eval'                      => array('tl_class' => 'w50'),
             'sql'                       => "char(1) NOT NULL default '0'",
             'realEstate'                => array(
@@ -460,7 +456,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['kaufpreis'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>20, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -473,7 +468,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['kaufpreisnetto'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -486,7 +480,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['kaufpreisbrutto'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -501,7 +494,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nettokaltmiete'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -514,7 +506,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['kaltmiete'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50 clr'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -527,7 +518,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['warmmiete'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -542,7 +532,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['freitextPreis'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50 clr'),
             'sql'                       => "varchar(20) NOT NULL default ''",
             'realEstate'                => array(
@@ -1626,7 +1615,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['plz'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'search'                    => true,
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(8) NOT NULL default ''",
@@ -1639,7 +1627,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['ort'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'search'                    => true,
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(255) NOT NULL default ''",
@@ -1652,7 +1639,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['strasse'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'search'                    => true,
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(255) NOT NULL default ''",
@@ -1665,8 +1651,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['hausnummer'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
-            'search'                    => true,
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(255) NOT NULL default ''",
             'realEstate'                => array(
@@ -1703,8 +1687,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['land'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
-            'search'                    => true,
+            'filter'                    => true,
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1860,7 +1843,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['objekttitel'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'search'                    => true,
             'flag'                      => 1,
             'eval'                      => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=> 'w50'),
@@ -2071,7 +2053,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['wohnflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2085,7 +2066,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2099,7 +2079,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['gesamtflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2113,7 +2092,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['ladenflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2127,7 +2105,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['lagerflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2141,7 +2118,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['verkaufsflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2155,7 +2131,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['freiflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2169,7 +2144,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bueroflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2183,7 +2157,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bueroteilflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2221,7 +2194,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['gastroflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2263,7 +2235,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['grundstuecksflaeche'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2290,7 +2261,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['anzahlZimmer'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2304,7 +2274,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['anzahlSchlafzimmer'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2318,7 +2287,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['anzahlBadezimmer'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -2399,7 +2367,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['anzahlWohnSchlafzimmer'],
             'inputType'                 => 'text',
-            'sorting'                   => true,
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",
             'realEstate'                => array(
@@ -4182,14 +4149,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'unique' => true
             )
         ),
-        'referenz'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['referenz'],
-            'inputType'                 => 'checkbox',
-            'filter'                    => true,
-            'eval'                      => array('tl_class' => 'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default '0'",
-        ),
         'aktivVon'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aktivVon'],
@@ -4410,7 +4369,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['published'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('doNotCopy'=>true, 'tl_class'=>'w50 m12 clr'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -4757,6 +4715,19 @@ class tl_real_estate extends Backend
 
         // translate date
         $args[4] = date(\Config::get('datimFormat'), $args[4]);
+
+        // Call post_label_callbacks ($row, $label, $dc, $args)
+        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
+        {
+            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] as $callback)
+            {
+                $strClass = $callback[0];
+                $strMethod = $callback[1];
+
+                $this->import($strClass);
+                $args = $this->$strClass->$strMethod($row, $label, $dc, $args);
+            }
+        }
 
         return $args;
     }
