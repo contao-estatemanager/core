@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
+            'fields'                  => array('image', 'id', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
             'showColumns'             => true,
             'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
         ),
@@ -142,6 +142,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
     (
         'id' => array
         (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['id'],
             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
         ),
         'tstamp' => array
@@ -4710,11 +4711,22 @@ class tl_real_estate extends Backend
             $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
         }
 
+        // add external and internal objektnr
+        $args[1] = '<span style="display:block;margin-top:5px">ID: <span style="">'. $args[1] . '</span></span>';
+        if ($row['objektnrIntern'])
+        {
+            $args[1] .= '<span style="display:block;margin-top:5px">Intern: <span style="color:#999">' . $row['objektnrIntern'] . '</span></span>';
+        }
+        if ($row['objektnrExtern'])
+        {
+            $args[1] .= '<span style="display:block;margin-top:5px">Extern: <span style="color:#999">' . $row['objektnrExtern'] . '</span></span>';
+        }
+
         // add address information
-        $args[1] = $args[1] . '<span style="color:#999;display:block;margin-top: 5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</span>';
+        $args[2] .= '<span style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</span>';
 
         // translate date
-        $args[4] = date(\Config::get('datimFormat'), $args[4]);
+        $args[5] = date(\Config::get('datimFormat'), $args[5]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
         if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
