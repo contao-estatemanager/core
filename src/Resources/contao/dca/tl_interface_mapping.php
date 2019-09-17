@@ -97,8 +97,8 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
     (
         '__selector__'                => array('type', 'forceActive', 'formatType'),
         'default'                     => '{type_legend},type;',
-        'tl_real_estate'              => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,forceActive;{format_legend},formatType;{expert_legend},saveImage',
-        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,forceActive;{format_legend},formatType;{expert_legend},saveImage'
+        'tl_real_estate'              => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,clearField,forceActive;{format_legend},formatType;{expert_legend},saveImage',
+        'tl_contact_person'           => '{type_legend},type,attribute;{field_legend},oiFieldGroup,oiField,oiConditionField,oiConditionValue,serialize,clearField,forceActive;{format_legend},formatType;{expert_legend},saveImage'
     ),
 
     // Subpalettes
@@ -187,6 +187,14 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         'serialize' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['serialize'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'clearField' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['clearField'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
