@@ -346,6 +346,9 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
+        $contactPersonMeta = $this->getTableMetaData('tl_contact_person');
+        $realEstateMeta = $this->getTableMetaData('tl_real_estate');
+
         $contactPersonRecords = array();
         $realEstateRecords = array();
 
@@ -450,6 +453,16 @@ class RealEstateImporter extends \BackendModule
 
                     if (!count($values))
                     {
+                        switch ($interfaceMapping->type)
+                        {
+                            case 'tl_contact_person':
+                                $contactPerson[$interfaceMapping->attribute] = $contactPersonMeta[$interfaceMapping->attribute]['default'];
+                                break;
+                            case 'tl_real_estate':
+                                $re[$interfaceMapping->attribute] = $realEstateMeta[$interfaceMapping->attribute]['default'];
+                                break;
+                        }
+
                         continue;
                     }
 
@@ -588,8 +601,6 @@ class RealEstateImporter extends \BackendModule
                 }else{
                     $this->addLog('Real estate was updated: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
                 }
-
-                $this->resetRealEstateFields($objRealEstate);
             }
 
             if ($realEstateRecords[$i]['AKTIONART'] === 'REFERENZ')
@@ -1165,23 +1176,28 @@ class RealEstateImporter extends \BackendModule
     }
 
     /**
-     * Reset fields of real estate record
+     * Retrieve meta data of a specific database table.
      *
-     * @param RealEstateModel $objRealEstate
+     * string $strTable  Name of the database table
+     *
+     * @return array
      */
-    protected function resetRealEstateFields(&$objRealEstate)
+    protected function getTableMetaData($strTable)
     {
-        $this->objInterfaceMapping->reset();
+        $arrReturn = array();
 
-        while ($this->objInterfaceMapping->next())
+        $objDatabase = \Database::getInstance();
+        $arrFields = $objDatabase->listFields($strTable);
+
+        foreach ($arrFields as $key => $meta)
         {
-            if (!$this->objInterfaceMapping->clearField)
+            if (is_int($key))
             {
-                continue;
+                $arrReturn[$meta['name']] = $meta;
             }
-
-            $objRealEstate->{$this->objInterfaceMapping->attribute} = null;
         }
+
+        return $arrReturn;
     }
 
     protected function addLog($strMessage, $level=0, $strType='raw', $data=null)

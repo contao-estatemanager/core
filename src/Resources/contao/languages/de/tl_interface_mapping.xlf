@@ -42,14 +42,6 @@
         <source>Here you can be specify that found values should then be serialized.</source>
         <target>Hier kann angegeben werden, dass gefundene Werte anschließend serialisiert werden sollen.</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.clearField.0">
-        <source>Clear field</source>
-        <target>Feld leeren</target>
-      </trans-unit>
-      <trans-unit id="tl_interface_mapping.clearField.1">
-        <source>Here you can specify whether the field is to be emptied during an update.</source>
-        <target>Hier kann angegeben werden, ob das Feld bei einer aktuallisierung geleert werden soll.</target>
-      </trans-unit>
       <trans-unit id="tl_interface_mapping.forceActive.0">
         <source>Map empty value</source>
         <target>Leeren Wert mappen</target>
