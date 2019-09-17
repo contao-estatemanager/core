@@ -588,6 +588,8 @@ class RealEstateImporter extends \BackendModule
                 }else{
                     $this->addLog('Real estate was updated: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
                 }
+
+                $this->resetRealEstateFields($objRealEstate);
             }
 
             if ($realEstateRecords[$i]['AKTIONART'] === 'REFERENZ')
@@ -1159,6 +1161,26 @@ class RealEstateImporter extends \BackendModule
             $objFile = Dbafs::addResource($filePath);
 
             return $objFile;
+        }
+    }
+
+    /**
+     * Reset fields of real estate record
+     *
+     * @param RealEstateModel $objRealEstate
+     */
+    protected function resetRealEstateFields(&$objRealEstate)
+    {
+        $this->objInterfaceMapping->reset();
+
+        while ($this->objInterfaceMapping->next())
+        {
+            if (!$this->objInterfaceMapping->clearField)
+            {
+                continue;
+            }
+
+            $objRealEstate->{$this->objInterfaceMapping->attribute} = null;
         }
     }
 
