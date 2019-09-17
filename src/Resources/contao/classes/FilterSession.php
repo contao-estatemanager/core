@@ -191,11 +191,11 @@ class FilterSession extends \System
      *
      * @return array
      */
-    public function getParameter($arrGroups, $mode, $addFragments=true)
+    public function getParameter($arrGroups, $mode, $addFragments=true, $objModule=null)
     {
         if ($this->objCurrentType !== null)
         {
-            return $this->getTypeParameter($this->objCurrentType, $mode, $addFragments);
+            return $this->getTypeParameter($this->objCurrentType, $mode, $addFragments, $objModule);
         }
 
         if ($arrGroups !== null && $this->strMarketingType !== 'kauf_erbpacht_miete_leasing')
@@ -216,7 +216,7 @@ class FilterSession extends \System
         // Reset collection for further functions
         $this->objRealEstateGroups->reset();
 
-        return $this->getTypeParameterByGroups($arrGroups, $mode, $addFragments);
+        return $this->getTypeParameterByGroups($arrGroups, $mode, $addFragments, $objModule);
     }
 
     /**
@@ -228,7 +228,7 @@ class FilterSession extends \System
      *
      * @return array
      */
-    private function getTypeParameter($objRealEstateType, $mode, $addFragments=true)
+    private function getTypeParameter($objRealEstateType, $mode, $addFragments=true, $objModule=null)
     {
         $t = static::$strTable;
 
@@ -260,7 +260,7 @@ class FilterSession extends \System
             foreach ($GLOBALS['TL_HOOKS']['getTypeParameter'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
             }
         }
 
@@ -276,7 +276,7 @@ class FilterSession extends \System
      * @param bool $addFragments
      * @return array
      */
-    private function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true)
+    private function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true, $objModule=null)
     {
         $t = static::$strTable;
 
@@ -326,7 +326,7 @@ class FilterSession extends \System
             foreach ($GLOBALS['TL_HOOKS']['getTypeParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
             }
         }
 
@@ -342,7 +342,7 @@ class FilterSession extends \System
      *
      * @return array
      */
-    public function getParameterByGroups($arrGroups, $mode, $addFragments=true)
+    public function getParameterByGroups($arrGroups, $mode, $addFragments=true, $objModule=null)
     {
         $t = static::$strTable;
 
@@ -383,7 +383,7 @@ class FilterSession extends \System
             foreach ($GLOBALS['TL_HOOKS']['getParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $this);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
             }
         }
 

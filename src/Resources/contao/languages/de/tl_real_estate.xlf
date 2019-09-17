@@ -59,6 +59,10 @@
         <target>Medien / Dateien</target>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate.id.0">
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.image.0">
         <source>Image</source>
         <target>Bild</target>
@@ -2124,22 +2128,6 @@
       <trans-unit id="tl_real_estate.hochhaus.0">
         <source>Hochhaus</source>
         <target>Hochhaus</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.referenz.0">
-        <source>Referenz</source>
-        <target>Referenz</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.verkaufstatus.0">
-        <source>Verkaufsstatus</source>
-        <target>Verkaufsstatus</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.verkaufstatus.1">
-        <source>Definieren Sie hier den Verkaufstatus, sofern das Objekt zum Kauf angeboten wird.</source>
-        <target>Definieren Sie hier den Verkaufstatus, sofern das Objekt zum Kauf angeboten wird.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.referenz.1">
-        <source>Diese Immobilie ist eine Referenz und wird nicht aktiv vermarktet</source>
-        <target>Diese Immobilie ist eine Referenz und wird nicht aktiv vermarktet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermietet.0">
         <source>Vermietet</source>

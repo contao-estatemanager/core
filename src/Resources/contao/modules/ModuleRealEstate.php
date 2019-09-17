@@ -386,6 +386,16 @@ abstract class ModuleRealEstate extends \Module
                 }
             }
 
+            // HOOK: add real estate sorting
+            if (isset($GLOBALS['TL_HOOKS']['addRealEstateSorting']) && \is_array($GLOBALS['TL_HOOKS']['addRealEstateSorting']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['addRealEstateSorting'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->{$callback[0]}->{$callback[1]}($arrOptions, $this);
+                }
+            }
+
             $this->Template->sortingOptions = $arrOptions;
             $this->Template->selectedSortingOption = $_SESSION['SORTING'];
         }

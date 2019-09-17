@@ -94,7 +94,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function countItems()
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
+        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
 
         return RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
     }
@@ -109,7 +109,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function fetchItems($limit, $offset)
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode);
+        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
 
         $arrOptions['limit']  = $limit;
         $arrOptions['offset'] = $offset;

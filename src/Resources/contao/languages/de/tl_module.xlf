@@ -43,6 +43,14 @@
         <source>Adds a sort option</source>
         <target>Fügt eine Sortiermöglichkeit hinzu</target>
       </trans-unit>
+      <trans-unit id="tl_module.defaultSorting.0">
+        <source>Default sorting</source>
+        <target>Standard-Sortierung</target>
+      </trans-unit>
+      <trans-unit id="tl_module.defaultSorting.1">
+        <source>The default sorting must be defined here.</source>
+        <target>Hier muss die standard-Sortierung definiert werden.</target>
+      </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.0">
         <source>Add custom order</source>
         <target>Benutzerdefinierte Sortierung hinzufügen</target>
@@ -178,6 +186,11 @@
       <trans-unit id="tl_module.providerImgSize.1">
         <source>Here you can set the image dimensions and the resize mode.</source>
         <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_module.date.0">
+        <source>Date</source>
+        <target>Datum</target>
       </trans-unit>
     </body>
   </file>
