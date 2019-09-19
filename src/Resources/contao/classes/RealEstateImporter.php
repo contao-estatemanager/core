@@ -876,7 +876,10 @@ class RealEstateImporter extends \BackendModule
                                 }
                             }
                         }
-                        $results[$i] = serialize($tmp);
+                        if (count($tmp))
+                        {
+                            $results[$i] = serialize($tmp);
+                        }
                         break;
                     case '[1]':
                         // Returns the first child nodes name.
