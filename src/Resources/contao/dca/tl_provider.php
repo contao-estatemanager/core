@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung,singleSRC;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,telefon,email;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{published_legend},published'
+        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung,singleSRC;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,email;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{published_legend},published'
     ),
 
 
@@ -251,6 +251,22 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'lat' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lat'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'lng' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lng'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'telefon' => array
