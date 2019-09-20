@@ -107,7 +107,7 @@ class RealEstateCronImporter extends \Frontend
     {
         $syncFiles = $this->importer->getSyncFiles();
 
-        $days = intval($objInterface->deleteFilesOlderThen);#
+        $days = intval($objInterface->deleteFilesOlderThen);
         $now = time();
 
         foreach($syncFiles as $syncFile)

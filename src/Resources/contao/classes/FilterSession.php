@@ -614,7 +614,7 @@ class FilterSession extends \System
 
         if ($strOrder === null)
         {
-            return \Config::get('defaultSorting') ?: 'tstamp' . ' DESC';
+            return (\Config::get('defaultSorting') ?: 'tstamp') . ' DESC';
         }
 
         if (strpos($strOrder, '_asc'))
