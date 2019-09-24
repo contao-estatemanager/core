@@ -218,6 +218,10 @@
         <source>Forwarding</source>
         <target>Weiterleitung</target>
       </trans-unit>
+      <trans-unit id="tl_provider.image_legend">
+        <source>Imagesettings</source>
+        <target>Bild-Einstellungen</target>
+      </trans-unit>
       <trans-unit id="tl_provider.address_legend">
         <source>Address details</source>
         <target>Adressdaten</target>
