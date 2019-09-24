@@ -226,6 +226,22 @@
         <source>Here you can enter the post box.</source>
         <target>Hier können Sie das Postfach eingeben.</target>
       </trans-unit>
+      <trans-unit id="tl_contact_person.postfach_plz.0">
+        <source>Post box (postal)</source>
+        <target>Postfach (PLZ)</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.postfach_plz.1">
+        <source>Here you can enter the post box postal.</source>
+        <target>Hier können Sie die Postfach PLZ eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.postfach_ort.0">
+        <source>Post box (city)</source>
+        <target>Postfach (Ort)</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.postfach_ort.1">
+        <source>Here you can enter the post box city.</source>
+        <target>Hier können Sie den Ort des Postfachs eingeben.</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.personennummer.0">
         <source>Personal number</source>
         <target>Personennummer</target>
