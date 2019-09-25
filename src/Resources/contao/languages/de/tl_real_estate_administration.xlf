@@ -8,8 +8,8 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.group_provider">
-        <source>Provider / Contact person</source>
-        <target>Anbieter / Kontaktpersonen</target>
+        <source>Provider / Locations</source>
+        <target>Anbieter / Standorte</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_configuration">
         <source>System</source>
@@ -33,12 +33,12 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.provider.0">
-        <source>Manage providers / contact persons</source>
-        <target>Anbieter / Kontaktpersonen verwalten</target>
+        <source>Manage providers / Locations</source>
+        <target>Anbieter / Standorte verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.provider.1">
-        <source>Manage all providers and contacts in the system. Providers are companies or individuals who are authorized to transfer real estate to this system.</source>
-        <target>Verwalten Sie alle Anbieter und Kontaktpersonen im System. Anbieter sind Firmen oder Privatpersonen, welche berechtigt sind, Immobilien in dieses System zu übertragen.</target>
+        <source>Manage all providers / locations and contact persons in the system.</source>
+        <target>Verwalten Sie alle Anbieter / Standorte und Kontaktpersonen im System.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.filter.0">
@@ -78,8 +78,8 @@
         <target>Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.config.1">
-        <source>General Settings</source>
-        <target>Allgemeine Einstellungen</target>
+        <source>General Settings and basic configuration.</source>
+        <target>Allgemeine Einstellungen und Basiskonfiguration.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.expose_module.0">
         <source>Manage Exposé modules</source>

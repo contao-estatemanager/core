@@ -18,6 +18,70 @@
         <source>Manage real estates settings</source>
         <target>Immobilieneinstellungen verwalten</target>
       </trans-unit>
+      <trans-unit id="MOD.interface.0">
+        <source>Interface</source>
+        <target>Schnittstellen</target>
+      </trans-unit>
+      <trans-unit id="MOD.interface.1">
+        <source>Manage interfaces</source>
+        <target>Schnittstellen verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.config.0">
+        <source>Real estate settings</source>
+        <target>Immobilien-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="MOD.config.1">
+        <source>Manage real estate settings</source>
+        <target>Immobilien-Einstellungen verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.type.0">
+        <source>Real estate groups</source>
+        <target>Objektgruppen</target>
+      </trans-unit>
+      <trans-unit id="MOD.type.1">
+        <source>Manage real estate groups</source>
+        <target>Objektgruppen verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.provider.0">
+        <source>Provider / Locations</source>
+        <target>Anbieter / Standorte</target>
+      </trans-unit>
+      <trans-unit id="MOD.provider.1">
+        <source>Manage provider / locations</source>
+        <target>Anbieter / Standorte verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.filter.0">
+        <source>Filter</source>
+        <target>Filter</target>
+      </trans-unit>
+      <trans-unit id="MOD.filter.1">
+        <source>Manage filter</source>
+        <target>Filter verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.field_format.0">
+        <source>Field formats</source>
+        <target>Feldformatierungen</target>
+      </trans-unit>
+      <trans-unit id="MOD.field_format.1">
+        <source>Manage field formats</source>
+        <target>Feldformatierungen verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.expose_module.0">
+        <source>Expose modules</source>
+        <target>Exposemodule</target>
+      </trans-unit>
+      <trans-unit id="MOD.expose_module.1">
+        <source>Manage expose modules</source>
+        <target>Exposemodule verwalten</target>
+      </trans-unit>
+      <trans-unit id="MOD.addon.0">
+        <source>Licences</source>
+        <target>Lizenzen</target>
+      </trans-unit>
+      <trans-unit id="MOD.addon.1">
+        <source>Manage licences</source>
+        <target>Lizenzen verwalten</target>
+      </trans-unit>
 
       <trans-unit id="FMD.estatemanager">
         <source>EstateManager</source>

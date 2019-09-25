@@ -239,19 +239,19 @@
       
       <trans-unit id="tl_interface.new.0">
         <source>New interface</source>
-        <target>Neue Schnitstelle</target>
+        <target>Neue Schnittstelle</target>
       </trans-unit>
       <trans-unit id="tl_interface.new.1">
         <source>Create a new interface</source>
-        <target>Eine neue Schnitstelle erstellen</target>
+        <target>Eine neue Schnittstelle erstellen</target>
       </trans-unit>
       <trans-unit id="tl_interface.editheader.0">
         <source>Edit interface</source>
-        <target>Schnitstelle bearbeiten</target>
+        <target>Schnittstelle bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.editheader.1">
         <source>Edit interface ID %s</source>
-        <target>Schnitstelle ID %s bearbeiten</target>
+        <target>Schnittstelle ID %s bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.edit.0">
         <source>Edit interface mappings</source>
@@ -263,27 +263,27 @@
       </trans-unit>
       <trans-unit id="tl_interface.copy.0">
         <source>Duplicate interface</source>
-        <target>Schnitstelle duplizieren</target>
+        <target>Schnittstelle duplizieren</target>
       </trans-unit>
       <trans-unit id="tl_interface.copy.1">
         <source>Duplicate interface ID %s</source>
-        <target>Schnitstelle ID %s duplizieren</target>
+        <target>Schnittstelle ID %s duplizieren</target>
       </trans-unit>
       <trans-unit id="tl_interface.delete.0">
         <source>Delete interface</source>
-        <target>Schnitstelle löschen</target>
+        <target>Schnittstelle löschen</target>
       </trans-unit>
       <trans-unit id="tl_interface.delete.1">
         <source>Delete interface ID %s</source>
-        <target>Schnitstelle ID %s löschen</target>
+        <target>Schnittstelle ID %s löschen</target>
       </trans-unit>
       <trans-unit id="tl_interface.show.0">
         <source>interface details</source>
-        <target>Schnitstellendetails</target>
+        <target>Schnittstellendetails</target>
       </trans-unit>
       <trans-unit id="tl_interface.show.1">
         <source>Show the details of interface ID %s</source>
-        <target>Die Details der Schnitstelle ID %s anzeigen</target>
+        <target>Die Details der Schnittstelle ID %s anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_interface.sync.0">
         <source>Synchronize interface</source>
@@ -291,7 +291,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.sync.1">
         <source>Synchronize interface ID %s</source>
-        <target>Schnitstelle ID %s synchronisieren</target>
+        <target>Schnittstelle ID %s synchronisieren</target>
       </trans-unit>
     </body>
   </file>

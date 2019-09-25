@@ -30,7 +30,7 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_page']['setMarketingType'],
         'exclude'                 => true,
         'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true),
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'clr'),
         'sql'                     => "char(1) NOT NULL default ''"
     ),
     'marketingType' => array

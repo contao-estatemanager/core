@@ -98,6 +98,22 @@
         <source>Please select the country.</source>
         <target>Bitte wählen Sie ein Land.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.lat.0">
+        <source>Latitude</source>
+        <target>Breitengrad</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.lat.1">
+        <source>Please enter a latitude.</source>
+        <target>Bitte geben Sie einen Breitengrad an.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.lng.0">
+        <source>Longitude</source>
+        <target>Längengrad</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.lng.1">
+        <source>Please enter a longitude.</source>
+        <target>Bitte geben Sie einen Längengrad an.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.telefon.0">
         <source>Phone number</source>
         <target>Telefonnummer</target>
@@ -209,6 +225,10 @@
       <trans-unit id="tl_provider.config_legend">
         <source>Forwarding</source>
         <target>Weiterleitung</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.image_legend">
+        <source>Imagesettings</source>
+        <target>Bild-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_provider.address_legend">
         <source>Address details</source>
