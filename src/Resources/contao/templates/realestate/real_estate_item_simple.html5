@@ -1,30 +1,32 @@
 <div class="real_estate_item_simple block<?= $this->class ?>">
     <div class="inner">
 
-      <div class="main-image">
-        <?php if ($this->jumpTo): ?>
-          <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+      <?php if ($this->addImage): ?>
+        <div class="main-image">
+          <?php if ($this->jumpTo): ?>
+            <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+              <?php endif; ?>
+                <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
+              <?php if ($this->jumpTo): ?>
+            </a>
         <?php endif; ?>
-          <?php $this->insert('image', $this->arrData); ?>
-        <?php if ($this->jumpTo): ?>
-         </a>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php endif; ?>
 
-      <div class="title"><?= $this->jumpTo ? $this->linkHeadline : $this->title ?></div>
+      <div class="content">
+          <div class="address"><?= $this->address ?></div>
+          <div class="title"><?= $this->jumpTo ? $this->linkHeadline : $this->title ?></div>
 
-      <div class="main-details">
-          <div class="detail <?= $this->mainPrice['key'] ?> <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>: <?=strip_tags($this->mainPrice['value'])?>">
-              <span class="label"><?= $this->mainPrice['label'] ?></span>
-              <span class="value"><?= $this->mainPrice['value'] ?></span>
+          <div class="main-details">
+              <div class="objektart <?= $this->objektart['class'] ?>" title="<?= $this->objektart['label'] ?>">
+                  <span class="label"><?= $this->objektart['label'] ?></span>
+                  <span class="value"><?= $this->objektart['value'] ?></span>
+              </div>
+              <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>">
+                  <span class="label"><?= $this->mainPrice['label'] ?></span>
+                  <span class="value"><?= $this->mainPrice['value'] ?></span>
+              </div>
           </div>
-
-          <?php foreach ($this->mainDetails as $detail): ?>
-            <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?=strip_tags($detail['value'])?>">
-              <span class="label"><?= $detail['label'] ?></span>
-              <span class="value"><?= $detail['value'] ?></span>
-            </div>
-          <?php endforeach; ?>
       </div>
 
       <?php foreach ($this->arrExtensions as $extension): ?>

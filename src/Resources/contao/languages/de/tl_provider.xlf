@@ -106,6 +106,14 @@
         <source>Please enter the phone number.</source>
         <target>Bitte geben Sie die Telefonnummer ein.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.fax.0">
+        <source>Fax number</source>
+        <target>Faxnummer</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.fax.1">
+        <source>Please enter the fax number.</source>
+        <target>Bitte geben Sie die Faxnummer ein.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.email.0">
         <source>E-mail address</source>
         <target>E-Mail-Adresse</target>
