@@ -253,6 +253,22 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
+        'lat' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lat'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+        'lng' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lng'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
         'telefon' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon'],
