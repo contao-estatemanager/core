@@ -98,7 +98,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
     {
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
 
-        if (!$this->allowReferences && $objRealEstate->referenz)
+        if ($objRealEstate === null || (!$this->allowReferences && $objRealEstate->referenz))
         {
             throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
         }
