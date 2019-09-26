@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,fax,email;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{image_legend:hide},singleSRC;{published_legend},published'
+        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,telefon2,fax,email;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{description_legend},beschreibung;{image_legend:hide},singleSRC;{published_legend},published'
     ),
 
 
@@ -279,6 +279,26 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
+        'telefon2' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon2'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'fax' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['fax'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
         'email' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['email'],
@@ -354,6 +374,14 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         'impressum' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['impressum'],
+            'exclude'                 => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
+            'sql'                     => "text NULL"
+        ),
+        'beschreibung' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['beschreibung'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),

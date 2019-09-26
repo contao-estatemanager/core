@@ -122,6 +122,14 @@
         <source>Please enter the phone number.</source>
         <target>Bitte geben Sie die Telefonnummer ein.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.telefon2.0">
+        <source>Phone number 2</source>
+        <target>Telefonnummer 2</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon2.1">
+        <source>An additional phone number field.</source>
+        <target>Ein weiteres Feld für eine Telefonnummer.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.fax.0">
         <source>Fax number</source>
         <target>Faxnummer</target>
@@ -210,6 +218,14 @@
         <source>Here you can optionally enter the impress as free text.</source>
         <target>Hier können Sie optional das Impressum als Freitext angeben.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.beschreibung.0">
+        <source>Description</source>
+        <target>Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.beschreibung.1">
+        <source>Here you can optionally enter the description as free text.</source>
+        <target>Hier können Sie optional eine Beschreibung als Freitext angeben.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.published.0">
         <source>Publish provider</source>
         <target>Anbieter veröffentlichen</target>
@@ -229,6 +245,10 @@
       <trans-unit id="tl_provider.image_legend">
         <source>Imagesettings</source>
         <target>Bild-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.description_legend">
+        <source>Description</source>
+        <target>Beschreibung</target>
       </trans-unit>
       <trans-unit id="tl_provider.address_legend">
         <source>Address details</source>
