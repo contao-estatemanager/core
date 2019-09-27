@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('anbieternr', 'firma', 'openimmo_anid'),
+            'fields'                  => array('firma', 'anbieternr', 'openimmo_anid', 'ort'),
             'showColumns'             => true
         ),
         'global_operations' => array
