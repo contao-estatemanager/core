@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,telefon2,fax,email;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{description_legend},beschreibung;{image_legend:hide},singleSRC;{published_legend},published'
+        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,telefon2,fax,email,homepage;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{description_legend},beschreibung;{image_legend:hide},singleSRC;{published_legend},published'
     ),
 
 
@@ -302,6 +302,14 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         'email' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['email'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'homepage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['homepage'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
