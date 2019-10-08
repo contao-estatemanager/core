@@ -146,6 +146,14 @@
         <source>Please enter a valid e-mail address.</source>
         <target>Bitte geben Sie eine gültige E-Mail-Adresse ein.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.homepage.0">
+        <source>Website</source>
+        <target>Homepage</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.homepage.1">
+        <source>Please enter a website.</source>
+        <target>Hier können Sie die URL zu Ihrer Homepage angeben.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.firmenanschrift.0">
         <source>Company address</source>
         <target>Firmenanschrift</target>
