@@ -128,6 +128,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['anbieternr'],
             'exclude'                 => true,
             'search'                  => true,
+            'sorting'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),

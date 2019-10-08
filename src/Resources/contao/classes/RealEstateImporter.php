@@ -66,6 +66,12 @@ class RealEstateImporter extends \BackendModule
     protected $syncFile;
 
     /**
+     * Path of original sync file
+     * @var string
+     */
+    public $originalSyncFile;
+
+    /**
      * @var array
      */
     protected $data;
@@ -89,6 +95,16 @@ class RealEstateImporter extends \BackendModule
      * @var string
      */
     protected $username;
+
+    /**
+     * @var int
+     */
+    public $importStatus = 1;
+
+    /**
+     * @var string
+     */
+    public $importMessage = 'File imported.';
 
     /**
      * Set an object property
@@ -219,6 +235,8 @@ class RealEstateImporter extends \BackendModule
 
         if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = \Input::post('file')) !== '')
         {
+            $this->originalSyncFile = $this->syncFile;
+
             if (($this->syncFile = $this->getSyncFile($this->syncFile)) !== false)
             {
                 $this->startSync();
@@ -238,7 +256,7 @@ class RealEstateImporter extends \BackendModule
 
         $this->Template->setData(array
         (
-            'syncAvailable' => $this->objInterface->type === 'wib',
+            'syncAvailable' => $this->objInterface->type === 'wib', // ToDo. Remove from bundle
             'syncUrl'       => 'syncUrl',
             'files'         => $files,
             'messages'      => $this->messages
@@ -356,10 +374,23 @@ class RealEstateImporter extends \BackendModule
         {
             $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
 
-            if ($this->objInterface->anbieternr !== $this->uniqueProviderValue && !$this->objInterface->importThirdPartyProvider)
+            if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
             {
                 //$this->addLog('Skip real estate due to missing provider', 1, 'info');
                 continue;
+            }
+
+            if ($this->objInterface->importThirdPartyRecords === 'import')
+            {
+                $objProvider = ProviderModel::findOneByAnbieternr($this->uniqueProviderValue);
+
+                if ($objProvider === null)
+                {
+                    $this->importStatus = 2;
+                    $this->importMessage = 'File partially imported.';
+
+                    continue;
+                }
             }
 
             $arrRealEstate = $provider->xpath('immobilie');
@@ -481,6 +512,25 @@ class RealEstateImporter extends \BackendModule
 
                 $this->objInterfaceMapping->reset();
 
+                if ($this->objInterface->skipRecords)
+                {
+                    $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
+                    $skip = false;
+
+                    foreach ($skipRecords as $skipField)
+                    {
+                        if (!$re[$skipField])
+                        {
+                            $skip = true;
+                        }
+                    }
+
+                    if ($skip)
+                    {
+                        continue;
+                    }
+                }
+
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
 
@@ -508,9 +558,11 @@ class RealEstateImporter extends \BackendModule
 
         $this->addLog('Update database', 1, 'highlight');
 
+        $objProvider = ProviderModel::findByPk($this->objInterface->provider);
+
         foreach ($contactPersonRecords as $i => $contactPerson)
         {
-            if ($realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr && $this->objInterface->importThirdPartyProvider)
+            if ($this->objInterface->importThirdPartyRecords === 'assign' && $realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr)
             {
                 if ($realEstateRecords[$i]['vermarktungsartKauf'])
                 {
@@ -531,7 +583,12 @@ class RealEstateImporter extends \BackendModule
             }
             else
             {
-                list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson);
+                if ($this->objInterface->importThirdPartyRecords === 'import')
+                {
+                    $objProvider = ProviderModel::findOneByAnbieternr($realEstateRecords[$i]['ANBIETER']);
+                }
+
+                list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson, $objProvider);
 
                 $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
 
@@ -547,7 +604,7 @@ class RealEstateImporter extends \BackendModule
                     // Create new contact person
                     $objContactPerson = new ContactPersonModel();
                     $objContactPerson->setRow($contactPerson);
-                    $objContactPerson->pid = $this->objInterface->provider;
+                    $objContactPerson->pid = $objProvider->id;
                     $objContactPerson->published = 1;
                     $objContactPerson->save();
 
@@ -619,7 +676,7 @@ class RealEstateImporter extends \BackendModule
                 $objRealEstate->{$field} = $value;
             }
 
-            $objRealEstate->provider = $this->objInterface->provider;
+            $objRealEstate->provider = $objProvider->id;
             $objRealEstate->contactPerson = $objContactPerson->id;
             $objRealEstate->tstamp = time();
             $objRealEstate->published = 1;
@@ -668,11 +725,11 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory = new InterfaceHistoryModel();
         $objInterfaceHistory->pid = $this->objInterface->id;
         $objInterfaceHistory->tstamp = time();
-        $objInterfaceHistory->source = $this->syncFile;
-        $objInterfaceHistory->action = 'SUCCESS';
+        $objInterfaceHistory->source = $this->originalSyncFile;
+        $objInterfaceHistory->action = '';
         $objInterfaceHistory->username = $this->username;
-        $objInterfaceHistory->text = 'Die Datei "' . $this->syncFile . '" wurde erfolgreich importiert.';
-        $objInterfaceHistory->status = 1;
+        $objInterfaceHistory->text = $this->importMessage;
+        $objInterfaceHistory->status = $this->importStatus;
         $objInterfaceHistory->save();
 
         return true;
@@ -719,7 +776,7 @@ class RealEstateImporter extends \BackendModule
             $mtime = FilesHelper::fileModTime($file);
             $size = FilesHelper::fileSizeFormated($file);
 
-            if (array_key_exists($file, $arrSynced))
+            /*if (array_key_exists($file, $arrSynced))
             {
                 $syncedMtime = intval($arrSynced[$file]->tstamp);
 
@@ -732,7 +789,7 @@ class RealEstateImporter extends \BackendModule
                 if ($lasttime > $mtime) {
                     $lasttime = $mtime;
                 }
-            }
+            }*/
 
             $arrFiles[] = array(
                 "file" => $file,
@@ -1046,10 +1103,10 @@ class RealEstateImporter extends \BackendModule
         return $content;
     }
 
-    protected function getContactPersonParameters($contactPerson)
+    protected function getContactPersonParameters($contactPerson, $objProvider)
     {
         $arrColumns = array('pid=?');
-        $arrValues = array($this->objInterface->provider);
+        $arrValues = array($objProvider->id);
 
         switch ($this->objInterface->contactPersonUniqueField)
         {

@@ -82,13 +82,13 @@
         <source>A unique field need to be selected here to identify a contact person record.</source>
         <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Kontaktperson-Datensatz identifiziert wird.</target>
       </trans-unit>
-      <trans-unit id="tl_interface.importThirdPartyProvider.0">
-        <source>Import real estate records from other providers</source>
-        <target>Immobilien anderer Anbieter importieren</target>
+      <trans-unit id="tl_interface.importThirdPartyRecords.0">
+        <source>Import records from other providers</source>
+        <target>Datensätze anderer Anbieter importieren</target>
       </trans-unit>
-      <trans-unit id="tl_interface.importThirdPartyProvider.1">
-        <source>Here you can specify if a contact person should be assigned to real estate records of other providers.</source>
-        <target>Hier können Sie angeben, ob und welcher Kontaktperson Immobilien anderer Anbieter zugewiesen werden sollen.</target>
+      <trans-unit id="tl_interface.importThirdPartyRecords.1">
+        <source>Here you can specify how records from other providers should be handled.</source>
+        <target>Hier können Sie angeben, wie mit Datensätzen anderer Anbieter umgegangen werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonKauf.0">
         <source>Contact person properties for sale</source>
@@ -122,6 +122,14 @@
         <source>Here you must specify a contact person who will assigned to real estate records for leasing.</source>
         <target>Hier müssen Sie eine Kontaktperson angeben, der Leasing-Immobilien zugewiesen werden.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.skipRecords.0">
+        <source>Skip records</source>
+        <target>Datensätze überspringen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.skipRecords.1">
+        <source>Here you can specify whether data records should be skipped if one of the specified fields is not filled.</source>
+        <target>Hier können Sie angeben, ob Datensätze übersprungen werden sollen, wenn eines der angegebenen Felder nicht gefüllt ist.</target>
+      </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
         <source>Automated synchronization</source>
         <target>Automatische Synchronisierung</target>
@@ -151,10 +159,6 @@
         <source>OpenImmo</source>
         <target>OpenImmo</target>
       </trans-unit>
-      <trans-unit id="tl_interface.wib">
-        <source>WIB</source>
-        <target>WIB</target>
-      </trans-unit>
       <trans-unit id="tl_interface.create">
         <source>Create if record does not exist</source>
         <target>Erstellen, wenn Datensatz nicht vorhanden</target>
@@ -162,6 +166,14 @@
       <trans-unit id="tl_interface.update">
         <source>Update on changes</source>
         <target>Aktualisieren, bei Änderungen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.import">
+        <source>Import</source>
+        <target>Importieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.assign">
+        <source>Assign</source>
+        <target>Zuweisen</target>
       </trans-unit>
       <trans-unit id="tl_interface.never">
         <source>Never</source>
@@ -226,7 +238,11 @@
       </trans-unit>
       <trans-unit id="tl_interface.related_records_legend">
         <source>Create &amp; update</source>
-        <target>Etstellen &amp; Aktualisieren</target>
+        <target>Erstellen &amp; Aktualisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.skip_legend">
+        <source>Skip records</source>
+        <target>Datensätze überspringen</target>
       </trans-unit>
       <trans-unit id="tl_interface.sync_legend">
         <source>Synchronize settings</source>
