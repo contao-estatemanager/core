@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\PageModel;
+
 /**
  * Loads and writes filter information
  *
@@ -55,6 +57,11 @@ class FilterSession extends \System
     protected static $strTable = 'tl_real_estate';
 
     /**
+     * @var \PageModel
+     */
+    protected static $objPage;
+
+    /**
      * Prevent direct instantiation (Singleton)
      */
     protected function __construct() {}
@@ -87,6 +94,8 @@ class FilterSession extends \System
     {
         /** @var \PageModel $objPage */
         global $objPage;
+
+        static::$objPage = $objPage;
 
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
 
@@ -236,6 +245,8 @@ class FilterSession extends \System
         $arrValues = array();
         $arrOptions = array();
 
+        $this->addQueryFragmentLanguage($arrColumns, $arrValues);
+
         if ($objRealEstateType === null)
         {
             // Exception
@@ -283,6 +294,8 @@ class FilterSession extends \System
         $arrColumns = array("$t.published='1'");
         $arrValues = array();
         $arrOptions = array();
+
+        $this->addQueryFragmentLanguage($arrColumns, $arrValues);
 
         $arrTypeColumns = array();
 
@@ -388,6 +401,26 @@ class FilterSession extends \System
         }
 
         return array($arrColumns, $arrValues, $arrOptions);
+    }
+
+    /**
+     * Add real estate language query fragment
+     *
+     * @param array               $arrColumns
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentLanguage(&$arrColumns, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        $pageDetails = static::$objPage->loadDetails();
+        $objRootPage = PageModel::findByPk($pageDetails->rootId);
+
+        if ($objRootPage->realEstateQueryLanguage)
+        {
+            $arrColumns[] = "$t.sprache=?";
+            $arrValues[]  = $objRootPage->realEstateQueryLanguage;
+        }
     }
 
     /**

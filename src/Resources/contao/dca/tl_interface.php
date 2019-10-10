@@ -117,15 +117,15 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'   => array('type', 'importThirdPartyProvider'),
+        '__selector__'   => array('type', 'importThirdPartyRecords'),
         'default'        => '{title_legend},title,type',
-        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyProvider;{sync_legend},autoSync,deleteFilesOlderThen',
+        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'importThirdPartyProvider'   => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
+        'importThirdPartyRecords_assign'   => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
     ),
 
     // Fields
@@ -244,13 +244,15 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'options_callback'		  => array('tl_interface', 'getContactPersonUniqueFieldOptions'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
-        'importThirdPartyProvider' => array
+        'importThirdPartyRecords' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importThirdPartyProvider'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importThirdPartyRecords'],
             'exclude'                 => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12 clr'),
-            'sql'                     => "char(1) NOT NULL default ''"
+            'inputType'               => 'select',
+            'eval'                    => array('includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+            'options'                 => array('import', 'assign'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
+            'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'assignContactPersonKauf' => array
         (
@@ -296,12 +298,22 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
         ),
+        'skipRecords' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['skipRecords'],
+            'exclude'				  => true,
+            'inputType'				  => 'checkbox',
+            'eval'					  => array('multiple'=>true),
+            'options'                 => array('objekttitel', 'objektbeschreibung'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
         'autoSync' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['autoSync'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('never', '10min', '30min', 'hourly', 'daily', 'weekly'),
+            'options'                 => array(0=>'never', 1=>'min', 10=>'10min', 30=>'30min', 60=>'hourly', 1440=>'daily', 10080=>'weekly'),
             'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(8) NOT NULL default ''"
@@ -494,6 +506,29 @@ class tl_interface extends Backend
         }
 
         return $arrContactPerson;
+    }
+
+    /**
+     * Return delete files older than options as array
+     *
+     * @param \DataContainer  $dc
+     *
+     * @return array
+     */
+    public function getSyncOptions($dc)
+    {
+        return array
+        (
+            '0'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_none'],
+            '1'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_day'],
+            '3'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_three_days'],
+            '7'   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_week'],
+            '14'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_two_weeks'],
+            '30'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_month'],
+            '90'  => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_three_months'],
+            '183' => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_half_year'],
+            '365' => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen_year'],
+        );
     }
 
     /**

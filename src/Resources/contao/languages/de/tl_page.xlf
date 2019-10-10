@@ -33,6 +33,14 @@
         <source>Here you can specify the real estate type to be automatically selected when the page is entered.</source>
         <target>Hier können Sie den Immobilien-Typ festlegen, der automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
       </trans-unit>
+      <trans-unit id="tl_page.realEstateQueryLanguage.0">
+        <source>Language of real estate records</source>
+        <target>Sprache der Immobilien-Datensätze</target>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateQueryLanguage.1">
+        <source>Here you can exclude real estate records in other languages.</source>
+        <target>Hier können Sie Immobilien-Datensätze anderer Sprachen ausschließen.</target>
+      </trans-unit>
       <trans-unit id="tl_page.estate_manager_legend">
         <source>Real estate settings</source>
         <target>Immobilien-Einstellungen</target>

@@ -53,8 +53,9 @@ class RealEstateCronImporter extends \Frontend
             if ($objInterface->autoSync > 0)
             {
                 $timeDiff = time() - intval($objInterface->lastSync);
+                $minDiff = $timeDiff / 60;
 
-                if (($timeDiff / $objInterface->autoSync) >= 1)
+                if ($minDiff - intval($objInterface->autoSync) >= 0)
                 {
                     $this->sync();
                 }
@@ -90,10 +91,13 @@ class RealEstateCronImporter extends \Frontend
             }
         }
 
-        $files = array_reverse($files);
+        $files = array_slice(array_reverse($files), 0, 10);
 
         foreach ($files as $file)
         {
+            $this->importer->importStatus = 1;
+            $this->importer->importMessage = 'File imported';
+            $this->importer->originalSyncFile = $file['file'];
             $this->importer->startSync($this->importer->getSyncFile($file['file']));
         }
     }
