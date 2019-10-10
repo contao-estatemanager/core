@@ -110,7 +110,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'foreignKey'              => 'tl_provider.id',
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
-            'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
+            'relation'                => array('type'=>'belongsTo', 'load'=>'lazy')
         ),
         'tstamp' => array
         (
