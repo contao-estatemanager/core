@@ -267,6 +267,18 @@
         <source>Miete Garage</source>
         <target>Miete Garage</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpSonstige">
+        <source>Anzahl Stellplätze</source>
+        <target>Anzahl Stellplätze</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpSonstigeKaufpreis">
+        <source>Kaufpreis Stellplatz</source>
+        <target>Kaufpreis Stellplatz</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_label.stpSonstigeMietpreis">
+        <source>Miete Stellplatz</source>
+        <target>Miete Stellplatz</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.stpTiefgarage">
         <source>Tiefgaragenstellplätze</source>
         <target>Tiefgaragenstellplätze</target>
