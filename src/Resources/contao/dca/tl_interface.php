@@ -178,7 +178,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['anbieternr'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'uniqueProviderField' => array
