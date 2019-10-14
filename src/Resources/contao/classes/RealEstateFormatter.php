@@ -396,9 +396,17 @@ class RealEstateFormatter
      */
     public function isFilled($field)
     {
-        if ($this->objRealEstate->{$field} || $this->arrFieldFormats[ $field ]['force'])
+        if($this->arrFieldFormats[ $field ]['force'])
         {
             return true;
+        }
+
+        if ($this->objRealEstate->{$field})
+        {
+            if(!(is_numeric($this->objRealEstate->{$field}) && intval($this->objRealEstate->{$field}) === 0))
+            {
+                return true;
+            }
         }
 
         return false;

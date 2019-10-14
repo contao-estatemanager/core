@@ -78,31 +78,33 @@ class EstateManagerSDK extends \Frontend
     }
 
     /**
-     * Count the total matching items
+     * Return the image path
      *
-     * @param $arrColumns
-     * @param $arrValues
-     * @param $arrOptions
+     * @param $varSingleSrc
+     * @param $imgSize
      *
-     * @return integer
+     * @return boolean
      */
-    public function countItems($arrColumns, $arrValues, $arrOptions)
+    protected function getImagePath($varSingleSrc, $imgSize)
     {
-        return RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
-    }
+        if ($varSingleSrc)
+        {
+            if (!($varSingleSrc instanceof \FilesModel) && \Validator::isUuid($varSingleSrc))
+            {
+                $objModel = \FilesModel::findByUuid($varSingleSrc);
+            }
+            else
+            {
+                $objModel = $varSingleSrc;
+            }
 
-    /**
-     * Fetch the matching items
-     *
-     * @param $arrColumns
-     * @param $arrValues
-     * @param $arrOptions
-     *
-     * @return \Model\Collection|RealEstateModel|null
-     */
-    public function fetchItems($arrColumns, $arrValues, $arrOptions)
-    {
-        return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
+            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+            {
+                return \Image::getPath(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objModel->path, $imgSize)->getUrl(TL_ROOT));
+            }
+        }
+
+        return false;
     }
 
     /**

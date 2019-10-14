@@ -76,7 +76,7 @@ class EstateManagerRead extends EstateManagerSDK
                     $arrValues[]  = $id;
                 }
 
-                $objRealEstates = $this->fetchItems($arrColumns, $arrValues, $arrOptions);
+                $objRealEstates = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
 
                 if($objRealEstates === null){
                     return new JsonResponse($this->error(
@@ -93,6 +93,61 @@ class EstateManagerRead extends EstateManagerSDK
                         break;
                     default:
                         $data['results'] = $this->parseRealEstates($objRealEstates);
+                }
+
+                break;
+
+            case 'contactpersons':
+
+                // validate parameters
+                $validParameters = array('fields', 'imgSize');
+                $this->currParam = $this->getParameters($this->method, $validParameters);
+
+                // prepare model
+                $arrColumns = array();
+                $arrValues  = array();
+                $arrOptions = array();
+
+                if($id)
+                {
+                    $arrColumns[] = 'id=?';
+                    $arrValues[]  = $id;
+                }
+
+                $objContacts = ContactPersonModel::findBy($arrColumns, $arrValues, $arrOptions);
+
+                if($objContacts === null){
+                    return new JsonResponse($this->error(
+                        'No results found',
+                        self::STATUS_ZERO_RESULTS
+                    ));
+                }
+
+                if(is_array($this->currParam['fields']))
+                {
+                    while($objContacts->next())
+                    {
+                        foreach ($this->currParam['fields'] as $field)
+                        {
+                            switch($field)
+                            {
+                                case 'image':
+                                case 'singleSRC':
+                                    $imageSize = array();
+
+                                    if(is_array($this->currParam['imgSize']))
+                                    {
+                                        $imageSize = $this->currParam['imgSize'];
+                                    }
+
+                                    $data['results'][$objContacts->id][ $field ] = $this->getImagePath($objContacts->{$field}, $imageSize);
+                                    break;
+                                default:
+                                    $data['results'][$objContacts->id][ $field ] = $objContacts->{$field};
+                            }
+
+                        }
+                    }
                 }
 
                 break;
