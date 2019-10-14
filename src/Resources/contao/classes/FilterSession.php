@@ -413,6 +413,12 @@ class FilterSession extends \System
     {
         $t = static::$strTable;
 
+        if (static::$objPage === null)
+        {
+            $arrColumns[] = "$t.sprache='de-DE'";
+            return;
+        }
+
         $pageDetails = static::$objPage->loadDetails();
         $objRootPage = PageModel::findByPk($pageDetails->rootId);
 
