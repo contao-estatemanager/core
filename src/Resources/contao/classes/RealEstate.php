@@ -436,7 +436,8 @@ class RealEstate extends \System
      */
     public function getMainPrice()
     {
-        if($this->objRealEstate->{$this->objType->price})
+        // check whether the price is filled and not zero
+        if($this->objRealEstate->{$this->objType->price} && intval($this->objRealEstate->{$this->objType->price}))
         {
             return $this->formatter->getFormattedCollection($this->objType->price);
         }
