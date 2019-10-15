@@ -153,6 +153,14 @@
         <source>Enter the country of the property here</source>
         <target>Geben Sie hier das Land der Immobilie ein</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.sprache.0">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.sprache.1">
+        <source>Enter the language of the property here</source>
+        <target>Geben Sie hier die Sprache der Immobilie ein</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.ort.0">
         <source>Location</source>
         <target>Ort</target>
