@@ -97,8 +97,8 @@ class RealEstateCronImporter extends \Frontend
         {
             $this->importer->importStatus = 1;
             $this->importer->importMessage = 'File imported';
-            $this->importer->originalSyncFile = $file['file'];
-            $this->importer->startSync($this->importer->getSyncFile($file['file']));
+            $this->importer->originalSyncFile = html_entity_decode($file['file']);
+            $this->importer->startSync($this->importer->getSyncFile($this->importer->originalSyncFile));
         }
     }
 

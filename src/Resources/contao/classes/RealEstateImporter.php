@@ -233,7 +233,7 @@ class RealEstateImporter extends \BackendModule
         $this->import('BackendUser', 'User');
         $this->username = $this->User->username;
 
-        if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = \Input::post('file')) !== '')
+        if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = html_entity_decode(\Input::post('file'))) !== '')
         {
             $this->originalSyncFile = $this->syncFile;
 
