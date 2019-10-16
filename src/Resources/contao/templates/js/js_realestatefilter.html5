@@ -58,8 +58,8 @@
       };
 
       EstateManagerFilter.prototype.marketingTypeChanged = function () {
-          let firstSelected = false;
-          let switchType = (this.settings.addBlankRealEstateType) ? ((EstateManager.types[this.fieldRealEstateType.value]) ? EstateManager.types[this.fieldRealEstateType.value].switchType : 0) : EstateManager.types[this.fieldRealEstateType.value].switchType;
+          var firstSelected = false;
+          var switchType = (this.settings.addBlankRealEstateType) ? ((EstateManager.types[this.fieldRealEstateType.value]) ? EstateManager.types[this.fieldRealEstateType.value].switchType : 0) : EstateManager.types[this.fieldRealEstateType.value].switchType;
 
           if (this.settings.addBlankRealEstateType === false) {
               for (var i=0; i<this.fieldRealEstateType.options.length;i++) {
@@ -128,7 +128,7 @@
           if (this.settings.submitOnChange) {
               this.form.submit();
           } else {
-              for (let i=0; i<this.toggleFilter.length; i++) {
+              for (var i=0; i<this.toggleFilter.length; i++) {
                   if (this.fieldRealEstateType.selectedOptions[0].value && this.fieldRealEstateType.selectedOptions[0].value !== 'miete_leasing' && this.fieldRealEstateType.selectedOptions[0].value !== 'kauf_erbpacht') {
                       if (EstateManager.types[this.fieldRealEstateType.selectedOptions[0].value].filter.indexOf(this.toggleFilter[i].dataset.group) >= 0) {
                           this.toggleFilter[i].style.display = '';
