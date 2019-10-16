@@ -687,7 +687,7 @@ class RealEstateImporter extends \BackendModule
             if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback']))
             {
                 $dc = new \stdClass();
-                $dc->id = $objRealEstate->id;
+                $dc->id = $objRealEstate->id ?: \Database::getInstance()->getNextId('tl_real_estate');
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
                 {
