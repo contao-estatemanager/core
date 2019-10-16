@@ -121,7 +121,7 @@ class RealEstateCronImporter extends \Frontend
 
             if ($daysDiff > $days)
             {
-                unlink(TL_ROOT . '/' . $this->importer->importFolder->path . '/' . $syncFile['file']);
+                unlink(TL_ROOT . '/' . $syncFile['file']);
             }
         }
     }
