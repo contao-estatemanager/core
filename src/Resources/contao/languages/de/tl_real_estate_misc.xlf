@@ -27,8 +27,12 @@
         <target>Gruppe</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.visited">
-        <source>visited Objects</source>
+        <source>Visited properties</source>
         <target>Bisher besuchte Immobilien</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.vacation">
+        <source>Vacation properties</source>
+        <target>Ferienimmobilien</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneDay">
         <source>1 Day</source>

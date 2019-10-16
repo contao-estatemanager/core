@@ -89,6 +89,11 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $intCount = RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
                 break;
+            case 'vacation':
+                $arrColumns = array("tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'");
+
+                $intCount = RealEstateModel::countBy($arrColumns, null);
+                break;
         }
 
         // HOOK: real estate list count items
@@ -134,6 +139,11 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $arrOptions = array_merge($arrOptions, $options);
 
                 $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
+                break;
+            case 'vacation':
+                $arrColumns[] = "tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'";
+
+                $objRealEstate = RealEstateModel::findBy($arrColumns, null);
                 break;
         }
 
