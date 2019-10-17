@@ -50,6 +50,14 @@
         <source>Filters depending on the real estate type properties.</source>
         <target>Vom Immobilien-Typ abhängige Filter.</target>
       </trans-unit>
+      <trans-unit id="RFI.reset.0">
+        <source>Reset</source>
+        <target>Zurücksetzen</target>
+      </trans-unit>
+      <trans-unit id="RFI.reset.1">
+        <source>A button to reset filter.</source>
+        <target>Eine Schaltfläche zum Zurücksetzen der Filter.</target>
+      </trans-unit>
       <trans-unit id="RFI.submit.0">
         <source>Submit field</source>
         <target>Absendefeld</target>
@@ -82,6 +90,14 @@
       <trans-unit id="tl_filter_item.label.1">
         <source>The field label will be visible on the website, typically in front of or above the field.</source>
         <target>Die Feldbezeichnung wird auf der Webseite angezeigt, normalerweise links neben oder oberhalb des Feldes.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.slabel.0">
+        <source>Button label</source>
+        <target>Bezeichnung der Schaltfläche</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.slabel.1">
+        <source>Please enter the label of the button.</source>
+        <target>Bitte geben Sie die Bezeichnung der Schaltfläche ein.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.mandatory.0">
         <source>Mandatory field</source>

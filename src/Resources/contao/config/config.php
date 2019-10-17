@@ -144,6 +144,7 @@ $GLOBALS['TL_RFI'] = array
     'type'                  => '\\ContaoEstateManager\\FilterType',
     'typeSeparated'         => '\\ContaoEstateManager\\FilterTypeSeparated',
     'toggle'                => '\\ContaoEstateManager\\FilterToggle',
+    'reset'                 => '\\ContaoEstateManager\\FilterReset',
     'submit'                => '\\ContaoEstateManager\\FilterSubmit',
 );
 

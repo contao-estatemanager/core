@@ -78,6 +78,12 @@ class Filter extends \Hybrid
             return $objTemplate->parse();
         }
 
+        if (\Input::post('reset'))
+        {
+            $_SESSION['FILTER_DATA'] = array();
+            unset($_POST['reset']);
+        }
+
         $this->objFilterSession = FilterSession::getInstance();
 
         if ($this->customTpl != '')
