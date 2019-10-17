@@ -108,8 +108,6 @@ class Filter extends \Hybrid
             return;
         }
 
-        // HOOK: compile filter items
-
         $this->Template->items = '';
 
         $doNotSubmit = false;
