@@ -641,6 +641,7 @@ class RealEstateImporter extends \BackendModule
                 // Create new real estate
                 $objRealEstate = new RealEstateModel();
                 $objRealEstate->dateAdded = time();
+                $objRealEstate->published = 1;
 
                 $this->addLog('New real estate was added: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
             }
@@ -679,7 +680,6 @@ class RealEstateImporter extends \BackendModule
             $objRealEstate->provider = $objProvider->id;
             $objRealEstate->contactPerson = $objContactPerson->id;
             $objRealEstate->tstamp = time();
-            $objRealEstate->published = 1;
 
             $this->loadDataContainer('tl_real_estate');
 

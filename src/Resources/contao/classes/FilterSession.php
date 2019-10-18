@@ -62,6 +62,16 @@ class FilterSession extends \System
     protected static $objPage;
 
     /**
+     * @var \PageModel
+     */
+    protected static $objPageDetails;
+
+    /**
+     * @var \PageModel
+     */
+    protected static $objRootPage;
+
+    /**
      * Prevent direct instantiation (Singleton)
      */
     protected function __construct() {}
@@ -96,8 +106,15 @@ class FilterSession extends \System
         global $objPage;
 
         static::$objPage = $objPage;
+        static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
+        static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
 
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
+
+        if ((!isset($_SESSION['FILTER_DATA']['country']) || !count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
+        {
+            $_SESSION['FILTER_DATA']['country'] = static::$objRootPage->realEstateQueryCountry;
+        }
 
         $this->objRealEstateGroups = RealEstateGroupModel::findByPublished(1);
         $this->objRealEstateTypes = RealEstateTypeModel::findByPublished(1);
