@@ -69,6 +69,12 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_contact_person', 'copyContactPerson')
             ),
+            'cut' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['cut'],
+                'href'                => 'act=paste&amp;mode=cut',
+                'icon'                => 'cut.svg'
+            ),
             'delete' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['delete'],
