@@ -84,14 +84,16 @@ class FilterSession extends \System
     /**
      * Return the current object instance (Singleton)
      *
+     * @param $pageId
+     *
      * @return static The object instance
      */
-    public static function getInstance()
+    public static function getInstance($pageId=null)
     {
         if (static::$objInstance === null)
         {
             static::$objInstance = new static();
-            static::$objInstance->initialize();
+            static::$objInstance->initialize($pageId);
         }
 
         return static::$objInstance;
@@ -99,11 +101,18 @@ class FilterSession extends \System
 
     /**
      * Load all configuration files
+     *
+     * @param $pageId
      */
-    protected function initialize()
+    protected function initialize($pageId)
     {
         /** @var \PageModel $objPage */
         global $objPage;
+
+        if ($objPage === null)
+        {
+            $objPage = \PageModel::findByPk($pageId);
+        }
 
         static::$objPage = $objPage;
         static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
