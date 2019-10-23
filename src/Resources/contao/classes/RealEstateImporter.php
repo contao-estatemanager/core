@@ -619,7 +619,11 @@ class RealEstateImporter extends \BackendModule
                 if ($allowUpdate)
                 {
                     // Update contact person
-                    $objContactPerson->mergeRow($contactPerson);
+                    foreach ($contactPerson as $field => $value)
+                    {
+                        $objContactPerson->{$field} = $value;
+                    }
+
                     $objContactPerson->save();
 
                     $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
@@ -652,7 +656,9 @@ class RealEstateImporter extends \BackendModule
 
                 if ($realEstateRecords[$i]['AKTIONART'] === 'DELETE')
                 {
+
                     // Delete real estate
+                    $this->deleteRealEstateImages($objRealEstate, $objProvider);
                     $objRealEstate->delete();
                     $this->addLog('Real estate was deleted: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
                     continue;
@@ -1133,7 +1139,7 @@ class RealEstateImporter extends \BackendModule
     {
         $skip = false;
 
-        $objFilesFolder = $interfaceMapping->attribute === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
+        $objFilesFolder = $interfaceMapping->type === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
 
         $check = next($tmpGroup->check);
 
@@ -1153,12 +1159,13 @@ class RealEstateImporter extends \BackendModule
         }
 
         $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
-        if ($fileSize > 2000000 || $fileSize === 0)
+        if ($fileSize > 3000000 || $fileSize === 0)
         {
             return false;
         }
 
-        $existingFile = \FilesModel::findByPath($objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/' . $value);
+        $filePath = $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . ($interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue . '/' : '') . $value;
+        $existingFile = \FilesModel::findByPath($filePath);
 
         if ($existingFile !== null && $existingFile->hash === $check)
         {
@@ -1169,8 +1176,9 @@ class RealEstateImporter extends \BackendModule
             //));
             return false;
         }
-
-        $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $this->uniqueValue);
+#
+        $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
+        $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $subDirectory);
 
         // Delete file, if hash dont match
         if ($check !== false && $objFile->hash !== $check)
@@ -1214,7 +1222,7 @@ class RealEstateImporter extends \BackendModule
             $objFiles = \Files::getInstance();
 
             $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
-            $filePathRecord = $filePathProvider . '/' . $directoryName;
+            $filePathRecord = $filePathProvider . ($directoryName !== '' ? '/' . $directoryName : '');
             $filePath = $filePathRecord . '/' . $fileName;
 
             if (!file_exists($filePathProvider))
@@ -1233,6 +1241,14 @@ class RealEstateImporter extends \BackendModule
 
             return $objFile;
         }
+    }
+
+    protected function deleteRealEstateImages($objRealEstate, $objProvider)
+    {
+        $deleteFolder = $this->objFilesFolder->path . '/' . $objProvider->anbieternr . '/' . $objRealEstate->{$this->objInterface->uniqueField};
+
+        \Files::getInstance()->rrdir($deleteFolder);
+        \Dbafs::deleteResource($deleteFolder);
     }
 
     /**
