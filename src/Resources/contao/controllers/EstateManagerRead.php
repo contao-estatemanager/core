@@ -43,7 +43,7 @@ class EstateManagerRead extends EstateManagerSDK
             case 'estates':
 
                 // validate parameters
-                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode');
+                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode', 'pageId');
                 $this->currParam = $this->getParameters($this->method, $validParameters);
 
                 // prepare model
@@ -53,7 +53,7 @@ class EstateManagerRead extends EstateManagerSDK
 
                 if($this->currParam['filter'] && $this->currParam['filterMode'])
                 {
-                    $objSessionFilter = FilterSession::getInstance();
+                    $objSessionFilter = FilterSession::getInstance($this->currParam['pageId']);
 
                     list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], $this);
 

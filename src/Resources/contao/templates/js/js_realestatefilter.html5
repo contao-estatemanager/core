@@ -31,6 +31,7 @@
           this.fieldMarketingType = document.querySelector(this.settings.selector + ' .widget.real-estate-marketing-type .real-estate-marketing-type');
           this.fieldRealEstateType = document.querySelector(this.settings.selector + ' .widget.real-estate-type .real-estate-type');
           this.toggleFilter = document.querySelectorAll(this.settings.selector + ' .real-estate-filter');
+          this.buttonReset = document.querySelector(this.settings.selector + ' .widget-reset .reset');
 
           // Set all event listener
           this.setEventListener();
@@ -50,6 +51,7 @@
       EstateManagerFilter.prototype.setEventListener = function () {
           if (this.fieldMarketingType)  this.fieldMarketingType.addEventListener('change', this.marketingTypeChanged.bind(this), false);
           if (this.fieldRealEstateType) this.fieldRealEstateType.addEventListener('change', this.realEstateTypeChanged.bind(this), false);
+          if (this.buttonReset) this.buttonReset.addEventListener('click', this.resetFilter.bind(this), false);
       };
 
       EstateManagerFilter.prototype.removeEventListener = function () {
@@ -144,6 +146,24 @@
                   }
               }
           }
+      };
+
+      EstateManagerFilter.prototype.resetFilter = function (event) {
+          event.preventDefault();
+          for (var i=0; i<this.form.elements.length; i++) {
+              if (this.form.elements[i].type !== 'hidden') {
+                  if (this.form.elements[i].name === 'country' || this.settings.submitOnChange && (this.form.elements[i].name === 'marketing-type' || this.form.elements[i].name === 'real-estate-type')) {
+                      continue;
+                  }
+                  this.form.elements[i].value = '';
+                  if ("createEvent" in document) {
+                      var evt = document.createEvent("HTMLEvents");
+                      evt.initEvent("change", false, true);
+                      this.form.elements[i].dispatchEvent(evt);
+                  } else this.form.elements[i].fireEvent("onchange");
+              }
+          }
+          document.querySelector(this.settings.selector + ' .widget-reset .reset-flag').value = 1;
       };
 
       return EstateManagerFilter;

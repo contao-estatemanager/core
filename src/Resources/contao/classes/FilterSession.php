@@ -62,6 +62,16 @@ class FilterSession extends \System
     protected static $objPage;
 
     /**
+     * @var \PageModel
+     */
+    protected static $objPageDetails;
+
+    /**
+     * @var \PageModel
+     */
+    protected static $objRootPage;
+
+    /**
      * Prevent direct instantiation (Singleton)
      */
     protected function __construct() {}
@@ -74,14 +84,16 @@ class FilterSession extends \System
     /**
      * Return the current object instance (Singleton)
      *
+     * @param $pageId
+     *
      * @return static The object instance
      */
-    public static function getInstance()
+    public static function getInstance($pageId=null)
     {
         if (static::$objInstance === null)
         {
             static::$objInstance = new static();
-            static::$objInstance->initialize();
+            static::$objInstance->initialize($pageId);
         }
 
         return static::$objInstance;
@@ -89,15 +101,29 @@ class FilterSession extends \System
 
     /**
      * Load all configuration files
+     *
+     * @param $pageId
      */
-    protected function initialize()
+    protected function initialize($pageId)
     {
         /** @var \PageModel $objPage */
         global $objPage;
 
+        if ($objPage === null)
+        {
+            $objPage = \PageModel::findByPk($pageId);
+        }
+
         static::$objPage = $objPage;
+        static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
+        static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
 
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
+
+        if ((!isset($_SESSION['FILTER_DATA']['country']) || !count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
+        {
+            $_SESSION['FILTER_DATA']['country'] = static::$objRootPage->realEstateQueryCountry;
+        }
 
         $this->objRealEstateGroups = RealEstateGroupModel::findByPublished(1);
         $this->objRealEstateTypes = RealEstateTypeModel::findByPublished(1);

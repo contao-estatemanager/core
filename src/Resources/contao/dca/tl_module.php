@@ -80,7 +80,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options'                 => array('visited', 'group'),
+        'options'                 => array('visited', 'group', 'vacation'),
         'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
         'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
         'sql'                     => "varchar(16) NOT NULL default ''"

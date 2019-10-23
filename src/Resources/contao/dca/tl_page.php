@@ -21,7 +21,7 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
 // Extend the root palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
-    ->addField(array('realEstateQueryLanguage'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->addField(array('realEstateQueryLanguage, realEstateQueryCountry'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('root', 'tl_page')
 ;
 
@@ -74,6 +74,14 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
         'inputType'               => 'text',
         'eval'                    => array('rgxp'=>'language', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
         'sql'                     => "varchar(5) NOT NULL default ''"
+    ),
+    'realEstateQueryCountry' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_page']['realEstateQueryCountry'],
+        'exclude'                 => true,
+        'inputType'               => 'text',
+        'eval'                    => array('rgxp'=>'alpha', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
+        'sql'                     => "varchar(3) NOT NULL default ''"
     ),
 ));
 
