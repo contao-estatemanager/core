@@ -6,7 +6,6 @@
          <source>%s Objects found</source>
          <target>%s Immobilien gefunden</target>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_label.auf_anfrage">
          <source>Preis</source>
          <target>Preis</target>
@@ -483,29 +482,17 @@
         <source>Nebenkosten</source>
         <target>Nebenkosten</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_label.mieteinnahmenIstPeriode.0">
+      <trans-unit id="tl_real_estate_label.mieteinnahmenIstPeriode">
         <source>Rental income actual period</source>
         <target>Mieteinnahmen Ist-Periode</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_label.mieteinnahmenIstPeriode.1">
-        <source>Define the rental income period here.</source>
-        <target>Definieren Sie hier die Periode der Mieteinnahmen</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_label.nettorenditeIst.0">
+      <trans-unit id="tl_real_estate_label.nettorenditeIst">
         <source>Net yield "Actual" (%)</source>
         <target>Nettorendite "Ist" (%)</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_label.nettorenditeIst.1">
-        <source>Here you define the net yield "Actual" in %.</source>
-        <target>Definieren Sie hier die Nettorendite "Ist" in %</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_label.nettorenditeSoll.0">
+      <trans-unit id="tl_real_estate_label.nettorenditeSoll">
         <source>Net yield "Target" (%)</source>
         <target>Nettorendite "Soll" (%)</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_label.nettorenditeSoll.1">
-        <source>Here you define the net yield "target" in %.</source>
-        <target>Definieren Sie hier die Nettorendite "Soll" in %</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.heizkostenEnthalten">
         <source>Heizkosten enthalten</source>
