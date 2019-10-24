@@ -20,6 +20,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     (
         'dataContainer'               => 'Table',
         'enableVersioning'            => true,
+        'markAsCopy'                  => 'name',
         'onload_callback' => array
         (
             array('tl_expose_module', 'checkPermission'),
@@ -68,9 +69,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'copy' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_expose_module']['copy'],
-                'href'                => 'act=paste&amp;mode=copy',
-                'icon'                => 'copy.svg',
-                'attributes'          => 'onclick="Backend.getScrollOffset()"'
+                'href'                => 'act=copy',
+                'icon'                => 'copy.svg'
             ),
             'delete' => array
             (
