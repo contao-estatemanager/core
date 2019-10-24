@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_expose_module.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_expose_module.edit.0">
@@ -7,12 +6,10 @@
         <target>Bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.edit.1">
-        <source>Edit Exposé modul</source>
-        <target>Exposé-Modul bearbeiten</target>
+        <source>Edit Exposé module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.new.0">
-        <source>New Exposé modul</source>
-        <target>Neues Exposé-Modul</target>
+        <source>New Exposé module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.new.1">
         <source>Create a new Exposé module</source>
@@ -23,8 +20,7 @@
         <target>Exposé-Modul kopieren</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.copy.1">
-        <source>Make a copy of this Exposé module</source>
-        <target>Eine Kopie von diesem Exposé-Modul erzeugen</target>
+        <source>Create a copy of this Exposé module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.delete.0">
         <source>Delete Exposé module</source>
@@ -85,8 +81,7 @@
         <target>Hier können Sie dem Modul eine Überschrift hinzufügen.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.type.0">
-        <source>Expose Module Type</source>
-        <target>Expose-Modultyp</target>
+        <source>Exposé Module Type</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.type.1">
         <source>Please select the type of the Exposé module.</source>
@@ -141,12 +136,10 @@
         <target>Definieren Sie die Schriftgröße der Ausgabe</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.0">
-        <source>Force complete address</source>
-        <target>Vollständige Adresse erzwingen</target>
+        <source>Force full address</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.1">
-        <source>An attempt is made to output the complete address, regardless of whether it is released or not.</source>
-        <target>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</target>
+        <source>The complete address will be enforced, regardless of whether it is released or not.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
         <source>Gallery Modules</source>
@@ -157,8 +150,7 @@
         <target>Wählen und sortieren Sie die Bilder welche von diesem Modul ausgegeben werden sollen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryItemTemplate.0">
-        <source>Galerie Item-Template</source>
-        <target>Galerie Item-Template</target>
+        <source>Gallery Item-Template</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryItemTemplate.1">
         <source>Here you can overwrite the default template.</source>
@@ -177,8 +169,7 @@
         <target>Ausblenden wenn keine Inhalte angezeigt werden können</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.gallerySkipOnEmpty.1">
-        <source>Forces the module to be hidden if no images are found. Otherwise, the default image stored in the settings is always output..</source>
-        <target>Erzwingt das ausblenden des Moduls, sofern keine Bilder gefunden werden. Andernfalls wird immer das in den Einstellungen hinterlegte Standard-Bild ausgegeben.</target>
+        <source>Forces the module to be hidden if no images are found. Otherwise, the default image stored in the settings is always displayed.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.numberOfItems.0">
         <source>Number of items</source>
@@ -193,8 +184,7 @@
         <target>Detail-Blöcke</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.1">
-        <source>Define the order and output of the details. Note that the sequence of the individual fields can be defined using the object types.</source>
-        <target>Definieren Sie die Reihenfolge und Ausgabe der Details. Beachten Sie, dass die Reihenfolge der einzelnen Felder über die Objekttypen definiert werden können.</target>
+        <source>Define the order and output of the details. Keep in mind that the sequence of the individual fields can be defined using the object types.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
         <source>Summarize detail blocks</source>
@@ -217,40 +207,34 @@
         <target>Überschriften ausgeben</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.addHeadings.1">
-        <source>Time for the selected elements Headings on</source>
-        <target>Zeit für die ausgewählten Elemente Überschriften an</target>
+        <source>Displays headings for the selected items.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.textBlocks.0">
         <source>Texts</source>
         <target>Texte</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.textBlocks.1">
-        <source>Define and sort the texts to be output.</source>
-        <target>Definieren und sortieren Sie die auszugebenden Texte</target>
+        <source>Specify and sort the texts to be output.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.0">
         <source>max. text length</source>
         <target>max. Textlänge</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.1">
-        <source>Specify a number to shorten the text at a desired position. If 0 is specified, the text is output unabridged.</source>
-        <target>Geben Sie eine Zahl an, um den Text an einer gewünschten Stelle zu kürzen. Bei Angabe von 0 wird der Text ungekürzt ausgegeben.</target>
+        <source>Specify a number to shorten the text at a desired position or type &quot;0&quot; to output the text in an unabridged form.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.statusTokens.0">
         <source>Valid status token</source>
         <target>Erlaubte Status-Token</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.statusTokens.1">
-        <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
-        <target>Wählen Sie die erlaubten Status-Token. Diese werden, sofern diese zutreffen, in unterstützten Templates ausgegeben.</target>
+        <source>Select valid status tokens. If applicable, these are output in supported templates.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fields.0">
-        <source>Fieldlist</source>
-        <target>Feldliste</target>
+        <source>Field list</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fields.1">
-        <source>Select the fields you want to display. If fields do not contain a value, they are skipped and not displayed.</source>
-        <target>Wählen Sie die anzuzeigenden Felder. Sollten Felder keinen Wert beinhalten werden diese übersprungen und nicht ausgegeben.</target>
+        <source>Select the fields you want to display. Fields that do not contain a value are skipped and not displayed.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.show_fields.0">
         <source>Fields to be displayed</source>
@@ -261,8 +245,7 @@
         <target>Felder</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.contactFields.1">
-        <source>Select the fields you want to output</source>
-        <target>Wählen Sie die auszugebenden Felder aus</target>
+        <source>Select the fields to be output</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.form.0">
         <source>Form</source>
@@ -277,16 +260,14 @@
         <target>Teilen über</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.share.1">
-        <source>Choose which part options are available.</source>
-        <target>Wählen Sie die welche Teilen-Optionen zur Verfügung stehen.</target>
+        <source>Select which share-options should be available.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>
         <target>HTML-Code</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.1">
-        <source>You can modify the list of allowed HTML tags in the back end settings.</source>
-        <target>Sie können die Liste der erlaubten HTML-Tags in den Backend-Einstellungen ändern.</target>
+        <source>You can modify the list of allowed HTML tags in the backend settings.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.hideOnEmpty.0">
         <source>Hide on empty</source>
@@ -297,12 +278,10 @@
         <target>Dieses Modul wird nur ausgegeben wenn Ergebnisse zum darstellen gefunden wurden.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.hideOnReferences.0">
-        <source>Hide on references</source>
-        <target>Ausblenden bei Referenzen</target>
+        <source>Hide for references</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.hideOnReferences.1">
-        <source>Hides the module for reference objects.</source>
-        <target>Blendet das Modul bei Referenz-Objekten aus.</target>
+        <source>Hides the module for references.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.text.0">
         <source>Text</source>
@@ -313,36 +292,30 @@
         <target>Sie können HTML-Tags verwenden, um den Text zu formatieren.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.jumpTo.0">
-        <source>Redirect page</source>
-        <target>Weiterleitungsseite</target>
+        <source>Forwarding page</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.jumpTo.1">
-        <source>Please choose the page to which visitors will be redirected when clicking a link or submitting a form.</source>
-        <target>Bitte wählen Sie die Seite aus, zu der Besucher beim Anklicken eines Links oder Abschicken eines Formulars weitergeleitet werden.</target>
+        <source>Please choose the landing page that visitors will be redirected to when clicking a link or submitting a form.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.perPage.0">
         <source>Items per page</source>
         <target>Elemente pro Seite</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.perPage.1">
-        <source>The number of items per page. Set to 0 to disable pagination.</source>
-        <target>Die Anzahl an Elementen pro Seite. Geben Sie 0 ein, um den automatischen Seitenumbruch zu deaktivieren.</target>
+        <source>The number of items per page. Set to &quot;0&quot; to disable page breaks.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.realEstateTemplate.0">
         <source>Real estate template</source>
         <target>Immobilien Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.realEstateTemplate.1">
-        <source>Choose a template to set the representation of a single property</source>
-        <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
+        <source>Choose a template to set the representation of a single real estate</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fullsize.0">
-        <source>Full-size view/new window</source>
-        <target>Großansicht/Neues Fenster</target>
+        <source>Full size view / New window</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fullsize.1">
-        <source>Open the full-size image in a lightbox or the link in a new browser window.</source>
-        <target>Großansicht des Bildes in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.</target>
+        <source>Open the full size image in a lightbox or open it in a new browser window.</source>
       </trans-unit>
     </body>
   </file>
