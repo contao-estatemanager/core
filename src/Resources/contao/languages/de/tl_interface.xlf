@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_interface.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_interface.title.0">
@@ -39,8 +38,7 @@
         <target>Eindeutiges Feld</target>
       </trans-unit>
       <trans-unit id="tl_interface.uniqueField.1">
-        <source>A unique field need to be selected here to identify a real estate record.</source>
-        <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Immobilie-Datensatz identifiziert werden kann.</target>
+        <source>Please select a unique field, through which the real estate data record can be identified.</source>
       </trans-unit>
       <trans-unit id="tl_interface.importPath.0">
         <source>Import directory</source>
@@ -59,8 +57,7 @@
         <target>Bitte geben Sie das Zielverzeichnis an, in das importierte Dateien abgelegt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPathContactPerson.0">
-        <source>Import directory contact person</source>
-        <target>Importverzeichnis Kontaktperson</target>
+        <source>Import directory Contact person</source>
       </trans-unit>
       <trans-unit id="tl_interface.filesPathContactPerson.1">
         <source>Please enter the target directory where contact person files should be stored.</source>
@@ -79,8 +76,7 @@
         <target>Eindeutiges Feld der Kontaktperson</target>
       </trans-unit>
       <trans-unit id="tl_interface.contactPersonUniqueField.1">
-        <source>A unique field need to be selected here to identify a contact person record.</source>
-        <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Kontaktperson-Datensatz identifiziert wird.</target>
+        <source>Please select a unique field through which a contact person record can be identified.</source>
       </trans-unit>
       <trans-unit id="tl_interface.importThirdPartyRecords.0">
         <source>Import records from other providers</source>
@@ -91,36 +87,28 @@
         <target>Hier können Sie angeben, wie mit Datensätzen anderer Anbieter umgegangen werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonKauf.0">
-        <source>Contact person properties for sale</source>
-        <target>Kontaktperson Kauf-Objekte</target>
+        <source>Contact person - Properties for sale</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonKauf.1">
-        <source>Here you must specify a contact person who will assigned to real estate records for sale.</source>
-        <target>Hier müssen Sie eine Kontaktperson angeben, der Immobilien zum Kauf zugewiesen werden.</target>
+        <source>Here you must specify a contact person who will be assigned properties-for-sale.</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonMietePacht.0">
-        <source>Contact person properties for rent</source>
-        <target>Kontaktperson Miet-Objekte</target>
+        <source>Contact person - Properties for rent</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonMietePacht.1">
-        <source>Here you must specify a contact person who will assigned to real estate records for rent.</source>
-        <target>Hier müssen Sie eine Kontaktperson angeben, der Immobilien zur Miete zugewiesen werden.</target>
+        <source>Here you must specify a contact person who will be assigned properties for rent.</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.0">
-        <source>Contact person properties for leasehold</source>
-        <target>Kontaktperson Erbpacht-Objekte</target>
+        <source>Contact person - Long lease real estate</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.1">
-        <source>Here you must specify a contact person who will assigned to real estate records for leasehold.</source>
-        <target>Hier müssen Sie eine Kontaktperson angeben, der Erbpacht-Immobilien zugewiesen werden.</target>
+        <source>Here you must specify a contact person who will be assigned long lease real estate.</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonLeasing.0">
-        <source>Contact person properties for leasing</source>
-        <target>Kontaktperson Leasing-Objekte</target>
+        <source>Contact person - Leasing real estate</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonLeasing.1">
-        <source>Here you must specify a contact person who will assigned to real estate records for leasing.</source>
-        <target>Hier müssen Sie eine Kontaktperson angeben, der Leasing-Immobilien zugewiesen werden.</target>
+        <source>Here you must specify a contact person who will be assigned 'leasing real estate'.</source>
       </trans-unit>
       <trans-unit id="tl_interface.skipRecords.0">
         <source>Skip records</source>
@@ -131,28 +119,24 @@
         <target>Hier können Sie angeben, ob Datensätze übersprungen werden sollen, wenn eines der angegebenen Felder nicht gefüllt ist.</target>
       </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
-        <source>Automated synchronization</source>
-        <target>Automatische Synchronisierung</target>
+        <source>Automatic synchronization</source>
       </trans-unit>
       <trans-unit id="tl_interface.autoSync.1">
         <source>Here you can specify how often the synchronization should be performed.</source>
         <target>Hier können Sie angeben, wie oft die Synchronisierung ausgeführt werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.0">
-        <source>Delete files older then</source>
-        <target>Dateien älter als löschen</target>
+        <source>Delete files older than</source>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.1">
         <source>Here you can specify when old synchronization files should be finally deleted.</source>
         <target>Hier können Sie angeben, wann alte Synchronisierungsdateien endgükltig gelöscht werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.0">
-        <source>Synchronize real estates</source>
-        <target>Immobilien synchronisieren</target>
+        <source>Synchronize real estate</source>
       </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.1">
-        <source>Synchronize real estates</source>
-        <target>Immobilien synchronisieren</target>
+        <source>Here you can synchronize real estate</source>
       </trans-unit>
 
       <trans-unit id="tl_interface.openimmo">
@@ -164,8 +148,7 @@
         <target>Erstellen, wenn Datensatz nicht vorhanden</target>
       </trans-unit>
       <trans-unit id="tl_interface.update">
-        <source>Update on changes</source>
-        <target>Aktualisieren, bei Änderungen</target>
+        <source>Update when changes occur</source>
       </trans-unit>
       <trans-unit id="tl_interface.import">
         <source>Import</source>
@@ -220,8 +203,7 @@
         <target>Nach drei Monaten</target>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen_half_year">
-        <source>After a half year</source>
-        <target>Nach einem halben Jahr</target>
+        <source>After half a year</source>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen_year">
         <source>After one year</source>
@@ -233,8 +215,7 @@
         <target>Titel &amp; Typ</target>
       </trans-unit>
       <trans-unit id="tl_interface.oi_field_legend">
-        <source>OpenImmo filed config</source>
-        <target>OpenImmo Feld-Konfiguration</target>
+        <source>OpenImmo field-config</source>
       </trans-unit>
       <trans-unit id="tl_interface.related_records_legend">
         <source>Create &amp; update</source>
@@ -245,8 +226,7 @@
         <target>Datensätze überspringen</target>
       </trans-unit>
       <trans-unit id="tl_interface.sync_legend">
-        <source>Synchronize settings</source>
-        <target>Synchronisierungs-Einstellungen</target>
+        <source>Synchronization settings</source>
       </trans-unit>
       <trans-unit id="tl_interface.expert_legend">
         <source>Expert-settings</source>
@@ -294,8 +274,7 @@
         <target>Schnittstelle ID %s löschen</target>
       </trans-unit>
       <trans-unit id="tl_interface.show.0">
-        <source>interface details</source>
-        <target>Schnittstellendetails</target>
+        <source>Interface details</source>
       </trans-unit>
       <trans-unit id="tl_interface.show.1">
         <source>Show the details of interface ID %s</source>
