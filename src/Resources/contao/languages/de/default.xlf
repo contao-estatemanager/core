@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="CTE.realEstateFilter.0">
@@ -7,17 +6,17 @@
         <target>Filter</target>
       </trans-unit>
       <trans-unit id="CTE.realEstateFilter.1">
-        <source>Includes a real estate filter.</source>
-        <target>Fügt einen Immobilien-Filter ein.</target>
+        <source>Inserts a real estate filter.</source>
+        <target>Fügt einen Immobilienfilter ein.</target>
       </trans-unit>
 
       <trans-unit id="MSC.noRealEstateResults">
-        <source>No matching offers could be found.</source>
-        <target>Es konnten keine passenden Angebote gefunden werden.</target>
+        <source>No matching offers found.</source>
+        <target>Keine passenden Angebote gefunden.</target>
       </trans-unit>
       <trans-unit id="MSC.noUniqueRealEstateResult">
-        <source>No matching offers could be found with the given object number %s.</source>
-        <target>Es konnten kein passendes Angebot mit der Objektnummer %s gefunden werden.</target>
+        <source>No offers found matching the given propery number %s.</source>
+        <target>Keine Angebote gefunden, die der angegebenen Objektnummer entsprechen %s.</target>
       </trans-unit>
       <trans-unit id="MSC.administration">
         <source>Real estate management</source>
@@ -33,12 +32,12 @@
       </trans-unit>
 
       <trans-unit id="COLS.contentTop">
-        <source>Above the content area</source>
+        <source>Above content area</source>
         <target>Über dem Inhaltsbereich</target>
       </trans-unit>
       <trans-unit id="COLS.contentBottom">
-        <source>Below the content area</source>
-        <target>Unter dem Inhaltsbereich</target>
+        <source>Below content area</source>
+        <target>Unterhalb des Inhaltsbereichs</target>
       </trans-unit>
     </body>
   </file>
