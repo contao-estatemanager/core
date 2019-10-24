@@ -141,9 +141,9 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'vacation':
-                $arrColumns[] = "tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'";
+                $arrColumns[] = "(tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1') AND nutzungsart!='gewerbe'";
 
-                $objRealEstate = RealEstateModel::findBy($arrColumns, null);
+                $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
                 break;
         }
 

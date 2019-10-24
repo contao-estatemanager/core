@@ -73,7 +73,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         // Return an empty string if "items" is not set (to combine list and reader on same page)
         if (!\Input::get('items'))
         {
-            return '';
+            throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
         }
 
         \System::loadLanguageFile('tl_real_estate_expose');
