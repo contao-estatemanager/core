@@ -2,52 +2,38 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_page.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_page.setMarketingType.0">
-        <source>Define marketing type</source>
-        <target>Vermarktungsart festlegen</target>
+        <source>Specify marketing type</source>
       </trans-unit>
       <trans-unit id="tl_page.setMarketingType.1">
-        <source>Here you can specify whether the marketing type should be automatically set to a fixed value when the page is entered.</source>
-        <target>Hier können Sie festlegen, ob die Vermartkungsart automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
+        <source>Here you can specify if the marketing type should be automatically set to a fixed value when the page is entered.</source>
       </trans-unit>
       <trans-unit id="tl_page.marketingType.0">
         <source>Marketing type</source>
         <target>Vermarktungsart</target>
       </trans-unit>
       <trans-unit id="tl_page.marketingType.1">
-        <source>Here you can specify the marketing type to be automatically selected when the page is entered.</source>
-        <target>Hier können Sie die Vermarktungsart festlegen, die automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
+        <source>Here you can specify the marketing type that will be automatically selected when the page is entered.</source>
       </trans-unit>
       <trans-unit id="tl_page.setRealEstateType.0">
         <source>Define real estate type</source>
         <target>Immobilien-Typ festlegen</target>
       </trans-unit>
       <trans-unit id="tl_page.setRealEstateType.1">
-        <source>Here you can specify whether the real estate type should be automatically set to a fixed value when the page is entered.</source>
-        <target>Hier können Sie festlegen, ob der Immobilien-Typ automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
+        <source>Here you can specify if the real estate type should automatically be set to a fixed value when the page is entered.</source>
       </trans-unit>
       <trans-unit id="tl_page.realEstateType.0">
         <source>Real estate type</source>
         <target>Immobilien-Typ</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateType.1">
-        <source>Here you can specify the real estate type to be automatically selected when the page is entered.</source>
-        <target>Hier können Sie den Immobilien-Typ festlegen, der automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
+        <source>Here you can specify the real estate type that will automatically be selected when the page is entered.</source>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryLanguage.0">
         <source>Language of real estate records</source>
         <target>Sprache der Immobilien-Datensätze</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryLanguage.1">
-        <source>Here you can exclude real estate records in other languages.</source>
-        <target>Hier können Sie Immobilien-Datensätze anderer Sprachen ausschließen.</target>
-      </trans-unit>
-      <trans-unit id="tl_page.realEstateQueryCountry.0">
-        <source>Country of real estate records</source>
-        <target>Land der Immobilien-Datensätze</target>
-      </trans-unit>
-      <trans-unit id="tl_page.realEstateQueryCountry.1">
-        <source>Here you can preselect the country in real estate filters.</source>
-        <target>Hier können Sie die Vorauswahl des Landes in Immobilienfiltern vornehmen.</target>
+        <source>Here you can exclude the real estate records of other languages.</source>
       </trans-unit>
       <trans-unit id="tl_page.estate_manager_legend">
         <source>Real estate settings</source>
