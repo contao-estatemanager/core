@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_administration.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_administration.title">
@@ -16,7 +15,7 @@
         <target>System</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_realestate">
-        <source>Real Estates</source>
+        <source>Real estate</source>
         <target>Immobilien</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_filter">
@@ -33,8 +32,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.provider.0">
-        <source>Manage providers / Locations</source>
-        <target>Anbieter / Standorte verwalten</target>
+        <source>Manage providers / locations</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.provider.1">
         <source>Manage all providers / locations and contact persons in the system.</source>
@@ -46,20 +44,16 @@
         <target>Filter verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.filter.1">
-        <source>Manage and create individual real estate filters. Represents the basic structure of a Real Estate filter in the frontend.</source>
-        <target>Individuelle Immobilien-Filter verwalten und anlegen. Stellt das Grundgerüst eines Immobilien-Filters im Frontend dar.</target>
+        <source>Manage and create individual real estate filters. Represents the basic structure of a real estate filter in the frontend.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.type.0">
-        <source>Managing Object Types</source>
-        <target>Objekttypen verwalten</target>
+        <source>Manage real estate types</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.type.1">
-        <source>Here you can control the general behavior of real estate groups as well as real estate types.</source>
-        <target>Hier kann das allgemine Verhalten von Immobilien-Gruppen, sowie Immobilien-Typen gesteuert werden.</target>
+        <source>Here you can control the general behavior of real estate groups and types.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.field_format.0">
-        <source>Manage Field Formatting</source>
-        <target>Feldformatierung verwalten</target>
+        <source>Manage field formatting</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.field_format.1">
         <source>Here you can manage the display and formatting of the real estate details / fields.</source>
@@ -70,48 +64,41 @@
         <target>Schnittstellen verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.interface.1">
-        <source>Here OpenImmo import interfaces can be managed and executed.</source>
-        <target>Hier können OpenImmo Import-Schnittstellen verwalten und ausgeführt werden.</target>
+        <source>Here you can manage and execute OpenImmo import interfaces.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.config.0">
         <source>Settings</source>
         <target>Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.config.1">
-        <source>General Settings and basic configuration.</source>
-        <target>Allgemeine Einstellungen und Basiskonfiguration.</target>
+        <source>General and basic configuration settings.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.expose_module.0">
-        <source>Manage Exposé modules</source>
+        <source>Manage exposee modules</source>
         <target>Exposé-Module verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.expose_module.1">
-        <source>Setting up and editing the modules of an exposé</source>
-        <target>Einrichten und bearbeiten der Module eines Exposés</target>
+        <source>Setting up and editing the modules of an exposee.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon.0">
-        <source>Manage Licenses</source>
-        <target>Lizenzen verwalten</target>
+        <source>Manage licenses</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon.1">
         <source>Here you can manage licenses for extensions and start demo versions.</source>
         <target>Hier können Sie Lizenzen für Erweiterungen verwalten sowie Demoversionen starten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon_catalog.0">
-        <source>Find More Add-Ons</source>
-        <target>Weitere Add-Ons finden</target>
+        <source>Explore add-ons</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon_catalog.1">
-        <source>Browse extension catalog</source>
-        <target>Erweiterungskatalog durchsuchen</target>
+        <source>Browse extension catalog.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.real_estate.0">
-        <source>Manage Real Estates</source>
+        <source>Manage real estate</source>
         <target>Immobilien verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.real_estate.1">
-        <source>Here you can manage the real estate that exists in the system.</source>
-        <target>Hier können die im System vorhandenen Immobilien verwaltet werden</target>
+        <source>Here you can manage real estate that exist in the system.</source>
       </trans-unit>
     </body>
   </file>
