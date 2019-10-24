@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_module.list_mode_legend">
@@ -15,12 +14,10 @@
         <target>Statusausgabe</target>
       </trans-unit>
       <trans-unit id="tl_module.module_legend">
-        <source>Exposé Modules</source>
-        <target>Exposé-Module</target>
+        <source>Exposé-Modules</source>
       </trans-unit>
       <trans-unit id="tl_module.item_extension_legend">
-        <source>Rest Estate Item Extensions</source>
-        <target>Immobilien Erweiterung</target>
+        <source>Real estate Item Extensions</source>
       </trans-unit>
       <trans-unit id="tl_module.sorting_legend">
         <source>Sorting</source>
@@ -32,16 +29,14 @@
         <target>Anzahl der Immobilien ausgeben</target>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.1">
-        <source>Adds a counting label</source>
-        <target>Gibt die Anzahl der gefundenen Immobilien aus</target>
+        <source>Adds a label that displays the number of found real estate</source>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>
         <target>Sortierung hinzufügen</target>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.1">
-        <source>Adds a sort option</source>
-        <target>Fügt eine Sortiermöglichkeit hinzu</target>
+        <source>Adds a sorting  option</source>
       </trans-unit>
       <trans-unit id="tl_module.defaultSorting.0">
         <source>Default sorting</source>
@@ -52,16 +47,14 @@
         <target>Hier muss die standard-Sortierung definiert werden.</target>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.0">
-        <source>Add custom order</source>
-        <target>Benutzerdefinierte Sortierung hinzufügen</target>
+        <source>Add custom sorting</source>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.1">
         <source>Subsequent sorting of the result</source>
         <target>Nachträgliche Sortierung des Ergebnisses</target>
       </trans-unit>
       <trans-unit id="tl_module.customOrder.0">
-        <source>Custom order</source>
-        <target>Benutzerdefinierte Sortierung</target>
+        <source>Custom sorting</source>
       </trans-unit>
       <trans-unit id="tl_module.customOrder.1">
         <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
@@ -96,8 +89,7 @@
         <target>Immobilien-Gruppen</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.1">
-        <source>Here you can specify the real estate groups that are to be taken into account.</source>
-        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
+        <source>Here you can specify the real estate groups that are taken into account.</source>
       </trans-unit>
       <trans-unit id="tl_module.filterMode.0">
         <source>Filter mode</source>
@@ -116,8 +108,7 @@
         <target>Sollten keine Ergebnisse gefunden werden, wird die Liste nicht ausgegeben</target>
       </trans-unit>
       <trans-unit id="tl_module.statusTokens.0">
-        <source>Valid status token</source>
-        <target>Erlaubte Status-Token</target>
+        <source>Valid status tokens</source>
       </trans-unit>
       <trans-unit id="tl_module.statusTokens.1">
         <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
@@ -128,8 +119,7 @@
         <target>Immobilien Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTemplate.1">
-        <source>Choose a template to set the representation of a single property</source>
-        <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen</target>
+        <source>Choose a template to set the representation of a single real estate.</source>
       </trans-unit>
       <trans-unit id="tl_module.realEstateProviderTemplate.0">
         <source>Real Estate Template Extension: Provider</source>
@@ -152,16 +142,14 @@
         <target>Referenzen erlauben</target>
       </trans-unit>
       <trans-unit id="tl_module.allowReferences.1">
-        <source>Here you can specify whether references are allowed in the exposé.</source>
-        <target>Hier können Sie angeben, ob Referenzen über das Exposé aufrufbar sind.</target>
+        <source>Here you can specify whether references are can be called via the exposé.</source>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
         <source>Exposé Modules</source>
         <target>Exposé-Module</target>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.1">
-        <source>Place modules at the desired position in the exposé</source>
-        <target>Platzieren Sie Module an die gewünschte Stelle im Exposé</target>
+        <source>Here you can place modules at the desired position in the exposé.</source>
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.0">
         <source>Maximum text length</source>
@@ -176,16 +164,14 @@
         <target>Kontaktperson Bildgröße</target>
       </trans-unit>
       <trans-unit id="tl_module.contactPersonImgSize.1">
-        <source>Here you can set the image dimensions and the resize mode.</source>
-        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
+        <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
       <trans-unit id="tl_module.providerImgSize.0">
         <source>Provider image size</source>
         <target>Anbieter Bildgröße</target>
       </trans-unit>
       <trans-unit id="tl_module.providerImgSize.1">
-        <source>Here you can set the image dimensions and the resize mode.</source>
-        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
+        <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
 
       <trans-unit id="tl_module.date.0">
