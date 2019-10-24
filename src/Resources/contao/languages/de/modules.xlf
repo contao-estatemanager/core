@@ -1,26 +1,23 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="MOD.real_estate.0">
-        <source>Real Estates</source>
-        <target>Immobilien</target>
+        <source>Real estate</source>
+        <target>Immobilie</target>
       </trans-unit>
       <trans-unit id="MOD.real_estate.1">
-        <source>Manage real estates</source>
-        <target>Immobilien verwalten</target>
+        <source>Manage real estate</source>
       </trans-unit>
       <trans-unit id="MOD.administration.0">
         <source>Administration</source>
         <target>Verwaltung</target>
       </trans-unit>
       <trans-unit id="MOD.administration.1">
-        <source>Manage real estates settings</source>
-        <target>Immobilieneinstellungen verwalten</target>
+        <source>Manage real estate settings</source>
+        <target>Immobilien-Einstellungen verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.interface.0">
-        <source>Interface</source>
-        <target>Schnittstellen</target>
+        <source>Interfaces</source>
       </trans-unit>
       <trans-unit id="MOD.interface.1">
         <source>Manage interfaces</source>
@@ -55,7 +52,7 @@
         <target>Filter</target>
       </trans-unit>
       <trans-unit id="MOD.filter.1">
-        <source>Manage filter</source>
+        <source>Manage filters</source>
         <target>Filter verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.field_format.0">
@@ -67,12 +64,10 @@
         <target>Feldformatierungen verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.expose_module.0">
-        <source>Expose modules</source>
-        <target>Exposemodule</target>
+        <source>Detail modules</source> <!-- Expose modules -->
       </trans-unit>
       <trans-unit id="MOD.expose_module.1">
-        <source>Manage expose modules</source>
-        <target>Exposemodule verwalten</target>
+        <source>Manage detail modules</source> <!-- Manage expose modules -->
       </trans-unit>
       <trans-unit id="MOD.addon.0">
         <source>Licences</source>
@@ -92,8 +87,7 @@
         <target>Objekt-Eigenschaften</target>
       </trans-unit>
       <trans-unit id="FMD.media">
-        <source>Real estate media</source>
-        <target>Objekt-Medien</target>
+        <source>Real estate attachments</source> <!-- Object Media -->
       </trans-unit>
       <trans-unit id="FMD.miscellaneous">
         <source>Miscellaneous</source>
@@ -101,24 +95,20 @@
       </trans-unit>
 
       <trans-unit id="FMD.realEstateExpose.0">
-        <source>Real estate Exposé</source>
-        <target>Immobilien-Expose</target>
+        <source>Real estate details</source> <!-- Real Estate exposé -->
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.1">
-        <source>Generates a real estate expose</source>
-        <target>Erzeugt ein Immobilien-Expose</target>
+        <source>Generates a real estate detail</source> <!-- Generates a real estate exposure -->
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.0">
-        <source>Real Estate Filters</source>
-        <target>Immobilien-Filter</target>
+        <source>Real estate filters</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.1">
         <source>Creates a real estate filter</source>
         <target>Erzeugt einen Immobilienfilter</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.0">
-        <source>Real Estate List</source>
-        <target>Immobilien-Liste</target>
+        <source>Real estate list</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.1">
         <source>Generates a real estate list.</source>
@@ -130,107 +120,95 @@
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
         <source>Creates a real estate list, which can react to a filter.</source>
-        <target>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann.</target>
+        <target>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann.</target>  <!-- creates a real estate list which can be filtered -->
       </trans-unit>
       <trans-unit id="FMD.title.0">
         <source>Title</source>
         <target>Titel</target>
       </trans-unit>
       <trans-unit id="FMD.title.1">
-        <source>Outputs the title of the object.</source>
-        <target>Gibt den Titel des Objektes aus.</target>
+        <source>Outputs the title of the property.</source>
       </trans-unit>
       <trans-unit id="FMD.address.0">
         <source>Address</source>
         <target>Adresse</target>
       </trans-unit>
       <trans-unit id="FMD.address.1">
-        <source>Outputs the address of the object.</source>
-        <target>Gibt die Adresse des Objektes aus.</target>
+        <source>Outputs the address of the property.</source>
       </trans-unit>
       <trans-unit id="FMD.gallery.0">
         <source>Gallery / Slider</source>
         <target>Galerie / Slider</target>
       </trans-unit>
       <trans-unit id="FMD.gallery.1">
-        <source>Outputs the images of the object.</source>
-        <target>Gibt die Bilder des Objektes aus.</target>
+        <source>Outputs the images of the property.</source>
       </trans-unit>
       <trans-unit id="FMD.details.0">
         <source>Details</source>
         <target>Details</target>
       </trans-unit>
       <trans-unit id="FMD.details.1">
-        <source>Outputs the details of the object.</source>
-        <target>Gibt die Details des Objektes aus.</target>
+        <source>Outputs the details of the property.</source>
       </trans-unit>
       <trans-unit id="FMD.texts.0">
         <source>Texts</source>
         <target>Texte</target>
       </trans-unit>
       <trans-unit id="FMD.texts.1">
-        <source>Outputs the descriptions of the object.</source>
-        <target>Gibt die Beschreibungen des Objektes aus.</target>
+        <source>Outputs the descriptions of the property.</source>
       </trans-unit>
       <trans-unit id="FMD.mainDetails.0">
         <source>Main details</source>
         <target>Primäre Details</target>
       </trans-unit>
       <trans-unit id="FMD.mainDetails.1">
-        <source>Displays the primary details stored in the object type.</source>
-        <target>Gibt die im Objekttypen hinterlegten primären Details aus.</target>
+        <source>Displays the primary details stored in the property type.</source>
       </trans-unit>
       <trans-unit id="FMD.mainAttributes.0">
         <source>Main attributes</source>
         <target>Primäre Attribute</target>
       </trans-unit>
       <trans-unit id="FMD.mainAttributes.1">
-        <source>Displays the primary attributes stored in the object type.</source>
-        <target>Gibt die im Objekttypen hinterlegten primären Attribute aus.</target>
+        <source>Displays the primary attributes stored in the property type.</source>
       </trans-unit>
       <trans-unit id="FMD.mainPrice.0">
         <source>Main price</source>
         <target>Primärer Preis</target>
       </trans-unit>
       <trans-unit id="FMD.mainPrice.1">
-        <source>Outputs the primary price</source>
-        <target>Gibt den primären Preis aus</target>
+        <source>Outputs the main price</source>
       </trans-unit>
       <trans-unit id="FMD.mainArea.0">
         <source>Main area</source>
         <target>Primäre Fläche</target>
       </trans-unit>
       <trans-unit id="FMD.mainArea.1">
-        <source>Outputs the primary area</source>
-        <target>Gibt die primäre Fläche aus</target>
+        <source>Outputs the main area</source>
       </trans-unit>
       <trans-unit id="FMD.statusToken.0">
         <source>Status-Token</source>
         <target>Status-Token</target>
       </trans-unit>
       <trans-unit id="FMD.statusToken.1">
-        <source>Outputs the status tokens of the object. (e.g. New, Sold,...)</source>
-        <target>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</target>
+        <source>Outputs the status tokens of the property. (e.g. New, Sold,...)</source>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.0">
         <source>Marketing-Token</source>
         <target>Vermarktungs-Token</target>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.1">
-        <source>Outputs the marketing type as token (e.g. for rent)</source>
-        <target>Gibt die Vermarktungsart als Token aus (Bspw. Zum Kauf, zur Miete)</target>
+        <source>Outputs the marketing type as a token (e.g. for rent)</source>
       </trans-unit>
       <trans-unit id="FMD.fieldList.0">
         <source>Fieldlist</source>
         <target>Feldliste</target>
       </trans-unit>
       <trans-unit id="FMD.fieldList.1">
-        <source>Output of user-defined object fields as a list</source>
-        <target>Ausgabe selbst definierter Objekt-Felder als Liste</target>
+        <source>Output of user-defined property/object fields as a list</source> <!-- object or property? -->
       </trans-unit>
       <trans-unit id="FMD.contactPerson.0">
-        <source>Provider / Contact person</source>
-        <target>Kontaktperson / Ansprechpartner</target>
+        <source>Contact person</source>
+        <target>Kontaktperson</target>
       </trans-unit>
       <trans-unit id="FMD.contactPerson.1">
         <source>Output of the assigned contact person</source>
@@ -241,13 +219,11 @@
         <target>Anfrageformular</target>
       </trans-unit>
       <trans-unit id="FMD.enquiryForm.1">
-        <source>Enables the output of a form generated by the form generator.</source>
-        <target>Ermöglicht die Ausgabe eines über den Formulargenerator generierten Formulars.</target>
+        <source>Enables the output of a form produced by the form generator.</source>
       </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
-        <source>Cover picture</source>
-        <target>Titelbild</target>
+        <source>Cover</source> <!-- Cover picture -->
       </trans-unit>
       <trans-unit id="FMD.imageSRC.0">
         <source>Images</source>
@@ -282,8 +258,7 @@
         <target>Logo</target>
       </trans-unit>
       <trans-unit id="FMD.qrImageSRC.0">
-        <source>QR-Code</source>
-        <target>QR-Code</target>
+        <source>QR code</source>
       </trans-unit>
 
       <trans-unit id="FMD.area.0">
@@ -308,16 +283,14 @@
       </trans-unit>
 
       <trans-unit id="FMD.objektbeschreibung.0">
-        <source>Object description</source>
-        <target>Objektbeschreibung</target>
+        <source>Property description</source>
       </trans-unit>
       <trans-unit id="FMD.ausstattBeschr.0">
-        <source>Equipment</source>
-        <target>Ausstattung</target>
+        <source>Features</source>
       </trans-unit>
       <trans-unit id="FMD.lage.0">
-        <source>State</source>
-        <target>Lage</target>
+        <source>Location</source>
+        <target>Ort</target>
       </trans-unit>
       <trans-unit id="FMD.sonstigeAngaben.0">
         <source>Other information</source>
@@ -328,8 +301,7 @@
         <target>Kurzbeschreibung</target>
       </trans-unit>
       <trans-unit id="FMD.objektText.0">
-        <source>Object text</source>
-        <target>Objekttext</target>
+        <source>Property text</source>
       </trans-unit>
 
       <trans-unit id="FMD.kontaktname.0">
@@ -337,24 +309,21 @@
         <target>Name</target>
       </trans-unit>
       <trans-unit id="FMD.foto.0">
-        <source>Photo</source>
-        <target>Foto</target>
+        <source>Picture</source>
       </trans-unit>
       <trans-unit id="FMD.strasse.0">
         <source>Street</source>
         <target>Straße</target>
       </trans-unit>
       <trans-unit id="FMD.hausnummer.0">
-        <source>House number</source>
-        <target>Hausnummer</target>
+        <source>Street address</source>
       </trans-unit>
       <trans-unit id="FMD.plz.0">
-        <source>Postcode</source>
+        <source>Postal code</source>
         <target>Postleitzahl</target>
       </trans-unit>
       <trans-unit id="FMD.ort.0">
-        <source>Location</source>
-        <target>Ort</target>
+        <source>City / District</source>
       </trans-unit>
       <trans-unit id="FMD.land.0">
         <source>Country</source>
@@ -369,8 +338,8 @@
         <target>E-Mail</target>
       </trans-unit>
       <trans-unit id="FMD.telefon.0">
-        <source>Phone</source>
-        <target>Telefon</target>
+        <source>Phone number</source>
+        <target>Telefonnummer</target>
       </trans-unit>
 
       <trans-unit id="FMD.print.0">
