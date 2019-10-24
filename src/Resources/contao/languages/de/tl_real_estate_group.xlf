@@ -1,22 +1,19 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_group.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_group.tstamp.0">
-        <source>Revision date</source>
+        <source>Date of change</source>
         <target>Änderungsdatum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.tstamp.1">
-        <source>Date and time of the latest revision</source>
-        <target>Datum und Uhrzeit der letzten Änderung</target>
+        <source>Date and time of last modification.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.title.0">
         <source>Title</source>
         <target>Titel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.title.1">
-        <source>Please enter a real estate group title.</source>
-        <target>Bitte geben Sie den Titel der Immobilien-Gruppen ein.</target>
+        <source>Please enter the title of the real estate groups.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.similarGroup.0">
         <source>Equivalent group</source>
@@ -27,20 +24,17 @@
         <target>Bitte geben Sie die äquivalente Gruppe an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.0">
-        <source>Reference-Page</source>
-        <target>Referenz-Seite</target>
+        <source>Reference page</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.1">
         <source>This page is called if no unique real estate type could be determined.</source>
         <target>Diese Seite wird aufgerufen, wenn kein eindeutiger Immobilientyp ermittelt werden konnte.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.0">
-        <source>Marketing type</source>
-        <target>Vermarktungsart</target>
+        <source>Marketing method</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.1">
-        <source>Please enter the marketing type.</source>
-        <target>Bitte geben Sie die Vermarktungsart an.</target>
+        <source>Please indicate the type of marketing.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.published.0">
         <source>Publish group</source>
@@ -117,8 +111,7 @@
         <target>Gruppendetails</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.show.1">
-        <source>Show the details of group ID %s</source>
-        <target>Die Details der Gruppe ID %s anzeigen</target>
+        <source>Show details of group ID %s</source>
       </trans-unit>
     </body>
   </file>
