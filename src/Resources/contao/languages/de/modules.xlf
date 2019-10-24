@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="MOD.administration.1">
         <source>Manage real estate settings</source>
-        <target>Immobilieneinstellungen verwalten</target>
+        <target>Immobilien-Einstellungen verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.interface.0">
         <source>Interfaces</source>
