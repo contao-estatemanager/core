@@ -128,7 +128,9 @@
 
       EstateManagerFilter.prototype.realEstateTypeChanged = function () {
           if (this.settings.submitOnChange) {
-              this.form.submit();
+              if (this.fieldRealEstateType.value !== '') {
+                  this.form.submit();
+              }
           } else {
               for (var i=0; i<this.toggleFilter.length; i++) {
                   if (this.fieldRealEstateType.selectedOptions[0].value && this.fieldRealEstateType.selectedOptions[0].value !== 'miete_leasing' && this.fieldRealEstateType.selectedOptions[0].value !== 'kauf_erbpacht') {
