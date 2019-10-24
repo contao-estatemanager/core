@@ -143,7 +143,7 @@ class ModuleRealEstateList extends ModuleRealEstate
             case 'vacation':
                 $arrColumns[] = "tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'";
 
-                $objRealEstate = RealEstateModel::findBy($arrColumns, null);
+                $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
                 break;
         }
 
