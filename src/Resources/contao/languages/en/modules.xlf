@@ -51,10 +51,10 @@
         <source>Manage field formats</source>
       </trans-unit>
       <trans-unit id="MOD.expose_module.0">
-        <source>Detail modules</source> <!-- Expose modules -->
+        <source>Exposé modules</source>
       </trans-unit>
       <trans-unit id="MOD.expose_module.1">
-        <source>Manage detail modules</source> <!-- Manage expose modules -->
+        <source>Manage exposé modules</source>
       </trans-unit>
       <trans-unit id="MOD.addon.0">
         <source>Licences</source>
@@ -67,20 +67,20 @@
         <source>EstateManager</source>
       </trans-unit>
       <trans-unit id="FMD.properties">
-        <source>Real estate properties</source>
+        <source>Properties</source>
       </trans-unit>
       <trans-unit id="FMD.media">
-        <source>Real estate attachments</source> <!-- Object Media -->
+        <source>Media</source>
       </trans-unit>
       <trans-unit id="FMD.miscellaneous">
         <source>Miscellaneous</source>
       </trans-unit>
 
       <trans-unit id="FMD.realEstateExpose.0">
-        <source>Real estate details</source> <!-- Real Estate exposé -->
+        <source>Real estate exposé</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.1">
-        <source>Generates a real estate detail</source> <!-- Generates a real estate exposure -->
+        <source>Generates a real estate exposé</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.0">
         <source>Real estate filters</source>
@@ -98,37 +98,37 @@
         <source>Real Estate Results List</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
-        <source>Creates a real estate list, which can react to a filter.</source>  <!-- creates a real estate list which can be filtered -->
+        <source>Creates a real estate list, which can react to a filter.</source>
       </trans-unit>
       <trans-unit id="FMD.title.0">
         <source>Title</source>
       </trans-unit>
       <trans-unit id="FMD.title.1">
-        <source>Outputs the title of the property.</source>
+        <source>Outputs the title of the real estate.</source>
       </trans-unit>
       <trans-unit id="FMD.address.0">
         <source>Address</source>
       </trans-unit>
       <trans-unit id="FMD.address.1">
-        <source>Outputs the address of the property.</source>
+        <source>Outputs the address of the real estate.</source>
       </trans-unit>
       <trans-unit id="FMD.gallery.0">
         <source>Gallery / Slider</source>
       </trans-unit>
       <trans-unit id="FMD.gallery.1">
-        <source>Outputs the images of the property.</source>
+        <source>Outputs the images of the real estate.</source>
       </trans-unit>
       <trans-unit id="FMD.details.0">
         <source>Details</source>
       </trans-unit>
       <trans-unit id="FMD.details.1">
-        <source>Outputs the details of the property.</source>
+        <source>Outputs the details of the real estate.</source>
       </trans-unit>
       <trans-unit id="FMD.texts.0">
         <source>Texts</source>
       </trans-unit>
       <trans-unit id="FMD.texts.1">
-        <source>Outputs the descriptions of the property.</source>
+        <source>Outputs the description of the real estate.</source>
       </trans-unit>
       <trans-unit id="FMD.mainDetails.0">
         <source>Main details</source>
@@ -155,25 +155,25 @@
         <source>Outputs the main area</source>
       </trans-unit>
       <trans-unit id="FMD.statusToken.0">
-        <source>Status-Token</source>
+        <source>Status-token</source>
       </trans-unit>
       <trans-unit id="FMD.statusToken.1">
         <source>Outputs the status tokens of the property. (e.g. New, Sold,...)</source>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.0">
-        <source>Marketing-Token</source>
+        <source>Marketing-token</source>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.1">
-        <source>Outputs the marketing type as a token (e.g. for rent)</source>
+        <source>Outputs the marketing type as a token (e.g. for rent / for purchase)</source>
       </trans-unit>
       <trans-unit id="FMD.fieldList.0">
         <source>Fieldlist</source>
       </trans-unit>
       <trans-unit id="FMD.fieldList.1">
-        <source>Output of user-defined property/object fields as a list</source> <!-- object or property? -->
+        <source>Output of user-defined object fields as a list</source>
       </trans-unit>
       <trans-unit id="FMD.contactPerson.0">
-        <source>Contact person</source>
+        <source>Provider / Contact person</source>
       </trans-unit>
       <trans-unit id="FMD.contactPerson.1">
         <source>Output of the assigned contact person</source>
@@ -186,7 +186,7 @@
       </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
-        <source>Cover</source> <!-- Cover picture -->
+        <source>Cover picture</source>
       </trans-unit>
       <trans-unit id="FMD.imageSRC.0">
         <source>Images</source>
@@ -229,14 +229,14 @@
         <source>Details</source>
       </trans-unit>
       <trans-unit id="FMD.energie.0">
-        <source>Energy certificate</source>
+        <source>Building energy rating / Energy certificate</source>
       </trans-unit>
 
       <trans-unit id="FMD.objektbeschreibung.0">
         <source>Property description</source>
       </trans-unit>
       <trans-unit id="FMD.ausstattBeschr.0">
-        <source>Features</source>
+        <source>Furnishings</source>
       </trans-unit>
       <trans-unit id="FMD.lage.0">
         <source>Location</source>
@@ -261,7 +261,7 @@
         <source>Street</source>
       </trans-unit>
       <trans-unit id="FMD.hausnummer.0">
-        <source>Street address</source>
+        <source>House number</source>
       </trans-unit>
       <trans-unit id="FMD.plz.0">
         <source>Postal code</source>
