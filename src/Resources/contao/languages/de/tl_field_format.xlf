@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_field_format.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_field_format.new.0">
@@ -7,36 +6,29 @@
         <target>Neues Feld</target>
       </trans-unit>
       <trans-unit id="tl_field_format.new.1">
-        <source>Create new field formatting</source>
-        <target>Neue Feldformatierung anlegen</target>
+        <source>Create a new field formatting</source>
       </trans-unit>
       <trans-unit id="tl_field_format.importFieldFormats.0">
-        <source>Reset Field Formats</source>
-        <target>Feldformatierungen zurücksetzen</target>
+        <source>Reset Field Formattings</source>
       </trans-unit>
       <trans-unit id="tl_field_format.importFieldFormats.1">
-        <source>Restoring Standard Formats</source>
-        <target>Standardformatierungen wiederherstellen</target>
+        <source>Restore Standard Formattings</source>
       </trans-unit>
       <trans-unit id="tl_field_format.importConfirm">
-        <source>Are you sure you want to reset all field formats? Your own adjustments will be lost.</source>
-        <target>Sind Sie sicher, dass alle Feldformatierungen zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</target>
+        <source>Are you sure you want to reset all field formattings? Your own changes will be lost.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.imported.0">
-        <source>Field formatting successfully reset</source>
-        <target>Feldformatierungen wurden erfolgreich zurückgesetzt</target>
+        <source>Field formattings successfully reset</source>
       </trans-unit>
       <trans-unit id="tl_field_format.imported.1">
-        <source>All standard field formats and actions have been successfully imported.</source>
-        <target>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</target>
+        <source>All standard field formattings and actions were successfully imported.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.0">
-        <source>No or faulty file</source>
-        <target>Keine oder fehlerhafte Datei</target>
+        <source>File does not exist or is corrupted</source>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.1">
-        <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
-        <target>Bitte stellen Sie sicher, dass die Datei "data/import_field_formats.php" abgerufen werden kann.</target>
+        <source>Please make sure that the file &quot;data/import_field_formats.php&quot; can be retrieved.</source>
+        <target>Bitte stellen Sie sicher, dass die Datei &quot;data/import_field_formats.php&quot; abgerufen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
         <source>Edit Format Actions</source>
@@ -67,8 +59,7 @@
         <target>CSS Klasse</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.1">
-        <source>Several classes can be specified separated by blanks.</source>
-        <target>Es können mehrere Klassen per Leerzeichen getrennt angegeben werden.</target>
+        <source>Several classes can be specified if separated by a blank space.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.forceOutput.0">
         <source>Force output</source>
@@ -83,16 +74,13 @@
         <target>Bedingung hinzufügen</target>
       </trans-unit>
       <trans-unit id="tl_field_format.useCondition.1">
-        <source>This field may only be displayed if another field has a (specific) value.</source>
-        <target>Dieses Feld darf nur angezeigt werden, wenn ein anderes Feld einen (bestimmten) Wert hat.</target>
+        <source>This field is only displayed if another field has a (certain) value.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.0">
-        <source>Condition fields</source>
-        <target>Bedingungsfelder</target>
+        <source>Conditional fields</source>
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.1">
-        <source>Select the fields to which the condition is attached and optionally specify a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
-        <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt oder nicht gefüllt ist.</target>
+        <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
       </trans-unit>
     </body>
   </file>
