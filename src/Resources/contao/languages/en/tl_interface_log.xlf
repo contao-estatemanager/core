@@ -1,0 +1,48 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_interface_log.php" source-language="en">
+    <body>
+      <trans-unit id="tl_interface_log.tstamp.0">
+        <source>Date</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.tstamp.1">
+        <source>Date and time of the log entry</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.source.0">
+        <source>Origin</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.source.1">
+        <source>Backend or frontend</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.action.0">
+        <source>Category</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.action.1">
+        <source>Category of the action</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.username.0">
+        <source>User</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.username.1">
+        <source>Name of the logged-in user</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.text.0">
+        <source>Details</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.text.1">
+        <source>Details of the log entry</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.show.0">
+        <source>Show details</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.show.1">
+        <source>Show details of entry ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.delete.0">
+        <source>Delete</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_log.delete.1">
+        <source>Delete entry ID %s</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

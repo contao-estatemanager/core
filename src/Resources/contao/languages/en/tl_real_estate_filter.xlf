@@ -1,0 +1,296 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_filter.php" source-language="en">
+    <body>
+      <trans-unit id="tl_real_estate_filter.miete_leasing">
+        <source>Rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kauf_erbpacht">
+        <source>Buy</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.from">
+        <source>min</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.to">
+        <source>max</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.price">
+        <source>Price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.price_from">
+        <source>Price min</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.price_to">
+        <source>Price max</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete">
+        <source>Basic rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_price_from">
+        <source>min. basic rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_price_to">
+        <source>max. basic rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete">
+        <source>Net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_price_from">
+        <source>min. net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_price_to">
+        <source>max. net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete">
+        <source>Inclusive rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_price_from">
+        <source>min. inclusive rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_price_to">
+        <source>max. inclusive rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht">
+        <source>Lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_price_from">
+        <source>min. lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_price_to">
+        <source>max. lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis">
+        <source>Purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_price_from">
+        <source>min. purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_price_to">
+        <source>max. purchase price</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.price_per">
+        <source>Price per</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.per_month">
+        <source>per month</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.per_square_meter">
+        <source>per sqm</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.room">
+        <source>Rooms</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_from">
+        <source>Rooms from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_to">
+        <source>Rooms up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_from_x">
+        <source>from %s rooms</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.room_to_x">
+        <source>up to %s rooms</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.area">
+        <source>Area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.area_from">
+        <source>Area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.area_to">
+        <source>Area up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche">
+        <source>Living space</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_area_from">
+        <source>Living space from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_area_to">
+        <source>Living space up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche">
+        <source>Total area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_area_from">
+        <source>Total area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_area_to">
+        <source>Total area up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche">
+        <source>Plot area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_area_from">
+        <source>Plot area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_area_to">
+        <source>Plot area up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche">
+        <source>Usable area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_area_from">
+        <source>Usable area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_area_to">
+        <source>Usable area up tp</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche">
+        <source>Rentable area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_area_from">
+        <source>Rentable area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_area_to">
+        <source>Rentable area up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche">
+        <source>Office space</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_area_from">
+        <source>Office space from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_area_to">
+        <source>Office space up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche">
+        <source>Area for Sale</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_area_from">
+        <source>Area for Sale from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_area_to">
+        <source>Area for Sale up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_area_from">
+        <source>Storage space from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_area_to">
+        <source>Storage space up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_area_from">
+        <source>Restaurant area from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_area_to">
+        <source>Restaurant area up to</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.period">
+        <source>Free of relation</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.period_from">
+        <source>Free of relation from</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.period_to">
+        <source>Free of relation to</source>
+      </trans-unit>
+
+
+      <trans-unit id="tl_real_estate_filter.radius">
+        <source>Radius</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.radius_unit">
+        <source>%s km</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.dateAdded_desc">
+        <source>Updated (most recent)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.tstamp_desc">
+        <source>Updated (most recent)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.standVom_desc">
+        <source>Updated (most recent)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_asc">
+        <source>Basic rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_desc">
+        <source>Basic rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_asc">
+        <source>Purchase price (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreis_desc">
+        <source>Purchase price (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_asc">
+        <source>Net rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_desc">
+        <source>Net rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_asc">
+        <source>Inclusive rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pauschalmiete_desc">
+        <source>Inclusive rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_asc">
+        <source>Lease (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.pacht_desc">
+        <source>Lease (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlZimmer_asc">
+        <source>Number of rooms (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlZimmer_desc">
+        <source>Number of rooms (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_asc">
+        <source>Living space (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.wohnflaeche_desc">
+        <source>Living space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_asc">
+        <source>Total area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtflaeche_desc">
+        <source>Total area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_asc">
+        <source>Plot area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_desc">
+        <source>Plot area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_asc">
+        <source>Rentable area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_desc">
+        <source>Rentable area (highest to lowest)</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_filter.country">
+        <source>Country</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kauf_erbpacht_miete_leasing">
+        <source>Buy / Rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kauf_erbpacht">
+        <source>Buy</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.miete_leasing">
+        <source>Rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.all_types">
+        <source>All</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.marketingType">
+        <source>Marketing method</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.realEstateType">
+        <source>Type</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

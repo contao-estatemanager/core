@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_filter.php" source-language="en">
+    <body>
+      <trans-unit id="tl_filter.title.0">
+        <source>Title</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.title.1">
+        <source>Please enter the filter title.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.alias.0">
+        <source>Filter alias</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.alias.1">
+        <source>The filter alias is a unique reference which can be called instead of its numeric ID.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.jumpTo.0">
+        <source>Forwarding page</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.jumpTo.1">
+        <source>Please choose the forwarding page to which visitors will be redirected after submitting the filter.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.groups.0">
+        <source>Real estate groups</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.groups.1">
+        <source>Here you can declare the real estate groups that are taken into account.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankMarketingType.0">
+        <source>Display blank marketing type</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankMarketingType.1">
+        <source>Displays an empty option for marketing type on first position.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankRealEstateType.0">
+        <source>Display blank real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.addBlankRealEstateType.1">
+        <source>Displays an empty option for real estate type on first position.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.submitOnChange.0">
+        <source>Change page when modified</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.submitOnChange.1">
+        <source>The page will be changed if another type of property type is selected.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggleFilter.0">
+        <source>Default filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggleFilter.1">
+        <source>Display default filters if no real estate type selected.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.roomOptions.0">
+        <source>Available options: Rooms</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.roomOptions.1">
+        <source>Here you can enter a comma-separated list of options that should be available for the number of rooms.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.customTpl.0">
+        <source>Custom template</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.customTpl.1">
+        <source>Here you can overwrite the default template.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.attributes.0">
+        <source>CSS ID/class</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.attributes.1">
+        <source>Here you can set an ID and one or more classes.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.novalidate.0">
+        <source>Disable HTML5 validation</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.novalidate.1">
+        <source>Indicate that the form is not to be validated on submit.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.tstamp.0">
+        <source>Modification date</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.tstamp.1">
+        <source>Date and time of latest modification</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter.title_legend">
+        <source>Title and forwarding</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.config_legend">
+        <source>Filter settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle_filter_legend">
+        <source>Default filter settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.template_legend">
+        <source>Template settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.expert_legend">
+        <source>Expert settings</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter.new.0">
+        <source>New filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.new.1">
+        <source>Create a new filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.edit.0">
+        <source>Edit filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.edit.1">
+        <source>Edit filter ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.editheader.0">
+        <source>Edit fields</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.editheader.1">
+        <source>Edit assigned fields</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.copy.0">
+        <source>Duplicate filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.copy.1">
+        <source>Duplicate filter ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.delete.0">
+        <source>Delete filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.delete.1">
+        <source>Delete filter ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle.0">
+        <source>Activate/deactivate filter</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggle.1">
+        <source>Activate/deactivate filter ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.show.0">
+        <source>Filter details</source>
+      </trans-unit>
+      <trans-unit id="tl_filter.show.1">
+        <source>Show details of filter ID %s</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

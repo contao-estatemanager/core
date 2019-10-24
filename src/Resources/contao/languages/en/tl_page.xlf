@@ -1,0 +1,48 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_page.php" source-language="en">
+    <body>
+      <trans-unit id="tl_page.setMarketingType.0">
+        <source>Specify marketing type</source>
+      </trans-unit>
+      <trans-unit id="tl_page.setMarketingType.1">
+        <source>Here you can specify if the marketing type should be automatically set to a fixed value when the page is entered.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.marketingType.0">
+        <source>Marketing type</source>
+      </trans-unit>
+      <trans-unit id="tl_page.marketingType.1">
+        <source>Here you can specify the marketing type that will be automatically selected when the page is entered.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.setRealEstateType.0">
+        <source>Define real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_page.setRealEstateType.1">
+        <source>Here you can specify if the real estate type should automatically be set to a fixed value when the page is entered.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateType.0">
+        <source>Real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateType.1">
+        <source>Here you can specify the real estate type that will automatically be selected when the page is entered.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateQueryLanguage.0">
+        <source>Language of real estate records</source>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateQueryLanguage.1">
+        <source>Here you can exclude the real estate records of other languages.</source>
+      </trans-unit>
+      <trans-unit id="tl_page.estate_manager_legend">
+        <source>Real estate settings</source>
+      </trans-unit>
+      <trans-unit id="tl_page.kauf_erbpacht_miete_leasing">
+        <source>Buy / Rent</source>
+      </trans-unit>
+      <trans-unit id="tl_page.kauf_erbpacht">
+        <source>Buy</source>
+      </trans-unit>
+      <trans-unit id="tl_page.miete_leasing">
+        <source>Rent</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_estate_manager_addon.php" source-language="en">
+    <body>
+      <trans-unit id="tl_estate_manager_addon.license_legend">
+        <source>Add-on Licenses</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.demo_expiration_date">
+        <source>This trial ends on %s</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.demo_expired">
+        <source>The trial period has expired, please purchase a license to continue usage.</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.demo_used">
+        <source>The trial has already been used, please purchase a license to continue usage.</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.valid_license">
+        <source>License valid - The add-on was successfully unlocked.</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.invalid_license">
+        <source>This license is invalid. Please check your input and pay attention to 0 (zero) and O (letter) as well as upper/lower case.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

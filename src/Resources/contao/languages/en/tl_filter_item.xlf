@@ -1,0 +1,305 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_filter_item.php" source-language="en">
+    <body>
+      <trans-unit id="RFI.country.0">
+        <source>Country</source>
+      </trans-unit>
+      <trans-unit id="RFI.country.1">
+        <source>A field for filtering real estates by country.</source>
+      </trans-unit>
+      <trans-unit id="RFI.location.0">
+        <source>Address field</source>
+      </trans-unit>
+      <trans-unit id="RFI.location.1">
+        <source>An address field for filtering based on address entries.</source>
+      </trans-unit>
+      <trans-unit id="RFI.unique.0">
+        <source>Unique field</source>
+      </trans-unit>
+      <trans-unit id="RFI.unique.1">
+        <source>A field for filtering based on an unique field (e.g. property ID).</source>
+      </trans-unit>
+      <trans-unit id="RFI.type.0">
+        <source>Real estate type (combined)</source>
+      </trans-unit>
+      <trans-unit id="RFI.type.1">
+        <source>A combined filter for real estate groups and real estate types.</source>
+      </trans-unit>
+      <trans-unit id="RFI.typeSeparated.0">
+        <source>Real estate type (separated)</source>
+      </trans-unit>
+      <trans-unit id="RFI.typeSeparated.1">
+        <source>A separated filter for real estate groups and real estate types.</source>
+      </trans-unit>
+      <trans-unit id="RFI.toggle.0">
+        <source>Primary fields</source>
+      </trans-unit>
+      <trans-unit id="RFI.toggle.1">
+        <source>Filters depending on real estate type properties.</source>
+      </trans-unit>
+      <trans-unit id="RFI.reset.0">
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="RFI.reset.1">
+        <source>A button to reset the filters.</source>
+      </trans-unit>
+      <trans-unit id="RFI.submit.0">
+        <source>Submit button</source>
+      </trans-unit>
+      <trans-unit id="RFI.submit.1">
+        <source>A button to submit the filter.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.type.0">
+        <source>Field type</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.type.1">
+        <source>Please choose the type of field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.name.0">
+        <source>Field name</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.name.1">
+        <source>The field name is a unique name to identify the field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.label.0">
+        <source>Field label</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.label.1">
+        <source>The field label is displayed on the website, generally in front of or above the field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.slabel.0">
+        <source>Button label</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.slabel.1">
+        <source>Please enter the label of the button.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mandatory.0">
+        <source>Mandatory field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mandatory.1">
+        <source>The form will not submit if the field is empty.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countrySource.0">
+        <source>Source</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countrySource.1">
+        <source>Here you can define the source for the country options.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countryOptions.0">
+        <source>Countries</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.countryOptions.1">
+        <source>Here you can manually define the country options.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mode.0">
+        <source>Mode</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mode.1">
+        <source>Here you can specify the mode of the field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLongTitle.0">
+        <source>Display long real estate title</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLongTitle.1">
+        <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mergeOptions.0">
+        <source>Merge options</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.mergeOptions.1">
+        <source>Options are displayed merged.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.typeItem.0">
+        <source>Type field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.typeItem.1">
+        <source>Please select the assigned type field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groupItem.0">
+        <source>Group field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.groupItem.1">
+        <source>Please select the assigned group field.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.group.0">
+        <source>Real estate group</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.group.1">
+        <source>Please select the real estate group.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.submitOnChange.0">
+        <source>Submit on modification</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.submitOnChange.1">
+        <source>The filter is sent when modified.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options.0">
+        <source>Options</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options.1">
+        <source>If JavaScript is disabled, make sure to save your changes before modifying the order.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.displayMode.0">
+        <source>Display mode</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.displayMode.1">
+        <source>Here you can specify the display mode.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.0">
+        <source>Show label</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showLabel.1">
+        <source>Here you can specify if the label should be displayed.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showPlaceholder.0">
+        <source>Show placeholder</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.showPlaceholder.1">
+        <source>Here you can specify if the placeholder should be displayed.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.placeholder.0">
+        <source>Placeholder</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.placeholder.1">
+        <source>Show this text if the field is empty (requires HTML5).</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.imageSubmit.0">
+        <source>Create an image button</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.imageSubmit.1">
+        <source>Use an image submit button instead of the default one.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.singleSRC.0">
+        <source>Source file</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.class.0">
+        <source>CSS class</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.class.1">
+        <source>Here you can enter one or more classes.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.accesskey.0">
+        <source>Hotkey</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.accesskey.1">
+        <source>A form field can be focused by simultaneously pressing the hotkey and [ALT] or [CTRL] key.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.tabindex.0">
+        <source>Tabulator index</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.tabindex.1">
+        <source>The position of the form field in the tab order.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.customTpl.0">
+        <source>Custom form field template</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.customTpl.1">
+        <source>Here you can overwrite the default form field template.</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible.0">
+        <source>Invisible</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible.1">
+        <source>Hide the filter field on the website.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.pool">
+        <source>Existing data stock</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.selection">
+        <source>Define manually</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.type_legend">
+        <source>Field type and name</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.field_config_legend">
+        <source>Field configuration</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.country_options_legend">
+        <source>Country options</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.image_legend">
+        <source>Image button</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.options_legend">
+        <source>Options</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.expert_legend">
+        <source>Expert settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.template_legend">
+        <source>Template settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.invisible_legend">
+        <source>Visibility</source>
+      </trans-unit>
+
+      <trans-unit id="tl_filter_item.new.0">
+        <source>New field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.new.1">
+        <source>Create a new field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.show.0">
+        <source>Field details</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.show.1">
+        <source>Show the details of field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.edit.0">
+        <source>Edit field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.edit.1">
+        <source>Edit field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.cut.0">
+        <source>Move field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.cut.1">
+        <source>Move field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.copy.0">
+        <source>Duplicate field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.copy.1">
+        <source>Duplicate field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.delete.0">
+        <source>Delete field</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.delete.1">
+        <source>Delete field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.editheader.0">
+        <source>Edit form</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.editheader.1">
+        <source>Edit the form settings</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pasteafter.0">
+        <source>Insert above</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pasteafter.1">
+        <source>Insert after field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pastenew.0">
+        <source>Add new at the top</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.pastenew.1">
+        <source>Add new after field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.toggle.0">
+        <source>Toggle visibility</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.toggle.1">
+        <source>Toggle the visibility of field ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.option.1">
+        <source>Import options from a CSV file</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

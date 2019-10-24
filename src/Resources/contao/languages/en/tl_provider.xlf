@@ -1,0 +1,256 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_provider.php" source-language="en">
+    <body>
+      <trans-unit id="tl_provider.anbieternr.0">
+        <source>Provider No.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.anbieternr.1">
+        <source>Please enter an unique provider number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.openimmo_anid.0">
+        <source>Provider No. (OpenImmo)</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.openimmo_anid.1">
+        <source>Please enter an unique OpenImmo provider number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lizenzkennung.0">
+        <source>License ID</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lizenzkennung.1">
+        <source>Please enter the license ID of the provider.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.singleSRC.0">
+        <source>Logo of provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.singleSRC.1">
+        <source>Here you can enter the logo of the provider.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.forwardingMode.0">
+        <source>Forwarding mode</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.forwardingMode.1">
+        <source>Please specify the mode of e-mail forwarding.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.firma.0">
+        <source>Company</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.firma.1">
+        <source>Please enter the company name.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.postleitzahl.0">
+        <source>Postal code</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.postleitzahl.1">
+        <source>Please enter the postal code.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.ort.0">
+        <source>City / District</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.ort.1">
+        <source>Plase enter the name of the city / district.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.strasse.0">
+        <source>Street</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.strasse.1">
+        <source>Please enter the street name.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.hausnummer.0">
+        <source>House number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.hausnummer.1">
+        <source>Please enter the house number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.bundesland.0">
+        <source>State</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.bundesland.1">
+        <source>Plase enter the name of the state.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.land.0">
+        <source>Country</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.land.1">
+        <source>Please select the country.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lat.0">
+        <source>Latitude</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lat.1">
+        <source>Please enter a latitude.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lng.0">
+        <source>Longitude</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.lng.1">
+        <source>Please enter a longitude.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon.0">
+        <source>Phone number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon.1">
+        <source>Please enter the phone number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon2.0">
+        <source>Phone number 2</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.telefon2.1">
+        <source>Another field for a phone number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.fax.0">
+        <source>Fax number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.fax.1">
+        <source>Please enter the fax number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.email.0">
+        <source>E-mail address</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.email.1">
+        <source>Please enter a valid e-mail address.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.homepage.0">
+        <source>Homepage</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.homepage.1">
+        <source>Please enter the URL of your homepage.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.firmenanschrift.0">
+        <source>Company address</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.firmenanschrift.1">
+        <source>Here you can optionally enter the address as free text.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.vertretungsberechtigter.0">
+        <source>Authorized representative</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.vertretungsberechtigter.1">
+        <source>Please indicate the authorized representative.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.berufsaufsichtsbehoerde.0">
+        <source>Occupation authority</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.berufsaufsichtsbehoerde.1">
+        <source>Please enter the occupation authority.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister.0">
+        <source>Commercial register</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister.1">
+        <source>Please enter the commercial register.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister_nr.0">
+        <source>Commercial register number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.handelsregister_nr.1">
+        <source>Please enter the commercial register number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.umsstid.0">
+        <source>Sales tax identification number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.umsstid.1">
+        <source>Please enter the sales tax identification number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.steuernummer.0">
+        <source>Tax number</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.steuernummer.1">
+        <source>Please enter the tax number.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.weiteres.0">
+        <source>Further details</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.weiteres.1">
+        <source>Here you can enter further details.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum.0">
+        <source>Imprint – Legal Disclosure</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum.1">
+        <source>Here you can optionally enter Imprint / legal disclosure as free text.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.beschreibung.0">
+        <source>Description</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.beschreibung.1">
+        <source>Here you can optionally enter the description as free text.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.published.0">
+        <source>Publish provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.published.1">
+        <source>Make the provider publicly visible on the website.</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.general_legend">
+        <source>General</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.config_legend">
+        <source>Redirecting</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.image_legend">
+        <source>Imagesettings</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.description_legend">
+        <source>Description</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.address_legend">
+        <source>Address details</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.address_text_legend">
+        <source>Address - free text</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum_legend">
+        <source>Imprint – Legal Disclosure</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.impressum_text_legend">
+        <source>Imprint / legal disclosure - free text</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.published_legend">
+        <source>Publish settings</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.new.0">
+        <source>New provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.new.1">
+        <source>Create a new provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.editheader.0">
+        <source>Edit provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.editheader.1">
+        <source>Edit provider ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.edit.0">
+        <source>Edit contact persons</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.edit.1">
+        <source>Edit assigned contact persons</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.copy.0">
+        <source>Duplicate provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.copy.1">
+        <source>Duplicate provider ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.delete.0">
+        <source>Delete provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.delete.1">
+        <source>Delete provider ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.toggle.0">
+        <source>Activate/deactivate provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.toggle.1">
+        <source>Activate/deactivate provider ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.show.0">
+        <source>Provider details</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.show.1">
+        <source>Show the details of provider ID %s</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

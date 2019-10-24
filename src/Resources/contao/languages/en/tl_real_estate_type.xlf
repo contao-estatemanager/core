@@ -1,0 +1,199 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_type.php" source-language="en">
+    <body>
+      <trans-unit id="tl_real_estate_type.title.0">
+        <source>Title</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.title.1">
+        <source>Please enter the title of the property type.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.longTitle.0">
+        <source>Detailed title</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.longTitle.1">
+        <source>Please enter the detailed title of the property type.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.similarType.0">
+        <source>Equivalent real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.similarType.1">
+        <source>Please enter the equivalent real estate type.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.referencePage.0">
+        <source>Reference page</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.referencePage.1">
+        <source>This page is called if this unique real estate type could be determined.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.jumpTo.0">
+        <source>Special exposee page</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.jumpTo.1">
+        <source>Here you can navigate to a real estate type specific expose page.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart.0">
+        <source>Type of use</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart.1">
+        <source>Please enter the type of use.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.vermarktungsart.0">
+        <source>Marketing method</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.vermarktungsart.1">
+        <source>Please enter the marketing method.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart.0">
+        <source>Property type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart.1">
+        <source>Please enter the object type.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludeTypes.0">
+        <source>Exclude real estate types</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludeTypes.1">
+        <source>Here you can exclude individual real estate categories from the search if the field configuration for real estate types overlaps.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludedTypes.0">
+        <source>Excluded real estate types</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.excludedTypes.1">
+        <source>Excluded real estate types are not taken into account when searching for this explicit real estate type.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.price.0">
+        <source>Primary price field</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.price.1">
+        <source>Please enter the primary price field.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.area.0">
+        <source>Primary area-field</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.area.1">
+        <source>Please enter the primary-area field.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.toggleFilter.0">
+        <source>Primary filter</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.toggleFilter.1">
+        <source>Please choose the primary filter.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.sortingOptions.0">
+        <source>Sorting options</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.sortingOptions.1">
+        <source>Please enter the sorting options.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.mainDetails.0">
+        <source>Primary fields</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.mainDetails.1">
+        <source>Please enter the primary fields.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.mainAttributes.0">
+        <source>Primary attributes</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.mainAttributes.1">
+        <source>Please enter the primary attributes of the real estate.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.orderFields.0">
+        <source>Sort fields</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.orderFields.1">
+        <source>Should the fields of a real estate be displayed in a user-defined order?</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.orderedFields.0">
+        <source>Field sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.orderedFields.1">
+        <source>Here you can specify a user-defined order of the fields.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.defaultType.0">
+        <source>Fallback type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.defaultType.1">
+        <source>Should this real estate type be used as a fallback?</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.published.0">
+        <source>Publish</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.published.1">
+        <source>Publish real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.title_legend">
+        <source>Title &amp; type settings</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.forwarding_legend">
+        <source>Forwarding</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.field_legend">
+        <source>Field configuration</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.filter_legend">
+        <source>Filter settings</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.display_legend">
+        <source>Display settings</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.publish_legend">
+        <source>Publish</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.new.0">
+        <source>New real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.new.1">
+        <source>Create a new real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.edit.0">
+        <source>Edit real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.edit.1">
+        <source>Edit real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.cut.0">
+        <source>Move real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.cut.1">
+        <source>Move real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.editheader.0">
+        <source>Edit real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.editheader.1">
+        <source>Edit the real estate type settings</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.copy.0">
+        <source>Duplicate real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.copy.1">
+        <source>Duplicate real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.delete.0">
+        <source>Delete real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.delete.1">
+        <source>Delete real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.toggle.0">
+        <source>Activate/deactivate real estate type</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.toggle.1">
+        <source>Activate/deactivate real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.show.0">
+        <source>Real estate type details</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.show.1">
+        <source>Show the details of real estate type ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.pastenew.0">
+        <source>Add new at the top</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.pastenew.1">
+        <source>Add new after real estate type ID %s</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -887,7 +887,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'sonstigemietenetto'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['sonstigekostennetto'],
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['sonstigemietenetto'],
             'inputType'                 => 'text',
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
             'sql'                       => "decimal(10,2) NULL default NULL",

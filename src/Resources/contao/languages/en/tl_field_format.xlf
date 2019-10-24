@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_field_format.php" source-language="en">
+    <body>
+      <trans-unit id="tl_field_format.new.0">
+        <source>New field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.new.1">
+        <source>Create a new field formatting</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.importFieldFormats.0">
+        <source>Reset Field Formattings</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.importFieldFormats.1">
+        <source>Restore Standard Formattings</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.importConfirm">
+        <source>Are you sure you want to reset all field formattings? Your own changes will be lost.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.imported.0">
+        <source>Field formattings successfully reset</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.imported.1">
+        <source>All standard field formattings and actions were successfully imported.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.import_error.0">
+        <source>File does not exist or is corrupted</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.import_error.1">
+        <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.edit.0">
+        <source>Edit Format Actions</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.editheader.0">
+        <source>Edit field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.delete.0">
+        <source>Delete field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.show.0">
+        <source>Display field information</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.fieldname.0">
+        <source>Field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.fieldname.1">
+        <source>Please select a field.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.cssClass.0">
+        <source>CSS Class</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.cssClass.1">
+        <source>Several classes can be specified if separated by a blank space.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.forceOutput.0">
+        <source>Force output</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.forceOutput.1">
+        <source>Forces the output of the field, even if no value was transmitted.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.useCondition.0">
+        <source>Add condition</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.useCondition.1">
+        <source>This field is only displayed if another field has a (certain) value.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.conditionFields.0">
+        <source>Conditional fields</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.conditionFields.1">
+        <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
