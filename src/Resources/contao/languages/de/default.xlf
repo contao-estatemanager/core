@@ -20,7 +20,7 @@
       </trans-unit>
       <trans-unit id="MSC.administration">
         <source>Real estate management</source>
-        <target>Immobilien-Verwaltung</target>
+        <target>Immobilienverwaltung</target>
       </trans-unit>
       <trans-unit id="MSC.estatemanager_description">
         <source>The EstateManager is a product of %s</source>
