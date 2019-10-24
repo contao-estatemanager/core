@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_misc.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_misc.new">
@@ -35,28 +34,22 @@
         <target>Ferienimmobilien</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneDay">
-        <source>1 Day</source>
-        <target>1 Tag</target>
+        <source>1 day</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.threeDays">
-        <source>3 Days</source>
-        <target>3 Tage</target>
+        <source>3 days</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneWeek">
-        <source>1 Week</source>
-        <target>1 Woche</target>
+        <source>1 week</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.twoWeeks">
-        <source>2 Weeks</source>
-        <target>2 Wochen</target>
+        <source>2 weeks</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.threeWeeks">
-        <source>3 Weeks</source>
-        <target>3 Wochen</target>
+        <source>3 weeks</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneMonth">
-        <source>1 Month</source>
-        <target>1 Monat</target>
+        <source>1 month</source>
       </trans-unit>
     </body>
   </file>
