@@ -134,6 +134,7 @@ class FilterSession extends \System
         {
             if (!$objPage->realEstateType && $objPage->setMarketingType)
             {
+                $_SESSION['FILTER_DATA']['marketing-type'] = $objPage->marketingType;
                 $this->strMarketingType = $objPage->marketingType;
                 $this->objCurrentType = null;
                 return;
@@ -143,6 +144,7 @@ class FilterSession extends \System
             {
                 if ($objPage->realEstateType == $this->objRealEstateTypes->id)
                 {
+                    $_SESSION['FILTER_DATA']['marketing-type'] = $objPage->marketingType;
                     $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
                     $this->objCurrentType = $this->objRealEstateTypes->current();
 
@@ -167,6 +169,33 @@ class FilterSession extends \System
             $this->strMarketingType = 'kauf_erbpacht_miete_leasing';
         }
 
+        if (!$submitted)
+        {
+            while ($this->objRealEstateTypes->next())
+            {
+                if ($this->objRealEstateTypes->referencePage === $objPage->id)
+                {
+                    if ($this->strMarketingType === 'kauf_erbpacht_miete_leasing')
+                    {
+                        $this->objCurrentType = $this->objRealEstateTypes->current();
+                        $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
+                        return;
+                    }
+                    else
+                    {
+                        if ($this->strMarketingType === $this->objRealEstateTypes->vermarktungsart)
+                        {
+                            $this->objCurrentType = $this->objRealEstateTypes->current();
+                            $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            $this->objRealEstateTypes->reset();
+        }
+
         // Break if no real estate type selected
         if (!$_SESSION['FILTER_DATA']['real-estate-type'])
         {
@@ -184,6 +213,7 @@ class FilterSession extends \System
                     if ($this->strMarketingType === $this->objRealEstateTypes->vermarktungsart || $this->strMarketingType === 'kauf_erbpacht_miete_leasing')
                     {
                         $this->objCurrentType = $this->objRealEstateTypes->current();
+                        $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
                         break;
                     }
                     else
