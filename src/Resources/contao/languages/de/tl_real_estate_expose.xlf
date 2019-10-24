@@ -1,26 +1,22 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_expose.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_expose.headline_detail">
-        <source>Object details</source>
-        <target>Objektangaben</target>
+        <source>Property details</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_price">
         <source>Costs</source>
         <target>Kosten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_area">
-        <source>Areas</source>
-        <target>Flächen</target>
+        <source>Surface areas</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_energie">
         <source>Energy certificate</source>
         <target>Energieausweis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_attribute">
-        <source>Attributes</source>
-        <target>Merkmale</target>
+        <source>Characteristics</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_objektbeschreibung">
         <source>Description</source>
@@ -39,12 +35,10 @@
         <target>Sonstiges</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_objektText">
-        <source>Object text</source>
-        <target>Objekttext</target>
+        <source>Property text</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_dreizeiler">
-        <source>Short description</source>
-        <target>Kurzbeschreibung</target>
+        <source>Brief description</source>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.button_print">
@@ -56,17 +50,14 @@
         <target>Teilen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_per_email">
-        <source>by Email</source>
-        <target>per E-Mail</target>
+        <source>via Email</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_expose">
-        <source>Show exposé</source>
-        <target>Zum Exposé</target>
+        <source>Show exposee</source>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.text_share_mail_subject">
-        <source>Is this property something for you?</source>
-        <target>Ist diese Immobilie eventuell etwas für dich?</target>
+        <source>Could this be a property for you?</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.text_share_mail_body">
         <source>Hello,\rthis property could be something for you:\r%s</source>
