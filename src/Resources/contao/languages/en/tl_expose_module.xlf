@@ -1,0 +1,264 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_expose_module.php" source-language="en">
+    <body>
+      <trans-unit id="tl_expose_module.edit.0">
+        <source>Edit</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.edit.1">
+        <source>Edit Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.new.0">
+        <source>New Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.new.1">
+        <source>Create a new Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.copy.0">
+        <source>Copy Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.copy.1">
+        <source>Create a copy of this Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.delete.0">
+        <source>Delete Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.delete.1">
+        <source>Delete Exposé module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show.0">
+        <source>Display information</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show.1">
+        <source>Display information</source>
+      </trans-unit>
+
+      <trans-unit id="tl_expose_module.title_legend">
+        <source>Title and type</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected_legend">
+        <source>Access protection</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.template_legend">
+        <source>Template settings</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.expert_legend">
+        <source>Expert settings</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.settings_legend">
+        <source>Settings</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.image_legend">
+        <source>Image settings</source>
+      </trans-unit>
+
+      <trans-unit id="tl_expose_module.name.0">
+        <source>Title</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.name.1">
+        <source>Please enter the title of the Exposé module.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.headline.0">
+        <source>Headline</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.headline.1">
+        <source>Here you can add a headline to the module.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.type.0">
+        <source>Exposé Module Type</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.type.1">
+        <source>Please select the type of the Exposé module.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.customTpl.0">
+        <source>Individual template</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.customTpl.1">
+        <source>Here you can overwrite the default template.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected.0">
+        <source>Protect module</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.protected.1">
+        <source>Show the module to certain member groups only.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.guests.0">
+        <source>Show to guests only</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.guests.1">
+        <source>Hide the module if a member is logged in.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.cssID.0">
+        <source>CSS ID/class</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.cssID.1">
+        <source>Here you can set an ID and one or more classes.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.groups.0">
+        <source>Allowed member groups</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.groups.1">
+        <source>These groups will be able to see the module.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fontSize.0">
+        <source>Fontsize</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fontSize.1">
+        <source>Define the font size of the output</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceFullAddress.0">
+        <source>Force full address</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceFullAddress.1">
+        <source>The complete address will be enforced, regardless of whether it is released or not.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryModules.0">
+        <source>Gallery Modules</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryModules.1">
+        <source>Select and sort the images that should be output by this module.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryItemTemplate.0">
+        <source>Gallery Item-Template</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.galleryItemTemplate.1">
+        <source>Here you can overwrite the default template.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.imgSize.0">
+        <source>Image size</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.imgSize.1">
+        <source>Here you can define the dimensions of the images and the scaling mode.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.gallerySkipOnEmpty.0">
+        <source>Hide on empty</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.gallerySkipOnEmpty.1">
+        <source>Forces the module to be hidden if no images are found. Otherwise, the default image stored in the settings is always displayed.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.numberOfItems.0">
+        <source>Number of items</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.numberOfItems.1">
+        <source>Here you can limit the number of items. Set to 0 to show all.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.detailBlocks.0">
+        <source>Detail blocks</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.detailBlocks.1">
+        <source>Define the order and output of the details. Keep in mind that the sequence of the individual fields can be defined using the object types.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
+        <source>Summarize detail blocks</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
+        <source>Instead of individual blocks, the details are summarized in a list.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.includeAddress.0">
+        <source>Add real estate address</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.includeAddress.1">
+        <source>Adds the address of the property to the list of details.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.addHeadings.0">
+        <source>Output headings</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.addHeadings.1">
+        <source>Displays headings for the selected items.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.textBlocks.0">
+        <source>Texts</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.textBlocks.1">
+        <source>Specify and sort the texts to be output.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.maxTextLength.0">
+        <source>max. text length</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.maxTextLength.1">
+        <source>Specify a number to shorten the text at a desired position or type "0" to output the text in an unabridged form.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.statusTokens.0">
+        <source>Valid status token</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.statusTokens.1">
+        <source>Select valid status tokens. If applicable, these are output in supported templates.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fields.0">
+        <source>Field list</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fields.1">
+        <source>Select the fields you want to display. Fields that do not contain a value are skipped and not displayed.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.show_fields.0">
+        <source>Fields to be displayed</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.contactFields.0">
+        <source>Fields</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.contactFields.1">
+        <source>Select the fields to be output</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.form.0">
+        <source>Form</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.form.1">
+        <source>Please select a form.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.share.0">
+        <source>Share on</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.share.1">
+        <source>Select which share-options should be available.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.html.0">
+        <source>HTML code</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.html.1">
+        <source>You can modify the list of allowed HTML tags in the backend settings.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnEmpty.0">
+        <source>Hide on empty</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnEmpty.1">
+        <source>This module is only output if results to display have been found.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnReferences.0">
+        <source>Hide for references</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.hideOnReferences.1">
+        <source>Hides the module for references.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.text.0">
+        <source>Text</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.text.1">
+        <source>You can use HTML tags to format the text.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.jumpTo.0">
+        <source>Forwarding page</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.jumpTo.1">
+        <source>Please choose the landing page that visitors will be redirected to when clicking a link or submitting a form.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.perPage.0">
+        <source>Items per page</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.perPage.1">
+        <source>The number of items per page. Set to "0" to disable page breaks.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.realEstateTemplate.0">
+        <source>Real estate template</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.realEstateTemplate.1">
+        <source>Choose a template to set the representation of a single real estate</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fullsize.0">
+        <source>Full size view / New window</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fullsize.1">
+        <source>Open the full size image in a lightbox or open it in a new browser window.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

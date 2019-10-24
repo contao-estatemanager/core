@@ -1,0 +1,12 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_content.php" source-language="en">
+    <body>
+      <trans-unit id="tl_content.filter.0">
+        <source>Real Estate Filters</source>
+      </trans-unit>
+      <trans-unit id="tl_content.filter.1">
+        <source>Please select a filter.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

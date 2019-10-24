@@ -1,0 +1,203 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_interface_mapping.php" source-language="en">
+    <body>
+      <trans-unit id="tl_interface_mapping.type.0">
+        <source>Type</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.type.1">
+        <source>Please specify the data type to which the mapping should point.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.attribute.0">
+        <source>Attribute</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.attribute.1">
+        <source>Please select the database field in which the value has to be written.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiField.0">
+        <source>OpenImmo field</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiField.1">
+        <source>Please enter the OpenImmo field where the value should be searched.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiFieldGroup.0">
+        <source>OpenImmo field group</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiFieldGroup.1">
+        <source>Please enter the OpenImmo group where the field should be searched.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.serialize.0">
+        <source>Serialize values</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.serialize.1">
+        <source>Here you can specify that found values should be serialized afterwards.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.forceActive.0">
+        <source>Map empty value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.forceActive.1">
+        <source>Here you can specify whether a value should be specified, even if the field was not transmitted.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.forceValue.0">
+        <source>Default value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.forceValue.1">
+        <source>Here you can specify the default value if the field was not transmitted.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.formatType.0">
+        <source>Formatting</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.formatType.1">
+        <source>Here you can specify how the value should be formatted during the import.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.decimals.0">
+        <source>Number of decimal places</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.decimals.1">
+        <source>Abbreviates numbers according to the number of decimal places passed. At "0" the value is parsed as an integer.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.dateFormat.0">
+        <source>Date format</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.dateFormat.1">
+        <source>Here you can specify the date format. The passed value is converted to a timestamp.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.textTransform.0">
+        <source>Transform text</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.textTransform.1">
+        <source>Returns "true" if the value matches.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.trim.0">
+        <source>Trim</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.trim.1">
+        <source>Text value is trimmed before import.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.booleanCompareValue.0">
+        <source>Comparison value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.booleanCompareValue.1">
+        <source>Text value is trimmed before importing.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.saveImage.0">
+        <source>Save image</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.saveImage.1">
+        <source>Here you can specify if the image should be saved during mapping processing.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_interface_mapping.tl_real_estate">
+        <source>Real estate</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.tl_contact_person">
+        <source>Contact person</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.tl_provider">
+        <source>Provider</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.none">
+        <source>None</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.number">
+        <source>Number</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.date">
+        <source>Date</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.text">
+        <source>Text</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.boolean">
+        <source>Boolean value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.lowercase">
+        <source>Lowercase</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.uppercase">
+        <source>Uppercase</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.capitalize">
+        <source>Capitalize</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.uppercase">
+        <source>Uppercase</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.removespecialchar">
+        <source>Replace special characters</source>
+      </trans-unit>
+
+      <trans-unit id="tl_interface_mapping.type_legend">
+        <source>Type</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.field_legend">
+        <source>Field settings</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.format_legend">
+        <source>Formatting</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.expert_legend">
+        <source>Expert settings</source>
+      </trans-unit>
+      
+      <trans-unit id="tl_interface_mapping.new.0">
+        <source>New mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.new.1">
+        <source>Create a new mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.edit.0">
+        <source>Edit mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.edit.1">
+        <source>Edit mapping ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.copy.0">
+        <source>Duplicate mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.copy.1">
+        <source>Duplicate mapping ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.delete.0">
+        <source>Delete mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.delete.1">
+        <source>Delete mapping ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.toggle.0">
+        <source>Activate/deactivate mapping</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.toggle.1">
+        <source>Activate/deactivate mapping ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.show.0">
+        <source>Mapping details</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.show.1">
+        <source>Show details of mapping ID %s</source>
+      </trans-unit>
+
+      <trans-unit id="tl_interface_mapping.importDefaultMappings.0">
+        <source>Restore Fields</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.importDefaultMappings.1">
+        <source>Restore to standard OpenImmo mapping fields</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.importConfirm">
+        <source>Are you sure you want to reset all mapping fields? Your own adjustments will be lost.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.imported.0">
+        <source>All fields successfully reset</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.imported.1">
+        <source>All standard OpenImmo fields have been successfully imported.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.import_error.0">
+        <source>File does not exist or is corrupted</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.import_error.1">
+        <source>Please make sure that the file "data/import_interface_mappings.php" can be retrieved.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

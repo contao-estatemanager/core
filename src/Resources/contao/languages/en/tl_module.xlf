@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en">
+    <body>
+      <trans-unit id="tl_module.list_mode_legend">
+        <source>Output settings</source>
+      </trans-unit>
+      <trans-unit id="tl_module.list_config_legend">
+        <source>List settings</source>
+      </trans-unit>
+      <trans-unit id="tl_module.status_token_legend">
+        <source>Status output</source>
+      </trans-unit>
+      <trans-unit id="tl_module.module_legend">
+        <source>Exposé-Modules</source>
+      </trans-unit>
+      <trans-unit id="tl_module.item_extension_legend">
+        <source>Real estate Item Extensions</source>
+      </trans-unit>
+      <trans-unit id="tl_module.sorting_legend">
+        <source>Sorting</source>
+      </trans-unit>
+
+      <trans-unit id="tl_module.addCountLabel.0">
+        <source>Add counting</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addCountLabel.1">
+        <source>Adds a label that displays the number of found real estate</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addSorting.0">
+        <source>Add sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addSorting.1">
+        <source>Adds a sorting  option</source>
+      </trans-unit>
+      <trans-unit id="tl_module.defaultSorting.0">
+        <source>Default sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_module.defaultSorting.1">
+        <source>The default sorting must be defined here.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addCustomOrder.0">
+        <source>Add custom sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addCustomOrder.1">
+        <source>Subsequent sorting of the result</source>
+      </trans-unit>
+      <trans-unit id="tl_module.customOrder.0">
+        <source>Custom sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_module.customOrder.1">
+        <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addProvider.0">
+        <source>Add provider</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addProvider.1">
+        <source>Adds the provider to the property</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addContactPerson.0">
+        <source>Add contact person</source>
+      </trans-unit>
+      <trans-unit id="tl_module.addContactPerson.1">
+        <source>Adds the contact person to the property</source>
+      </trans-unit>
+      <trans-unit id="tl_module.listMode.0">
+        <source>Output mode</source>
+      </trans-unit>
+      <trans-unit id="tl_module.listMode.1">
+        <source>Select a mode to determine the contents of the list</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateGroups.0">
+        <source>Real estate groups</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateGroups.1">
+        <source>Here you can specify the real estate groups that are taken into account.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.filterMode.0">
+        <source>Filter mode</source>
+      </trans-unit>
+      <trans-unit id="tl_module.filterMode.1">
+        <source>The filter mode can be used to limit the list to a certain type of real estate.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.hideOnEmpty.0">
+        <source>Hide empty lists</source>
+      </trans-unit>
+      <trans-unit id="tl_module.hideOnEmpty.1">
+        <source>If no results are found, the list will not be displayed.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.statusTokens.0">
+        <source>Valid status tokens</source>
+      </trans-unit>
+      <trans-unit id="tl_module.statusTokens.1">
+        <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTemplate.0">
+        <source>Real estate template</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTemplate.1">
+        <source>Choose a template to set the representation of a single real estate.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateProviderTemplate.0">
+        <source>Real Estate Template Extension: Provider</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateProviderTemplate.1">
+        <source>Here you can overwrite the standard template for displaying providers within a real estate template.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateContactPersonTemplate.0">
+        <source>Real Estate Template Extension: Contact Person</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateContactPersonTemplate.1">
+        <source>Here you can overwrite the standard template for displaying contact persons within a real estate template.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.allowReferences.0">
+        <source>Allow references</source>
+      </trans-unit>
+      <trans-unit id="tl_module.allowReferences.1">
+        <source>Here you can specify whether references are can be called via the exposé.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.0">
+        <source>Exposé Modules</source>
+      </trans-unit>
+      <trans-unit id="tl_module.exposeModules.1">
+        <source>Here you can place modules at the desired position in the exposé.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.maxTextLength.0">
+        <source>Maximum text length</source>
+      </trans-unit>
+      <trans-unit id="tl_module.maxTextLength.1">
+        <source>Here texts can be limited to a maximum number of letters.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.contactPersonImgSize.0">
+        <source>Contact person image size</source>
+      </trans-unit>
+      <trans-unit id="tl_module.contactPersonImgSize.1">
+        <source>Here you can set the image dimensions and the scaling mode.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.providerImgSize.0">
+        <source>Provider image size</source>
+      </trans-unit>
+      <trans-unit id="tl_module.providerImgSize.1">
+        <source>Here you can set the image dimensions and the scaling mode.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_module.date.0">
+        <source>Date</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
