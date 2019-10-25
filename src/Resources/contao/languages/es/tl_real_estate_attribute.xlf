@@ -1,0 +1,126 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_attribute.php" source-language="en" target-language="es">
+    <body>
+      <trans-unit id="tl_real_estate_attribute.anzahlBalkone">
+         <source>Balcony/Terrace</source>
+         <target>Balcón / Terraza</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
+         <source>Elevator</source>
+         <target>Ascensor</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sauna">
+         <source>Sauna</source>
+         <target>Sauna</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.swimmingpool">
+         <source>Pool</source>
+         <target>Piscina</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.waschTrockenraum">
+         <source>Laundry / dry room</source>
+         <target>Lavadero</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.barrierefrei">
+         <source>Barrier-free</source>
+         <target>Sin barrera arquitectónica</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.haustiere">
+         <source>Pets</source>
+         <target>Mascotas</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.moebliert_moebliert">
+         <source>Furnished</source>
+         <target>Amueblada</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.seniorengerecht">
+         <source>Suitable for the elderly</source>
+         <target>Adecuado para las personas mayores</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.rollstuhlgerecht">
+         <source>Wheelchair access</source>
+         <target>Acceso para sillas de ruedas</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
+         <source>Listed building</source>
+         <target>Protección de monumentos</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrradraum">
+         <source>Bike room</source>
+         <target>Sala para guarda bicicletas</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gartennutzung">
+         <source>Garden usage</source>
+         <target>Uso del jardín</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.klimatisiert">
+         <source>Air-conditioned</source>
+         <target>Climatización</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wgGeeignet">
+         <source>Flatshare suitable</source>
+         <target>Piso compartido adecuado</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gaestewc">
+         <source>Guest toilet</source>
+         <target>Aseo de invitados</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wintergarten">
+         <source>Winter garden</source>
+         <target>Jardín de invierno</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.dvbt">
+         <source>DVB-T</source>
+         <target>DVB-T</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kabelSatTv">
+         <source>Cable / satellite TV</source>
+         <target>TV por cable / satélite</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kran">
+         <source>Crane</source>
+         <target>Grúa</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kantineCafeteria">
+         <source>Canteen/Cafeteria</source>
+         <target>Cantina/Cafetería</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wellnessbereich">
+         <source>Wellness area</source>
+         <target>Zona de spa</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kueche_ebk">
+         <source>Fitted kitchen</source>
+         <target>Cocina empotrada</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kueche_offen">
+         <source>Open kitchen</source>
+         <target>Cocina americana</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_garage">
+        <source>Garage</source>
+        <target>Garaje</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_tiefgarage">
+        <source>Underground garage</source>
+        <target>Garaje subterráneo </target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_carport">
+        <source>Carport</source>
+        <target>Carport</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_freiplatz">
+        <source>Outdoor parking place</source>
+        <target>Aparcamiento exterior</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_parkhaus">
+        <source>Parking garage</source>
+        <target>Garaje de estacionamiento</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.stellplatzart_duplex">
+        <source>Duplex</source>
+        <target>Aparcamiento dúplex</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
