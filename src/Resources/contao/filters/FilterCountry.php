@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 
+use Contao\PageModel;
 use Contao\StringUtil;
 
 /**
@@ -144,9 +145,21 @@ class FilterCountry extends FilterWidget
         switch ($this->countrySource)
         {
             case 'pool':
+                /** @var \PageModel $objPage */
+                global $objPage;
+                $pageDetails = $objPage->loadDetails();
+                $objRootPage = PageModel::findByPk($pageDetails->rootId);
+                $language = '';
+
+                if ($objRootPage->realEstateQueryLanguage)
+                {
+                    $language = "WHERE sprache='".$objRootPage->realEstateQueryLanguage."'";
+                }
+
                 $this->import('Database');
-                
-                $objCountry = $this->Database->prepare("SELECT DISTINCT land FROM tl_real_estate ORDER BY land")
+
+                $query = 'SELECT DISTINCT land FROM tl_real_estate '.$language.' ORDER BY land';
+                $objCountry = $this->Database->prepare($query)
                     ->execute();
 
                 while ($objCountry->next())

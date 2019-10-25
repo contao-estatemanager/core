@@ -13,7 +13,7 @@
         <source>No matching offers found.</source>
       </trans-unit>
       <trans-unit id="MSC.noUniqueRealEstateResult">
-        <source>No offers found matching the given propery number %s.</source>
+        <source>No offers found matching the given property number %s.</source>
       </trans-unit>
       <trans-unit id="MSC.administration">
         <source>Real estate management</source>
