@@ -286,7 +286,7 @@
         <source>All</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.marketingType">
-        <source>Marketing method</source>
+        <source>Marketing type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.realEstateType">
         <source>Type</source>

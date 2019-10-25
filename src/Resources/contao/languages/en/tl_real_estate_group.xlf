@@ -27,7 +27,7 @@
         <source>This page is called if no unique real estate type could be determined.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.0">
-        <source>Marketing method</source>
+        <source>Marketing type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.1">
         <source>Please indicate the type of marketing.</source>
