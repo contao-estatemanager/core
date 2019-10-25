@@ -175,20 +175,11 @@ class FilterSession extends \System
             {
                 if ($this->objRealEstateTypes->referencePage === $objPage->id)
                 {
-                    if ($this->strMarketingType === 'kauf_erbpacht_miete_leasing')
+                    if ($this->strMarketingType === 'kauf_erbpacht_miete_leasing' || $this->strMarketingType === $this->objRealEstateTypes->vermarktungsart)
                     {
                         $this->objCurrentType = $this->objRealEstateTypes->current();
                         $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
                         return;
-                    }
-                    else
-                    {
-                        if ($this->strMarketingType === $this->objRealEstateTypes->vermarktungsart)
-                        {
-                            $this->objCurrentType = $this->objRealEstateTypes->current();
-                            $this->strMarketingType = $this->objRealEstateTypes->vermarktungsart;
-                            return;
-                        }
                     }
                 }
             }
