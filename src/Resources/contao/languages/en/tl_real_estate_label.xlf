@@ -34,7 +34,7 @@
         <source>Basic rent (net)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bebaubarNach">
-        <source>Constructible according to</source>
+        <source>Constructible after</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kaltmiete">
         <source>Net rent (cold rent)</source>
@@ -403,7 +403,7 @@
         <source>Power source</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.energiepassEpart">
-        <source>Building energy rating</source>
+        <source>Energy rating</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.energiepassEnergieverbrauchkennwert">
         <source>Consumption value</source>
@@ -424,13 +424,13 @@
         <source>Miscellaneous</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.teilbarAb">
-        <source>Divisible from</source>
+        <source>Divisible at</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.ort">
         <source>Town</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bundesland">
-        <source>Region</source>
+        <source>State</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gewerblicheNutzung">
         <source>Commercial use</source>
