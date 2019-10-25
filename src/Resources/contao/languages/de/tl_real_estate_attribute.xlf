@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_attribute.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_attribute.anzahlBalkone">
@@ -7,19 +6,19 @@
          <target>Balkon/Terrasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
-         <source>passenger elevator</source>
+         <source>Elevator</source>
          <target>Personenaufzug</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.sauna">
-         <source>sauna</source>
+         <source>Sauna</source>
          <target>Sauna</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.swimmingpool">
-         <source>swimmingpool</source>
+         <source>Pool</source>
          <target>Pool</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.waschTrockenraum">
-         <source>Washing / drying room</source>
+         <source>Laundry / dry room</source>
          <target>Wasch- / Trockenraum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.barrierefrei">
@@ -35,47 +34,47 @@
          <target>Möbliert</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.seniorengerecht">
-         <source>Senior-friendly</source>
+         <source>Suitable for the elderly</source>
          <target>Seniorengerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.rollstuhlgerecht">
-         <source>Wheelchair accessible</source>
+         <source>Wheelchair access</source>
          <target>Rollstuhlgerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
-         <source>historical monument</source>
+         <source>Listed building</source>
          <target>Denkmalgeschützt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.fahrradraum">
-         <source>bike room</source>
+         <source>Bike room</source>
          <target>Fahrradraum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.gartennutzung">
-         <source>garden use</source>
+         <source>Garden usage</source>
          <target>Gartennutzung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.klimatisiert">
-         <source>air-conditioned</source>
+         <source>Air-conditioned</source>
          <target>Klimatisiert</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wgGeeignet">
-         <source>flat-sharing</source>
+         <source>Flatshare suitable</source>
          <target>WG geeignet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.gaestewc">
-         <source>Guest WC</source>
+         <source>Guest toilet</source>
          <target>Gäste WC</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wintergarten">
-         <source>Wintergarten</source>
+         <source>Winter garden</source>
          <target>Wintergarten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dvbt">
-         <source>DVBT</source>
+         <source>DVB-T</source>
          <target>DVBT</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kabelSatTv">
-         <source>Cable connection</source>
+         <source>Cable / satellite TV</source>
          <target>Kabelanschluss</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kran">
@@ -87,15 +86,15 @@
          <target>Kantine/Cafeteria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wellnessbereich">
-         <source>wellness area</source>
+         <source>Wellness area</source>
          <target>Wellnessbereich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_ebk">
-         <source>fitted kitchen</source>
+         <source>Fitted kitchen</source>
          <target>Einbauküche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_offen">
-         <source>open kitchen</source>
+         <source>Open kitchen</source>
          <target>offene Küche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_garage">
@@ -103,7 +102,7 @@
         <target>Garage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_tiefgarage">
-        <source>Tiefgarage</source>
+        <source>Underground garage</source>
         <target>Tiefgarage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_carport">
@@ -111,11 +110,11 @@
         <target>Carport</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_freiplatz">
-        <source>Außenstellplatz</source>
+        <source>Outdoor parking place</source>
         <target>Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_parkhaus">
-        <source>Parkhaus</source>
+        <source>Parking garage</source>
         <target>Parkhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_duplex">
