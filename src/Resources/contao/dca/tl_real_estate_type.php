@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
     'palettes' => array
     (
         '__selector__'                => array('excludeTypes', 'orderFields'),
-        'default'                     => '{title_legend},title,longTitle,similarType;{forwarding_legend},referencePage,jumpTo;{field_legend},nutzungsart,vermarktungsart,objektart,excludeTypes;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{publish_legend},defaultType,published'
+        'default'                     => '{title_legend},title,longTitle,similarType;{forwarding_legend},referencePage,jumpTo;{field_legend},nutzungsart,vermarktungsart,objektart,excludeTypes;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{language_legend},language;{publish_legend},defaultType,published'
     ),
 
     // Subpalettes
@@ -356,6 +356,14 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                 )
             ),
             'sql'                     => "blob NULL"
+        ),
+        'language' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['language'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'language', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(5) NOT NULL default ''"
         ),
         'defaultType' => array
         (

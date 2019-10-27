@@ -90,6 +90,7 @@ return array
     array('tl_real_estate', 'luftbildern',                 'geo', 'luftbildern', array('boolean')),
 
     /** Preise */
+    array('tl_real_estate', 'kaufpreisAufAnfrage',         'preise', 'kaufpreis@auf_anfrage', array('boolean')),
     array('tl_real_estate', 'kaufpreis',                   'preise', 'kaufpreis'),
     array('tl_real_estate', 'kaufpreisnetto',              'preise', 'kaufpreisnetto'),
     array('tl_real_estate', 'kaufpreisbrutto',             'preise', 'kaufpreisbrutto'),
