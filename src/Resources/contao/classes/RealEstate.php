@@ -53,7 +53,7 @@ class RealEstate extends \System
      *
      * Initialize the object
      */
-    public function __construct($objRealEstate, $typeId)
+    public function __construct($objRealEstate, $typeId=null)
     {
         $this->objRealEstate = $objRealEstate;
 
@@ -142,6 +142,7 @@ class RealEstate extends \System
      */
     public function generateExposeUrl($pageId)
     {
+        //ToDo: Object or ID. Dont retrieve Page objects multiple times.
         $objPage = \PageModel::findByPk($pageId);
 
         if (!$objPage instanceof \PageModel)

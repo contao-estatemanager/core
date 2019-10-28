@@ -76,6 +76,18 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
         }
 
+        if ($internal = strpos(\Input::get('items'), 'intern-') === 0)
+        {
+            /** @var \PageModel $objPage */
+            global $objPage;
+            $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(\Input::get('items'), 7));
+            if ($objRealEstate !== null)
+            {
+                $realEstate = new RealEstate($objRealEstate);
+                $this->redirect($realEstate->generateExposeUrl($objPage->id));
+            }
+        }
+
         \System::loadLanguageFile('tl_real_estate_expose');
 
         // HOOK: real estate expose generate
