@@ -1,75 +1,75 @@
 <?xml version="1.0" ?><xliff version="1.1">
-  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_expose.php" source-language="en" target-language="de">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_expose.php" source-language="en" target-language="es">
     <body>
       <trans-unit id="tl_real_estate_expose.headline_detail">
         <source>Property details</source>
-        <target>Objektangaben</target>
+        <target>Datos del inmueble</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_price">
         <source>Costs</source>
-        <target>Kosten</target>
+        <target>Costos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_area">
         <source>Surface areas</source>
-        <target>Flächen</target>
+        <target>Superficie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_energie">
         <source>Energy certificate</source>
-        <target>Energieausweis</target>
+        <target>Certificación energética de edificios</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_attribute">
         <source>Characteristics</source>
-        <target>Merkmale</target>
+        <target>Características</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_objektbeschreibung">
         <source>Description</source>
-        <target>Beschreibung</target>
+        <target>Descripción</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_ausstattBeschr">
         <source>Equipment</source>
-        <target>Ausstattung</target>
+        <target>Mobiliario</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_lage">
         <source>Location</source>
-        <target>Lage</target>
+        <target>Sitio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_sonstigeAngaben">
         <source>Other</source>
-        <target>Sonstiges</target>
+        <target>Otros</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_objektText">
         <source>Property text</source>
-        <target>Immobilientext</target>
+        <target>Texto inmobiliario</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_dreizeiler">
         <source>Brief description</source>
-        <target>Kurzbeschreibung</target>
+        <target>Descripción corta</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.button_print">
         <source>Print</source>
-        <target>Drucken</target>
+        <target>Imprimir</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_share">
         <source>Share</source>
-        <target>Teilen</target>
+        <target>Compartir </target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_per_email">
         <source>via Email</source>
-        <target>per E-Mail</target>
+        <target>vía e-mail</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_expose">
         <source>Show exposee</source>
-        <target>Zum Exposé</target>
+        <target>Mostrar exposición</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_expose.text_share_mail_subject">
         <source>Could this be a property for you?</source>
-        <target>Ist diese Immobilie eventuell etwas für dich?</target>
+        <target>¿Podría ser esto un bien inmueble para usted?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.text_share_mail_body">
         <source>Hello,\rthis property could be something for you:\r%s</source>
-        <target>Hallo,\rdiese Immobilie könnte etwas für dich sein:\r%s</target>
+        <target>Hola,\resta propiedad podría ser algo para ti:\r%s</target>
       </trans-unit>
     </body>
   </file>
