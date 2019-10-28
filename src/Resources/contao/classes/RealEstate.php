@@ -142,7 +142,7 @@ class RealEstate extends \System
      */
     public function generateExposeUrl($pageId)
     {
-        //ToDo: Object or ID. Dont retrieve Page objects multiple times.
+        //ToDo: Object or ID. Dont retrieve page object multiple times.
         $objPage = \PageModel::findByPk($pageId);
 
         if (!$objPage instanceof \PageModel)
