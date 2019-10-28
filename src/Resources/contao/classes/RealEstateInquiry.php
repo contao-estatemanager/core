@@ -78,7 +78,7 @@ class RealEstateInquiry
             $_SESSION['FILES']['feedback'] = array
             (
                 'tmp_name' => TL_ROOT . '/' . $filePath,
-                'name'     => 'feedback',
+                'name'     => 'feedback.xml',
                 'type'     => 'xml'
             );
         }
