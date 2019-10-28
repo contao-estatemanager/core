@@ -72,7 +72,7 @@
         <target>Haus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_grundstueck">
-        <source>Site</source>
+        <source>Plot</source>
         <target>Grundstück</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_buero_praxen">
@@ -108,7 +108,7 @@
         <target>Freizeitimmobilie (gewerblich)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_zinshaus_renditeobjekt">
-        <source>Apartment building / Commercial property</source>
+        <source>Revenue property</source>
         <target>Zinshaus / Renditeobjekt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zimmer">
@@ -124,7 +124,7 @@
         <target>Haus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstueck">
-        <source>Site</source>
+        <source>Plot</source>
         <target>Grundstück</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.buero_praxen">
@@ -160,7 +160,7 @@
         <target>Freizeitimmobilie (gewerblich)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinshaus_renditeobjekt">
-        <source>Apartment building / Commercial property</source>
+        <source>Revenue property</source>
         <target>Zinshaus / Renditeobjekt</target>
       </trans-unit>
 
@@ -278,7 +278,7 @@
         <target>Landhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_schloss">
-        <source>Castle</source>
+        <source>Chateau</source>
         <target>Schloss</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_zweifamilienhaus">
@@ -286,7 +286,7 @@
         <target>Zweifamilienhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_mehrfamilienhaus">
-        <source>Multi-family-house</source>
+        <source>Multifamily house</source>
         <target>Mehrfamilienhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_ferienhaus">
@@ -314,7 +314,7 @@
         <target>Apartmenthaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_burg">
-        <source>Fortress</source>
+        <source>Castle</source>
         <target>Burg</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_herrenhaus">
@@ -678,7 +678,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zinsTyp_mehrfamilienhaus">
-        <source>Apartment building</source>
+        <source>Multifamily house</source>
         <target>Mehrfamilienhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_wohn_und_geschaeftshaus">
@@ -823,7 +823,7 @@
         <target>Industriegebiet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_misch">
-        <source>Mixed area</source>
+        <source>Mixed use area</source>
         <target>Mischgebiet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_neubau">
@@ -847,11 +847,11 @@
         <target>Stadtteil</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_stadtzentrum">
-        <source>City center</source>
+        <source>City centre</source>
         <target>Stadtzentrum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_nebenzentrum">
-        <source>Additional center</source>
+        <source>Sub-centre</source>
         <target>Nebenzentrum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_1a">
@@ -931,7 +931,7 @@
         <target>Fertigparkett</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_laminat">
-        <source>Laminated wood</source>
+        <source>Laminate</source>
         <target>Laminat</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_dielen">
@@ -1131,8 +1131,8 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.serviceleistungen_betreutes_wohnen">
-        <source>assisted living</source>
-        <target>Betreutes Wohnen (BeWo)</target>
+        <source>Assisted living</source>
+        <target>Betreutes Wohnen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.serviceleistungen_catering">
         <source>Catering</source>
@@ -1173,12 +1173,12 @@
         <target>Nein</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.unterkellert_teil">
-        <source>partial cellar</source>
+        <source>Partial cellar</source>
         <target>Teilunterkellert</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zustand_erstbezug">
-        <source>First-time occupancy</source>
+        <source>first occupation</source>
         <target>Erstbezug</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_vollrenovierungsbed">
@@ -1230,7 +1230,7 @@
         <target>Rohbau</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_entkernt">
-        <source>emptied</source>
+        <source>Emptied</source>
         <target>Entkernt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_abrissobjekt">
@@ -1238,7 +1238,7 @@
         <target>Abriss notwendig</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_projektiert">
-        <source>planned</source>
+        <source>Planned</source>
         <target>Projektiert</target>
       </trans-unit>
 
@@ -1397,7 +1397,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.geschlecht_egal">
-        <source>Independent</source>
+        <source>Doesn't matter</source>
         <target>egal</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.geschlecht_nur_mann">
