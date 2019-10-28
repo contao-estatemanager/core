@@ -43,7 +43,7 @@
         <target>Kaltmiete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bebaubarNach">
-        <source>Constructible according to</source>
+        <source>Constructible after</source>
         <target>Bebaubar nach</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kaltmiete">
@@ -535,7 +535,7 @@
         <target>Energieträger</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.energiepassEpart">
-        <source>Building energy rating</source>
+        <source>Energy rating</source>
         <target>Ausweistyp</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.energiepassEnergieverbrauchkennwert">
@@ -563,7 +563,7 @@
         <target>Sonstiges</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.teilbarAb">
-        <source>Divisible from</source>
+        <source>Divisible at</source>
         <target>Teilbar ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.ort">
@@ -571,7 +571,7 @@
         <target>Ort</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bundesland">
-        <source>Region</source>
+        <source>State</source>
         <target>Bundesland</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.gewerblicheNutzung">
