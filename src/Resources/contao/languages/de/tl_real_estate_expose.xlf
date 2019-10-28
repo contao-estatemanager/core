@@ -26,7 +26,7 @@
         <target>Beschreibung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_ausstattBeschr">
-        <source>Equipment</source>
+        <source>Furnishings</source>
         <target>Ausstattung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_lage">
