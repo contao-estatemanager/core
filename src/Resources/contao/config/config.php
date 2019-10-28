@@ -159,6 +159,9 @@ $GLOBALS['TL_RAM'] = array
     'addons'        => array('addon', 'addon_catalog'),
 );
 
+// Hooks
+$GLOBALS['TL_HOOKS']['prepareFormData'][] = array('\\ContaoEstateManager\\RealEstateInquiry', 'attachFile');
+
 // Cron jobs
 $GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\RealEstateCronImporter', 'run');
 
