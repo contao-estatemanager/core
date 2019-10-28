@@ -212,7 +212,7 @@
         <source>Cottage</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_schloss">
-        <source>Castle</source>
+        <source>Chateau</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_zweifamilienhaus">
         <source>Two-family-house</source>
@@ -239,7 +239,7 @@
         <source>Apartment house</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_burg">
-        <source>Fortress</source>
+        <source>Castle</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_herrenhaus">
         <source>Manor house</source>

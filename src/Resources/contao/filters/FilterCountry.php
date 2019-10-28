@@ -145,15 +145,19 @@ class FilterCountry extends FilterWidget
         switch ($this->countrySource)
         {
             case 'pool':
-                /** @var \PageModel $objPage */
-                global $objPage;
-                $pageDetails = $objPage->loadDetails();
-                $objRootPage = PageModel::findByPk($pageDetails->rootId);
                 $language = '';
 
-                if ($objRootPage->realEstateQueryLanguage)
+                if (TL_MODE == 'FE')
                 {
-                    $language = "WHERE sprache='".$objRootPage->realEstateQueryLanguage."'";
+                    /** @var \PageModel $objPage */
+                    global $objPage;
+                    $pageDetails = $objPage->loadDetails();
+                    $objRootPage = PageModel::findByPk($pageDetails->rootId);
+
+                    if ($objRootPage->realEstateQueryLanguage)
+                    {
+                        $language = "WHERE sprache='".$objRootPage->realEstateQueryLanguage."'";
+                    }
                 }
 
                 $this->import('Database');
