@@ -34,7 +34,7 @@
         <source>Basic rent (net)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bebaubarNach">
-        <source>Constructible after</source>
+        <source>Developable based on</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kaltmiete">
         <source>Net rent (cold rent)</source>
@@ -151,7 +151,7 @@
         <source>Barrier-free</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.befeuerung">
-        <source>Firing</source>
+        <source>Heating</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.swimmingpool">
         <source>Pool</source>
@@ -172,7 +172,7 @@
         <source>Age</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.rollstuhlgerecht">
-        <source>Wheelchair accessible</source>
+        <source>Wheelchair access</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.hausgeld">
         <source>Common charges / HOA fee</source>
