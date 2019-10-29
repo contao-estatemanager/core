@@ -90,12 +90,12 @@
          <target>Zona de spa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_ebk">
-         <source>Fitted kitchen</source>
+         <source>Built-in kitchen</source>
          <target>Cocina empotrada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_offen">
          <source>Open kitchen</source>
-         <target>Cocina americana</target>
+         <target>Cocina abierta</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_garage">
         <source>Garage</source>
