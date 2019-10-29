@@ -43,7 +43,7 @@
         <target>Kaltmiete (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bebaubarNach">
-        <source>Constructible after</source>
+        <source>Developable based on</source>
         <target>Bebaubar nach</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kaltmiete">
@@ -199,7 +199,7 @@
         <target>Barrierefrei</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.befeuerung">
-        <source>Firing</source>
+        <source>Heating</source>
         <target>Befeuerung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.swimmingpool">
@@ -227,7 +227,7 @@
         <target>Alter</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.rollstuhlgerecht">
-        <source>Wheelchair accessible</source>
+        <source>Wheelchair access</source>
         <target>Rollstuhlgerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.hausgeld">
