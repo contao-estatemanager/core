@@ -1538,4 +1538,22 @@ class RealEstateModel extends \Model
 
         return static::findOneBy($arrColumns, $varId, $arrOptions);
     }
+
+    /**
+     * Find published real estate items
+     *
+     * @param mixed $varValue    The objektnrIntern value
+     * @param array $arrOptions  An optional options array
+     *
+     * @return RealEstateModel|null The model or null if there are no real estate
+     */
+    public static function findPublishedByObjektnrIntern($varValue, array $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.objektnrIntern=? AND $t.published='1'");
+
+        $arrOptions['limit'] = 1;
+
+        return static::findBy($arrColumns, $varValue, $arrOptions);
+    }
 }

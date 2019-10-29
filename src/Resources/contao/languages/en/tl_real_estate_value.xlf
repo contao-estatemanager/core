@@ -970,7 +970,7 @@
         <source>Country-specific</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_bauland_ohne_b_plan">
-        <source>Building site without land-use plan</source>
+        <source>Building plot without land-use plan</source>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.erschliessung_unerschlossen">
@@ -1019,7 +1019,7 @@
         <source>Mountain view</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausblick_meer">
-        <source>Sea view</source>
+        <source>Ocean view</source>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.energiepassEpart_bedarf">

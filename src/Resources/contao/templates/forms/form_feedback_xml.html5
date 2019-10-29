@@ -1,0 +1,77 @@
+<openimmo_feedback>
+    <version>1.2.5</version>
+    <sender>
+        <name/>
+        <openimmo_anid/>
+        <datum><?= date("Y-m-d_H-i-s") ?></datum>
+        <makler_id/>
+        <regi_id/>
+    </sender>
+    <objekt>
+        <?php if ($this->addRealEstateData): ?>
+<portal_unique_id/>
+        <portal_obj_id/>
+        <?= $this->realEstate['anbieter_id'] ? '<anbieter_id>'.$this->realEstate['anbieter_id'].'</anbieter_id>' : '<anbieter_id/>' ?>
+
+        <?= $this->realEstate['oobj_id'] ? '<oobj_id>'.$this->realEstate['oobj_id'].'</oobj_id>' : '<oobj_id/>' ?>
+
+        <zusatz_refnr/>
+        <?= $this->realEstate['exposeUrl'] ? '<expose_url>'.$this->realEstate['exposeUrl'].'</expose_url>' : '<expose_url/>' ?>
+
+        <?= $this->realEstate['vermarktungsart'] ? '<vermarktungsart>'.$this->realEstate['vermarktungsart'].'</vermarktungsart>' : '<vermarktungsart/>' ?>
+
+        <?= $this->realEstate['titel'] ? '<bezeichnung>'.$this->realEstate['titel'].'</bezeichnung>' : '<bezeichnung/>' ?>
+
+        <?= $this->realEstate['etage'] ? '<etage>'.$this->realEstate['etage'].'</etage>' : '<etage/>' ?>
+
+        <?= $this->realEstate['whg_nr'] ? '<whg_nr>'.$this->realEstate['whg_nr'].'</whg_nr>' : '<whg_nr/>' ?>
+
+        <?= $this->realEstate['strasse'] ? '<strasse>'.$this->realEstate['strasse'].'</strasse>' : '<strasse/>' ?>
+
+        <?= $this->realEstate['ort'] ? '<ort>'.$this->realEstate['ort'].'</ort>' : '<ort/>' ?>
+
+        <?= $this->realEstate['land'] ? '<land>'.$this->realEstate['land'].'</land>' : '<land/>' ?>
+
+        <stadtbezirk/>
+        <?= $this->realEstate['preis'] ? '<preis>'.$this->realEstate['preis'].'</preis>' : '<preis/>' ?>
+
+        <gebot/>
+        <wae/>
+        <?= $this->realEstate['anzahl_zimmer'] ? '<anzahl_zimmer>'.$this->realEstate['anzahl_zimmer'].'</anzahl_zimmer>' : '<anzahl_zimmer/>' ?>
+
+        <?= $this->realEstate['flaeche'] ? '<flaeche>'.$this->realEstate['flaeche'].'</flaeche>' : '<flaeche/>' ?>
+
+        <?php endif; ?>
+    <interessent>
+            <int_id/>
+            <?= $this->anrede    ? '<anrede>'.$this->anrede.'</anrede>' : '<anrede/>' ?>
+
+            <?= $this->vorname   ? '<vorname>'.$this->vorname.'</vorname>' : '<vorname/>' ?>
+
+            <?= $this->nachname  ? '<nachname>'.$this->nachname.'</nachname>' : '<nachname/>' ?>
+
+            <?= $this->firma     ? '<firma>'.$this->firma.'</firma>' : '<firma/>' ?>
+
+            <?= $this->strasse   ? '<strasse>'.$this->strasse.'</strasse>' : '<strasse/>' ?>
+
+            <?= $this->postfach  ? '<postfach>'.$this->postfach.'</postfach>' : '<postfach/>' ?>
+
+            <?= $this->plz       ? '<plz>'.$this->plz.'</plz>' : '<plz/>' ?>
+
+            <?= $this->ort       ? '<ort>'.$this->ort.'</ort>' : '<ort/>' ?>
+
+            <?= $this->telefon   ? '<tel>'.$this->telefon.'</tel>' : '<tel/>' ?>
+
+            <?= $this->fax       ? '<fax>'.$this->fax.'</fax>' : '<fax/>' ?>
+
+            <?= $this->mobil     ? '<mobil>'.$this->mobil.'</mobil>' : '<mobil/>' ?>
+
+            <?= $this->mail      ? '<email>'.$this->mail.'</email>' : '<email/>' ?>
+
+            <bevorzugt/>
+            <wunsch/>
+            <?= $this->nachricht ? '<anfrage>'.$this->nachricht.'</anfrage>' : '<anfrage/>' ?>
+
+        </interessent>
+    </objekt>
+</openimmo_feedback>
