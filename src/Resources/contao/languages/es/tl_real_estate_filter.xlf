@@ -378,7 +378,7 @@
         <target>Tipo de comercialización</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.realEstateType">
-        <source>Type</source>
+        <source>Property type</source>
         <target>Tipo de inmueble</target>
       </trans-unit>
     </body>
