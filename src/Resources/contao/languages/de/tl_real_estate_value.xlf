@@ -1276,7 +1276,7 @@
         <target>Länderspezifisch</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_bauland_ohne_b_plan">
-        <source>Building site without land-use plan</source>
+        <source>Building plot without land-use plan</source>
         <target>Bauland ohne Bebauungsplan</target>
       </trans-unit>
 
@@ -1340,7 +1340,7 @@
         <target>Bergblick</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausblick_meer">
-        <source>Sea view</source>
+        <source>Ocean view</source>
         <target>Meerblick</target>
       </trans-unit>
 
