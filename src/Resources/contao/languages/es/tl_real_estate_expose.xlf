@@ -26,8 +26,8 @@
         <target>Descripción</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_ausstattBeschr">
-        <source>Equipment</source>
-        <target>Mobiliario</target>
+        <source>Furnishings</source>
+        <target>Equipamiento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.headline_lage">
         <source>Location</source>
@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_share">
         <source>Share</source>
-        <target>Compartir </target>
+        <target>Compartir</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.button_per_email">
         <source>via Email</source>
