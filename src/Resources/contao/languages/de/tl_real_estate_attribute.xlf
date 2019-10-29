@@ -90,7 +90,7 @@
          <target>Wellnessbereich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_ebk">
-         <source>Fitted kitchen</source>
+         <source>Built-in kitchen</source>
          <target>Einbauküche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_offen">
