@@ -43,7 +43,7 @@
         <target>Precio del alquiler (neto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.bebaubarNach">
-        <source>Constructible after</source>
+        <source>Developable based on</source>
         <target>Edificable según</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.kaltmiete">
@@ -199,7 +199,7 @@
         <target>Sin barrera arquitectónica</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.befeuerung">
-        <source>Firing</source>
+        <source>Heating</source>
         <target>Fuente energie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.swimmingpool">
@@ -227,7 +227,7 @@
         <target>Edad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.rollstuhlgerecht">
-        <source>Wheelchair accessible</source>
+        <source>Wheelchair access</source>
         <target>Acceso para sillas de ruedas</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_label.hausgeld">
