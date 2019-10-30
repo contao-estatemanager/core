@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_type.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_type.title.0">
@@ -7,16 +6,16 @@
         <target>Titel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.title.1">
-        <source>Please enter a real estate type title.</source>
-        <target>Bitte geben Sie den Titel des Immobilien-Typs ein.</target>
+        <source>Please enter the title of the property type.</source>
+        <target>Bitte geben Sie den Titel des Immobilientyps ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.longTitle.0">
         <source>Detailed title</source>
-        <target>Detailierter Titel</target>
+        <target>Detaillierter Titel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.longTitle.1">
-        <source>Please enter a detailed real estate type title.</source>
-        <target>Bitte geben Sie den detaillierten Titel des Immobilien-Typs ein.</target>
+        <source>Please enter the detailed title of the property type.</source>
+        <target>Bitte geben Sie den detaillierten Titel des Immobilientyps ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.similarType.0">
         <source>Equivalent real estate type</source>
@@ -27,7 +26,7 @@
         <target>Bitte geben Sie die äquivalenten Immobilientyp an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.0">
-        <source>Reference-Page</source>
+        <source>Reference page</source>
         <target>Referenz-Seite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.1">
@@ -35,19 +34,19 @@
         <target>Diese Seite wird aufgerufen, wenn dieser eindeutiger Immobilientyp ermittelt werden konnte.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.jumpTo.0">
-        <source>Special expose page</source>
-        <target>Spezielle Expose-Seite</target>
+        <source>Special exposee page</source>
+        <target>Spezielle Exposé-Seite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.jumpTo.1">
         <source>Here you can navigate to a real estate type specific expose page.</source>
-        <target>Hier können Sie eine Immobilientyp spezifische Expose-Seite ansteuern.</target>
+        <target>Hier können Sie eine Immobilientyp spezifische Exposé-Seite ansteuern.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.0">
         <source>Type of use</source>
         <target>Nutzungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.1">
-        <source>Please enter a type of use.</source>
+        <source>Please enter the type of use.</source>
         <target>Bitte geben Sie die Nutzungsart an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.vermarktungsart.0">
@@ -55,15 +54,15 @@
         <target>Vermarktungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.vermarktungsart.1">
-        <source>Please enter a marketing type.</source>
+        <source>Please enter the marketing type.</source>
         <target>Bitte geben Sie die Vermarktungsart an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart.0">
-        <source>Object type</source>
+        <source>Property type</source>
         <target>Objektart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart.1">
-        <source>Please enter an object type.</source>
+        <source>Please enter the object type.</source>
         <target>Bitte geben Sie die Objektart an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.0">
@@ -71,7 +70,7 @@
         <target>Immobilientypen ausschließen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.1">
-        <source>If the field configuration overlaps in real estate types, you can exclude real estate types from the search here.</source>
+        <source>Here you can exclude individual real estate categories from the search if the field configuration for real estate types overlaps.</source>
         <target>Bei Überschneidungen der Feld-Konfiguration bei Immobilientypen können Sie einzelne Immobilientypen für die Suche hier ausschließen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludedTypes.0">
@@ -91,11 +90,11 @@
         <target>Bitte geben Sie das primäre Preisfeld an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.0">
-        <source>Primary area field</source>
+        <source>Primary area-field</source>
         <target>Primäres Flächenfeld</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.1">
-        <source>Please enter the primary area field.</source>
+        <source>Please enter the primary-area field.</source>
         <target>Bitte geben Sie das primäre Flächenfeld an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggleFilter.0">
@@ -107,7 +106,7 @@
         <target>Bitte wählen Sie die primären Filter an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.0">
-        <source>Sorting option</source>
+        <source>Sorting options</source>
         <target>Sortieroptionen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.1">
@@ -131,15 +130,15 @@
         <target>Bitte geben Sie die primären Attribute der Immobilie an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.0">
-        <source>Order fields</source>
+        <source>Sort fields</source>
         <target>Felder sortieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.1">
-        <source>Should the fields of a property be displayed in a user-defined order?</source>
+        <source>Should the fields of a real estate be displayed in a user-defined order?</source>
         <target>Sollen die Felder einer Immobilie in einer benutzerdefinierten Reihenfolge ausgegeben werden?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderedFields.0">
-        <source>Field order</source>
+        <source>Field sorting</source>
         <target>Feldsortierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderedFields.1">

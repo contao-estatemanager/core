@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_filter_item.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="RFI.country.0">
@@ -7,11 +6,11 @@
         <target>Land</target>
       </trans-unit>
       <trans-unit id="RFI.country.1">
-        <source>A field for filtering properties by country.</source>
+        <source>A field for filtering real estates by country.</source>
         <target>Ein Feld zum Filtern von Immobilien anhand des Landes.</target>
       </trans-unit>
       <trans-unit id="RFI.location.0">
-        <source>Addressfield</source>
+        <source>Address field</source>
         <target>Adressfeld</target>
       </trans-unit>
       <trans-unit id="RFI.location.1">
@@ -23,7 +22,7 @@
         <target>Eindeutiges Feld</target>
       </trans-unit>
       <trans-unit id="RFI.unique.1">
-        <source>A field for filtering based on an unique field (e.g. Property ID).</source>
+        <source>A field for filtering based on an unique field (e.g. property ID).</source>
         <target>Ein Feld zum Filtern anhand eines eindeutigen Feldes (z.B. Objektnummer).</target>
       </trans-unit>
       <trans-unit id="RFI.type.0">
@@ -47,7 +46,7 @@
         <target>Primäre Felder</target>
       </trans-unit>
       <trans-unit id="RFI.toggle.1">
-        <source>Filters depending on the real estate type properties.</source>
+        <source>Filters depending on real estate type properties.</source>
         <target>Vom Immobilien-Typ abhängige Filter.</target>
       </trans-unit>
       <trans-unit id="RFI.reset.0">
@@ -55,11 +54,11 @@
         <target>Zurücksetzen</target>
       </trans-unit>
       <trans-unit id="RFI.reset.1">
-        <source>A button to reset filter.</source>
-        <target>Eine Schaltfläche zum Zurücksetzen der Filter.</target>
+        <source>A button to reset the filters.</source>
+        <target>Eine Absende-Schaltfläche zum Zurücksetzen des Filters.</target>
       </trans-unit>
       <trans-unit id="RFI.submit.0">
-        <source>Submit field</source>
+        <source>Submit button</source>
         <target>Absendefeld</target>
       </trans-unit>
       <trans-unit id="RFI.submit.1">
@@ -88,7 +87,7 @@
         <target>Feldbezeichnung</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.label.1">
-        <source>The field label will be visible on the website, typically in front of or above the field.</source>
+        <source>The field label is displayed on the website, generally left of or above the field.</source>
         <target>Die Feldbezeichnung wird auf der Webseite angezeigt, normalerweise links neben oder oberhalb des Feldes.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.slabel.0">
@@ -132,11 +131,11 @@
         <target>Hier können Sie den Modus des Feldes angeben.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.0">
-        <source>Use long real estate title</source>
+        <source>Display long real estate title</source>
         <target>Langen Immobilien-Titel verwenden</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.1">
-        <source>Use the long real estate title.</source>
+        <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
         <target>Den langen Immobilien-Titel verwenden.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.mergeOptions.0">
@@ -172,11 +171,11 @@
         <target>Bitte die Immobilien-Gruppe auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.submitOnChange.0">
-        <source>Submit on change</source>
+        <source>Submit on modification</source>
         <target>Bei Änderung absenden</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.submitOnChange.1">
-        <source>The filter is sent as soon as a change is made.</source>
+        <source>The filter is sent when modified.</source>
         <target>Der Filter wird abgesendet sobald eine Änderung erfolgt.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.options.0">
@@ -197,7 +196,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.0">
         <source>Show label</source>
-        <target>Label enzeigen</target>
+        <target>Label anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.1">
         <source>Here you can specify if the label should be displayed.</source>
@@ -205,7 +204,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.showPlaceholder.0">
         <source>Show placeholder</source>
-        <target>Placeholder enzeigen</target>
+        <target>Placeholder anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showPlaceholder.1">
         <source>Here you can specify if the placeholder should be displayed.</source>
@@ -216,7 +215,7 @@
         <target>Platzhalter</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.placeholder.1">
-        <source>Show this text as long as the field is empty (requires HTML5).</source>
+        <source>Show this text if the field is empty (requires HTML5).</source>
         <target>Dieser Text wird angezeigt solange das Feld noch nicht ausgefüllt wurde (benötigt HTML5).</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.imageSubmit.0">
@@ -240,19 +239,19 @@
         <target>Hier können Sie eine oder mehrere Klassen eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.accesskey.0">
-        <source>Access key</source>
+        <source>Hotkey</source>
         <target>Tastaturkürzel</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.accesskey.1">
-        <source>A form field can be focused by pressing the [ALT] or [CTRL] key and the access key simultaneously.</source>
+        <source>A form field can be focused by simultaneously pressing the hotkey and [ALT] or [CTRL] key.</source>
         <target>Ein Formularfeld kann direkt angewählt werden, indem man gleichzeitig die [ALT]- bzw. [STRG]-Taste und das Tastaturkürzel drückt.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.0">
-        <source>Tab index</source>
+        <source>Tabulator index</source>
         <target>Tab-Index</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.1">
-        <source>The position of the form field in the tabbing order.</source>
+        <source>The position of the form field in the tab order.</source>
         <target>Die Position des Formularfeldes innerhalb der Tabulator-Reihenfolge.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.customTpl.0">
@@ -371,11 +370,11 @@
         <target>Die Formular-Einstellungen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.pasteafter.0">
-        <source>Paste at the top</source>
+        <source>Insert above</source>
         <target>Oben einfügen</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.pasteafter.1">
-        <source>Paste after field ID %s</source>
+        <source>Insert after field ID %s</source>
         <target>Nach dem Feld ID %s einfügen</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.pastenew.0">
