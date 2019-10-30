@@ -87,7 +87,7 @@
         <target>Feldbezeichnung</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.label.1">
-        <source>The field label is displayed on the website, generally in front of or above the field.</source>
+        <source>The field label is displayed on the website, generally left of or above the field.</source>
         <target>Die Feldbezeichnung wird auf der Webseite angezeigt, normalerweise links neben oder oberhalb des Feldes.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.slabel.0">
