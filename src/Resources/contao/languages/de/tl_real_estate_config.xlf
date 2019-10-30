@@ -23,7 +23,7 @@
         <target>Tausender-Trennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.0">
-        <source>Default number of main details</source>
+        <source>Max number of main details</source>
         <target>Max. Anzahl der Main-Details</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.1">
@@ -31,7 +31,7 @@
         <target>Gibt an wie viele Main-Details in Listen innerhalb einer Immobilie ausgegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.0">
-        <source>Default number of main attributes</source>
+        <source>Max number of main attributes</source>
         <target>Max. Anzahl der Main-Attribute</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.1">
