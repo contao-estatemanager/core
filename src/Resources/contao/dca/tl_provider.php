@@ -313,8 +313,8 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['homepage'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'firmenanschrift' => array
         (
