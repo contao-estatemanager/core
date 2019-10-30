@@ -106,11 +106,11 @@
         <target>Hier müssen Sie eine Kontaktperson angeben, der Immobilien zur Miete zugewiesen werden.</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.0">
-        <source>Contact person - Long lease real estate</source>
+        <source>Contact person - Hereditary lease real estate</source>
         <target>Kontaktperson Erbpacht-Objekte</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.1">
-        <source>Here you must specify a contact person who will be assigned long lease real estate.</source>
+        <source>Here you must specify a contact person who will be assigned to hereditary lease real estate.</source>
         <target>Hier müssen Sie eine Kontaktperson angeben, der Erbpacht-Immobilien zugewiesen werden.</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonLeasing.0">
