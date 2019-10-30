@@ -35,7 +35,7 @@ class RealEstateInquiry
                 $arrRealEstateData = array();
 
                 $arrRealEstateData['anbieter_id'] = $realEstate->anbieternr;
-                $arrRealEstateData['oobj_id'] = $realEstate->objektnrIntern;
+                $arrRealEstateData['oobj_id'] = $realEstate->objektnrExtern;
                 $arrRealEstateData['exposeUrl'] = Environment::get('http_origin') . Environment::get('request_uri');
                 $arrRealEstateData['vermarktungsart'] = $this->getMarketingtype($realEstate);
                 $arrRealEstateData['bezeichnung'] = $realEstate->getTitle();
