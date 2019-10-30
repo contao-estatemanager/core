@@ -158,7 +158,7 @@
         <target>Hausnummer</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.hausnummer.1">
-        <source>Please enter the street address.</source>
+        <source>Please enter the house number.</source>
         <target>Bitte geben Sie die Hausnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.plz.0">
