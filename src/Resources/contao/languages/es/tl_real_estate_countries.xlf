@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <xliff version="1.1">
-    <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_countries.php" source-language="en"
-          target-language="de">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_countries.php" source-language="en" target-language="es">
         <body>
             <trans-unit id="tl_real_estate_countries.AND">
                 <source>Andorra</source>
@@ -9,27 +8,27 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ARE">
                 <source>United Arab Emirates</source>
-                <target>Vereinigte Arabische Emirate</target>
+                <target>Emirator Árabes Unidos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AFG">
                 <source>Afghanistan</source>
-                <target>Afghanistan</target>
+                <target>Afganistán</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ATG">
                 <source>Antigua and Barbuda</source>
-                <target>Antigua und Barbuda</target>
+                <target>Antigua y Barbuda</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AIA">
                 <source>Anguilla</source>
-                <target>Anguilla</target>
+                <target>Anguila</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ALB">
                 <source>Albania</source>
-                <target>Albanien</target>
+                <target>Albania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ARM">
                 <source>Armenia</source>
-                <target>Armenien</target>
+                <target>Armenia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AGO">
                 <source>Angola</source>
@@ -37,23 +36,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ATA">
                 <source>Antarctica</source>
-                <target>Antarktis</target>
+                <target>Antártida</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ARG">
                 <source>Argentina</source>
-                <target>Argentinien</target>
+                <target>Argentina</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ASM">
                 <source>American Samoa</source>
-                <target>Amerikanisch-Samoa</target>
+                <target>Samoa Americana</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AUT">
                 <source>Austria</source>
-                <target>Österreich</target>
+                <target>Austria</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AUS">
                 <source>Australia</source>
-                <target>Australien</target>
+                <target>Australia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ABW">
                 <source>Aruba</source>
@@ -61,15 +60,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ALA">
                 <source>Åland Islands</source>
-                <target>Ålandinseln</target>
+                <target>Islas Aland</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.AZE">
                 <source>Azerbaijan</source>
-                <target>Aserbaidschan</target>
+                <target>Azerbaiyán</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BIH">
                 <source>Bosnia and Herzegovina</source>
-                <target>Bosnien und Herzegowina</target>
+                <target>Bosnia y Herzegovina</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BRB">
                 <source>Barbados</source>
@@ -77,11 +76,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BGD">
                 <source>Bangladesh</source>
-                <target>Bangladesch</target>
+                <target>Bangladesh</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BEL">
                 <source>Belgium</source>
-                <target>Belgien</target>
+                <target>Bélgica</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BFA">
                 <source>Burkina Faso</source>
@@ -89,7 +88,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BGR">
                 <source>Bulgaria</source>
-                <target>Bulgarien</target>
+                <target>Bulgaria</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BHR">
                 <source>Bahrain</source>
@@ -105,7 +104,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BLM">
                 <source>St. Barthélemy</source>
-                <target>St. Barthélemy</target>
+                <target>San Bartolomé</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BMU">
                 <source>Bermuda</source>
@@ -117,15 +116,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BOL">
                 <source>Bolivia</source>
-                <target>Bolivien</target>
+                <target>Bolivia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BES">
                 <source>Caribbean Netherlands</source>
-                <target>Karibische Niederlande</target>
+                <target>Caribe Paises Bajos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BRA">
                 <source>Brazil</source>
-                <target>Brasilien</target>
+                <target>Brasil</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BHS">
                 <source>Bahamas</source>
@@ -137,7 +136,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BVT">
                 <source>Bouvet Island</source>
-                <target>Bouvetinsel</target>
+                <target>Isla Bouvet</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BWA">
                 <source>Botswana</source>
@@ -145,7 +144,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BLR">
                 <source>Belarus</source>
-                <target>Weißrussland</target>
+                <target>Belarusia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.BLZ">
                 <source>Belize</source>
@@ -153,35 +152,35 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CAN">
                 <source>Canada</source>
-                <target>Kanada</target>
+                <target>Canadá</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CCK">
                 <source>Cocos (Keeling) Islands</source>
-                <target>Kokosinseln</target>
+                <target>Isla cocos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.COD">
-                <source>Democratic Republic of the Congo</source>
-                <target>Demokratische Republik Kongo</target>
+                <source>Congo - Kinshasa</source>
+                <target>Congo - Kinshasa</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CAF">
                 <source>Central African Republic</source>
-                <target>Zentralafrikanische Republik</target>
+                <target>República Africana Central</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.COG">
-                <source>Republic of the Congo</source>
-                <target>Republik Kongo</target>
+                <source>Congo - Brazzaville</source>
+                <target>Congo - Brazzaville</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CHE">
                 <source>Switzerland</source>
-                <target>Schweiz</target>
+                <target>Suiza</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CIV">
                 <source>Côte d'Ivoire</source>
-                <target>Elfenbeinküste</target>
+                <target>Costa de marfil</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.COK">
                 <source>Cook Islands</source>
-                <target>Cookinseln</target>
+                <target>Islas Cook</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CHL">
                 <source>Chile</source>
@@ -189,7 +188,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CMR">
                 <source>Cameroon</source>
-                <target>Kamerun</target>
+                <target>Camerún</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CHN">
                 <source>China</source>
@@ -197,7 +196,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.COL">
                 <source>Colombia</source>
-                <target>Kolumbien</target>
+                <target>Colombia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CRI">
                 <source>Costa Rica</source>
@@ -205,11 +204,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CUB">
                 <source>Cuba</source>
-                <target>Kuba</target>
+                <target>Cuba</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CPV">
                 <source>Cape Verde</source>
-                <target>Kap Verde</target>
+                <target>Cabo Verde</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CUW">
                 <source>Curaçao</source>
@@ -217,27 +216,27 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CXR">
                 <source>Christmas Island</source>
-                <target>Weihnachtsinsel</target>
+                <target>Isla Navidad</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CYP">
                 <source>Cyprus</source>
-                <target>Zypern</target>
+                <target>Chipre</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CZE">
-                <source>Czech Republic</source>
-                <target>Tschechische Republik</target>
+                <source>Czechia</source>
+                <target>Czechia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DEU">
                 <source>Germany</source>
-                <target>Deutschland</target>
+                <target>Alemania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DJI">
                 <source>Djibouti</source>
-                <target>Dschibuti</target>
+                <target>Djibouti</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DNK">
                 <source>Denmark</source>
-                <target>Dänemark</target>
+                <target>Dinamarca</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DMA">
                 <source>Dominica</source>
@@ -245,11 +244,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DOM">
                 <source>Dominican Republic</source>
-                <target>Dominikanische Republik</target>
+                <target>República Dominicana</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.DZA">
                 <source>Algeria</source>
-                <target>Algerien</target>
+                <target>Algeria</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ECU">
                 <source>Ecuador</source>
@@ -257,15 +256,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.EST">
                 <source>Estonia</source>
-                <target>Estland</target>
+                <target>Estonia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.EGY">
                 <source>Egypt</source>
-                <target>Ägypten</target>
+                <target>Egipto</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ESH">
                 <source>Western Sahara</source>
-                <target>Westsahara</target>
+                <target>Sáhara Oeste</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ERI">
                 <source>Eritrea</source>
@@ -273,55 +272,55 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ESP">
                 <source>Spain</source>
-                <target>Spanien</target>
+                <target>España</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ETH">
                 <source>Ethiopia</source>
-                <target>Äthiopien</target>
+                <target>Etiopía</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FIN">
                 <source>Finland</source>
-                <target>Finnland</target>
+                <target>Finlandia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FJI">
                 <source>Fiji</source>
-                <target>Fidschi</target>
+                <target>Fiji</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FLK">
                 <source>Falkland Islands</source>
-                <target>Falklandinseln</target>
+                <target>Islas Malvinas</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FSM">
                 <source>Micronesia</source>
-                <target>Mikronesien</target>
+                <target>Micronesia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FRO">
                 <source>Faroe Islands</source>
-                <target>Färöer</target>
+                <target>Islas Faroe</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.FRA">
                 <source>France</source>
-                <target>Frankreich</target>
+                <target>Francia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GAB">
                 <source>Gabon</source>
-                <target>Gabun</target>
+                <target>Gabón</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GBR">
                 <source>United Kingdom</source>
-                <target>Vereinigtes Königreich</target>
+                <target>Reino Unido</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GRD">
                 <source>Grenada</source>
-                <target>Grenada</target>
+                <target>Granada</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GEO">
                 <source>Georgia</source>
-                <target>Georgien</target>
+                <target>Gerogia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GUF">
                 <source>French Guiana</source>
-                <target>Französisch-Guayana</target>
+                <target>Guayana Francesa</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GGY">
                 <source>Guernsey</source>
@@ -337,7 +336,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GRL">
                 <source>Greenland</source>
-                <target>Grönland</target>
+                <target>Groenlandia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GMB">
                 <source>Gambia</source>
@@ -349,19 +348,19 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GLP">
                 <source>Guadeloupe</source>
-                <target>Guadeloupe</target>
+                <target>Guadalupe</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GNQ">
                 <source>Equatorial Guinea</source>
-                <target>Äquatorialguinea</target>
+                <target>Guinea Ecuatorial</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GRC">
                 <source>Greece</source>
-                <target>Griechenland</target>
+                <target>Grecia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SGS">
                 <source>South Georgia and South Sandwich Islands</source>
-                <target>Südgeorgien und die Südlichen Sandwichinseln</target>
+                <target>Islas Georgia del Sur y Sandwich del Sur</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.GTM">
                 <source>Guatemala</source>
@@ -381,11 +380,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HKG">
                 <source>Hong Kong</source>
-                <target>Hongkong</target>
+                <target>Hong Kong</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HMD">
                 <source>Heard and McDonald Islands</source>
-                <target>Heard und McDonaldinseln</target>
+                <target>Islas HEard y McDonalds</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HND">
                 <source>Honduras</source>
@@ -393,23 +392,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HRV">
                 <source>Croatia</source>
-                <target>Kroatien</target>
+                <target>Croacia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HTI">
                 <source>Haiti</source>
-                <target>Haiti</target>
+                <target>Haití</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.HUN">
                 <source>Hungary</source>
-                <target>Ungarn</target>
+                <target>Hungría</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IDN">
                 <source>Indonesia</source>
-                <target>Indonesien</target>
+                <target>Indonesia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IRL">
                 <source>Ireland</source>
-                <target>Irland</target>
+                <target>Irlanda</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ISR">
                 <source>Israel</source>
@@ -417,15 +416,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IMN">
                 <source>Isle of Man</source>
-                <target>Isle of Man</target>
+                <target>Isla de Man</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IND">
                 <source>India</source>
-                <target>Indien</target>
+                <target>India</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IOT">
                 <source>British Indian Ocean Territory</source>
-                <target>Britisches Territorium im Indischen Ozean</target>
+                <target>Territorio Británico del oceáno indio</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.IRQ">
                 <source>Iraq</source>
@@ -437,11 +436,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ISL">
                 <source>Iceland</source>
-                <target>Island</target>
+                <target>Islandia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ITA">
                 <source>Italy</source>
-                <target>Italien</target>
+                <target>Italia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.JEY">
                 <source>Jersey</source>
@@ -449,15 +448,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.JAM">
                 <source>Jamaica</source>
-                <target>Jamaika</target>
+                <target>Jamaica</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.JOR">
                 <source>Jordan</source>
-                <target>Jordanien</target>
+                <target>Jordania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.JPN">
                 <source>Japan</source>
-                <target>Japan</target>
+                <target>Japón</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KEN">
                 <source>Kenya</source>
@@ -465,11 +464,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KGZ">
                 <source>Kyrgyzstan</source>
-                <target>Kirgisistan</target>
+                <target>Kyrgyzstan</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KHM">
                 <source>Cambodia</source>
-                <target>Kambodscha</target>
+                <target>Camboya</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KIR">
                 <source>Kiribati</source>
@@ -477,19 +476,19 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.COM">
                 <source>Comoros</source>
-                <target>Komoren</target>
+                <target>Comoros</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KNA">
                 <source>St. Kitts and Nevis</source>
-                <target>St. Kitts und Nevis</target>
+                <target>Saint Kitts y Nevis</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PRK">
                 <source>North Korea</source>
-                <target>Nordkorea</target>
+                <target>Korea del Norte</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KOR">
                 <source>South Korea</source>
-                <target>Südkorea</target>
+                <target>Korea del Sur</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KWT">
                 <source>Kuwait</source>
@@ -497,11 +496,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.CYM">
                 <source>Cayman Islands</source>
-                <target>Kaimaninseln</target>
+                <target>Islas Caiman</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.KAZ">
                 <source>Kazakhstan</source>
-                <target>Kasachstan</target>
+                <target>Kazakhstan</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LAO">
                 <source>Laos</source>
@@ -509,11 +508,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LBN">
                 <source>Lebanon</source>
-                <target>Libanon</target>
+                <target>Líbano</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LCA">
                 <source>St. Lucia</source>
-                <target>St. Lucia</target>
+                <target>Santa Lucía</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LIE">
                 <source>Liechtenstein</source>
@@ -529,35 +528,35 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LSO">
                 <source>Lesotho</source>
-                <target>Lesotho</target>
+                <target>Lesoto</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LTU">
                 <source>Lithuania</source>
-                <target>Litauen</target>
+                <target>Lituania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LUX">
                 <source>Luxembourg</source>
-                <target>Luxemburg</target>
+                <target>Luxemburgo</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LVA">
                 <source>Latvia</source>
-                <target>Lettland</target>
+                <target>Latvia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.LBY">
                 <source>Libya</source>
-                <target>Libyen</target>
+                <target>Libia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MAR">
                 <source>Morocco</source>
-                <target>Marokko</target>
+                <target>Marruecos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MCO">
                 <source>Monaco</source>
-                <target>Monaco</target>
+                <target>Mónaco</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MDA">
                 <source>Moldova</source>
-                <target>Republik Moldau</target>
+                <target>Moldavia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MNE">
                 <source>Montenegro</source>
@@ -565,19 +564,19 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MAF">
                 <source>St. Martin</source>
-                <target>St. Martin</target>
+                <target>San Martín</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MDG">
                 <source>Madagascar</source>
-                <target>Madagaskar</target>
+                <target>Madagascar</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MHL">
                 <source>Marshall Islands</source>
-                <target>Marshallinseln</target>
+                <target>Islas Marshall</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MKD">
-                <source>Macedonia</source>
-                <target>Mazedonien</target>
+                <source>North Macedonia</source>
+                <target>North Macedonia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MLI">
                 <source>Mali</source>
@@ -589,23 +588,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MNG">
                 <source>Mongolia</source>
-                <target>Mongolei</target>
+                <target>Mongolia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MAC">
                 <source>Macao</source>
-                <target>Macau</target>
+                <target>Macao</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MNP">
                 <source>Northern Mariana Islands</source>
-                <target>Nördliche Marianen</target>
+                <target>Islas Mariana Norte</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MTQ">
                 <source>Martinique</source>
-                <target>Martinique</target>
+                <target>Martinica</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MRT">
                 <source>Mauritania</source>
-                <target>Mauretanien</target>
+                <target>Mauritania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MSR">
                 <source>Montserrat</source>
@@ -617,11 +616,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MUS">
                 <source>Mauritius</source>
-                <target>Mauritius</target>
+                <target>Mauricio</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MDV">
                 <source>Maldives</source>
-                <target>Malediven</target>
+                <target>Maldivas</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MWI">
                 <source>Malawi</source>
@@ -629,15 +628,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MEX">
                 <source>Mexico</source>
-                <target>Mexiko</target>
+                <target>México</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MYS">
                 <source>Malaysia</source>
-                <target>Malaysia</target>
+                <target>Malasia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MOZ">
                 <source>Mozambique</source>
-                <target>Mosambik</target>
+                <target>Mozambique</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NAM">
                 <source>Namibia</source>
@@ -645,15 +644,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NCL">
                 <source>New Caledonia</source>
-                <target>Neukaledonien</target>
+                <target>Nueva Caledonia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NER">
                 <source>Niger</source>
-                <target>Niger</target>
+                <target>Níger</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NFK">
                 <source>Norfolk Island</source>
-                <target>Norfolkinsel</target>
+                <target>Isla Norfolk</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NGA">
                 <source>Nigeria</source>
@@ -665,11 +664,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NLD">
                 <source>Netherlands</source>
-                <target>Niederlande</target>
+                <target>Holanda</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NOR">
                 <source>Norway</source>
-                <target>Norwegen</target>
+                <target>Noruega</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NPL">
                 <source>Nepal</source>
@@ -685,7 +684,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.NZL">
                 <source>New Zealand</source>
-                <target>Neuseeland</target>
+                <target>Nueva Zelanda</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.OMN">
                 <source>Oman</source>
@@ -693,23 +692,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PAN">
                 <source>Panama</source>
-                <target>Panama</target>
+                <target>Panamá</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PER">
                 <source>Peru</source>
-                <target>Peru</target>
+                <target>Perú</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PYF">
                 <source>French Polynesia</source>
-                <target>Französisch-Polynesien</target>
+                <target>Polinesia Francesa</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PNG">
                 <source>Papua New Guinea</source>
-                <target>Papua-Neuguinea</target>
+                <target>Papua Nueva Guinea</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PHL">
                 <source>Philippines</source>
-                <target>Philippinen</target>
+                <target>Filipinas</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PAK">
                 <source>Pakistan</source>
@@ -717,15 +716,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.POL">
                 <source>Poland</source>
-                <target>Polen</target>
+                <target>Polonia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SPM">
                 <source>St. Pierre and Miquelon</source>
-                <target>St. Pierre und Miquelon</target>
+                <target>St. Pierre y Miquelon</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PCN">
                 <source>Pitcairn Islands</source>
-                <target>Pitcairninseln</target>
+                <target>Islas Pitcairn</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PRI">
                 <source>Puerto Rico</source>
@@ -733,7 +732,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PSE">
                 <source>Palestine</source>
-                <target>Palästina</target>
+                <target>Palestina</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.PRT">
                 <source>Portugal</source>
@@ -749,23 +748,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.QAT">
                 <source>Qatar</source>
-                <target>Katar</target>
+                <target>Qatar</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.REU">
                 <source>Réunion</source>
-                <target>Réunion</target>
+                <target>Reunión</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ROU">
                 <source>Romania</source>
-                <target>Rumänien</target>
+                <target>Rumania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SRB">
                 <source>Serbia</source>
-                <target>Serbien</target>
+                <target>Serbia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.RUS">
                 <source>Russia</source>
-                <target>Russland</target>
+                <target>Rusia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.RWA">
                 <source>Rwanda</source>
@@ -773,15 +772,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SAU">
                 <source>Saudi Arabia</source>
-                <target>Saudi-Arabien</target>
+                <target>Arabia Saudí</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SLB">
                 <source>Solomon Islands</source>
-                <target>Salomonen</target>
+                <target>Islas Salomón</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SYC">
                 <source>Seychelles</source>
-                <target>Seychellen</target>
+                <target>Seychelles</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SDN">
                 <source>Sudan</source>
@@ -789,7 +788,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SWE">
                 <source>Sweden</source>
-                <target>Schweden</target>
+                <target>Suecia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SGP">
                 <source>Singapore</source>
@@ -801,19 +800,19 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SVN">
                 <source>Slovenia</source>
-                <target>Slowenien</target>
+                <target>Eslovenia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SJM">
                 <source>Svalbard and Jan Mayen</source>
-                <target>Svalbard und Jan Mayen</target>
+                <target>Svalbard y Jan Mayen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SVK">
                 <source>Slovakia</source>
-                <target>Slowakei</target>
+                <target>Eslovaquia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SLE">
                 <source>Sierra Leone</source>
-                <target>Sierra Leone</target>
+                <target>Sierra Leona</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SMR">
                 <source>San Marino</source>
@@ -829,15 +828,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SUR">
                 <source>Suriname</source>
-                <target>Suriname</target>
+                <target>Surinam</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SSD">
                 <source>South Sudan</source>
-                <target>Südsudan</target>
+                <target>Sudán del Sur</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.STP">
                 <source>Sao Tome and Principe</source>
-                <target>São Tomé und Príncipe</target>
+                <target>Sao Tome y Principe</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SLV">
                 <source>El Salvador</source>
@@ -849,23 +848,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SYR">
                 <source>Syria</source>
-                <target>Syrien</target>
+                <target>Siria</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.SWZ">
-                <source>Swaziland</source>
-                <target>Swasiland</target>
+                <source>Eswatini</source>
+                <target>Eswatini</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TCA">
                 <source>Turks and Caicos Islands</source>
-                <target>Turks- und Caicosinseln</target>
+                <target>Islas Turks y Caicos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TCD">
                 <source>Chad</source>
-                <target>Tschad</target>
+                <target>Chad</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ATF">
                 <source>French Southern Territories</source>
-                <target>Französische Süd- und Antarktisgebiete</target>
+                <target>Territorio Franceses del Sur</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TGO">
                 <source>Togo</source>
@@ -873,11 +872,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.THA">
                 <source>Thailand</source>
-                <target>Thailand</target>
+                <target>Thailandia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TJK">
                 <source>Tajikistan</source>
-                <target>Tadschikistan</target>
+                <target>Tajikistan</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TKL">
                 <source>Tokelau</source>
@@ -885,7 +884,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TLS">
                 <source>Timor-Leste</source>
-                <target>Osttimor</target>
+                <target>Timor-este</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TKM">
                 <source>Turkmenistan</source>
@@ -893,7 +892,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TUN">
                 <source>Tunisia</source>
-                <target>Tunesien</target>
+                <target>Túnez</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TON">
                 <source>Tonga</source>
@@ -901,11 +900,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TUR">
                 <source>Turkey</source>
-                <target>Türkei</target>
+                <target>Turquía</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TTO">
                 <source>Trinidad and Tobago</source>
-                <target>Trinidad und Tobago</target>
+                <target>Trinidad y Tobago</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TUV">
                 <source>Tuvalu</source>
@@ -917,11 +916,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.TZA">
                 <source>Tanzania</source>
-                <target>Tansania</target>
+                <target>Tanzania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.UKR">
                 <source>Ukraine</source>
-                <target>Ukraine</target>
+                <target>Ucrania</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.UGA">
                 <source>Uganda</source>
@@ -929,11 +928,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.UMI">
                 <source>U.S. Outlying Islands</source>
-                <target>Amerikanische Überseeinseln</target>
+                <target>Islas periféricas de EE.UU.</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.USA">
                 <source>United States</source>
-                <target>Vereinigte Staaten</target>
+                <target>Estados Unidos</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.URY">
                 <source>Uruguay</source>
@@ -941,15 +940,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.UZB">
                 <source>Uzbekistan</source>
-                <target>Usbekistan</target>
+                <target>Uzbekistan</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VAT">
                 <source>Vatican City</source>
-                <target>Vatikanstadt</target>
+                <target>Ciudad del Vaticano</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VCT">
                 <source>St. Vincent and Grenadines</source>
-                <target>St. Vincent und die Grenadinen</target>
+                <target>San Vicente y Granadinas</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VEN">
                 <source>Venezuela</source>
@@ -957,11 +956,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VGB">
                 <source>British Virgin Islands</source>
-                <target>Britische Jungferninseln</target>
+                <target>Islas Vírgenes Británicas</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VIR">
                 <source>U.S. Virgin Islands</source>
-                <target>Amerikanische Jungferninseln</target>
+                <target>Islas Vírgenes de EE.UU</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.VNM">
                 <source>Vietnam</source>
@@ -973,7 +972,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.WLF">
                 <source>Wallis and Futuna</source>
-                <target>Wallis und Futuna</target>
+                <target>Wallis y Futuna</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.WSM">
                 <source>Samoa</source>
@@ -985,7 +984,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.YEM">
                 <source>Yemen</source>
-                <target>Jemen</target>
+                <target>Yemen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.MYT">
                 <source>Mayotte</source>
@@ -993,15 +992,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ZAF">
                 <source>South Africa</source>
-                <target>Südafrika</target>
+                <target>Suráfrica</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ZMB">
                 <source>Zambia</source>
-                <target>Sambia</target>
+                <target>Zambia</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_countries.ZWE">
                 <source>Zimbabwe</source>
-                <target>Simbabwe</target>
+                <target>Zimbabwe</target>
             </trans-unit>
         </body>
     </file>

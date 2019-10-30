@@ -1,172 +1,172 @@
 <?xml version="1.0" ?><xliff version="1.1">
-  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_value.php" source-language="en" target-language="de">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_value.php" source-language="en" target-language="es">
     <body>
       <trans-unit id="tl_real_estate_value.no">
         <source>No</source>
-        <target>Nein</target>
+        <target>No</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.yes">
         <source>Yes</source>
-        <target>Ja</target>
+        <target>Si</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nicht_noetig">
         <source>Not required for this property</source>
-        <target>Für dieses Objekt nicht nötig</target>
+        <target>No es necesario para este bien inmueble</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.auf_anfrage">
         <source>Upon request</source>
-        <target>auf Anfrage</target>
+        <target>A petición</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.for_sale">
         <source>For sale</source>
-        <target>zum Kauf</target>
+        <target>Para comprar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.for_rent">
         <source>For rent</source>
-        <target>zur Miete</target>
+        <target>Para alquilar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sold">
         <source>Sold</source>
-        <target>Verkauft</target>
+        <target>Vendido</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.rented">
         <source>Rented</source>
-        <target>Vermietet</target>
+        <target>Alquilado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.incl_mwst">
         <source>incl. VAT</source>
-        <target>incl. MwSt.</target>
+        <target>incl. IVA</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.provisionsfrei">
         <source>Free of commission</source>
-        <target>Provisionsfrei</target>
+        <target>Libre de comisión</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.nutzungsart_wohnen">
         <source>Living</source>
-        <target>Wohnen</target>
+        <target>Habitar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nutzungsart_gewerbe">
         <source>Business</source>
-        <target>Gewerbe</target>
+        <target>Commercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nutzungsart_anlage">
         <source>Investment</source>
-        <target>Anlage</target>
+        <target>Inversión</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nutzungsart_waz">
         <source>Temporary living</source>
-        <target>Wohnen auf Zeit</target>
+        <target>Alojamiento provisional</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.objektart_zimmer">
         <source>Rooms</source>
-        <target>Zimmer</target>
+        <target>Habitaciones</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_wohnung">
         <source>Apartment</source>
-        <target>Wohnung</target>
+        <target>Apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_haus">
         <source>House</source>
-        <target>Haus</target>
+        <target>Casa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_grundstueck">
         <source>Plot</source>
-        <target>Grundstück</target>
+        <target>Terreno</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_buero_praxen">
         <source>Office / Facility</source>
-        <target>Büro / Praxis</target>
+        <target>Oficina / Práctica</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_einzelhandel">
         <source>Retail</source>
-        <target>Einzelhandel</target>
+        <target>Comercio al por menor</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_gastgewerbe">
         <source>Hospitality industry</source>
-        <target>Gastgewerbe</target>
+        <target>Oficios de huésped</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_hallen_lager_prod">
         <source>Halls / Warehouse / Workshops</source>
-        <target>Hallen / Lager / Prod.</target>
+        <target>Halles / el campo / la producción</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_land_und_forstwirtschaft">
         <source>Agriculture and forestry</source>
-        <target>Land und Forstwirtschaft</target>
+        <target>Agricultura y silvicultura</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_parken">
         <source>Parking</source>
-        <target>Parken</target>
+        <target>Parking</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_sonstige">
         <source>Miscellaneous</source>
-        <target>Sonstige</target>
+        <target>Otros</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_freizeitimmobilie_gewerblich">
         <source>Leisure home (used for commercial purposes)</source>
-        <target>Freizeitimmobilie (gewerblich)</target>
+        <target>Alojamiento vacacional</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_zinshaus_renditeobjekt">
         <source>Revenue property</source>
-        <target>Zinshaus / Renditeobjekt</target>
+        <target>Propiedades comerciales</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zimmer">
         <source>Rooms</source>
-        <target>Zimmer</target>
+        <target>Habitaciones</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnung">
         <source>Apartment</source>
-        <target>Wohnung</target>
+        <target>Apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.haus">
         <source>House</source>
-        <target>Haus</target>
+        <target>Casa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstueck">
         <source>Plot</source>
-        <target>Grundstück</target>
+        <target>Terreno</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.buero_praxen">
         <source>Office / Facility</source>
-        <target>Büro / Praxis</target>
+        <target>Oficina / Práctica</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.einzelhandel">
         <source>Retail</source>
-        <target>Einzelhandel</target>
+        <target>Comercio al por menor</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewerbe">
         <source>Hospitality industry</source>
-        <target>Gastgewerbe</target>
+        <target>Oficios de huésped</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallen_lager_prod">
         <source>Halls / Warehouse / Workshops</source>
-        <target>Hallen / Lager / Prod.</target>
+        <target>Halles / el campo / la producción</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.land_und_forstwirtschaft">
         <source>Agriculture and forestry</source>
-        <target>Land und Forstwirtschaft</target>
+        <target>Agricultura y silvicultura</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parken">
         <source>Parking</source>
-        <target>Parken</target>
+        <target>Parking</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstige">
         <source>Miscellaneous</source>
-        <target>Sonstige</target>
+        <target>Otros</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.freizeitimmobilie_gewerblich">
         <source>Leisure home (used for commercial purposes)</source>
-        <target>Freizeitimmobilie (gewerblich)</target>
+        <target>Alojamiento vacacional</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinshaus_renditeobjekt">
         <source>Revenue property</source>
-        <target>Zinshaus / Renditeobjekt</target>
+        <target>Propiedades comerciales</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zimmerTyp_zimmer">
         <source>Rooms</source>
-        <target>Zimmer</target>
+        <target>Habitaciones</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.wohnung">
@@ -174,88 +174,88 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_dachgeschoss">
         <source>Attic apartment</source>
-        <target>Dachgeschosswohnung</target>
+        <target>Mansarda</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_maisonette">
         <source>Maisonette</source>
-        <target>Maisonettewohnung</target>
+        <target>Piso duplex</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_loft-studio-atelier">
         <source>Loft / Studio / Atelier</source>
-        <target>Loft / Studio / Atelier</target>
+        <target>Loft / Estudio / Taller</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_penthouse">
         <source>Penthouse apartment</source>
-        <target>Penthousewohnung</target>
+        <target>Ático apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_terrassen">
         <source>Terrace apartment</source>
-        <target>Terrassenwohnung</target>
+        <target>Apartamento con terraza</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_etage">
         <source>Apartment (floor)</source>
-        <target>Etagenwohnung</target>
+        <target>Apartamento (Piso)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_erdgeschoss">
         <source>Ground floor apartment</source>
-        <target>Erdgeschosswohnung</target>
+        <target>Bungalow apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_souterrain">
         <source>Basement apartment</source>
-        <target>Souterrainwohnung</target>
+        <target>Sótano apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_apartment">
         <source>Apartment</source>
-        <target>Apartment</target>
+        <target>Apartamento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_ferienwohnung">
         <source>Holiday apartment</source>
-        <target>Ferienwohnung</target>
+        <target>Apartamento de vacaciones</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_galerie">
         <source>Gallery</source>
-        <target>Galerie</target>
+        <target>Galería</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_rohdachboden">
         <source>Undeveloped attic</source>
-        <target>Rohdachboden</target>
+        <target>Desván incompleto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_attikawohnung">
         <source>Penthouse</source>
-        <target>Attikawohnung</target>
+        <target>Ático</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.wohnungTyp_keine_angabe">
         <source>Not specified</source>
-        <target>keine Angabe</target>
+        <target>Sin indicación</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.hausTyp_reihenhaus">
         <source>Terraced house</source>
-        <target>Reihenhaus</target>
+        <target>Adosado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reihenend">
         <source>End terrace</source>
-        <target>Reihenendhaus</target>
+        <target>Casa semi-adosada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reihenmittel">
         <source>Mid-terrace</source>
-        <target>Reihenmittelhaus</target>
+        <target>Casa adosada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reiheneck">
         <source>Corner terraced house</source>
-        <target>Reiheneckhaus</target>
+        <target>Casa adosada haciendo esquina</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_doppelhaushaelfte">
         <source>Duplex (building)</source>
-        <target>Doppelhaushälfte</target>
+        <target>Chalet pareado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_einfamilienhaus">
         <source>Single-family-house</source>
-        <target>Einfamilienhaus</target>
+        <target>Vivienda unifamiliar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_stadthaus">
         <source>Townhouse</source>
-        <target>Stadthaus</target>
+        <target>Casa en la ciudad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_bungalow">
         <source>Bungalow</source>
@@ -267,35 +267,35 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_resthof">
         <source>Farmstead</source>
-        <target>Resthof</target>
+        <target>Alquería</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_bauernhaus">
         <source>Farmhouse</source>
-        <target>Bauernhaus</target>
+        <target>Granaja</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_landhaus">
         <source>Cottage</source>
-        <target>Landhaus</target>
+        <target>Caserío</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_schloss">
         <source>Chateau</source>
-        <target>Schloss</target>
+        <target>Château</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_zweifamilienhaus">
         <source>Two-family-house</source>
-        <target>Zweifamilienhaus</target>
+        <target>Casa de dos viviendas</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_mehrfamilienhaus">
         <source>Multifamily house</source>
-        <target>Mehrfamilienhaus</target>
+        <target>Casa multifamiliar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_ferienhaus">
         <source>Holiday home</source>
-        <target>Ferienhaus</target>
+        <target>Vivienda de vacaciones</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_berghuette">
         <source>Mountain hut</source>
-        <target>Berghütte</target>
+        <target>Cabaña de montaña</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_chalet">
         <source>Chalet</source>
@@ -303,23 +303,23 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_strandhaus">
         <source>Beach house</source>
-        <target>Strandhaus</target>
+        <target>Casa de playa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_laube-datsche-gartenhaus">
         <source>Arbor / Dacha / Garden chalet</source>
-        <target>Laube / Datsche / Gartenhaus</target>
+        <target>Glorieta / Dacha / Casa ajardinada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_apartmenthaus">
         <source>Apartment house</source>
-        <target>Apartmenthaus</target>
+        <target>Edificio de apartamentos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_burg">
         <source>Castle</source>
-        <target>Burg</target>
+        <target>Castillo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_herrenhaus">
         <source>Manor house</source>
-        <target>Herrenhaus</target>
+        <target>Casa solariega</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_finca">
         <source>Finca</source>
@@ -327,44 +327,44 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_rustico">
         <source>Rustico</source>
-        <target>Rustico</target>
+        <target>Rústico</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_fertighaus">
         <source>Prefab</source>
-        <target>Fertighaus</target>
+        <target>Vivienda prefabricada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_keine_angabe">
         <source>Not specified</source>
-        <target>keine Angabe</target>
+        <target>No especificado</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.grundstTyp_wohnen">
         <source>Residential plot</source>
-        <target>Wohngrundstück</target>
+        <target>Solar residencial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_gewerbe">
         <source>Commercial property</source>
-        <target>Gewerbegrundstück</target>
+        <target>Solar comercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_industrie">
         <source>Industrial property</source>
-        <target>Industriegrundstück</target>
+        <target>Solar industrial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_land_forstwirschaft">
         <source>Agricultural and forestry property</source>
-        <target>Land- und Forstwirtschaftsgrundstück</target>
+        <target>Propiedad agrícola y forestal</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_freizeit">
         <source>Property (leisure time)</source>
-        <target>Grundstück (Freizeit)</target>
+        <target>Solar (ocio)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_gemischt">
         <source>Property (mixed)</source>
-        <target>Grundstück (gemischt)</target>
+        <target>Solar (mixto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_gewerbepark">
         <source>Property (Industrial park)</source>
-        <target>Grundstück (Gewerbepark)</target>
+        <target>Solar (Parque empresarial)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.grundstTyp_gewerbepark">
         <source>Property (Special use)</source>
@@ -375,93 +375,93 @@
 
       <trans-unit id="tl_real_estate_value.bueroTyp_bueroflaeche">
         <source>Office space</source>
-        <target>Bürofläche</target>
+        <target>Superficie oficina</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_buerohaus">
         <source>Office building</source>
-        <target>Bürohaus</target>
+        <target>Edificio de oficinas</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_buerozentrum">
         <source>Office complex</source>
-        <target>Bürozentrum</target>
+        <target>Centro de la oficina</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_loft_atelier">
         <source>Loft / Atelier (office)</source>
-        <target>Lost / Atiler (Büro)</target>
+        <target>Loft / Taller (oficina)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_praxis">
         <source>Facility (office)</source>
-        <target>Praxis (Büro)</target>
+        <target>Práctica (oficina)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_praxisflaeche">
         <source>Facility space</source>
-        <target>Praxisfläche</target>
+        <target>Área de prácticas</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_praxishaus">
         <source>Medical centre</source>
-        <target>Praxishaus</target>
+        <target>Casa de Práctica</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_ausstellungsflaeche">
         <source>Exhibition place (office)</source>
-        <target>Ausstellungsfläche</target>
+        <target>El espacio de exposición (oficina)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_coworking">
         <source>Office (Co-Working)</source>
-        <target>Büro (Co-Working)</target>
+        <target>Oficina (cotrabajo)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_shared_office">
         <source>Shared office</source>
-        <target>Geteiltes Büro</target>
+        <target>Oficina compartida</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.handelTyp_ladenlokal">
         <source>Shop</source>
-        <target>Ladenlokal</target>
+        <target>Tienda</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_einzelhandelsladen">
         <source>Retail store</source>
-        <target>Einzelhandelsladen</target>
+        <target>Tienda minorista</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_verbrauchermarkt">
         <source>Consumer market</source>
-        <target>Verbrauchermarkt</target>
+        <target>Mercado de consumo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_einkaufszentrum">
         <source>Shopping centre</source>
-        <target>Einkaufszentrum</target>
+        <target>Centro comercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_kaufhaus">
         <source>Department store</source>
-        <target>Kaufhaus</target>
+        <target>Tienda departamental</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_factory_outlet">
         <source>Factory outlet</source>
-        <target>Factory Outlet</target>
+        <target>Outlet factory</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_kiosk">
         <source>Convenience store</source>
-        <target>Kiosk</target>
+        <target>Quiosco</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_verkaufsflaeche">
         <source>Area for sale</source>
-        <target>Verkaufsfläche</target>
+        <target>Superficie comercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.handelTyp_ausstellungsflaeche">
         <source>Exhibition place (trading)</source>
-        <target>Ausstellungsfläche</target>
+        <target>El espacio de exposición (comercial)</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.gastgewTyp_gastronomie">
         <source>Gastronomy</source>
-        <target>Gastronomie</target>
+        <target>Gastronomía</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_gastronomie_und_wohnung">
         <source>Gastronomy and living</source>
-        <target>Gastronomie und Wohnung</target>
+        <target>Gastronomía y estilo de vida</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_pensionen">
         <source>Pensions</source>
-        <target>Pensionen</target>
+        <target>Pensiones</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_hotels">
         <source>Hotel</source>
@@ -469,7 +469,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_weitere_beherbergungsbetriebe">
         <source>Tourist accommodation</source>
-        <target>Beherbergungsbetrieb</target>
+        <target>Alojamiento turístico</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_bar">
         <source>Bar</source>
@@ -477,134 +477,134 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_cafe">
         <source>Cafe</source>
-        <target>Cafe</target>
+        <target>Café</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_discothek">
         <source>Discotheque</source>
-        <target>Discothek</target>
+        <target>Discoteca</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_restaurant">
         <source>Restaurant</source>
-        <target>Restaurant</target>
+        <target>Restaurante</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_raucherlokal">
         <source>Bar for smokers</source>
-        <target>Raucherlokal</target>
+        <target>Local para fumado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.gastgewTyp_einraumlokal">
         <source>Single room bar</source>
-        <target>Einraumlokal</target>
+        <target>Local de un cuarto</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.hallenTyp_halle">
         <source>Hall</source>
-        <target>Halle</target>
+        <target>Salón</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_industriehalle">
         <source>Industrial hall</source>
-        <target>Industriehalle</target>
+        <target>Sala Industrial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_lager">
         <source>Depot hall</source>
-        <target>Lagerhalle</target>
+        <target>Almacén</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_lagerflaechen">
         <source>Storage space</source>
-        <target>Lagerfläche</target>
+        <target>Superficie trastero</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_lager_mit_freiflaeche">
         <source>Warehouse with open area</source>
-        <target>Lager mit Freifläche</target>
+        <target>Almacén con un espacio abierto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_hochregallager">
         <source>High-bay warehouse</source>
-        <target>Hochregallager</target>
+        <target>Almacén de gran altura</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_speditionslager">
         <source>Depots</source>
-        <target>Speditionslager</target>
+        <target>Depósitos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_produktion">
         <source>Production hall</source>
-        <target>Produktionshalle</target>
+        <target>Sala de producción</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_werkstatt">
         <source>Workshop</source>
-        <target>Werkstatt</target>
+        <target>Taller</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_service">
         <source>Service building</source>
-        <target>Servicehalle</target>
+        <target>Sala de servicio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_freiflaechen">
         <source>Open area</source>
-        <target>Freifläche</target>
+        <target>Superficie libre</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hallenTyp_kuehlhaus">
         <source>Cold storage</source>
-        <target>Kühlhaus</target>
+        <target>Almacén refrigerado</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.landTyp_landwirtschaftliche_betriebe">
         <source>Agricultural holding</source>
-        <target>landwirtschaftlicher Betrieb</target>
+        <target>Empresa agrícola</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_bauernhof">
         <source>Farm</source>
-        <target>Bauernhof</target>
+        <target>Granja</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_aussiedlerhof">
         <source>Evacuee yard</source>
-        <target>Aussiedlerhof</target>
+        <target>Finca emigrante</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_gartenbau">
         <source>Gardening</source>
-        <target>Gartenbau</target>
+        <target>Jardinería</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_ackerbau">
         <source>Farming</source>
-        <target>Ackerbau</target>
+        <target>Cultivo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_weinbau">
         <source>Wine growing</source>
-        <target>Weinbau</target>
+        <target>Viticultura</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_viehwirtschaft">
         <source>Livestock industry</source>
-        <target>Viehwirtschaft</target>
+        <target>Ganado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_jagd_und_forstwirtschaft">
         <source>Hunting and forestry</source>
-        <target>Jagd und Forstwirtschaft</target>
+        <target>La caza y la silvicultura</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_teich_und_fischwirtschaft">
         <source>Fishing industry</source>
-        <target>Teich und Fischwirtschaft</target>
+        <target>Industrias lacustre y pesquera</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_scheunen">
         <source>Barn</source>
-        <target>Scheune</target>
+        <target>Granero</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_reiterhoefe">
         <source>Equestrian farm</source>
-        <target>Reiterhof</target>
+        <target>Criadero de caballos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_sonstige_landwirtschaftsimmobilien">
         <source>Agricultural property</source>
-        <target>Landwirtschaftsimmobilie</target>
+        <target>Propiedad agraria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_anwesen">
         <source>Estate</source>
-        <target>Anwesen</target>
+        <target>Propiedad / mansión</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.landTyp_jagdrevier">
         <source>Hunting reserve</source>
-        <target>Jagdrevier</target>
+        <target>Terreno de caza</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.parkenTyp_stellplatz">
         <source>Parking</source>
-        <target>Stellplatz</target>
+        <target>Parking</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_carport">
         <source>Carport</source>
@@ -612,186 +612,186 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_doppelgarage">
         <source>Double garage</source>
-        <target>Doppelgarage</target>
+        <target>Doble garaje</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_duplex">
         <source>Duplex</source>
-        <target>Duplex</target>
+        <target>Aparcamiento dúplex</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_tiefgarage">
         <source>Underground garage</source>
-        <target>Tiefgarage</target>
+        <target>Garaje subterráneo </target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_bootsliegeplatz">
         <source>Mooring</source>
-        <target>Bootsliegeplatz</target>
+        <target>Muelle</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_einzelgarage">
         <source>Single garage</source>
-        <target>Einzelgarage</target>
+        <target>Garaje individual</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_parkhaus">
         <source>Parking garage</source>
-        <target>Parkhaus</target>
+        <target>Garaje de estacionamiento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_tiefgaragenstellplatz">
         <source>Underground parking space</source>
-        <target>Tiefgaragen-Stellplatz</target>
+        <target>Plaza de garaje subterráneo </target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.parkenTyp_parkplatz_strom">
         <source>Parking with electricity</source>
-        <target>Parkplatz mit Strom</target>
+        <target>Aparcamiento con electricidad</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.sonstigeTyp_parkhaus">
         <source>Parking garage (misc.)</source>
-        <target>Parkhaus (sonst.)</target>
+        <target>Garaje de estacionamiento (Otros)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_garagen">
         <source>Garage</source>
-        <target>Garage</target>
+        <target>Garaje</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_tankstelle">
         <source>Gas station</source>
-        <target>Tankstelle</target>
+        <target>Gasolinera</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_krankenhaus">
         <source>Hospital</source>
-        <target>Krankenhaus</target>
+        <target>Hospital</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_sonstige">
         <source>Miscellaneous</source>
-        <target>Sonstige</target>
+        <target>Otros</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.freizeitTyp_sportanlagen">
         <source>Sports facility</source>
-        <target>Sportanlage</target>
+        <target>Instalación deportiva</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.freizeitTyp_vergnuegungsparks_und_center">
         <source>Amusement parks and centers</source>
-        <target>Vergnügungspark / Center</target>
+        <target>Parque de atracciones y centro</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.freizeitTyp_freizeitanlagen">
         <source>Leisure facility</source>
-        <target>Freizeitanlage</target>
+        <target>Instalaciones de ocio</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zinsTyp_mehrfamilienhaus">
         <source>Multifamily house</source>
-        <target>Mehrfamilienhaus</target>
+        <target>Casa multifamiliar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_wohn_und_geschaeftshaus">
         <source>Business premises with living accomodation</source>
-        <target>Wohn- und Geschäftshaus</target>
+        <target>Vivienda y comercio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_geschaeftshaus">
         <source>Commercial building</source>
-        <target>Geschäftshaus</target>
+        <target>Casa comercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_buerogebaeude">
         <source>Office building</source>
-        <target>Bürogebäude</target>
+        <target>Edificio de oficinas</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_sb_maerkte">
         <source>SB Market</source>
-        <target>SB Markt</target>
+        <target>Mercados SB</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_einkaufscentren">
         <source>Shopping malls</source>
-        <target>Einkaufscenter</target>
+        <target>Centros comerciales</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_wohnanlagen">
         <source>Residential complexes</source>
-        <target>Wohnanlagen</target>
+        <target>Residences</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_verbrauchermaerkte">
         <source>Consumer market</source>
-        <target>Verbrauchermarkt</target>
+        <target>Mercado de consumo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_industrieanlagen">
         <source>Industrial facilities</source>
-        <target>Industrieanlage</target>
+        <target>Instalaciones industriales</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_pflegeheim">
         <source>Nursing home</source>
-        <target>Pflegeheim</target>
+        <target>Hogar de ancianos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_sanatorium">
         <source>Sanatorium</source>
-        <target>Sanatorium</target>
+        <target>Sanatorio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_seniorenheim">
         <source>Retirement home</source>
-        <target>Seniorenheim</target>
+        <target>Residencia de ancianos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinsTyp_betreutes-wohnen">
         <source>Assisted living</source>
-        <target>Betreutes Wohnen</target>
+        <target>Vivienda tutelada</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.preisZeiteinheit_tag">
         <source>Day</source>
-        <target>Tag</target>
+        <target>Día</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.preisZeiteinheit_woche">
         <source>Week</source>
-        <target>Woche</target>
+        <target>Semana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.preisZeiteinheit_monat">
         <source>Month</source>
-        <target>Monat</target>
+        <target>Mes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.preisZeiteinheit_jahr">
         <source>Year</source>
-        <target>Jahr</target>
+        <target>Año</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_tag">
         <source>Day</source>
-        <target>Tag</target>
+        <target>Día</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_woche">
         <source>Week</source>
-        <target>Woche</target>
+        <target>Semana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_monat">
         <source>Month</source>
-        <target>Monat</target>
+        <target>Mes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_jahr">
         <source>Year</source>
-        <target>Jahr</target>
+        <target>Año</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.mieteinnahmenSollPeriode_tag">
         <source>Day</source>
-        <target>Tag</target>
+        <target>Día</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenSollPeriode_woche">
         <source>Week</source>
-        <target>Woche</target>
+        <target>Semana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenSollPeriode_monat">
         <source>Month</source>
-        <target>Monat</target>
+        <target>Mes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.mieteinnahmenSollPeriode_jahr">
         <source>Year</source>
-        <target>Jahr</target>
+        <target>Año</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_freiplatz">
         <source>Private parking place</source>
-        <target>Freiplatz</target>
+        <target>Parking descubierto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_garage">
         <source>Garage</source>
-        <target>Garage</target>
+        <target>Garaje</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_tiefgarage">
         <source>Underground garage</source>
-        <target>Tiefgarage</target>
+        <target>Garaje subterráneo </target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_carport">
         <source>Carport</source>
@@ -799,60 +799,60 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_duplex">
         <source>Duplex</source>
-        <target>Duplex</target>
+        <target>Aparcamiento dúplex</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_parkhaus">
         <source>Parking garage</source>
-        <target>Parkhaus</target>
+        <target>Garaje de estacionamiento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_sonstiges">
         <source>Miscellaneous</source>
-        <target>Sonstiges</target>
+        <target>Otros</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.lageGebiet_wohn">
         <source>Residential area</source>
-        <target>Wohngebiet</target>
+        <target>Zona residencial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_gewerbe">
         <source>Business park</source>
-        <target>Gewerbegebiet</target>
+        <target>Zona comercial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_industrie">
         <source>Industrial area</source>
-        <target>Industriegebiet</target>
+        <target>Zona industrial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_misch">
         <source>Mixed use area</source>
-        <target>Mischgebiet</target>
+        <target>Territorio mixto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_neubau">
         <source>Development area</source>
-        <target>Neubaugebiet</target>
+        <target>Obra nueva área</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_ortslage">
         <source>Urban</source>
-        <target>in Ortslage</target>
+        <target>Urbano</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_siedlung">
         <source>Settlement</source>
-        <target>Siedlung</target>
+        <target>Urbanización</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_stadtrand">
         <source>Suburb</source>
-        <target>Stadtrand</target>
+        <target>Periferia</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_stadtteil">
         <source>District</source>
-        <target>Stadtteil</target>
+        <target>Barrio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_stadtzentrum">
         <source>City centre</source>
-        <target>Stadtzentrum</target>
+        <target>Centro urbano</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_nebenzentrum">
         <source>Sub-centre</source>
-        <target>Nebenzentrum</target>
+        <target>Centro adicional</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_1a">
         <source>1A</source>
@@ -865,132 +865,132 @@
 
       <trans-unit id="tl_real_estate_value.ausstattKategorie_standard">
         <source>standard</source>
-        <target>standard</target>
+        <target>estándar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausstattKategorie_gehoben">
         <source>superior</source>
-        <target>gehoben</target>
+        <target>superior</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausstattKategorie_luxus">
         <source>luxury</source>
-        <target>luxus</target>
+        <target>lujo</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.bad_dusche">
         <source>Shower</source>
-        <target>Dusche</target>
+        <target>Ducha</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bad_wanne">
         <source>Bathtub</source>
-        <target>Badewanne</target>
+        <target>Bañera</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bad_fenster">
         <source>Window</source>
-        <target>Fenster</target>
+        <target>Ventana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bad_bidet">
         <source>Bidet</source>
-        <target>Bidet</target>
+        <target>Bidé</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bad_pissoir">
         <source>Urinal</source>
-        <target>Pissoir</target>
+        <target>Urinario</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.kueche_ebk">
         <source>Built-in kitchen</source>
-        <target>Einbauküche</target>
+        <target>Cocina empotrada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.kueche_offen">
         <source>Open kitchen</source>
-        <target>offene Küche</target>
+        <target>Cocina abierta</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.kueche_pantry">
         <source>Pantry</source>
-        <target>Speisekammer</target>
+        <target>Despensa</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.boden_fliesen">
         <source>Tiles</source>
-        <target>Fliesen</target>
+        <target>Azulejos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_stein">
         <source>Stone</source>
-        <target>Stein</target>
+        <target>Piedra</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_teppich">
         <source>Carpet</source>
-        <target>Teppich</target>
+        <target>Moqueta</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_parkett">
         <source>Parquet</source>
-        <target>Parkett</target>
+        <target>Parqué</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_fertigparkett">
         <source>Prefinished</source>
-        <target>Fertigparkett</target>
+        <target>Parqué pre-acabado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_laminat">
         <source>Laminate</source>
-        <target>Laminat</target>
+        <target>Laminado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_dielen">
         <source>Floorboards</source>
-        <target>Dielen</target>
+        <target>Tablas del suelo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_kunststoff">
         <source>Plastic</source>
-        <target>Kunststoff</target>
+        <target>Plástico</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_estrich">
         <source>Screed</source>
-        <target>Estrich</target>
+        <target>Pavimento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_doppelboden">
         <source>Raised floor</source>
-        <target>Doppelboden</target>
+        <target>Doble fondo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_linoleum">
         <source>Linoleum</source>
-        <target>Linoleum</target>
+        <target>Linóleo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_marmor">
         <source>Marble</source>
-        <target>Marmor</target>
+        <target>Mármol</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_terrakotta">
         <source>Terracotta</source>
-        <target>Terrakotta</target>
+        <target>Terracota</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_granit">
         <source>Granite</source>
-        <target>Granit</target>
+        <target>Granito</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.heizungsart_ofen">
         <source>Furnace heating</source>
-        <target>Ofen</target>
+        <target>Calefacción de estufa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.heizungsart_etage">
         <source>Floor heating</source>
-        <target>Etagenheizung</target>
+        <target>Calefacción por pisos</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.heizungsart_zentral">
         <source>Central heating</source>
-        <target>Zentralheizung</target>
+        <target>Calefacción central</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.heizungsart_fern">
         <source>District heating</source>
-        <target>Fernheizung</target>
+        <target>Calefacción a distancia</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.heizungsart_fussboden">
         <source>Underfloor heating</source>
-        <target>Fußbodenheizung</target>
+        <target>Calefacción bajo pavimento</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.befeuerung_oel">
         <source>Oil</source>
-        <target>Öl</target>
+        <target>Aceite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_gas">
         <source>Gas</source>
@@ -998,11 +998,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_elektro">
         <source>Electrical</source>
-        <target>Elektro</target>
+        <target>Eléctrico</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_alternativ">
         <source>Alternative</source>
-        <target>Alternativ</target>
+        <target>Alternativa</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_solar">
         <source>Solar</source>
@@ -1010,23 +1010,23 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_erdwaerme">
         <source>Geothermal</source>
-        <target>Erdwärme</target>
+        <target>Geotermia</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_luftwp">
         <source>Heatpump (Air)</source>
-        <target>Wärmepumpe (Luft)</target>
+        <target>Bomba de calor (Aire)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_fern">
         <source>Long-distance</source>
-        <target>Fern</target>
+        <target>De larga distancia</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_block">
         <source>Block</source>
-        <target>Block</target>
+        <target>Bloque</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_wasser-elektro">
         <source>Water / Electrical</source>
-        <target>Wasser-Elektro</target>
+        <target>Agua / Eléctrico</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_pellet">
         <source>Pellet</source>
@@ -1034,33 +1034,33 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_kohle">
         <source>Coal</source>
-        <target>Kohle</target>
+        <target>Carbón</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_holz">
         <source>Wood</source>
-        <target>Holz</target>
+        <target>Madera</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.befeuerung_fluessiggas">
         <source>LPG</source>
-        <target>Flüssiggas</target>
+        <target>GLP</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.fahrstuhlart_personen">
         <source>Passenger elevator</source>
-        <target>Personenaufzug</target>
+        <target>Ascensor</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.fahrstuhlart_lasten">
         <source>Freight elevator</source>
-        <target>Lastenaufzug</target>
+        <target>Ascensor de carga</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.stellplatzart_garage">
         <source>Garage</source>
-        <target>Garage</target>
+        <target>Garaje</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stellplatzart_tiefgarage">
         <source>Underground garage</source>
-        <target>Tiefgarage</target>
+        <target>Garaje subterráneo </target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stellplatzart_carport">
         <source>Carport</source>
@@ -1068,62 +1068,62 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stellplatzart_freiplatz">
         <source>Outdoor parking place</source>
-        <target>Außenstellplatz</target>
+        <target>Aparcamiento exterior</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stellplatzart_parkhaus">
         <source>Parking garage</source>
-        <target>Parkhaus</target>
+        <target>Garaje de estacionamiento</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stellplatzart_duplex">
         <source>Duplex</source>
-        <target>Duplex</target>
+        <target>Aparcamiento dúplex</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_nord">
         <source>North</source>
-        <target>Norden</target>
+        <target>Norte</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_ost">
         <source>East</source>
-        <target>Osten</target>
+        <target>Este</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_sued">
         <source>South</source>
-        <target>Süden</target>
+        <target>Sur</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_west">
         <source>West</source>
-        <target>Westen</target>
+        <target>Oeste</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_nordost">
         <source>Northeast</source>
-        <target>Nordost</target>
+        <target>Noreste</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_nordwest">
         <source>Northwest</source>
-        <target>Nordwest</target>
+        <target>Noroeste</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_suedost">
         <source>Southeast</source>
-        <target>Südost</target>
+        <target>Sudeste</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausrichtBalkonTerrasse_suedwest">
         <source>Southwest</source>
-        <target>Südwest</target>
+        <target>Suroeste</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.moebliert_voll">
         <source>Fully furnished</source>
-        <target>Voll möbliert</target>
+        <target>Totalmente amueblado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.moebliert_teil">
         <source>Partly furnished</source>
-        <target>Teil möbliert</target>
+        <target>Parcialmente amueblado</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.angeschlGastronomie_hotelrestaurant">
         <source>Hotel restaurant</source>
-        <target>Hotelrestaurant</target>
+        <target>Restaurante del hotel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.angeschlGastronomie_bar">
         <source>Bar</source>
@@ -1132,7 +1132,7 @@
 
       <trans-unit id="tl_real_estate_value.serviceleistungen_betreutes_wohnen">
         <source>Assisted living</source>
-        <target>Betreutes Wohnen</target>
+        <target>Vivienda tutelada</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.serviceleistungen_catering">
         <source>Catering</source>
@@ -1140,161 +1140,161 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.serviceleistungen_reinigung">
         <source>Cleaning service</source>
-        <target>Reinigungsservice</target>
+        <target>Servicio de limpieza</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.serviceleistungen_einkauf">
         <source>Shopping service</source>
-        <target>Einkauf-Service</target>
+        <target>Servicio de compras</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.serviceleistungen_wachdienst">
         <source>Security service</source>
-        <target>Wachdienst</target>
+        <target>Servicio de vigilancia</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.sicherheitstechnik_alarmanlage">
         <source>Alarm system</source>
-        <target>Alarmanlage</target>
+        <target>Sistema de alarma</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sicherheitstechnik_kamera">
         <source>Video surveillance</source>
-        <target>Videoüberwachung</target>
+        <target>Vigilancia por vídeo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sicherheitstechnik_polizeiruf">
         <source>Police emergency</source>
-        <target>Polizei-Notruf</target>
+        <target>Llamada de emergencia de la policía</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.unterkellert_ja">
         <source>Yes</source>
-        <target>Ja</target>
+        <target>Si</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.unterkellert_nein">
         <source>No</source>
-        <target>Nein</target>
+        <target>No</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.unterkellert_teil">
         <source>Partial cellar</source>
-        <target>Teilunterkellert</target>
+        <target>Sótano parcial</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zustand_erstbezug">
         <source>first occupation</source>
-        <target>Erstbezug</target>
+        <target>A estrenar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_vollrenovierungsbed">
         <source>Partially in need of renovation</source>
-        <target>Teilweise renovierungsbedürftig</target>
+        <target>Requiere parcialmente renovación</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_neuwertig">
         <source>In good condition</source>
-        <target>Neuwertig</target>
+        <target>Obra nueva</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_vollsaniert">
         <source>Partially fully refurbished</source>
-        <target>Teilweise vollsaniert</target>
+        <target>Parcialmente completamente rehabilitado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_vollrenoviert">
         <source>Partially fully renovated</source>
-        <target>Teilweise vollrenoviert</target>
+        <target>Parcialmente completamente renovado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_saniert">
         <source>Partially refurbished</source>
-        <target>Teilweise saniert</target>
+        <target>Parcialmente rehabilitado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_voll_saniert">
         <source>Fully refurbished</source>
-        <target>Voll saniert</target>
+        <target>Completamente renovado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_sanierungsbeduerftig">
         <source>In need of refurbishment</source>
-        <target>Sanierungsbedürftig</target>
+        <target>Restauración necesaria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_baufaellig">
         <source>dilapidated</source>
-        <target>Baufällig</target>
+        <target>ruinoso</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_nach_vereinbarung">
         <source>subject to agreement</source>
-        <target>Nach Vereinbarung</target>
+        <target>Según acuerdo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_modernisiert">
         <source>modernized</source>
-        <target>Modernisiert</target>
+        <target>modernizado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_gepflegt">
         <source>well maintained</source>
-        <target>Gepflegt</target>
+        <target>Buen estado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_rohbau">
         <source>shell</source>
-        <target>Rohbau</target>
+        <target>Inacabado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_entkernt">
         <source>Emptied</source>
-        <target>Entkernt</target>
+        <target>Destripado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_abrissobjekt">
         <source>Tear down required</source>
-        <target>Abriss notwendig</target>
+        <target>Demolición necesaria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_projektiert">
         <source>Planned</source>
-        <target>Projektiert</target>
+        <target>Proyectado</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.alterAttr_altbau">
         <source>Old building</source>
-        <target>Altbau</target>
+        <target>Edificio antiguo</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.alterAttr_neubau">
         <source>New build</source>
-        <target>Neubau</target>
+        <target>Edificio nuevo</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.bebaubarNach_34_nachbarschaft">
         <source>Built-up Area (§34BauGB - German Federal Building Code)</source>
-        <target>§ 34 Nachbarschaft</target>
+        <target>Superficie construida (§34BauGB - Código Federal de Construcción Alemán)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_35_aussengebiet">
         <source>Undesignated Outlying Area (§35BauGB - German Federal Building Code)</source>
-        <target>§ 35 Außengebiet</target>
+        <target>Zona periférica no designada (§35BauGB - Código Federal de Construcción Alemán)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_b_plan">
         <source>Area Covered by a Legally Binding Land-Use Plan (§30BauGB - German Federal Building Code)</source>
-        <target>§ 30 Bebauungsplan</target>
+        <target>Superficie cubierta por un plan de uso del suelo legalmente vinculante (§30BauGB - Código Federal de Construcción Alemán)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_kein_bauland">
         <source>No building plot</source>
-        <target>Kein Bauland</target>
+        <target>Ningún terreno urbanizable</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_bauerwartungsland">
         <source>Development site</source>
-        <target>Bauerwartungsland</target>
+        <target>Superficie edificable</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_laenderspezifisch">
         <source>Country-specific</source>
-        <target>Länderspezifisch</target>
+        <target>Por país</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bebaubarNach_bauland_ohne_b_plan">
         <source>Building plot without land-use plan</source>
-        <target>Bauland ohne Bebauungsplan</target>
+        <target>Terreno edificable sin plan de urbanización</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.erschliessung_unerschlossen">
         <source>Undeveloped</source>
-        <target>unerschlossen</target>
+        <target>Sin urbanizar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessung_teilerschlossen">
         <source>Partly developed</source>
-        <target>teilerschlossen</target>
+        <target>Parcialmente urbanizado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessung_vollerschlossen">
         <source>Fully developed</source>
-        <target>vollerschlossen</target>
+        <target>Completamente urbanizado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessung_ortsueblicherschlossen">
         <source>Commonly developed</source>
-        <target>ortsüblich erschlossen</target>
+        <target>Comúnmente urbanizado</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.erschliessungUmfang_gas">
@@ -1303,110 +1303,110 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessungUmfang_wasser">
         <source>Water</source>
-        <target>Wasser</target>
+        <target>Agua</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessungUmfang_strom">
         <source>Electricity</source>
-        <target>Strom</target>
+        <target>Electricidad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessungUmfang_tk">
         <source>Telecommunication</source>
-        <target>TK</target>
+        <target>Telecomunicación</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.verkaufstatus_offen">
         <source>Open</source>
-        <target>Offen</target>
+        <target>Abierto</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.verkaufstatus_reserviert">
         <source>Reserved</source>
-        <target>Reserviert</target>
+        <target>Reservado</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.verkaufstatus_verkauft">
         <source>Sold</source>
-        <target>Verkauft</target>
+        <target>Vendido</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.ausblick_ferne">
         <source>Distant view</source>
-        <target>Fernblick</target>
+        <target>Vista lejana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausblick_see">
         <source>Lake view</source>
-        <target>Seeblick</target>
+        <target>Vista al lago</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausblick_berg">
         <source>Mountain view</source>
-        <target>Bergblick</target>
+        <target>Vista de Montaña</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.ausblick_meer">
         <source>Ocean view</source>
-        <target>Meerblick</target>
+        <target>Vista al mar</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.energiepassEpart_bedarf">
         <source>Energy demand certificate (performance)</source>
-        <target>Bedarfsausweis</target>
+        <target>Certificado de demanda</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.energiepassEpart_verbrauch">
         <source>Energy usage certificate (consumption)</source>
-        <target>Verbrauchsausweis</target>
+        <target>Certificado de consumo</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.energiepassGebaeudeart_wohn">
         <source>Residential building</source>
-        <target>Wohngebäude</target>
+        <target>Edificio residencial</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.energiepassGebaeudeart_nichtwohn">
         <source>Not a residential building</source>
-        <target>nicht Wohngebäude</target>
+        <target>No edificio residencial</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.minMietdauer_tag">
         <source>Day</source>
-        <target>Tag</target>
+        <target>Día</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.minMietdauer_woche">
         <source>Week</source>
-        <target>Woche</target>
+        <target>Semana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.minMietdauer_monat">
         <source>Month</source>
-        <target>Monat</target>
+        <target>Mes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.minMietdauer_jahr">
         <source>Year</source>
-        <target>Jahr</target>
+        <target>Año</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.maxMietdauer_tag">
         <source>Day</source>
-        <target>Tag</target>
+        <target>Día</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.maxMietdauer_woche">
         <source>Week</source>
-        <target>Woche</target>
+        <target>Semana</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.maxMietdauer_monat">
         <source>Month</source>
-        <target>Monat</target>
+        <target>Mes</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.maxMietdauer_jahr">
         <source>Year</source>
-        <target>Jahr</target>
+        <target>Año</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.geschlecht_egal">
         <source>Doesn't matter</source>
-        <target>egal</target>
+        <target>Sin importar</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.geschlecht_nur_mann">
         <source>Men only</source>
-        <target>nur Männer</target>
+        <target>Sólo hombres</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.geschlecht_nur_frau">
         <source>Women only</source>
-        <target>nur Frauen</target>
+        <target>Sólo mujeres</target>
       </trans-unit>
     </body>
   </file>
