@@ -120,7 +120,7 @@
         <source>Street address</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.hausnummer.1">
-        <source>Please enter the street address.</source>
+        <source>Please enter the house number.</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.plz.0">
         <source>Postal code</source>
