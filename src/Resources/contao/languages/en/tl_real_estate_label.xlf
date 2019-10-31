@@ -393,6 +393,9 @@
       <trans-unit id="tl_real_estate_label.energiepassJahrgang">
         <source>Year</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_label.energiepassBaujahr">
+        <source>Year of construction</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_label.energiepassMitwarmwasser">
         <source>Hot water included</source>
       </trans-unit>
