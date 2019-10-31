@@ -3824,11 +3824,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['energiepassJahrgang'],
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array(
-                'energie'  => true,
-                'order'    => 700
-            )
+            'sql'                       => "varchar(32) NOT NULL default ''"
         ),
         'energiepassGebaeudeart' => array
         (
