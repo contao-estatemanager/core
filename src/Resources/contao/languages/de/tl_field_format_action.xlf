@@ -121,8 +121,8 @@
         <target>Wandelt einen UNIX-Timestamp in ein leserliches Datums-Format um.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.0">
-        <source>first letter uppercase</source>
-        <target>Erster Buchstabe groß</target>
+        <source>ucfirst</source>
+        <target>ucfirst</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.1">
         <source>Converts the first character of a string to uppercase.</source>

@@ -93,7 +93,7 @@
         <source>Converts a UNIX timestamp to a readable date format.</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.0">
-        <source>first letter uppercase</source>
+        <source>ucfirst</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.1">
         <source>Converts the first character of a string to uppercase.</source>
