@@ -59,6 +59,7 @@
       background: #fff;
       width: 8px;
       padding: 2px;
+      overflow: hidden;
 
       + span.token {
         @for $i from 0 through 10 {

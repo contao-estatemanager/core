@@ -56,6 +56,7 @@
   background: #fff;
   width: 8px;
   padding: 2px;
+  overflow: hidden;
 }
 .tl_listing td.col_image span.token + span.token:nth-child(0) {
   right: -20px;
