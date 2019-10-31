@@ -4732,7 +4732,7 @@ class tl_real_estate extends Backend
         $args[1] .= '<div style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</div>';
 
         // translate date
-        $args[4] = date(\Config::get('datimFormat'), $args[5]);
+        $args[4] = date(\Config::get('datimFormat'), $args[4]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
         if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
