@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_filter.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_filter.title.0">
@@ -15,15 +14,15 @@
         <target>Filteralias</target>
       </trans-unit>
       <trans-unit id="tl_filter.alias.1">
-        <source>The form alias is a unique reference to the form which can be called instead of its numeric ID.</source>
+        <source>The filter alias is a unique reference which can be called instead of its numeric ID.</source>
         <target>Der Filteralias ist eine eindeutige Referenz, die anstelle der numerischen Form-ID aufgerufen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_filter.jumpTo.0">
-        <source>Redirect page</source>
+        <source>Forwarding page</source>
         <target>Weiterleitungsseite</target>
       </trans-unit>
       <trans-unit id="tl_filter.jumpTo.1">
-        <source>Please choose the page to which visitors will be redirected after submitting the filter.</source>
+        <source>Please choose the forwarding page to which visitors will be redirected after submitting the filter.</source>
         <target>Bitte wählen Sie die Seite aus, zu der Besucher nach dem Abschicken des Filters weitergeleitet werden.</target>
       </trans-unit>
       <trans-unit id="tl_filter.groups.0">
@@ -31,7 +30,7 @@
         <target>Immobilien-Gruppen</target>
       </trans-unit>
       <trans-unit id="tl_filter.groups.1">
-        <source>Here you can specify the real estate groups that are to be taken into account.</source>
+        <source>Here you can declare the real estate groups that are taken into account.</source>
         <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_filter.addBlankMarketingType.0">
@@ -39,7 +38,7 @@
         <target>Leere Vermarktungsart anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_filter.addBlankMarketingType.1">
-        <source>Display an empty option for marketing type on first position.</source>
+        <source>Displays an empty option for marketing type on first position.</source>
         <target>Eine leere Option für die Vermarktungsart an erster Stelle anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_filter.addBlankRealEstateType.0">
@@ -47,15 +46,15 @@
         <target>Leeren Immobilien-Typ anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_filter.addBlankRealEstateType.1">
-        <source>Display an empty option for real estate type on first position.</source>
+        <source>Displays an empty option for real estate type on first position.</source>
         <target>Eine leere Option für den Immobilien-Typ an erster Stelle anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.0">
-        <source>Change page when changing</source>
+        <source>Change page when modified</source>
         <target>Bei Änderung Seite wechseln</target>
       </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.1">
-        <source>The page changes when another type of property is selected.</source>
+        <source>The page will be changed if another type of property type is selected.</source>
         <target>Die Seite wird gewechselt, sobald ein anderer Immobilien-Typ ausgewählt wurde.</target>
       </trans-unit>
       <trans-unit id="tl_filter.toggleFilter.0">
@@ -63,7 +62,7 @@
         <target>Standardfilter</target>
       </trans-unit>
       <trans-unit id="tl_filter.toggleFilter.1">
-        <source>Default filters are displayed if no real estate type is selected.</source>
+        <source>Display default filters if no real estate type selected.</source>
         <target>Die Standardfilter werden angezeigt, wenn kein Immobilien-Typ ausgewählt ist.</target>
       </trans-unit>
       <trans-unit id="tl_filter.roomOptions.0">
@@ -71,7 +70,7 @@
         <target>Verfügbare Optionen: Zimmer</target>
       </trans-unit>
       <trans-unit id="tl_filter.roomOptions.1">
-        <source>Here you can enter a comma separated list of options that should be available for the number of rooms.</source>
+        <source>Here you can enter a comma-separated list of options that should be available for the number of rooms.</source>
         <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
       </trans-unit>
       <trans-unit id="tl_filter.customTpl.0">
@@ -95,16 +94,16 @@
         <target>HTML5-Validierung deaktivieren</target>
       </trans-unit>
       <trans-unit id="tl_filter.novalidate.1">
-        <source>Add the &lt;em&gt;novalidate&lt;/em&gt; attribute to the form tag.</source>
-        <target>Fügt dem Formular das &lt;em&gt;novalidate&lt;/em&gt;-Attribut hinzu.</target>
+        <source>Indicate that the form is not to be validated on submit.</source>
+        <target>Fügt dem Formular das &amp;lt;em&amp;gt;novalidate&amp;lt;/em&amp;gt;-Attribut hinzu.</target>
       </trans-unit>
       <trans-unit id="tl_filter.tstamp.0">
-        <source>Revision date</source>
+        <source>Modification date</source>
         <target>Änderungsdatum</target>
       </trans-unit>
       <trans-unit id="tl_filter.tstamp.1">
-        <source>Date and time of the latest revision</source>
-        <target>Datum und Uhrzeit der letzten Änderung</target>
+        <source>Date and time of latest modification</source>
+        <target>Datum und Uhrzeit der letzten Änderung.</target>
       </trans-unit>
 
       <trans-unit id="tl_filter.title_legend">
@@ -181,7 +180,7 @@
         <target>Filterdetails</target>
       </trans-unit>
       <trans-unit id="tl_filter.show.1">
-        <source>Show the details of filter ID %s</source>
+        <source>Show details of filter ID %s</source>
         <target>Die Details des Filters ID %s anzeigen</target>
       </trans-unit>
     </body>

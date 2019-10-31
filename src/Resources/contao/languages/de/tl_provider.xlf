@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_provider.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_provider.anbieternr.0">
@@ -39,7 +38,7 @@
         <target>Weiterleitungsmodus</target>
       </trans-unit>
       <trans-unit id="tl_provider.forwardingMode.1">
-        <source>Please enter the mode of e-mail forwarding.</source>
+        <source>Please specify the mode of e-mail forwarding.</source>
         <target>Bitte geben Sie den Modus der E-Mail Weiterleitung an.</target>
       </trans-unit>
       <trans-unit id="tl_provider.firma.0">
@@ -59,11 +58,11 @@
         <target>Bitte geben Sie die Postleitzahl ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.ort.0">
-        <source>City</source>
+        <source>City / District</source>
         <target>Ort</target>
       </trans-unit>
       <trans-unit id="tl_provider.ort.1">
-        <source>Plase enter the name of the city.</source>
+        <source>Plase enter the name of the city / district.</source>
         <target>Bitte geben Sie den Namen des Ortes ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.strasse.0">
@@ -79,12 +78,12 @@
         <target>Hausnummer</target>
       </trans-unit>
       <trans-unit id="tl_provider.hausnummer.1">
-        <source>Please enter the number.</source>
+        <source>Please enter the house number.</source>
         <target>Bitte geben Sie die Hausnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.bundesland.0">
         <source>State</source>
-        <target>Staat</target>
+        <target>BundeslandZusatz</target>
       </trans-unit>
       <trans-unit id="tl_provider.bundesland.1">
         <source>Plase enter the name of the state.</source>
@@ -127,7 +126,7 @@
         <target>Telefonnummer 2</target>
       </trans-unit>
       <trans-unit id="tl_provider.telefon2.1">
-        <source>An additional phone number field.</source>
+        <source>Another field for a phone number.</source>
         <target>Ein weiteres Feld für eine Telefonnummer.</target>
       </trans-unit>
       <trans-unit id="tl_provider.fax.0">
@@ -147,11 +146,11 @@
         <target>Bitte geben Sie eine gültige E-Mail-Adresse ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.homepage.0">
-        <source>Website</source>
+        <source>Homepage</source>
         <target>Homepage</target>
       </trans-unit>
       <trans-unit id="tl_provider.homepage.1">
-        <source>Please enter a website.</source>
+        <source>Please enter the URL of your homepage.</source>
         <target>Hier können Sie die URL zu Ihrer Homepage angeben.</target>
       </trans-unit>
       <trans-unit id="tl_provider.firmenanschrift.0">
@@ -167,15 +166,15 @@
         <target>Vertretungsberechtigter</target>
       </trans-unit>
       <trans-unit id="tl_provider.vertretungsberechtigter.1">
-        <source>Please indicate the authorised representative.</source>
-        <target>Bitte geben Sie den Vertretungsberechtigter ein.</target>
+        <source>Please indicate the authorized representative.</source>
+        <target>Bitte geben Sie den Vertretungsberechtigten ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.berufsaufsichtsbehoerde.0">
-        <source>Professional supervisory authority</source>
+        <source>Occupation authority</source>
         <target>Berufsaufsichtsbehörde</target>
       </trans-unit>
       <trans-unit id="tl_provider.berufsaufsichtsbehoerde.1">
-        <source>Please enter the professional supervisory authority.</source>
+        <source>Please enter the occupation authority.</source>
         <target>Bitte geben Sie die Berufsaufsichtsbehörde ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.handelsregister.0">
@@ -211,19 +210,19 @@
         <target>Bitte geben Sie die Steuernummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_provider.weiteres.0">
-        <source>Further information</source>
+        <source>Further details</source>
         <target>Weitere Angaben</target>
       </trans-unit>
       <trans-unit id="tl_provider.weiteres.1">
-        <source>Here you can enter further information.</source>
+        <source>Here you can enter further details.</source>
         <target>Hier können Sie weitere Angaben eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum.0">
-        <source>Imprint</source>
+        <source>Imprint – Legal Disclosure</source>
         <target>Impressum</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum.1">
-        <source>Here you can optionally enter the impress as free text.</source>
+        <source>Here you can optionally enter Imprint / legal disclosure as free text.</source>
         <target>Hier können Sie optional das Impressum als Freitext angeben.</target>
       </trans-unit>
       <trans-unit id="tl_provider.beschreibung.0">
@@ -247,7 +246,7 @@
         <target>Allgemein</target>
       </trans-unit>
       <trans-unit id="tl_provider.config_legend">
-        <source>Forwarding</source>
+        <source>Redirecting</source>
         <target>Weiterleitung</target>
       </trans-unit>
       <trans-unit id="tl_provider.image_legend">
@@ -263,15 +262,15 @@
         <target>Adressdaten</target>
       </trans-unit>
       <trans-unit id="tl_provider.address_text_legend">
-        <source>Address text</source>
+        <source>Address - free text</source>
         <target>Adresse Freitext</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum_legend">
-        <source>Imprint</source>
+        <source>Imprint – Legal Disclosure</source>
         <target>Impressum</target>
       </trans-unit>
       <trans-unit id="tl_provider.impressum_text_legend">
-        <source>Imprint text</source>
+        <source>Imprint / legal disclosure - free text</source>
         <target>Impressum Freitext</target>
       </trans-unit>
       <trans-unit id="tl_provider.published_legend">
@@ -284,7 +283,7 @@
       </trans-unit>
       <trans-unit id="tl_provider.new.1">
         <source>Create a new provider</source>
-        <target>Einen neue Anbieter erstellen</target>
+        <target>Einen neuen Anbieter erstellen</target>
       </trans-unit>
       <trans-unit id="tl_provider.editheader.0">
         <source>Edit provider</source>

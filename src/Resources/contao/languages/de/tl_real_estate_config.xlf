@@ -1,5 +1,4 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_config.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_config.real_estate_list_legend">
@@ -7,7 +6,7 @@
         <target>Listen / Darstellung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.number_legend">
-        <source>Price/area formatting</source>
+        <source>Price / Area formatting</source>
         <target>Preis- / Flächenformatierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config_legend">
@@ -20,55 +19,55 @@
         <target>Dezimal-Trennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.0">
-        <source>Thousand separators</source>
+        <source>Thousands separator</source>
         <target>Tausender-Trennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.0">
-        <source>Default number of main details</source>
+        <source>Max number of main details</source>
         <target>Max. Anzahl der Main-Details</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.1">
-        <source>Specifies how many Main details are displayed in lists within a property.</source>
-        <target>Gibt an wie viele Main-Details in Listen innerhalb einer Immobilie ausgegeben werden</target>
+        <source>Specifies how many main details are being displayed in lists within a real estate.</source>
+        <target>Gibt an wie viele Main-Details in Listen innerhalb einer Immobilie ausgegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.0">
-        <source>Default number of main attributes</source>
+        <source>Max number of main attributes</source>
         <target>Max. Anzahl der Main-Attribute</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.1">
-        <source>Specifies how many main attributes are displayed in lists within a property.</source>
-        <target>Gibt an wie viele Main-Attribute in Listen innerhalb einer Immobilie ausgegeben werden</target>
+        <source>Specifies how many main attributes are being displayed in lists within a real estate.</source>
+        <target>Gibt an wie viele Main-Attribute in Listen innerhalb einer Immobilie ausgegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.0">
-        <source>Display duration for status token "new"</source>
-        <target>Anzeigedauer des "Neu" Status-Token</target>
+        <source>Display duration for status token: &quot;New&quot;</source>
+        <target>Anzeigedauer des &quot;Neu&quot; Status-Token</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.1">
-        <source>Specify here how long the status token "New" is to be displayed for new properties</source>
-        <target>Geben Sie hier an, wie lange der Status-Token "Neu" für neue Immobilien angezeigt werden soll</target>
+        <source>Here you can specify how long the status token &quot;new&quot; will be displayed for new real estate.</source>
+        <target>Geben Sie hier an, wie lange der Status-Token &quot;Neu&quot; für neue Immobilien angezeigt werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.0">
         <source>Default sorting</source>
         <target>Standard Sortierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.1">
-        <source>Specify here which sort sequence is to be observed in the standard system.</source>
-        <target>Geben Sie hier an, welche Sortierreihenfolge im Standard beachtet werden soll</target>
+        <source>Here you can specify which sort order will be considered for the default system.</source>
+        <target>Geben Sie hier an, welche Sortierreihenfolge im Standard beachtet werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultImage.0">
         <source>Default image</source>
         <target>Standard-Bild</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultImage.1">
-        <source>Select here the default image which will be displayed if properties do not contain images</source>
-        <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten</target>
+        <source>Select the default image which will be displayed incase real estate do not contain images.</source>
+        <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">
         <source>Available options: Rooms</source>
         <target>Verfügbare Optionen: Zimmer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.1">
-        <source>Here you can enter a comma separated list of options that should be available for the number of rooms.</source>
+        <source>Here you can enter a comma separated list of options which should be available for the number of rooms.</source>
         <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
       </trans-unit>
     </body>

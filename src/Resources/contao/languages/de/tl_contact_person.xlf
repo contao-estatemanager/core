@@ -1,14 +1,13 @@
-<?xml version="1.0" ?>
-<xliff version="1.1">
+<?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_contact_person.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_contact_person.anrede.0">
-        <source>Salutation</source>
-        <target>Anrede</target>
+        <source>Prefix</source>
+        <target>Anrede</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede.1">
-        <source>Please enter a salutation.</source>
-        <target>Bitte geben Sie eine Anrede ein.</target>
+        <source>Please enter a prefix.</source>
+        <target>Bitte geben Sie eine Anrede ein.</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.firma.0">
         <source>Company</source>
@@ -27,11 +26,11 @@
         <target>Bitte geben Sie den Vornamen ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.name.0">
-        <source>Last name</source>
+        <source>Surname</source>
         <target>Nachname</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.name.1">
-        <source>Please enter the last name.</source>
+        <source>Please enter the surname.</source>
         <target>Bitte geben Sie den Nachnamen ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.titel.0">
@@ -43,43 +42,43 @@
         <target>Bitte geben Sie den Titel ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.position.0">
-        <source>Position</source>
-        <target>Position</target>
+        <source>Job title</source>
+        <target>Position</target> <!-- Position -->
       </trans-unit>
       <trans-unit id="tl_contact_person.position.1">
-        <source>Please enter the position.</source>
-        <target>Bitte geben Sie die Position ein.</target>
+        <source>Please enter the job title.</source>
+        <target>Bitte geben Sie die Position ein.</target> <!-- Position -->
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede_brief.0">
-        <source>Letter salutation</source>
+        <source>Salutation</source>
         <target>Briefanrede</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede_brief.1">
-        <source>Please enter the letter salutation.</source>
+        <source>Please enter the salutation.</source>
         <target>Bitte geben Sie die Briefanrede ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_zentrale.0">
-        <source>E-Mail (central)</source>
+        <source>E-Mail (Headquarters)</source>
         <target>E-Mail (Zentrale)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_zentrale.1">
-        <source>Please enter the mail address (central).</source>
+        <source>Please enter the email address (Headquarters).</source>
         <target>Bitte geben Sie die E-Mail Adresse (Zentrale) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_direkt.0">
-        <source>E-Mail (Direct)</source>
+        <source>E-Mail (corporate)</source>
         <target>E-Mail (Direkt)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_direkt.1">
-        <source>Please enter the mail address (Central).</source>
+        <source>Please enter the email address (corporate).</source>
         <target>Bitte geben Sie die E-Mail Adresse (Direkt) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.0">
-        <source>E-Mail (private)</source>
+        <source>E-Mail (personal)</source>
         <target>E-Mail (Privat)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.1">
-        <source>Please enter the mail address (private).</source>
+        <source>Please enter the email address (personal).</source>
         <target>Bitte geben Sie die E-Mail Adresse (Privat) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.0">
@@ -87,7 +86,7 @@
         <target>E-Mail (Sonstige)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.1">
-        <source>Please enter the mail address (other).</source>
+        <source>Please enter the email address (other).</source>
         <target>Bitte geben Sie die E-Mail Adresse (Sonstige) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.0">
@@ -95,15 +94,15 @@
         <target>E-Mail (Feedback)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.1">
-        <source>Please enter the mail address (feedback).</source>
+        <source>Please enter the email address (feedback).</source>
         <target>Bitte geben Sie die E-Mail Adresse (Feedback) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_zentrale.0">
-        <source>Phone number (central)</source>
+        <source>Phone number (Headquarters)</source>
         <target>Telefonnummer (Zentrale)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_zentrale.1">
-        <source>Please enter the phone number (central).</source>
+        <source>Please enter the phone number (Headquarters).</source>
         <target>Bitte geben Sie die Telefonnummer (Zentrale) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_durchw.0">
@@ -115,7 +114,7 @@
         <target>Bitte geben Sie die Telefonnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_fax.0">
-        <source>Fax number</source>
+        <source>Fax</source>
         <target>Faxnummer</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_fax.1">
@@ -123,19 +122,19 @@
         <target>Bitte geben Sie die Faxnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_handy.0">
-        <source>Mobile number</source>
+        <source>Mobile phone number</source>
         <target>Mobiltelefonnummer</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_handy.1">
-        <source>Please enter the mobile number.</source>
+        <source>Please enter the mobile phone number.</source>
         <target>Bitte geben Sie die Mobiltelefonnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_privat.0">
-        <source>Phone number (private)</source>
+        <source>Phone number (personal)</source>
         <target>Telefonnummer (Privat)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_privat.1">
-        <source>Please enter the phone number (private).</source>
+        <source>Please enter the phone number (personal).</source>
         <target>Bitte geben Sie die Telefonnummer (Privat) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_sonstige.0">
@@ -155,11 +154,11 @@
         <target>Bitte geben Sie den Straßennamen ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.hausnummer.0">
-        <source>House number</source>
+        <source>Street address</source>
         <target>Hausnummer</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.hausnummer.1">
-        <source>Please enter the number.</source>
+        <source>Please enter the house number.</source>
         <target>Bitte geben Sie die Hausnummer ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.plz.0">
@@ -171,11 +170,11 @@
         <target>Bitte geben Sie die Postleitzahl ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.ort.0">
-        <source>City</source>
+        <source>City / District</source>
         <target>Ort</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.ort.1">
-        <source>Plase enter the name of the city.</source>
+        <source>Plase enter the name of the City / District.</source>
         <target>Bitte geben Sie den Namen des Ortes ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.land.0">
@@ -191,15 +190,15 @@
         <target>Zusatzfeld</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.zusatzfeld.1">
-        <source>Here you can enter an additional address detail.</source>
+        <source>Enter additional address details in here</source>
         <target>Hier können Sie eine zusätzliche Adressangabe eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.freitextfeld.0">
-        <source>Address (free text)</source>
+        <source>Address (free-text)</source>
         <target>Anschrift (Freitext)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.freitextfeld.1">
-        <source>Here you can optionally enter the address as free text.</source>
+        <source>Optional entry for your address as free-form text</source>
         <target>Hier können Sie optional die Adresse als Freitext angeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.0">
@@ -207,47 +206,47 @@
         <target>Adressfreigabe</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.1">
-        <source>Here you can specify if the address of the contact person should be displayed.</source>
+        <source>Here you can specify if the contact person's address should be displayed.</source>
         <target>Hier können Sie angeben, ob die Adresse des Ansprechpartners freigegeben werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.0">
-        <source>Contact person picture</source>
+        <source>Picture of the contact person</source>
         <target>Bild des Ansprechpartners</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.1">
-        <source>Here you can enter the picture of the contact person.</source>
+        <source>Here you can choose / enter the picture of the contact person.</source>
         <target>Hier können Sie das Bild des Ansprechpartners angeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.0">
-        <source>Post box</source>
+        <source>Post office box</source>
         <target>Postfach</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.1">
-        <source>Here you can enter the post box.</source>
+        <source>Here you can enter the post office box.</source>
         <target>Hier können Sie das Postfach eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_plz.0">
-        <source>Post box (postal)</source>
+        <source>Post office box (postal code)</source>
         <target>Postfach (PLZ)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_plz.1">
-        <source>Here you can enter the post box postal.</source>
+        <source>Here you can enter the postal code for the post office box.</source>
         <target>Hier können Sie die Postfach PLZ eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_ort.0">
-        <source>Post box (city)</source>
+        <source>Post office box (city)</source>
         <target>Postfach (Ort)</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_ort.1">
-        <source>Here you can enter the post box city.</source>
+        <source>Here you can enter the city of the post office box</source>
         <target>Hier können Sie den Ort des Postfachs eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.personennummer.0">
-        <source>Personal number</source>
+        <source>Personal identification number</source>
         <target>Personennummer</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.personennummer.1">
-        <source>Here you can enter the personal number.</source>
+        <source>Here you can enter the personal identification number.</source>
         <target>Hier können Sie die Personennummer eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.immobilientreuhaenderid.0">
@@ -275,11 +274,11 @@
         <target>Adressdaten</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.image_legend">
-        <source>Imgae</source>
+        <source>Image</source>
         <target>Bild</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.extended_legend">
-        <source>Extended details</source>
+        <source>Additional details</source>
         <target>Weitere Details</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.published_legend">
