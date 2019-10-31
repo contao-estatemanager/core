@@ -81,10 +81,10 @@
         <source>Here you must specify a contact person who will be assigned properties for rent.</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.0">
-        <source>Contact person - Long lease real estate</source>
+        <source>Contact person - Hereditary lease real estate</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonErbpacht.1">
-        <source>Here you must specify a contact person who will be assigned long lease real estate.</source>
+        <source>Here you must specify a contact person who will be assigned to hereditary lease real estate.</source>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonLeasing.0">
         <source>Contact person - Leasing real estate</source>

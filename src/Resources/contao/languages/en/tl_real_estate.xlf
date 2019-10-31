@@ -1096,7 +1096,7 @@
         <source>Underground garage purchase price</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.stpTiefgarageKaufpreis.1">
-        <source>Please specify the undergrounf garage purchase price.</source>
+        <source>Please specify the underground garage purchase price.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstige.0">
         <source>Amount of other parking spaces</source>
@@ -1174,7 +1174,7 @@
       <trans-unit id="tl_real_estate.ausrichtBalkonTerrasse.0">
         <source>Orientation of balcony / terrace</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate.fahrstuhlart.1">
+      <trans-unit id="tl_real_estate.ausrichtBalkonTerrasse.1">
         <source>Please select the orientation of the balcony/terrace</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.moebliert.0">
@@ -1481,10 +1481,10 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate.titleImageSRC.0">
-        <source>Cover photo</source>
+        <source>Cover picture</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.titleImageSRC.1">
-        <source>Here you can select a cover photo for the real estate.</source>
+        <source>Here you can select a cover picture for the real estate.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.imageSRC.0">
         <source>Pictures</source>
@@ -1615,7 +1615,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate.anzahlZimmer.0">
-        <source>Number of rooms.</source>
+        <source>Number of rooms</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.anzahlZimmer.1">
         <source>Here you can enter the total number of rooms.</source>

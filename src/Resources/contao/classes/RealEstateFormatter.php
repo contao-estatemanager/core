@@ -197,6 +197,7 @@ class RealEstateFormatter
 
         return array(
             'value' => $val,
+            'raw'   => $this->objRealEstate->{$field},
             'label' => Translator::translateLabel($field),
             'key'   => $field,
             'class' => $this->getClass($field)

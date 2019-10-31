@@ -725,6 +725,14 @@ return array
     ),
     array
     (
+        'field' => array('energiepassBaujahr', '', '', NULL, '1'),
+        'actions' => array
+        (
+            array('custom', '', '', '', '', NULL, 're_ac_openimmo_energiepass_baujahr')
+        )
+    ),
+    array
+    (
         'field' => array('nettorendite', '', '', NULL),
         'actions' => array
         (

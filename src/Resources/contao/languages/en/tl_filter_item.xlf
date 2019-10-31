@@ -67,7 +67,7 @@
         <source>Field label</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.label.1">
-        <source>The field label is displayed on the website, generally in front of or above the field.</source>
+        <source>The field label is displayed on the website, generally left of or above the field.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.slabel.0">
         <source>Button label</source>

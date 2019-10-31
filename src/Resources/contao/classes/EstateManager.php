@@ -215,4 +215,40 @@ class EstateManager
 
         return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
     }
+
+    /**
+     * Replace InsertTags
+     *
+     * @param $strTag
+     *
+     * @return bool|string
+     */
+    public function onReplaceInsertTags($strTag)
+    {
+        $arrSplit = explode('::', $strTag);
+
+        if ($arrSplit[0] != 'realestate' && $arrSplit[0] != 'cache_realestate')
+        {
+            return false;
+        }
+
+        if(is_numeric($arrSplit[1]))
+        {
+            $objRealEstate = RealEstateModel::findPublishedByIdOrAlias($arrSplit[1]);
+            $arrSplit[1] = $arrSplit[2];
+        }
+        elseif(\Input::get('items'))
+        {
+            // ToDo: Get estate data from filter session
+            $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+        }
+
+        if($objRealEstate !== null && isset($arrSplit[1]))
+        {
+            $realEstate = new RealEstate($objRealEstate, null);
+            return $realEstate->{$arrSplit[1]};
+        }
+
+        return false;
+    }
 }

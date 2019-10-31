@@ -161,6 +161,7 @@ $GLOBALS['TL_RAM'] = array
 
 // Hooks
 $GLOBALS['TL_HOOKS']['prepareFormData'][] = array('\\ContaoEstateManager\\RealEstateInquiry', 'attachFile');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\\ContaoEstateManager\\EstateManager', 'onReplaceInsertTags');
 
 // Cron jobs
 $GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\RealEstateCronImporter', 'run');
