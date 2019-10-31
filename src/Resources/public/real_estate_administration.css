@@ -40,6 +40,98 @@
   border: 0 none;
   background: transparent;
 }
+.tl_listing td.col_image {
+  position: relative;
+}
+.tl_listing td.col_image span.token {
+  position: absolute;
+  display: block;
+  bottom: 11px;
+  right: 11px;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+  background: #fff;
+  width: 8px;
+  padding: 2px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(0) {
+  right: -20px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(1) {
+  right: -4px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(2) {
+  right: 12px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(3) {
+  right: 28px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(4) {
+  right: 44px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(5) {
+  right: 60px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(6) {
+  right: 76px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(7) {
+  right: 92px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(8) {
+  right: 108px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(9) {
+  right: 124px;
+}
+.tl_listing td.col_image span.token + span.token:nth-child(10) {
+  right: 140px;
+}
+.tl_listing .object-information {
+  display: flex;
+  font-size: 12px;
+  border: 1px solid #e9e9e9;
+  background: #f3f3f5;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.tl_listing .object-information .image {
+  width: 118px;
+  margin-right: 10px;
+}
+.tl_listing .object-information .info {
+  display: table;
+  width: 100%;
+  min-width: 140px;
+  margin-bottom: 22px;
+}
+.tl_listing .object-information .info > div {
+  display: table-row;
+}
+.tl_listing .object-information .info > div > span {
+  display: table-cell;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-top: 1px solid #e3e3e3;
+}
+.tl_listing .object-information .info > div > span:first-child {
+  font-weight: 600;
+  padding-right: 4px;
+  color: #8c8c8c;
+  width: 42px;
+}
+.tl_listing .object-information .info > div:first-child > span {
+  padding-top: 0;
+  border-top: 0 none;
+}
+.tl_listing .object-information:after {
+  display: block;
+  content: "";
+  clear: both;
+}
 
 .widget.validLicense label:not(.error):after {
   display: inline-block;
