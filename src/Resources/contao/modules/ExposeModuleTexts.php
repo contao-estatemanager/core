@@ -43,7 +43,9 @@ class ExposeModuleTexts extends ExposeModule
             return $objTemplate->parse();
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+
+        return $this->isEmpty ? '' : $strBuffer;
     }
 
     /**
@@ -59,10 +61,20 @@ class ExposeModuleTexts extends ExposeModule
 
         foreach ($arrTexts as $field => $text)
         {
+            if(!$text['value']){
+                continue;
+            }
+
             $arrCollection[] = array(
                 'label' => Translator::translateExpose('headline_' . $field),
                 'text'  => $text
             );
+        }
+
+        if($this->hideOnEmpty && !count($arrCollection))
+        {
+            $this->isEmpty = true;
+            return '';
         }
 
         $this->Template->texts = $arrCollection;
