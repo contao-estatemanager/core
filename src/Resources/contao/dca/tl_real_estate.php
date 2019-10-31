@@ -4714,7 +4714,7 @@ class tl_real_estate extends Backend
             $objFile = \FilesModel::findByUuid(\Config::get('defaultImage'));
         }
 
-        if ($objFile !== null)
+        if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
         {
             // add preview image
             $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
