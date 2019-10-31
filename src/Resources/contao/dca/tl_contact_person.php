@@ -243,48 +243,48 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_zentrale'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_durchw' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_durchw'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_fax' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_fax'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_handy' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_handy'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_privat' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_privat'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_sonstige' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_sonstige'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'strasse' => array
         (
