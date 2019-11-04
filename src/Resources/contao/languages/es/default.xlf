@@ -1,0 +1,44 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-language="es">
+    <body>
+      <trans-unit id="CTE.realEstateFilter.0">
+        <source>Filter</source>
+        <target>Filtro</target>
+      </trans-unit>
+      <trans-unit id="CTE.realEstateFilter.1">
+        <source>Inserts a real estate filter.</source>
+        <target>Inserta un filtro inmobiliario.</target>
+      </trans-unit>
+
+      <trans-unit id="MSC.noRealEstateResults">
+        <source>No matching offers found.</source>
+        <target>No se han encontrado ofertas coincidentes.</target>
+      </trans-unit>
+      <trans-unit id="MSC.noUniqueRealEstateResult">
+        <source>No offers found matching the given property number %s.</source>
+        <target>No offers found matching the given property number %s.</target>
+      </trans-unit>
+      <trans-unit id="MSC.administration">
+        <source>Real estate management</source>
+        <target>Gestión inmobiliaria</target>
+      </trans-unit>
+      <trans-unit id="MSC.estatemanager_description">
+        <source>The EstateManager is a product of %s</source>
+        <target>El EstateManager es un producto de %s</target>
+      </trans-unit>
+      <trans-unit id="MSC.estatemanager_company">
+        <source>Oveleon</source>
+        <target>Oveleon</target>
+      </trans-unit>
+
+      <trans-unit id="COLS.contentTop">
+        <source>Above content area</source>
+        <target>Área de contenido anterior</target>
+      </trans-unit>
+      <trans-unit id="COLS.contentBottom">
+        <source>Below content area</source>
+        <target>Debajo del área de contenido</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

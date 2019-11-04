@@ -208,7 +208,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen_two_weeks">
         <source>After two weeks</source>
-        <target>Nach zwei Tagen</target>
+        <target>Nach zwei Wochen</target>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen_month">
         <source>After one month</source>

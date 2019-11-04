@@ -512,7 +512,7 @@ class RealEstateImporter extends \BackendModule
 
                 $this->objInterfaceMapping->reset();
 
-                if ($this->objInterface->skipRecords)
+                if ($this->objInterface->skipRecords && $re['AKTIONART'] !== 'DELETE')
                 {
                     $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
                     $skip = false;
@@ -588,45 +588,48 @@ class RealEstateImporter extends \BackendModule
                     $objProvider = ProviderModel::findOneByAnbieternr($realEstateRecords[$i]['ANBIETER']);
                 }
 
-                list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson, $objProvider);
-
-                $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
-
-                // Skip if no contact person found and not allowed to create
-                if (!$allowCreate && !$exists)
+                if ($realEstateRecords[$i]['AKTIONART'] !== 'DELETE')
                 {
-                    $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
-                    continue;
-                }
+                    list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson, $objProvider);
 
-                if (!$exists)
-                {
-                    // Create new contact person
-                    $objContactPerson = new ContactPersonModel();
-                    $objContactPerson->setRow($contactPerson);
-                    $objContactPerson->pid = $objProvider->id;
-                    $objContactPerson->published = 1;
-                    $objContactPerson->save();
+                    $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
 
-                    $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
-                }
-                else
-                {
-                    // Find contact person
-                    $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
-                }
-
-                if ($allowUpdate)
-                {
-                    // Update contact person
-                    foreach ($contactPerson as $field => $value)
+                    // Skip if no contact person found and not allowed to create
+                    if (!$allowCreate && !$exists)
                     {
-                        $objContactPerson->{$field} = $value;
+                        $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
+                        continue;
                     }
 
-                    $objContactPerson->save();
+                    if (!$exists)
+                    {
+                        // Create new contact person
+                        $objContactPerson = new ContactPersonModel();
+                        $objContactPerson->setRow($contactPerson);
+                        $objContactPerson->pid = $objProvider->id;
+                        $objContactPerson->published = 1;
+                        $objContactPerson->save();
 
-                    $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                        $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                    }
+                    else
+                    {
+                        // Find contact person
+                        $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
+                    }
+
+                    if ($allowUpdate)
+                    {
+                        // Update contact person
+                        foreach ($contactPerson as $field => $value)
+                        {
+                            $objContactPerson->{$field} = $value;
+                        }
+
+                        $objContactPerson->save();
+
+                        $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                    }
                 }
             }
 
