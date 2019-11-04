@@ -112,6 +112,12 @@
       <trans-unit id="tl_expose_module.forceFullAddress.1">
         <source>The complete address will be enforced, regardless of whether it is released or not.</source>
       </trans-unit>
+      <trans-unit id="tl_expose_module.useProviderForwarding.0">
+        <source>Use provider forwarding</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.useProviderForwarding.1">
+        <source>Use the forwarding mode stored in the provider. If you use this function, the telephone number (Headquarters) and e-mail (Headquarters) are overwritten if necessary.</source>
+      </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
         <source>Gallery Modules</source>
       </trans-unit>
