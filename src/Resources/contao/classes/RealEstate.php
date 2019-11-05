@@ -726,17 +726,17 @@ class RealEstate extends \System
     }
 
     /**
-     * Return data of the assigned person
+     * Return data of the assigned contact person
      *
      * @param bool $forceCompleteAddress
+     * @param bool $useProviderForwarding
      *
      * @return null
      */
-    public function getContactPerson($forceCompleteAddress=false)
+    public function getContactPerson($forceCompleteAddress=false, $useProviderForwarding=false)
     {
         // ToDo: Fehler nach löschen einer noch zugewiesenen Kontaktperson (getRelated)
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
-        $objProvider = $objContactPerson->getRelated('pid');
 
         if($objContactPerson === null)
         {
@@ -745,8 +745,7 @@ class RealEstate extends \System
 
         $contactPerson = $objContactPerson->row();
 
-        $contactPerson['kontaktname'] = $objContactPerson->vorname . ' ' . $objContactPerson->name;
-
+        # Remove address fields
         if(!$objContactPerson->adressfreigabe && $forceCompleteAddress === false)
         {
             $arrAddressFields = array('strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld');
@@ -757,28 +756,21 @@ class RealEstate extends \System
             }
         }
 
-        if($objProvider->forwardingMode === 'provider') {
-            $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
-            $contactPerson['email'] = $objContactPerson->email_zentrale;
-        }
-        else
+        if($useProviderForwarding)
         {
-            if($objContactPerson->email_direkt)
+            $objProvider = $objContactPerson->getRelated('pid');
+        }
+
+        if($useProviderForwarding && $objProvider->forwardingMode === 'provider') {
+
+            if($objProvider->telefon)
             {
-                $contactPerson['email'] = $objContactPerson->email_direkt;
-            }
-            else
-            {
-                $contactPerson['email'] = $objContactPerson->email_zentrale;
+                $contactPerson['tel_zentrale'] = $objProvider->telefon;
             }
 
-            if($objContactPerson->tel_durchw)
+            if($objProvider->email)
             {
-                $contactPerson['telefon'] = $objContactPerson->tel_durchw;
-            }
-            else
-            {
-                $contactPerson['telefon'] = $objContactPerson->tel_zentrale;
+                $contactPerson['email_zentrale'] = $objProvider->email;
             }
         }
 

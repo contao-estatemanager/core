@@ -53,11 +53,12 @@ class ExposeModuleTexts extends ExposeModule
      */
     protected function compile()
     {
+        $arrCollection = array();
+        $this->Template->texts = array();
+
         $arrBlocks = \StringUtil::deserialize($this->textBlocks);
 
         $arrTexts = $this->realEstate->getTexts($arrBlocks, $this->maxTextLength);
-
-        $arrCollection = array();
 
         foreach ($arrTexts as $field => $text)
         {
