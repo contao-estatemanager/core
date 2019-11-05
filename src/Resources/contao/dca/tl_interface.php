@@ -110,6 +110,12 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_provider']['log'],
                 'href'                => 'table=tl_interface_log',
                 'icon'                => 'changelog.svg',
+            ),
+            'clear' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['clear'],
+                'href'                => 'key=clearRealEstates',
+                'icon'                => 'rows.svg',
             )
         )
     ),
