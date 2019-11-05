@@ -2290,7 +2290,6 @@
         <source>Here you can enter when the property should be divided.</source>
         <target>Hier können Sie angeben, wann die Immobilie aufgeteilt werden soll.</target>
       </trans-unit>
-
       <trans-unit id="tl_real_estate.verkaufstatus.0">
         <source>Sales status</source>
         <target>Verkaufsstatus</target>
@@ -2299,11 +2298,14 @@
         <source>Here you can choose the sales status of your real estate.</source>
         <target>Hier können Sie den Verkaufsstatus Ihrer Immobilie auswählen.</target>
       </trans-unit>
-
-
-
-
-
+      <trans-unit id="tl_real_estate.sprache.0">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.sprache.1">
+        <source>Here you can enter the language of your real estate.</source>
+        <target>Hier können Sie Sprache Ihrer Immobilie definieren.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
