@@ -251,4 +251,60 @@ class EstateManager
 
         return false;
     }
+
+    public function clearRealEstates()
+    {
+        $objInterface = InterfaceModel::findByPk(\Input::get('id'));
+
+        if ($objInterface === null)
+        {
+            return;
+        }
+
+        $objRealEstates = RealEstateModel::findAll();
+
+        if ($objRealEstates === null)
+        {
+            return;
+        }
+
+        $arrUnique = array();
+
+        while ($objRealEstates->next())
+        {
+            $arrUnique[] = $objRealEstates->objektnrIntern;
+        }
+
+        $filesHandler = \Files::getInstance();
+
+        $objFilesPath = \FilesModel::findByUuid($objInterface->filesPath);
+
+        $arrProviderFolder = scandir(TL_ROOT . '/' . $objFilesPath->path);
+
+        foreach ($arrProviderFolder as $providerFolder)
+        {
+            if ($providerFolder === '.' || $providerFolder === '..')
+            {
+                continue;
+            }
+
+            $arrRealEstateFolder = scandir(TL_ROOT . '/' . $objFilesPath->path . '/' . $providerFolder);
+
+            foreach ($arrRealEstateFolder as $realEstateFolder)
+            {
+                if ($realEstateFolder === '.' || $realEstateFolder === '..')
+                {
+                    continue;
+                }
+
+                if (!in_array($realEstateFolder, $arrUnique))
+                {
+                    $deleteFolder = $objFilesPath->path . '/' . $providerFolder . '/' . $realEstateFolder;
+
+                    $filesHandler->rrdir($deleteFolder);
+                    \Dbafs::deleteResource($deleteFolder);
+                }
+            }
+        }
+    }
 }
