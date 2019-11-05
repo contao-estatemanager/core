@@ -233,6 +233,12 @@
       <trans-unit id="tl_interface.sync.1">
         <source>Synchronize interface ID %s</source>
       </trans-unit>
+      <trans-unit id="tl_interface.clear.0">
+        <source>Clear records</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.clear.1">
+        <source>Clears files of real estate records that do not exist in the database.</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
