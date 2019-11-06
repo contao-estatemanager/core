@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('title', 'type', 'lastSync'),
+            'fields'                  => array('type', 'title', 'lastSync'),
             'flag'                    => 1,
             'panelLayout'             => 'filter;search,limit'
         ),
@@ -72,20 +72,18 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'icon'                => 'header.svg',
                 'button_callback'     => array('tl_interface', 'editHeader')
             ),
+            'sync' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
+                'href'                => 'key=syncRealEstates',
+                'icon'                => 'sync.svg'
+            ),
             'copy' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_interface', 'copyInterface')
-            ),
-            'delete' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_interface', 'deleteInterface')
             ),
             'show' => array
             (
@@ -97,25 +95,28 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['history'],
                 'href'                => 'table=tl_interface_history',
-                'icon'                => 'show.svg'
-            ),
-            'sync' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
-                'href'                => 'key=syncRealEstates',
-                'icon'                => 'sync.svg'
+                'icon'                => 'bundles/estatemanager/icons/history.svg'
             ),
             'log' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['log'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['log'],
                 'href'                => 'table=tl_interface_log',
-                'icon'                => 'changelog.svg',
+                'icon'                => 'bundles/estatemanager/icons/log.svg'
             ),
-            'clear' => array
+            'cleardata' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['clear'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['cleardata'],
                 'href'                => 'key=clearRealEstates',
-                'icon'                => 'rows.svg',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'icon'                => 'bundles/estatemanager/icons/clear.svg'
+            ),
+            'delete' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
+                'href'                => 'act=delete',
+                'icon'                => 'delete.svg',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'button_callback'     => array('tl_interface', 'deleteInterface')
             )
         )
     ),

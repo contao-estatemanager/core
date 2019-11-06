@@ -308,11 +308,11 @@
         <source>Synchronize interface ID %s</source>
         <target>Schnittstelle ID %s synchronisieren</target>
       </trans-unit>
-      <trans-unit id="tl_interface.clear.0">
+      <trans-unit id="tl_interface.cleardata.0">
         <source>Clear records</source>
         <target>Datensätze aufräumen</target>
       </trans-unit>
-      <trans-unit id="tl_interface.clear.1">
+      <trans-unit id="tl_interface.cleardata.1">
         <source>Clears files of real estate records that do not exist in the database.</source>
         <target>Löscht Dateien von Immobilien-Datensätzen, die nicht in der Datenbank vorhanden sind.</target>
       </trans-unit>
