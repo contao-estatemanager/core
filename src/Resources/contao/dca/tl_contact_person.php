@@ -8,7 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 $GLOBALS['TL_DCA']['tl_contact_person'] = array
 (
 
@@ -419,7 +418,11 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
+
+use ContaoEstateManager\RealEstateModel;
+
 class tl_contact_person extends Backend
 {
 
@@ -530,7 +533,8 @@ class tl_contact_person extends Backend
      */
     public function deleteContactPerson($row, $href, $label, $title, $icon, $attributes)
     {
-        return $this->User->hasAccess('delete', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        $hasRealEstate = RealEstateModel::countByContactPerson($row['id']);
+        return $this->User->hasAccess('delete', 'contactperson') && !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
