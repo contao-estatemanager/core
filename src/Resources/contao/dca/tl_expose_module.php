@@ -103,9 +103,9 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'mainArea'                    => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'statusToken'                 => '{title_legend},name,headline,type;{settings_legend},statusTokens;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'marketingToken'              => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings,hideOnEmpty;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'fieldList'                   => '{title_legend},name,headline,type;{settings_legend},fields;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress,useProviderForwarding;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form,hideOnReferences;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -224,6 +224,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
         ),
         'galleryModules' => array
@@ -386,10 +387,19 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['contactFields'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
-            'options'                 => array('foto', 'kontaktname', 'strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld', 'email', 'telefon'),
+            'options'                 => array('personennummer', 'anrede', 'firma', 'vorname', 'name', 'titel', 'position', 'email_zentrale', 'email_direkt', 'email_privat', 'email_sonstige', 'email_feedback', 'tel_zentrale', 'tel_durchw', 'tel_fax', 'tel_handy', 'tel_privat', 'tel_sonstige', 'strasse', 'hausnummer', 'plz', 'ort', 'land', 'freitextfeld', 'singleSRC'),
             'eval'                    => array('mandatory'=>true, 'multiple'=>true),
             'reference'               => &$GLOBALS['TL_LANG']['FMD'],
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'sql'                     => "blob NULL"
+        ),
+        'useProviderForwarding' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['useProviderForwarding'],
+            'exclude'                 => true,
+            'filter'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'form' => array
         (
@@ -481,7 +491,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class tl_expose_module extends Backend
 {

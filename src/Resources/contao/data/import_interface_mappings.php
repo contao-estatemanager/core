@@ -3,8 +3,8 @@
  * Default interface mapping
  *
  * @version 0.0.1
- * @author  Daniele Sciannimanica <daniele@oveleon.de>
- * @author  Fabian Ekert <fabian@oveleon.de>
+ * @author  Daniele Sciannimanica <https://github.com/doishub>
+ * @author  Fabian Ekert <https://github.com/eki89>
  */
 return array
 (

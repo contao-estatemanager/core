@@ -7,16 +7,30 @@
 <?php endif; ?>
 
 <address>
-    <?php if($this->kontaktname): ?>
-        <span class="name"><?=$this->kontaktname?></span>
+    <?php if($this->firma): ?>
+        <span class="company"><?=$this->firma?></span>
+    <?php endif; ?>
+
+    <?php if($this->vorname || $this->name): ?>
+        <?php if($this->anrede): ?>
+            <span class="salutation"><?=$this->anrede?></span>
+        <?php endif; ?>
+        <?php if($this->titel): ?>
+            <span class="titel"><?=$this->titel?></span>
+        <?php endif; ?>
+        <span class="name"><?=$this->vorname?> <?=$this->name?></span>
+    <?php endif; ?>
+
+    <?php if($this->position): ?>
+        <span class="position"><?=$this->position?></span>
     <?php endif; ?>
 
     <?php if($this->strasse): ?>
         <span class="street"><?=$this->strasse?></span>
-    <?php endif; ?>
 
-    <?php if($this->hausnummer): ?>
-        <span class="number"><?=$this->hausnummer?></span>
+        <?php if($this->hausnummer): ?>
+            <span class="number"><?=$this->hausnummer?></span>
+        <?php endif; ?>
     <?php endif; ?>
 
     <?php if($this->plz): ?>
@@ -35,12 +49,33 @@
         <span class="country"><?=$this->land?></span>
     <?php endif; ?>
 
-    <?php if($this->telefon): ?>
-        <span class="phone"><?=$this->telefon?></span>
+    <?php if($this->tel_zentrale): ?>
+        <span class="phone tel_zentrale"><?=$this->tel_zentrale?></span>
+    <?php endif; ?>
+    <?php if($this->tel_durchw): ?>
+        <span class="phone tel_durchw"><?=$this->tel_durchw?></span>
+    <?php endif; ?>
+    <?php if($this->tel_fax): ?>
+        <span class="phone tel_fax"><?=$this->tel_fax?></span>
+    <?php endif; ?>
+    <?php if($this->tel_handy): ?>
+        <span class="phone tel_handy"><?=$this->tel_handy?></span>
     <?php endif; ?>
 
-    <?php if($this->email): ?>
-        <span class="email"><?=$this->email?></span>
+    <?php if($this->email_zentrale): ?>
+        <span class="email email_zentrale"><?=$this->email_zentrale?></span>
+    <?php endif; ?>
+    <?php if($this->email_direkt): ?>
+        <span class="email email_direkt"><?=$this->email_direkt?></span>
+    <?php endif; ?>
+    <?php if($this->email_privat): ?>
+        <span class="email email_privat"><?=$this->email_privat?></span>
+    <?php endif; ?>
+    <?php if($this->email_sonstige): ?>
+        <span class="email email_sonstige"><?=$this->email_sonstige?></span>
+    <?php endif; ?>
+    <?php if($this->email_feedback): ?>
+        <span class="email email_feedback"><?=$this->email_feedback?></span>
     <?php endif; ?>
 </address>
 

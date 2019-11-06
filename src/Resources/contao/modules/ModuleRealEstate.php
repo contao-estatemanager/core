@@ -16,8 +16,8 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
 /**
  * Parent class for real estate modules.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 abstract class ModuleRealEstate extends \Module
 {

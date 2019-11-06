@@ -43,6 +43,7 @@ array_insert($GLOBALS['BE_MOD'], 1, array
             'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_history', 'tl_interface_log'),
             'syncRealEstates'       => array('\\ContaoEstateManager\\RealEstateImporter', 'sync'),
             'importDefaultMappings' => array('\\ContaoEstateManager\\EstateManager', 'importDefaultMappings'),
+            'clearRealEstates'      => array('\\ContaoEstateManager\\EstateManager', 'clearRealEstates'),
             'hideInNavigation'      => true,
         ),
         'config' => array
@@ -161,6 +162,7 @@ $GLOBALS['TL_RAM'] = array
 
 // Hooks
 $GLOBALS['TL_HOOKS']['prepareFormData'][] = array('\\ContaoEstateManager\\RealEstateInquiry', 'attachFile');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\\ContaoEstateManager\\EstateManager', 'onReplaceInsertTags');
 
 // Cron jobs
 $GLOBALS['TL_CRON']['minutely'][] = array('\\ContaoEstateManager\\RealEstateCronImporter', 'run');

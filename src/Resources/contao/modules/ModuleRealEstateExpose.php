@@ -17,7 +17,7 @@ use Patchwork\Utf8;
 /**
  * Front end module "real estate expose".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ModuleRealEstateExpose extends ModuleRealEstate
 {

@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "share".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleShare extends ExposeModule
 {

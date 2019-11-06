@@ -17,7 +17,7 @@ use Contao\StringUtil;
 /**
  * Class FilterCountry
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class FilterCountry extends FilterWidget
 {
@@ -107,7 +107,6 @@ class FilterCountry extends FilterWidget
 
         $options = $this->getOptions();
 
-        \System::loadLanguageFile('tl_real_estate_filter');
         \System::loadLanguageFile('tl_real_estate_countries');
 
         $arrOptions = array();

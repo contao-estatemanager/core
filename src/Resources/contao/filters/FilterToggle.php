@@ -18,7 +18,7 @@ namespace ContaoEstateManager;
  * @property boolean $outputAllItems
  * @property array   $items
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class FilterToggle extends FilterWidget
 {

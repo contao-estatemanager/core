@@ -23,7 +23,7 @@ use Patchwork\Utf8;
  * @property integer $jumpTo
  * @property string  $customTpl
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class Filter extends \Hybrid
 {
@@ -90,6 +90,8 @@ class Filter extends \Hybrid
         {
             $this->strTemplate = $this->customTpl;
         }
+
+        \System::loadLanguageFile('tl_real_estate_filter');
 
         return parent::generate();
     }

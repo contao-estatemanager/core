@@ -24,6 +24,9 @@
       <trans-unit id="MSC.estatemanager_company">
         <source>Oveleon</source>
       </trans-unit>
+      <trans-unit id="MSC.clearEstateConfirm">
+        <source>Are you sure you want to do the cleanup?</source>
+      </trans-unit>
 
       <trans-unit id="COLS.contentTop">
         <source>Above content area</source>

@@ -147,6 +147,14 @@
         <source>The complete address will be enforced, regardless of whether it is released or not.</source>
         <target>Es wird versucht die vollständige Adresse auszugeben, unabhängig ob diese freigegeben ist oder nicht.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.useProviderForwarding.0">
+        <source>Use provider forwarding</source>
+        <target>Anbieter Weiterleitungsmodus verwenden</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.useProviderForwarding.1">
+        <source>Use the forwarding mode stored in the provider. If you use this function, the telephone number (Headquarters) and e-mail (Headquarters) are overwritten if necessary.</source>
+        <target>Verwenden des im Anbieter hinterlegten Weiterleitungsmodus. Bei verwenden dieser Funktion, werden die Telefonnummer (Zentrale) sowie die E-Mail (Zentrale) ggf. überschrieben.</target>
+      </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
         <source>Gallery Modules</source>
         <target>Galerie-Module</target>

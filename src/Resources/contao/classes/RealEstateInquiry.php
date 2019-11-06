@@ -16,7 +16,7 @@ use Contao\Environment;
 /**
  * Provide methods to handle inquiries.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class RealEstateInquiry
 {

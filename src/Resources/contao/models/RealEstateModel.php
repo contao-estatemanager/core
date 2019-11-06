@@ -1129,6 +1129,7 @@ namespace ContaoEstateManager;
  * @method static integer countByDateAdded($id, array $opt=array())
  * @method static integer countByPublished$id, array $opt=array())
  * @method static integer countByAlias($id, array $opt=array())
+ * @method static integer countByContactPerson($id, array $opt=array())
  * @method static integer countByNutzungsart($id, array $opt=array())
  * @method static integer countByVermarktungsartKauf($id, array $opt=array())
  * @method static integer countByVermarktungsartMietePacht($id, array $opt=array())
@@ -1494,7 +1495,7 @@ namespace ContaoEstateManager;
  * @method static integer countByAnbieterobjekturl($id, array $opt=array())
  *
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class RealEstateModel extends \Model

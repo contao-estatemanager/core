@@ -179,7 +179,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class tl_real_estate_group extends Backend
 {

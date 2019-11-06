@@ -31,7 +31,7 @@ namespace ContaoEstateManager;
  * @property string  $targetTable
  * @property string  $customTpl
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class ExposeForm extends \Form
 {

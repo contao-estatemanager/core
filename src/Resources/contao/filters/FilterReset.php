@@ -22,7 +22,7 @@ namespace ContaoEstateManager;
  * @property boolean $mandatory
  * @property string  $src
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class FilterReset extends FilterWidget
 {

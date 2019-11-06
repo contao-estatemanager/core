@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "texts".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleTexts extends ExposeModule
 {
@@ -43,7 +43,9 @@ class ExposeModuleTexts extends ExposeModule
             return $objTemplate->parse();
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+
+        return $this->isEmpty ? '' : $strBuffer;
     }
 
     /**
@@ -51,18 +53,29 @@ class ExposeModuleTexts extends ExposeModule
      */
     protected function compile()
     {
+        $arrCollection = array();
+        $this->Template->texts = array();
+
         $arrBlocks = \StringUtil::deserialize($this->textBlocks);
 
         $arrTexts = $this->realEstate->getTexts($arrBlocks, $this->maxTextLength);
 
-        $arrCollection = array();
-
         foreach ($arrTexts as $field => $text)
         {
+            if(!$text['value']){
+                continue;
+            }
+
             $arrCollection[] = array(
                 'label' => Translator::translateExpose('headline_' . $field),
                 'text'  => $text
             );
+        }
+
+        if($this->hideOnEmpty && !count($arrCollection))
+        {
+            $this->isEmpty = true;
+            return '';
         }
 
         $this->Template->texts = $arrCollection;

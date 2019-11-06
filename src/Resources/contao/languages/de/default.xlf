@@ -30,6 +30,10 @@
         <source>Oveleon</source>
         <target>Oveleon</target>
       </trans-unit>
+      <trans-unit id="MSC.clearEstateConfirm">
+        <source>Are you sure you want to do the cleanup?</source>
+        <target>Bist du sicher, dass du die Bereinigung durchführen möchtes?</target>
+      </trans-unit>
 
       <trans-unit id="COLS.contentTop">
         <source>Above content area</source>

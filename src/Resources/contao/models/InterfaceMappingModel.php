@@ -55,7 +55,7 @@ namespace ContaoEstateManager;
  * @method static integer countByOiConditionField$id, array $opt=array())
  * @method static integer countByOiConditionValue$id, array $opt=array())
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 
 class InterfaceMappingModel extends \Model

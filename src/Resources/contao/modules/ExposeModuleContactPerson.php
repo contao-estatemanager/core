@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "contact person".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleContactPerson extends ExposeModule
 {
@@ -53,11 +53,11 @@ class ExposeModuleContactPerson extends ExposeModule
     {
         $arrFields = \StringUtil::deserialize($this->contactFields);
 
-        $contactPerson = $this->realEstate->getContactPerson(!!$this->forceFullAddress);
+        $contactPerson = $this->realEstate->getContactPerson(!!$this->forceFullAddress, !!$this->useProviderForwarding);
 
         foreach ($arrFields as $field)
         {
-            if($field === 'foto')
+            if($field === 'singleSRC')
             {
                 $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $contactPerson['singleSRC'], $this->imgSize);
             }

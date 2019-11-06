@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Collection of core functions for EstateManager.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class EstateManager
 {
@@ -214,5 +214,97 @@ class EstateManager
         }
 
         return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
+    }
+
+    /**
+     * Replace InsertTags
+     *
+     * @param $strTag
+     *
+     * @return bool|string
+     */
+    public function onReplaceInsertTags($strTag)
+    {
+        $arrSplit = explode('::', $strTag);
+
+        if ($arrSplit[0] != 'realestate' && $arrSplit[0] != 'cache_realestate')
+        {
+            return false;
+        }
+
+        if(is_numeric($arrSplit[1]))
+        {
+            $objRealEstate = RealEstateModel::findPublishedByIdOrAlias($arrSplit[1]);
+            $arrSplit[1] = $arrSplit[2];
+        }
+        elseif(\Input::get('items'))
+        {
+            // ToDo: Get estate data from filter session
+            $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+        }
+
+        if($objRealEstate !== null && isset($arrSplit[1]))
+        {
+            $realEstate = new RealEstate($objRealEstate, null);
+            return $realEstate->{$arrSplit[1]};
+        }
+
+        return false;
+    }
+
+    public function clearRealEstates()
+    {
+        $objInterface = InterfaceModel::findByPk(\Input::get('id'));
+
+        if ($objInterface === null)
+        {
+            return;
+        }
+
+        $objRealEstates = RealEstateModel::findAll();
+
+        if ($objRealEstates === null)
+        {
+            return;
+        }
+
+        $arrUnique = array();
+
+        while ($objRealEstates->next())
+        {
+            $arrUnique[] = $objRealEstates->objektnrIntern;
+        }
+
+        $filesHandler = \Files::getInstance();
+
+        $objFilesPath = \FilesModel::findByUuid($objInterface->filesPath);
+
+        $arrProviderFolder = scandir(TL_ROOT . '/' . $objFilesPath->path);
+
+        foreach ($arrProviderFolder as $providerFolder)
+        {
+            if ($providerFolder === '.' || $providerFolder === '..')
+            {
+                continue;
+            }
+
+            $arrRealEstateFolder = scandir(TL_ROOT . '/' . $objFilesPath->path . '/' . $providerFolder);
+
+            foreach ($arrRealEstateFolder as $realEstateFolder)
+            {
+                if ($realEstateFolder === '.' || $realEstateFolder === '..')
+                {
+                    continue;
+                }
+
+                if (!in_array($realEstateFolder, $arrUnique))
+                {
+                    $deleteFolder = $objFilesPath->path . '/' . $providerFolder . '/' . $realEstateFolder;
+
+                    $filesHandler->rrdir($deleteFolder);
+                    \Dbafs::deleteResource($deleteFolder);
+                }
+            }
+        }
     }
 }

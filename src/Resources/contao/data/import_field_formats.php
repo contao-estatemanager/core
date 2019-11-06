@@ -3,7 +3,7 @@
  * Default field formats with action
  *
  * @version 0.0.3
- * @author  Daniele Sciannimanica <daniele@oveleon.de>
+ * @author  Daniele Sciannimanica <https://github.com/doishub>
  */
 return array
 (
@@ -721,6 +721,14 @@ return array
         'actions' => array
         (
             array('append', '', ' kWh/(m²*a)', '', '', NULL, '')
+        )
+    ),
+    array
+    (
+        'field' => array('energiepassBaujahr', '', '', NULL, '1'),
+        'actions' => array
+        (
+            array('custom', '', '', '', '', NULL, 're_ac_openimmo_energiepass_baujahr')
         )
     ),
     array

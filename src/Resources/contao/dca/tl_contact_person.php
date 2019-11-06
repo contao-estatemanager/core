@@ -8,7 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 $GLOBALS['TL_DCA']['tl_contact_person'] = array
 (
 
@@ -243,48 +242,48 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_zentrale'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_durchw' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_durchw'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_fax' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_fax'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_handy' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_handy'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_privat' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_privat'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'tel_sonstige' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_sonstige'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(16) NOT NULL default ''"
+            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'strasse' => array
         (
@@ -418,8 +417,12 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
+
+use ContaoEstateManager\RealEstateModel;
+
 class tl_contact_person extends Backend
 {
 
@@ -530,7 +533,8 @@ class tl_contact_person extends Backend
      */
     public function deleteContactPerson($row, $href, $label, $title, $icon, $attributes)
     {
-        return $this->User->hasAccess('delete', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        $hasRealEstate = RealEstateModel::countByContactPerson($row['id']);
+        return $this->User->hasAccess('delete', 'contactperson') && !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**

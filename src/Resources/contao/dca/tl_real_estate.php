@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('image', 'id', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
+            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
             'showColumns'             => true,
             'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
         ),
@@ -191,7 +191,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'contactPerson' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['contactPerson'],
-            'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getContactPerson'),
             'foreignKey'              => 'tl_contact_person.name',
@@ -3824,11 +3823,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['energiepassJahrgang'],
             'inputType'                 => 'text',
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array(
-                'energie'  => true,
-                'order'    => 700
-            )
+            'sql'                       => "varchar(32) NOT NULL default ''"
         ),
         'energiepassGebaeudeart' => array
         (
@@ -4389,8 +4384,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class tl_real_estate extends Backend
 {
@@ -4709,33 +4704,34 @@ class tl_real_estate extends Backend
             $objFile = \FilesModel::findByUuid($row['titleImageSRC']);
         }
 
-        if ($objFile === null && \Config::get('defaultImage'))
+        if (($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path)) && \Config::get('defaultImage'))
         {
             $objFile = \FilesModel::findByUuid(\Config::get('defaultImage'));
         }
 
-        if ($objFile !== null)
+        // open information block
+        $args[0] = '<div class="object-information">';
+
+        if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
         {
             // add preview image
-            $args[0] = \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(75, 50, 'center_top'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label;
+            $args[0] .= '<div class="image">' . \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(118, 75, 'center_center'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label . '</div>';
         }
 
-        // add external and internal objektnr
-        $args[1] = '<span style="display:block;margin-top:5px">ID: <span style="">'. $args[1] . '</span></span>';
-        if ($row['objektnrIntern'])
-        {
-            $args[1] .= '<span style="display:block;margin-top:5px">Intern: <span style="color:#999">' . $row['objektnrIntern'] . '</span></span>';
-        }
-        if ($row['objektnrExtern'])
-        {
-            $args[1] .= '<span style="display:block;margin-top:5px">Extern: <span style="color:#999">' . $row['objektnrExtern'] . '</span></span>';
-        }
+        $args[0] .= '<div class="info">';
+        $args[0] .=     '<div><span>ID:</span> <span>'. $row['id'] . '</span></div>';
+        $args[0] .=     '<div><span>Intern:</span> <span>' . $row['objektnrIntern'] . '</span></div>';
+        $args[0] .=     '<div><span>Extern:</span> <span>' . $row['objektnrExtern'] . '</span></div>';
+        $args[0] .= '</div>';
+
+        // close information block
+        $args[0] .= '</div>';
 
         // add address information
-        $args[2] .= '<span style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</span>';
+        $args[1] .= '<div style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</div>';
 
         // translate date
-        $args[5] = date(\Config::get('datimFormat'), $args[5]);
+        $args[4] = date(\Config::get('datimFormat'), $args[4]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
         if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
