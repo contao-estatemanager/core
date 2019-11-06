@@ -191,7 +191,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'contactPerson' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['contactPerson'],
-            'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getContactPerson'),
             'foreignKey'              => 'tl_contact_person.name',
