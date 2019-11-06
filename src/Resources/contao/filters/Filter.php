@@ -91,6 +91,8 @@ class Filter extends \Hybrid
             $this->strTemplate = $this->customTpl;
         }
 
+        \System::loadLanguageFile('tl_real_estate_filter');
+
         return parent::generate();
     }
 

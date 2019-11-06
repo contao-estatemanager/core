@@ -107,7 +107,6 @@ class FilterCountry extends FilterWidget
 
         $options = $this->getOptions();
 
-        \System::loadLanguageFile('tl_real_estate_filter');
         \System::loadLanguageFile('tl_real_estate_countries');
 
         $arrOptions = array();
