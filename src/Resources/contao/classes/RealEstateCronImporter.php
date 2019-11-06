@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Handles real estate update cron jobs
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class RealEstateCronImporter extends \Frontend
 {

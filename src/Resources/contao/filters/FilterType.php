@@ -17,7 +17,7 @@ use Model\Collection;
 /**
  * Class FilterType
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class FilterType extends FilterWidget
 {

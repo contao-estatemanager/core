@@ -200,7 +200,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class tl_field_format extends Backend
 {

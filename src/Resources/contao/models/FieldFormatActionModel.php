@@ -63,7 +63,7 @@ namespace ContaoEstateManager;
  * @method static integer countByCustomFunction($val, $opt=array())
  * @method static integer countBySorting($val, $opt=array())
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class FieldFormatActionModel extends \Model

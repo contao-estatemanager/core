@@ -340,7 +340,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class tl_interface extends Backend
 {

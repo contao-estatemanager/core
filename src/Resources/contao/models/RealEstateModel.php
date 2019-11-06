@@ -1495,7 +1495,7 @@ namespace ContaoEstateManager;
  * @method static integer countByAnbieterobjekturl($id, array $opt=array())
  *
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class RealEstateModel extends \Model

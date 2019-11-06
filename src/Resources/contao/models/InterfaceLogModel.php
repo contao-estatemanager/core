@@ -58,7 +58,7 @@ namespace ContaoEstateManager;
  * @method static integer countByText($id, array $opt=array())
  * @method static integer countByData($id, array $opt=array())
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class InterfaceLogModel extends \Model

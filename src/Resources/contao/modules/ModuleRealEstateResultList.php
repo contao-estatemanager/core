@@ -16,8 +16,8 @@ use Patchwork\Utf8;
 /**
  * Front end module "real estate result list".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class ModuleRealEstateResultList extends ModuleRealEstate
 {

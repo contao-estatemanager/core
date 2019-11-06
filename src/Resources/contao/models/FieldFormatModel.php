@@ -47,7 +47,7 @@ namespace ContaoEstateManager;
  * @method static integer countByConditionFields($id, array $opt=array())
  * @method static integer countByForceOutput($id, array $opt=array())
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class FieldFormatModel extends \Model

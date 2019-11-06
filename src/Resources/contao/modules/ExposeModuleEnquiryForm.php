@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "enquiry form".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleEnquiryForm extends ExposeModule
 {

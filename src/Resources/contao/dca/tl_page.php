@@ -88,7 +88,7 @@ array_insert($GLOBALS['TL_DCA']['tl_page']['fields'], 0, array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class tl_page_estate_manager extends Backend
 {

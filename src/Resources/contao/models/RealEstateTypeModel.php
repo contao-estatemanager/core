@@ -51,7 +51,7 @@ namespace ContaoEstateManager;
  * @method static integer countByTitle($id, array $opt=array())
  * @method static integer countByPublished$id, array $opt=array())
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class RealEstateTypeModel extends \Model

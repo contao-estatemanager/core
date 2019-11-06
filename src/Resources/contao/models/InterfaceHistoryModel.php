@@ -54,7 +54,7 @@ namespace ContaoEstateManager;
  * @method static integer countByText($id, array $opt=array())
  * @method static integer countByStatus($id, array $opt=array())
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 
 class InterfaceHistoryModel extends \Model

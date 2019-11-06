@@ -26,7 +26,7 @@ namespace ContaoEstateManager;
  * @property boolean $guests
  * @property string  $cssID
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 abstract class ExposeModule extends ModuleRealEstate
 {

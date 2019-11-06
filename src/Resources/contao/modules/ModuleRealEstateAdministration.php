@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Back end module "real estate administration".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ModuleRealEstateAdministration extends \BackendModule
 {

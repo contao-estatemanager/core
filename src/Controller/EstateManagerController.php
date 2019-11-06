@@ -9,7 +9,7 @@ use ContaoEstateManager\EstateManagerRead;
 /**
  * Handles the EstateManager api routes.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class EstateManagerController extends Controller
 {

@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Provide methods to handle real estates.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class RealEstate extends \System
 {
