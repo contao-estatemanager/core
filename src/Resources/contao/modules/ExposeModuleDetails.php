@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "details".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleDetails extends ExposeModule
 {

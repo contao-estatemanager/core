@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_estate_manager_addon'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class tl_estate_manager_addon extends Backend
 {

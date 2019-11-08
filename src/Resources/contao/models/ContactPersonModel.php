@@ -144,8 +144,8 @@ namespace ContaoEstateManager;
  * @method static integer countByFreitextfeld($val, $opt=array())
  * @method static integer countByPublished($val, $opt=array())
  *
- * @author Fabian Ekert <fabian@oveleon.de>
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
 class ContactPersonModel extends \Model

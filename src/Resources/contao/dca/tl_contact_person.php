@@ -417,7 +417,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 

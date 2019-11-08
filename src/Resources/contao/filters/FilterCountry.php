@@ -17,7 +17,7 @@ use Contao\StringUtil;
 /**
  * Class FilterCountry
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class FilterCountry extends FilterWidget
 {

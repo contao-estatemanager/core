@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "main area".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleMainArea extends ExposeModule
 {

@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * EstateManager read api controller.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class EstateManagerRead extends EstateManagerSDK
 {

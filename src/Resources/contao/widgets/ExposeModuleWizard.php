@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Provide methods to handle modules of an expose layout.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleWizard extends \Widget
 {

@@ -238,8 +238,8 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 class tl_module_estate_manager extends Backend
 {

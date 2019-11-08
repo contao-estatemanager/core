@@ -3,7 +3,7 @@
  * Default field formats with action
  *
  * @version 0.0.3
- * @author  Daniele Sciannimanica <daniele@oveleon.de>
+ * @author  Daniele Sciannimanica <https://github.com/doishub>
  */
 return array
 (

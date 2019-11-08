@@ -13,7 +13,7 @@ namespace ContaoEstateManager;
 /**
  * Generates and validates filter items
  *
- * @author Fabian Ekert <fabian@oveleon.de>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 abstract class FilterWidget extends \Widget
 {

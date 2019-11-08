@@ -14,7 +14,7 @@ namespace ContaoEstateManager;
 /**
  * Expose module "texts".
  *
- * @author Daniele Sciannimanica <daniele@oveleon.de>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class ExposeModuleTexts extends ExposeModule
 {
