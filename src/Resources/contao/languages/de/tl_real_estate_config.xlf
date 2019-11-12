@@ -62,6 +62,14 @@
         <source>Select the default image which will be displayed incase real estate do not contain images.</source>
         <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Immobilien keine Bilder enthalten.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonImage.0">
+        <source>Default contact person image</source>
+        <target>Standard-Bild Kontaktpersonen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonImage.1">
+        <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
+        <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Kontaktpersonen keine Bilder enthalten.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">
         <source>Available options: Rooms</source>
         <target>Verfügbare Optionen: Zimmer</target>

@@ -59,7 +59,13 @@ class ExposeModuleContactPerson extends ExposeModule
         {
             if($field === 'singleSRC')
             {
-                $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $contactPerson['singleSRC'], $this->imgSize);
+                $varSingleSrc = $contactPerson['singleSRC'];
+
+                if(!$varSingleSrc){
+                    $varSingleSrc = \Config::get('defaultContactPersonImage');
+                }
+
+                $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $varSingleSrc, $this->imgSize);
             }
             else
             {
