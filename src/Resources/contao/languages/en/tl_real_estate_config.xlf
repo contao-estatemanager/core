@@ -60,6 +60,13 @@
       <trans-unit id="tl_real_estate_config.roomOptions.1">
         <source>Here you can enter a comma separated list of options which should be available for the number of rooms.</source>
       </trans-unit>
+
+      <trans-unit id="tl_real_estate_config.comma">
+        <source>Comma (,)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.dot">
+        <source>Dot (.)</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
