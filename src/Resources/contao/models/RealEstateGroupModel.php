@@ -75,7 +75,7 @@ class RealEstateGroupModel extends \Model
 
         if (!isset($arrOptions['order']))
         {
-            $arrOptions['order'] = \Database::getInstance()->findInSet("$t.id", $arrIds);;
+            $arrOptions['order'] = \Database::getInstance()->findInSet("$t.id", $arrIds);
         }
 
         return static::findBy($arrColumns, null, $arrOptions);
