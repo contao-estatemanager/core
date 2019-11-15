@@ -308,9 +308,9 @@ class FilterSession extends \System
             $this->addQueryFragmentRoom($arrColumns, $arrValues);
             $this->addQueryFragmentArea($objRealEstateType, $arrColumns, $arrValues);
             $this->addQueryFragmentPeriod($arrColumns, $arrValues);
-        }
 
-        $arrOptions['order']  = $this->getOrderOption();
+            $arrOptions['order']  = $this->getOrderOption();
+        }
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameter']))
@@ -334,7 +334,7 @@ class FilterSession extends \System
      * @param bool $addFragments
      * @return array
      */
-    private function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true, $objModule=null)
+    public function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true, $objModule=null)
     {
         $t = static::$strTable;
 
@@ -375,10 +375,10 @@ class FilterSession extends \System
                 }
 
                 $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
+
+                $arrOptions['order']  = $this->getOrderOption();
             }
         }
-
-        $arrOptions['order']  = $this->getOrderOption();
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']))

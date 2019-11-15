@@ -55,7 +55,7 @@ class EstateManagerRead extends EstateManagerSDK
                 {
                     $objSessionFilter = FilterSession::getInstance($this->currParam['pageId']);
 
-                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], $this);
+                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], true, $this);
 
                     $arrOptions = array_merge($arrOptions, $options);
                 }

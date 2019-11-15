@@ -8,6 +8,8 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+use ContaoEstateManager\FieldFormatModel;
+
 $GLOBALS['TL_DCA']['tl_field_format'] = array
 (
 
@@ -142,7 +144,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             'inputType'                 => 'select',
             'exclude'                   => true,
             'search'                    => true,
-            'options_callback'          => array('tl_field_format', 'getRealEstateCollumns'),
+            'options_callback'          => array('tl_field_format', 'getRealEstateUnusedCollumns'),
             'eval'                      => array('tl_class'=>'w50', 'mandatory'=>true, 'chosen' => true),
             'sql'                       => "varchar(255) NOT NULL default ''"
         ),
@@ -281,8 +283,8 @@ class tl_field_format extends Backend
      * @return array
      */
     public function getRealEstateCollumns(){
-        $collumns      = array();
-        $skipFields    = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
+        $collumns   = array();
+        $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
 
@@ -291,6 +293,33 @@ class tl_field_format extends Backend
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
                 if (!in_array($field, $skipFields))
+                {
+                    $collumns[$field] = $field;
+                }
+            }
+        }
+
+        return $collumns;
+    }
+
+    /**
+     * Get fields from real estate dca
+     *
+     * @return array
+     */
+    public function getRealEstateUnusedCollumns(){
+        $collumns   = array();
+        $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
+
+        $this->loadDataContainer('tl_real_estate');
+
+        $usedFields = FieldFormatModel::getUsedFieldFormatsFields();
+
+        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        {
+            foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
+            {
+                if (!in_array($field, $skipFields) && !in_array($field, $usedFields))
                 {
                     $collumns[$field] = $field;
                 }

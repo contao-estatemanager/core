@@ -58,4 +58,24 @@ class FieldFormatModel extends \Model
      * @var string
      */
     protected static $strTable = 'tl_field_format';
+
+    /**
+     * Find used field formats
+     *
+     * @return \Model\Collection|FieldFormatModel[]|FieldFormatModel|null A collection of models or null if there are no field formats
+     */
+    public static function getUsedFieldFormatsFields()
+    {
+        $t = static::$strTable;
+
+        $objResult = \Database::getInstance()->execute("SELECT id, fieldname FROM $t");
+        $fields = array();
+
+        while($objResult->next())
+        {
+            $fields[] = $objResult->fieldname;
+        }
+
+        return $fields;
+    }
 }
