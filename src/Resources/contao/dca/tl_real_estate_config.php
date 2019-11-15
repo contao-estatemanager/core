@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage,defaultContactPersonImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields
@@ -71,6 +71,20 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
         'defaultContactPersonImage' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonImage'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+        ),
+        'defaultContactPersonFemaleImage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonFemaleImage'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+        ),
+        'defaultContactPersonMaleImage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonMaleImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
