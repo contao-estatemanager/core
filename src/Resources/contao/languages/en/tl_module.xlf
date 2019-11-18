@@ -141,7 +141,6 @@
       <trans-unit id="tl_module.providerImgSize.1">
         <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
-
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
       </trans-unit>

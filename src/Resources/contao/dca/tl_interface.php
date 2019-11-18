@@ -193,7 +193,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueProviderField'],
             'exclude'				  => true,
             'inputType'				  => 'select',
-            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
             'options_callback'		  => array('tl_interface', 'getUniqueProviderFieldOptions'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
@@ -428,13 +428,16 @@ class tl_interface extends Backend
      */
     public function getUniqueProviderFieldOptions($dc)
     {
+        $this->loadDataContainer('tl_provider');
+        $this->loadLanguageFile('tl_provider');
+
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
         {
             if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
             {
-                $return[] = $field;
+                $return[$field] = $GLOBALS['TL_LANG']['tl_provider'][$field][0];
             }
         }
 
@@ -450,13 +453,16 @@ class tl_interface extends Backend
      */
     public function getUniqueFieldOptions($dc)
     {
+        $this->loadDataContainer('tl_real_estate');
+        $this->loadLanguageFile('tl_real_estate');
+
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
         {
             if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
             {
-                $return[] = $field;
+                $return[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0];
             }
         }
 
@@ -473,6 +479,7 @@ class tl_interface extends Backend
     public function getContactPersonUniqueFieldOptions($dc)
     {
         $this->loadDataContainer('tl_contact_person');
+        $this->loadLanguageFile('tl_contact_person');
 
         $return = array();
 
@@ -480,11 +487,11 @@ class tl_interface extends Backend
         {
             if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
             {
-                $return[] = $field;
+                $return[$field] = $GLOBALS['TL_LANG']['tl_contact_person'][$field][0];
             }
         }
 
-        $return[] = 'name_vorname';
+        $return['name_vorname'] = $GLOBALS['TL_LANG']['tl_contact_person']['name_vorname'];
 
         return $return;
     }

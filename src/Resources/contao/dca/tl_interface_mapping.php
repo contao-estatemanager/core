@@ -327,17 +327,17 @@ class tl_interface_mapping extends Backend
             return;
         }
 
-        System::loadLanguageFile($dc->activeRecord->type);
+        $this->loadLanguageFile($dc->activeRecord->type);
         $this->loadDataContainer($dc->activeRecord->type);
 
         $arrFields = array();
 
-        foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
+        foreach (array_keys($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields']) as $field)
         {
-            $arrFields[$field] = $field . ($config['label'][0] ? ': ' . $config['label'][0] : '');
+            $arrFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
         }
 
-        $arrFields['AUFTRAGSART'] = 'AUFTRAGSART';
+        $arrFields['AUFTRAGSART'] = $GLOBALS['TL_LANG']['tl_real_estate']['AUFTRAGSART'][0] . ' [' . 'AUFTRAGSART' . ']';
 
         return $arrFields;
     }

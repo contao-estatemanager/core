@@ -8,6 +8,11 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+// load real estate language and filter file
+System::loadLanguageFile('tl_real_estate');
+System::loadLanguageFile('tl_filter');
+
+
 $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
 (
 
@@ -187,8 +192,13 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart'],
             'inputType'               => 'select',
             'search'                  => true,
-            'options'                 => array('wohnen', 'gewerbe', 'anlage', 'waz'),
-            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
+            'options'                 => array
+            (
+                'wohnen'    => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart_wohnen'],
+                'gewerbe'   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart_gewerbe'],
+                'anlage'    => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart_anlage'],
+                'waz'       => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart_waz']
+            ),
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
@@ -207,7 +217,22 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart'],
             'inputType'               => 'select',
             'search'                  => true,
-            'options'                 => array('zimmer', 'wohnung', 'haus', 'grundstueck', 'buero_praxen', 'einzelhandel', 'gastgewerbe', 'hallen_lager_prod', 'land_und_forstwirtschaft', 'parken', 'sonstige', 'freizeitimmobilie_gewerblich', 'zinshaus_renditeobjekt'),
+            'options'                 => array
+            (
+                'zimmer'                        => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_zimmer'],
+                'wohnung'                       => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_wohnung'],
+                'haus'                          => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_haus'],
+                'grundstueck'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_grundstueck'],
+                'buero_praxen'                  => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_buero_praxen'],
+                'einzelhandel'                  => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_einzelhandel'],
+                'gastgewerbe'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_gastgewerbe'],
+                'hallen_lager_prod'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_hallen_lager_prod'],
+                'land_und_forstwirtschaft'      => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_land_und_forstwirtschaft'],
+                'parken'                        => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_parken'],
+                'sonstige'                      => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_sonstige'],
+                'freizeitimmobilie_gewerblich'  => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_freizeitimmobilie_gewerblich'],
+                'zinshaus_renditeobjekt'        => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_zinshaus_renditeobjekt']
+            ),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
             'sql'                     => "varchar(32) NOT NULL default ''",
@@ -245,7 +270,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate_type', 'getPriceFields'),
-            'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'area' => array
@@ -254,7 +279,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate_type', 'getAreaFields'),
-            'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'toggleFilter'  => array
@@ -281,7 +306,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                         'exclude'           => true,
                         'inputType'         => 'select',
                         'options_callback'  => array('tl_real_estate_type', 'getSortingFields'),
-                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
+                        'eval' 		        => array('includeBlankOption'=>true, 'chosen'=>true, 'style'=>'width:100%', 'chosen'=>true)
                     )
                 )
             ),
@@ -404,6 +429,8 @@ class tl_real_estate_type extends Backend
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
+
+        \System::loadLanguageFile('tl_real_estate');
     }
 
     /**
@@ -514,7 +541,7 @@ class tl_real_estate_type extends Backend
             {
                 if(\is_array($data['realEstate']) && $data['realEstate']['price'])
                 {
-                    $priceFields[] = $field;
+                    $priceFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
@@ -539,7 +566,7 @@ class tl_real_estate_type extends Backend
             {
                 if(\is_array($data['realEstate']) && $data['realEstate']['area'])
                 {
-                    $areaFields[] = $field;
+                    $areaFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
@@ -564,7 +591,7 @@ class tl_real_estate_type extends Backend
             {
                 if(\is_array($data['realEstate']) && $data['realEstate']['attribute'])
                 {
-                    $filterFields[] = $field;
+                    $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
@@ -589,7 +616,7 @@ class tl_real_estate_type extends Backend
             {
                 if(\is_array($data['realEstate']) && ($data['realEstate']['detail'] || $data['realEstate']['price'] || $data['realEstate']['area']))
                 {
-                    $filterFields[] = $field;
+                    $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
@@ -615,7 +642,7 @@ class tl_real_estate_type extends Backend
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $collumns[$field] = $field;
+                    $collumns[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
@@ -665,7 +692,7 @@ class tl_real_estate_type extends Backend
             {
                 if(\is_array($data['realEstate']) && $data['realEstate']['sorting'])
                 {
-                    $sortingFields[] = $field;
+                    $sortingFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }

@@ -95,7 +95,7 @@
         <source>Generates a real estate list.</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.0">
-        <source>Real Estate Results List</source>
+        <source>Real estate results list</source>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
         <source>Creates a real estate list, which can react to a filter.</source>

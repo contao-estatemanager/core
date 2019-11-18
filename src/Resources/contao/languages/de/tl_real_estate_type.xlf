@@ -49,6 +49,22 @@
         <source>Please enter the type of use.</source>
         <target>Bitte geben Sie die Nutzungsart an.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart_wohnen">
+        <source>Living</source>
+        <target>Wohnen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart_gewerbe">
+        <source>Business</source>
+        <target>Gewerbe</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart_anlage">
+        <source>Investment</source>
+        <target>Anlage</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.nutzungsart_waz">
+        <source>Temporary living</source>
+        <target>Wohnen auf Zeit</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_type.vermarktungsart.0">
         <source>Marketing type</source>
         <target>Vermarktungsart</target>
@@ -57,6 +73,14 @@
         <source>Please enter the marketing type.</source>
         <target>Bitte geben Sie die Vermarktungsart an.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_type.kauf_erbpacht">
+        <source>Buy</source>
+        <target>Kaufen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.miete_leasing">
+        <source>Rent</source>
+        <target>Mieten</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart.0">
         <source>Property type</source>
         <target>Objektart</target>
@@ -64,6 +88,58 @@
       <trans-unit id="tl_real_estate_type.objektart.1">
         <source>Please enter the object type.</source>
         <target>Bitte geben Sie die Objektart an.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_zimmer">
+        <source>Rooms</source>
+        <target>Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_wohnung">
+        <source>Apartment</source>
+        <target>Wohnung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_haus">
+        <source>House</source>
+        <target>Haus</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_grundstueck">
+        <source>Plot</source>
+        <target>Grundstück</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_buero_praxen">
+        <source>Office / Facility</source>
+        <target>Büro / Praxis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_einzelhandel">
+        <source>Retail</source>
+        <target>Einzelhandel</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_gastgewerbe">
+        <source>Hospitality industry</source>
+        <target>Gastgewerbe</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_hallen_lager_prod">
+        <source>Halls / Warehouse / Workshops</source>
+        <target>Hallen / Lager / Prod.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_land_und_forstwirtschaft">
+        <source>Agriculture and forestry</source>
+        <target>Land und Forstwirtschaft</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_parken">
+        <source>Parking</source>
+        <target>Parken</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_sonstige">
+        <source>Miscellaneous</source>
+        <target>Sonstige</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_freizeitimmobilie_gewerblich">
+        <source>Leisure home (used for commercial purposes)</source>
+        <target>Freizeitimmobilie (gewerblich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.objektart_zinshaus_renditeobjekt">
+        <source>Revenue property</source>
+        <target>Zinshaus / Renditeobjekt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.0">
         <source>Exclude real estate types</source>
@@ -145,6 +221,10 @@
         <source>Here you can specify a user-defined order of the fields.</source>
         <target>Hier können Sie eine benutzerdefinierte Reihenfolge der Felder angeben.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_type.language.0">
+        <source>Language</source>
+        <target>Sprache</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_type.defaultType.0">
         <source>Fallback type</source>
         <target>Fallback-Typ</target>
@@ -180,6 +260,10 @@
       <trans-unit id="tl_real_estate_type.display_legend">
         <source>Display settings</source>
         <target>Darstellung-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_type.language_legend">
+        <source>Language settings</source>
+        <target>Sprachen-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.publish_legend">
         <source>Publish</source>

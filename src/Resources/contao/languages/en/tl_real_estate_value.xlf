@@ -278,10 +278,10 @@
       <trans-unit id="tl_real_estate_value.grundstTyp_gewerbepark">
         <source>Property (Industrial park)</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_value.grundstTyp_gewerbepark">
+      <trans-unit id="tl_real_estate_value.grundstTyp_sondernutzung">
         <source>Property (Special use)</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_value.grundstTyp_gewerbepark">
+      <trans-unit id="tl_real_estate_value.grundstTyp_seeliegenschaft">
         <source>Property (Lakefront)</source>
       </trans-unit>
 
@@ -567,6 +567,15 @@
       <trans-unit id="tl_real_estate_value.preisZeiteinheit_jahr">
         <source>Year</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_value.provisionTeilenWert_absolut">
+        <source>Absolute</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.provisionTeilenWert_prozent">
+        <source>Procent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.provisionTeilenWert_text">
+        <source>Text</source>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_tag">
         <source>Day</source>
@@ -615,7 +624,18 @@
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_sonstiges">
         <source>Miscellaneous</source>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate_value.lageImBau_links">
+        <source>Left</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.lageImBau_rechts">
+        <source>Right</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.lageImBau_vorne">
+        <source>Front</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_value.lageImBau_hinten">
+        <source>Back</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_value.lageGebiet_wohn">
         <source>Residential area</source>
       </trans-unit>
@@ -896,7 +916,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.zustand_erstbezug">
-        <source>first occupation</source>
+        <source>First occupation</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_teil_vollrenovierungsbed">
         <source>Partially in need of renovation</source>
@@ -920,19 +940,19 @@
         <source>In need of refurbishment</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_baufaellig">
-        <source>dilapidated</source>
+        <source>Dilapidated</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_nach_vereinbarung">
-        <source>subject to agreement</source>
+        <source>Subject to agreement</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_modernisiert">
-        <source>modernized</source>
+        <source>Modernized</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_gepflegt">
-        <source>well maintained</source>
+        <source>Well maintained</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_rohbau">
-        <source>shell</source>
+        <source>Shell</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zustand_entkernt">
         <source>Emptied</source>

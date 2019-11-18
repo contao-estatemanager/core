@@ -76,6 +76,15 @@
         <source>Here you can enter a comma separated list of options which should be available for the number of rooms.</source>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate_config.dateAdded">
+        <source>Date added</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.tstamp">
+        <source>Timestamp</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.standVom">
+        <source>Status as of</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.comma">
         <source>Comma (,)</source>
       </trans-unit>

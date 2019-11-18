@@ -186,7 +186,6 @@
         <source>Here you can set the image dimensions and the scaling mode.</source>
         <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
       </trans-unit>
-
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
         <target>Datum</target>

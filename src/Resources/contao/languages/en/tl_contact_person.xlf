@@ -8,6 +8,19 @@
       <trans-unit id="tl_contact_person.anrede.1">
         <source>Please enter a prefix.</source> <!-- Form of address -->
       </trans-unit>
+      <trans-unit id="tl_contact_person.herr.0">
+        <source>Mr.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.frau.0">
+        <source>Mrs.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationMr.0">
+        <source>Dear</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationMrs.0">
+        <source>Dear</source>
+      </trans-unit>
+
       <trans-unit id="tl_contact_person.firma.0">
         <source>Company</source>
       </trans-unit>
@@ -250,6 +263,9 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.show.1">
         <source>Show the details of contact person ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.name_vorname">
+        <source>Surname, First name</source>
       </trans-unit>
     </body>
   </file>
