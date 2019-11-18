@@ -1,5 +1,5 @@
 {
-  "name":"zoglo/core",
+  "name":"contao-estatemanager/core",
   "type":"contao-bundle",
   "description":"EstateManager for Contao - Manage real estate properties in Cotnao.",
   "keywords":["contao","immo-manager","estate-manager","estate","real-estate","real estate","property"],
