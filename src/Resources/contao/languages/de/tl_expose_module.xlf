@@ -288,8 +288,8 @@
         <target>Wählen Sie die welche Teilen-Optionen zur Verfügung stehen.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
-        <source>Share e-mail template</source>
-        <target>E-mail-Vorlage teilen</target>
+        <source>'Send via e-mail' template</source>
+        <target>'Via E-Mail versenden'-Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>

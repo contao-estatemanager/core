@@ -218,7 +218,7 @@
         <source>Select which share-options should be available.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
-        <source>Share e-mail template</source>
+        <source>'Send via e-mail' template</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>

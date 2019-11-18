@@ -332,7 +332,7 @@ class tl_interface_mapping extends Backend
 
         $arrFields = array();
 
-        foreach (array_keys($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields']) as $field)
+        foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
         {
             $arrFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
         }
