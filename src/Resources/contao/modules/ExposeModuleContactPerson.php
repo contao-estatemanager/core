@@ -61,8 +61,21 @@ class ExposeModuleContactPerson extends ExposeModule
             {
                 $varSingleSrc = $contactPerson['singleSRC'];
 
-                if(!$varSingleSrc){
-                    $varSingleSrc = \Config::get('defaultContactPersonImage');
+                if(!$varSingleSrc)
+                {
+                    switch(strtolower($contactPerson['anrede']))
+                    {
+                        case 'frau':
+                            $varSingleSrc = \Config::get('defaultContactPersonFemaleImage');
+                            break;
+                        case 'herr':
+                            $varSingleSrc = \Config::get('defaultContactPersonMaleImage');
+                            break;
+                    }
+
+                    if(!$varSingleSrc){
+                        $varSingleSrc = \Config::get('defaultContactPersonImage');
+                    }
                 }
 
                 $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $varSingleSrc, $this->imgSize);

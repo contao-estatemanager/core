@@ -13,6 +13,10 @@
         <source>Filters</source>
         <target>Filter</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.provider_contact_legend">
+        <source>Provider / Contact Persons</source>
+        <target>Anbieter / Kontaktpersonen</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.0">
         <source>Decimal separator</source>
@@ -67,6 +71,22 @@
         <target>Standard-Bild Kontaktpersonen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.1">
+        <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
+        <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Kontaktpersonen keine Bilder enthalten.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.0">
+        <source>Default contact person image (female)</source>
+        <target>Standard-Bild Kontaktpersonen (weiblich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.1">
+        <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
+        <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Kontaktpersonen keine Bilder enthalten.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.0">
+        <source>Default contact person image (male)</source>
+        <target>Standard-Bild Kontaktpersonen (männlich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
         <target>Wählen Sie hier das Standard-Bild aus, welches angezeigt wird, wenn Kontaktpersonen keine Bilder enthalten.</target>
       </trans-unit>

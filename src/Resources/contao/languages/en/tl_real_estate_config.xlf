@@ -11,6 +11,9 @@
       <trans-unit id="tl_real_estate_config.filter_config_legend">
         <source>Filters</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.provider_contact_legend">
+        <source>Provider / Contact Persons</source>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.0">
         <source>Decimal separator</source>
@@ -52,6 +55,18 @@
         <source>Default contact person image</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.1">
+        <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.0">
+        <source>Default contact person image (female)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.1">
+        <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.0">
+        <source>Default contact person image (male)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">
