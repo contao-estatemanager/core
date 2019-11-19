@@ -289,7 +289,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
         <source>'Send via e-mail' template</source>
-        <target>'Via E-Mail versenden'-Template</target>
+        <target>Via E-Mail versenden'-Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>
