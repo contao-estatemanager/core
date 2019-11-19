@@ -286,7 +286,7 @@ class tl_field_format extends Backend
      */
 
     public function getRealEstateColumns(){
-        $collumns   = array();
+        $options   = array();
         $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
