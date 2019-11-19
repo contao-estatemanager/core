@@ -84,8 +84,8 @@
         <target>Feld</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.remove">
-        <source>remove</source>
-        <target>entfernen</target>
+        <source>Remove</source>
+        <target>Entfernen</target>
       </trans-unit>
 
       <trans-unit id="tl_field_format_action.prepend.0">

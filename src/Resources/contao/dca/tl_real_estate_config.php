@@ -35,7 +35,11 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatDecimals'],
             'default'                 => ',',
 			'inputType'               => 'select',
-            'options'                 => array(',' => 'Komma (,)', '.' =>'Punkt (.)'),
+            'options'                 => array
+            (
+                ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
+                '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
+            ),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),
 		'numberFormatThousands' => array
@@ -43,7 +47,11 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatThousands'],
             'default'                 => '.',
             'inputType'               => 'select',
-            'options'                 => array(',' => 'Komma (,)', '.' =>'Punkt (.)'),
+            'options'                 => array
+            (
+                ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
+                '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
+            ),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),
 		'defaultSorting' => array
@@ -51,6 +59,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
             'inputType'               => 'select',
             'options'                 => array('dateAdded', 'tstamp', 'standVom'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_config'],
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr')
 		),
         'statusTokenNewDisplayDuration' => array

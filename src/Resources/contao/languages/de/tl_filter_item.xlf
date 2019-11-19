@@ -146,6 +146,10 @@
         <source>Options are displayed merged.</source>
         <target>Die Optionen werden zusammengeführt ausgegeben.</target>
       </trans-unit>
+      <trans-unit id="tl_filter_item.rangeMode.0">
+        <source>Range mode</source>
+        <target>Range-Modus</target>
+      </trans-unit>
       <trans-unit id="tl_filter_item.typeItem.0">
         <source>Type field</source>
         <target>Typfeld</target>

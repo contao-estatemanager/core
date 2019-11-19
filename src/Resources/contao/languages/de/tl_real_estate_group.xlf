@@ -41,6 +41,14 @@
         <source>Please indicate the type of marketing.</source>
         <target>Bitte geben Sie die Vermarktungsart an.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_group.kauf_erbpacht">
+        <source>Buy</source>
+        <target>Kaufen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_group.miete_leasing">
+        <source>Rent</source>
+        <target>Mieten</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_group.published.0">
         <source>Publish group</source>
         <target>Gruppe veröffentlichen</target>
