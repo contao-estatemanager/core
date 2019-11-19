@@ -20,7 +20,12 @@
       <trans-unit id="tl_module.sorting_legend">
         <source>Sorting</source>
       </trans-unit>
-
+      <trans-unit id="tl_module.filter.0">
+        <source>Filter</source>
+      </trans-unit>
+      <trans-unit id="tl_module.filter.1">
+        <source>Here you can specify the filter.</source>
+      </trans-unit>
       <trans-unit id="tl_module.addCountLabel.0">
         <source>Add counting</source>
       </trans-unit>
@@ -141,7 +146,6 @@
       <trans-unit id="tl_module.providerImgSize.1">
         <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
-
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
       </trans-unit>

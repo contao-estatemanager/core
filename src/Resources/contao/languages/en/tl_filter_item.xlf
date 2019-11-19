@@ -111,6 +111,9 @@
       <trans-unit id="tl_filter_item.mergeOptions.1">
         <source>Options are displayed merged.</source>
       </trans-unit>
+      <trans-unit id="tl_filter_item.rangeMode.0">
+        <source>Range mode</source>
+      </trans-unit>
       <trans-unit id="tl_filter_item.typeItem.0">
         <source>Type field</source>
       </trans-unit>

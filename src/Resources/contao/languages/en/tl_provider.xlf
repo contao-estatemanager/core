@@ -26,6 +26,15 @@
       <trans-unit id="tl_provider.singleSRC.1">
         <source>Here you can enter the logo of the provider.</source>
       </trans-unit>
+      <trans-unit id="tl_provider.contact.0">
+        <source>Contact person (if possible)</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.provider.0">
+        <source>Provider</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.both.0">
+        <source>Both</source>
+      </trans-unit>
       <trans-unit id="tl_provider.forwardingMode.0">
         <source>Forwarding mode</source>
       </trans-unit>

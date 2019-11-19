@@ -33,6 +33,18 @@
         <source>Here you can enter the logo of the provider.</source>
         <target>Hier können Sie das Logo des Anbieters angeben.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.contact.0">
+        <source>Contact person (if possible)</source>
+        <target>Ansprechpartner wenn möglich</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.provider.0">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.both.0">
+        <source>Both</source>
+        <target>Beide</target>
+      </trans-unit>
       <trans-unit id="tl_provider.forwardingMode.0">
         <source>Forwarding mode</source>
         <target>Weiterleitungsmodus</target>

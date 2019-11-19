@@ -10,6 +10,8 @@
 
 use ContaoEstateManager\FieldFormatModel;
 
+System::loadLanguageFile('tl_real_estate');
+
 $GLOBALS['TL_DCA']['tl_field_format'] = array
 (
 
@@ -282,8 +284,9 @@ class tl_field_format extends Backend
      *
      * @return array
      */
+
     public function getRealEstateColumns(){
-        $collumns   = array();
+        $options   = array();
         $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
@@ -294,11 +297,11 @@ class tl_field_format extends Backend
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $collumns[$field] = $field;
+                    $options[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
 
-        return $collumns;
+        return $options;
     }
 }

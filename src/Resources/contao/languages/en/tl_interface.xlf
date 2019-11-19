@@ -26,6 +26,12 @@
       <trans-unit id="tl_interface.anbieternr.1">
         <source>Please enter the provider number.</source>
       </trans-unit>
+      <trans-unit id="tl_interface.uniqueProviderField.0">
+        <source>Unique provider field</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.uniqueProviderField.1">
+        <source>Please select a unique provider field, through which the real estate data record can be identified.</source>
+      </trans-unit>
       <trans-unit id="tl_interface.uniqueField.0">
         <source>Unique field</source>
       </trans-unit>
@@ -132,9 +138,26 @@
       <trans-unit id="tl_interface.assign">
         <source>Assign</source>
       </trans-unit>
+      <trans-unit id="tl_interface.objekttitel">
+        <source>Property title</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.objektbeschreibung">
+        <source>Property description</source>
+      </trans-unit>
       <trans-unit id="tl_interface.never">
         <source>Never</source>
       </trans-unit>
+
+      <trans-unit id="tl_interface.min">
+        <source>Every minute</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.10min">
+        <source>Every 10 minutes</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.30min">
+        <source>Every 30 minutes</source>
+      </trans-unit>
+
       <trans-unit id="tl_interface.hourly">
         <source>Hourly</source>
       </trans-unit>
@@ -249,7 +272,7 @@
         <source>Clear records</source>
       </trans-unit>
       <trans-unit id="tl_interface.cleardata.1">
-        <source>Clears files of real estate records that do not exist in the database.</source>
+        <source>Clears files of real estate records that do not exist in the database</source>
       </trans-unit>
     </body>
   </file>

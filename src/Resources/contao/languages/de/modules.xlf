@@ -124,7 +124,7 @@
         <target>Erzeugt eine Immobilienliste.</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.0">
-        <source>Real Estate Results List</source>
+        <source>Real estate results list</source>
         <target>Immobilien-Ergebnisliste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">

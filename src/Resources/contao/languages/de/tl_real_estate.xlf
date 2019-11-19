@@ -102,6 +102,14 @@
         <source>Here you can enter the external object number.</source>
         <target>Geben Sie hier die externe Objektnummer an.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.aktivVon.0">
+        <source>Active from</source>
+        <target>Aktiv von</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.aktivBis.0">
+        <source>Active until</source>
+        <target>Aktiv bis</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.openimmoObid.0">
         <source>OpenImmo object ID</source>
         <target>OpenImmo Objekt-Id</target>
@@ -110,7 +118,14 @@
         <source>Here you can enter the OpenImmo object ID.</source>
         <target>Geben Sie hier die OpenImmo Objekt-Id an.</target>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate.kennungUrsprung.0">
+        <source>Identification source</source>
+        <target>Kennung Ursprung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.standVom.0">
+        <source>Status as of</source>
+        <target>Stand vom</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.provider.0">
         <source>Provider</source>
         <target>Anbieter</target>
@@ -216,6 +231,10 @@
         <source>Here you can enter the location of the property.</source>
         <target>Geben Sie hier die Lage der Immobilie ein</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.wohnungsnr.0">
+        <source>Apartment number</source>
+        <target>Wohnungsnummer</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.lageGebiet.0">
         <source>Location type</source>
         <target>Lage / Gebiet</target>
@@ -313,6 +332,10 @@
         <source>Here you can specify whether residential real estate should also be available for commercial use.</source>
         <target>Wenn Wohnimmobilien auch für die gewerbliche Nutzung zur Verfügung steht.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.branchen.0">
+        <source>Industry sectors</source>
+        <target>Branchen</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.verfuegbarAb.0">
         <source>Available on</source>
         <target>Verfügbar ab</target>
@@ -321,7 +344,26 @@
         <source>Here you can enter the date of availability.</source>
         <target>Geben Sie hier das Verfügbarkeitsdatum an.</target>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate.abdatum.0">
+        <source>From date</source>
+        <target>Ab datum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.bisdatum.0">
+        <source>Until date</source>
+        <target>Bis datum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.minMietdauer.0">
+        <source>Minimum rental period</source>
+        <target>Minimale Mietdauer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.maxMietdauer.0">
+        <source>Maximum rental period</source>
+        <target>Maximale Mietdauer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.versteigerungstermin.0">
+        <source>Auction date</source>
+        <target>Versteigerungstermin</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.zimmerTyp.0">
         <source>Type of room</source>
         <target>Zimmer-Typ</target>
@@ -426,7 +468,10 @@
         <source>Here you can define the type of interest.</source>
         <target>Definieren Sie hier, um welchen Zins-Typen es sich handelt.</target>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate.kaufpreisAufAnfrage.0">
+        <source>Purchase price on request</source>
+        <target>Kaufpreis auf Anfrage</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.dreizeiler.0">
         <source>Tercet / Teaser</source>
         <target>Dreizeiler / Teaser</target>
@@ -888,6 +933,10 @@
         <source>Is the property subject to commission?</source>
         <target>Ist die Immobilie provisionspflichtig?</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.provisionTeilen.0">
+        <source>Share commission</source>
+        <target>Provision teilen</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.provisionTeilenWert.0">
         <source>Share commission</source>
         <target>Provision teilen</target>
@@ -959,6 +1008,10 @@
       <trans-unit id="tl_real_estate.provisionbrutto.1">
         <source>Here you can define the commission (gross).</source>
         <target>Definieren Sie hier die Provision in Brutto.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.waehrung.0">
+        <source>Currency</source>
+        <target>Währung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mwstSatz.0">
         <source>VAT rate</source>
@@ -1089,7 +1142,58 @@
         <source>Here you can define a target value per squaremeter for purchase/rental price which will be used to sort your real estate if no purchase/rental price have been specified.</source>
         <target>Ein Wert pro m² für Kaufpreis/Mietpreis der für eine Einsortierung angegeben werden kann, wenn keine Kauf/Mietpreis angegeben wird.</target>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate.beginnAngebotsphase.0">
+        <source>Start bidding phase</source>
+        <target>Beginn Angebotsphase</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.besichtigungstermin.0">
+        <source>Viewing appointment</source>
+        <target>Besichtigungstermin</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.besichtigungstermin2.0">
+        <source>Viewing appointment no. 2</source>
+        <target>Besichtigungstermin Nr. 2</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.beginnBietzeit.0">
+        <source>Start of bidding period</source>
+        <target>Beginn Bietzeit</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.endeBietzeit.0">
+        <source>End of bidding period</source>
+        <target>Ende Bietzeit</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hoechstgebotZeigen.0">
+        <source>Show highest bid</source>
+        <target>Höchstgebot zeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.mindestpreis.0">
+        <source>Minimum price</source>
+        <target>Mindestpreis</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zwangsversteigerung.0">
+        <source>Foreclosure</source>
+        <target>Zwangsversteigerung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.aktenzeichen.0">
+        <source>File number</source>
+        <target>Aktenzeichen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zvtermin.0">
+        <source>Foreclosure appointment</source>
+        <target>Zwangsversteigerungtermin</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zusatztermin.0">
+        <source>Additional appointment</source>
+        <target>Zusatztermin</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.amtsgericht.0">
+        <source>District Court</source>
+        <target>Amtsgericht</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.verkehrswert.0">
+        <source>Market value</source>
+        <target>Verkehrswert</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.wohnflaeche.0">
         <source>Living space</source>
         <target>Wohnfläche</target>
@@ -1649,6 +1753,10 @@
         <source>Guest terrace available</source>
         <target>Gastterrasse vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.stromanschlusswert.0">
+        <source>Power connection value</source>
+        <target>Stromanschlusswert</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kantineCafeteria.0">
         <source>Canteen/Cafeteria available</source>
         <target>Kantine / Cafeteria vorhanden</target>
@@ -1656,6 +1764,10 @@
       <trans-unit id="tl_real_estate.teekueche.0">
         <source>Kitchenette available</source>
         <target>Teeküche vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hallenhoehe.0">
+        <source>Height of the hall</source>
+        <target>Hallenhöhe</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.brauereibindung.0">
         <source>Beer supply agreement</source>
@@ -1730,7 +1842,7 @@
         <target>Makro-Karte vorhanden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kartenMikro.0">
-        <source>Micro-map vorhanden</source>
+        <source>Micro-map available</source>
         <target>Mikro-Karte vorhanden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.virtuelletour.0">
@@ -1744,6 +1856,22 @@
       <trans-unit id="tl_real_estate.einliegerwohnung.0">
         <source>Secondary suite</source>
         <target>Einliegerwohnung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.kubatur.0">
+        <source>Cubature</source>
+        <target>Kubatur</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.ausnuetzungsziffer.0">
+        <source>Floor space index</source>
+        <target>Ausnützungsziffer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flaechevon.0">
+        <source>Area from</source>
+        <target>Fläche von</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flaechebis.0">
+        <source>Area up to</source>
+        <target>Fläche bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.wgGeeignet.0">
         <source>Flatshare suitable</source>
@@ -1829,6 +1957,186 @@
       <trans-unit id="tl_real_estate.bauzone.1">
         <source>Please specify the building zone of the real estate</source>
         <target>Geben Sie die Bauzone der Immobilie an.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.altlasten.0">
+        <source>Contaminated sites</source>
+        <target>Altlasten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.ausblick.0">
+        <source>View</source>
+        <target>Ausblick</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.ausblick.1">
+        <source>Here you can specify the view / panorama.</source>
+        <target>Hier können Sie den Ausblick angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzFlughafen.0">
+        <source>Airport</source>
+        <target>Flughafen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzFlughafen.1">
+        <source>Here you can enter the distance to the closest airport.</source>
+        <target>Hier können Sie die Entfernung zum nächstgelegenen Flughafen eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzFernbahnhof.0">
+        <source>Railway station</source>
+        <target>Fernbahnhof</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzFernbahnhof.1">
+        <source>Here you can enter the distance to the closest railway station.</source>
+        <target>Hier können Sie die Entfernung zum nächsten Fernbahnhof eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzAutobahn.0">
+        <source>Highway</source>
+        <target>Autobahn</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzAutobahn.1">
+        <source>Here you can enter the distance to the closest highway.</source>
+        <target>Hier können Sie die Entfernung zur nächsten Autobahn eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzUsBahn.0">
+        <source>Subway</source>
+        <target>U-Bahn</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzUsBahn.1">
+        <source>Here you can enter the distance to the closest subway.</source>
+        <target>Hier können Sie die Entfernung zur nächsten U-Bahn eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzBus.0">
+        <source>Bus stop</source>
+        <target>Bushaltestelle</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzBus.1">
+        <source>Here you can enter the distance to the closest bus stop.</source>
+        <target>Hier können Sie die Entfernung zur nächsten Bushaltestelle eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzKindergarten.0">
+        <source>Kindergarten</source>
+        <target>Kindergarten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzKindergarten.1">
+        <source>Here you can enter the distance to the closest kindergarten.</source>
+        <target>Hier können Sie die Entfernung zum nächsten Kindergarten eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGrundschule.0">
+        <source>Primary school</source>
+        <target>Grundschule</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGrundschule.1">
+        <source>Here you can enter the distance to the closest primary school.</source>
+        <target>Hier können Sie die Entfernung zur nächstgelegenen Grundschule eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzHauptschule.0">
+        <source>Hauptschule (Lower Secondary Education)</source>
+        <target>Hauptschule</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzHauptschule.1">
+        <source>Here you can enter the distance to the closest lower secondary education school.</source>
+        <target>Hier können Sie die Entfernung zur nächstgelegenen Hauptschule eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzRealschule.0">
+        <source>Secondary school</source>
+        <target>Realschule</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzRealschule.1">
+        <source>Here you can enter the distance to the closest secondary school.</source>
+        <target>Hier können Sie die Entfernung zur nächstgelegenen Realschule eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGesamtschule.0">
+        <source>Comprehensive school</source>
+        <target>Gesamtschule</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGesamtschule.1">
+        <source>Here you can enter the distance to the closest comprehensive school.</source>
+        <target>Hier können Sie die Entfernung zur nächstgelegenen Gesamtschule eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGymnasium.0">
+        <source>High school</source>
+        <target>Gymnasium</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGymnasium.1">
+        <source>Here you can enter the distance to the closest high school.</source>
+        <target>Hier können Sie die Entfernung zum nächstgelegenen Gymnasium eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzZentrum.0">
+        <source>City centre</source>
+        <target>Zentrum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzZentrum.1">
+        <source>Here you can enter the distance to the city centre.</source>
+        <target>Hier können Sie die Entfernung zum Stadtzentrum eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzEinkaufsmoeglichkeiten.0">
+        <source>Shopping facilities</source>
+        <target>Einkaufsmöglichkeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzEinkaufsmoeglichkeiten.1">
+        <source>Here you can enter the distance to the closest shopping facilities.</source>
+        <target>Hier können Sie die Entfernung zu den nächstgelegenen Einkaufsmöglichkeiten eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGaststaetten.0">
+        <source>Restaurants</source>
+        <target>Gaststätten</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzGaststaetten.1">
+        <source>Here you can enter the distance to the closest restaurant.</source>
+        <target>Hier können Sie die Entfernung zum nächstgelegenen Restaurant eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportStrand.0">
+        <source>Beach</source>
+        <target>Strand</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportStrand.1">
+        <source>Here you can enter the distance to the beach (sport).</source>
+        <target>Hier können Sie die Entfernung zum Strand (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSee.0">
+        <source>Lake</source>
+        <target>See</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSee.1">
+        <source>Here you can enter the distance to the closest lake (sport).</source>
+        <target>Hier können Sie die Entfernung zum nächsten See (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportMeer.0">
+        <source>Sea</source>
+        <target>Meer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportMeer.1">
+        <source>Here you can enter the distance to the sea (sport).</source>
+        <target>Hier können Sie die Entfernung zum Meer (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSkigebiet.0">
+        <source>Skiing area</source>
+        <target>Skigebiet</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSkigebiet.1">
+        <source>Here you can enter the distance to the closest skiing area (sport).</source>
+        <target>Hier können Sie die Entfernung zum nächsten Skigebiet (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSportanlagen.0">
+        <source>Sports facility</source>
+        <target>Sportanlagen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportSportanlagen.1">
+        <source>Here you can enter the distance to the closest sports facility (sport).</source>
+        <target>Hier können Sie die Entfernung zur nächsten Sportanlage (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportWandergebiete.0">
+        <source>Hiking area</source>
+        <target>Wandergebiete</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportWandergebiete.1">
+        <source>Here you can enter the distance to the closest hiking area (sport).</source>
+        <target>Hier können Sie die Entfernung zum nächstgelegenen Wandergebiet (Sport) eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportNaherholung.0">
+        <source>Local recreation</source>
+        <target>Naherholung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.distanzSportNaherholung.1">
+        <source>Here you can enter the distance to the closest local recreation (sport).</source>
+        <target>Hier können Sie die Entfernung zur nächstgelegenen Naherholung (Sport) eingeben.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.energiepassEpart.0">
         <source>Building energy rating type</source>
@@ -1933,6 +2241,10 @@
       <trans-unit id="tl_real_estate.energiepassGebaeudeart.1">
         <source>Here you can specify the type of building.</source>
         <target>Definieren Sie hier die Gebäudeart.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.energiepassEpasstext.0">
+        <source>Energy certification text</source>
+        <target>Energieausweis Text</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.energiepassHwbwert.0">
         <source>HWB value (heating demand)</source>
@@ -2104,6 +2416,10 @@
         <source>Pets allowed</source>
         <target>Haustiere erlaubt</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.geschlecht.0">
+        <source>Gender</source>
+        <target>Geschlecht</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.denkmalgeschuetzt.0">
         <source>Listed building / memorial</source>
         <target>Denkmalgeschützt</target>
@@ -2127,6 +2443,46 @@
       <trans-unit id="tl_real_estate.vermietet.1">
         <source>Is the real estate (still) rented?</source>
         <target>Ist das Objekt noch/bereits vermietet?</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gruppennummer.0">
+        <source>Group number</source>
+        <target>Gruppennummer</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zugang.0">
+        <source>Access</source>
+        <target>Zugang</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.laufzeit.0">
+        <source>Duration</source>
+        <target>Laufzeit</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.maxPersonen.0">
+        <source>Maximum capacity</source>
+        <target>Maximale Personenanzahl</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flur.0">
+        <source>Area</source>
+        <target>Flur</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flur.1">
+        <source>Here you can specify the area (german: Flurangaben).</source>
+        <target>Hier können Sie die Flur angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flurstueck.0">
+        <source>Land lot</source>
+        <target>Flurstück</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flurstueck.1">
+        <source>Here you can specify the land lot details.</source>
+        <target>Hier können Sie das Flurstück angeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gemarkung.0">
+        <source>District</source>
+        <target>Gemarkung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gemarkung.1">
+        <source>Here you can specify the district (german: Gemarkung).</source>
+        <target>Hier können Sie die Gemarkung angeben.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.etage.0">
         <source>Floor</source>
@@ -2208,6 +2564,14 @@
       <trans-unit id="tl_real_estate.anzahlWohnSchlafzimmer.1">
         <source>Here you can enter the total number of bed-sitting rooms.</source>
         <target>Geben Sie hier die Gesamtanzahl der Wohn-Schlafzimmer an.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.plaetzeGastraum.0">
+        <source>Places guestroom</source>
+        <target>Plätze Gastraum</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.anzahlBetten.0">
+        <source>Number of beds</source>
+        <target>Anzahl Betten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.anzahlTagungsraeume.0">
         <source>Number of conference rooms</source>
@@ -2303,8 +2667,30 @@
         <target>Sprache</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sprache.1">
-        <source>Here you can enter the language of your real estate.</source>
-        <target>Hier können Sie Sprache Ihrer Immobilie definieren.</target>
+        <source>Here you can enter the language of your real estate (e.g: en-US or de-DE etc.).</source>
+        <target>Hier können Sie die Sprache Ihrer Immobilie definieren (Bsp.: de-DE oder de-CH, en-US usw.).</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.anbieterobjekturl.0">
+        <source>Provider real estate URL</source>
+        <target>Anbieter real estate URL</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.offen.0">
+        <source>Open</source>
+        <target>Offen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.reserviert.0">
+        <source>Reserved</source>
+        <target>Reserviert</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.verkauft.0">
+        <source>Sold</source>
+        <target>Verkauft</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate.AUFTRAGSART.0">
+        <source>ORDERTYPE</source>
+        <target>AUFTRAGSART</target>
       </trans-unit>
     </body>
   </file>

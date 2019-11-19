@@ -1,0 +1,62 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_interface_history.php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_interface_history.tstamp.0">
+                <source>Date</source>
+                <target>Datum</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.tstamp.1">
+                <source>Date and time of the log entry</source>
+                <target>Datum und Uhrzeit des Eintrags</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.source.0">
+                <source>Origin</source>
+                <target>Ursprung</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.source.1">
+                <source>Backend or frontend</source>
+                <target>Backend oder Frontend</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.action.0">
+                <source>Category</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.action.1">
+                <source>Category of the action</source>
+                <target>Kategorie der Aktion</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.username.0">
+                <source>User</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.username.1">
+                <source>Name of the logged-in user</source>
+                <target>Name des angemeldeten Benutzers</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.text.0">
+                <source>Details</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.text.1">
+                <source>Details of the log entry</source>
+                <target>Details des Log-Eintrags</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.show.0">
+                <source>Show details</source>
+                <target>Anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.show.1">
+                <source>Show details of entry ID %s</source>
+                <target>Den Eintrag ID %s anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.delete.0">
+                <source>Delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.delete.1">
+                <source>Delete entry ID %s</source>
+                <target>Eintrag ID %s löschen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -2,6 +2,9 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_field_format.php" source-language="en">
     <body>
+      <trans-unit id="tl_field_format.format_legend">
+        <source>Field format</source>
+      </trans-unit>
       <trans-unit id="tl_field_format.new.0">
         <source>New field</source>
       </trans-unit>

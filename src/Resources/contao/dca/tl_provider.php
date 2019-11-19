@@ -171,11 +171,8 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['forwardingMode'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array(
-                'contact'    => 'Ansprechpartner wenn möglich',
-                'provider'   => 'Anbieter',
-                'both'       => 'Beide'
-            ),
+            'options'                 => array('contact', 'provider', 'both'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_provider'],
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(8) NOT NULL default ''"
         ),
