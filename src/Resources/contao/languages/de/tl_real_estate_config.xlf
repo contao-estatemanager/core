@@ -68,7 +68,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.0">
         <source>Default contact person image</source>
-        <target>Standard-Bild Kontaktpersonen</target>
+        <target>Standard-Bild Kontaktperson</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
@@ -84,7 +84,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.0">
         <source>Default contact person image (male)</source>
-        <target>Standard-Bild Kontaktpersonen (männlich)</target>
+        <target>Default contact person image (male)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>

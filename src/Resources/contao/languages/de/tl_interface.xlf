@@ -194,6 +194,7 @@
         <source>Never</source>
         <target>Niemals</target>
       </trans-unit>
+
       <trans-unit id="tl_interface.min">
         <source>Every minute</source>
         <target>Minütlich</target>
@@ -206,6 +207,7 @@
         <source>Every 30 minutes</source>
         <target>Alle 30 Minuten</target>
       </trans-unit>
+
       <trans-unit id="tl_interface.hourly">
         <source>Hourly</source>
         <target>Stündlich</target>
@@ -335,6 +337,22 @@
       <trans-unit id="tl_interface.sync.1">
         <source>Synchronize interface ID %s</source>
         <target>Schnittstelle ID %s synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.history.0">
+        <source>Show history of synchronisations</source>
+        <target>Verlauf der Synchronisationen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.history.1">
+        <source>Show history of synchronisations</source>
+        <target>Verlauf der Synchronisationen anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.log.0">
+        <source>Show log entries of synchronisations</source>
+        <target>Protokolleinträge von Synchronisationen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.log.1">
+        <source>Show log entries of synchronisations</source>
+        <target>Protokolleinträge von Synchronisationen anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_interface.cleardata.0">
         <source>Clear records</source>

@@ -127,11 +127,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_parken">
         <source>Parking</source>
-        <target>Parken</target>
+        <target>Stellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_sonstige">
         <source>Miscellaneous</source>
-        <target>Sonstige</target>
+        <target>Sonstiges</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_freizeitimmobilie_gewerblich">
         <source>Leisure home (used for commercial purposes)</source>

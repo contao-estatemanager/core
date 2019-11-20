@@ -346,11 +346,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.abdatum.0">
         <source>From date</source>
-        <target>Ab datum</target>
+        <target>Ab Datum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bisdatum.0">
         <source>Until date</source>
-        <target>Bis datum</target>
+        <target>Bis Datum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.minMietdauer.0">
         <source>Minimum rental period</source>
@@ -607,7 +607,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.mietzuschlaege.0">
         <source>Additional rental surcharges</source>
-        <target>weitere Mietzuschläge</target>
+        <target>Weitere Mietzuschläge</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietzuschlaege.1">
         <source>Here you can define additional rental surcharges.</source>
@@ -735,7 +735,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostennetto.0">
         <source>Monthly costs (net)</source>
-        <target>monatliche Kosten (Netto)</target>
+        <target>Monatliche Kosten (Netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostennetto.1">
         <source>Here you can define the monthly costs (net).</source>
@@ -743,7 +743,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenust.0">
         <source>Monthly costs (with sales tax)</source>
-        <target>monatliche Kosten (UmSt.)</target>
+        <target>Monatliche Kosten (UmSt.)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenust.1">
         <source>Here you can define the monthly costs with sales tax.</source>
@@ -751,7 +751,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenbrutto.0">
         <source>Monthly costs (gross)</source>
-        <target>monatliche Kosten (Brutto)</target>
+        <target>Monatliche Kosten (Brutto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.monatlichekostenbrutto.1">
         <source>Here you can define the monthly costs (gross).</source>
@@ -1296,7 +1296,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.grz.1">
         <source>Here you can specify the site cover / plot coverage of your real estate.</source>
-        <target>eben Sie hier die Grundflächenzahl der Immobilie an.</target>
+        <target>Geben Sie hier die Grundflächenzahl der Immobilie an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gfz.0">
         <source>Floor-area ratio (FAR) / Floor space index</source>
@@ -1577,11 +1577,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstigePlatzart.1">
         <source>Please specify the type of other parking spaces.</source>
-        <target>eben Sie hier die Art der sonstigen Stellplätze an.</target>
+        <target>Geben Sie hier die Art der sonstigen Stellplätze an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstigeMietpreis.0">
         <source>Rent for other parking spaces</source>
-        <target>sonstige Stellplätze Mietpreis</target>
+        <target>Sonstige Stellplätze Mietpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstigeMietpreis.1">
         <source>Please specify the rent for other parking spaces.</source>
@@ -1589,7 +1589,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstigeKaufpreis.0">
         <source>Purchase price for other parking spaces</source>
-        <target>sonstige Stellplätze Kaufpreis</target>
+        <target>Sonstige Stellplätze Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.stpSonstigeKaufpreis.1">
         <source>Please specify the purchase price for other parking spaces.</source>
@@ -2060,7 +2060,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzZentrum.0">
         <source>City centre</source>
-        <target>Zentrum</target>
+        <target>Stadtzentrum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzZentrum.1">
         <source>Here you can enter the distance to the city centre.</source>
@@ -2116,15 +2116,15 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzSportSportanlagen.0">
         <source>Sports facility</source>
-        <target>Sportanlagen</target>
+        <target>Sportanlage</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzSportSportanlagen.1">
         <source>Here you can enter the distance to the closest sports facility (sport).</source>
-        <target>Hier können Sie die Entfernung zur nächsten Sportanlage (Sport) eingeben.</target>
+        <target>Here you can enter the distance to the closest sports facility (sport).</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzSportWandergebiete.0">
         <source>Hiking area</source>
-        <target>Wandergebiete</target>
+        <target>Wandergebiet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.distanzSportWandergebiete.1">
         <source>Here you can enter the distance to the closest hiking area (sport).</source>
@@ -2672,7 +2672,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.anbieterobjekturl.0">
         <source>Provider real estate URL</source>
-        <target>Anbieter real estate URL</target>
+        <target>Anbieter Immobilien URL</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.offen.0">
