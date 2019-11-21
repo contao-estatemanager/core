@@ -26,6 +26,18 @@
       <trans-unit id="tl_interface_mapping.oiFieldGroup.1">
         <source>Please enter the OpenImmo group where the field should be searched.</source>
       </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiConditionField.0">
+        <source>OpenImmo condition field</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiConditionField.1">
+        <source>Please enter the field in which the condition should be checked.</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiConditionValue.0">
+        <source>OpenImmo condition value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.oiConditionValue.1">
+        <source>Please enter the value to be checked for. Only matching values will be mapped.</source>
+      </trans-unit>
       <trans-unit id="tl_interface_mapping.serialize.0">
         <source>Serialize values</source>
       </trans-unit>
@@ -178,7 +190,7 @@
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.importDefaultMappings.0">
-        <source>Restore Fields</source>
+        <source>Restore fields</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.importDefaultMappings.1">
         <source>Restore to standard OpenImmo mapping fields</source>

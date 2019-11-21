@@ -130,18 +130,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
             'inputType'                 => 'select',
-            'options'                   => array(
-                'prepend'           => 'prepend',
-                'append'            => 'append',
-                'number_format'     => 'number_format',
-                'date_format'       => 'date_format',
-                'ucfirst'           => 'ucfirst',
-                'wrap'              => 'wrap',
-                'unserialize'       => 'unserialize',
-                'combine'           => 'combine',
-                'boolToWord'        => 'boolToWord',
-                'custom'            => 'custom'
-            ),
+            'options'                   => array('prepend', 'append', 'number_format', 'date_format', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
             'reference'                 => &$GLOBALS['TL_LANG']['tl_field_format_action'],
             'eval'                      => array('helpwizard'=>true, 'tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
             'sql'                       => "varchar(255) NOT NULL default ''"
@@ -262,9 +251,10 @@ class tl_field_format_action extends \Backend
      * @return array
      */
     public function getRealEstateCollumns(){
-        $collumns      = array();
+        $options      = array();
         $skipFields    = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
+        $this->loadLanguageFile('tl_real_estate');
         $this->loadDataContainer('tl_real_estate');
 
         if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
@@ -273,12 +263,12 @@ class tl_field_format_action extends \Backend
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $collumns[$field] = $field;
+                    $options[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
             }
         }
 
-        return $collumns;
+        return $options;
     }
 
     public function getCustomFunctions(){

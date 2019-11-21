@@ -11,6 +11,7 @@
 
 // load misc language
 \System::loadLanguageFile('tl_real_estate_misc');
+\System::loadLanguageFile('tl_contact_person');
 
 $GLOBALS['TL_DCA']['tl_expose_module'] = array
 (
@@ -389,7 +390,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'inputType'               => 'checkbox',
             'options'                 => array('personennummer', 'anrede', 'firma', 'vorname', 'name', 'titel', 'position', 'email_zentrale', 'email_direkt', 'email_privat', 'email_sonstige', 'email_feedback', 'tel_zentrale', 'tel_durchw', 'tel_fax', 'tel_handy', 'tel_privat', 'tel_sonstige', 'strasse', 'hausnummer', 'plz', 'ort', 'land', 'freitextfeld', 'singleSRC'),
             'eval'                    => array('mandatory'=>true, 'multiple'=>true),
-            'reference'               => &$GLOBALS['TL_LANG']['FMD'],
+            'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
             'sql'                     => "blob NULL"
         ),
         'useProviderForwarding' => array
@@ -586,13 +587,14 @@ class tl_expose_module extends Backend
     {
         $filterFields = array();
 
+        $this->loadLanguageFile('tl_real_estate');
         $this->loadDataContainer('tl_real_estate');
 
         if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
-            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
+            foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
-                $filterFields[] = $field;
+                $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
             }
         }
 

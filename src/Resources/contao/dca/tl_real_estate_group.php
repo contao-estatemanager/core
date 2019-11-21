@@ -158,7 +158,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
             'inputType'               => 'select',
             'search'                  => true,
             'options'                 => array('kauf_erbpacht', 'miete_leasing'),
-            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
+            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_group'],
             'eval'                    => array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",
         ),

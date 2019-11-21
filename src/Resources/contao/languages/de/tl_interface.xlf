@@ -33,6 +33,14 @@
         <source>Please enter the provider number.</source>
         <target>Bitte geben Sie die Anbieternummer ein.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.uniqueProviderField.0">
+        <source>Unique provider field</source>
+        <target>Eindeutiges Anbieterfeld</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.uniqueProviderField.1">
+        <source>Please select a unique provider field, through which the real estate data record can be identified.</source>
+        <target>Bitte wählen Sie ein eindeutiges Anbieterfeld, über das der Immobiliendatensatz identifiziert werden kann.</target>
+      </trans-unit>
       <trans-unit id="tl_interface.uniqueField.0">
         <source>Unique field</source>
         <target>Eindeutiges Feld</target>
@@ -174,10 +182,32 @@
         <source>Assign</source>
         <target>Zuweisen</target>
       </trans-unit>
+      <trans-unit id="tl_interface.objekttitel">
+        <source>Property title</source>
+        <target>Objekttitel</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.objektbeschreibung">
+        <source>Property description</source>
+        <target>Objektbeschreibung</target>
+      </trans-unit>
       <trans-unit id="tl_interface.never">
         <source>Never</source>
         <target>Niemals</target>
       </trans-unit>
+
+      <trans-unit id="tl_interface.min">
+        <source>Every minute</source>
+        <target>Minütlich</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.10min">
+        <source>Every 10 minutes</source>
+        <target>Alle 10 Minuten</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.30min">
+        <source>Every 30 minutes</source>
+        <target>Alle 30 Minuten</target>
+      </trans-unit>
+
       <trans-unit id="tl_interface.hourly">
         <source>Hourly</source>
         <target>Stündlich</target>
@@ -308,13 +338,29 @@
         <source>Synchronize interface ID %s</source>
         <target>Schnittstelle ID %s synchronisieren</target>
       </trans-unit>
+      <trans-unit id="tl_interface.history.0">
+        <source>Show history of synchronisations</source>
+        <target>Verlauf der Synchronisationen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.history.1">
+        <source>Show history of synchronisations</source>
+        <target>Verlauf der Synchronisationen anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.log.0">
+        <source>Show log entries of synchronisations</source>
+        <target>Protokolleinträge von Synchronisationen anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.log.1">
+        <source>Show log entries of synchronisations</source>
+        <target>Protokolleinträge von Synchronisationen anzeigen</target>
+      </trans-unit>
       <trans-unit id="tl_interface.cleardata.0">
         <source>Clear records</source>
         <target>Datensätze aufräumen</target>
       </trans-unit>
       <trans-unit id="tl_interface.cleardata.1">
-        <source>Clears files of real estate records that do not exist in the database.</source>
-        <target>Löscht Dateien von Immobilien-Datensätzen, die nicht in der Datenbank vorhanden sind.</target>
+        <source>Clears files of real estate records that do not exist in the database</source>
+        <target>Löscht Dateien von Immobilien-Datensätzen, die nicht in der Datenbank vorhanden sind</target>
       </trans-unit>
     </body>
   </file>

@@ -65,7 +65,7 @@
         <source>Field</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.remove">
-        <source>remove</source>
+        <source>Remove</source>
       </trans-unit>
 
       <trans-unit id="tl_field_format_action.prepend.0">

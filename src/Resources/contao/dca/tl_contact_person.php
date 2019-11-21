@@ -126,10 +126,8 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array(
-                'herr'    => 'Herr',
-                'frau'    => 'Frau',
-            ),
+            'options'                 => array('herr','frau'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(4) NOT NULL default ''"
         ),
@@ -472,14 +470,13 @@ class tl_contact_person extends Backend
         // Generate salutation if there is none
         if ($varValue == '')
         {
-            // ToDo: Use translation
             if($dc->activeRecord->anrede == 'herr'){
-                $salutation = 'Sehr geehrter';
+                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMr'][0];
             }else{
-                $salutation = 'Sehr geehrte';
+                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMrs'][0];
             }
 
-            $varValue = $salutation . ' ' . $dc->activeRecord->anrede . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
+            $varValue = $salutation . ' ' . $GLOBALS['TL_LANG']['tl_contact_person'][$dc->activeRecord->anrede][0] . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
         }
 
         return $varValue;

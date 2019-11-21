@@ -8,6 +8,9 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+// load real estate value language file
+System::loadLanguageFile('tl_real_estate_value');
+
 $GLOBALS['TL_DCA']['tl_real_estate'] = array
 (
 
@@ -214,8 +217,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzungsart'],
             'inputType'                 => 'select',
             'sorting'                   => true,
-            'options'                   => array('wohnen', 'gewerbe', 'anlage', 'waz'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value'],
+            'options'                   => array
+            (
+                'wohnen'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_wohnen'],
+                'gewerbe' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_gewerbe'],
+                'anlage'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_anlage'],
+                'waz'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_waz']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -268,9 +276,23 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['objektart'],
             'inputType'                 => 'select',
             'sorting'                   => true,
-            'options'                   => array('zimmer', 'wohnung', 'haus', 'grundstueck', 'buero_praxen', 'einzelhandel', 'gastgewerbe', 'hallen_lager_prod', 'land_und_forstwirtschaft', 'parken', 'sonstige', 'freizeitimmobilie_gewerblich', 'zinshaus_renditeobjekt'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
-            'eval'                      => array('includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
+            'options'                   => array
+            (
+                'zimmer'                        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_zimmer'],
+                'wohnung'                       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_wohnung'],
+                'haus'                          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_haus'],
+                'grundstueck'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_grundstueck'],
+                'buero_praxen'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_buero_praxen'],
+                'einzelhandel'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_einzelhandel'],
+                'gastgewerbe'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_gastgewerbe'],
+                'hallen_lager_prod'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_hallen_lager_prod'],
+                'land_und_forstwirtschaft'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_land_und_forstwirtschaft'],
+                'parken'                        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_parken'],
+                'sonstige'                      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_sonstige'],
+                'freizeitimmobilie_gewerblich'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_freizeitimmobilie_gewerblich'],
+                'zinshaus_renditeobjekt'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_zinshaus_renditeobjekt']
+            ),
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'  => true,
@@ -283,8 +305,10 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['zimmerTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('zimmer'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'zimmer'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zimmerTyp_zimmer'],
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -296,9 +320,24 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['wohnungTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('dachgeschoss', 'maisonette', 'loft-studio-atelier', 'penthouse', 'terrassen', 'etage', 'erdgeschoss', 'souterrain', 'apartment', 'ferienwohnung', 'galerie', 'rohdachboden', 'attikawohnung', 'keine_angabe'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
-            'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'options'                   => array
+            (
+                'dachgeschoss'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_dachgeschoss'],
+                'maisonette'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_maisonette'],
+                'loft-studio-atelier'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_loft-studio-atelier'],
+                'penthouse'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_penthouse'],
+                'terrassen'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_terrassen'],
+                'etage'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_etage'],
+                'erdgeschoss'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_erdgeschoss'],
+                'souterrain'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_souterrain'],
+                'apartment'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_apartment'],
+                'ferienwohnung'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_ferienwohnung'],
+                'galerie'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_galerie'],
+                'rohdachboden'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_rohdachboden'],
+                'attikawohnung'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_attikawohnung'],
+                'keine_angabe'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['wohnungTyp_keine_angabe']
+            ),
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'filter' => true,
@@ -309,9 +348,37 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['hausTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('reihenhaus','reihenend','reihenmittel','reiheneck','doppelhaushaelfte','einfamilienhaus','stadthaus','bungalow','villa','resthof','bauernhaus','landhaus','schloss','zweifamilienhaus','mehrfamilienhaus','ferienhaus','berghuette','chalet','strandhaus','laube-datsche-gartenhaus','apartmenthaus','burg','herrenhaus','finca','rustico','fertighaus','keine_angabe'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
-            'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'options'                   => array
+            (
+                'reihenhaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_reihenhaus'],
+                'reihenend'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_reihenend'],
+                'reihenmittel'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_reihenmittel'],
+                'reiheneck'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_reiheneck'],
+                'doppelhaushaelfte'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_doppelhaushaelfte'],
+                'einfamilienhaus'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_einfamilienhaus'],
+                'stadthaus'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_stadthaus'],
+                'bungalow'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_bungalow'],
+                'villa'                     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_villa'],
+                'resthof'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_resthof'],
+                'bauernhaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_bauernhaus'],
+                'landhaus'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_landhaus'],
+                'schloss'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_schloss'],
+                'zweifamilienhaus'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_zweifamilienhaus'],
+                'mehrfamilienhaus'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_mehrfamilienhaus'],
+                'ferienhaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_ferienhaus'],
+                'berghuette'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_berghuette'],
+                'chalet'                    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_chalet'],
+                'strandhaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_strandhaus'],
+                'laube-datsche-gartenhaus'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_laube-datsche-gartenhaus'],
+                'apartmenthaus'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_apartmenthaus'],
+                'burg'                      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_burg'],
+                'herrenhaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_herrenhaus'],
+                'finca'                     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_finca'],
+                'rustico'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_rustico'],
+                'fertighaus'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_fertighaus'],
+                'keine_angabe'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hausTyp_keine_angabe']
+            ),
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'filter' => true,
@@ -322,8 +389,18 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['grundstTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('wohnen','gewerbe','industrie','land_forstwirschaft','freizeit','gemischt','gewerbepark','sondernutzung','seeliegenschaft'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'wohnen'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_wohnen'],
+                'gewerbe'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_gewerbe'],
+                'industrie'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_industrie'],
+                'land_forstwirschaft'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_land_forstwirschaft'],
+                'freizeit'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_freizeit'],
+                'gemischt'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_gemischt'],
+                'gewerbepark'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_gewerbepark'],
+                'sondernutzung'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_sondernutzung'],
+                'seeliegenschaft'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['grundstTyp_seeliegenschaft']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -335,8 +412,19 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bueroTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('bueroflaeche','buerohaus','buerozentrum','loft_atelier','praxis','praxisflaeche','praxishaus','ausstellungsflaeche','coworking','shared_office'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'bueroflaeche'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_bueroflaeche'],
+                'buerohaus'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_buerohaus'],
+                'buerozentrum'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_buerozentrum'],
+                'loft_atelier'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_loft_atelier'],
+                'praxis'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_praxis'],
+                'praxisflaeche'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_praxisflaeche'],
+                'praxishaus'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_praxishaus'],
+                'ausstellungsflaeche'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_ausstellungsflaeche'],
+                'coworking'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_coworking'],
+                'shared_office'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bueroTyp_shared_office']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -348,8 +436,18 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['handelTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('ladenlokal','einzelhandelsladen','verbrauchermarkt','einkaufszentrum','kaufhaus','factory_outlet','kiosk','verkaufsflaeche','ausstellungsflaeche'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'ladenlokal'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_ladenlokal'],
+                'einzelhandelsladen'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_einzelhandelsladen'],
+                'verbrauchermarkt'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_verbrauchermarkt'],
+                'einkaufszentrum'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_einkaufszentrum'],
+                'kaufhaus'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_kaufhaus'],
+                'factory_outlet'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_factory_outlet'],
+                'kiosk'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_kiosk'],
+                'verkaufsflaeche'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_verkaufsflaeche'],
+                'ausstellungsflaeche'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['handelTyp_ausstellungsflaeche']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -361,8 +459,20 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['gastgewTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('gastronomie','gastronomie_und_wohnung','pensionen','hotels','weitere_beherbergungsbetriebe','bar','cafe','discothek','restaurant','raucherlokal','einraumlokal'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'gastronomie'                   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_gastronomie'],
+                'gastronomie_und_wohnung'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_gastronomie_und_wohnung'],
+                'pensionen'                     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_pensionen'],
+                'hotels'                        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_hotels'],
+                'weitere_beherbergungsbetriebe' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_weitere_beherbergungsbetriebe'],
+                'bar'                           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_bar'],
+                'cafe'                          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_cafe'],
+                'discothek'                     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_discothek'],
+                'restaurant'                    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_restaurant'],
+                'raucherlokal'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_raucherlokal'],
+                'einraumlokal'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['gastgewTyp_einraumlokal']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -374,8 +484,21 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['hallenTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('halle','industriehalle','lager','lagerflaechen','lager_mit_freiflaeche','hochregallager','speditionslager','produktion','werkstatt','service','freiflaechen','kuehlhaus'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'halle'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_halle'],
+                'industriehalle'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_industriehalle'],
+                'lager'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_lager'],
+                'lagerflaechen'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_lagerflaechen'],
+                'lager_mit_freiflaeche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_lager_mit_freiflaeche'],
+                'hochregallager'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_hochregallager'],
+                'speditionslager'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_speditionslager'],
+                'produktion'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_produktion'],
+                'werkstatt'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_werkstatt'],
+                'service'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_service'],
+                'freiflaechen'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_freiflaechen'],
+                'kuehlhaus'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['hallenTyp_kuehlhaus']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -387,8 +510,23 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['landTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('landwirtschaftliche_betriebe','bauernhof','aussiedlerhof','gartenbau','ackerbau','weinbau','viehwirtschaft','jagd_und_forstwirtschaft','teich_und_fischwirtschaft','scheunen','reiterhoefe','sonstige_landwirtschaftsimmobilien','anwesen','jagdrevier'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'landwirtschaftliche_betriebe'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_landwirtschaftliche_betriebe'],
+                'bauernhof'                             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_bauernhof'],
+                'aussiedlerhof'                         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_aussiedlerhof'],
+                'gartenbau'                             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_gartenbau'],
+                'ackerbau'                              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_ackerbau'],
+                'weinbau'                               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_weinbau'],
+                'viehwirtschaft'                        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_viehwirtschaft'],
+                'jagd_und_forstwirtschaft'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_jagd_und_forstwirtschaft'],
+                'teich_und_fischwirtschaft'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_teich_und_fischwirtschaft'],
+                'scheunen'                              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_scheunen'],
+                'reiterhoefe'                           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_reiterhoefe'],
+                'sonstige_landwirtschaftsimmobilien'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_sonstige_landwirtschaftsimmobilien'],
+                'anwesen'                               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_anwesen'],
+                'jagdrevier'                            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['landTyp_jagdrevier']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -400,8 +538,19 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['parkenTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('stellplatz','carport','doppelgarage','duplex','tiefgarage','bootsliegeplatz','einzelgarage','parkhaus','tiefgaragenstellplatz','parkplatz_strom'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'stellplatz'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_stellplatz'],
+                'carport'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_carport'],
+                'doppelgarage'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_doppelgarage'],
+                'duplex'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_duplex'],
+                'tiefgarage'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_tiefgarage'],
+                'bootsliegeplatz'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_bootsliegeplatz'],
+                'einzelgarage'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_einzelgarage'],
+                'parkhaus'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_parkhaus'],
+                'tiefgaragenstellplatz' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_tiefgaragenstellplatz'],
+                'parkplatz_strom'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['parkenTyp_parkplatz_strom']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -413,8 +562,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['sonstigeTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('parkhaus','tankstelle','krankenhaus','sonstige'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'parkhaus'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sonstigeTyp_parkhaus'],
+                'garagen'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sonstigeTyp_garagen'],
+                'tankstelle'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sonstigeTyp_tankstelle'],
+                'krankenhaus'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sonstigeTyp_krankenhaus'],
+                'sonstige'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sonstigeTyp_sonstige']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -426,8 +581,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['freizeitTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('sportanlagen', 'vergnuegungsparks_und_center', 'freizeitanlagen'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'sportanlagen'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['freizeitTyp_sportanlagen'],
+                'vergnuegungsparks_und_center'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['freizeitTyp_vergnuegungsparks_und_center'],
+                'freizeitanlagen'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['freizeitTyp_freizeitanlagen']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -439,8 +598,22 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['zinsTyp'],
             'inputType'                 => 'select',
-            'options'                   => array('mehrfamilienhaus','wohn_und_geschaeftshaus','geschaeftshaus','buerogebaeude','sb_maerkte','einkaufscentren','wohnanlagen','verbrauchermaerkte','industrieanlagen','pflegeheim','sanatorium','seniorenheim','betreutes-wohnen'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'mehrfamilienhaus'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_mehrfamilienhaus'],
+                'wohn_und_geschaeftshaus'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_wohn_und_geschaeftshaus'],
+                'geschaeftshaus'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_geschaeftshaus'],
+                'buerogebaeude'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_buerogebaeude'],
+                'sb_maerkte'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_sb_maerkte'],
+                'einkaufscentren'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_einkaufscentren'],
+                'wohnanlagen'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_wohnanlagen'],
+                'verbrauchermaerkte'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_verbrauchermaerkte'],
+                'industrieanlagen'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_industrieanlagen'],
+                'pflegeheim'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_pflegeheim'],
+                'sanatorium'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_sanatorium'],
+                'seniorenheim'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_seniorenheim'],
+                'betreutes-wohnen'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zinsTyp_betreutes-wohnen']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1035,8 +1208,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['preisZeiteinheit'],
             'inputType'                 => 'select',
-            'options'                   => array('tag', 'woche', 'monat', 'jahr'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'tag'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['preisZeiteinheit_tag'],
+                'woche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['preisZeiteinheit_woche'],
+                'monat' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['preisZeiteinheit_monat'],
+                'jahr'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['preisZeiteinheit_jahr']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1098,8 +1276,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['provisionTeilenWert'],
             'inputType'                 => 'select',
-            'options'                   => array('absolut','prozent','text'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'absolut'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['provisionTeilenWert_absolut'],
+                'prozent'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['provisionTeilenWert_prozent'],
+                'text'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['provisionTeilenWert_text']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1259,8 +1441,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['mieteinnahmenIstPeriode'],
             'inputType'                 => 'select',
-            'options'                   => array('tag','woche','monat','jahr'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'tag'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenIstPeriode_tag'],
+                'woche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenIstPeriode_woche'],
+                'monat' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenIstPeriode_monat'],
+                'jahr'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenIstPeriode_jahr']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1283,8 +1470,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['mieteinnahmenSollPeriode'],
             'inputType'                 => 'select',
-            'options'                   => array('tag','woche','monat','jahr'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'tag'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenSollPeriode_tag'],
+                'woche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenSollPeriode_woche'],
+                'monat' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenSollPeriode_monat'],
+                'jahr'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['mieteinnahmenSollPeriode_jahr']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1604,8 +1796,15 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['stpSonstigePlatzart'],
             'inputType'                 => 'select',
-            'options'                   => array('freiplatz','garage','tiefgarage','carport','duplex','parkhaus','sonstiges'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array(
+                'freiplatz'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_freiplatz'],
+                'garage'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_garage'],
+                'tiefgarage'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_tiefgarage'],
+                'carport'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_carport'],
+                'duplex'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_duplex'],
+                'parkhaus'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_parkhaus'],
+                'sonstiges'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stpSonstigePlatzart_sonstiges']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
         ),
@@ -1755,8 +1954,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['lageImBau'],
             'inputType'                 => 'select',
-            'options'                   => array('links','rechts','vorne','hinten'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'links'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageImBau_links'],
+                'rechts'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageImBau_rechts'],
+                'vorne'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageImBau_vorne'],
+                'hinten'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageImBau_hinten']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -1779,8 +1983,22 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['lageGebiet'],
             'inputType'                 => 'select',
-            'options'                   => array('wohn','gewerbe','industrie','misch','neubau','ortslage','siedlung','stadtrand','stadtteil','stadtzentrum','nebenzentrum','1a','1b'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'wohn'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_wohn'],
+                'gewerbe'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_gewerbe'],
+                'industrie'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_industrie'],
+                'misch'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_misch'],
+                'neubau'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_neubau'],
+                'ortslage'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_ortslage'],
+                'siedlung'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_siedlung'],
+                'stadtrand'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_stadtrand'],
+                'stadtteil'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_stadtteil'],
+                'stadtzentrum'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_stadtzentrum'],
+                'nebenzentrum'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_nebenzentrum'],
+                '1a'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_1a'],
+                '1b'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['lageGebiet_1b']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -2629,8 +2847,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['ausstattKategorie'],
             'inputType'                 => 'select',
-            'options'                   => array('standard', 'gehoben', 'luxus'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'standard'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausstattKategorie_standard'],
+                'gehoben'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausstattKategorie_gehoben'],
+                'luxus'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausstattKategorie_luxus']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -2668,8 +2890,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bad'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('dusche', 'wanne', 'fenster', 'bidet', 'pissoir'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'dusche'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_dusche'],
+                'wanne'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_wanne'],
+                'fenster'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_fenster'],
+                'bidet'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_bidet'],
+                'pissoir'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_pissoir']
+            ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'w50 clr'),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2683,8 +2911,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['kueche'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('ebk', 'offen', 'pantry'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'ebk'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['kueche_ebk'],
+                'offen'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['kueche_offen'],
+                'pantry'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['kueche_pantry']
+            ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2698,8 +2930,23 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['boden'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('fliesen', 'stein', 'teppich', 'parkett', 'fertigparkett', 'laminat', 'dielen', 'kunststoff', 'estrich', 'doppelboden', 'linoleum', 'marmor', 'terrakotta', 'granit'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'fliesen'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_fliesen'],
+                'stein'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_stein'],
+                'teppich'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_teppich'],
+                'parkett'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_parkett'],
+                'fertigparkett' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_fertigparkett'],
+                'laminat'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_laminat'],
+                'dielen'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_dielen'],
+                'kunststoff'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_kunststoff'],
+                'estrich'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_estrich'],
+                'doppelboden'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_doppelboden'],
+                'linoleum'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_linoleum'],
+                'marmor'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_marmor'],
+                'terrakotta'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_terrakotta'],
+                'granit'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_granit']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2725,8 +2972,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['heizungsart'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('ofen', 'etage', 'zentral', 'fern', 'fussboden'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'ofen'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_ofen'],
+                'etage'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_etage'],
+                'zentral'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_zentral'],
+                'fern'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_fern'],
+                'fussboden' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_fussboden']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2739,8 +2992,23 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['befeuerung'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('oel', 'gas', 'elektro', 'alternativ', 'solar','erdwaerme','luftwp','fern','block','wasser-elektro','pellet','kohle','holz','fluessiggas'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'oel'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_oel'],
+                'gas'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_gas'],
+                'elektro'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_elektro'],
+                'alternativ'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_alternativ'],
+                'solar'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_solar'],
+                'erdwaerme'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_erdwaerme'],
+                'luftwp'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_luftwp'],
+                'fern'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_fern'],
+                'block'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_block'],
+                'wasser-elektro'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_wasser-elektro'],
+                'pellet'            => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_pellet'],
+                'kohle'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_kohle'],
+                'holz'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_holz'],
+                'fluessiggas'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_fluessiggas']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2765,8 +3033,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['fahrstuhlart'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('personen', 'lasten'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'personen'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['fahrstuhlart_personen'],
+                'lasten'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['fahrstuhlart_lasten']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2779,8 +3050,15 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['stellplatzart'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('garage', 'tiefgarage', 'carport', 'freiplatz', 'parkhaus','duplex'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'garage'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_garage'],
+                'tiefgarage'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_tiefgarage'],
+                'carport'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_carport'],
+                'freiplatz'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_freiplatz'],
+                'parkhaus'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_parkhaus'],
+                'duplex'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_duplex']
+            ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2805,8 +3083,17 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['ausrichtBalkonTerrasse'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('nord', 'ost', 'sued', 'west', 'nordost','nordwest','suedost','suedwest'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'nord'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_nord'],
+                'ost'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_ost'],
+                'sued'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_sued'],
+                'west'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_west'],
+                'nordost'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_nordost'],
+                'nordwest'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_nordwest'],
+                'suedost'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_suedost'],
+                'suedwest'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_suedwest']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -2818,8 +3105,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['moebliert'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('voll', 'teil'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'voll'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['moebliert_voll'],
+                'teil'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['moebliert_teil']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(64) NOT NULL default ''",
             'realEstate'                => array(
@@ -3034,8 +3324,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['angeschlGastronomie'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('hotelrestaurant', 'bar'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'hotelrestaurant'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['angeschlGastronomie_hotelrestaurant'],
+                'bar'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['angeschlGastronomie_bar']
+            ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -3084,8 +3377,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['serviceleistungen'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('betreutes_wohnen', 'catering', 'reinigung', 'einkauf', 'wachdienst'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'betreutes_wohnen'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_betreutes_wohnen'],
+                'catering'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_catering'],
+                'reinigung'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_reinigung'],
+                'einkauf'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_einkauf'],
+                'wachdienst'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_wachdienst']
+            ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -3159,8 +3458,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['sicherheitstechnik'],
             'inputType'                 => 'checkboxWizard',
-            'options'                   => array('alarmanlage', 'kamera', 'polizeiruf'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'alarmanlage'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sicherheitstechnik_alarmanlage'],
+                'kamera'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sicherheitstechnik_kamera'],
+                'polizeiruf'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sicherheitstechnik_polizeiruf']
+            ),
             'eval'                      => array('multiple'=>true),
             'sql'                       => "varchar(128) NOT NULL default ''",
             'realEstate'                => array(
@@ -3174,8 +3477,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['unterkellert'],
             'inputType'                 => 'select',
-            'options'                   => array('ja', 'nein', 'teil'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'ja'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['unterkellert_ja'],
+                'nein'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['unterkellert_nein'],
+                'teil'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['unterkellert_teil']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3312,9 +3619,26 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['zustand'],
             'inputType'                 => 'select',
-            'options'                   => array('erstbezug','teil_vollrenovierungsbed','neuwertig','teil_vollsaniert','teil_vollrenoviert','teil_saniert','voll_saniert','sanierungsbeduerftig','baufaellig','nach_vereinbarung','modernisiert','gepflegt','rohbau','entkernt','abrissobjekt','projektiert'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
-            'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'options'                   => array
+            (
+                'erstbezug'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_erstbezug'],
+                'teil_vollrenovierungsbed'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_teil_vollrenovierungsbed'],
+                'neuwertig'                 => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_neuwertig'],
+                'teil_vollsaniert'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_teil_vollsaniert'],
+                'teil_vollrenoviert'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_teil_vollrenoviert'],
+                'teil_saniert'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_teil_saniert'],
+                'voll_saniert'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_voll_saniert'],
+                'sanierungsbeduerftig'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_sanierungsbeduerftig'],
+                'baufaellig'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_baufaellig'],
+                'nach_vereinbarung'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_nach_vereinbarung'],
+                'modernisiert'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_modernisiert'],
+                'gepflegt'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_gepflegt'],
+                'rohbau'                    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_rohbau'],
+                'entkernt'                  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_entkernt'],
+                'abrissobjekt'              => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_abrissobjekt'],
+                'projektiert'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['zustand_projektiert']
+            ),
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
@@ -3326,8 +3650,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['alter'],
             'inputType'                 => 'select',
-            'options'                   => array('altbau','neubau'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'altbau'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['alterAttr_altbau'],
+                'neubau'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['alterAttr_neubau']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3340,8 +3667,16 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['bebaubarNach'],
             'inputType'                 => 'select',
-            'options'                   => array('34_nachbarschaft','35_aussengebiet','b_plan','kein_bauland','bauerwartungsland','laenderspezifisch','bauland_ohne_b_plan'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                '34_nachbarschaft'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_34_nachbarschaft'],
+                '35_aussengebiet'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_35_aussengebiet'],
+                'b_plan'                => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_b_plan'],
+                'kein_bauland'          => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_kein_bauland'],
+                'bauerwartungsland'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_bauerwartungsland'],
+                'laenderspezifisch'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_laenderspezifisch'],
+                'bauland_ohne_b_plan'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bebaubarNach_bauland_ohne_b_plan']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3353,8 +3688,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['erschliessung'],
             'inputType'                 => 'select',
-            'options'                   => array('unerschlossen','teilerschlossen','vollerschlossen','ortsueblicherschlossen'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'unerschlossen'             => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessung_unerschlossen'],
+                'teilerschlossen'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessung_teilerschlossen'],
+                'vollerschlossen'           => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessung_vollerschlossen'],
+                'ortsueblicherschlossen'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessung_ortsueblicherschlossen']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3367,8 +3707,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['erschliessungUmfang'],
             'inputType'                 => 'select',
-            'options'                   => array('gas','wasser','strom','tk'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'gas'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessungUmfang_gas'],
+                'wasser'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessungUmfang_wasser'],
+                'strom'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessungUmfang_strom'],
+                'tk'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['erschliessungUmfang_tk']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3401,8 +3746,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['verkaufstatus'],
             'inputType'                 => 'select',
-            'options'                   => array('offen','reserviert','verkauft'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'offen'         => &$GLOBALS['TL_LANG']['tl_real_estate_value']['verkaufstatus_offen'],
+                'reserviert'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['verkaufstatus_reserviert'],
+                'verkauft'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['verkaufstatus_verkauft']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3430,8 +3779,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['ausblick'],
             'inputType'                 => 'select',
-            'options'                   => array('ferne','see','berge','meer'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'ferne' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausblick_ferne'],
+                'see'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausblick_see'],
+                'berge' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausblick_berg'],
+                'meer'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausblick_meer']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3700,8 +4054,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['energiepassEpart'],
             'inputType'                 => 'select',
-            'options'                   => array('bedarf','verbrauch'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'bedarf'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['energiepassEpart_bedarf'],
+                'verbrauch' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['energiepassEpart_verbrauch']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3830,8 +4187,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['energiepassGebaeudeart'],
             'inputType'                 => 'select',
-            'options'                   => array('wohn','nichtwohn'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'wohn'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['energiepassGebaeudeart_wohn'],
+                'nichtwohn' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['energiepassGebaeudeart_nichtwohn']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3945,8 +4305,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['minMietdauer'],
             'inputType'                 => 'select',
-            'options'                   => array('tag','woche','monat','jahr'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'tag'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['minMietdauer_tag'],
+                'woche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['minMietdauer_woche'],
+                'monat' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['minMietdauer_monat'],
+                'jahr'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['minMietdauer_jahr']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -3959,8 +4324,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['maxMietdauer'],
             'inputType'                 => 'select',
-            'options'                   => array('tag','woche','monat','jahr'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'tag'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['maxMietdauer_tag'],
+                'woche' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['maxMietdauer_woche'],
+                'monat' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['maxMietdauer_monat'],
+                'jahr'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['maxMietdauer_jahr']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
@@ -4064,8 +4434,12 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['geschlecht'],
             'inputType'                 => 'select',
-            'options'                   => array('egal','nur_mann','nur_frau'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_real_estate'],
+            'options'                   => array
+            (
+                'egal'      => &$GLOBALS['TL_LANG']['tl_real_estate_value']['geschlecht_egal'],
+                'nur_mann'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['geschlecht_nur_mann'],
+                'nur_frau'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['geschlecht_nur_frau']
+            ),
             'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(

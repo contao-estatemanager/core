@@ -25,7 +25,14 @@
         <source>Sorting</source>
         <target>Sortierung</target>
       </trans-unit>
-
+      <trans-unit id="tl_module.filter.0">
+        <source>Filter</source>
+        <target>Filter</target>
+      </trans-unit>
+      <trans-unit id="tl_module.filter.1">
+        <source>Here you can specify the filter.</source>
+        <target>Hier können Sie den Filter festlegen.</target>
+      </trans-unit>
       <trans-unit id="tl_module.addCountLabel.0">
         <source>Add counting</source>
         <target>Anzahl der Immobilien ausgeben</target>
@@ -186,7 +193,6 @@
         <source>Here you can set the image dimensions and the scaling mode.</source>
         <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
       </trans-unit>
-
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
         <target>Datum</target>

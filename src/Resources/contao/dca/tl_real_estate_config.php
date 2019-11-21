@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultImage,defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields
@@ -35,7 +35,11 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatDecimals'],
             'default'                 => ',',
 			'inputType'               => 'select',
-            'options'                 => array(',' => 'Komma (,)', '.' =>'Punkt (.)'),
+            'options'                 => array
+            (
+                ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
+                '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
+            ),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),
 		'numberFormatThousands' => array
@@ -43,7 +47,11 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatThousands'],
             'default'                 => '.',
             'inputType'               => 'select',
-            'options'                 => array(',' => 'Komma (,)', '.' =>'Punkt (.)'),
+            'options'                 => array
+            (
+                ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
+                '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
+            ),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),
 		'defaultSorting' => array
@@ -51,6 +59,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
             'inputType'               => 'select',
             'options'                 => array('dateAdded', 'tstamp', 'standVom'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_config'],
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr')
 		),
         'statusTokenNewDisplayDuration' => array
@@ -67,6 +76,27 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'clr w50'),
+        ),
+        'defaultContactPersonImage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonImage'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+        ),
+        'defaultContactPersonFemaleImage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonFemaleImage'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+        ),
+        'defaultContactPersonMaleImage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonMaleImage'],
+            'exclude'                 => true,
+            'inputType'               => 'fileTree',
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'roomOptions' => array
         (

@@ -65,6 +65,26 @@
         <source>Display default filters if no real estate type selected.</source>
         <target>Die Standardfilter werden angezeigt, wenn kein Immobilien-Typ ausgewählt ist.</target>
       </trans-unit>
+      <trans-unit id="tl_filter.price.0">
+        <source>Price</source>
+        <target>Preis</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.per.0">
+        <source>Price per</source>
+        <target>Preis pro</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.room.0">
+        <source>Rooms</source>
+        <target>Zimmer</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.area.0">
+        <source>Areas</source>
+        <target>Flächen</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.period.0">
+        <source>Period</source>
+        <target>Periode</target>
+      </trans-unit>
       <trans-unit id="tl_filter.roomOptions.0">
         <source>Available options: Rooms</source>
         <target>Verfügbare Optionen: Zimmer</target>
@@ -104,6 +124,10 @@
       <trans-unit id="tl_filter.tstamp.1">
         <source>Date and time of latest modification</source>
         <target>Datum und Uhrzeit der letzten Änderung.</target>
+      </trans-unit>
+      <trans-unit id="tl_filter.toggleMode.0">
+        <source>Toggle mode</source>
+        <target>Toggle-Modus</target>
       </trans-unit>
 
       <trans-unit id="tl_filter.title_legend">

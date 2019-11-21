@@ -32,6 +32,12 @@
       <trans-unit id="tl_real_estate_group.vermarktungsart.1">
         <source>Please indicate the type of marketing.</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_group.kauf_erbpacht">
+        <source>Buy</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_group.miete_leasing">
+        <source>Rent</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_group.published.0">
         <source>Publish group</source>
       </trans-unit>
