@@ -191,6 +191,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'contactPerson' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['contactPerson'],
+            'filter'                  => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getContactPerson'),
             'foreignKey'              => 'tl_contact_person.name',
@@ -4501,14 +4502,31 @@ class tl_real_estate extends Backend
      */
     public function getContactPerson(DataContainer $dc)
     {
+        $arrContactPersons = array();
+
+        if ($dc->activeRecord === null)
+        {
+            $objContactPersons = $this->Database->execute("SELECT id, name, vorname FROM tl_contact_person");
+
+            if ($objContactPersons->numRows < 1)
+            {
+                return array();
+            }
+
+            while ($objContactPersons->next())
+            {
+                $arrContactPersons[$objContactPersons->id] = $objContactPersons->vorname . ' ' . $objContactPersons->name;
+            }
+
+            return $arrContactPersons;
+        }
+
         $objContactPersons = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
 
         if ($objContactPersons->numRows < 1)
         {
             return array();
         }
-
-        $arrContactPersons = array();
 
         while ($objContactPersons->next())
         {

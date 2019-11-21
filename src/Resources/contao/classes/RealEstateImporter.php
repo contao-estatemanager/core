@@ -195,7 +195,9 @@ class RealEstateImporter extends \BackendModule
 
         $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
 
-        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($id);
+        $arrOptions = array('order'=>'saveImage');
+
+        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($id, $arrOptions);
 
         if ($this->objInterfaceMapping === null)
         {
@@ -317,33 +319,6 @@ class RealEstateImporter extends \BackendModule
     }
 
     /**
-     * Loads the xml in a sync file
-     *
-     * @return boolean
-     */
-    protected function loadData()
-    {
-        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
-
-        /* FlowFact
-        $data = str_replace('<imo:', '<', $data);
-        $data = str_replace('</imo:', '</', $data);
-
-        $oi_open_pos = strpos($data, '<openimmo');
-        $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
-        $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
-        */
-
-        try {
-            $this->data = simplexml_load_string($data);
-        } catch (\Exception $e) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * Sync OpenImmo data with database
      *
      * @return boolean
@@ -363,6 +338,8 @@ class RealEstateImporter extends \BackendModule
             //$this->addLog('No provider data available.', 1, 'error');
             return false;
         }
+
+        $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
 
         $contactPersonMeta = $this->getTableMetaData('tl_contact_person');
         $realEstateMeta = $this->getTableMetaData('tl_real_estate');
@@ -482,6 +459,15 @@ class RealEstateImporter extends \BackendModule
                         $values[] = $value;
                     }
 
+                    if (in_array($field, $skipRecords))
+                    {
+                        if (!count($values) || !$values[0])
+                        {
+                            $this->objInterfaceMapping->reset();
+                            continue 2;
+                        }
+                    }
+
                     if (!count($values))
                     {
                         switch ($interfaceMapping->type)
@@ -511,25 +497,6 @@ class RealEstateImporter extends \BackendModule
                 }
 
                 $this->objInterfaceMapping->reset();
-
-                if ($this->objInterface->skipRecords && $re['AKTIONART'] !== 'DELETE')
-                {
-                    $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
-                    $skip = false;
-
-                    foreach ($skipRecords as $skipField)
-                    {
-                        if (!$re[$skipField])
-                        {
-                            $skip = true;
-                        }
-                    }
-
-                    if ($skip)
-                    {
-                        continue;
-                    }
-                }
 
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
@@ -740,6 +707,33 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->text = $this->importMessage;
         $objInterfaceHistory->status = $this->importStatus;
         $objInterfaceHistory->save();
+
+        return true;
+    }
+
+    /**
+     * Loads the xml in a sync file
+     *
+     * @return boolean
+     */
+    protected function loadData()
+    {
+        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
+
+        /* FlowFact
+        $data = str_replace('<imo:', '<', $data);
+        $data = str_replace('</imo:', '</', $data);
+
+        $oi_open_pos = strpos($data, '<openimmo');
+        $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
+        $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
+        */
+
+        try {
+            $this->data = simplexml_load_string($data);
+        } catch (\Exception $e) {
+            return false;
+        }
 
         return true;
     }
