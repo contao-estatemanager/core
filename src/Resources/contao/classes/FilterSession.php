@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Input;
 use Contao\PageModel;
 
 /**
@@ -17,7 +18,7 @@ use Contao\PageModel;
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class FilterSession extends \System
+class FilterSession extends \Frontend
 {
 
     /**
@@ -72,11 +73,6 @@ class FilterSession extends \System
     protected static $objRootPage;
 
     /**
-     * Prevent direct instantiation (Singleton)
-     */
-    protected function __construct() {}
-
-    /**
      * Prevent cloning of the object (Singleton)
      */
     final public function __clone() {}
@@ -117,6 +113,8 @@ class FilterSession extends \System
         static::$objPage = $objPage;
         static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
         static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
+
+        $this->redirectByGetParameter();
 
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
 
@@ -292,6 +290,7 @@ class FilterSession extends \System
         $arrValues = array();
         $arrOptions = array();
 
+        $addFragments = $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues);
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
 
         if ($objRealEstateType === null)
@@ -342,6 +341,7 @@ class FilterSession extends \System
         $arrValues = array();
         $arrOptions = array();
 
+        $addFragments = $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues);
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
 
         $arrTypeColumns = array();
@@ -690,6 +690,33 @@ class FilterSession extends \System
     }
 
     /**
+     * Add query fragment for imprecise unique filter
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     *
+     * @return boolean
+     */
+    protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues)
+    {
+        if ($_SESSION['FILTER_DATA']['unique-imprecise'])
+        {
+            $uniqueImprecise = $_SESSION['FILTER_DATA']['unique-imprecise'];
+            $_SESSION['FILTER_DATA'] = array();
+            $_SESSION['FILTER_DATA']['unique-imprecise'] = $uniqueImprecise;
+
+            $t = static::$strTable;
+
+            $arrColumn[] = "$t.objektnrExtern LIKE ?";
+            $arrValues[] = '%'.$uniqueImprecise.'%';
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Return the order option as string
      *
      * @return string
@@ -784,5 +811,42 @@ class FilterSession extends \System
         }
 
         return null;
+    }
+
+    protected function redirectByGetParameter()
+    {
+        if (Input::get('redirect'))
+        {
+            $validParameter = array('country', 'location', 'location-google', 'country-short', 'city', 'postal', 'district', 'latitude', 'longitude', 'radius-google', 'marketing-type', 'real-estate-type', 'price_to', 'price_from', 'area_to', 'area_from', 'room_to', 'room_from', 'unique');
+
+            $_SESSION['FILTER_DATA'] = array();
+
+            $arrParam = $_GET;
+
+            foreach ($arrParam as $param => $value)
+            {
+                if (in_array($param, $validParameter))
+                {
+                    $_SESSION['FILTER_DATA'][$param] = $value;
+                }
+                else
+                {
+                    unset($arrParam[$param]);
+                }
+            }
+
+            $objJumpTo = $this->getReferencePage();
+
+            // Redirect if there is a reference page
+            if ($objJumpTo instanceof \PageModel)
+            {
+                $this->jumpToOrReload($objJumpTo->row());
+            }
+            else
+            {
+                //$this->jumpToOrReload(static::$objPage->row());
+                self::redirect(static::$objPage->getFrontendUrl());
+            }
+        }
     }
 }
