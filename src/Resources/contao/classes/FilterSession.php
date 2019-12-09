@@ -823,6 +823,18 @@ class FilterSession extends \Frontend
 
             $arrParam = $_GET;
 
+            if (array_key_exists('marketing-type', $arrParam))
+            {
+                if ($arrParam['marketing-type'] === 'kauf')
+                {
+                    $arrParam['marketing-type'] = 'kauf_erbpacht';
+                }
+                else if ($arrParam['marketing-type'] === 'miete')
+                {
+                    $arrParam['marketing-type'] = 'miete_leasing';
+                }
+            }
+
             foreach ($arrParam as $param => $value)
             {
                 if (in_array($param, $validParameter))
