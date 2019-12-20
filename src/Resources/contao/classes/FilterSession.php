@@ -290,7 +290,11 @@ class FilterSession extends \Frontend
         $arrValues = array();
         $arrOptions = array();
 
-        $addFragments = $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues);
+        if ($objModule !== null && $objModule->type === 'realEstateResultList')
+        {
+            $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues, $addFragments);
+        }
+
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
 
         if ($objRealEstateType === null)
@@ -341,7 +345,11 @@ class FilterSession extends \Frontend
         $arrValues = array();
         $arrOptions = array();
 
-        $addFragments = $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues);
+        if ($objModule !== null && $objModule->type === 'realEstateResultList')
+        {
+            $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues, $addFragments);
+        }
+
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
 
         $arrTypeColumns = array();
@@ -694,10 +702,9 @@ class FilterSession extends \Frontend
      *
      * @param array               $arrColumn
      * @param array               $arrValues
-     *
-     * @return boolean
+     * @param boolean             $addFragments
      */
-    protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues)
+    protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues, &$addFragments)
     {
         if ($_SESSION['FILTER_DATA']['unique-imprecise'])
         {
@@ -710,10 +717,8 @@ class FilterSession extends \Frontend
             $arrColumn[] = "$t.objektnrExtern LIKE ?";
             $arrValues[] = '%'.$uniqueImprecise.'%';
 
-            return false;
+            $addFragments = false;
         }
-
-        return true;
     }
 
     /**

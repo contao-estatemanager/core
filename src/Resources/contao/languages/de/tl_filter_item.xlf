@@ -138,6 +138,14 @@
         <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
         <target>Den langen Immobilien-Titel verwenden.</target>
       </trans-unit>
+      <trans-unit id="tl_filter_item.impreciseMode.0">
+        <source>Allow inaccurate search</source>
+        <target>Ungenaue Suche erlauben</target>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.impreciseMode.1">
+        <source>Eine ungenaue Suche erlauben.</source>
+        <target>Eine ungenaue Suche erlauben.</target>
+      </trans-unit>
       <trans-unit id="tl_filter_item.mergeOptions.0">
         <source>Merge options</source>
         <target>Optionen zusammenfügen</target>
