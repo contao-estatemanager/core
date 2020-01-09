@@ -1213,7 +1213,7 @@ class RealEstateImporter extends \BackendModule
             //));
             return false;
         }
-#
+
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
         $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $subDirectory);
 
@@ -1224,7 +1224,9 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
-        if (($titel = current($tmpGroup->anhangtitel)) !== '')
+        $titel = current($tmpGroup->anhangtitel);
+
+        if (is_string($titel) && $titel !== '')
         {
             //$this->addLog('Image added: ' . $value, 3, 'success', array(
             //    'title' => $titel,
