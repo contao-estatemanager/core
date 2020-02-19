@@ -16,6 +16,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
     (
         'dataContainer'               => 'Table',
         'ptable'                      => 'tl_provider',
+        'doNotCopyRecords'            => true,
         'onload_callback' => array
         (
             array('tl_contact_person', 'checkPermission')

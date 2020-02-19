@@ -19,7 +19,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         'switchToEdit'                => true,
         'enableVersioning'            => true,
         'markAsCopy'                  => 'title',
-
         'onload_callback' => array
         (
             array('tl_provider', 'checkPermission')
