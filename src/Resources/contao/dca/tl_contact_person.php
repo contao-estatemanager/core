@@ -66,8 +66,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['copy'],
                 'href'                => 'act=copy',
-                'icon'                => 'copy.svg',
-                'button_callback'     => array('tl_contact_person', 'copyContactPerson')
+                'icon'                => 'copy.svg'
             ),
             'cut' => array
             (
@@ -532,7 +531,7 @@ class tl_contact_person extends Backend
     public function deleteContactPerson($row, $href, $label, $title, $icon, $attributes)
     {
         $hasRealEstate = RealEstateModel::countByContactPerson($row['id']);
-        return $this->User->hasAccess('delete', 'contactperson') && !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
