@@ -13,7 +13,7 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setRealEstateType
 
 // Extend the regular palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('estate_manager_legend', 'tabnav_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
     ->addField(array('setMarketingType', 'setRealEstateType'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('regular', 'tl_page')
 ;
@@ -21,7 +21,8 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
 // Extend the root palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
-    ->addField(array('realEstateQueryLanguage, realEstateQueryCountry'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->addField(array('realEstateQueryLanguage', 'realEstateQueryCountry'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('rootfallback', 'tl_page')
     ->applyToPalette('root', 'tl_page')
 ;
 

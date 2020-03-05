@@ -866,4 +866,14 @@ class FilterSession extends \Frontend
             }
         }
     }
+
+    public function getRootLanguage()
+    {
+        if (static::$objRootPage === null)
+        {
+            return '';
+        }
+
+        return static::$objRootPage->realEstateQueryCountry;
+    }
 }
