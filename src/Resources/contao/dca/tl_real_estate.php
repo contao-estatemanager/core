@@ -74,7 +74,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
-                'button_callback'     => array('tl_real_estate', 'copyRealEstate')
             ),
             'delete' => array
             (
@@ -82,7 +81,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_real_estate', 'deleteRealEstate')
             ),
             'toggle' => array
             (
