@@ -22,7 +22,6 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
     ->addField(array('realEstateQueryLanguage', 'realEstateQueryCountry'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
-    ->applyToPalette('rootfallback', 'tl_page')
     ->applyToPalette('root', 'tl_page')
 ;
 
