@@ -129,6 +129,12 @@ class RealEstateImporter extends \BackendModule
             case 'username':
                 $this->username = $varValue;
                 break;
+            case 'data':
+                $this->data = $varValue;
+                break;
+            case 'uniqueProviderValue':
+                $this->uniqueProviderValue = $varValue;
+                break;
         }
 
         return parent::__set($strKey, $varValue);
@@ -168,6 +174,12 @@ class RealEstateImporter extends \BackendModule
                 break;
             case 'username':
                 return $this->username;
+                break;
+            case 'data':
+                return $this->data;
+                break;
+            case 'syncFile':
+                return $this->syncFile;
                 break;
         }
 
@@ -268,7 +280,8 @@ class RealEstateImporter extends \BackendModule
 
         $this->Template->setData(array
         (
-            'syncAvailable' => $this->objInterface->type === 'wib', // ToDo. Remove from bundle
+            'syncAvailable' => $this->objInterface->type === 'wib' || $this->objInterface->type === 'onofficeapi', // ToDo. Remove from bundle
+            'type'          => $this->objInterface->type,
             'syncUrl'       => 'syncUrl',
             'files'         => $files,
             'messages'      => $this->messages
@@ -302,6 +315,23 @@ class RealEstateImporter extends \BackendModule
         else
         {
             @ini_set('memory_limit', -1);
+        }
+
+        $skip = false;
+
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData'] as $callback)
+            {
+                $this->import($callback[0]);
+                $skip = $this->{$callback[0]}->{$callback[1]}($this);
+            }
+        }
+
+        if ($skip)
+        {
+            return;
         }
 
         //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
@@ -801,7 +831,7 @@ class RealEstateImporter extends \BackendModule
         $arrFiles = array();
         $lasttime = time();
 
-        $syncFiles = FilesHelper::scandirByExt($this->objImportFolder->path, $searchForZip ? array('zip', 'xml') : array('xml'));
+        $syncFiles = FilesHelper::scandirByExt($this->objImportFolder->path, $searchForZip ? array('zip', 'xml', 'data') : array('xml'));
 
         $arrSynced = array();
         $objHistory = InterfaceHistoryModel::findMultipleBySources($syncFiles);
