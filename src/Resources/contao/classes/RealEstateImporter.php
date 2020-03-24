@@ -391,6 +391,11 @@ class RealEstateImporter extends \BackendModule
         {
             $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
 
+            if (empty($this->uniqueProviderValue))
+            {
+                $this->uniqueProviderValue = $this->objInterface->anbieternr;
+            }
+
             if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
             {
                 //$this->addLog('Skip real estate due to missing provider', 1, 'info');
@@ -1247,6 +1252,11 @@ class RealEstateImporter extends \BackendModule
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
         $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $subDirectory);
 
+        if ($objFile === null)
+        {
+            return false;
+        }
+
         // Delete file, if hash dont match
         if ($check !== false && $objFile->hash !== $check)
         {
@@ -1293,6 +1303,11 @@ class RealEstateImporter extends \BackendModule
             $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
             $filePathRecord = $filePathProvider . ($directoryName !== '' ? '/' . $directoryName : '');
             $filePath = $filePathRecord . '/' . $fileName;
+
+            if (!file_exists($this->objImportFolder->path . '/tmp/' . $fileName))
+            {
+                return null;
+            }
 
             if (!file_exists($filePathProvider))
             {
