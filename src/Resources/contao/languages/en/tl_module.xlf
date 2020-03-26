@@ -17,6 +17,9 @@
       <trans-unit id="tl_module.item_extension_legend">
         <source>Real estate Item Extensions</source>
       </trans-unit>
+      <trans-unit id="tl_module.provider_legend">
+        <source>Provider</source>
+      </trans-unit>
       <trans-unit id="tl_module.sorting_legend">
         <source>Sorting</source>
       </trans-unit>
@@ -31,6 +34,18 @@
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.1">
         <source>Adds a label that displays the number of found real estate</source>
+      </trans-unit>
+      <trans-unit id="tl_module.filterByProvider.0">
+        <source>Filter by provider</source>
+      </trans-unit>
+      <trans-unit id="tl_module.filterByProvider.1">
+        <source>Filter records by a specific provider.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.provider.0">
+        <source>Provider</source>
+      </trans-unit>
+      <trans-unit id="tl_module.provider.1">
+        <source>Records will be filtered by the selected provider.</source>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>

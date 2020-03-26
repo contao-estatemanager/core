@@ -2,6 +2,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\ModuleModel;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -43,7 +44,7 @@ class EstateManagerRead extends EstateManagerSDK
             case 'estates':
 
                 // validate parameters
-                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode', 'pageId');
+                $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode', 'pageId', 'moduleId');
                 $this->currParam = $this->getParameters($this->method, $validParameters);
 
                 // prepare model
@@ -55,7 +56,14 @@ class EstateManagerRead extends EstateManagerSDK
                 {
                     $objSessionFilter = FilterSession::getInstance($this->currParam['pageId']);
 
-                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], true, $this);
+                    $objModule = null;
+
+                    if ($this->currParam['moduleId'])
+                    {
+                        $objModule = ModuleModel::findByPk($this->currParam['moduleId']);
+                    }
+
+                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], true, $objModule);
 
                     $arrOptions = array_merge($arrOptions, $options);
                 }

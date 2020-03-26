@@ -11,7 +11,9 @@
 namespace ContaoEstateManager;
 
 use Contao\Input;
+use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\StringUtil;
 
 /**
  * Loads and writes filter information
@@ -296,6 +298,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         if ($objRealEstateType === null)
         {
@@ -351,6 +354,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         $arrTypeColumns = array();
 
@@ -481,6 +485,40 @@ class FilterSession extends \Frontend
         {
             $arrColumns[] = "$t.sprache=?";
             $arrValues[]  = $objRootPage->realEstateQueryLanguage;
+        }
+    }
+
+    /**
+     * Add provider query fragment
+     *
+     * @param array               $arrColumns
+     * @param array               $arrValues
+     * @param ModuleModel         $objModule
+     */
+    protected function addQueryFragmentProvider(&$arrColumns, &$arrValues, $objModule=null)
+    {
+        $t = static::$strTable;
+
+        if (static::$objPage->location)
+        {
+            $arrColumns[] = "$t.provider=?";
+            $arrValues[]  = static::$objPage->location;
+            return;
+        }
+
+        if ($objModule === null)
+        {
+            return;
+        }
+
+        if ($objModule->filterByProvider)
+        {
+            $arrProvider = StringUtil::deserialize($objModule->provider, true);
+
+            if (count($arrProvider))
+            {
+                $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
+            }
         }
     }
 

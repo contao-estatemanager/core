@@ -13,6 +13,7 @@
 
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'filterByProvider';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addSorting';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
@@ -21,12 +22,13 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
     'realEstateExpose'      => '{title_legend},name,headline,type;{config_legend},allowReferences;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
     'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
 ));
 
 array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
 (
     'listMode_group'       => 'realEstateGroups,filterMode',
+    'filterByProvider'     => 'provider',
     'addSorting'           => 'defaultSorting',
     'addCustomOrder'       => 'customOrder',
 ));
@@ -119,6 +121,24 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'inputType'               => 'checkbox',
         'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
         'sql'                     => "char(1) NOT NULL default ''"
+    ),
+    'filterByProvider' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterByProvider'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+        'sql'                     => "char(1) NOT NULL default ''"
+    ),
+    'provider' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['provider'],
+        'exclude'                 => true,
+        'inputType'               => 'checkboxWizard',
+        'foreignKey'              => 'tl_provider.anbieternr',
+        'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+        'sql'                     => "varchar(255) NOT NULL default ''",
+        'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
     ),
     'defaultSorting' => array
     (
