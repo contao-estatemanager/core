@@ -35,6 +35,12 @@
       <trans-unit id="tl_module.addCountLabel.1">
         <source>Adds a label that displays the number of found real estate</source>
       </trans-unit>
+      <trans-unit id="tl_module.listSorting.0">
+        <source>Sort order</source>
+      </trans-unit>
+      <trans-unit id="tl_module.listSorting.1">
+        <source>Please choose the sort order.</source>
+      </trans-unit>
       <trans-unit id="tl_module.filterByProvider.0">
         <source>Filter by provider</source>
       </trans-unit>
@@ -163,6 +169,21 @@
       </trans-unit>
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
+      </trans-unit>
+      <trans-unit id="tl_module.none">
+        <source>None</source>
+      </trans-unit>
+      <trans-unit id="tl_module.dateAdded_asc">
+        <source>Creation date (oldest first)</source>
+      </trans-unit>
+      <trans-unit id="tl_module.dateAdded_desc">
+        <source>Creation date (newest first)</source>
+      </trans-unit>
+      <trans-unit id="tl_module.tstamp_asc">
+        <source>Actuality (oldest first)</source>
+      </trans-unit>
+      <trans-unit id="tl_module.tstamp_desc">
+        <source>Actuality (newest first)</source>
       </trans-unit>
     </body>
   </file>
