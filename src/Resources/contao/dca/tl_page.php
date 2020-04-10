@@ -121,6 +121,11 @@ class tl_page_estate_manager extends Backend
         $arrLocations = array();
         $objLocations = ContaoEstateManager\ProviderModel::findAll();
 
+        if ($objLocations === null)
+        {
+            return $arrLocations;
+        }
+
         while ($objLocations->next())
         {
             $arrLocations[ $objLocations->id ] = $objLocations->postleitzahl . ' ' . $objLocations->ort . ' (' . $objLocations->firma . ')';
