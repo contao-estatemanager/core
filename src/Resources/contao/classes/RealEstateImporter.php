@@ -107,6 +107,16 @@ class RealEstateImporter extends \BackendModule
     public $importMessage = 'File imported.';
 
     /**
+     * @var boolean
+     */
+    public $skipRecord = false;
+
+    /**
+     * @var boolean
+     */
+    public $skipContactPerson = false;
+
+    /**
      * Set an object property
      *
      * @param string $strKey
@@ -118,6 +128,12 @@ class RealEstateImporter extends \BackendModule
         {
             case 'username':
                 $this->username = $varValue;
+                break;
+            case 'data':
+                $this->data = $varValue;
+                break;
+            case 'uniqueProviderValue':
+                $this->uniqueProviderValue = $varValue;
                 break;
         }
 
@@ -159,6 +175,12 @@ class RealEstateImporter extends \BackendModule
             case 'username':
                 return $this->username;
                 break;
+            case 'data':
+                return $this->data;
+                break;
+            case 'syncFile':
+                return $this->syncFile;
+                break;
         }
 
         return parent::__get($strKey);
@@ -195,7 +217,9 @@ class RealEstateImporter extends \BackendModule
 
         $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
 
-        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($id);
+        $arrOptions = array('order'=>'saveImage');
+
+        $this->objInterfaceMapping = InterfaceMappingModel::findByPid($id, $arrOptions);
 
         if ($this->objInterfaceMapping === null)
         {
@@ -256,7 +280,8 @@ class RealEstateImporter extends \BackendModule
 
         $this->Template->setData(array
         (
-            'syncAvailable' => $this->objInterface->type === 'wib', // ToDo. Remove from bundle
+            'syncAvailable' => $this->objInterface->type === 'wib' || $this->objInterface->type === 'onofficeapi', // ToDo. Remove from bundle
+            'type'          => $this->objInterface->type,
             'syncUrl'       => 'syncUrl',
             'files'         => $files,
             'messages'      => $this->messages
@@ -292,6 +317,23 @@ class RealEstateImporter extends \BackendModule
             @ini_set('memory_limit', -1);
         }
 
+        $skip = false;
+
+        // HOOK: add custom logic
+        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData'] as $callback)
+            {
+                $this->import($callback[0]);
+                $skip = $this->{$callback[0]}->{$callback[1]}($this);
+            }
+        }
+
+        if ($skip)
+        {
+            return;
+        }
+
         //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
 
         if (($this->loadData()))
@@ -317,33 +359,6 @@ class RealEstateImporter extends \BackendModule
     }
 
     /**
-     * Loads the xml in a sync file
-     *
-     * @return boolean
-     */
-    protected function loadData()
-    {
-        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
-
-        /* FlowFact
-        $data = str_replace('<imo:', '<', $data);
-        $data = str_replace('</imo:', '</', $data);
-
-        $oi_open_pos = strpos($data, '<openimmo');
-        $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
-        $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
-        */
-
-        try {
-            $this->data = simplexml_load_string($data);
-        } catch (\Exception $e) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * Sync OpenImmo data with database
      *
      * @return boolean
@@ -364,6 +379,8 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
+        $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
+
         $contactPersonMeta = $this->getTableMetaData('tl_contact_person');
         $realEstateMeta = $this->getTableMetaData('tl_real_estate');
 
@@ -373,6 +390,11 @@ class RealEstateImporter extends \BackendModule
         foreach ($arrProvider as $provider)
         {
             $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
+
+            if (empty($this->uniqueProviderValue))
+            {
+                $this->uniqueProviderValue = $this->objInterface->anbieternr;
+            }
 
             if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
             {
@@ -482,6 +504,15 @@ class RealEstateImporter extends \BackendModule
                         $values[] = $value;
                     }
 
+                    if (in_array($field, $skipRecords))
+                    {
+                        if (!count($values) || !$values[0])
+                        {
+                            $this->objInterfaceMapping->reset();
+                            continue 2;
+                        }
+                    }
+
                     if (!count($values))
                     {
                         switch ($interfaceMapping->type)
@@ -511,25 +542,6 @@ class RealEstateImporter extends \BackendModule
                 }
 
                 $this->objInterfaceMapping->reset();
-
-                if ($this->objInterface->skipRecords && $re['AKTIONART'] !== 'DELETE')
-                {
-                    $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
-                    $skip = false;
-
-                    foreach ($skipRecords as $skipField)
-                    {
-                        if (!$re[$skipField])
-                        {
-                            $skip = true;
-                        }
-                    }
-
-                    if ($skip)
-                    {
-                        continue;
-                    }
-                }
 
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
@@ -590,45 +602,65 @@ class RealEstateImporter extends \BackendModule
 
                 if ($realEstateRecords[$i]['AKTIONART'] !== 'DELETE')
                 {
-                    list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson, $objProvider);
+                    $this->skipRecord = false;
+                    $this->skipContactPerson = false;
 
-                    $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
-
-                    // Skip if no contact person found and not allowed to create
-                    if (!$allowCreate && !$exists)
+                    // HOOK: import third party contact person
+                    if (isset($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson']) && \is_array($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson']))
                     {
-                        $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
+                        foreach ($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson'] as $callback)
+                        {
+                            $this->import($callback[0]);
+                            $objContactPerson = $this->{$callback[0]}->{$callback[1]}($objProvider, $contactPerson, $realEstateRecords[$i], $allowCreate, $allowUpdate, $this);
+                        }
+                    }
+
+                    if ($this->skipRecord)
+                    {
                         continue;
                     }
-
-                    if (!$exists)
+                    else if (!$this->skipContactPerson)
                     {
-                        // Create new contact person
-                        $objContactPerson = new ContactPersonModel();
-                        $objContactPerson->setRow($contactPerson);
-                        $objContactPerson->pid = $objProvider->id;
-                        $objContactPerson->published = 1;
-                        $objContactPerson->save();
+                        list($arrColumns, $arrValues) = $this->getContactPersonParameters($contactPerson, $objProvider);
 
-                        $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
-                    }
-                    else
-                    {
-                        // Find contact person
-                        $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
-                    }
+                        $exists = ContactPersonModel::countBy($arrColumns, $arrValues);
 
-                    if ($allowUpdate)
-                    {
-                        // Update contact person
-                        foreach ($contactPerson as $field => $value)
+                        // Skip if no contact person found and not allowed to create
+                        if (!$allowCreate && !$exists)
                         {
-                            $objContactPerson->{$field} = $value;
+                            $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
+                            continue;
                         }
 
-                        $objContactPerson->save();
+                        if (!$exists)
+                        {
+                            // Create new contact person
+                            $objContactPerson = new ContactPersonModel();
+                            $objContactPerson->setRow($contactPerson);
+                            $objContactPerson->pid = $objProvider->id;
+                            $objContactPerson->published = 1;
+                            $objContactPerson->save();
 
-                        $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                            $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                        }
+                        else
+                        {
+                            // Find contact person
+                            $objContactPerson = ContactPersonModel::findOneBy($arrColumns, $arrValues);
+                        }
+
+                        if ($allowUpdate)
+                        {
+                            // Update contact person
+                            foreach ($contactPerson as $field => $value)
+                            {
+                                $objContactPerson->{$field} = $value;
+                            }
+
+                            $objContactPerson->save();
+
+                            $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                        }
                     }
                 }
             }
@@ -712,6 +744,16 @@ class RealEstateImporter extends \BackendModule
                 }
             }
 
+            // HOOK: before real estate import
+            if (isset($GLOBALS['TL_HOOKS']['beforeRealEstateImport']) && \is_array($GLOBALS['TL_HOOKS']['beforeRealEstateImport']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['beforeRealEstateImport'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->{$callback[0]}->{$callback[1]}($objRealEstate, $this);
+                }
+            }
+
             $objRealEstate->save();
         }
 
@@ -745,6 +787,33 @@ class RealEstateImporter extends \BackendModule
     }
 
     /**
+     * Loads the xml in a sync file
+     *
+     * @return boolean
+     */
+    protected function loadData()
+    {
+        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
+
+        /* FlowFact
+        $data = str_replace('<imo:', '<', $data);
+        $data = str_replace('</imo:', '</', $data);
+
+        $oi_open_pos = strpos($data, '<openimmo');
+        $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
+        $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
+        */
+
+        try {
+            $this->data = simplexml_load_string($data);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Returns a list of syncable files
      *
      * @param boolean $searchForZip
@@ -767,7 +836,7 @@ class RealEstateImporter extends \BackendModule
         $arrFiles = array();
         $lasttime = time();
 
-        $syncFiles = FilesHelper::scandirByExt($this->objImportFolder->path, $searchForZip ? array('zip', 'xml') : array('xml'));
+        $syncFiles = FilesHelper::scandirByExt($this->objImportFolder->path, $searchForZip ? array('zip', 'xml', 'data') : array('xml'));
 
         $arrSynced = array();
         $objHistory = InterfaceHistoryModel::findMultipleBySources($syncFiles);
@@ -1179,9 +1248,14 @@ class RealEstateImporter extends \BackendModule
             //));
             return false;
         }
-#
+
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
         $objFile = $this->copyFile($value, $objFilesFolder, $this->uniqueProviderValue, $subDirectory);
+
+        if ($objFile === null)
+        {
+            return false;
+        }
 
         // Delete file, if hash dont match
         if ($check !== false && $objFile->hash !== $check)
@@ -1190,7 +1264,9 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
-        if (($titel = current($tmpGroup->anhangtitel)) !== '')
+        $titel = current($tmpGroup->anhangtitel);
+
+        if (is_string($titel) && $titel !== '')
         {
             //$this->addLog('Image added: ' . $value, 3, 'success', array(
             //    'title' => $titel,
@@ -1227,6 +1303,11 @@ class RealEstateImporter extends \BackendModule
             $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
             $filePathRecord = $filePathProvider . ($directoryName !== '' ? '/' . $directoryName : '');
             $filePath = $filePathRecord . '/' . $fileName;
+
+            if (!file_exists($this->objImportFolder->path . '/tmp/' . $fileName))
+            {
+                return null;
+            }
 
             if (!file_exists($filePathProvider))
             {
@@ -1279,7 +1360,7 @@ class RealEstateImporter extends \BackendModule
         return $arrReturn;
     }
 
-    protected function addLog($strMessage, $level=0, $strType='raw', $data=null)
+    public function addLog($strMessage, $level=0, $strType='raw', $data=null)
     {
         // ToDo: In Datei auslagern
         return;

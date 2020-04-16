@@ -105,6 +105,12 @@
       <trans-unit id="tl_filter_item.showLongTitle.1">
         <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
       </trans-unit>
+      <trans-unit id="tl_filter_item.impreciseMode.0">
+        <source>Allow inaccurate search</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.impreciseMode.1">
+        <source>Allow an inaccurate search.</source>
+      </trans-unit>
       <trans-unit id="tl_filter_item.mergeOptions.0">
         <source>Merge options</source>
       </trans-unit>

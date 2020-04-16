@@ -10,14 +10,17 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Input;
+use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\StringUtil;
 
 /**
  * Loads and writes filter information
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class FilterSession extends \System
+class FilterSession extends \Frontend
 {
 
     /**
@@ -72,11 +75,6 @@ class FilterSession extends \System
     protected static $objRootPage;
 
     /**
-     * Prevent direct instantiation (Singleton)
-     */
-    protected function __construct() {}
-
-    /**
      * Prevent cloning of the object (Singleton)
      */
     final public function __clone() {}
@@ -117,6 +115,8 @@ class FilterSession extends \System
         static::$objPage = $objPage;
         static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
         static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
+
+        $this->redirectByGetParameter();
 
         $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
 
@@ -292,7 +292,13 @@ class FilterSession extends \System
         $arrValues = array();
         $arrOptions = array();
 
+        if ($objModule !== null && $objModule->type === 'realEstateResultList')
+        {
+            $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues, $addFragments);
+        }
+
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         if ($objRealEstateType === null)
         {
@@ -342,7 +348,13 @@ class FilterSession extends \System
         $arrValues = array();
         $arrOptions = array();
 
+        if ($objModule !== null && $objModule->type === 'realEstateResultList')
+        {
+            $this->addQueryFragmentUniqueImprecise($arrColumns, $arrValues, $addFragments);
+        }
+
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         $arrTypeColumns = array();
 
@@ -473,6 +485,40 @@ class FilterSession extends \System
         {
             $arrColumns[] = "$t.sprache=?";
             $arrValues[]  = $objRootPage->realEstateQueryLanguage;
+        }
+    }
+
+    /**
+     * Add provider query fragment
+     *
+     * @param array               $arrColumns
+     * @param array               $arrValues
+     * @param ModuleModel         $objModule
+     */
+    protected function addQueryFragmentProvider(&$arrColumns, &$arrValues, $objModule=null)
+    {
+        $t = static::$strTable;
+
+        if (static::$objPage->location)
+        {
+            $arrColumns[] = "$t.provider=?";
+            $arrValues[]  = static::$objPage->location;
+            return;
+        }
+
+        if ($objModule === null)
+        {
+            return;
+        }
+
+        if ($objModule->filterByProvider)
+        {
+            $arrProvider = StringUtil::deserialize($objModule->provider, true);
+
+            if (count($arrProvider))
+            {
+                $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
+            }
         }
     }
 
@@ -690,6 +736,30 @@ class FilterSession extends \System
     }
 
     /**
+     * Add query fragment for imprecise unique filter
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     * @param boolean             $addFragments
+     */
+    protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues, &$addFragments)
+    {
+        if ($_SESSION['FILTER_DATA']['unique-imprecise'])
+        {
+            $uniqueImprecise = $_SESSION['FILTER_DATA']['unique-imprecise'];
+            $_SESSION['FILTER_DATA'] = array();
+            $_SESSION['FILTER_DATA']['unique-imprecise'] = $uniqueImprecise;
+
+            $t = static::$strTable;
+
+            $arrColumn[] = "$t.objektnrExtern LIKE ?";
+            $arrValues[] = '%'.$uniqueImprecise.'%';
+
+            $addFragments = false;
+        }
+    }
+
+    /**
      * Return the order option as string
      *
      * @return string
@@ -784,5 +854,64 @@ class FilterSession extends \System
         }
 
         return null;
+    }
+
+    protected function redirectByGetParameter()
+    {
+        if (Input::get('redirect'))
+        {
+            $validParameter = array('country', 'location', 'location-google', 'country-short', 'city', 'postal', 'district', 'latitude', 'longitude', 'radius-google', 'marketing-type', 'real-estate-type', 'price_to', 'price_from', 'area_to', 'area_from', 'room_to', 'room_from', 'unique');
+
+            $_SESSION['FILTER_DATA'] = array();
+
+            $arrParam = $_GET;
+
+            if (array_key_exists('marketing-type', $arrParam))
+            {
+                if ($arrParam['marketing-type'] === 'kauf')
+                {
+                    $arrParam['marketing-type'] = 'kauf_erbpacht';
+                }
+                else if ($arrParam['marketing-type'] === 'miete')
+                {
+                    $arrParam['marketing-type'] = 'miete_leasing';
+                }
+            }
+
+            foreach ($arrParam as $param => $value)
+            {
+                if (in_array($param, $validParameter))
+                {
+                    $_SESSION['FILTER_DATA'][$param] = $value;
+                }
+                else
+                {
+                    unset($arrParam[$param]);
+                }
+            }
+
+            $objJumpTo = $this->getReferencePage();
+
+            // Redirect if there is a reference page
+            if ($objJumpTo instanceof \PageModel)
+            {
+                $this->jumpToOrReload($objJumpTo->row());
+            }
+            else
+            {
+                //$this->jumpToOrReload(static::$objPage->row());
+                self::redirect(static::$objPage->getFrontendUrl());
+            }
+        }
+    }
+
+    public function getRootLanguage()
+    {
+        if (static::$objRootPage === null)
+        {
+            return '';
+        }
+
+        return static::$objRootPage->realEstateQueryCountry;
     }
 }

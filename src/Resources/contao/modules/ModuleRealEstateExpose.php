@@ -90,16 +90,6 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         \System::loadLanguageFile('tl_real_estate_expose');
 
-        // HOOK: real estate expose generate
-        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateExpose']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateExpose'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($this);
-            }
-        }
-
         return parent::generate();
     }
 
@@ -178,6 +168,16 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         $this->Template->sections = $arrCustomSections;
         $this->Template->realEstateId = $objRealEstate->id;
+
+        // HOOK: compile real estate expose
+        if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['compileRealEstateExpose'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($this->Template, $realEstate, $this);
+            }
+        }
     }
 
     /**

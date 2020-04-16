@@ -88,6 +88,39 @@ class FilterUnique extends FilterWidget
     }
 
     /**
+     * Return an object property
+     *
+     * @param string $strKey The property name
+     *
+     * @return string The property value
+     */
+    public function __get($strKey)
+    {
+        switch ($strKey)
+        {
+            case 'name':
+                return $this->impreciseMode ? 'unique-imprecise' : 'unique';
+                break;
+        }
+
+        return parent::__get($strKey);
+    }
+
+    /**
+     * Parse the template file and return it as string
+     *
+     * @param array $arrAttributes An optional attributes array
+     *
+     * @return string The template markup
+     */
+    public function parse($arrAttributes=null)
+    {
+        $this->value = $_SESSION['FILTER_DATA']['unique-imprecise'] ?: '';
+
+        return parent::parse($arrAttributes);
+    }
+
+    /**
      * Rudimentary generate method
      */
     public function generate() {}

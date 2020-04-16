@@ -125,6 +125,37 @@ class ModuleRealEstateList extends ModuleRealEstate
         $arrOptions['limit']  = $limit;
         $arrOptions['offset'] = $offset;
 
+        switch ($this->listSorting)
+        {
+            case 'dateAdded_asc':
+                $arrOptions['order'] = "tl_real_estate.dateAdded";
+                break;
+            case 'dateAdded_desc':
+                $arrOptions['order'] = "tl_real_estate.dateAdded DESC";
+                break;
+            case 'tstamp_asc':
+                $arrOptions['order'] = "tl_real_estate.tstamp";
+                break;
+            case 'tstamp_desc':
+                $arrOptions['order'] = "tl_real_estate.tstamp DESC";
+                break;
+        }
+
+        if ($this->addCustomOrder)
+        {
+            $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
+        }
+
+        // HOOK: real estate list fetch items
+        if (isset($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($objRealEstate, $arrOptions, $this);
+            }
+        }
+
         switch ($this->listMode)
         {
             case 'visited':
@@ -136,7 +167,7 @@ class ModuleRealEstateList extends ModuleRealEstate
             case 'group':
                 list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
-                $arrOptions = array_merge($arrOptions, $options);
+                $arrOptions = array_merge($options, $arrOptions);
 
                 $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
                 break;
@@ -145,16 +176,6 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
                 break;
-        }
-
-        // HOOK: real estate list fetch items
-        if (isset($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($objRealEstate, $limit, $offset, $this);
-            }
         }
 
         return $objRealEstate;

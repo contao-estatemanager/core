@@ -41,6 +41,14 @@
         <source>Adds a label that displays the number of found real estate</source>
         <target>Gibt die Anzahl der gefundenen Immobilien aus.</target>
       </trans-unit>
+      <trans-unit id="tl_module.listSorting.0">
+        <source>Sort order</source>
+        <target>Sortierreihenfolge</target>
+      </trans-unit>
+      <trans-unit id="tl_module.listSorting.1">
+        <source>Please choose the sort order.</source>
+        <target>Bitte wählen Sie die Sortierreihenfolge aus.</target>
+      </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>
         <target>Sortierung hinzufügen</target>
@@ -196,6 +204,26 @@
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
         <target>Datum</target>
+      </trans-unit>
+      <trans-unit id="tl_module.none">
+        <source>None</source>
+        <target>Keine</target>
+      </trans-unit>
+      <trans-unit id="tl_module.dateAdded_asc">
+        <source>Creation date (oldest first)</source>
+        <target>Erstellungsdatum (älteste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_module.dateAdded_desc">
+        <source>Creation date (newest first)</source>
+        <target>Erstellungsdatum (neueste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_module.tstamp_asc">
+        <source>Actuality (oldest first)</source>
+        <target>Aktualität (älteste zuerst)</target>
+      </trans-unit>
+      <trans-unit id="tl_module.tstamp_desc">
+        <source>Actuality (newest first)</source>
+        <target>Aktualität (neueste zuerst)</target>
       </trans-unit>
     </body>
   </file>
