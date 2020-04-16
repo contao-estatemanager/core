@@ -143,7 +143,7 @@
         <target>Ungenaue Suche erlauben</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.impreciseMode.1">
-        <source>Eine ungenaue Suche erlauben.</source>
+        <source>Allow an inaccurate search.</source>
         <target>Eine ungenaue Suche erlauben.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.mergeOptions.0">
