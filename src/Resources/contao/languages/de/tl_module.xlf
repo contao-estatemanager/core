@@ -21,6 +21,10 @@
         <source>Real estate Item Extensions</source>
         <target>Immobilien Erweiterung</target>
       </trans-unit>
+      <trans-unit id="tl_module.provider_legend">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
       <trans-unit id="tl_module.sorting_legend">
         <source>Sorting</source>
         <target>Sortierung</target>
@@ -48,6 +52,22 @@
       <trans-unit id="tl_module.listSorting.1">
         <source>Please choose the sort order.</source>
         <target>Bitte wählen Sie die Sortierreihenfolge aus.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.filterByProvider.0">
+        <source>Filter by provider</source>
+        <target>Nach Anbieter filtern</target>
+      </trans-unit>
+      <trans-unit id="tl_module.filterByProvider.1">
+        <source>Filter records by a specific provider.</source>
+        <target>Datensätze anhand eines spezifischen Anbieters filtern</target>
+      </trans-unit>
+      <trans-unit id="tl_module.provider.0">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
+      <trans-unit id="tl_module.provider.1">
+        <source>Records will be filtered by the selected provider.</source>
+        <target>Datensätze werden anhand eines ausgewählten Anbieters gefiltert</target>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>
