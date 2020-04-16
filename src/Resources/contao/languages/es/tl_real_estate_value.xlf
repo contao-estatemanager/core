@@ -48,7 +48,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nutzungsart_gewerbe">
         <source>Business</source>
-        <target>Commercial</target>
+        <target>Comercio</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.nutzungsart_anlage">
         <source>Investment</source>
