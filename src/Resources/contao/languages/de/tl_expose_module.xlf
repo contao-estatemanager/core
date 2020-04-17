@@ -156,8 +156,8 @@
         <target>Verwenden des im Anbieter hinterlegten Weiterleitungsmodus. Bei verwenden dieser Funktion, werden die Telefonnummer (Zentrale) sowie die E-Mail (Zentrale) ggf. überschrieben.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
-        <source>Gallery Modules</source>
-        <target>Galerie-Module</target>
+        <source>Gallery Categories</source>
+        <target>Galerie-Kategorien</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.1">
         <source>Select and sort the images that should be output by this module.</source>
@@ -196,20 +196,20 @@
         <target>Hier können Sie die Gesamtzahl der Elemente begrenzen. Geben Sie 0 ein, um alle anzuzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.0">
-        <source>Detail blocks</source>
-        <target>Detail-Blöcke</target>
+        <source>Detail Categories</source>
+        <target>Detail-Kategorien</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.1">
         <source>Define the order and output of the details. Keep in mind that the sequence of the individual fields can be defined using the object types.</source>
         <target>Definieren Sie die Reihenfolge und Ausgabe der Details. Beachten Sie, dass die Reihenfolge der einzelnen Felder über die Objekttypen definiert werden können.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
-        <source>Summarize detail blocks</source>
-        <target>Detail-Blöcke zusammenfassen</target>
+        <source>Summarize detail categories</source>
+        <target>Detail-Kategorien zusammenfassen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
-        <source>Instead of individual blocks, the details are summarized in a list.</source>
-        <target>Statt einzelne Blöcke werden die Details in einer Liste zusammengefasst ausgegeben.</target>
+        <source>Instead of individual categories, the details are summarized in a list.</source>
+        <target>Statt einzelner Kategorien werden die Details in einer Liste zusammengefasst ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.0">
         <source>Add real estate address</source>
@@ -288,8 +288,8 @@
         <target>Wählen Sie die welche Teilen-Optionen zur Verfügung stehen.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
-        <source>'Send via e-mail' template</source>
-        <target>Via E-Mail versenden'-Template</target>
+        <source>Send via e-mail template</source>
+        <target>Via E-Mail versenden Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>
