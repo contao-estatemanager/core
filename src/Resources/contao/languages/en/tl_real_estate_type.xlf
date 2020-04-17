@@ -144,10 +144,10 @@
         <source>Please enter the sorting options.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.0">
-        <source>Primary fields</source>
+        <source>Primary details</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.1">
-        <source>Please enter the primary fields.</source>
+        <source>Please enter the primary details.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.0">
         <source>Primary attributes</source>

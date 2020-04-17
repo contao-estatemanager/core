@@ -233,7 +233,7 @@
       </trans-unit>
 
       <trans-unit id="FMD.objektbeschreibung.0">
-        <source>Property description</source>
+        <source>Description</source>
       </trans-unit>
       <trans-unit id="FMD.ausstattBeschr.0">
         <source>Furnishings</source>
@@ -248,7 +248,7 @@
         <source>Short description</source>
       </trans-unit>
       <trans-unit id="FMD.objektText.0">
-        <source>Property text</source>
+        <source>Text</source>
       </trans-unit>
 
       <trans-unit id="FMD.kontaktname.0">
