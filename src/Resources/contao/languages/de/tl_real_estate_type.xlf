@@ -190,12 +190,12 @@
         <target>Bitte geben Sie die Sortieroptionen an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.0">
-        <source>Primary fields</source>
-        <target>Primäre Felder</target>
+        <source>Primary details</source>
+        <target>Primäre Details</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.1">
-        <source>Please enter the primary fields.</source>
-        <target>Bitte geben Sie die primären Felder an.</target>
+        <source>Please enter the primary details.</source>
+        <target>Bitte geben Sie die primären Details an.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.0">
         <source>Primary attributes</source>
