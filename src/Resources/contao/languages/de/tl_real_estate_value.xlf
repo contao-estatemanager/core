@@ -389,7 +389,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_loft_atelier">
         <source>Loft / Atelier (office)</source>
-        <target>Lost / Atiler (Büro)</target>
+        <target>Loft / Atelier (Büro)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.bueroTyp_praxis">
         <source>Facility (office)</source>
