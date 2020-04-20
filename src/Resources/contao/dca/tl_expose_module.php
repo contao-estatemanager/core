@@ -92,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'protected', 'addHeadings'),
+        '__selector__'                => array('type', 'protected', 'addHeadings', 'attachmentType'),
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -110,7 +110,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form,hideOnReferences;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'html'                        => '{title_legend},name,headline,type;{settings_legend},html;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests'
+        'html'                        => '{title_legend},name,headline,type;{settings_legend},html;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests',
+        'attachments'                 => '{title_legend},name,headline,type;{settings_legend},attachmentType;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests'
     ),
 
     // Subpalettes
@@ -118,6 +119,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     (
         'protected'                   => 'groups',
         'addHeadings'                 => 'fontSize',
+        'attachmentType_documents'    => 'allowedFileExtensions,forceDownload'
     ),
 
     // Fields
@@ -485,7 +487,32 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'options_callback'        => array('tl_expose_module', 'getRealEstateTemplates'),
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
-        )
+        ),
+        'attachmentType' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['attachmentType'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options'                 => array('documents', 'links'),
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true),
+            'sql'                     => "varchar(64) NOT NULL default ''"
+        ),
+        'allowedFileExtensions' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['allowedFileExtensions'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default 'pdf'"
+        ),
+        'forceDownload' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['forceDownload'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
     )
 );
 

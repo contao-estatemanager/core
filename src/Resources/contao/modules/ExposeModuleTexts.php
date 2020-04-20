@@ -25,7 +25,7 @@ class ExposeModuleTexts extends ExposeModule
     protected $strTemplate = 'expose_mod_texts';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
