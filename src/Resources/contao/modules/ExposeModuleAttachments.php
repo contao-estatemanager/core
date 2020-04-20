@@ -107,7 +107,9 @@ class ExposeModuleAttachments extends ExposeModule
                 break;
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+
+        return $this->isEmpty ? '' : $strBuffer;
     }
 
     /**
@@ -180,6 +182,11 @@ class ExposeModuleAttachments extends ExposeModule
                 }
 
                 break;
+        }
+
+        if(empty($arrCollection))
+        {
+            $this->isEmpty = true;
         }
 
         $this->Template->attachments = $arrCollection;
