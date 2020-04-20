@@ -130,6 +130,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
     (
         'contactPerson'     => '\\ContaoEstateManager\\ExposeModuleContactPerson',
         'enquiryForm'       => '\\ContaoEstateManager\\ExposeModuleEnquiryForm',
+        'attachments'       => '\\ContaoEstateManager\\ExposeModuleAttachments',
         'share'             => '\\ContaoEstateManager\\ExposeModuleShare',
         'print'             => '\\ContaoEstateManager\\ExposeModulePrint',
         'html'              => '\\ContaoEstateManager\\ExposeModuleHtml',

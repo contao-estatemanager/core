@@ -268,6 +268,24 @@
       <trans-unit id="tl_expose_module.fullsize.1">
         <source>Open the full size image in a lightbox or open it in a new browser window.</source>
       </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.0">
+        <source>Attachment type</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.1">
+        <source>Please select an attachment type.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.0">
+        <source>Allowed file extensions</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.1">
+        <source>Please provide a comma-separated list of file extensions which should not be output. (e.g pdf,doc)</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.0">
+        <source>Force download</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.1">
+        <source>Forces the download of the file</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,0 +1,17 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<ul>
+    <?php foreach ($this->attachments as $objAttachment): ?>
+        <li class="attachment ext-<?= $objAttachment->extension ?>">
+            <?php if($objAttachment->extension === 'link'): ?>
+                <a href="<?= $objAttachment->href ?>" target="_blank"><?= $objAttachment->href ?></a>
+            <?php else: ?>
+                <a href="<?= $objAttachment->href ?>" title="<?= $objAttachment->title ?>" type="<?= $objAttachment->mime ?>"><?= $objAttachment->name ?> <span class="size">(<?= $objAttachment->filesize ?>)</span></a>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php $this->endblock(); ?>
