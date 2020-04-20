@@ -355,6 +355,30 @@
         <source>Open the full size image in a lightbox or open it in a new browser window.</source>
         <target>Großansicht des Bildes in einer Lightbox bzw. den Link in einem neuem Browserfenster öffnen.</target>
       </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.0">
+        <source>Attachment type</source>
+        <target>Anhang-Typ</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.1">
+        <source>Please select an attachment type.</source>
+        <target>Bitte wähle den Typen des Anhangs</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.0">
+        <source>Allowed file extensions</source>
+        <target>Erlaubte Dateiendungen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.1">
+        <source>Please provide a comma-separated list of file extensions which should not be output. (e.g pdf,doc)</source>
+        <target>Bitte geben Sie eine durch Komma getrennte Liste von Dateierweiterungen an, die nicht ausgegeben werden sollen (z.B. pdf,doc).</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.0">
+        <source>Force download</source>
+        <target>Download erzwingen</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.1">
+        <source>Forces the download of the file</source>
+        <target>Erzwingt den Download und öffnet einen Download-Dialog.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
