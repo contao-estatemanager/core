@@ -243,6 +243,14 @@
         <source>Enables the output of a form produced by the form generator.</source>
         <target>Ermöglicht die Ausgabe eines vom Formulargenerator erzeugten Formulars.</target>
       </trans-unit>
+      <trans-unit id="FMD.attachments.0">
+        <source>Attachments</source>
+        <target>Anhänge</target>
+      </trans-unit>
+      <trans-unit id="FMD.attachments.1">
+        <source>Outputs attachments of the real estate.</source>
+        <target>Liefert die Anhänge einer Immobilie aus.</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Cover picture</source>
