@@ -243,6 +243,14 @@
         <source>Enables the output of a form produced by the form generator.</source>
         <target>Ermöglicht die Ausgabe eines vom Formulargenerator erzeugten Formulars.</target>
       </trans-unit>
+      <trans-unit id="FMD.attachments.0">
+        <source>Attachments</source>
+        <target>Anhänge</target>
+      </trans-unit>
+      <trans-unit id="FMD.attachments.1">
+        <source>Outputs attachments of the real estate.</source>
+        <target>Liefert die Anhänge einer Immobilie aus.</target>
+      </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
         <source>Cover picture</source>
@@ -307,8 +315,8 @@
       </trans-unit>
 
       <trans-unit id="FMD.objektbeschreibung.0">
-        <source>Property description</source>
-        <target>Immobilienbeschreibung</target>
+        <source>Description</source>
+        <target>Beschreibung</target>
       </trans-unit>
       <trans-unit id="FMD.ausstattBeschr.0">
         <source>Furnishings</source>
@@ -327,8 +335,8 @@
         <target>Kurzbeschreibung</target>
       </trans-unit>
       <trans-unit id="FMD.objektText.0">
-        <source>Property text</source>
-        <target>Immobilientext</target>
+        <source>Text</source>
+        <target>Text</target>
       </trans-unit>
 
       <trans-unit id="FMD.kontaktname.0">

@@ -119,7 +119,7 @@
         <source>Use the forwarding mode stored in the provider. If you use this function, the telephone number (Headquarters) and e-mail (Headquarters) are overwritten if necessary.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
-        <source>Gallery Modules</source>
+        <source>Gallery Categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.1">
         <source>Select and sort the images that should be output by this module.</source>
@@ -149,16 +149,16 @@
         <source>Here you can limit the number of items. Set to 0 to show all.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.0">
-        <source>Detail blocks</source>
+        <source>Detail Categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.1">
         <source>Define the order and output of the details. Keep in mind that the sequence of the individual fields can be defined using the object types.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
-        <source>Summarize detail blocks</source>
+        <source>Summarize detail categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
-        <source>Instead of individual blocks, the details are summarized in a list.</source>
+        <source>Instead of individual categories, the details are summarized in a list.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.0">
         <source>Add real estate address</source>
@@ -218,7 +218,7 @@
         <source>Select which share-options should be available.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
-        <source>'Send via e-mail' template</source>
+        <source>Send via e-mail template</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>
@@ -267,6 +267,24 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.fullsize.1">
         <source>Open the full size image in a lightbox or open it in a new browser window.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.0">
+        <source>Attachment type</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.attachmentType.1">
+        <source>Please select an attachment type.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.0">
+        <source>Allowed file extensions</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.allowedFileExtensions.1">
+        <source>Please provide a comma-separated list of file extensions which should not be output. (e.g pdf,doc)</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.0">
+        <source>Force download</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.forceDownload.1">
+        <source>Forces the download of the file</source>
       </trans-unit>
     </body>
   </file>
