@@ -4928,7 +4928,7 @@ class tl_real_estate extends Backend
 
         while ($objProviders->next())
         {
-            $arrProviders[$objProviders->id] = $objProviders->firma;
+            $arrProviders[$objProviders->id] = $objProviders->firma . ' (' . $objProviders->anbieternr . ')';
         }
 
         return $arrProviders;
