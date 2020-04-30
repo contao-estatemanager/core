@@ -4602,7 +4602,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'radio', 'tl_class'=>'clr'),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'imageSRC' => array
@@ -4613,7 +4613,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'planImageSRC' => array
@@ -4624,7 +4624,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'interiorViewImageSRC' => array
@@ -4635,7 +4635,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'exteriorViewImageSRC' => array
@@ -4646,7 +4646,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'mapViewImageSRC' => array
@@ -4657,7 +4657,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'panoramaImageSRC' => array
@@ -4668,7 +4668,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'epassSkalaImageSRC' => array
@@ -4679,7 +4679,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'logoImageSRC' => array
@@ -4690,7 +4690,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
         'qrImageSRC' => array
@@ -4701,7 +4701,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'image'
             )
         ),
 
@@ -4716,7 +4716,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('filesOnly'=>true, 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'document'
             )
         ),
 
@@ -4731,7 +4731,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('tl_class'=>'clr'),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
-                'group'    => 'medien'
+                'group'    => 'link'
             )
         ),
         'anbieterobjekturl' => array
