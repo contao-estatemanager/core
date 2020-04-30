@@ -43,11 +43,12 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'mode'                    => 2,
             'fields'                  => array('name'),
             'flag'                    => 1,
-            'panelLayout'             => 'filter;sort,search,limit',
+            'panelLayout'             => 'filter;sort,search,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('name')
+            'fields'                  => array('name', 'type'),
+            'format'                  => '<div class="tl_content_left">%s <span style="color:#999;padding-left:3px">[%s]</span></div>'
         ),
         'global_operations' => array
         (
@@ -652,5 +653,17 @@ class tl_expose_module extends Backend
         }
 
         return $arrForms;
+    }
+
+    /**
+     * List an expose module
+     *
+     * @param array $row
+     *
+     * @return string
+     */
+    public function listModule($row)
+    {
+        return '<div class="tl_content_left">' . $row['name'] . ' <span style="color:#999;padding-left:3px">[' . ($GLOBALS['TL_LANG']['FE_EXPOSE_MOD'][$row['type']][0] ?? $row['type']) . ']</span></div>';
     }
 }
