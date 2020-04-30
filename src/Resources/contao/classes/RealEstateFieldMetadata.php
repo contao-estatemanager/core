@@ -14,14 +14,33 @@ use Contao\Controller;
 
 class RealEstateFieldMetadata
 {
+    /**
+     * RealEstateFieldMetadata instance
+     * @var RealEstateFieldMetadata
+     */
     private static $instance = null;
 
+    /**
+     * Group fields
+     * @var array|null
+     */
     private $arrGroups = null;
 
+    /**
+     * Flag fields
+     * @var array|null
+     */
     private $arrFlags = null;
 
+    /**
+     * Order fields
+     * @var array|null
+     */
     private $arrOrder = null;
 
+    /**
+     * RealEstateFieldMetadata constructor.
+     */
     private function __construct()
     {
         Controller::loadDataContainer('tl_real_estate');
@@ -46,7 +65,7 @@ class RealEstateFieldMetadata
                             break;
 
                         case 'group':
-                            if(null === $this->arrGroups || !\in_array($value, $this->arrGroups))
+                            if(null === $this->arrGroups || !\array_key_exists($value, $this->arrGroups))
                             {
                                 $this->arrGroups[$value] = array();
                             }
@@ -55,7 +74,7 @@ class RealEstateFieldMetadata
                             break;
 
                         default:
-                            if(null === $this->arrFlags || !\in_array($key, $this->arrFlags))
+                            if(null === $this->arrFlags || !\array_key_exists($key, $this->arrFlags))
                             {
                                 $this->arrFlags[$key] = array();
                             }
@@ -76,6 +95,9 @@ class RealEstateFieldMetadata
         }
     }
 
+    /**
+     * @return RealEstateFieldMetadata
+     */
     public static function getInstance()
     {
         if (!isset(static::$instance)) {
