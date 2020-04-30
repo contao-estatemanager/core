@@ -80,11 +80,13 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         {
             /** @var \PageModel $objPage */
             global $objPage;
+
             $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(\Input::get('items'), 7));
+
             if ($objRealEstate !== null)
             {
                 $realEstate = new RealEstate($objRealEstate);
-                $this->redirect($realEstate->generateExposeUrl($objPage->id));
+                $this->redirect($realEstate->generateExposeUrl($objPage));
             }
         }
 
@@ -107,7 +109,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         $realEstate = new RealEstate($objRealEstate, null);
 
-        $this->updateVisitedSession($realEstate->getId());
+        $this->updateVisitedSession($realEstate->id);
 
         $arrCustomSections = array();
         $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');

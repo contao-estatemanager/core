@@ -1,6 +1,5 @@
 <div class="real_estate_item_default block<?= $this->class ?>">
     <div class="inner">
-
       <?php if(count($this->arrStatusTokens)): ?>
         <div class="status">
             <?php foreach ($this->arrStatusTokens as $statusToken): ?>

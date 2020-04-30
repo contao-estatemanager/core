@@ -12,6 +12,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\FrontendTemplate;
+
 /**
  * Parent class for expose modules.
  *
@@ -50,7 +52,7 @@ abstract class ExposeModule extends ModuleRealEstate
 	 */
 	public function generate()
 	{
-		$this->Template = new \FrontendTemplate($this->strTemplate);
+		$this->Template = new FrontendTemplate($this->strTemplate);
 		$this->Template->setData($this->arrData);
 
 		$this->compile();

@@ -51,6 +51,6 @@ class ExposeModuleTitle extends ExposeModule
      */
     protected function compile()
     {
-        $this->Template->title = $this->realEstate->getTitle();
+        $this->Template->title = $this->realEstate->title;
     }
 }
