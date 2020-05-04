@@ -236,8 +236,23 @@ class RealEstate extends System
      * @param int $max
      *
      * @return array
+     *
+     * @deprecated to be removed in Version 1.0. Use getImagesUuids instead.
      */
     public function getImageBundle(array $arrFields=null, int $max=null): array
+    {
+        return $this->getImagesUuids($arrFields, $max);
+    }
+
+    /**
+     * Return image uuid's of the real estate
+     *
+     * @param array $arrFields
+     * @param int $max
+     *
+     * @return array
+     */
+    public function getImagesUuids(array $arrFields=null, int $max=null): array
     {
         $return = array();
 
@@ -290,7 +305,8 @@ class RealEstate extends System
     {
         $return = array();
 
-        if(!$validStatusToken){
+        if(!$validStatusToken)
+        {
             return $return;
         }
 
@@ -474,7 +490,57 @@ class RealEstate extends System
         return $this->formatter->getFormattedCollection($this->objType->area);
     }
 
-    // ToDo: Add methods like getAreas, getPrices, getAttributes, getDetails, getEnergy
+    /**
+     * Returns all area fields
+     *
+     * @return array|null
+     */
+    public function getAreas(): ?array
+    {
+        return $this->getPropertiesByGroup(null, false, ['area'])['detail'];
+    }
+
+    /**
+     * Returns all price fields
+     *
+     * @return array|null
+     */
+    public function getPrices(): ?array
+    {
+        return $this->getPropertiesByGroup(null, false, ['price'])['detail'];
+    }
+
+    /**
+     * Returns all attribute fields
+     *
+     * @return array|null
+     */
+    public function getAttributes(): ?array
+    {
+        return $this->getPropertiesByGroup(null, false, ['attribute'])['detail'];
+    }
+
+    /**
+     * Returns all detail fields
+     *
+     * @param bool $includeAddress
+     *
+     * @return array|null
+     */
+    public function getDetails(bool $includeAddress = false): ?array
+    {
+        return $this->getPropertiesByGroup(null, $includeAddress, ['detail'])['detail'];
+    }
+
+    /**
+     * Returns all energie pass fields
+     *
+     * @return array|null
+     */
+    public function getEnergy(): ?array
+    {
+        return $this->getPropertiesByGroup(null, false, ['energie'])['detail'];
+    }
 
     /**
      * Return details from real estate
@@ -484,9 +550,9 @@ class RealEstate extends System
      * @param null|array    $validGroups
      * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
      *
-     * @return array $details: array('group1' [,group2,group3,...])
+     * @return array        array('group1' [,group2,group3,...])
      */
-    public function getDetails(array $separateGroups=null, bool $includeAddress = false, array $validGroups=null, string $defaultGroup='detail'): array
+    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups=null, string $defaultGroup='detail'): array
     {
         $availableGroups = array();
         $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
@@ -515,6 +581,7 @@ class RealEstate extends System
 
         $collection = array();
 
+        // ToDo: use metafield class
         // loop through the real estate fields
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
         {
@@ -690,16 +757,16 @@ class RealEstate extends System
      * @param array $validTexts
      * @param int   $maxTextLength
      *
-     * @return array
+     * @return array|null
      */
-    public function getTexts(array $validTexts=null, int $maxTextLength=0): array
+    public function getTexts(array $validTexts=null, int $maxTextLength=0): ?array
     {
         if(!$validTexts)
         {
-            $validTexts = array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler');
+            $validTexts = RealEstateFieldMetadata::getInstance()->getGroupFields('text');
         }
 
-        $return = array();
+        $return = null;
 
         foreach ($validTexts as $field)
         {

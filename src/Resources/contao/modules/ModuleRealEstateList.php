@@ -10,7 +10,7 @@
 
 namespace ContaoEstateManager;
 
-use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\BackendTemplate;
 use Patchwork\Utf8;
 
 /**
@@ -35,7 +35,7 @@ class ModuleRealEstateList extends ModuleRealEstate
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateList'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;

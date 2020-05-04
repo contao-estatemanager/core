@@ -11,6 +11,9 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Patchwork\Utf8;
+
 /**
  * Expose module "main attributes".
  *
@@ -25,7 +28,7 @@ class ExposeModuleMainAttributes extends ExposeModule
     protected $strTemplate = 'expose_mod_mainAttributes';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
@@ -33,7 +36,7 @@ class ExposeModuleMainAttributes extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['mainAttributes'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;

@@ -11,6 +11,9 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Patchwork\Utf8;
+
 /**
  * Expose module "main details".
  *
@@ -33,7 +36,7 @@ class ExposeModuleMainDetails extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['mainDetails'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;

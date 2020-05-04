@@ -65,12 +65,20 @@ class RealEstateFieldMetadata
                             break;
 
                         case 'group':
-                            if(null === $this->arrGroups || !\array_key_exists($value, $this->arrGroups))
+                            if(!is_array($value))
                             {
-                                $this->arrGroups[$value] = array();
+                                $value = [$value];
                             }
 
-                            $this->arrGroups[$value][] = $field;
+                            foreach ($value as $v)
+                            {
+                                if(null === $this->arrGroups || !\array_key_exists($v, $this->arrGroups))
+                                {
+                                    $this->arrGroups[$v] = array();
+                                }
+
+                                $this->arrGroups[$v][] = $field;
+                            }
                             break;
 
                         default:

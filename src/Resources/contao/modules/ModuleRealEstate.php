@@ -36,7 +36,7 @@ abstract class ModuleRealEstate extends \Module
      * @var bool
      */
     protected $forceEmpty = false;
-    
+
     /**
      * Return an object property
      *
@@ -102,7 +102,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->mainPrice      = $realEstate->getMainPrice();
         $objTemplate->mainArea       = $realEstate->getMainArea();
 
-        $objTemplate->details        = $realEstate->getDetails(['price'], true);
+        $objTemplate->details        = $realEstate->getPropertiesByGroup(['price'], true);
         $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
         // <--
 
@@ -437,7 +437,7 @@ abstract class ModuleRealEstate extends \Module
             StringUtil::specialchars(sprintf('%s', $strTitle), true),
             $strTitle);
     }
-    
+
     protected function redirectIfUnique()
     {
         if ($_SESSION['FILTER_DATA']['unique'])
