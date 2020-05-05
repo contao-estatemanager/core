@@ -234,7 +234,7 @@ class EstateManagerRead extends EstateManagerSDK
                         break;
                     case 'mainImage':
                         $fallback = false;
-                        $mainImage = $realEstate->getMainImage();
+                        $mainImage = $realEstate->getMainImageUuid();
                         $defaultImage = \Config::get('defaultImage');
 
                         if($mainImage)

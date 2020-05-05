@@ -11,6 +11,11 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\Config;
+use Contao\StringUtil;
+use Patchwork\Utf8;
+
 /**
  * Expose module "contact person".
  *
@@ -33,7 +38,7 @@ class ExposeModuleContactPerson extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['contactPerson'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -51,7 +56,7 @@ class ExposeModuleContactPerson extends ExposeModule
      */
     protected function compile()
     {
-        $arrFields = \StringUtil::deserialize($this->contactFields);
+        $arrFields = StringUtil::deserialize($this->contactFields);
 
         $contactPerson = $this->realEstate->getContactPerson(!!$this->forceFullAddress, !!$this->useProviderForwarding);
 
@@ -66,15 +71,15 @@ class ExposeModuleContactPerson extends ExposeModule
                     switch(strtolower($contactPerson['anrede']))
                     {
                         case 'frau':
-                            $varSingleSrc = \Config::get('defaultContactPersonFemaleImage');
+                            $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
                             break;
                         case 'herr':
-                            $varSingleSrc = \Config::get('defaultContactPersonMaleImage');
+                            $varSingleSrc = Config::get('defaultContactPersonMaleImage');
                             break;
                     }
 
                     if(!$varSingleSrc){
-                        $varSingleSrc = \Config::get('defaultContactPersonImage');
+                        $varSingleSrc = Config::get('defaultContactPersonImage');
                     }
                 }
 

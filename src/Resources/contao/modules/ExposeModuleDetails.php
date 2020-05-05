@@ -11,6 +11,10 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\StringUtil;
+use Patchwork\Utf8;
+
 /**
  * Expose module "details".
  *
@@ -33,7 +37,7 @@ class ExposeModuleDetails extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['details'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -55,7 +59,7 @@ class ExposeModuleDetails extends ExposeModule
     {
         $this->skipDetails = false;
 
-        $arrBlocks = \StringUtil::deserialize($this->detailBlocks);
+        $arrBlocks = StringUtil::deserialize($this->detailBlocks);
 
         $arrCollection = array();
 
@@ -63,7 +67,7 @@ class ExposeModuleDetails extends ExposeModule
         {
             $seperateBlocks = $arrBlocks;
 
-            $arrDetails = $this->realEstate->getDetails($seperateBlocks, $this->includeAddress, $arrBlocks);
+            $arrDetails = $this->realEstate->getPropertiesByGroup($seperateBlocks, $this->includeAddress, $arrBlocks);
 
             // sort by user preference
             $orderedDetails = array();

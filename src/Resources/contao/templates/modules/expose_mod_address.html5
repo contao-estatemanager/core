@@ -2,6 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-<address><?=$this->address?></address>
+<address><?=$this->realEstate->getLocationString()?></address>
 
 <?php $this->endblock(); ?>

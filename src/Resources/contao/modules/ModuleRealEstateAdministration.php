@@ -10,6 +10,9 @@
 
 namespace ContaoEstateManager;
 
+use Contao\StringUtil;
+use Contao\System;
+
 /**
  * Back end module "real estate administration".
  *
@@ -43,13 +46,13 @@ class ModuleRealEstateAdministration extends \BackendModule
 	 */
 	protected function compile()
 	{
-		\System::loadLanguageFile('tl_real_estate_administration');
+		System::loadLanguageFile('tl_real_estate_administration');
 
-        $packages = \System::getContainer()->getParameter('kernel.packages');
+        $packages = System::getContainer()->getParameter('kernel.packages');
 
 		$this->Template->content = '';
 		$this->Template->href = $this->getReferer(true);
-		$this->Template->title = \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
+		$this->Template->title = StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
 		$this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
         $this->Template->headline = $GLOBALS['TL_LANG']['tl_real_estate_administration']['title'];
         $this->Template->catalogUrl = $this->strEstateManagerUrl;

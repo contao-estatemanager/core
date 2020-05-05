@@ -9,8 +9,9 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 namespace ContaoEstateManager;
+
+use Contao\FrontendTemplate;
 
 /**
  * Parent class for expose modules.
@@ -30,17 +31,18 @@ namespace ContaoEstateManager;
  */
 abstract class ExposeModule extends ModuleRealEstate
 {
-	/**
-	 * Initialize the object
-	 *
-	 * @param ExposeModuleModel $objModule
-	 * @param string            $strColumn
-	 */
-	public function __construct($objModule, $realEstate, $strColumn='main')
+    /**
+     * Initialize the object
+     *
+     * @param $objModule
+     * @param $objRealEstate
+     * @param string $strColumn
+     */
+	public function __construct($objModule, $objRealEstate, string $strColumn='main')
 	{
 		parent::__construct($objModule, $strColumn);
 
-		$this->realEstate = $realEstate;
+		$this->realEstate = new RealEstateModulePreparation($objRealEstate, $objModule, null);
 	}
 
 	/**
@@ -50,7 +52,7 @@ abstract class ExposeModule extends ModuleRealEstate
 	 */
 	public function generate()
 	{
-		$this->Template = new \FrontendTemplate($this->strTemplate);
+		$this->Template = new FrontendTemplate($this->strTemplate);
 		$this->Template->setData($this->arrData);
 
 		$this->compile();
@@ -87,7 +89,7 @@ abstract class ExposeModule extends ModuleRealEstate
 	 *
 	 * @return string The class name
 	 */
-	public static function findClass($strName)
+	public static function findClass($strName): string
 	{
 		foreach ($GLOBALS['FE_EXPOSE_MOD'] as $v)
 		{

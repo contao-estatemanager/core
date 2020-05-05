@@ -11,7 +11,14 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\Config;
 use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\Environment;
+use Contao\FrontendUser;
+use Contao\Input;
+use Contao\StringUtil;
+use Contao\System;
 use Patchwork\Utf8;
 
 /**
@@ -46,7 +53,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
     protected $strTable = 'tl_real_estate';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
@@ -54,7 +61,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateExpose'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -65,30 +72,32 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         // Set the item from the auto_item parameter
-        if (!isset($_GET['items']) && \Config::get('useAutoItem') && isset($_GET['auto_item']))
+        if (!isset($_GET['items']) && Config::get('useAutoItem') && isset($_GET['auto_item']))
         {
-            \Input::setGet('items', \Input::get('auto_item'));
+            Input::setGet('items', Input::get('auto_item'));
         }
 
         // Return an empty string if "items" is not set (to combine list and reader on same page)
-        if (!\Input::get('items'))
+        if (!Input::get('items'))
         {
-            throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
+            throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
-        if ($internal = strpos(\Input::get('items'), 'intern-') === 0)
+        if ($internal = strpos(Input::get('items'), 'intern-') === 0)
         {
             /** @var \PageModel $objPage */
             global $objPage;
-            $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(\Input::get('items'), 7));
+
+            $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(Input::get('items'), 7));
+
             if ($objRealEstate !== null)
             {
                 $realEstate = new RealEstate($objRealEstate);
-                $this->redirect($realEstate->generateExposeUrl($objPage->id));
+                $this->redirect($realEstate->generateExposeUrl($objPage));
             }
         }
 
-        \System::loadLanguageFile('tl_real_estate_expose');
+        System::loadLanguageFile('tl_real_estate_expose');
 
         return parent::generate();
     }
@@ -98,20 +107,18 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      */
     protected function compile()
     {
-        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(Input::get('items'));
 
         if ($objRealEstate === null || (!$this->allowReferences && $objRealEstate->referenz))
         {
-            throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
+            throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
-        $realEstate = new RealEstate($objRealEstate, null);
-
-        $this->updateVisitedSession($realEstate->getId());
+        $this->updateVisitedSession($objRealEstate->id);
 
         $arrCustomSections = array();
         $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');
-        $arrModules = \StringUtil::deserialize($this->exposeModules);
+        $arrModules = StringUtil::deserialize($this->exposeModules);
 
         $arrModuleIds = array();
 
@@ -157,11 +164,11 @@ class ModuleRealEstateExpose extends ModuleRealEstate
                 // Generate the modules
                 if (\in_array($arrModule['col'], $arrSections))
                 {
-                    $this->Template->{$arrModule['col']} .= $this->getExposeModule($arrModule['mod'], $realEstate, $arrModule['col']);
+                    $this->Template->{$arrModule['col']} .= $this->getExposeModule($arrModule['mod'], $objRealEstate, $arrModule['col']);
                 }
                 else
                 {
-                    $arrCustomSections[$arrModule['col']] .= $this->getExposeModule($arrModule['mod'], $realEstate, $arrModule['col']);
+                    $arrCustomSections[$arrModule['col']] .= $this->getExposeModule($arrModule['mod'], $objRealEstate, $arrModule['col']);
                 }
             }
         }
@@ -175,7 +182,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             foreach ($GLOBALS['TL_HOOKS']['compileRealEstateExpose'] as $callback)
             {
                 $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($this->Template, $realEstate, $this);
+                $this->{$callback[0]}->{$callback[1]}($this->Template, $objRealEstate, $this);
             }
         }
     }
@@ -183,12 +190,13 @@ class ModuleRealEstateExpose extends ModuleRealEstate
     /**
      * Generate a expose module and return it as string
      *
-     * @param mixed  $intId     A module ID or a Model object
+     * @param mixed $intId A module ID or a Model object
+     * @param $objRealEstate
      * @param string $strColumn The name of the column
      *
      * @return string The module HTML markup
      */
-    public function getExposeModule($intId, $realEstate, $strColumn='main')
+    public function getExposeModule($intId, $objRealEstate, $strColumn='main'): string
     {
         if (!\is_object($intId) && !\strlen($intId))
         {
@@ -220,7 +228,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         // Return if the class does not exist
         if (!class_exists($strClass))
         {
-            \System::log('Module class "'.$strClass.'" (module "'.$objRow->type.'") does not exist', __METHOD__, TL_ERROR);
+            System::log('Module class "'.$strClass.'" (module "'.$objRow->type.'") does not exist', __METHOD__, TL_ERROR);
 
             return '';
         }
@@ -228,7 +236,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         $objRow->typePrefix = 'expose_mod_';
 
         /** @var ExposeModule $objModule */
-        $objModule = new $strClass($objRow, $realEstate, $strColumn);
+        $objModule = new $strClass($objRow, $objRealEstate, $strColumn);
         $strBuffer = $objModule->generate();
 
         // HOOK: add custom logic
@@ -256,7 +264,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      *
      * @return boolean True if the element is visible
      */
-    public static function isVisibleExposeElement(ExposeModuleModel $objElement)
+    public static function isVisibleExposeElement(ExposeModuleModel $objElement): bool
     {
         $blnReturn = true;
 
@@ -272,9 +280,9 @@ class ModuleRealEstateExpose extends ModuleRealEstate
                 }
                 else
                 {
-                    $groups = \StringUtil::deserialize($objElement->groups);
+                    $groups = StringUtil::deserialize($objElement->groups);
 
-                    if (empty($groups) || !\is_array($groups) || !\count(array_intersect($groups, \FrontendUser::getInstance()->groups)))
+                    if (empty($groups) || !\is_array($groups) || !\count(array_intersect($groups, FrontendUser::getInstance()->groups)))
                     {
                         $blnReturn = false;
                     }
@@ -293,7 +301,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         {
             foreach ($GLOBALS['TL_HOOKS']['isVisibleElement'] as $callback)
             {
-                $blnReturn = \System::importStatic($callback[0])->{$callback[1]}($objElement, $blnReturn);
+                $blnReturn = System::importStatic($callback[0])->{$callback[1]}($objElement, $blnReturn);
             }
         }
 

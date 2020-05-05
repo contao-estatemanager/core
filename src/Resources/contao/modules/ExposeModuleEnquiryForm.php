@@ -10,6 +10,10 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\FormModel;
+use Patchwork\Utf8;
+
 /**
  * Expose module "enquiry form".
  *
@@ -32,7 +36,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['enquiryForm'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -52,7 +56,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
      */
     protected function compile()
     {
-        $objForm = \FormModel::findByPk($this->form);
+        $objForm = FormModel::findByPk($this->form);
 
         if ($objForm === null || ($this->hideOnReferences && !!$this->realEstate->referenz))
         {

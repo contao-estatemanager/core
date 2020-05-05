@@ -11,6 +11,14 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\Config;
+use Contao\File;
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
+use Contao\StringUtil;
+use Patchwork\Utf8;
+
 /**
  * Expose module "gallery".
  *
@@ -39,7 +47,7 @@ class ExposeModuleGallery extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['gallery'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -58,7 +66,7 @@ class ExposeModuleGallery extends ExposeModule
      */
     protected function compile()
     {
-        $arrModules = \StringUtil::deserialize($this->galleryModules);
+        $arrModules = StringUtil::deserialize($this->galleryModules);
 
         if($arrModules)
         {
@@ -96,7 +104,7 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         // create Template
-        $objTemplate = new \FrontendTemplate($strTemplate);
+        $objTemplate = new FrontendTemplate($strTemplate);
 
         // valid image fields
         $arrValidFields = array('titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panoramaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC');
@@ -105,8 +113,8 @@ class ExposeModuleGallery extends ExposeModule
         {
             if(in_array($module, $arrValidFields))
             {
-                $arrImages = $this->realEstate->getImageBundle([$module], $availableSlots);
-                $objFiles = \FilesModel::findMultipleByUuids($arrImages);
+                $arrImages = $this->realEstate->getImagesUuids([$module], $availableSlots);
+                $objFiles = FilesModel::findMultipleByUuids($arrImages);
 
                 // parse and add images to the slides array
                 $this->parseImagesAndAddToSlides($objFiles, $arrSlides);
@@ -162,12 +170,12 @@ class ExposeModuleGallery extends ExposeModule
             }
 
             // get default image from local config
-            $defaultImage = \Config::get('defaultImage');
+            $defaultImage = Config::get('defaultImage');
 
             if($defaultImage)
             {
                 // get default image
-                $objFiles = \FilesModel::findMultipleByUuids([$defaultImage]);
+                $objFiles = FilesModel::findMultipleByUuids([$defaultImage]);
 
                 if($objFiles !== null)
                 {
@@ -209,7 +217,7 @@ class ExposeModuleGallery extends ExposeModule
                     continue;
                 }
 
-                $objFile = new \File($objFiles->path);
+                $objFile = new File($objFiles->path);
 
                 if (!$objFile->isImage) {
                     continue;

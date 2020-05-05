@@ -38,7 +38,7 @@ class RealEstateInquiry
                 $arrRealEstateData['oobj_id'] = $realEstate->objektnrExtern;
                 $arrRealEstateData['exposeUrl'] = Environment::get('http_origin') . Environment::get('request_uri');
                 $arrRealEstateData['vermarktungsart'] = $this->getMarketingtype($realEstate);
-                $arrRealEstateData['bezeichnung'] = $realEstate->getTitle();
+                $arrRealEstateData['bezeichnung'] = $realEstate->title;
                 if ($realEstate->etage)
                 {
                     $arrRealEstateData['etage'] = $realEstate->etage;
