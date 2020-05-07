@@ -52,7 +52,9 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'default'                 => 'real_estate_itemext_contact_person_default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
+        'options_callback'        => function (){
+            return Contao\Controller::getTemplateGroup('real_estate_itemext_contact_person_');
+        },
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
@@ -62,7 +64,9 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
         'default'                 => 'real_estate_itemext_provider_default',
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
+        'options_callback'        => function (){
+            return Contao\Controller::getTemplateGroup('real_estate_itemext_provider_');
+        },
         'eval'                    => array('tl_class'=>'w50'),
         'sql'                     => "varchar(64) NOT NULL default ''"
     ),
@@ -297,6 +301,8 @@ class tl_module_estate_manager extends Backend
      * Return all real estate item extension templates as array
      *
      * @return array
+     *
+     * @deprecated to be removed in Version 1.0. Use anonymous function instead.
      */
     public function getRealEstateExtensionTemplates()
     {

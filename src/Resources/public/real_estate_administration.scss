@@ -194,7 +194,6 @@
   }
 }
 
-
 .re_administration{
 
   P{
@@ -269,11 +268,31 @@
     }
   }
 
+  .em_footer{
+    text-align: center;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    color: #b9b9b9;
+    border-top: 1px solid #ececee;
+
+    a{
+      display: inline-block;
+      font-weight: normal;
+      color: #b9b9b9;
+      margin: 0 5px;
+
+      &:hover{
+        color: #006494;
+        text-decoration: underline;
+      }
+    }
+  }
+
   .re_listing_container{
     display: flex;
     flex-wrap: wrap;
-    padding: 2px 0;
-    margin: 20px 9px 16px;
+    padding: 2px 0 0;
+    margin: 20px 9px 5px;
 
     .re_group{
       width: calc(100% - 18px);
