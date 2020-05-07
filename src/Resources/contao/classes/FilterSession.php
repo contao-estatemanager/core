@@ -299,7 +299,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
+        //$this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         if ($objRealEstateType === null)
         {
@@ -355,7 +355,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
+        //$this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         $arrTypeColumns = array();
 

@@ -8,7 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 $GLOBALS['TL_DCA']['tl_filter'] = array
 (
 
@@ -54,8 +53,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('title'),
-            'format'                  => '%s' // ToDo: Wird das noch benötigt?
+            'fields'                  => array('title')
         ),
         'global_operations' => array
         (
@@ -169,6 +167,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankMarketingType'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -177,6 +176,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankRealEstateType'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -185,6 +185,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['submitOnChange'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -299,7 +300,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_filter extends Backend
+class tl_filter extends Contao\Backend
 {
 
     /**
@@ -308,7 +309,7 @@ class tl_filter extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -316,7 +317,7 @@ class tl_filter extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -324,9 +325,9 @@ class tl_filter extends Backend
     /**
      * Add the new filter to the permissions
      *
-     * @param $insertId
+     * @param integer $insertId
      */
-    public function adjustPermissions($insertId)
+    public function adjustPermissions(int $insertId): void
     {
         return;
     }
@@ -334,14 +335,14 @@ class tl_filter extends Backend
     /**
      * Auto-generate a filter alias if it has not been set yet
      *
-     * @param mixed         $varValue
-     * @param DataContainer $dc
+     * @param string               $varValue
+     * @param Contao\DataContainer $dc
      *
-     * @return mixed
+     * @return string
      *
      * @throws Exception
      */
-    public function generateAlias($varValue, DataContainer $dc)
+    public function generateAlias(string $varValue, Contao\DataContainer $dc): string
     {
         $autoAlias = false;
 
@@ -350,7 +351,7 @@ class tl_filter extends Backend
         {
             $autoAlias = true;
 
-            $varValue = System::getContainer()->get('contao.slug.generator')->generate(StringUtil::stripInsertTags($dc->activeRecord->title));
+            $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate(Contao\StringUtil::stripInsertTags($dc->activeRecord->title));
         }
 
         $objAlias = $this->Database->prepare("SELECT id FROM tl_filter WHERE alias=? AND id!=?")
@@ -375,7 +376,7 @@ class tl_filter extends Backend
      *
      * @return array
      */
-    public function getRealEstateGroups()
+    public function getRealEstateGroups(): array
     {
         $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
 
@@ -399,7 +400,7 @@ class tl_filter extends Backend
      *
      * @return array
      */
-    public function getFilterWrapperTemplates()
+    public function getFilterWrapperTemplates(): array
     {
         return $this->getTemplateGroup('filter_wrapper_');
     }
@@ -416,9 +417,9 @@ class tl_filter extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_filter') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_filter') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -433,9 +434,9 @@ class tl_filter extends Backend
      *
      * @return string
      */
-    public function copyFilter($row, $href, $label, $title, $icon, $attributes)
+    public function copyFilter(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -450,8 +451,8 @@ class tl_filter extends Backend
      *
      * @return string
      */
-    public function deleteFilter($row, $href, $label, $title, $icon, $attributes)
+    public function deleteFilter(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'filterp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 }

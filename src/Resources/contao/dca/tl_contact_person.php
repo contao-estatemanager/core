@@ -124,7 +124,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'anrede' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
-            'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('herr','frau'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
@@ -134,7 +133,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'firma' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['firma'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -142,7 +140,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'vorname' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['vorname'],
-            'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
             'flag'                    => 1,
@@ -153,7 +150,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'name' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['name'],
-            'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
             'flag'                    => 1,
@@ -164,7 +160,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'titel' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['titel'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -172,7 +167,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'position' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['position'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -180,7 +174,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'anrede_brief' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede_brief'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''",
@@ -192,29 +185,29 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'email_zentrale' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_zentrale'],
-            'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
         'email_direkt' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_direkt'],
-            'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
         'email_privat' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_privat'],
-            'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -222,7 +215,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'email_sonstige' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_sonstige'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -230,7 +222,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'email_feedback' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_feedback'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -238,7 +229,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_zentrale' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_zentrale'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -246,7 +236,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_durchw' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_durchw'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -254,7 +243,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_fax' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_fax'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -262,7 +250,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_handy' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_handy'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -270,7 +257,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_privat' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_privat'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -278,7 +264,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'tel_sonstige' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['tel_sonstige'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -286,7 +271,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'strasse' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['strasse'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -294,7 +278,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'hausnummer' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['hausnummer'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''"
@@ -302,7 +285,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'plz' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['plz'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''"
@@ -310,7 +292,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'ort' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['ort'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -318,7 +299,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'land' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['land'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -326,7 +306,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'zusatzfeld' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['zusatzfeld'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -334,7 +313,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'freitextfeld' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['freitextfeld'],
-            'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true, 'tl_class'=>'clr'),
             'sql'                     => "text NULL"
@@ -342,7 +320,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'adressfreigabe' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['adressfreigabe'],
-            'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -350,15 +327,13 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'singleSRC' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['singleSRC'],
-            'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes')),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes')),
             'sql'                     => "binary(16) NULL"
         ),
         'postfach' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfach'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -366,7 +341,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'postfach_plz' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfach_plz'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -374,7 +348,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'postfach_ort' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['postfach_ort'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''"
@@ -382,18 +355,17 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'personennummer' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['personennummer'],
-            'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
         'immobilientreuhaenderid' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['immobilientreuhaenderid'],
-            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''"
@@ -401,7 +373,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         'published' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['published'],
-            'exclude'                 => true,
             'filter'                  => true,
             'flag'                    => 1,
             'inputType'               => 'checkbox',
@@ -419,9 +390,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-use ContaoEstateManager\RealEstateModel;
-
-class tl_contact_person extends Backend
+class tl_contact_person extends Contao\Backend
 {
 
     /**
@@ -430,7 +399,7 @@ class tl_contact_person extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -438,7 +407,7 @@ class tl_contact_person extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -450,7 +419,7 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function stringifyContactPerson($arrRow)
+    public function stringifyContactPerson(array $arrRow): string
     {
         return '<div class="tl_content_left">' . $arrRow['name'] . ', ' . $arrRow['vorname'] . ' ' . ($arrRow['position'] ? '<span style="color:#999;padding-left:3px">(' . $arrRow['position'] . ')</span>' : '') . '</div>';
     }
@@ -458,14 +427,12 @@ class tl_contact_person extends Backend
     /**
      * Auto-generate the salutation of contact person if it has not been set yet
      *
-     * @param mixed         $varValue
-     * @param DataContainer $dc
+     * @param string               $varValue
+     * @param Contao\DataContainer $dc
      *
-     * @return mixed
-     *
-     * @throws Exception
+     * @return string
      */
-    public function generateSalutation($varValue, DataContainer $dc)
+    public function generateSalutation(string $varValue, Contao\DataContainer $dc): string
     {
         // Generate salutation if there is none
         if ($varValue == '')
@@ -494,9 +461,9 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function editContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function editContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_contact_person') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_contact_person') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -511,9 +478,9 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function copyContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function copyContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -528,10 +495,10 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function deleteContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function deleteContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        $hasRealEstate = RealEstateModel::countByContactPerson($row['id']);
-        return !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        $hasRealEstate = ContaoEstateManager\RealEstateModel::countByContactPerson($row['id']);
+        return !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -546,11 +513,11 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -567,21 +534,21 @@ class tl_contact_person extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a contact person
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -589,16 +556,16 @@ class tl_contact_person extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -637,16 +604,16 @@ class tl_contact_person extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }

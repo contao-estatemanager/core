@@ -124,15 +124,15 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'   => array('type', 'importThirdPartyRecords'),
-        'default'        => '{title_legend},title,type',
-        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
+        '__selector__'                => array('type', 'importThirdPartyRecords'),
+        'default'                     => '{title_legend},title,type',
+        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'importThirdPartyRecords_assign'   => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
+        'importThirdPartyRecords_assign' => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
     ),
 
     // Fields
@@ -343,7 +343,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_interface extends Backend
+class tl_interface extends Contao\Backend
 {
 
     /**
@@ -352,7 +352,7 @@ class tl_interface extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
 
         $this->loadDataContainer('tl_provider');
         $this->loadDataContainer('tl_real_estate');
@@ -380,9 +380,9 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -397,9 +397,9 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function copyInterface($row, $href, $label, $title, $icon, $attributes)
+    public function copyInterface(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -414,19 +414,19 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function deleteInterface($row, $href, $label, $title, $icon, $attributes)
+    public function deleteInterface(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
      * Return all unique provider field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getUniqueProviderFieldOptions($dc)
+    public function getUniqueProviderFieldOptions(Contao\DataContainer $dc): array
     {
         $this->loadDataContainer('tl_provider');
         $this->loadLanguageFile('tl_provider');
@@ -447,11 +447,11 @@ class tl_interface extends Backend
     /**
      * Return all unique field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getUniqueFieldOptions($dc)
+    public function getUniqueFieldOptions(Contao\DataContainer $dc): array
     {
         $this->loadDataContainer('tl_real_estate');
         $this->loadLanguageFile('tl_real_estate');
@@ -472,11 +472,11 @@ class tl_interface extends Backend
     /**
      * Return all unique field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getContactPersonUniqueFieldOptions($dc)
+    public function getContactPersonUniqueFieldOptions(Contao\DataContainer $dc)
     {
         $this->loadDataContainer('tl_contact_person');
         $this->loadLanguageFile('tl_contact_person');
@@ -499,11 +499,11 @@ class tl_interface extends Backend
     /**
      * Return all contact person of assigned provider as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getContactPerson($dc)
+    public function getContactPerson(Contao\DataContainer $dc): array
     {
         $objContactPerson = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
 
@@ -525,11 +525,11 @@ class tl_interface extends Backend
     /**
      * Return delete files older than options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getSyncOptions($dc)
+    public function getSyncOptions(Contao\DataContainer $dc): array
     {
         return array
         (
@@ -548,11 +548,11 @@ class tl_interface extends Backend
     /**
      * Return delete files older than options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getDeleteFilesOlderThenOptions($dc)
+    public function getDeleteFilesOlderThenOptions(Contao\DataContainer $dc): array
     {
         return array
         (

@@ -347,7 +347,7 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_filter_item extends Backend
+class tl_filter_item extends Contao\Backend
 {
 
     /**
@@ -356,7 +356,7 @@ class tl_filter_item extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -364,7 +364,7 @@ class tl_filter_item extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -372,9 +372,9 @@ class tl_filter_item extends Backend
     /**
      * Set toggle mode field in type and typeSeparated filter items
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      */
-    public function setFilterToggleMode($dc)
+    public function setFilterToggleMode(Contao\DataContainer $dc): void
     {
         if ($dc->activeRecord->type === 'typeSeparated' || $dc->activeRecord->type === 'type')
         {
@@ -390,14 +390,14 @@ class tl_filter_item extends Backend
      *
      * @return string
      */
-    public function listFilterItems($arrRow)
+    public function listFilterItems(array $arrRow): string
     {
         $arrRow['required'] = $arrRow['mandatory'];
         $key = $arrRow['invisible'] ? 'unpublished' : 'published';
 
         $strType = '
 <div class="cte_type ' . $key . '">' . $GLOBALS['TL_LANG']['RFI'][$arrRow['type']][0] . ($arrRow['name'] ? ' (' . $arrRow['name'] . ')' : '') . '</div>
-<div class="limit_height' . (!Config::get('doNotCollapse') ? ' h32' : '') . '">';
+<div class="limit_height' . (!Contao\Config::get('doNotCollapse') ? ' h32' : '') . '">';
 
         $strClass = $GLOBALS['TL_RFI'][$arrRow['type']];
 
@@ -413,7 +413,7 @@ class tl_filter_item extends Backend
         $strWidget = preg_replace('/ name="[^"]+"/i', '', $strWidget);
         $strWidget = str_replace(array(' type="submit"', ' autofocus', ' required'), array(' type="button"', '', ''), $strWidget);
 
-        return $strType . StringUtil::insertTagToSrc($strWidget) . '
+        return $strType . Contao\StringUtil::insertTagToSrc($strWidget) . '
 </div>' . "\n";
     }
 
@@ -442,9 +442,9 @@ class tl_filter_item extends Backend
      *
      * @return array
      */
-    public function getRealEstateCountries()
+    public function getRealEstateCountries(): array
     {
-        \System::loadLanguageFile('tl_real_estate_countries');
+        Contao\System::loadLanguageFile('tl_real_estate_countries');
 
         return $GLOBALS['TL_LANG']['tl_real_estate_countries'];
     }
@@ -454,7 +454,7 @@ class tl_filter_item extends Backend
      *
      * @return array
      */
-    public function getFilterItemTemplates()
+    public function getFilterItemTemplates(): array
     {
         return $this->getTemplateGroup('filter_');
     }
@@ -471,11 +471,11 @@ class tl_filter_item extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -492,21 +492,21 @@ class tl_filter_item extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['invisible'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['invisible'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a format definition
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -514,16 +514,16 @@ class tl_filter_item extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -549,23 +549,23 @@ class tl_filter_item extends Backend
             }
         }
 
-        $objVersions = new Versions('tl_filter_item', $intId);
+        $objVersions = new Contao\Versions('tl_filter_item', $intId);
         $objVersions->initialize();
 
         // Reverse the logic (form fields have invisible=1)
         $blnVisible = !$blnVisible;
 
         // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $blnVisible = $callback($blnVisible, $dc);
                 }
@@ -585,16 +585,16 @@ class tl_filter_item extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
