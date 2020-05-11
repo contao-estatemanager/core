@@ -116,6 +116,16 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         $this->updateVisitedSession($objRealEstate->id);
 
+        // HOOK: compile real estate expose
+        if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['compileRealEstateExpose'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($this->Template, $objRealEstate, $this);
+            }
+        }
+
         $arrCustomSections = array();
         $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');
         $arrModules = StringUtil::deserialize($this->exposeModules);
@@ -175,16 +185,6 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         $this->Template->sections = $arrCustomSections;
         $this->Template->realEstateId = $objRealEstate->id;
-
-        // HOOK: compile real estate expose
-        if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['compileRealEstateExpose'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($this->Template, $objRealEstate, $this);
-            }
-        }
     }
 
     /**

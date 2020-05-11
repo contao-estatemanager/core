@@ -310,8 +310,7 @@ class tl_module_estate_manager extends Contao\Backend
      *
      * @return array
      *
-     * @deprecated Deprecated since Contao 4.4, to be removed in Contao 5.0.
-     *             Use an anonymous function to cal template groups instead.
+     * @deprecated to be removed in Version 1.0. Use anonymous function instead.
      */
     public function getRealEstateTemplates()
     {
@@ -323,8 +322,7 @@ class tl_module_estate_manager extends Contao\Backend
      *
      * @return array
      *
-     * @deprecated Deprecated since Contao 4.4, to be removed in Contao 5.0.
-     *             Use an anonymous function to cal template groups instead.
+     * @deprecated to be removed in Version 1.0. Use anonymous function instead.
      */
     public function getRealEstateExtensionTemplates()
     {

@@ -1,6 +1,3 @@
-<!--<div id="tl_buttons">
-  <a href="<?/*= $this->href */?>" class="header_back" title="<?/*= $this->title */?>"><?/*= $this->button */?></a>
-</div>-->
 <div class="re_administration">
     <div class="em_head">
         <div class="em_logo_inner">
@@ -23,5 +20,10 @@
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+    <div class="em_footer">
+        <a href="https://www.contao-estatemanager.com/" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_website']?></a> ·
+        <a href="https://docs.contao-estatemanager.com/" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_documentation']?></a> ·
+        <a href="https://github.com/contao-estatemanager/core/issues" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_issue']?></a>
     </div>
 </div>

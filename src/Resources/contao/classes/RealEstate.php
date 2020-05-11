@@ -60,7 +60,7 @@ class RealEstate extends System
      * @param RealEstateModel $objRealEstate
      * @param int|null $typeId
      */
-    public function __construct(RealEstateModel $objRealEstate, int $typeId=null)
+    public function __construct($objRealEstate, int $typeId=null)
     {
         $this->objRealEstate = $objRealEstate;
 
@@ -128,9 +128,9 @@ class RealEstate extends System
     /**
      * Returns the current type
      *
-     * @return RealEstateType
+     * @return RealEstateTypeModel
      */
-    public function getType(): RealEstateType
+    public function getType(): RealEstateTypeModel
     {
         return $this->objType;
     }

@@ -1,24 +1,32 @@
 {
   "name":"contao-estatemanager/core",
   "type":"contao-bundle",
-  "description":"EstateManager for Contao - Manage real estate properties in Cotnao.",
-  "keywords":["contao","immo-manager","estate-manager","estate","real-estate","real estate","property"],
+  "description":"EstateManager for Contao - Manage real estate properties in Contao.",
+  "keywords":["contao", "immobilien", "manager", "property", "realestate"],
   "homepage":"https://www.contao-estatemanager.com/",
   "license":"AGPLv3",
   "authors":[
     {
-      "name":"Oveleon",
-      "homepage":"https://www.oveleon.de/",
+      "name":"Daniele Sciannimanica",
+      "homepage":"https://github.com/doishub",
+      "role":"Developer"
+    },
+    {
+      "name":"Fabian Ekert",
+      "homepage":"https://github.com/eki89",
       "role":"Developer"
     }
   ],
   "require":{
-    "php":">=7.1",
+    "php":">=7.2",
     "contao/core-bundle":"^4.4",
     "menatwork/contao-multicolumnwizard-bundle": "^3.4"
   },
   "require-dev": {
-    "contao/manager-plugin": "^2.0"
+    "contao/manager-plugin": "^2.0",
+    "friendsofphp/php-cs-fixer": "^2.12",
+    "phpunit/phpunit": "^5.7.26",
+    "symfony/phpunit-bridge": "^3.2"
   },
   "conflict": {
     "contao/core": "*",
@@ -38,7 +46,31 @@
       "src/Resources/contao/templates/"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "ContaoEstateManager\\EstateManager\\Tests\\": "tests/"
+    }
+  },
   "extra":{
     "contao-manager-plugin": "ContaoEstateManager\\EstateManager\\ContaoManager\\Plugin"
+  },
+  "support": {
+    "issues": "https://github.com/contao-estatemanager/core/issues",
+    "source": "https://github.com/contao-estatemanager/core",
+    "docs": "https://docs.contao-estatemanager.com/"
+  },
+  "suggest": {
+    "contao-estatemanager/watchlist": "Extends watchlist features",
+    "contao-estatemanager/reference": "Extends reference features",
+    "contao-estatemanager/googlemaps": "Extends Google-Maps",
+    "contao-estatemanager/locations": "Extends additional features for locations",
+    "contao-estatemanager/energy-pass": "Extends an energy certificate",
+    "contao-estatemanager/featured": "Extends highlighted real estates",
+    "contao-estatemanager/similar": "Extends lists for similar real estate",
+    "contao-estatemanager/video": "Extends video support",
+    "contao-estatemanager/virtual-tour": "Extends virtual-tour support",
+    "contao-estatemanager/project": "Extends projects with several residential units",
+    "contao-estatemanager/wib-import": "Extends WIB import interface",
+    "contao-estatemanager/skeleton-extension": "Create your own extension for the Contao EstateManager"
   }
 }
