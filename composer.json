@@ -1,7 +1,7 @@
 {
   "name":"contao-estatemanager/core",
   "type":"contao-bundle",
-  "description":"EstateManager for Contao - Manage real estate properties in Cotnao.",
+  "description":"EstateManager for Contao - Manage real estate properties in Contao.",
   "keywords":["contao", "immobilien", "manager", "property", "realestate"],
   "homepage":"https://www.contao-estatemanager.com/",
   "license":"AGPLv3",
@@ -23,7 +23,10 @@
     "menatwork/contao-multicolumnwizard-bundle": "^3.4"
   },
   "require-dev": {
-    "contao/manager-plugin": "^2.0"
+    "contao/manager-plugin": "^2.0",
+    "friendsofphp/php-cs-fixer": "^2.12",
+    "phpunit/phpunit": "^5.7.26",
+    "symfony/phpunit-bridge": "^3.2"
   },
   "conflict": {
     "contao/core": "*",
@@ -42,6 +45,11 @@
       "src/Resources/contao/languages/",
       "src/Resources/contao/templates/"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ContaoEstateManager\\EstateManager\\Tests\\": "tests/"
+    }
   },
   "extra":{
     "contao-manager-plugin": "ContaoEstateManager\\EstateManager\\ContaoManager\\Plugin"

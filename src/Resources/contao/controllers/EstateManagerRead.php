@@ -3,6 +3,7 @@
 namespace ContaoEstateManager;
 
 use Contao\ModuleModel;
+use ContaoEstateManager\EstateManager\Controller\AbstractEstateManagerController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class EstateManagerRead extends EstateManagerSDK
+class EstateManagerRead extends AbstractEstateManagerController
 {
     /**
      * Method
@@ -42,7 +43,6 @@ class EstateManagerRead extends EstateManagerSDK
         switch ($module)
         {
             case 'estates':
-
                 // validate parameters
                 $validParameters = array('filter', 'filterMode', 'groups', 'fields', 'dataType', 'template', 'jumpTo', 'mode', 'pageId', 'moduleId');
                 $this->currParam = $this->getParameters($this->method, $validParameters);

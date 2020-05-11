@@ -1,15 +1,19 @@
 <?php
 
-namespace ContaoEstateManager;
+namespace ContaoEstateManager\EstateManager\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Contao\FilesModel;
+use Contao\Frontend;
+use Contao\Image;
+use Contao\System;
+use Contao\Validator;
 
 /**
- * EstateManager SDK.
+ * Abstract EstateManager Controller.
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class EstateManagerSDK extends \Frontend
+class AbstractEstateManagerController extends Frontend
 {
     /** Method Contants */
     const METHOD_GET  = 'GET';
@@ -23,17 +27,14 @@ class EstateManagerSDK extends \Frontend
     const STATUS_SUCCESS = 'OK';
 
     /**
-     * SDK Constructor
+     * Constructor
      */
     public function __construct()
     {
         // Load the user object before calling the parent constructor
         $this->import('FrontendUser', 'User');
-        parent::__construct();
 
-        // Check whether a user is logged in
-        \define('BE_USER_LOGGED_IN', $this->getLoginStatus('BE_USER_AUTH'));
-        \define('FE_USER_LOGGED_IN', $this->getLoginStatus('FE_USER_AUTH'));
+        parent::__construct();
     }
 
     /**
@@ -89,9 +90,9 @@ class EstateManagerSDK extends \Frontend
     {
         if ($varSingleSrc)
         {
-            if (!($varSingleSrc instanceof \FilesModel) && \Validator::isUuid($varSingleSrc))
+            if (!($varSingleSrc instanceof FilesModel) && Validator::isUuid($varSingleSrc))
             {
-                $objModel = \FilesModel::findByUuid($varSingleSrc);
+                $objModel = FilesModel::findByUuid($varSingleSrc);
             }
             else
             {
@@ -100,7 +101,7 @@ class EstateManagerSDK extends \Frontend
 
             if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
             {
-                return \Image::getPath(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objModel->path, $imgSize)->getUrl(TL_ROOT));
+                return Image::getPath(System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objModel->path, $imgSize)->getUrl(TL_ROOT));
             }
         }
 
