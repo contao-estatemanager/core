@@ -9,8 +9,8 @@
  */
 
 // load real estate language and filter file
-System::loadLanguageFile('tl_real_estate');
-System::loadLanguageFile('tl_filter');
+Contao\System::loadLanguageFile('tl_real_estate');
+Contao\System::loadLanguageFile('tl_filter');
 
 
 $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
@@ -44,8 +44,8 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'mode'                    => 4,
             'fields'                  => array('sorting'),
-            'headerFields'            => array('title', 'jumpTo', 'tstamp'),
-            'panelLayout'             => 'filter;sort,search,limit',
+            'headerFields'            => array('title', 'tstamp'),
+            'panelLayout'             => 'filter;search,limit',
             'child_record_callback'   => array('tl_real_estate_type', 'stringify')
         ),
         'global_operations' => array
@@ -160,7 +160,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['similarType'],
             'inputType'               => 'select',
-            'search'                  => true,
             'options_callback'        => array('tl_real_estate_type', 'getRealEstateTypes'),
             'foreignKey'              => 'tl_real_estate_type.title',
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
@@ -191,7 +190,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart'],
             'inputType'               => 'select',
-            'search'                  => true,
             'options'                 => array
             (
                 'wohnen'    => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart_wohnen'],
@@ -206,7 +204,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['vermarktungsart'],
             'inputType'               => 'select',
-            'search'                  => true,
             'options'                 => array('kauf_erbpacht', 'miete_leasing'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
             'eval'                    => array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
@@ -216,7 +213,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart'],
             'inputType'               => 'select',
-            'search'                  => true,
+            'filter'                  => true,
             'options'                 => array
             (
                 'zimmer'                        => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart_zimmer'],
@@ -375,7 +372,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                         'label'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['field'],
                         'exclude'           => true,
                         'inputType'         => 'select',
-                        'options_callback'  => array('tl_real_estate_type', 'getRealEstateCollumns'),
+                        'options_callback'  => array('tl_real_estate_type', 'getRealEstateColumns'),
                         'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
                     )
                 )
@@ -419,7 +416,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
  * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class tl_real_estate_type extends Backend
+class tl_real_estate_type extends Contao\Backend
 {
 
     /**
@@ -428,9 +425,9 @@ class tl_real_estate_type extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
 
-        \System::loadLanguageFile('tl_real_estate');
+        $this->loadDataContainer('tl_real_estate');
     }
 
     /**
@@ -438,7 +435,7 @@ class tl_real_estate_type extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -450,7 +447,7 @@ class tl_real_estate_type extends Backend
      *
      * @return string
      */
-    public function stringify($arrRow)
+    public function stringify(array $arrRow): string
     {
         return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#999;padding-left:3px">(' . $arrRow['longTitle'] . ')</span></div>';
     }
@@ -467,9 +464,9 @@ class tl_real_estate_type extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_real_estate_type') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_real_estate_type') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
 
@@ -478,7 +475,7 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getFirstLevelTypes()
+    public function getFirstLevelTypes(): array
     {
         $objTypes = $this->Database->execute("SELECT id, title, longTitle FROM tl_real_estate_type WHERE excludeTypes!=1");
 
@@ -500,11 +497,11 @@ class tl_real_estate_type extends Backend
     /**
      * Return all real estate types as array
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getRealEstateTypes(DataContainer $dc)
+    public function getRealEstateTypes(Contao\DataContainer $dc): array
     {
         $objTypes = $this->Database->prepare("SELECT id, title, longTitle FROM tl_real_estate_type WHERE id!=?")
             ->execute($dc->activeRecord->id);
@@ -529,17 +526,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getPriceFields()
+    public function getPriceFields(): array
     {
         $priceFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && $data['realEstate']['price'])
+                if(is_array($data['realEstate']) && $data['realEstate']['price'])
                 {
                     $priceFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -554,17 +549,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getAreaFields()
+    public function getAreaFields(): array
     {
         $areaFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && $data['realEstate']['area'])
+                if(is_array($data['realEstate']) && $data['realEstate']['area'])
                 {
                     $areaFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -579,17 +572,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getAttributeFields()
+    public function getAttributeFields(): array
     {
         $filterFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && $data['realEstate']['attribute'])
+                if(is_array($data['realEstate']) && $data['realEstate']['attribute'])
                 {
                     $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -604,17 +595,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getMixedDetailsFields()
+    public function getMixedDetailsFields(): array
     {
         $filterFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && ($data['realEstate']['detail'] || $data['realEstate']['price'] || $data['realEstate']['area']))
+                if(is_array($data['realEstate']) && ($data['realEstate']['detail'] || $data['realEstate']['price'] || $data['realEstate']['area']))
                 {
                     $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -630,13 +619,11 @@ class tl_real_estate_type extends Backend
      * @param DataContainer $dc
      * @return array
      */
-    public function getRealEstateCollumns(){
+    public function getRealEstateColumns(){
         $collumns      = array();
         $skipFields    = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
@@ -655,17 +642,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getFilterFields()
+    public function getFilterFields(): array
     {
         $filterFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && $data['realEstate']['filter'])
+                if(is_array($data['realEstate']) && $data['realEstate']['filter'])
                 {
                     $filterFields[] = $field;
                 }
@@ -680,17 +665,15 @@ class tl_real_estate_type extends Backend
      *
      * @return array
      */
-    public function getSortingFields()
+    public function getSortingFields(): array
     {
         $sortingFields = array();
 
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(\is_array($data['realEstate']) && $data['realEstate']['sorting'])
+                if(is_array($data['realEstate']) && $data['realEstate']['sorting'])
                 {
                     $sortingFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -712,11 +695,11 @@ class tl_real_estate_type extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -733,21 +716,21 @@ class tl_real_estate_type extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a format definition
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -755,16 +738,16 @@ class tl_real_estate_type extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -790,7 +773,7 @@ class tl_real_estate_type extends Backend
             }
         }
 
-        $objVersions = new Versions('tl_real_estate_type', $intId);
+        $objVersions = new Contao\Versions('tl_real_estate_type', $intId);
         $objVersions->initialize();
 
         $time = time();
@@ -806,16 +789,16 @@ class tl_real_estate_type extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }

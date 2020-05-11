@@ -9,7 +9,8 @@
  */
 
 // load real estate value language file
-System::loadLanguageFile('tl_real_estate_value');
+Contao\System::loadLanguageFile('tl_real_estate_value');
+Contao\System::loadLanguageFile('tl_real_estate_label');
 
 $GLOBALS['TL_DCA']['tl_real_estate'] = array
 (
@@ -40,13 +41,13 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'sorting' => array
         (
             'mode'                    => 2,
-            'fields'                  => array('dateAdded DESC'),
+            'fields'                  => array('tstamp DESC'),
             'flag'                    => 1,
             'panelLayout'             => 'filter;search,sort,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('image', 'objekttitel', 'objektart', 'nutzungsart', 'tstamp'),
+            'fields'                  => array('id', 'objekttitel', 'objektart', 'nutzungsart', 'dateAdded', 'tstamp'),
             'showColumns'             => true,
             'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
         ),
@@ -144,12 +145,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'id' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['id'],
+            'sorting'                 => true,
             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
         ),
         'tstamp' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['tstamp'],
             'sorting'                 => true,
+            'flag'                    => 2,
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'realEstate'              => array(
                 'sorting'   => true
@@ -183,7 +186,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['provider'],
             'exclude'                 => true,
-            'search'                  => true,
+            'filter'                  => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getAllProvider'),
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
@@ -214,7 +217,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzungsart'],
             'inputType'                 => 'select',
-            'sorting'                   => true,
+            'filter'                    => true,
             'options'                   => array
             (
                 'wohnen'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_wohnen'],
@@ -273,7 +276,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['objektart'],
             'inputType'                 => 'select',
-            'sorting'                   => true,
+            'filter'                    => true,
             'options'                   => array
             (
                 'zimmer'                        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_zimmer'],
@@ -4617,7 +4620,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['titleImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'radio', 'tl_class'=>'clr'),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'radio', 'tl_class'=>'clr'),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4628,7 +4631,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['imageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4639,7 +4642,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['planImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4650,7 +4653,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['interiorViewImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4661,7 +4664,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['exteriorViewImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4672,7 +4675,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['mapViewImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4683,7 +4686,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['panoramaImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4694,7 +4697,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['epassSkalaImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4705,7 +4708,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['logoImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4716,7 +4719,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['qrImageSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
+            'eval'                    => array('filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'fieldType'=>'checkbox', 'multiple'=>true),
             'sql'                     => "blob NULL",
             'realEstate'                => array(
                 'group'    => 'image'
@@ -4765,6 +4768,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['published'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('doNotCopy'=>true, 'tl_class'=>'w50 m12 clr'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -4778,7 +4782,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
  * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class tl_real_estate extends Backend
+class tl_real_estate extends Contao\Backend
 {
 
     /**
@@ -4787,7 +4791,7 @@ class tl_real_estate extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -4795,7 +4799,7 @@ class tl_real_estate extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -4803,21 +4807,21 @@ class tl_real_estate extends Backend
     /**
      * Auto-generate a real estate alias if it has not been set yet
      *
-     * @param mixed         $varValue
-     * @param DataContainer $dc
-     * @param string        $title
+     * @param mixed                $varValue
+     * @param Contao\DataContainer $dc
+     * @param string               $title
      *
      * @return string
      *
      * @throws Exception
      */
-    public function generateAlias($varValue, $dc, $title='')
+    public function generateAlias($varValue, Contao\DataContainer $dc, string $title=''): string
     {
         // Generate alias if there is none
         if ($varValue == '')
         {
             $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
-            $varValue = System::getContainer()->get('contao.slug.generator')->generate($title);
+            $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate($title);
         }
 
         $objAlias = $this->Database->prepare("SELECT id FROM tl_real_estate WHERE alias=? AND id!=?")
@@ -4844,9 +4848,9 @@ class tl_real_estate extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_real_estate') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_real_estate') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -4861,9 +4865,9 @@ class tl_real_estate extends Backend
      *
      * @return string
      */
-    public function copyRealEstate($row, $href, $label, $title, $icon, $attributes)
+    public function copyRealEstate(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -4878,19 +4882,19 @@ class tl_real_estate extends Backend
      *
      * @return string
      */
-    public function deleteRealEstate($row, $href, $label, $title, $icon, $attributes)
+    public function deleteRealEstate(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
      * Return all provider as array
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getContactPerson(DataContainer $dc)
+    public function getContactPerson(Contao\DataContainer $dc): array
     {
         $arrContactPersons = array();
 
@@ -4929,11 +4933,11 @@ class tl_real_estate extends Backend
     /**
      * Return all provider as array
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getAllProvider(DataContainer $dc)
+    public function getAllProvider(Contao\DataContainer $dc): array
     {
         $objProviders = $this->Database->execute("SELECT id, anbieternr, firma FROM tl_provider");
 
@@ -4964,11 +4968,11 @@ class tl_real_estate extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -4985,21 +4989,21 @@ class tl_real_estate extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a real estate property
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -5007,16 +5011,16 @@ class tl_real_estate extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -5042,20 +5046,20 @@ class tl_real_estate extends Backend
             }
         }
 
-        $objVersions = new Versions('tl_real_estate', $intId);
+        $objVersions = new Contao\Versions('tl_real_estate', $intId);
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['name']['fields']['published']['save_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $blnVisible = $callback($blnVisible, $dc);
                 }
@@ -5075,16 +5079,16 @@ class tl_real_estate extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -5097,24 +5101,24 @@ class tl_real_estate extends Backend
     /**
      * Add an image to each record
      *
-     * @param array         $row
-     * @param string        $label
-     * @param DataContainer $dc
-     * @param array         $args
+     * @param array                $row
+     * @param string               $label
+     * @param Contao\DataContainer $dc
+     * @param array                $args
      *
      * @return array
      */
-    public function addPreviewImageAndInformation($row, $label, DataContainer $dc, $args)
+    public function addPreviewImageAndInformation(array $row, string $label, Contao\DataContainer $dc, array $args): array
     {
         $objFile = null;
 
         if ($row['titleImageSRC'] != '') {
-            $objFile = \FilesModel::findByUuid($row['titleImageSRC']);
+            $objFile = Contao\FilesModel::findByUuid($row['titleImageSRC']);
         }
 
-        if (($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path)) && \Config::get('defaultImage'))
+        if (($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path)) && Contao\Config::get('defaultImage'))
         {
-            $objFile = \FilesModel::findByUuid(\Config::get('defaultImage'));
+            $objFile = Contao\FilesModel::findByUuid(Contao\Config::get('defaultImage'));
         }
 
         // open information block
@@ -5123,7 +5127,7 @@ class tl_real_estate extends Backend
         if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
         {
             // add preview image
-            $args[0] .= '<div class="image">' . \Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(118, 75, 'center_center'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . ' ' . $label . '</div>';
+            $args[0] .= '<div class="image">' . Contao\Image::getHtml(Contao\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(118, 75, 'center_center'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . '</div>';
         }
 
         $args[0] .= '<div class="info">';
@@ -5138,11 +5142,17 @@ class tl_real_estate extends Backend
         // add address information
         $args[1] .= '<div style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</div>';
 
+        // extend object type
+        $args[2] .= '<div style="color:#999;display:block;margin-top:5px">' . $this->getTranslatedType($row) . '</div>';
+
+        $args[3] = $this->getTranslatedMarketingtype($row);
+        $args[3] .= '<div style="color:#999;display:block;margin-top:5px">' . ContaoEstateManager\Translator::translateValue('nutzungsart_'.$row['nutzungsart']) . '</div>';
+
         // translate date
-        $args[4] = date(\Config::get('datimFormat'), $args[4]);
+        $args[5] = date(Contao\Config::get('datimFormat'), $args[5]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] as $callback)
             {
@@ -5157,4 +5167,51 @@ class tl_real_estate extends Backend
         return $args;
     }
 
+    /**
+     * Retrieve translated type
+     *
+     * @param array $row
+     *
+     * @return string
+     */
+    private function getTranslatedType(array $row): string
+    {
+        $subpalette = $GLOBALS['TL_DCA']['tl_real_estate']['subpalettes']['objektart_'.$row['objektart']];
+        $type = $row[$subpalette];
+
+        if (empty($type))
+        {
+            return '';
+        }
+
+        return ContaoEstateManager\Translator::translateValue($subpalette . '_' . $type);
+    }
+
+    /**
+     * Retrieve translated marketing types
+     *
+     * @param array $row
+     *
+     * @return string
+     */
+    private function getTranslatedMarketingtype(array $row): string
+    {
+        $arrMarketingTypes = array();
+        $availableMarketingTypes = array('vermarktungsartKauf', 'vermarktungsartMietePacht', 'vermarktungsartErbpacht', 'vermarktungsartLeasing');
+
+        foreach ($availableMarketingTypes as $marketingType)
+        {
+            if ($row[$marketingType] === '1')
+            {
+                $arrMarketingTypes[] = $marketingType;
+            }
+        }
+
+        foreach ($arrMarketingTypes as $index => $marktingType)
+        {
+            $arrMarketingTypes[$index] = ContaoEstateManager\Translator::translateLabel($marktingType);
+        }
+
+        return implode(' / ', $arrMarketingTypes);
+    }
 }

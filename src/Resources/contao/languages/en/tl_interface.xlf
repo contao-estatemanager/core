@@ -123,9 +123,13 @@
         <source>Here you can synchronize real estate</source>
       </trans-unit>
 
-      <trans-unit id="tl_interface.openimmo">
+      <trans-unit id="tl_interface.openimmo.0">
         <source>OpenImmo</source>
       </trans-unit>
+      <trans-unit id="tl_interface.openimmo.1">
+        <source>Import with ZIP or XML files containing OpenImmo structure file</source>
+      </trans-unit>
+
       <trans-unit id="tl_interface.create">
         <source>Create if record does not exist</source>
       </trans-unit>
