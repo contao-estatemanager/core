@@ -136,7 +136,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['similarGroup'],
             'inputType'               => 'select',
             'foreignKey'              => 'tl_real_estate_group.title',
-            'search'                  => true,
             'options_callback'        => array('tl_real_estate_group', 'getRealEstateGroups'),
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
@@ -156,7 +155,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['vermarktungsart'],
             'inputType'               => 'select',
-            'search'                  => true,
+            'filter'                  => true,
             'options'                 => array('kauf_erbpacht', 'miete_leasing'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_group'],
             'eval'                    => array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
@@ -181,7 +180,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_real_estate_group extends Backend
+class tl_real_estate_group extends Contao\Backend
 {
 
     /**
@@ -190,7 +189,7 @@ class tl_real_estate_group extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -198,7 +197,7 @@ class tl_real_estate_group extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -206,14 +205,14 @@ class tl_real_estate_group extends Backend
     /**
      * Auto-generate a real estate group alias if it has not been set yet
      *
-     * @param mixed         $varValue
-     * @param DataContainer $dc
+     * @param string               $varValue
+     * @param Contao\DataContainer $dc
      *
      * @return string
      *
      * @throws Exception
      */
-    public function generateAlias($varValue, DataContainer $dc)
+    public function generateAlias(string $varValue, Contao\DataContainer $dc): string
     {
         $autoAlias = false;
 
@@ -221,7 +220,7 @@ class tl_real_estate_group extends Backend
         if ($varValue == '')
         {
             $autoAlias = true;
-            $varValue = StringUtil::generateAlias($dc->activeRecord->title);
+            $varValue = Contao\StringUtil::generateAlias($dc->activeRecord->title);
         }
 
         $objAlias = $this->Database->prepare("SELECT id FROM tl_real_estate_group WHERE id=? OR alias=?")
@@ -253,9 +252,9 @@ class tl_real_estate_group extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_real_estate_group') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_real_estate_group') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -270,9 +269,9 @@ class tl_real_estate_group extends Backend
      *
      * @return string
      */
-    public function copy($row, $href, $label, $title, $icon, $attributes)
+    public function copy(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -287,19 +286,19 @@ class tl_real_estate_group extends Backend
      *
      * @return string
      */
-    public function delete($row, $href, $label, $title, $icon, $attributes)
+    public function delete(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
      * Return all real estate groups as array
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getRealEstateGroups(DataContainer $dc)
+    public function getRealEstateGroups(Contao\DataContainer $dc): array
     {
         $objGroups = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group WHERE id!=? AND vermarktungsart!=?")
             ->execute($dc->activeRecord->id, $dc->activeRecord->vermarktungsart);
@@ -331,11 +330,11 @@ class tl_real_estate_group extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -352,21 +351,21 @@ class tl_real_estate_group extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a format definition
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -374,16 +373,16 @@ class tl_real_estate_group extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -409,20 +408,20 @@ class tl_real_estate_group extends Backend
             }
         }
 
-        $objVersions = new Versions('tl_real_estate_group', $intId);
+        $objVersions = new Contao\Versions('tl_real_estate_group', $intId);
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $blnVisible = $callback($blnVisible, $dc);
                 }
@@ -442,16 +441,16 @@ class tl_real_estate_group extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }

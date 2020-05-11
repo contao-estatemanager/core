@@ -38,9 +38,9 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('type', 'title', 'lastSync'),
+            'fields'                  => array('type', 'title'),
             'flag'                    => 1,
-            'panelLayout'             => 'filter;search,limit'
+            'panelLayout'             => 'search,limit'
         ),
         'label' => array
         (
@@ -164,9 +164,10 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['type'],
             'default'                 => 'openimmo',
             'exclude'				  => true,
+            'filter'                  => true,
             'inputType'				  => 'select',
             'options'				  => array ('openimmo'),
-            'eval'					  => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+            'eval'					  => array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
@@ -201,7 +202,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueField'],
             'exclude'				  => true,
-            'search'                  => true,
+            'filter'                  => true,
             'inputType'				  => 'select',
             'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
             'options_callback'		  => array('tl_interface', 'getUniqueFieldOptions'),
@@ -354,8 +355,13 @@ class tl_interface extends Contao\Backend
         parent::__construct();
         $this->import('Contao\BackendUser', 'User');
 
+        $this->loadDataContainer('tl_contact_person');
         $this->loadDataContainer('tl_provider');
         $this->loadDataContainer('tl_real_estate');
+
+        $this->loadLanguageFile('tl_contact_person');
+        $this->loadLanguageFile('tl_provider');
+        $this->loadLanguageFile('tl_real_estate');
     }
 
     /**
@@ -363,7 +369,7 @@ class tl_interface extends Contao\Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -428,9 +434,6 @@ class tl_interface extends Contao\Backend
      */
     public function getUniqueProviderFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_provider');
-        $this->loadLanguageFile('tl_provider');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
@@ -453,9 +456,6 @@ class tl_interface extends Contao\Backend
      */
     public function getUniqueFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_real_estate');
-        $this->loadLanguageFile('tl_real_estate');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
@@ -476,11 +476,8 @@ class tl_interface extends Contao\Backend
      *
      * @return array
      */
-    public function getContactPersonUniqueFieldOptions(Contao\DataContainer $dc)
+    public function getContactPersonUniqueFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_contact_person');
-        $this->loadLanguageFile('tl_contact_person');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)

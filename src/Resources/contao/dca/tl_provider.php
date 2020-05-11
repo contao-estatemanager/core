@@ -45,7 +45,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('firma', 'anbieternr', 'openimmo_anid', 'ort'),
+            'fields'                  => array('firma', 'anbieternr', 'postleitzahl', 'ort'),
             'showColumns'             => true
         ),
         'global_operations' => array
@@ -114,7 +114,8 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
     (
         'id' => array
         (
-            'sql'                     => "int(10) unsigned NOT NULL auto_increment"
+            'sql'                     => "int(10) unsigned NOT NULL auto_increment",
+            'sorting'                 => true
         ),
         'tstamp' => array
         (
@@ -130,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
@@ -139,11 +140,10 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['openimmo_anid'],
             'exclude'                 => true,
             'search'                  => true,
-            'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
@@ -160,17 +160,18 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['singleSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
             'sql'                     => "binary(16) NULL"
         ),
         'forwardingMode' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['forwardingMode'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'select',
             'options'                 => array('contact', 'provider', 'both'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_provider'],
-            'eval'                    => array('tl_class'=>'w50'),
+            'eval'                    => array('helpwizard'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(8) NOT NULL default ''"
         ),
         'firma' => array
@@ -189,6 +190,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['postleitzahl'],
             'exclude'                 => true,
             'search'                  => true,
+            'sorting'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>8, 'tl_class'=>'w50'),
@@ -198,7 +200,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['ort'],
             'exclude'                 => true,
-            'filter'                  => true,
             'search'                  => true,
             'sorting'                 => true,
             'flag'                    => 1,
@@ -211,7 +212,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['strasse'],
             'exclude'                 => true,
             'search'                  => true,
-            'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -228,10 +228,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['bundesland'],
             'exclude'                 => true,
-            'filter'                  => true,
             'search'                  => true,
-            'sorting'                 => true,
-            'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -242,7 +239,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'exclude'                 => true,
             'filter'                  => true,
             'search'                  => true,
-            'sorting'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
@@ -268,7 +264,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon'],
             'exclude'                 => true,
-            'search'                  => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
@@ -278,7 +273,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon2'],
             'exclude'                 => true,
-            'search'                  => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
@@ -288,7 +282,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['fax'],
             'exclude'                 => true,
-            'search'                  => true,
             'flag'                    => 1,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'rgxp'=>'phone', 'decodeEntities'=>true, 'tl_class'=>'w50'),
@@ -408,7 +401,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_provider extends Backend
+class tl_provider extends Contao\Backend
 {
 
     /**
@@ -417,7 +410,7 @@ class tl_provider extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -425,7 +418,7 @@ class tl_provider extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
         return;
     }
@@ -442,9 +435,9 @@ class tl_provider extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -459,9 +452,9 @@ class tl_provider extends Backend
      *
      * @return string
      */
-    public function copyProvider($row, $href, $label, $title, $icon, $attributes)
+    public function copyProvider(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -476,9 +469,9 @@ class tl_provider extends Backend
      *
      * @return string
      */
-    public function deleteProvider($row, $href, $label, $title, $icon, $attributes)
+    public function deleteProvider(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'provider') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -493,11 +486,11 @@ class tl_provider extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -514,21 +507,21 @@ class tl_provider extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a provider
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -536,16 +529,16 @@ class tl_provider extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -584,16 +577,16 @@ class tl_provider extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }

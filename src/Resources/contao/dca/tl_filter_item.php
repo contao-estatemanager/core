@@ -471,7 +471,7 @@ class tl_filter_item extends Contao\Backend
      *
      * @return string
      */
-    public function toggleIcon(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
         if (strlen(Contao\Input::get('tid')))
         {
