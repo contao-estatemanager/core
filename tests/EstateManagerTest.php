@@ -5,7 +5,7 @@ namespace ContaoEstateManager\EstateManager\Tests;
 use ContaoEstateManager\EstateManager\EstateManager;
 use PHPUnit\Framework\TestCase;
 
-class ContaoSkeletonBundleTest extends TestCase
+class EstateManagerTest extends TestCase
 {
     public function testCanBeInstantiated()
     {
