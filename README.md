@@ -6,7 +6,7 @@
     <a href="https://github.com/contao-estatemanager/core"><img src="https://img.shields.io/packagist/dt/contao-estatemanager/core?color=1268cc&style=flat-square"/></a>
 </p>
 
----
+<br/>
 
 # About
 EstateManager is an open source extension for Contao CMS that allows you to import real estate assets from existing ecosystems, display them extensively or manage properties directly in Contao. Visit the [project website][1] for more information.

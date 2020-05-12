@@ -180,3 +180,12 @@ $GLOBALS['TL_PERMISSIONS'][] = 'contactperson';
 $GLOBALS['TL_PERMISSIONS'][] = 'filter';
 $GLOBALS['TL_PERMISSIONS'][] = 'fieldformat';
 $GLOBALS['TL_PERMISSIONS'][] = 'interface';
+
+// Add localconfig defaults
+$GLOBALS['TL_CONFIG']['defaultSorting'] = 'dateAdded';
+$GLOBALS['TL_CONFIG']['statusTokenNewDisplayDuration'] = '+1 week';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainDetails'] = '3';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainAttr'] = '3';
+$GLOBALS['TL_CONFIG']['numberFormatDecimals'] = ',';
+$GLOBALS['TL_CONFIG']['numberFormatThousands'] = '.';
+$GLOBALS['TL_CONFIG']['roomOptions'] = '1,2,3,4,5,6,7,8';
