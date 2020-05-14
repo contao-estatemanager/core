@@ -10,6 +10,11 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Config;
+use Contao\Controller;
+use Contao\StringUtil;
+use Contao\System;
+
 /**
  * Provide methods to handle real estate formats.
  *
@@ -99,7 +104,7 @@ class RealEstateFormatter
 
                 if($objFieldFormats->useCondition)
                 {
-                    $this->arrFieldConditions[ $objFieldFormats->fieldname ] = \StringUtil::deserialize($objFieldFormats->conditionFields, true);
+                    $this->arrFieldConditions[ $objFieldFormats->fieldname ] = StringUtil::deserialize($objFieldFormats->conditionFields, true);
                 }
 
                 // add actions
@@ -113,10 +118,10 @@ class RealEstateFormatter
         }
 
         // load translation files
-        \System::loadLanguageFile('tl_real_estate_label');
-        \System::loadLanguageFile('tl_real_estate_value');
-        \System::loadLanguageFile('tl_real_estate_attribute');
-        \System::loadLanguageFile('tl_real_estate_expose');
+        System::loadLanguageFile('tl_real_estate_label');
+        System::loadLanguageFile('tl_real_estate_value');
+        System::loadLanguageFile('tl_real_estate_attribute');
+        System::loadLanguageFile('tl_real_estate_expose');
     }
 
     /**
@@ -135,12 +140,12 @@ class RealEstateFormatter
     /**
      * Set real estate model and check field conditions
      *
-     * @param $objRealEtate
+     * @param RealEstateModel $objRealEstate
      */
-    public function setRealEstateModel($objRealEtate)
+    public function setRealEstateModel(RealEstateModel $objRealEstate): void
     {
         // set current real estate
-        $this->objRealEstate = $objRealEtate;
+        $this->objRealEstate = $objRealEstate;
 
         // determine fields that may not be displayed
         if(count($this->arrFieldConditions))
@@ -173,9 +178,9 @@ class RealEstateFormatter
      *
      * @param $field
      *
-     * @return null
+     * @return string
      */
-    public function getClass($field)
+    public function getClass($field): ?string
     {
         return $this->arrFieldFormats[ $field ]['class'];
     }
@@ -183,10 +188,10 @@ class RealEstateFormatter
     /**
      * returns a fully formatted collection or null for values that should be skipped afterwards
      *
-     * @param $field
+     * @param string $field
      * @return array|null
      */
-    public function getFormattedCollection($field)
+    public function getFormattedCollection(string $field): ?array
     {
         $val = $this->formatValue($field);
 
@@ -209,9 +214,9 @@ class RealEstateFormatter
      *
      * @param $field
      *
-     * @return null
+     * @return string
      */
-    public function formatValue($field)
+    public function formatValue(string $field)
     {
         $actions = $this->arrFieldFormats[ $field ]['actions'];
 
@@ -220,21 +225,19 @@ class RealEstateFormatter
             return Translator::translateValue($this->objRealEstate->{$field}, $field);
         }
 
-        $newValue = $this->formatParser($field, $actions);
-
-        return $newValue;
+        return $this->formatParser($field, $actions);
     }
 
     /**
      * Cut text to given max length
      *
-     * @param $text
-     * @param $max
+     * @param string $text
+     * @param int $max
      * @param string $textOverflow
      *
-     * @return null
+     * @return string
      */
-    public function shortenText($text, $max, $textOverflow = '...')
+    public function shortenText(string $text, int $max=0, string $textOverflow = '...'): string
     {
         if ($max > 0)
         {
@@ -260,10 +263,10 @@ class RealEstateFormatter
      * Parse field
      *
      * @param string $field
-     * @param array $actions
+     * @param array|null $actions
      * @return string
      */
-    private function formatParser($field, $actions)
+    private function formatParser(string $field, ?array $actions)
     {
         $value = $this->objRealEstate->{$field};
 
@@ -273,7 +276,7 @@ class RealEstateFormatter
             {
                 // Format a number e.g (PHP number_format)
                 case 'number_format':
-                    $newValue = (isset($value) && $value !== '') ? number_format($value, ($action['decimals'] ?: 0), \Config::get('numberFormatDecimals'), \Config::get('numberFormatThousands')) : $value;
+                    $newValue = (isset($value) && $value !== '') ? number_format($value, ($action['decimals'] ?: 0), Config::get('numberFormatDecimals'), Config::get('numberFormatThousands')) : $value;
                     break;
 
                 // Adds text at the beginning of the value
@@ -288,7 +291,7 @@ class RealEstateFormatter
 
                 // Deserialized a value to an array and displays it in a list separated by a given seperator
                 case 'unserialize':
-                    $arrValues = \StringUtil::deserialize($value);
+                    $arrValues = StringUtil::deserialize($value);
 
                     if ($arrValues !== null)
                     {
@@ -310,7 +313,7 @@ class RealEstateFormatter
 
                 // Format a local time/date (PHP date)
                 case 'date_format':
-                    $newValue = date( \Config::get('dateFormat'), $value );
+                    $newValue = date( Config::get('dateFormat'), $value );
                     break;
 
                 // Wrap a value with its own content using PHP sprintf function
@@ -323,7 +326,7 @@ class RealEstateFormatter
 
                 // Merges multiple fields by a seperator
                 case 'combine':
-                    $arrValues = \StringUtil::deserialize($action['elements'], true);
+                    $arrValues = StringUtil::deserialize($action['elements'], true);
 
                     $list = array();
 
@@ -351,7 +354,7 @@ class RealEstateFormatter
 
                 // Custom function (see templates/actions)
                 case 'custom':
-                    $template = \Controller::getTemplate($action['customFunction']);
+                    $template = Controller::getTemplate($action['customFunction']);
                     $customFunc = include $template;
 
                     if(is_callable($customFunc['func']))
@@ -375,11 +378,11 @@ class RealEstateFormatter
     /**
      * Check whether the field is allowed for formatting
      *
-     * @param $field
+     * @param string $field
      *
      * @return bool
      */
-    public function isAllowed($field)
+    public function isAllowed(string $field): bool
     {
         if(in_array($field, $this->arrRemovedCollection)){
             return false;
@@ -391,11 +394,11 @@ class RealEstateFormatter
     /**
      * Check whether the field has a valid value
      *
-     * @param $field
+     * @param string $field
      *
      * @return bool
      */
-    public function isFilled($field)
+    public function isFilled(string $field): bool
     {
         if($this->arrFieldFormats[ $field ]['force'])
         {
@@ -416,11 +419,11 @@ class RealEstateFormatter
     /**
      * Check whether the field has a valid value and can be displayed.
      *
-     * @param $field
+     * @param string $field
      *
      * @return bool
      */
-    public function isValid($field)
+    public function isValid(string $field): bool
     {
         if ($this->isFilled($field) && $this->isAllowed($field))
         {
