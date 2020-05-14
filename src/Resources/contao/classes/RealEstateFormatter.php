@@ -13,7 +13,6 @@ namespace ContaoEstateManager;
 use Contao\Config;
 use Contao\Controller;
 use Contao\StringUtil;
-use Contao\System;
 
 /**
  * Provide methods to handle real estate formats.
