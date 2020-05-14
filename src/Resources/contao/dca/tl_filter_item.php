@@ -204,7 +204,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
                     'country' => array
                     (
                         'label'             => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
-                        'exclude'           => true,
                         'inputType'         => 'select',
                         'options_callback'  => array('tl_filter_item', 'getRealEstateCountries'),
                         'eval' 		        => array('style'=>'width:100%', 'chosen'=>true)
@@ -217,8 +216,8 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['placeholder'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'text',
+            'search'                  => true,
             'eval'                    => array('decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
@@ -366,7 +365,118 @@ class tl_filter_item extends Contao\Backend
      */
     public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+        $objSession = Contao\System::getContainer()->get('session');
+
+        // Set root IDs
+        if (empty($this->User->filters) || !is_array($this->User->filters))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->filters;
+        }
+
+        $id = strlen(Contao\Input::get('id')) ? Contao\Input::get('id') : CURRENT_ID;
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'paste':
+            case 'select':
+                // Check CURRENT_ID here (see #247)
+                if (!in_array(CURRENT_ID, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access filter ID ' . $id . '.');
+                }
+                break;
+
+            case 'create':
+            case 'cut':
+            case 'copy':
+                $pid = Contao\Input::get('pid');
+
+                // Get filter ID
+                if (Contao\Input::get('mode') == 1)
+                {
+                    $objField = $this->Database->prepare("SELECT pid FROM tl_filter_item WHERE id=?")
+                        ->limit(1)
+                        ->execute(Contao\Input::get('pid'));
+
+                    if ($objField->numRows < 1)
+                    {
+                        throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid filter field ID ' . Contao\Input::get('pid') . '.');
+                    }
+
+                    $pid = $objField->pid;
+                }
+
+                if (!in_array($pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' filter field ID ' . $id . ' to filter ID ' . $pid . '.');
+                }
+
+                if (Contao\Input::get('act') == 'create')
+                {
+                    break;
+                }
+            // no break
+
+            case 'edit':
+            case 'show':
+            case 'delete':
+            case 'toggle':
+                $objField = $this->Database->prepare("SELECT pid FROM tl_filter_item WHERE id=?")
+                    ->limit(1)
+                    ->execute($id);
+
+                if ($objField->numRows < 1)
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid filter field ID ' . $id . '.');
+                }
+
+                if (!in_array($objField->pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' filter field ID ' . $id . ' of filter ID ' . $objField->pid . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'cutAll':
+            case 'copyAll':
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access filter ID ' . $id . '.');
+                }
+
+                $objForm = $this->Database->prepare("SELECT id FROM tl_filter_item WHERE pid=?")
+                    ->execute($id);
+
+                $session = $objSession->all();
+                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $objForm->fetchEach('id'));
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Contao\Input::get('act') . '".');
+                }
+
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access filter ID ' . $id . '.');
+                }
+                break;
+        }
     }
 
     /**

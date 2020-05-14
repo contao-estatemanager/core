@@ -159,6 +159,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'similarType' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['similarType'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate_type', 'getRealEstateTypes'),
             'foreignKey'              => 'tl_real_estate_type.title',
@@ -189,6 +190,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'nutzungsart' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['nutzungsart'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array
             (
@@ -203,6 +205,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'vermarktungsart' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['vermarktungsart'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('kauf_erbpacht', 'miete_leasing'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
@@ -212,6 +215,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'objektart' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['objektart'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'filter'                  => true,
             'options'                 => array
@@ -237,6 +241,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'excludeTypes' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['excludeTypes'],
+            'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true, 'tl_class'=>'clr m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -244,6 +249,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'excludedTypes'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['excludedTypes'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -282,6 +288,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'toggleFilter'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['toggleFilter'],
+            'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('price', 'per', 'room', 'area', 'period'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_filter'],
@@ -292,6 +299,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
 
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['sortingOptions'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -312,6 +320,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'mainDetails'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['mainDetails'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -333,6 +342,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'mainAttributes'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['mainAttributes'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -354,6 +364,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'orderFields' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['orderFields'],
+            'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true, 'tl_class'=>'clr m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -361,6 +372,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         'orderedFields'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['orderedFields'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -370,7 +382,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
                     'field' => array
                     (
                         'label'             => &$GLOBALS['TL_LANG']['tl_real_estate_type']['field'],
-                        'exclude'           => true,
                         'inputType'         => 'select',
                         'options_callback'  => array('tl_real_estate_type', 'getRealEstateColumns'),
                         'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
@@ -437,7 +448,102 @@ class tl_real_estate_type extends Contao\Backend
      */
     public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->regroups) || !is_array($this->User->regroups))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->regroups;
+        }
+
+        $id = strlen(Contao\Input::get('id')) ? Contao\Input::get('id') : CURRENT_ID;
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'paste':
+            case 'select':
+                // Check CURRENT_ID here (see #247)
+                if (!in_array(CURRENT_ID, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access real estate group ID ' . $id . '.');
+                }
+                break;
+
+            case 'create':
+                if (!Contao\Input::get('pid') || !in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create type in real estate group ID ' . Contao\Input::get('pid') . '.');
+                }
+                break;
+
+            case 'cut':
+            case 'copy':
+                if (!in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' real estate type ID ' . $id . ' to real estate group ID ' . Contao\Input::get('pid') . '.');
+                }
+            // no break
+
+            case 'edit':
+            case 'show':
+            case 'delete':
+            case 'toggle':
+                $objRealEstateType = $this->Database->prepare("SELECT pid FROM tl_real_estate_type WHERE id=?")
+                    ->limit(1)
+                    ->execute($id);
+
+                if ($objRealEstateType->numRows < 1)
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid real estate type ID ' . $id . '.');
+                }
+
+                if (!in_array($objRealEstateType->pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' real estate type ID ' . $id . ' of real estate group ID ' . $objRealEstateType->pid . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'cutAll':
+            case 'copyAll':
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access real estate type ID ' . $id . '.');
+                }
+
+                $objRealEstateType = $this->Database->prepare("SELECT id FROM tl_real_estate_type WHERE pid=?")
+                    ->execute($id);
+
+                /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+                $objSession = Contao\System::getContainer()->get('session');
+
+                $session = $objSession->all();
+                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $objRealEstateType->fetchEach('id'));
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Contao\Input::get('act') . '".');
+                }
+
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access real estate type ID ' . $id . '.');
+                }
+                break;
+        }
     }
 
     /**

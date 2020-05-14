@@ -21,10 +21,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'dataContainer'               => 'Table',
         'enableVersioning'            => true,
         'markAsCopy'                  => 'name',
-        'onload_callback' => array
-        (
-            array('tl_expose_module', 'checkPermission'),
-        ),
         'sql' => array
         (
             'keys' => array
@@ -362,6 +358,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'fields'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fields'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -371,7 +368,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
                     'field' => array
                     (
                         'label'             => &$GLOBALS['TL_LANG']['tl_expose_module']['show_fields'],
-                        'exclude'           => true,
                         'inputType'         => 'select',
                         'options_callback'  => array('tl_expose_module', 'getRealEstateFields'),
                         'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
@@ -524,16 +520,6 @@ class tl_expose_module extends Contao\Backend
     {
         parent::__construct();
         $this->import('Contao\BackendUser', 'User');
-    }
-
-    /**
-     * Check permissions to edit the table
-     *
-     * @throws Contao\CoreBundle\Exception\AccessDeniedException
-     */
-    public function checkPermission(): void
-    {
-        return;
     }
 
     /**

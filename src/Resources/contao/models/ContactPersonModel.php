@@ -17,13 +17,13 @@ namespace ContaoEstateManager;
  * @property integer $id
  * @property integer $pid
  * @property integer $tstamp
- * @property string  $name
- * @property string  $vorname
  * @property string  $anrede
+ * @property string  $firma
+ * @property string  $vorname
+ * @property string  $name
  * @property string  $titel
  * @property string  $position
  * @property string  $anrede_brief
- * @property string  $firma
  * @property string  $zusatzfeld
  * @property string  $strasse
  * @property string  $hausnummer

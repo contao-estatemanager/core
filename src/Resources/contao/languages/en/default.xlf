@@ -36,12 +36,64 @@
       <trans-unit id="MSC.clearEstateConfirm">
         <source>Are you sure you want to do the cleanup?</source>
       </trans-unit>
+      <trans-unit id="MSC.sync">
+        <source>Sync</source>
+      </trans-unit>
 
       <trans-unit id="COLS.contentTop">
         <source>Above content area</source>
       </trans-unit>
       <trans-unit id="COLS.contentBottom">
         <source>Below content area</source>
+      </trans-unit>
+
+      <trans-unit id="RFI.country.0">
+        <source>Country</source>
+      </trans-unit>
+      <trans-unit id="RFI.country.1">
+        <source>A field for filtering real estates by country.</source>
+      </trans-unit>
+      <trans-unit id="RFI.location.0">
+        <source>Address field</source>
+      </trans-unit>
+      <trans-unit id="RFI.location.1">
+        <source>An address field for filtering based on address entries.</source>
+      </trans-unit>
+      <trans-unit id="RFI.unique.0">
+        <source>Unique field</source>
+      </trans-unit>
+      <trans-unit id="RFI.unique.1">
+        <source>A field for filtering based on an unique field (e.g. property ID).</source>
+      </trans-unit>
+      <trans-unit id="RFI.type.0">
+        <source>Real estate type (combined)</source>
+      </trans-unit>
+      <trans-unit id="RFI.type.1">
+        <source>A combined filter for real estate groups and real estate types.</source>
+      </trans-unit>
+      <trans-unit id="RFI.typeSeparated.0">
+        <source>Real estate type (separated)</source>
+      </trans-unit>
+      <trans-unit id="RFI.typeSeparated.1">
+        <source>A separated filter for real estate groups and real estate types.</source>
+      </trans-unit>
+      <trans-unit id="RFI.toggle.0">
+        <source>Primary fields</source>
+      </trans-unit>
+      <trans-unit id="RFI.toggle.1">
+        <source>Filters depending on real estate type properties.</source>
+      </trans-unit>
+      <trans-unit id="RFI.reset.0">
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="RFI.reset.1">
+        <source>A button to reset the filters.</source>
+      </trans-unit>
+      <trans-unit id="RFI.submit.0">
+        <source>Submit button</source>
+      </trans-unit>
+      <trans-unit id="RFI.submit.1">
+        <source>A button to submit the filter.</source>
       </trans-unit>
     </body>
   </file>

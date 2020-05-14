@@ -14,7 +14,11 @@
                 <h3 class="<?= $group['alias'] ?>"><?= $group['group'] ?></h3>
                 <div class="re_group_inner">
                     <?php foreach ($group['modules'] as $module): ?>
-                        <a href="<?= $module['link'] ?>"<?=(strpos($module['link'], "http") === 0)?' target="_blank"':''?>><?=$module['title']?></a>
+                        <?php if ($module['denied']): ?>
+                            <span class="denied"><?=$module['title']?></span>
+                        <?php else: ?>
+                            <a href="<?= $module['link'] ?>"<?=(strpos($module['link'], "http") === 0)?' target="_blank"':''?>><?=$module['title']?></a>
+                        <?php endif; ?>
                         <p><?= $module['desc'] ?></p>
                     <?php endforeach; ?>
                 </div>

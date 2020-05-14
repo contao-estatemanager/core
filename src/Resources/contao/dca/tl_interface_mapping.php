@@ -302,7 +302,102 @@ class tl_interface_mapping extends Contao\Backend
      */
     public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->interfaces) || !is_array($this->User->interfaces))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->interfaces;
+        }
+
+        $id = strlen(Contao\Input::get('id')) ? Contao\Input::get('id') : CURRENT_ID;
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'paste':
+            case 'select':
+                // Check CURRENT_ID here (see #247)
+                if (!in_array(CURRENT_ID, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+                break;
+
+            case 'create':
+                if (!Contao\Input::get('pid') || !in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create events in interface ID ' . Contao\Input::get('pid') . '.');
+                }
+                break;
+
+            case 'cut':
+            case 'copy':
+                if (!in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface mapping ID ' . $id . ' to interface ID ' . Contao\Input::get('pid') . '.');
+                }
+            // no break
+
+            case 'edit':
+            case 'show':
+            case 'delete':
+            case 'toggle':
+                $objInterfaceMapping = $this->Database->prepare("SELECT pid FROM tl_interface_mapping WHERE id=?")
+                    ->limit(1)
+                    ->execute($id);
+
+                if ($objInterfaceMapping->numRows < 1)
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid interface mapping ID ' . $id . '.');
+                }
+
+                if (!in_array($objInterfaceMapping->pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface mapping ID ' . $id . ' of interface ID ' . $objInterfaceMapping->pid . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'cutAll':
+            case 'copyAll':
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+
+                $objInterfaceMapping = $this->Database->prepare("SELECT id FROM tl_interface_mapping WHERE pid=?")
+                    ->execute($id);
+
+                /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+                $objSession = Contao\System::getContainer()->get('session');
+
+                $session = $objSession->all();
+                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $objInterfaceMapping->fetchEach('id'));
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Contao\Input::get('act') . '".');
+                }
+
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+                break;
+        }
     }
 
     /**

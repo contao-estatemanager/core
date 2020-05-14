@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendModule;
+use Contao\BackendUser;
 use Contao\StringUtil;
 use Contao\System;
 
@@ -35,6 +36,8 @@ class ModuleRealEstateAdministration extends BackendModule
 	 */
 	protected function compile()
 	{
+        $this->import('BackendUser', 'User');
+
 		System::loadLanguageFile('tl_real_estate_administration');
 
         $packages = System::getContainer()->getParameter('kernel.packages');
@@ -72,7 +75,8 @@ class ModuleRealEstateAdministration extends BackendModule
                 $gp['modules'][] = array(
                     'title' => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0],
                     'desc'  => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1],
-                    'link'  => $link
+                    'link'  => $link,
+                    'denied' => !$this->User->hasAccess($module, 'modules')
                 );
             }
 
