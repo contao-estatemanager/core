@@ -251,6 +251,7 @@ abstract class ModuleRealEstate extends \Module
 
         $objTemplate = new FrontendTemplate($this->realEstateProviderTemplate);
         $objTemplate->setData($arrProvider);
+        $objTemplate->realEstate = $realEstate;
 
         if($arrProvider['singleSRC'])
         {
@@ -281,6 +282,7 @@ abstract class ModuleRealEstate extends \Module
 
         $objTemplate = new \FrontendTemplate($this->realEstateContactPersonTemplate);
         $objTemplate->setData($arrContactPerson);
+        $objTemplate->realEstate = $realEstate;
 
         if($arrContactPerson['singleSRC'])
         {

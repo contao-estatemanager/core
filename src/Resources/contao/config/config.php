@@ -184,3 +184,12 @@ $GLOBALS['TL_PERMISSIONS'][] = 'providerp';
 $GLOBALS['TL_PERMISSIONS'][] = 'realestatep';
 $GLOBALS['TL_PERMISSIONS'][] = 'regroups';
 $GLOBALS['TL_PERMISSIONS'][] = 'regroupp';
+
+// Add localconfig defaults
+$GLOBALS['TL_CONFIG']['defaultSorting'] = 'dateAdded';
+$GLOBALS['TL_CONFIG']['statusTokenNewDisplayDuration'] = '+1 week';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainDetails'] = '3';
+$GLOBALS['TL_CONFIG']['defaultNumberOfMainAttr'] = '3';
+$GLOBALS['TL_CONFIG']['numberFormatDecimals'] = ',';
+$GLOBALS['TL_CONFIG']['numberFormatThousands'] = '.';
+$GLOBALS['TL_CONFIG']['roomOptions'] = '1,2,3,4,5,6,7,8';

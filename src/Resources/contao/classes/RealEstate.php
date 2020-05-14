@@ -126,6 +126,18 @@ class RealEstate extends System
     }
 
     /**
+     * Return a formatted parameter/value
+     *
+     * @param $name
+     *
+     * @return array|null
+     */
+    public function get($name): ?array
+    {
+        return $this->formatter->getFormattedCollection($name);
+    }
+
+    /**
      * Returns the current type
      *
      * @return RealEstateTypeModel
