@@ -175,8 +175,12 @@ if (TL_MODE == 'BE')
 }
 
 // Add permissions
-$GLOBALS['TL_PERMISSIONS'][] = 'provider';
-$GLOBALS['TL_PERMISSIONS'][] = 'contactperson';
-$GLOBALS['TL_PERMISSIONS'][] = 'filter';
-$GLOBALS['TL_PERMISSIONS'][] = 'fieldformat';
-$GLOBALS['TL_PERMISSIONS'][] = 'interface';
+$GLOBALS['TL_PERMISSIONS'][] = 'filters';
+$GLOBALS['TL_PERMISSIONS'][] = 'filterp';
+$GLOBALS['TL_PERMISSIONS'][] = 'interfaces';
+$GLOBALS['TL_PERMISSIONS'][] = 'interfacep';
+$GLOBALS['TL_PERMISSIONS'][] = 'providers';
+$GLOBALS['TL_PERMISSIONS'][] = 'providerp';
+$GLOBALS['TL_PERMISSIONS'][] = 'realestatep';
+$GLOBALS['TL_PERMISSIONS'][] = 'regroups';
+$GLOBALS['TL_PERMISSIONS'][] = 'regroupp';

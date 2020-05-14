@@ -19,10 +19,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'dataContainer'               => 'Table',
         'ptable'                      => 'tl_field_format',
         'enableVersioning'            => true,
-        'onload_callback' => array
-        (
-            array('tl_field_format_action', 'checkPermission')
-        ),
         'sql' => array
         (
             'keys' => array
@@ -61,7 +57,8 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['edit'],
                 'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
+                'icon'                => 'edit.svg',
+                'button_callback'     => array('tl_field_format_action', 'editFormatAction')
             ),
             'copy' => array
             (
@@ -121,6 +118,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'tstamp' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
+            'exclude'                 => true,
             'default'                 => time(),
             'sorting'                 => true,
             'flag'                    => 6,
@@ -130,6 +128,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'action'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('prepend', 'append', 'number_format', 'date_format', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_field_format_action'],
@@ -139,6 +138,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'decimals'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['decimals'],
+            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'digit', 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -146,6 +146,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'text'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['text'],
+            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'doNotTrim' => true, 'allowHtml'=>true),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -153,6 +154,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'seperator'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['seperator'],
+            'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50', 'doNotTrim' => true),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -160,6 +162,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'necessary'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['necessary'],
+            'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -167,6 +170,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'elements'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['elements'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -192,6 +196,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'customFunction'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['customFunction'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_field_format_action', 'getCustomFunctions'),
             'eval'                    => array('tl_class'=>'w50'),
@@ -200,6 +205,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'sorting'   => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['MSC']['sorting'],
+            'exclude'                 => true,
             'sorting'                 => true,
             'eval'                    => array('doNotCopy'=>true),
             'sql'                     => "int(10) unsigned NULL"
@@ -226,13 +232,20 @@ class tl_field_format_action extends Contao\Backend
     }
 
     /**
-     * Check permissions to edit table tl_field_format_action
+     * Return the edit format action button
      *
-     * @throws Contao\CoreBundle\Exception\AccessDeniedException
+     * @param array  $row
+     * @param string $href
+     * @param string $label
+     * @param string $title
+     * @param string $icon
+     * @param string $attributes
+     *
+     * @return string
      */
-    public function checkPermission(): void
+    public function editFormatAction(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return;
+        return $this->User->canEditFieldsOf('tl_field_format_action') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**

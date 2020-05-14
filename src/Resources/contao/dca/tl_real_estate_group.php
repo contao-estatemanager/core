@@ -24,6 +24,14 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         (
             array('tl_real_estate_group', 'checkPermission')
         ),
+        'oncreate_callback' => array
+        (
+            array('tl_real_estate_group', 'adjustPermissions')
+        ),
+        'oncopy_callback' => array
+        (
+            array('tl_real_estate_group', 'adjustPermissions')
+        ),
         'sql' => array
         (
             'keys' => array
@@ -134,6 +142,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         'similarGroup' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['similarGroup'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_real_estate_group.title',
             'options_callback'        => array('tl_real_estate_group', 'getRealEstateGroups'),
@@ -154,6 +163,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         'vermarktungsart' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['vermarktungsart'],
+            'exclude'                 => true,
             'inputType'               => 'select',
             'filter'                  => true,
             'options'                 => array('kauf_erbpacht', 'miete_leasing'),
@@ -199,7 +209,182 @@ class tl_real_estate_group extends Contao\Backend
      */
     public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->regroups) || !is_array($this->User->regroups))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->regroups;
+        }
+
+        if (Contao\Input::get('key') == 'syncRealEstates')
+        {
+            if (!in_array(Contao\Input::get('id'), $root) || !$this->User->hasAccess('sync', 'regroupp'))
+            {
+                throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to sync real estate group ID ' . Contao\Input::get('id') . '.');
+            }
+        }
+
+        $GLOBALS['TL_DCA']['tl_real_estate_group']['list']['sorting']['root'] = $root;
+
+        // Check permissions to add real estate group
+        if (!$this->User->hasAccess('create', 'regroupp'))
+        {
+            $GLOBALS['TL_DCA']['tl_real_estate_group']['config']['closed'] = true;
+            $GLOBALS['TL_DCA']['tl_real_estate_group']['config']['notCreatable'] = true;
+            $GLOBALS['TL_DCA']['tl_real_estate_group']['config']['notCopyable'] = true;
+        }
+
+        // Check permissions to delete real estate groups
+        if (!$this->User->hasAccess('delete', 'regroupp'))
+        {
+            $GLOBALS['TL_DCA']['tl_real_estate_group']['config']['notDeletable'] = true;
+        }
+
+        /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+        $objSession = Contao\System::getContainer()->get('session');
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'select':
+                // Allow
+                break;
+
+            case 'create':
+                if (!$this->User->hasAccess('create', 'regroupp'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create real estate groups.');
+                }
+                break;
+
+            case 'edit':
+            case 'copy':
+            case 'delete':
+            case 'show':
+                if (!in_array(Contao\Input::get('id'), $root) || (Contao\Input::get('act') == 'delete' && !$this->User->hasAccess('delete', 'regroupp')))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' real estate group ID ' . Contao\Input::get('id') . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'copyAll':
+                $session = $objSession->all();
+
+                if (Contao\Input::get('act') == 'deleteAll' && !$this->User->hasAccess('delete', 'regroupp'))
+                {
+                    $session['CURRENT']['IDS'] = array();
+                }
+                else
+                {
+                    $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $root);
+                }
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' real estate groups.');
+                }
+                break;
+        }
+    }
+
+    /**
+     * Add the new real estate group to the permissions
+     *
+     * @param $insertId
+     */
+    public function adjustPermissions($insertId)
+    {
+        // The oncreate_callback passes $insertId as second argument
+        if (func_num_args() == 4)
+        {
+            $insertId = func_get_arg(1);
+        }
+
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->regroups) || !is_array($this->User->regroups))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->regroups;
+        }
+
+        // The interface is enabled already
+        if (in_array($insertId, $root))
+        {
+            return;
+        }
+
+        /** @var Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface $objSessionBag */
+        $objSessionBag = Contao\System::getContainer()->get('session')->getBag('contao_backend');
+
+        $arrNew = $objSessionBag->get('new_records');
+
+        if (is_array($arrNew['tl_real_estate_group']) && in_array($insertId, $arrNew['tl_real_estate_group']))
+        {
+            // Add the permissions on group level
+            if ($this->User->inherit != 'custom')
+            {
+                $objGroup = $this->Database->execute("SELECT id, regroups, regroupp FROM tl_user_group WHERE id IN(" . implode(',', array_map('\intval', $this->User->groups)) . ")");
+
+                while ($objGroup->next())
+                {
+                    $arrReGroupp = Contao\StringUtil::deserialize($objGroup->regroupp);
+
+                    if (is_array($arrReGroupp) && in_array('create', $arrReGroupp))
+                    {
+                        $arrReGroups = Contao\StringUtil::deserialize($objGroup->regroups, true);
+                        $arrReGroups[] = $insertId;
+
+                        $this->Database->prepare("UPDATE tl_user_group SET regroups=? WHERE id=?")
+                            ->execute(serialize($arrReGroups), $objGroup->id);
+                    }
+                }
+            }
+
+            // Add the permissions on user level
+            if ($this->User->inherit != 'group')
+            {
+                $objUser = $this->Database->prepare("SELECT regroups, regroupp FROM tl_user WHERE id=?")
+                    ->limit(1)
+                    ->execute($this->User->id);
+
+                $arrReGroupp = Contao\StringUtil::deserialize($objUser->regroupp);
+
+                if (is_array($arrReGroupp) && in_array('create', $arrReGroupp))
+                {
+                    $arrReGroups = Contao\StringUtil::deserialize($objUser->regroups, true);
+                    $arrReGroups[] = $insertId;
+
+                    $this->Database->prepare("UPDATE tl_user SET regroups=? WHERE id=?")
+                        ->execute(serialize($arrReGroups), $this->User->id);
+                }
+            }
+
+            // Add the new element to the user object
+            $root[] = $insertId;
+            $this->User->regroups = $root;
+        }
     }
 
     /**
@@ -271,7 +456,7 @@ class tl_real_estate_group extends Contao\Backend
      */
     public function copy(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'regroupp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -288,7 +473,7 @@ class tl_real_estate_group extends Contao\Backend
      */
     public function delete(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'realestatetype') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'regroupp') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**

@@ -189,6 +189,10 @@
 .re_administration a {
   font-weight: bold;
 }
+.re_administration span.denied {
+  color: #ccc;
+  font-weight: bold;
+}
 .re_administration .em_head {
   padding: 0 10px;
   border-bottom: 1px solid #e6e6e8;
