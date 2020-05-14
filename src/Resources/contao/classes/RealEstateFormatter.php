@@ -116,12 +116,6 @@ class RealEstateFormatter
 
             $this->arrFieldFormats = $arrFieldFormats;
         }
-
-        // load translation files
-        System::loadLanguageFile('tl_real_estate_label');
-        System::loadLanguageFile('tl_real_estate_value');
-        System::loadLanguageFile('tl_real_estate_attribute');
-        System::loadLanguageFile('tl_real_estate_expose');
     }
 
     /**
