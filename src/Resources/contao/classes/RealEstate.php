@@ -784,7 +784,7 @@ class RealEstate extends System
         {
             $textCollection = $this->formatter->getFormattedCollection($field);
 
-            if($textCollection !== null)
+            if($textCollection !== null && $textCollection['value'])
             {
                 $textCollection['value'] = $this->formatter->shortenText($textCollection['value'], $maxTextLength);
 
