@@ -21,6 +21,10 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'dataContainer'               => 'Table',
         'enableVersioning'            => true,
         'markAsCopy'                  => 'objekttitel',
+        'onload_callback' => array
+        (
+            array('tl_real_estate', 'checkPermission')
+        ),
         'sql' => array
         (
             'keys' => array
@@ -5138,6 +5142,33 @@ class tl_real_estate extends Contao\Backend
     {
         parent::__construct();
         $this->import('Contao\BackendUser', 'User');
+    }
+
+    /**
+     * Check permissions to edit table tl_real_estate
+     *
+     * @throws Contao\CoreBundle\Exception\AccessDeniedException
+     */
+    public function checkPermission(): void
+    {
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Check permissions to add real estates
+        if (!$this->User->hasAccess('create', 'realestatep'))
+        {
+            $GLOBALS['TL_DCA']['tl_real_estate']['config']['closed'] = true;
+            $GLOBALS['TL_DCA']['tl_real_estate']['config']['notCreatable'] = true;
+            $GLOBALS['TL_DCA']['tl_real_estate']['config']['notCopyable'] = true;
+        }
+
+        // Check permissions to delete real estates
+        if (!$this->User->hasAccess('delete', 'realestatep'))
+        {
+            $GLOBALS['TL_DCA']['tl_real_estate']['config']['notDeletable'] = true;
+        }
     }
 
     /**
