@@ -2018,7 +2018,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
             'realEstate'                => array(
-                'group'   => 'address',
                 'order'   => 210
             )
         ),
@@ -4096,7 +4095,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'   => 'distanz',
+                'group'   => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4109,7 +4108,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4122,7 +4121,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4135,7 +4134,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4148,7 +4147,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4161,7 +4160,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4174,7 +4173,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4187,7 +4186,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4200,7 +4199,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4213,7 +4212,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4226,7 +4225,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4239,7 +4238,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4252,7 +4251,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4265,7 +4264,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4278,7 +4277,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4291,7 +4290,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4304,7 +4303,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4317,7 +4316,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4330,7 +4329,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4343,7 +4342,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )
@@ -4356,7 +4355,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                       => "varchar(32) NOT NULL default ''",
             'realEstate'                => array(
-                'group'    => 'distanz',
+                'group'    => 'distance',
                 'filter'   => true,
                 'sorting'  => true
             )

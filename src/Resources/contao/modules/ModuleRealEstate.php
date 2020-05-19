@@ -69,10 +69,7 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function parseRealEstate(RealEstateModel $objRealEstate, int $typeId=null, string $strClass=''): string
     {
-        // create real estate object
-        $realEstate = new RealEstateModulePreparation($objRealEstate, $this, $typeId);
-
-        // create template
+        $realEstate  = new RealEstateModulePreparation($objRealEstate, $this, $typeId);
         $objTemplate = new FrontendTemplate($this->realEstateTemplate);
 
         $objTemplate->class         = $strClass;
@@ -106,7 +103,7 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
         // <--
 
-        // adding core extension: provider
+        // Adding item extension: provider
         $objTemplate->addProvider = !!$this->addProvider;
 
         if($this->addProvider)
@@ -114,7 +111,7 @@ abstract class ModuleRealEstate extends \Module
             $objTemplate->provider = $this->parseProvider($realEstate);
         }
 
-        // adding core extension: contact person
+        // Adding item extension: contact person
         $objTemplate->addContactPerson = !!$this->addContactPerson;
 
         if($this->addContactPerson)
@@ -122,7 +119,7 @@ abstract class ModuleRealEstate extends \Module
             $objTemplate->contactPerson = $this->parseContactPerson($realEstate);
         }
 
-        // set real estate image
+        // Set real estate image
         $objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
 
         // HOOK: parse real estate
@@ -280,7 +277,7 @@ abstract class ModuleRealEstate extends \Module
             return '';
         }
 
-        $objTemplate = new \FrontendTemplate($this->realEstateContactPersonTemplate);
+        $objTemplate = new FrontendTemplate($this->realEstateContactPersonTemplate);
         $objTemplate->setData($arrContactPerson);
         $objTemplate->realEstate = $realEstate;
 
@@ -471,9 +468,9 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function updateVisitedSession($realEstateId)
     {
-        $_SESSION['REAL_ESTATE_VISITED'] = \is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
+        $_SESSION['REAL_ESTATE_VISITED'] = is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
 
-        if (($key = \array_search($realEstateId, $_SESSION['REAL_ESTATE_VISITED'])) !== false)
+        if (($key = array_search($realEstateId, $_SESSION['REAL_ESTATE_VISITED'])) !== false)
         {
             unset($_SESSION['REAL_ESTATE_VISITED'][$key]);
         }

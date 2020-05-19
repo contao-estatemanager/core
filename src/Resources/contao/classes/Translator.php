@@ -35,8 +35,8 @@ class Translator
      * Translate value by field value and name
      *
      * @param string|array $value
-     *
      * @param string $field
+     *
      * @return string|array
      */
     public static function translateValue($value, $field = '')
@@ -92,7 +92,7 @@ class Translator
      */
     public static function translate($strVar, $dictionary, $prefixField = '')
     {
-        // load translation file
+        // Load translation file
         System::loadLanguageFile($dictionary);
 
         if(is_array($strVar))

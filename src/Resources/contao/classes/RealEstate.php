@@ -545,7 +545,7 @@ class RealEstate extends System
     }
 
     /**
-     * Returns all energie pass fields
+     * Returns all energy pass fields
      *
      * @return array|null
      */
@@ -557,14 +557,14 @@ class RealEstate extends System
     /**
      * Return details from real estate
      *
-     * @param null|array    $separateGroups: area, price, attribute, detail
+     * @param null|array    $separateGroups
      * @param bool          $includeAddress
      * @param null|array    $validGroups
      * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
      *
      * @return array        array('group1' [,group2,group3,...])
      */
-    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups=null, string $defaultGroup='detail'): array
+    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail'): array
     {
         $availableGroups = array();
         $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
@@ -593,7 +593,6 @@ class RealEstate extends System
 
         $collection = array();
 
-        // ToDo: use metafield class
         // loop through the real estate fields
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
         {
@@ -606,8 +605,8 @@ class RealEstate extends System
             // get available config keys
             $configKeys = array_keys($data['realEstate']);
 
-            // check if there a match with available groups
-            if(!count(array_intersect($configKeys, $availableGroups)))
+            // check if there a match with available flags / groups
+            if(!count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $data['realEstate']['group'])))
             {
                 continue;
             }

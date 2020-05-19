@@ -165,7 +165,7 @@ class RealEstateModulePreparation extends RealEstate
      *
      * @return array        array('group1' [,group2,group3,...])
      */
-    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = null, array $validGroups=null, string $defaultGroup=''): array
+    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = null, array $validGroups=null, string $defaultGroup='detail'): array
     {
         if(null === $separateGroups && $this->objModule->detailBlocks)
         {
