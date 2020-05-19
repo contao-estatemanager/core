@@ -1,0 +1,6 @@
+services:
+    contao_estate_manager.listener.insert_tags:
+        class: ContaoEstateManager\EstateManager\EventListener\InsertTagsListener
+        arguments:
+            - '@contao.framework'
+        public: true
