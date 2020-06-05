@@ -12,7 +12,6 @@ use ContaoEstateManager\ProviderModel;
 
 $GLOBALS['TL_DCA']['tl_provider'] = array
 (
-
     // Config
     'config' => array
     (
