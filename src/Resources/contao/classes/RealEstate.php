@@ -879,14 +879,16 @@ class RealEstate extends System
      */
     public function generateMainImage($imgSize): string
     {
-        $mainImage = $this->getMainImageUuid();
+        $objFile = FilesModel::findByUuid($this->getMainImageUuid());
 
-        if (empty($mainImage))
+        if($objFile === null)
         {
-            return '';
+            // Set default image
+            if($defaultImage = Config::get('defaultImage'))
+            {
+                $objFile = FilesModel::findByUuid($defaultImage);
+            }
         }
-
-        $objFile = FilesModel::findByUuid($mainImage);
 
         return $this->parseImageTemplate($objFile, $imgSize);
     }
@@ -908,21 +910,33 @@ class RealEstate extends System
 
         $objFiles = FilesModel::findMultipleByUuids($arrImages);
 
-        if ($objFiles === null)
+        if ($objFiles !== null)
         {
-            return $return;
+            while ($objFiles->next())
+            {
+                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize);
+
+                if (empty($strOutput))
+                {
+                    continue;
+                }
+
+                $return[] = $strOutput;
+            }
         }
 
-        while ($objFiles->next())
+        if (!count($return))
         {
-            $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize);
-
-            if (empty($strOutput))
+            // Set default image if no image found
+            if($defaultImage = Config::get('defaultImage'))
             {
-                continue;
-            }
+                $objFile = FilesModel::findByUuid($defaultImage);
 
-            $return[] = $strOutput;
+                if ($objFile !== null)
+                {
+                    $return[] = $this->parseImageTemplate($objFile, $imgSize);
+                }
+            }
         }
 
         return $return;
