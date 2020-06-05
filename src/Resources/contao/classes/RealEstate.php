@@ -358,6 +358,16 @@ class RealEstate extends System
             );
         }
 
+        // HOOK: get status tokens
+        if (isset($GLOBALS['TL_HOOKS']['getStatusTokens']) && \is_array($GLOBALS['TL_HOOKS']['getStatusTokens']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['getStatusTokens'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($validStatusToken, $return, $this);
+            }
+        }
+
         return $return;
     }
 
