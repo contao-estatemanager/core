@@ -80,33 +80,6 @@ abstract class ModuleRealEstate extends Module
         $objTemplate->jumpTo        = $this->jumpTo;
         $objTemplate->buttonLabel   = Translator::translateExpose('button_expose');
 
-        // --> @deprecated: to be removed in Version 1.0. Use $this->realEstate->xyz instead
-        $texts = $realEstate->getTexts(null, $this->maxTextLength ?: 0);
-        $statusTokens = StringUtil::deserialize($this->statusTokens);
-
-        $objTemplate->realEstateId = $objRealEstate->id;
-        $objTemplate->title        = $realEstate->title;
-
-        $objTemplate->link         = $realEstate->generateExposeUrl($this->jumpTo);
-        $objTemplate->linkExpose   = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo));
-        $objTemplate->linkHeadline = $this->generateLink($realEstate->title, $realEstate->generateExposeUrl($this->jumpTo));
-
-        $objTemplate->address      = $realEstate->getLocationString();
-        $objTemplate->teaser       = $texts['dreizeiler'];
-        $objTemplate->description  = $texts['objektbeschreibung'];
-
-        $objTemplate->marketingToken  = $realEstate->getMarketingToken();
-        $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
-
-        $objTemplate->mainDetails    = $realEstate->getMainDetails(Config::get('defaultNumberOfMainDetails') ?: 3);
-        $objTemplate->mainAttributes = $realEstate->getMainAttributes(Config::get('defaultNumberOfMainAttr') ?: 3);
-        $objTemplate->mainPrice      = $realEstate->getMainPrice();
-        $objTemplate->mainArea       = $realEstate->getMainArea();
-
-        $objTemplate->details        = $realEstate->getPropertiesByGroup(['price'], true);
-        $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
-        // <--
-
         $objTemplate->imgSize        = $this->imgSize;
 
         // Adding item extension: provider
@@ -124,10 +97,6 @@ abstract class ModuleRealEstate extends Module
         {
             $objTemplate->contactPerson = $this->parseContactPerson($realEstate);
         }
-
-        // Set real estate image
-        //$objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
-        $objTemplate->addImage = true;
 
         // HOOK: parse real estate
         if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
