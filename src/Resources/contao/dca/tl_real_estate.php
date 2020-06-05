@@ -5174,14 +5174,14 @@ class tl_real_estate extends Contao\Backend
      * Auto-generate a real estate alias if it has not been set yet
      *
      * @param mixed                $varValue
-     * @param Contao\DataContainer $dc
+     * @param mixed                $dc
      * @param string               $title
      *
      * @return string
      *
      * @throws Exception
      */
-    public function generateAlias($varValue, Contao\DataContainer $dc, string $title=''): string
+    public function generateAlias($varValue, $dc, string $title=''): string
     {
         // Generate alias if there is none
         if ($varValue == '')

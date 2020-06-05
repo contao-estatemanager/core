@@ -17,6 +17,7 @@ use Contao\Environment;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\Input;
+use Contao\Module;
 use Contao\PageModel;
 use Contao\Pagination;
 use Contao\StringUtil;
@@ -29,7 +30,7 @@ use Contao\Validator;
  * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-abstract class ModuleRealEstate extends \Module
+abstract class ModuleRealEstate extends Module
 {
     /**
      * Force empty list
@@ -103,6 +104,8 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
         // <--
 
+        $objTemplate->imgSize        = $this->imgSize;
+
         // Adding item extension: provider
         $objTemplate->addProvider = !!$this->addProvider;
 
@@ -120,7 +123,8 @@ abstract class ModuleRealEstate extends \Module
         }
 
         // Set real estate image
-        $objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
+        //$objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
+        $objTemplate->addImage = true;
 
         // HOOK: parse real estate
         if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))

@@ -266,4 +266,40 @@ class RealEstateModulePreparation extends RealEstate
 
         return parent::getContactPerson($forceCompleteAddress, $useProviderForwarding);
     }
+
+    /**
+     * Generate the main image
+     *
+     * @param null $imgSize
+     *
+     * @return string
+     */
+    public function generateMainImage($imgSize=null): string
+    {
+        if(null === $imgSize && $this->objModule->imgSize)
+        {
+            $imgSize = $this->objModule->imgSize;
+        }
+
+        return parent::generateMainImage($imgSize);
+    }
+
+    /**
+     *
+     *
+     * @param null $imgSize
+     * @param array|null $arrFields
+     * @param int|null $max
+     *
+     * @return array
+     */
+    public function generateGallery($imgSize=null, array $arrFields=null, int $max=null): array
+    {
+        if(null === $imgSize && $this->objModule->imgSize)
+        {
+            $imgSize = $this->objModule->imgSize;
+        }
+
+        return parent::generateGallery($imgSize, $arrFields, $max);
+    }
 }

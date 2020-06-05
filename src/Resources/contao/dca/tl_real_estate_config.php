@@ -24,12 +24,18 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields
 	'fields' => array
 	(
+        'estateManagerAdminEmail' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['estateManagerAdminEmail'],
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'friendly', 'decodeEntities'=>true, 'tl_class'=>'w50')
+        ),
 		'numberFormatDecimals' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatDecimals'],

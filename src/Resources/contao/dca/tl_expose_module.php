@@ -571,7 +571,7 @@ class tl_expose_module extends Contao\Backend
      */
     public function getGalleryItemTemplates(): array
     {
-        return $this->getTemplateGroup('expose_mod_gallery_items_');
+        return $this->getTemplateGroup('real_estate_gallery_item_');
     }
 
     /**

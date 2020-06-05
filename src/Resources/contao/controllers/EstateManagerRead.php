@@ -183,7 +183,7 @@ class EstateManagerRead extends AbstractEstateManagerController
 
         while($objRealEstates->next())
         {
-            $collection[] = $this->parseRealEstateCollection($objRealEstates);
+            $collection[] = $this->parseRealEstateCollection($objRealEstates->current());
         }
 
         return $collection;
@@ -307,7 +307,7 @@ class EstateManagerRead extends AbstractEstateManagerController
             {
                 if($objRealEstates->breitengrad && $objRealEstates->laengengrad)
                 {
-                    $parsedFields = $this->parseRealEstateCollection($objRealEstates);
+                    $parsedFields = $this->parseRealEstateCollection($objRealEstates->current());
 
                     $arrRealEstate = array(
                         'type'     => 'Feature',

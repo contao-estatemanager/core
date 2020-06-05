@@ -36,7 +36,7 @@ class ExposeModuleGallery extends ExposeModule
      * Template for gallery items
      * @var string
      */
-    protected $strItemTemplate = 'expose_mod_gallery_items';
+    protected $strItemTemplate = 'real_estate_gallery_item_default';
 
     /**
      * Do not display the module if there are no real estate

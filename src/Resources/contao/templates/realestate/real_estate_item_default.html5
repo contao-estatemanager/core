@@ -13,7 +13,7 @@
             <?php if ($this->jumpTo): ?>
                 <a href="<?= $this->link ?>" title="<?= $this->title ?>">
             <?php endif; ?>
-                <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
+            <figure class="image_container"><?= $this->realEstate->generateMainImage() ?></figure>
             <?php if ($this->jumpTo): ?>
                 </a>
             <?php endif; ?>

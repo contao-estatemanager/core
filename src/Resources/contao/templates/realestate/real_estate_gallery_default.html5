@@ -1,5 +1,0 @@
-<div class="real_estate_gallery_default block">
-  <?php foreach ($this->body as $image): ?>
-    <figure class="image_container"><?php $this->insert('picture_default', $image->picture); ?></figure>
-  <?php endforeach; ?>
-</div>

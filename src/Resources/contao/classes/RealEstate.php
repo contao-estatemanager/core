@@ -11,6 +11,9 @@
 namespace ContaoEstateManager;
 
 use Contao\Config;
+use Contao\Controller;
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
@@ -855,6 +858,99 @@ class RealEstate extends System
         }
 
         return $contactPerson;
+    }
+
+    /**
+     * Generate the main image
+     *
+     * @param $imgSize
+     *
+     * @return string
+     */
+    public function generateMainImage($imgSize): string
+    {
+        $mainImage = $this->getMainImageUuid();
+
+        if (empty($mainImage))
+        {
+            return '';
+        }
+
+        $objFile = FilesModel::findByUuid($mainImage);
+
+        return $this->parseImageTemplate($objFile, $imgSize);
+    }
+
+    /**
+     * Generate all images
+     *
+     * @param $imgSize
+     * @param $arrFields
+     * @param $max
+     *
+     * @return array
+     */
+    public function generateGallery($imgSize, array $arrFields=null, int $max=null): array
+    {
+        $return = array();
+
+        $arrImages = $this->getImagesUuids($arrFields, $max);
+
+        $objFiles = FilesModel::findMultipleByUuids($arrImages);
+
+        if ($objFiles === null)
+        {
+            return $return;
+        }
+
+        while ($objFiles->next())
+        {
+            $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize);
+
+            if (empty($strOutput))
+            {
+                continue;
+            }
+
+            $return[] = $strOutput;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Parse an image with the picture_default template
+     *
+     * @param $objFile
+     * @param $imgSize
+     *
+     * @return string
+     */
+    private function parseImageTemplate($objFile, $imgSize): string
+    {
+        // Break if the file does not exist
+        if (!file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
+        {
+            return '';
+        }
+
+        $arrImage = array
+        (
+            'id'         => $objFile->id,
+            'singleSRC'  => $objFile->path,
+            'title'      => 'TMP',
+            'filesModel' => $objFile,
+            'size'       => $imgSize,
+            'caption'    => null
+        );
+
+        $objTemplate = new FrontendTemplate('picture_default');
+
+        Controller::addImageToTemplate($objTemplate, $arrImage, null, null, $objFile);
+
+        $objTemplate->setData($objTemplate->picture);
+
+        return $objTemplate->parse();
     }
 
     /**
