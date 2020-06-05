@@ -306,30 +306,6 @@ class tl_module_estate_manager extends Contao\Backend
     }
 
     /**
-     * Return all real estate list templates as array
-     *
-     * @return array
-     *
-     * @deprecated to be removed in Version 1.0. Use anonymous function instead.
-     */
-    public function getRealEstateTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_item_');
-    }
-
-    /**
-     * Return all real estate item extension templates as array
-     *
-     * @return array
-     *
-     * @deprecated to be removed in Version 1.0. Use anonymous function instead.
-     */
-    public function getRealEstateExtensionTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_itemext_');
-    }
-
-    /**
      * Get all filter and return them as array
      *
      * @return array

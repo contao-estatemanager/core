@@ -79,7 +79,6 @@ abstract class ModuleRealEstate extends Module
 
         $objTemplate->jumpTo        = $this->jumpTo;
         $objTemplate->buttonLabel   = Translator::translateExpose('button_expose');
-
         $objTemplate->imgSize        = $this->imgSize;
 
         // Adding item extension: provider
@@ -266,42 +265,6 @@ abstract class ModuleRealEstate extends Module
     }
 
     /**
-     * Add main image to template
-     *
-     * @param $objTemplate
-     * @param $realEstate
-     * @param null $size
-     *
-     * @return bool
-     */
-    protected function addMainImageToTemplate(FrontendTemplate $objTemplate, RealEstate $realEstate, $size = null): bool
-    {
-        $objModel = FilesModel::findByUuid($realEstate->getMainImageUuid());
-
-        if($objModel === null)
-        {
-            // Set default image
-            $defaultImage = Config::get('defaultImage');
-
-            if($defaultImage)
-            {
-                $objModel = FilesModel::findByUuid($defaultImage);
-            }
-        }
-
-        if($size !== null)
-        {
-            $imgSize = $size;
-        }
-        else
-        {
-            $imgSize = $this->imgSize;
-        }
-
-        return $this->addSingleImageToTemplate($objTemplate, $objModel, $imgSize);
-    }
-
-    /**
      * Add image to template
      *
      * @param $objTemplate
@@ -395,24 +358,6 @@ abstract class ModuleRealEstate extends Module
             $this->Template->sortingOptions = $arrOptions;
             $this->Template->selectedSortingOption = $_SESSION['SORTING'];
         }
-    }
-
-    /**
-     * Generate a link and return it as string
-     *
-     * @param string  $strTitle
-     * @param string  $strLink
-     *
-     * @return string
-     *
-     * @deprecated to be removed in Version 1.0.
-     */
-    public function generateLink($strTitle, $strLink): string
-    {
-        return sprintf('<a href="%s" title="%s"><span>%s</span></a>',
-            $strLink,
-            StringUtil::specialchars(sprintf('%s', $strTitle), true),
-            $strTitle);
     }
 
     protected function redirectIfUnique()

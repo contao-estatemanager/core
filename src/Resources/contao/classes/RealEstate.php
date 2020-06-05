@@ -211,18 +211,6 @@ class RealEstate extends System
      * Return the first assignable image uuid
      *
      * @return string
-     *
-     * @deprecated to be removed in Version 1.0. Use getMainImageUuid instead.
-     */
-    public function getMainImage(): string
-    {
-        return $this->getMainImageUuid();
-    }
-
-    /**
-     * Return the first assignable image uuid
-     *
-     * @return string
      */
     public function getMainImageUuid(): string
     {
@@ -242,21 +230,6 @@ class RealEstate extends System
         }
 
         return '';
-    }
-
-    /**
-     * Return image uuid's of the real estate
-     *
-     * @param array $arrFields
-     * @param int $max
-     *
-     * @return array
-     *
-     * @deprecated to be removed in Version 1.0. Use getImagesUuids instead.
-     */
-    public function getImageBundle(array $arrFields=null, int $max=null): array
-    {
-        return $this->getImagesUuids($arrFields, $max);
     }
 
     /**
@@ -881,15 +854,6 @@ class RealEstate extends System
     {
         $objFile = FilesModel::findByUuid($this->getMainImageUuid());
 
-        if($objFile === null)
-        {
-            // Set default image
-            if($defaultImage = Config::get('defaultImage'))
-            {
-                $objFile = FilesModel::findByUuid($defaultImage);
-            }
-        }
-
         return $this->parseImageTemplate($objFile, $imgSize);
     }
 
@@ -914,7 +878,7 @@ class RealEstate extends System
         {
             while ($objFiles->next())
             {
-                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize);
+                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize, false);
 
                 if (empty($strOutput))
                 {
@@ -927,16 +891,7 @@ class RealEstate extends System
 
         if (!count($return))
         {
-            // Set default image if no image found
-            if($defaultImage = Config::get('defaultImage'))
-            {
-                $objFile = FilesModel::findByUuid($defaultImage);
-
-                if ($objFile !== null)
-                {
-                    $return[] = $this->parseImageTemplate($objFile, $imgSize);
-                }
-            }
+            $return[] = $this->parseImageTemplate(null, $imgSize);
         }
 
         return $return;
@@ -950,12 +905,19 @@ class RealEstate extends System
      *
      * @return string
      */
-    private function parseImageTemplate($objFile, $imgSize): string
+    private function parseImageTemplate($objFile, $imgSize, $blnImageFallback=true): string
     {
-        // Break if the file does not exist
-        if (!file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
+        if ($objFile === null || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
         {
-            return '';
+            // Set default image
+            if($blnImageFallback && $defaultImage = Config::get('defaultImage'))
+            {
+                $objFile = FilesModel::findByUuid($defaultImage);
+            }
+            else
+            {
+                return '';
+            }
         }
 
         $arrImage = array
