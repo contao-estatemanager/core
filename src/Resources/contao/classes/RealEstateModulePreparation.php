@@ -2,6 +2,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Config;
 use Contao\PageModel;
 use Contao\StringUtil;
 
@@ -27,7 +28,7 @@ class RealEstateModulePreparation extends RealEstate
         parent::__construct($objRealEstate, $typeId);
 
         /** @var ModuleRealEstate objModule */
-        $this->objModule  = $objModule;
+        $this->objModule = $objModule;
     }
 
     /**
@@ -199,6 +200,11 @@ class RealEstateModulePreparation extends RealEstate
             $max = $this->objModule->numberOfItems;
         }
 
+        if(null === $max)
+        {
+            $max = Config::get('defaultNumberOfMainDetails');
+        }
+
         return parent::getMainDetails($max);
     }
 
@@ -214,6 +220,11 @@ class RealEstateModulePreparation extends RealEstate
         if(null === $max && $this->objModule->numberOfItems)
         {
             $max = $this->objModule->numberOfItems;
+        }
+
+        if(null === $max)
+        {
+            $max = Config::get('defaultNumberOfMainAttr');
         }
 
         return parent::getMainAttributes($max);

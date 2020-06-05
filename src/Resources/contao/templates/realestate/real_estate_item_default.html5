@@ -1,8 +1,8 @@
 <div class="real_estate_item_default block<?= $this->class ?>">
     <div class="inner">
-      <?php if(count($this->arrStatusTokens)): ?>
+      <?php if($statusTokens = $this->realEstate->getStatusTokens()): ?>
         <div class="status">
-            <?php foreach ($this->arrStatusTokens as $statusToken): ?>
+            <?php foreach ($statusTokens as $statusToken): ?>
                 <div class="token <?=$statusToken['class']?>"><?=$statusToken['value']?></div>
             <?php endforeach; ?>
         </div>
@@ -11,7 +11,7 @@
       <?php if ($this->addImage): ?>
           <div class="main-image">
             <?php if ($this->jumpTo): ?>
-                <a href="<?= $this->link ?>" title="<?= $this->title ?>">
+                <a href="<?= $this->realEstate->generateExposeUrl() ?>" title="<?= $this->realEstate->title ?>">
             <?php endif; ?>
                 <figure class="image_container"><?php $this->insert('picture_default', $this->picture); ?></figure>
             <?php if ($this->jumpTo): ?>
@@ -20,11 +20,20 @@
           </div>
       <?php endif; ?>
 
-      <div class="title"><?= $this->jumpTo ? $this->linkHeadline : $this->title ?></div>
-      <div class="address"><?= $this->address ?></div>
+      <?php if ($this->jumpTo): ?>
+        <a href="<?= $this->realEstate->generateExposeUrl() ?>" title="<?= $this->realEstate->title ?>">
+      <?php endif; ?>
+        <h4 class="title">
+          <?= $this->realEstate->title ?>
+        </h4>
+      <?php if ($this->jumpTo): ?>
+        </a>
+     <?php endif; ?>
+
+      <div class="address"><?= $this->realEstate->getLocationString() ?></div>
 
       <div class="main-details">
-          <?php foreach ($this->mainDetails as $detail): ?>
+          <?php foreach ($this->realEstate->getMainDetails() as $detail): ?>
             <div class="detail <?= $detail['key'] ?><?= ($detail['class']) ? ' '.$detail['class'] : '' ?>" title="<?= $detail['label'] ?>: <?=strip_tags($detail['value'])?>">
               <span class="label"><?= $detail['label'] ?></span>
               <span class="value"><?= $detail['value'] ?></span>
@@ -33,10 +42,14 @@
       </div>
 
       <div class="bottom">
-        <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>"><?= $this->mainPrice['value'] ?></div>
-          <?php if ($this->jumpTo): ?>
-            <div class="expose-link"><?= $this->linkExpose ?></div>
-          <?php endif; ?>
+        <?php $mainPrice = $this->realEstate->getMainPrice() ?>
+        <div class="main-price <?= $mainPrice['class'] ?>" title="<?= $mainPrice['label'] ?>"><?= $mainPrice['value'] ?></div>
+
+        <?php if ($this->jumpTo): ?>
+          <a href="<?= $this->realEstate->generateExposeUrl() ?>" title="<?= $this->realEstate->title ?>" class="expose-link">
+              <?= $this->buttonLabel ?>
+          </a>
+        <?php endif; ?>
       </div>
 
       <?php if ($this->addProvider): ?>

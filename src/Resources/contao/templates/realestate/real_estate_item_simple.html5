@@ -14,18 +14,27 @@
       <?php endif; ?>
 
       <div class="content">
-          <div class="address"><?= $this->address ?></div>
-          <div class="title"><?= $this->jumpTo ? $this->linkHeadline : $this->title ?></div>
+          <div class="address"><?= $this->realEstate->getLocationString() ?></div>
+
+          <?php if ($this->jumpTo): ?>
+          <a href="<?= $this->realEstate->generateExposeUrl() ?>" title="<?= $this->realEstate->title ?>">
+              <?php endif; ?>
+              <h4 class="title">
+                  <?= $this->realEstate->title ?>
+              </h4>
+              <?php if ($this->jumpTo): ?>
+          </a>
+          <?php endif; ?>
 
           <div class="main-details">
-              <div class="objektart <?= $this->objektart['class'] ?>" title="<?= $this->objektart['label'] ?>">
-                  <span class="label"><?= $this->objektart['label'] ?></span>
-                  <span class="value"><?= $this->objektart['value'] ?></span>
+              <?php $objectType = $this->realEstate->get('objektart') ?>
+              <div class="<?= $objectType['class'] ?>" title="<?= $objectType['label'] ?>">
+                  <span class="label"><?= $objectType['label'] ?></span>
+                  <span class="value"><?= $objectType['value'] ?></span>
               </div>
-              <div class="main-price <?= $this->mainPrice['class'] ?>" title="<?= $this->mainPrice['label'] ?>">
-                  <span class="label"><?= $this->mainPrice['label'] ?></span>
-                  <span class="value"><?= $this->mainPrice['value'] ?></span>
-              </div>
+
+              <?php $mainPrice = $this->realEstate->getMainPrice() ?>
+              <div class="main-price <?= $mainPrice['class'] ?>" title="<?= $mainPrice['label'] ?>"><?= $mainPrice['value'] ?></div>
           </div>
       </div>
 

@@ -76,13 +76,16 @@ abstract class ModuleRealEstate extends \Module
         $objTemplate->realEstate    = $realEstate;
         $objTemplate->arrExtensions = array();
 
+        $objTemplate->jumpTo        = $this->jumpTo;
+        $objTemplate->buttonLabel   = Translator::translateExpose('button_expose');
+
         // --> @deprecated: to be removed in Version 1.0. Use $this->realEstate->xyz instead
         $texts = $realEstate->getTexts(null, $this->maxTextLength ?: 0);
         $statusTokens = StringUtil::deserialize($this->statusTokens);
 
         $objTemplate->realEstateId = $objRealEstate->id;
         $objTemplate->title        = $realEstate->title;
-        $objTemplate->jumpTo       = $this->jumpTo;
+
         $objTemplate->link         = $realEstate->generateExposeUrl($this->jumpTo);
         $objTemplate->linkExpose   = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo));
         $objTemplate->linkHeadline = $this->generateLink($realEstate->title, $realEstate->generateExposeUrl($this->jumpTo));
@@ -428,6 +431,8 @@ abstract class ModuleRealEstate extends \Module
      * @param string  $strLink
      *
      * @return string
+     *
+     * @deprecated to be removed in Version 1.0.
      */
     public function generateLink($strTitle, $strLink): string
     {
