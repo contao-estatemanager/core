@@ -11,9 +11,11 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
- * Reads and writes interface mappings
+ * Reads and writes interface logs
  *
  * @property integer $id
  * @property integer $pid
@@ -27,41 +29,42 @@ namespace ContaoEstateManager;
  *
  * @method static InterfaceLogModel|null findById($id, array $opt=array())
  * @method static InterfaceLogModel|null findByPk($id, array $opt=array())
- * @method static InterfaceLogModel|null findOneBy($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByPid($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneBySource($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByLevel($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByAction($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByUsername($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByText($col, $val, $opt=array())
- * @method static InterfaceLogModel|null findOneByData($col, $val, $opt=array())
+ * @method static InterfaceLogModel|null findOneBy($col, $val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByPid($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByTstamp($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByLevel($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneBySource($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByAction($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByUsername($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByText($val, array $opt=array())
+ * @method static InterfaceLogModel|null findOneByData($val, array $opt=array())
  *
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByPid($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findBySource($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByLevel($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByAction($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByUsername($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByText($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findByData($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findBy($col, $val, array $opt=array())
- * @method static \Model\Collection|InterfaceLogModel[]|InterfaceLogModel|null findAll(array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByPid($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByLevel($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findBySource($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByAction($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByUsername($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByText($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findByData($val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|InterfaceLogModel[]|InterfaceLogModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
- * @method static integer countByTstamp($id, array $opt=array())
- * @method static integer countBySource($id, array $opt=array())
- * @method static integer countByLevel($id, array $opt=array())
- * @method static integer countByAction($id, array $opt=array())
- * @method static integer countByUsername($id, array $opt=array())
- * @method static integer countByText($id, array $opt=array())
- * @method static integer countByData($id, array $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByLevel($val, array $opt=array())
+ * @method static integer countBySource($val, array $opt=array())
+ * @method static integer countByAction($val, array $opt=array())
+ * @method static integer countByUsername($val, array $opt=array())
+ * @method static integer countByText($val, array $opt=array())
+ * @method static integer countByData($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class InterfaceLogModel extends \Model
+class InterfaceLogModel extends Model
 {
 
     /**

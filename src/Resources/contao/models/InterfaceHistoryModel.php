@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
  * Reads and writes interface history records
@@ -25,39 +27,39 @@ namespace ContaoEstateManager;
  *
  * @method static InterfaceHistoryModel|null findById($id, array $opt=array())
  * @method static InterfaceHistoryModel|null findByPk($id, array $opt=array())
- * @method static InterfaceHistoryModel|null findOneBy($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByPid($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByTstamp($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneBySource($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByAction($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByUsername($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByText($col, $val, $opt=array())
- * @method static InterfaceHistoryModel|null findOneByStatus($col, $val, $opt=array())
+ * @method static InterfaceHistoryModel|null findOneBy($col, $val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByPid($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByTstamp($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneBySource($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByAction($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByUsername($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByText($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByStatus($val, array $opt=array())
  *
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByPid($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBySource($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByAction($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByUsername($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByText($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByStatus($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBy($col, $val, array $opt=array())
- * @method static \Model\Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findAll(array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByPid($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBySource($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByAction($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByUsername($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByText($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByStatus($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
- * @method static integer countByPid($id, array $opt=array())
- * @method static integer countByTstamp($id, array $opt=array())
- * @method static integer countBySource($id, array $opt=array())
- * @method static integer countByAction($id, array $opt=array())
- * @method static integer countByUsername($id, array $opt=array())
- * @method static integer countByText($id, array $opt=array())
- * @method static integer countByStatus($id, array $opt=array())
+ * @method static integer countByPid($val, array $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countBySource($val, array $opt=array())
+ * @method static integer countByAction($val, array $opt=array())
+ * @method static integer countByUsername($val, array $opt=array())
+ * @method static integer countByText($val, array $opt=array())
+ * @method static integer countByStatus($val, array $opt=array())
  *
- * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class InterfaceHistoryModel extends \Model
+class InterfaceHistoryModel extends Model
 {
 
     /**

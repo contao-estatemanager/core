@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
  * Reads and writes contact persons
@@ -24,131 +26,152 @@ namespace ContaoEstateManager;
  * @property string  $titel
  * @property string  $position
  * @property string  $anrede_brief
- * @property string  $zusatzfeld
+ * @property string  $email_zentrale
+ * @property string  $email_direkt
+ * @property string  $email_privat
+ * @property string  $email_sonstige
+ * @property string  $email_feedback
+ * @property string  $tel_zentrale
+ * @property string  $tel_durchw
+ * @property string  $tel_fax
+ * @property string  $tel_handy
+ * @property string  $tel_privat
+ * @property string  $tel_sonstige
  * @property string  $strasse
  * @property string  $hausnummer
  * @property string  $plz
  * @property string  $ort
- * @property string  $postfach
- * @property string  $postf_plz
- * @property string  $postf_ort
  * @property string  $land
- * @property string  $email_privat
- * @property string  $email_sonstige
- * @property string  $email_feedback
- * @property string  $tel_privat
- * @property string  $tel_sonstige
- * @property string  $url
- * @property string  $adressfreigabe
+ * @property string  $zusatzfeld
+ * @property string  $freitextfeld
+ * @property boolean $adressfreigabe
+ * @property string  $singleSRC
+ * @property string  $postfach
+ * @property string  $postfach_plz
+ * @property string  $postfach_ort
  * @property string  $personennummer
  * @property string  $immobilientreuhaenderid
- * @property string  $singleSRC
- * @property string  $freitextfeld
  * @property boolean $published
  *
  * @method static ContactPersonModel|null findById($id, array $opt=array())
  * @method static ContactPersonModel|null findByPk($id, array $opt=array())
- * @method static ContactPersonModel|null findOneBy($col, $val, $opt=array())
- * @method static ContactPersonModel|null findOneByPid($val, $opt=array())
- * @method static ContactPersonModel|null findOneByTstamp($val, $opt=array())
- * @method static ContactPersonModel|null findOneByName($val, $opt=array())
- * @method static ContactPersonModel|null findOneByVorname($val, $opt=array())
- * @method static ContactPersonModel|null findOneByAnrede($val, $opt=array())
- * @method static ContactPersonModel|null findOneByTitel($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPosition($val, $opt=array())
- * @method static ContactPersonModel|null findOneByAnrede_brief($val, $opt=array())
- * @method static ContactPersonModel|null findOneByFirma($val, $opt=array())
- * @method static ContactPersonModel|null findOneByZusatzfeld($val, $opt=array())
- * @method static ContactPersonModel|null findOneByStrasse($val, $opt=array())
- * @method static ContactPersonModel|null findOneByHausnummer($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPlz($val, $opt=array())
- * @method static ContactPersonModel|null findOneByOrt($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPostfach($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPostf_plz($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPostf_ort($val, $opt=array())
- * @method static ContactPersonModel|null findOneByLand($val, $opt=array())
- * @method static ContactPersonModel|null findOneByEmail_privat($val, $opt=array())
- * @method static ContactPersonModel|null findOneByEmail_sonstige($val, $opt=array())
- * @method static ContactPersonModel|null findOneByEmail_feedback($val, $opt=array())
- * @method static ContactPersonModel|null findOneByTel_privat($val, $opt=array())
- * @method static ContactPersonModel|null findOneByTel_sonstige($val, $opt=array())
- * @method static ContactPersonModel|null findOneByUrl($val, $opt=array())
- * @method static ContactPersonModel|null findOneByAdressfreigabe($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPersonennummer($val, $opt=array())
- * @method static ContactPersonModel|null findOneByImmobilientreuhaenderid($val, $opt=array())
- * @method static ContactPersonModel|null findOneBySingleSRC($val, $opt=array())
- * @method static ContactPersonModel|null findOneByFreitextfeld($val, $opt=array())
- * @method static ContactPersonModel|null findOneByPublished($val, $opt=array())
+ * @method static ContactPersonModel|null findOneBy($col, $val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPid($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTstamp($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByAnrede($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByFirma($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByVorname($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByName($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTitel($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPosition($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByAnrede_brief($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByEmail_zentrale($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByEmail_direkt($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByEmail_privat($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByEmail_sonstige($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByEmail_feedback($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_zentrale($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_durchw($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_fax($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_handy($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_privat($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByTel_sonstige($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByStrasse($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByHausnummer($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPlz($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByOrt($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByLand($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByZusatzfeld($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByFreitextfeld($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByAdressfreigabe($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneBySingleSRC($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPostfach($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPostfach_plz($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPostfach_ort($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPersonennummer($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByImmobilientreuhaenderid($val, array $opt=array())
+ * @method static ContactPersonModel|null findOneByPublished($val, array $opt=array())
  *
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPid($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByName($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByVorname($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByAnrede($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByTitel($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPosition($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByAnrede_brief($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByFirma($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByZusatzfeld($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByStrasse($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByHausnummer($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPlz($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByOrt($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPostfach($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPostf_plz($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPostf_ort($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByLand($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_privat($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_sonstige($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_feedback($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_privat($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_sonstige($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByUrl($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByAdressfreigabe($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPersonennummer($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByImmobilientreuhaenderid($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findBySingleSRC($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByFreitextfeld($val, array $opt=array())
- * @method static \Model\Collection|ContactPersonModel[]|ContactPersonModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPid($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByAnrede($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByFirma($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByVorname($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByName($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTitel($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPosition($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByAnrede_brief($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_zentrale($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_direkt($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_privat($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_sonstige($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByEmail_feedback($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_zentrale($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_durchw($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_fax($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_handy($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_privat($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByTel_sonstige($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByStrasse($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByHausnummer($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPlz($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByOrt($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByLand($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByZusatzfeld($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByFreitextfeld($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByAdressfreigabe($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findBySingleSRC($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPostfach($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPostfach_plz($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPostfach_ort($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPersonennummer($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByImmobilientreuhaenderid($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|ContactPersonModel[]|ContactPersonModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
- * @method static integer countByTstamp($val, $opt=array())
- * @method static integer countByName($val, $opt=array())
- * @method static integer countByVorname($val, $opt=array())
- * @method static integer countByAnrede($val, $opt=array())
- * @method static integer countByTitel($val, $opt=array())
- * @method static integer countByPosition($val, $opt=array())
- * @method static integer countByAnrede_brief($val, $opt=array())
- * @method static integer countByFirma($val, $opt=array())
- * @method static integer countByZusatzfeld($val, $opt=array())
- * @method static integer countByStrasse($val, $opt=array())
- * @method static integer countByHausnummer($val, $opt=array())
- * @method static integer countByPlz($val, $opt=array())
- * @method static integer countByOrt($val, $opt=array())
- * @method static integer countByPostfach($val, $opt=array())
- * @method static integer countByPostf_plz($val, $opt=array())
- * @method static integer countByPostf_ort($val, $opt=array())
- * @method static integer countByLand($val, $opt=array())
- * @method static integer countByEmail_privat($val, $opt=array())
- * @method static integer countByEmail_sonstige($val, $opt=array())
- * @method static integer countByEmail_feedback($val, $opt=array())
- * @method static integer countByTel_privat($val, $opt=array())
- * @method static integer countByTel_sonstige($val, $opt=array())
- * @method static integer countByUrl($val, $opt=array())
- * @method static integer countByAdressfreigabe($val, $opt=array())
- * @method static integer countByPersonennummer($val, $opt=array())
- * @method static integer countByImmobilientreuhaenderid($val, $opt=array())
- * @method static integer countBySingleSRC($val, $opt=array())
- * @method static integer countByFreitextfeld($val, $opt=array())
- * @method static integer countByPublished($val, $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByAnrede($val, array $opt=array())
+ * @method static integer countByFirma($val, array $opt=array())
+ * @method static integer countByVorname($val, array $opt=array())
+ * @method static integer countByName($val, array $opt=array())
+ * @method static integer countByTitel($val, array $opt=array())
+ * @method static integer countByPosition($val, array $opt=array())
+ * @method static integer countByAnrede_brief($val, array $opt=array())
+ * @method static integer countByEmail_zentrale($val, array $opt=array())
+ * @method static integer countByEmail_direkt($val, array $opt=array())
+ * @method static integer countByEmail_privat($val, array $opt=array())
+ * @method static integer countByEmail_sonstige($val, array $opt=array())
+ * @method static integer countByEmail_feedback($val, array $opt=array())
+ * @method static integer countByTel_zentrale($val, array $opt=array())
+ * @method static integer countByTel_durchw($val, array $opt=array())
+ * @method static integer countByTel_fax($val, array $opt=array())
+ * @method static integer countByTel_handy($val, array $opt=array())
+ * @method static integer countByTel_privat($val, array $opt=array())
+ * @method static integer countByTel_sonstige($val, array $opt=array())
+ * @method static integer countByStrasse($val, array $opt=array())
+ * @method static integer countByHausnummer($val, array $opt=array())
+ * @method static integer countByPlz($val, array $opt=array())
+ * @method static integer countByOrt($val, array $opt=array())
+ * @method static integer countByLand($val, array $opt=array())
+ * @method static integer countByZusatzfeld($val, array $opt=array())
+ * @method static integer countByFreitextfeld($val, array $opt=array())
+ * @method static integer countByAdressfreigabe($val, array $opt=array())
+ * @method static integer countBySingleSRC($val, array $opt=array())
+ * @method static integer countByPostfach($val, array $opt=array())
+ * @method static integer countByPostfach_plz($val, array $opt=array())
+ * @method static integer countByPostfach_ort($val, array $opt=array())
+ * @method static integer countByPersonennummer($val, array $opt=array())
+ * @method static integer countByImmobilientreuhaenderid($val, array $opt=array())
+ * @method static integer countByPublished($val, array $opt=array())
  *
- * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class ContactPersonModel extends \Model
+class ContactPersonModel extends Model
 {
 
     /**
