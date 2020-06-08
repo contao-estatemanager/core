@@ -10,12 +10,14 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Widget;
+
 /**
  * Generates and validates filter items
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-abstract class FilterWidget extends \Widget
+abstract class FilterWidget extends Widget
 {
     /**
      * Filter object
@@ -23,6 +25,13 @@ abstract class FilterWidget extends \Widget
      * @var Filter
      */
     protected $objFilter;
+
+    /**
+     * Filter session object
+     *
+     * @var FilterSession
+     */
+    protected $objFilterSession;
 
     /**
      * Multiple

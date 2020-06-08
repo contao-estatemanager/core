@@ -2,6 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-<<?=$this->fontSize?>><?=$this->title?></<?=$this->fontSize?>>
+<<?=$this->fontSize?>><?=$this->realEstate->title?></<?=$this->fontSize?>>
 
 <?php $this->endblock(); ?>

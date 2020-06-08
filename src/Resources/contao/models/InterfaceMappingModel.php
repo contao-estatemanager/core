@@ -11,6 +11,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
  * Reads and writes interface mappings
@@ -18,47 +20,51 @@ namespace ContaoEstateManager;
  * @property integer $id
  * @property integer $pid
  * @property integer $tstamp
- * @property string  $attribute
- * @property string  $oiField
- * @property string  $oiFieldGroup
- * @property string  $oiConditionField
- * @property string  $oiConditionValue
+ * @property integer $level
+ * @property string  $source
+ * @property string  $action
+ * @property string  $username
+ * @property string  $text
+ * @property string  $data
  *
  * @method static InterfaceMappingModel|null findById($id, array $opt=array())
  * @method static InterfaceMappingModel|null findByPk($id, array $opt=array())
- * @method static InterfaceMappingModel|null findOneBy($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByPid($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByTstamp($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByAttribute($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByOiField($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByOiFieldGroup($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByOiConditionField($col, $val, $opt=array())
- * @method static InterfaceMappingModel|null findOneByOiConditionValue($col, $val, $opt=array())
+ * @method static InterfaceMappingModel|null findOneBy($col, $val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByPid($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByTstamp($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByLevel($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneBySource($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByAction($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByUsername($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByText($val, array $opt=array())
+ * @method static InterfaceMappingModel|null findOneByData($val, array $opt=array())
  *
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByPid($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByAttribute($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByOiField($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByOiFieldGroup($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByOiConditionField($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByOiConditionValue($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findBy($col, $val, array $opt=array())
- * @method static \Model\Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findAll(array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByPid($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByLevel($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findBySource($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByAction($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByUsername($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByText($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findByData($val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|InterfaceMappingModel[]|InterfaceMappingModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
- * @method static integer countByTstamp($id, array $opt=array())
- * @method static integer countByAttribute($id, array $opt=array())
- * @method static integer countByOiField($id, array $opt=array())
- * @method static integer countByOiFieldGroup$id, array $opt=array())
- * @method static integer countByOiConditionField$id, array $opt=array())
- * @method static integer countByOiConditionValue$id, array $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByLevel($val, array $opt=array())
+ * @method static integer countBySource($val, array $opt=array())
+ * @method static integer countByAction($val, array $opt=array())
+ * @method static integer countByUsername($val, array $opt=array())
+ * @method static integer countByText($val, array $opt=array())
+ * @method static integer countByData($val, array $opt=array())
  *
- * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class InterfaceMappingModel extends \Model
+class InterfaceMappingModel extends Model
 {
 
     /**

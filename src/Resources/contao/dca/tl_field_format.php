@@ -8,9 +8,7 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-use ContaoEstateManager\FieldFormatModel;
-
-System::loadLanguageFile('tl_real_estate');
+Contao\System::loadLanguageFile('tl_real_estate');
 
 $GLOBALS['TL_DCA']['tl_field_format'] = array
 (
@@ -44,29 +42,29 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             'mode'                    => 1,
             'fields'                  => array('fieldname'),
             'flag'                    => 1,
-            'panelLayout'             => 'filter;sort,search,limit'
+            'panelLayout'             => 'filter;search,limit'
         ),
         'label' => array
         (
             'fields'                  => array('fieldname'),
-            'showColumns'             => true
+            'label_callback'          => array('tl_field_format', 'addLabel')
         ),
         'global_operations' => array
         (
             'importFieldFormats' => array
             (
-                'label'             => &$GLOBALS['TL_LANG']['tl_field_format']['importFieldFormats'],
-                'href'              => 'key=importFieldFormats',
-                'class'             => 'header_field_format_import',
-                'icon'              => 'sync.svg',
-                'attributes'        => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_field_format']['importConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['importFieldFormats'],
+                'href'                => 'key=importFieldFormats',
+                'class'               => 'header_field_format_import',
+                'icon'                => 'sync.svg',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_field_format']['importConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'all' => array
             (
-                'label'             => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href'              => 'act=select',
-                'class'             => 'header_edit_all',
-                'attributes'        => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
+                'href'                => 'act=select',
+                'class'               => 'header_edit_all',
+                'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             )
         ),
         'operations' => array
@@ -75,7 +73,8 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['edit'],
                 'href'                => 'table=tl_field_format_action',
-                'icon'                => 'edit.svg'
+                'icon'                => 'edit.svg',
+                'button_callback'     => array('tl_field_format', 'editFormatAction')
             ),
             'editheader' => array
             (
@@ -88,16 +87,14 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['copy'],
                 'href'                => 'act=copy',
-                'icon'                => 'copy.svg',
-                'button_callback'     => array('tl_field_format', 'copyGroup')
+                'icon'                => 'copy.svg'
             ),
             'delete' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_field_format', 'deleteArchive')
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show' => array
             (
@@ -111,14 +108,14 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'  => array('useCondition'),
-        'default'       => '{format_legend},fieldname,cssClass,forceOutput,useCondition;'
+        '__selector__'                => array('useCondition'),
+        'default'                     => '{format_legend},fieldname,cssClass,forceOutput,useCondition;'
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'useCondition'  => 'conditionFields'
+        'useCondition'                => 'conditionFields'
     ),
 
     // Fields
@@ -135,49 +132,53 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
             'default'                 => time(),
-            'sorting'                 => true,
             'flag'                    => 6,
             'eval'                    => array('rgxp'=>'datim', 'doNotCopy'=>true),
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
         'fieldname'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['fieldname'],
-            'inputType'                 => 'select',
-            'exclude'                   => true,
-            'search'                    => true,
-            'options_callback'          => array('tl_field_format', 'getRealEstateColumns'),
-            'eval'                      => array('tl_class'=>'w50', 'mandatory'=>true, 'chosen' => true),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['fieldname'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'search'                  => true,
+            'options_callback'        => array('tl_field_format', 'getRealEstateColumns'),
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'chosen' => true),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'cssClass'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['cssClass'],
-            'inputType'                 => 'text',
-            'exclude'                   => true,
-            'search'                    => true,
-            'eval'                      => array('tl_class'=>'w50', 'maxlength'=>255),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['cssClass'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'search'                  => true,
+            'eval'                    => array('tl_class'=>'w50', 'maxlength'=>255),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'forceOutput'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['forceOutput'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class'=>'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['forceOutput'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'filter'                  => true,
+            'eval'                    => array('tl_class'=>'w50 m12'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'useCondition'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['useCondition'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
-            'sql'                       => "char(1) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['useCondition'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'filter'                  => true,
+            'eval'                    => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'conditionFields'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format']['conditionFields'],
-            'inputType' 	            => 'multiColumnWizard',
-            'eval' 			            => array
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['conditionFields'],
+            'exclude'                 => true,
+            'inputType' 	          => 'multiColumnWizard',
+            'eval' 			          => array
             (
                 'columnFields' => array
                 (
@@ -205,8 +206,9 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_field_format extends Backend
+class tl_field_format extends Contao\Backend
 {
 
     /**
@@ -215,7 +217,7 @@ class tl_field_format extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -223,9 +225,46 @@ class tl_field_format extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        if (!$this->User->hasAccess('field_format', 'modules'))
+        {
+            throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access the field format module.');
+        }
+    }
+
+    /**
+     * Add the label to each record
+     *
+     * @param array $arrRow
+     *
+     * @return string
+     */
+    public function addLabel(array $arrRow): string
+    {
+        return sprintf('<div class="tl_content_left">%s <span style="color:#999;padding-left:3px">[%s]</span></div>', $arrRow['fieldname'], $GLOBALS['TL_LANG']['tl_real_estate'][$arrRow['fieldname']][0]);
+    }
+
+    /**
+     * Return the edit format action button
+     *
+     * @param array  $row
+     * @param string $href
+     * @param string $label
+     * @param string $title
+     * @param string $icon
+     * @param string $attributes
+     *
+     * @return string
+     */
+    public function editFormatAction(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
+    {
+        return $this->User->canEditFieldsOf('tl_field_format_action') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -240,43 +279,9 @@ class tl_field_format extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_field_format') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-    }
-
-    /**
-     * Return the copy group button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function copyGroup($row, $href, $label, $title, $icon, $attributes)
-    {
-        return $this->User->hasAccess('create', 'fieldformat') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-    }
-
-    /**
-     * Return the delete archive button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function deleteArchive($row, $href, $label, $title, $icon, $attributes)
-    {
-        return $this->User->hasAccess('delete', 'fieldformat') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_field_format') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -284,20 +289,20 @@ class tl_field_format extends Backend
      *
      * @return array
      */
-
-    public function getRealEstateColumns(){
+    public function getRealEstateColumns(): array
+    {
         $options   = array();
         $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
 
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $options[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
+                    $options[$field] = $field.' ['.$GLOBALS['TL_LANG']['tl_real_estate'][$field][0].']';
                 }
             }
         }

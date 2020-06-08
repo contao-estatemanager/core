@@ -10,51 +10,124 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
  * Reads and writes real estate types
  *
  * @property integer $id
  * @property integer $pid
+ * @property integer $sorting
  * @property integer $tstamp
- * @property string  $longTitle
- * @property integer $referencePage
- * @property string  $jumpTo
  * @property string  $title
+ * @property string  $longTitle
+ * @property integer $similarType
+ * @property integer $referencePage
+ * @property integer $jumpTo
+ * @property string  $nutzungsart
+ * @property string  $vermarktungsart
+ * @property string  $objektart
+ * @property boolean $excludeTypes
+ * @property string  $excludedTypes
+ * @property string  $price
+ * @property string  $area
+ * @property string  $toggleFilter
+ * @property string  $sortingOptions
+ * @property string  $mainDetails
+ * @property string  $mainAttributes
+ * @property boolean $orderFields
+ * @property string  $orderedFields
+ * @property string  $language
+ * @property boolean $defaultType
  * @property boolean $published
  *
  * @method static RealEstateTypeModel|null findById($id, array $opt=array())
  * @method static RealEstateTypeModel|null findByPk($id, array $opt=array())
- * @method static RealEstateTypeModel|null findOneBy($col, $val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByTstamp($val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByLongTitle($val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByReferencePage($val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByJumpTo($val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByTitle($val, $opt=array())
- * @method static RealEstateTypeModel|null findOneByPublished($val, $opt=array())
+ * @method static RealEstateTypeModel|null findOneBy($col, $val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByPid($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneBySorting($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByTstamp($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByTitle($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByLongTitle($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneBySimilarType($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByReferencePage($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByJumpTo($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByNutzungsart($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByVermarktungsart($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByObjektart($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByExcludeTypes($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByExcludedTypes($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByPrice($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByArea($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByToggleFilter($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneBySortingOptions($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByMainDetails($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByMainAttributes($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByOrderFields($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByOrderedFields($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByLanguage($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByDefaultType($val, array $opt=array())
+ * @method static RealEstateTypeModel|null findOneByPublished($val, array $opt=array())
  *
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPid($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByLongTitle($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByReferencePage($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByJumpTo($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByTitle($val, array $opt=array())
- * @method static \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPid($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findBySorting($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByTitle($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByLongTitle($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findBySimilarType($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByReferencePage($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByJumpTo($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByNutzungsart($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByVermarktungsart($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByObjektart($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByExcludeTypes($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByExcludedTypes($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPrice($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByArea($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByToggleFilter($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findBySortingOptions($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByMainDetails($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByMainAttributes($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByOrderFields($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByOrderedFields($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByLanguage($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByDefaultType($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
- * @method static integer countByTstamp($id, array $opt=array())
- * @method static integer countByLongTitle($id, array $opt=array())
- * @method static integer countByReferencePage($id, array $opt=array())
- * @method static integer countByJumpTo($id, array $opt=array())
- * @method static integer countByTitle($id, array $opt=array())
- * @method static integer countByPublished$id, array $opt=array())
+ * @method static integer countBySorting($val, array $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByTitle($val, array $opt=array())
+ * @method static integer countByLongTitle($val, array $opt=array())
+ * @method static integer countBySimilarType($val, array $opt=array())
+ * @method static integer countByReferencePage($val, array $opt=array())
+ * @method static integer countByJumpTo($val, array $opt=array())
+ * @method static integer countByNutzungsart($val, array $opt=array())
+ * @method static integer countByVermarktungsart($val, array $opt=array())
+ * @method static integer countByObjektart($val, array $opt=array())
+ * @method static integer countByExcludeTypes($val, array $opt=array())
+ * @method static integer countByExcludedTypes($val, array $opt=array())
+ * @method static integer countByPrice($val, array $opt=array())
+ * @method static integer countByArea($val, array $opt=array())
+ * @method static integer countByToggleFilter($val, array $opt=array())
+ * @method static integer countBySortingOptions($val, array $opt=array())
+ * @method static integer countByMainDetails($val, array $opt=array())
+ * @method static integer countByMainAttributes($val, array $opt=array())
+ * @method static integer countByOrderFields($val, array $opt=array())
+ * @method static integer countByOrderedFields($val, array $opt=array())
+ * @method static integer countByLanguage($val, array $opt=array())
+ * @method static integer countByDefaultType($val, array $opt=array())
+ * @method static integer countByPublished($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class RealEstateTypeModel extends \Model
+class RealEstateTypeModel extends Model
 {
 
     /**

@@ -8,10 +8,9 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
-// load misc language
-\System::loadLanguageFile('tl_real_estate_misc');
-\System::loadLanguageFile('tl_contact_person');
+Contao\System::loadLanguageFile('tl_real_estate_misc');
+Contao\System::loadLanguageFile('tl_contact_person');
+Contao\System::loadLanguageFile('tl_real_estate');
 
 $GLOBALS['TL_DCA']['tl_expose_module'] = array
 (
@@ -22,10 +21,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'dataContainer'               => 'Table',
         'enableVersioning'            => true,
         'markAsCopy'                  => 'name',
-        'onload_callback' => array
-        (
-            array('tl_expose_module', 'checkPermission'),
-        ),
         'sql' => array
         (
             'keys' => array
@@ -43,11 +38,12 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'mode'                    => 2,
             'fields'                  => array('name'),
             'flag'                    => 1,
-            'panelLayout'             => 'filter;sort,search,limit',
+            'panelLayout'             => 'filter;sort,search,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('name')
+            'fields'                  => array('name', 'type'),
+            'format'                  => '<div class="tl_content_left">%s <span style="color:#999;padding-left:3px">[%s]</span></div>'
         ),
         'global_operations' => array
         (
@@ -225,7 +221,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['forceFullAddress'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -254,7 +249,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['gallerySkipOnEmpty'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -268,7 +262,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
             'options_callback' => function ()
             {
-                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+                return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
             },
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
@@ -313,7 +307,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['summariseDetailBlocks'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -322,7 +315,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['addHeadings'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -331,7 +323,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['includeAddress'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -367,6 +358,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'fields'  => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fields'],
+            'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
             (
@@ -376,7 +368,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
                     'field' => array
                     (
                         'label'             => &$GLOBALS['TL_LANG']['tl_expose_module']['show_fields'],
-                        'exclude'           => true,
                         'inputType'         => 'select',
                         'options_callback'  => array('tl_expose_module', 'getRealEstateFields'),
                         'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
@@ -399,7 +390,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['useProviderForwarding'],
             'exclude'                 => true,
-            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -438,7 +428,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['html'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'textarea',
             'eval'                    => array('allowHtml'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'helpwizard'=>true),
             'explanation'             => 'insertTags',
@@ -448,7 +437,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['text'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true),
             'explanation'             => 'insertTags',
@@ -520,8 +508,9 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_expose_module extends Backend
+class tl_expose_module extends Contao\Backend
 {
 
     /**
@@ -530,17 +519,7 @@ class tl_expose_module extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
-    }
-
-    /**
-     * Check permissions to edit the table
-     *
-     * @throws Contao\CoreBundle\Exception\AccessDeniedException
-     */
-    public function checkPermission()
-    {
-        return;
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -548,7 +527,7 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getRealEstateTemplates()
+    public function getRealEstateTemplates(): array
     {
         return $this->getTemplateGroup('real_estate_item_');
     }
@@ -558,7 +537,7 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getExposeModules()
+    public function getExposeModules(): array
     {
         $groups = array();
 
@@ -576,11 +555,11 @@ class tl_expose_module extends Backend
     /**
      * Return all module templates as array
      *
-     * @param DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getExposeModuleTemplates(DataContainer $dc)
+    public function getExposeModuleTemplates(Contao\DataContainer $dc): array
     {
         return $this->getTemplateGroup('expose_mod_' . $dc->activeRecord->type);
     }
@@ -590,9 +569,9 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getGalleryItemTemplates()
+    public function getGalleryItemTemplates(): array
     {
-        return $this->getTemplateGroup('expose_mod_gallery_items_');
+        return $this->getTemplateGroup('real_estate_gallery_item_');
     }
 
     /**
@@ -600,7 +579,7 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getShareTemplates()
+    public function getShareTemplates(): array
     {
         return $this->getTemplateGroup('expose_mod_share_');
     }
@@ -610,14 +589,13 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getRealEstateFields()
+    public function getRealEstateFields(): array
     {
         $filterFields = array();
 
-        $this->loadLanguageFile('tl_real_estate');
         $this->loadDataContainer('tl_real_estate');
 
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
@@ -633,9 +611,9 @@ class tl_expose_module extends Backend
      *
      * @return array
      */
-    public function getForms()
+    public function getForms(): array
     {
-        if (!$this->User->isAdmin && !\is_array($this->User->forms))
+        if (!$this->User->isAdmin && !is_array($this->User->forms))
         {
             return array();
         }
@@ -652,5 +630,17 @@ class tl_expose_module extends Backend
         }
 
         return $arrForms;
+    }
+
+    /**
+     * List an expose module
+     *
+     * @param array $row
+     *
+     * @return string
+     */
+    public function listModule(array $row): string
+    {
+        return '<div class="tl_content_left">' . $row['name'] . ' <span style="color:#999;padding-left:3px">[' . ($GLOBALS['TL_LANG']['FE_EXPOSE_MOD'][$row['type']][0] ?? $row['type']) . ']</span></div>';
     }
 }

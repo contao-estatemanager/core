@@ -10,8 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
 use Patchwork\Utf8;
-
 
 /**
  * Front end module "real estate result list".
@@ -42,7 +42,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateResultList'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;

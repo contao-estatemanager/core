@@ -193,10 +193,11 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_zentrale'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
@@ -204,10 +205,11 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_direkt'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
@@ -215,6 +217,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['email_privat'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
@@ -352,7 +355,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['singleSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Config::get('validImageTypes')),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes')),
             'sql'                     => "binary(16) NULL"
         ),
         'postfach' => array
@@ -383,10 +386,11 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['personennummer'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>16, 'tl_class'=>'w50'),
             'sql'                     => "varchar(16) NOT NULL default ''",
-            'realEstate'                => array(
+            'realEstate'              => array(
                 'unique' => true
             )
         ),
@@ -419,9 +423,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-use ContaoEstateManager\RealEstateModel;
-
-class tl_contact_person extends Backend
+class tl_contact_person extends Contao\Backend
 {
 
     /**
@@ -430,7 +432,7 @@ class tl_contact_person extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -438,9 +440,104 @@ class tl_contact_person extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->providers) || !is_array($this->User->providers))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->providers;
+        }
+
+        $id = strlen(Contao\Input::get('id')) ? Contao\Input::get('id') : CURRENT_ID;
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'paste':
+            case 'select':
+                // Check CURRENT_ID here (see #247)
+                if (!in_array(CURRENT_ID, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access provider ID ' . $id . '.');
+                }
+                break;
+
+            case 'create':
+                if (!Contao\Input::get('pid') || !in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create events in provider ID ' . Contao\Input::get('pid') . '.');
+                }
+                break;
+
+            case 'cut':
+            case 'copy':
+                if (!in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' contact person ID ' . $id . ' to provider ID ' . Contao\Input::get('pid') . '.');
+                }
+            // no break
+
+            case 'edit':
+            case 'show':
+            case 'delete':
+            case 'toggle':
+                $objContactPerson = $this->Database->prepare("SELECT pid FROM tl_contact_person WHERE id=?")
+                    ->limit(1)
+                    ->execute($id);
+
+                if ($objContactPerson->numRows < 1)
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid contact person ID ' . $id . '.');
+                }
+
+                if (!in_array($objContactPerson->pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' contact person ID ' . $id . ' of provider ID ' . $objContactPerson->pid . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'cutAll':
+            case 'copyAll':
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access provider ID ' . $id . '.');
+                }
+
+                $objContactPerson = $this->Database->prepare("SELECT id FROM tl_contact_person WHERE pid=?")
+                    ->execute($id);
+
+                /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+                $objSession = Contao\System::getContainer()->get('session');
+
+                $session = $objSession->all();
+                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $objContactPerson->fetchEach('id'));
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Contao\Input::get('act') . '".');
+                }
+
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access provider ID ' . $id . '.');
+                }
+                break;
+        }
     }
 
     /**
@@ -450,7 +547,7 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function stringifyContactPerson($arrRow)
+    public function stringifyContactPerson(array $arrRow): string
     {
         return '<div class="tl_content_left">' . $arrRow['name'] . ', ' . $arrRow['vorname'] . ' ' . ($arrRow['position'] ? '<span style="color:#999;padding-left:3px">(' . $arrRow['position'] . ')</span>' : '') . '</div>';
     }
@@ -458,14 +555,12 @@ class tl_contact_person extends Backend
     /**
      * Auto-generate the salutation of contact person if it has not been set yet
      *
-     * @param mixed         $varValue
-     * @param DataContainer $dc
+     * @param string               $varValue
+     * @param Contao\DataContainer $dc
      *
-     * @return mixed
-     *
-     * @throws Exception
+     * @return string
      */
-    public function generateSalutation($varValue, DataContainer $dc)
+    public function generateSalutation(string $varValue, Contao\DataContainer $dc): string
     {
         // Generate salutation if there is none
         if ($varValue == '')
@@ -494,9 +589,9 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function editContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function editContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_contact_person') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_contact_person') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -511,9 +606,9 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function copyContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function copyContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'contactperson') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -528,10 +623,10 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function deleteContactPerson($row, $href, $label, $title, $icon, $attributes)
+    public function deleteContactPerson(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        $hasRealEstate = RealEstateModel::countByContactPerson($row['id']);
-        return !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        $hasRealEstate = ContaoEstateManager\RealEstateModel::countByContactPerson($row['id']);
+        return !$hasRealEstate ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -546,11 +641,11 @@ class tl_contact_person extends Backend
      *
      * @return string
      */
-    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    public function toggleIcon(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        if (\strlen(Input::get('tid')))
+        if (strlen(Contao\Input::get('tid')))
         {
-            $this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleVisibility(Contao\Input::get('tid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -567,21 +662,21 @@ class tl_contact_person extends Backend
             $icon = 'invisible.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle the visibility of a contact person
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer              $intId
+     * @param boolean              $blnVisible
+     * @param Contao\DataContainer $dc
      */
-    public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleVisibility(int $intId, bool $blnVisible, Contao\DataContainer $dc=null): void
     {
         // Set the ID and action
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'toggle');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'toggle');
 
         if ($dc)
         {
@@ -589,16 +684,16 @@ class tl_contact_person extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }
@@ -637,16 +732,16 @@ class tl_contact_person extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] as $callback)
             {
-                if (\is_array($callback))
+                if (is_array($callback))
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($dc);
                 }
-                elseif (\is_callable($callback))
+                elseif (is_callable($callback))
                 {
                     $callback($dc);
                 }

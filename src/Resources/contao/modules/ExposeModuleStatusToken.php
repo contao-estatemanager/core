@@ -11,6 +11,10 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\StringUtil;
+use Patchwork\Utf8;
+
 /**
  * Expose module "status token".
  *
@@ -33,7 +37,7 @@ class ExposeModuleStatusToken extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['statusToken'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -52,21 +56,10 @@ class ExposeModuleStatusToken extends ExposeModule
      */
     protected function compile()
     {
-        $arrValidTokens = \StringUtil::deserialize($this->statusTokens);
-
+        $arrValidTokens = StringUtil::deserialize($this->statusTokens);
         $arrStatusTokens = $this->realEstate->getStatusTokens($arrValidTokens);
 
         $this->Template->arrStatusTokens = $arrStatusTokens;
-
-        // HOOK: add custom logic for status tokens
-        if (isset($GLOBALS['TL_HOOKS']['compileExposeStatusToken']) && \is_array($GLOBALS['TL_HOOKS']['compileExposeStatusToken']))
-        {
-            foreach ($GLOBALS['TL_HOOKS']['compileExposeStatusToken'] as $callback)
-            {
-                $this->import($callback[0]);
-                $this->{$callback[0]}->{$callback[1]}($this->Template, $this->realEstate, $this);
-            }
-        }
 
         $this->isEmpty = !count($this->Template->arrStatusTokens);
     }

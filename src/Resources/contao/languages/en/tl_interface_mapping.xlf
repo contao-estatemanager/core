@@ -108,20 +108,35 @@
       <trans-unit id="tl_interface_mapping.tl_provider">
         <source>Provider</source>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.none">
+      <trans-unit id="tl_interface_mapping.none.0">
         <source>None</source>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.number">
+      <trans-unit id="tl_interface_mapping.none.1">
+        <source>Does not apply any formatting</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.number.0">
         <source>Number</source>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.date">
+      <trans-unit id="tl_interface_mapping.number.1">
+        <source>Formats a numeric value using the number of decimals</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.date.0">
         <source>Date</source>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.text">
+      <trans-unit id="tl_interface_mapping.date.1">
+        <source>Formats a date value to a timestamp using a specific date format</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.text.0">
         <source>Text</source>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.boolean">
+      <trans-unit id="tl_interface_mapping.text.1">
+        <source>Applies text formatting to a string</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.boolean.0">
         <source>Boolean value</source>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.boolean.1">
+        <source>Returns a boolean value based on a comparison value</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.lowercase">
         <source>Lowercase</source>

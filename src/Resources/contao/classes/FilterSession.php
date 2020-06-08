@@ -19,6 +19,7 @@ use Contao\StringUtil;
  * Loads and writes filter information
  *
  * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class FilterSession extends \Frontend
 {
@@ -364,7 +365,7 @@ class FilterSession extends \Frontend
 
             if ($objRealEstateTypes === null)
             {
-                // Exception
+                // ToDo: Exception
             }
 
             if($addFragments)
@@ -381,7 +382,7 @@ class FilterSession extends \Frontend
                     $this->addQueryFragmentArea($objRealEstateTypes->current(), $arrColumn, $arrValues);
                     $this->addQueryFragmentPeriod($arrColumn, $arrValues);
 
-                    // Hook zum ergänzen von neuen Toggle Filtern
+                    // ToDo: Hook zum ergänzen von neuen Toggle Filtern
 
                     $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
                 }
@@ -426,9 +427,9 @@ class FilterSession extends \Frontend
 
         $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
 
-        if ($objRealEstateTypes === null)
+        if($objRealEstateTypes === null)
         {
-            // Exception
+            // ToDo: Exception
         }
 
         if($addFragments)
@@ -439,7 +440,7 @@ class FilterSession extends \Frontend
 
                 $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
 
-                // Hook zum ergänzen von neuen Toggle Filtern
+                // ToDo: Hook zum ergänzen von neuen Toggle Filtern
 
                 $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
             }

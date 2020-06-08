@@ -2,7 +2,7 @@
 
 namespace ContaoEstateManager\EstateManager\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use ContaoEstateManager\EstateManagerRead;
 
@@ -11,7 +11,7 @@ use ContaoEstateManager\EstateManagerRead;
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class EstateManagerController extends Controller
+class EstateManagerController extends AbstractController
 {
     /**
      * Runs the command scheduler. (READ)

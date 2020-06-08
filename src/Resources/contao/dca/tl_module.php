@@ -9,261 +9,283 @@
  */
 
 // Load translations
-\System::loadLanguageFile('tl_real_estate_misc');
+Contao\System::loadLanguageFile('tl_real_estate_misc');
 
-// Add palettes
+// Add palette selectors
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'listMode';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'filterByProvider';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addSorting';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
-array_insert($GLOBALS['TL_DCA']['tl_module']['palettes'], 0, array
-(
-    'realEstateExpose'      => '{title_legend},name,headline,type;{config_legend},allowReferences;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-    'realEstateFilter'      => '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-    'realEstateList'        => '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{sorting_legend},listSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength',
-    'realEstateResultList'  => '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-));
+// Add palettes
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateExpose']      = '{title_legend},name,headline,type;{config_legend},allowReferences;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateFilter']      = '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateList']        = '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{sorting_legend},listSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
-array_insert($GLOBALS['TL_DCA']['tl_module']['subpalettes'], 0, array
-(
-    'listMode_group'       => 'realEstateGroups,filterMode',
-    'filterByProvider'     => 'provider',
-    'addSorting'           => 'defaultSorting',
-    'addCustomOrder'       => 'customOrder',
-));
+// Add subpalettes
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_group']     = 'realEstateGroups,filterMode';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['filterByProvider']   = 'provider';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['addSorting']         = 'defaultSorting';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['addCustomOrder']     = 'customOrder';
 
-// Add estate manager fields
-array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
+// Add fields
+$GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTemplate'] = array
 (
-    'realEstateTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
-        'default'                 => 'real_estate_item_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateContactPersonTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateContactPersonTemplate'],
-        'default'                 => 'real_estate_itemext_contact_person_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'realEstateProviderTemplate' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateProviderTemplate'],
-        'default'                 => 'real_estate_itemext_provider_default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateExtensionTemplates'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'filter' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filter'],
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'foreignKey'              => 'tl_filter.title',
-        'options_callback'        => array('tl_module_estate_manager', 'getFilter'),
-        'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
-        'sql'                     => "int(10) unsigned NOT NULL default '0'",
-        'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
-    ),
-    'listMode' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('visited', 'group', 'vacation'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
-        'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
-        'sql'                     => "varchar(16) NOT NULL default ''"
-    ),
-    'hideOnEmpty' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['hideOnEmpty'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'realEstateGroups' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateGroups'],
-        'exclude'                 => true,
-        'inputType'               => 'checkboxWizard',
-        'foreignKey'              => 'tl_real_estate_group.title',
-        'options_callback'        => array('tl_module_estate_manager', 'getRealEstateGroups'),
-        'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
-        'sql'                     => "blob NULL",
-        'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-    ),
-    'addCountLabel' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCountLabel'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'listSorting' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listSorting'],
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('none', 'dateAdded_asc', 'dateAdded_desc', 'tstamp_asc', 'tstamp_desc'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(16) NOT NULL default ''"
-    ),
-    'addSorting' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addSorting'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'filterByProvider' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterByProvider'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'provider' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['provider'],
-        'exclude'                 => true,
-        'inputType'               => 'checkboxWizard',
-        'foreignKey'              => 'tl_provider.anbieternr',
-        'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
-        'sql'                     => "varchar(255) NOT NULL default ''",
-        'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
-    ),
-    'defaultSorting' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['defaultSorting'],
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('date'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(16) NOT NULL default ''"
-    ),
-    'addCustomOrder' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCustomOrder'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr m12'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'customOrder' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['customOrder'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-        'sql'                     => "varchar(255) NOT NULL default ''"
-    ),
-    'addProvider' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addProvider'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'addContactPerson' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addContactPerson'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'filterMode' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterMode'],
-        'default'                 => 'default',
-        'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('default'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "varchar(16) NOT NULL default ''"
-    ),
-    'maxTextLength' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['maxTextLength'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
-        'sql'                     => "int(10) unsigned NULL"
-    ),
-    'statusTokens' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['statusTokens'],
-        'exclude'                 => true,
-        'inputType'               => 'checkboxWizard',
-        'options'                 => array('new', 'reserved', 'rented', 'sold'),
-        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
-        'eval'                    => array('multiple'=>true),
-        'sql'                     => "blob NULL"
-    ),
-    'allowReferences' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowReferences'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50'),
-        'sql'                     => "char(1) NOT NULL default ''"
-    ),
-    'exposeModules' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['exposeModules'],
-        'default'                 => array(array('mod'=>0, 'col'=>'wrapper_before', 'enable'=>1)),
-        'exclude'                 => true,
-        'inputType'               => 'exposeModuleWizard',
-        'sql'                     => "blob NULL"
-    ),
-    'contactPersonImgSize' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['contactPersonImgSize'],
-        'exclude'                 => true,
-        'inputType'               => 'imageSize',
-        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
-        'options_callback' => function ()
-        {
-            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-        },
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    ),
-    'providerImgSize' => array
-    (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['providerImgSize'],
-        'exclude'                 => true,
-        'inputType'               => 'imageSize',
-        'reference'               => &$GLOBALS['TL_LANG']['MSC'],
-        'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
-        'options_callback' => function ()
-        {
-            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-        },
-        'sql'                     => "varchar(64) NOT NULL default ''"
-    )
-));
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
+    'default'                 => 'real_estate_item_default',
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options_callback' => function () {
+        return Contao\Controller::getTemplateGroup('real_estate_item_');
+    },
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateContactPersonTemplate'],
+    'default'                 => 'real_estate_itemext_contact_person_default',
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options_callback' => function () {
+        return Contao\Controller::getTemplateGroup('real_estate_itemext_');
+    },
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateProviderTemplate'],
+    'default'                 => 'real_estate_itemext_provider_default',
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options_callback' => function () {
+        return Contao\Controller::getTemplateGroup('real_estate_itemext_');
+    },
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['filter'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filter'],
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'foreignKey'              => 'tl_filter.title',
+    'options_callback'        => array('tl_module_estate_manager', 'getFilter'),
+    'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
+    'sql'                     => "int(10) unsigned NOT NULL default '0'",
+    'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => array('visited', 'group', 'vacation'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
+    'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
+    'sql'                     => "varchar(16) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['hideOnEmpty'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['hideOnEmpty'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50 m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['realEstateGroups'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateGroups'],
+    'exclude'                 => true,
+    'inputType'               => 'checkboxWizard',
+    'foreignKey'              => 'tl_real_estate_group.title',
+    'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+    'sql'                     => "blob NULL",
+    'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['addCountLabel'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCountLabel'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50 m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['listSorting'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listSorting'],
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => array('none', 'dateAdded_asc', 'dateAdded_desc', 'tstamp_asc', 'tstamp_desc'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(16) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['addSorting'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addSorting'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['filterByProvider'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterByProvider'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['provider'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['provider'],
+    'exclude'                 => true,
+    'inputType'               => 'checkboxWizard',
+    'foreignKey'              => 'tl_provider.anbieternr',
+    'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+    'sql'                     => "varchar(255) NOT NULL default ''",
+    'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['defaultSorting'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['defaultSorting'],
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => array('date'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(16) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['addCustomOrder'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addCustomOrder'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['customOrder'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['customOrder'],
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+    'sql'                     => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['addProvider'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addProvider'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50 m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['addContactPerson'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addContactPerson'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50 m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['filterMode'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterMode'],
+    'default'                 => 'default',
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => array('default'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(16) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['maxTextLength'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['maxTextLength'],
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
+    'sql'                     => "int(10) unsigned NULL"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['statusTokens'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['statusTokens'],
+    'exclude'                 => true,
+    'inputType'               => 'checkboxWizard',
+    'options'                 => array('new', 'reserved', 'rented', 'sold'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
+    'eval'                    => array('multiple'=>true),
+    'sql'                     => "blob NULL"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['allowReferences'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowReferences'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['exposeModules'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['exposeModules'],
+    'default'                 => array(array('mod'=>0, 'col'=>'wrapper_before', 'enable'=>1)),
+    'exclude'                 => true,
+    'inputType'               => 'exposeModuleWizard',
+    'sql'                     => "blob NULL"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['contactPersonImgSize'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['contactPersonImgSize'],
+    'exclude'                 => true,
+    'inputType'               => 'imageSize',
+    'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+    'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
+    'options_callback' => function ()
+    {
+        return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
+    },
+    'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['providerImgSize'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['providerImgSize'],
+    'exclude'                 => true,
+    'inputType'               => 'imageSize',
+    'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+    'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'),
+    'options_callback' => function ()
+    {
+        return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
+    },
+    'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
 
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
@@ -271,7 +293,7 @@ array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], 1, array
  * @author Daniele Sciannimanica <https://github.com/doishub>
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_module_estate_manager extends Backend
+class tl_module_estate_manager extends Contao\Backend
 {
 
     /**
@@ -280,27 +302,7 @@ class tl_module_estate_manager extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
-    }
-
-    /**
-     * Return all real estate list templates as array
-     *
-     * @return array
-     */
-    public function getRealEstateTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_item_');
-    }
-
-    /**
-     * Return all real estate item extension templates as array
-     *
-     * @return array
-     */
-    public function getRealEstateExtensionTemplates()
-    {
-        return $this->getTemplateGroup('real_estate_itemext_');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -308,9 +310,9 @@ class tl_module_estate_manager extends Backend
      *
      * @return array
      */
-    public function getFilter()
+    public function getFilter(): array
     {
-        if (!$this->User->isAdmin && !\is_array($this->User->filter))
+        if (!$this->User->isAdmin && !is_array($this->User->filter))
         {
             return array();
         }
@@ -334,7 +336,7 @@ class tl_module_estate_manager extends Backend
      *
      * @return array
      */
-    public function getRealEstateGroups()
+    public function getRealEstateGroups(): array
     {
         $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
 

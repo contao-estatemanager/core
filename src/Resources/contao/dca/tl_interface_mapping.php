@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         'sorting' => array
         (
             'mode'                    => 4,
-            'fields'                  => array('attribute'),
+            'fields'                  => array('attribute', 'oiFieldGroup'),
             'headerFields'            => array('title', 'tstamp'),
             'panelLayout'             => 'filter;sort,search,limit',
             'child_record_callback'   => array('tl_interface_mapping', 'stringifyMapping'),
@@ -144,6 +144,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['attribute'],
             'exclude'                 => true,
             'search'                  => true,
+            'sorting'                 => true,
             'flag'                    => 1,
             'inputType'               => 'select',
             'options_callback'		  => array('tl_interface_mapping', 'getAttributeFields'),
@@ -165,6 +166,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'inputType'               => 'text',
             'exclude'                 => true,
             'search'                  => true,
+            'sorting'                 => true,
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'clr w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
@@ -213,9 +215,10 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['formatType'],
             'default'                 => 'none',
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'select',
             'options'                 => array('none', 'number', 'date', 'text', 'boolean'),
-            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+            'eval'                    => array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50 clr'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface_mapping'],
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
@@ -266,6 +269,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_mapping']['saveImage'],
             'exclude'                 => true,
+            'filter'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "char(1) NOT NULL default ''"
@@ -279,7 +283,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_interface_mapping extends Backend
+class tl_interface_mapping extends Contao\Backend
 {
 
     /**
@@ -288,7 +292,7 @@ class tl_interface_mapping extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
@@ -296,9 +300,104 @@ class tl_interface_mapping extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->interfaces) || !is_array($this->User->interfaces))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->interfaces;
+        }
+
+        $id = strlen(Contao\Input::get('id')) ? Contao\Input::get('id') : CURRENT_ID;
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'paste':
+            case 'select':
+                // Check CURRENT_ID here (see #247)
+                if (!in_array(CURRENT_ID, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+                break;
+
+            case 'create':
+                if (!Contao\Input::get('pid') || !in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create events in interface ID ' . Contao\Input::get('pid') . '.');
+                }
+                break;
+
+            case 'cut':
+            case 'copy':
+                if (!in_array(Contao\Input::get('pid'), $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface mapping ID ' . $id . ' to interface ID ' . Contao\Input::get('pid') . '.');
+                }
+            // no break
+
+            case 'edit':
+            case 'show':
+            case 'delete':
+            case 'toggle':
+                $objInterfaceMapping = $this->Database->prepare("SELECT pid FROM tl_interface_mapping WHERE id=?")
+                    ->limit(1)
+                    ->execute($id);
+
+                if ($objInterfaceMapping->numRows < 1)
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid interface mapping ID ' . $id . '.');
+                }
+
+                if (!in_array($objInterfaceMapping->pid, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface mapping ID ' . $id . ' of interface ID ' . $objInterfaceMapping->pid . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'cutAll':
+            case 'copyAll':
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+
+                $objInterfaceMapping = $this->Database->prepare("SELECT id FROM tl_interface_mapping WHERE pid=?")
+                    ->execute($id);
+
+                /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+                $objSession = Contao\System::getContainer()->get('session');
+
+                $session = $objSession->all();
+                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $objInterfaceMapping->fetchEach('id'));
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Contao\Input::get('act') . '".');
+                }
+
+                if (!in_array($id, $root))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access interface ID ' . $id . '.');
+                }
+                break;
+        }
     }
 
     /**
@@ -308,7 +407,7 @@ class tl_interface_mapping extends Backend
      *
      * @return string
      */
-    public function stringifyMapping($arrRow)
+    public function stringifyMapping(array $arrRow): string
     {
         return '<div class="tl_content_left">' . $arrRow['attribute'] . ' <span style="color:#999;padding-left:3px">(' . $arrRow['oiFieldGroup'] . ': ' . $arrRow['oiField'] . ')</span></div>';
     }
@@ -316,15 +415,15 @@ class tl_interface_mapping extends Backend
     /**
      * Return all attribute fields as array
      *
-     * @param \DataContainer $dc
+     * @param Contao\DataContainer $dc
      *
      * @return array
      */
-    public function getAttributeFields($dc)
+    public function getAttributeFields(Contao\DataContainer $dc): array
     {
         if (!$dc->activeRecord)
         {
-            return;
+            return array();
         }
 
         $this->loadLanguageFile($dc->activeRecord->type);

@@ -11,7 +11,18 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Config;
 use Contao\CoreBundle\Exception\PageNotFoundException;
+use Contao\Environment;
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
+use Contao\Input;
+use Contao\Module;
+use Contao\PageModel;
+use Contao\Pagination;
+use Contao\StringUtil;
+use Contao\System;
+use Contao\Validator;
 
 /**
  * Parent class for real estate modules.
@@ -19,14 +30,14 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
  * @author Fabian Ekert <https://github.com/eki89>
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-abstract class ModuleRealEstate extends \Module
+abstract class ModuleRealEstate extends Module
 {
     /**
      * Force empty list
-     * @var boolean
+     * @var bool
      */
     protected $forceEmpty = false;
-    
+
     /**
      * Return an object property
      *
@@ -39,7 +50,7 @@ abstract class ModuleRealEstate extends \Module
         switch ($strKey)
         {
             case 'realEstateGroups':
-                return \StringUtil::deserialize($this->objModel->realEstateGroups, true);
+                return StringUtil::deserialize($this->objModel->realEstateGroups, true);
                 break;
         }
 
@@ -50,49 +61,27 @@ abstract class ModuleRealEstate extends \Module
      * Parse a real estate and return it as string
      *
      * @param RealEstateModel $objRealEstate
-     * @param integer|null    $typeId
-     * @param string          $strClass
+     * @param integer|null $typeId
+     * @param string $strClass
      *
      * @return string
+     *
+     * @throws \Exception
      */
-    protected function parseRealEstate($objRealEstate, $typeId=null, $strClass='')
+    protected function parseRealEstate(RealEstateModel $objRealEstate, int $typeId=null, string $strClass=''): string
     {
-        // create real estate object
-        $realEstate = new RealEstate($objRealEstate, $typeId);
+        $realEstate  = new RealEstateModulePreparation($objRealEstate, $this, $typeId);
+        $objTemplate = new FrontendTemplate($this->realEstateTemplate);
 
-        // create template
-        $objTemplate = new \FrontendTemplate($this->realEstateTemplate);
-
-        $objTemplate->class = $strClass;
-        $objTemplate->realEstateId = $objRealEstate->id;
+        $objTemplate->class         = $strClass;
+        $objTemplate->realEstate    = $realEstate;
         $objTemplate->arrExtensions = array();
 
-        $texts = $realEstate->getTexts(null, $this->maxTextLength);
-        $statusTokens = \StringUtil::deserialize($this->statusTokens);
+        $objTemplate->jumpTo        = $this->jumpTo;
+        $objTemplate->buttonLabel   = Translator::translateExpose('button_expose');
+        $objTemplate->imgSize        = $this->imgSize;
 
-        // set information to template
-        $objTemplate->title        = $realEstate->getTitle();
-        $objTemplate->jumpTo       = $this->jumpTo;
-        $objTemplate->link         = $realEstate->generateExposeUrl($this->jumpTo);
-        $objTemplate->linkExpose   = $this->generateLink(Translator::translateExpose('button_expose'), $realEstate->generateExposeUrl($this->jumpTo), true);
-        $objTemplate->linkHeadline = $this->generateLink($realEstate->getTitle(), $realEstate->generateExposeUrl($this->jumpTo));
-
-        $objTemplate->address      = $realEstate->getLocationString();
-        $objTemplate->teaser       = $texts['dreizeiler'];
-        $objTemplate->description  = $texts['objektbeschreibung'];
-
-        $objTemplate->marketingToken  = $realEstate->getMarketingToken();
-        $objTemplate->arrStatusTokens = $realEstate->getStatusTokens($statusTokens);
-
-        $objTemplate->mainDetails    = $realEstate->getMainDetails(\Config::get('defaultNumberOfMainDetails') ?: 3);
-        $objTemplate->mainAttributes = $realEstate->getMainAttributes(\Config::get('defaultNumberOfMainAttr') ?: 3);
-        $objTemplate->mainPrice      = $realEstate->getMainPrice();
-        $objTemplate->mainArea       = $realEstate->getMainArea();
-
-        $objTemplate->details        = $realEstate->getDetails(['price'], true);
-        $objTemplate->objektart      = $realEstate->getFields(['objektart'])[0];
-
-        // add provider
+        // Adding item extension: provider
         $objTemplate->addProvider = !!$this->addProvider;
 
         if($this->addProvider)
@@ -100,16 +89,13 @@ abstract class ModuleRealEstate extends \Module
             $objTemplate->provider = $this->parseProvider($realEstate);
         }
 
-        // add contact person
+        // Adding item extension: contact person
         $objTemplate->addContactPerson = !!$this->addContactPerson;
 
         if($this->addContactPerson)
         {
             $objTemplate->contactPerson = $this->parseContactPerson($realEstate);
         }
-
-        // set real estate image
-        $objTemplate->addImage = $this->addMainImageToTemplate($objTemplate, $realEstate);
 
         // HOOK: parse real estate
         if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
@@ -127,9 +113,11 @@ abstract class ModuleRealEstate extends \Module
     /**
      * Parse one or more real estates
      *
-     * @param integer|null      $typeId
+     * @param integer|null $typeId
+     *
+     * @throws \Exception
      */
-    protected function parseRealEstateList($typeId=null)
+    protected function parseRealEstateList(int $typeId=null): void
     {
         $limit = null;
         $offset = 0;
@@ -175,7 +163,7 @@ abstract class ModuleRealEstate extends \Module
             // Do not index or cache the page if the page number is outside the range
             if ($page < 1 || $page > max(ceil($total/$this->perPage), 1))
             {
-                throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
+                throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
             }
 
             // Set limit and offset
@@ -190,7 +178,7 @@ abstract class ModuleRealEstate extends \Module
             }
 
             // Add the pagination menu
-            $objPagination = new \Pagination($total, $this->perPage, \Config::get('maxPaginationLinks'), $id);
+            $objPagination = new Pagination($total, $this->perPage, Config::get('maxPaginationLinks'), $id);
             $this->Template->pagination = $objPagination->generate("\n  ");
         }
 
@@ -207,7 +195,7 @@ abstract class ModuleRealEstate extends \Module
                 /** @var RealEstateModel $objRealEstate */
                 $objRealEstate = $objRealEstates->current();
 
-                $arrRealEstates[] = $this->parseRealEstate($objRealEstate, $typeId, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'), $count);
+                $arrRealEstates[] = $this->parseRealEstate($objRealEstate, $typeId, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
             }
         }
 
@@ -217,21 +205,25 @@ abstract class ModuleRealEstate extends \Module
     /**
      * Parse provider
      *
-     * @param $realEstate
+     * @param RealEstate $realEstate
      *
      * @return string: parsed provider template
+     *
+     * @throws \Exception
      */
-    public function parseProvider($realEstate)
+    public function parseProvider(RealEstate $realEstate): string
     {
-        $arrProvider = $realEstate->getProvider();
+        $objProvider = $realEstate->getProvider();
+        $arrProvider = $objProvider->row();
 
         if($arrProvider === null)
         {
             return '';
         }
 
-        $objTemplate = new \FrontendTemplate($this->realEstateProviderTemplate);
+        $objTemplate = new FrontendTemplate($this->realEstateProviderTemplate);
         $objTemplate->setData($arrProvider);
+        $objTemplate->realEstate = $realEstate;
 
         if($arrProvider['singleSRC'])
         {
@@ -244,12 +236,14 @@ abstract class ModuleRealEstate extends \Module
     /**
      * Parse contact person
      *
-     * @param $realEstate
+     * @param RealEstate $realEstate
      * @param bool $forceCompleteAddress
      *
      * @return string: parsed contact person template
+     *
+     * @throws \Exception
      */
-    public function parseContactPerson($realEstate, $forceCompleteAddress=false)
+    public function parseContactPerson(RealEstate $realEstate, bool $forceCompleteAddress=false): string
     {
         $arrContactPerson = $realEstate->getContactPerson($forceCompleteAddress);
 
@@ -258,8 +252,9 @@ abstract class ModuleRealEstate extends \Module
             return '';
         }
 
-        $objTemplate = new \FrontendTemplate($this->realEstateContactPersonTemplate);
+        $objTemplate = new FrontendTemplate($this->realEstateContactPersonTemplate);
         $objTemplate->setData($arrContactPerson);
+        $objTemplate->realEstate = $realEstate;
 
         if($arrContactPerson['singleSRC'])
         {
@@ -270,57 +265,21 @@ abstract class ModuleRealEstate extends \Module
     }
 
     /**
-     * Add main image to template
-     *
-     * @param $objTemplate
-     * @param $realEstate
-     * @param null $size
-     *
-     * @return boolean
-     */
-    protected function addMainImageToTemplate($objTemplate, $realEstate, $size = null)
-    {
-        $objModel = \FilesModel::findByUuid($realEstate->getMainImage());
-
-        if($objModel === null)
-        {
-            // Set default image
-            $defaultImage = \Config::get('defaultImage');
-
-            if($defaultImage)
-            {
-                $objModel = \FilesModel::findByUuid($defaultImage);
-            }
-        }
-
-        if($size !== null)
-        {
-            $imgSize = $size;
-        }
-        else
-        {
-            $imgSize = $this->imgSize;
-        }
-
-        return $this->addSingleImageToTemplate($objTemplate, $objModel, $imgSize);
-    }
-
-    /**
      * Add image to template
      *
      * @param $objTemplate
      * @param $varSingleSrc
      * @param $imgSize
      *
-     * @return boolean
+     * @return bool
      */
-    public function addSingleImageToTemplate($objTemplate, $varSingleSrc, $imgSize)
+    public function addSingleImageToTemplate(FrontendTemplate $objTemplate, $varSingleSrc, $imgSize): bool
     {
         if ($varSingleSrc)
         {
-            if (!($varSingleSrc instanceof \FilesModel) && \Validator::isUuid($varSingleSrc))
+            if (!($varSingleSrc instanceof FilesModel) && Validator::isUuid($varSingleSrc))
             {
-                $objModel = \FilesModel::findByUuid($varSingleSrc);
+                $objModel = FilesModel::findByUuid($varSingleSrc);
             }
             else
             {
@@ -353,9 +312,9 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function addSorting()
     {
-        if (\Input::post('FORM_SUBMIT') == 'sorting')
+        if (Input::post('FORM_SUBMIT') == 'sorting')
         {
-            $_SESSION['SORTING'] = \Input::post('sorting');
+            $_SESSION['SORTING'] = Input::post('sorting');
             unset($_POST['sorting']);
         }
 
@@ -367,14 +326,14 @@ abstract class ModuleRealEstate extends \Module
 
         if ($this->addSorting)
         {
-            \System::loadLanguageFile('tl_real_estate_filter');
+            System::loadLanguageFile('tl_real_estate_filter');
 
-            $defaultSorting = \Config::get('defaultSorting').'_desc';
+            $defaultSorting = Config::get('defaultSorting').'_desc';
             $arrOptions = array($defaultSorting => Translator::translateFilter($defaultSorting));
 
             if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
             {
-                $sortingOptions = \StringUtil::deserialize($objCurrentType->sortingOptions);
+                $sortingOptions = StringUtil::deserialize($objCurrentType->sortingOptions);
 
                 foreach ($sortingOptions as $option)
                 {
@@ -401,22 +360,6 @@ abstract class ModuleRealEstate extends \Module
         }
     }
 
-    /**
-     * Generate a link and return it as string
-     *
-     * @param string  $strTitle
-     * @param string  $strLink
-     *
-     * @return string
-     */
-    public function generateLink($strTitle, $strLink)
-    {
-        return sprintf('<a href="%s" title="%s"><span>%s</span></a>',
-            $strLink,
-            \StringUtil::specialchars(sprintf('%s', $strTitle), true),
-            $strTitle);
-    }
-    
     protected function redirectIfUnique()
     {
         if ($_SESSION['FILTER_DATA']['unique'])
@@ -431,13 +374,13 @@ abstract class ModuleRealEstate extends \Module
             }
             else
             {
-                $objJumpTo = \PageModel::findByPk($this->jumpTo);
+                $objJumpTo = PageModel::findByPk($this->jumpTo);
 
-                if ($objJumpTo instanceof \PageModel)
+                if ($objJumpTo instanceof PageModel)
                 {
                     $realEstate = new RealEstate($objRealEstate, null);
 
-                    $this->redirect($realEstate->generateExposeUrl($objJumpTo->id));
+                    $this->redirect($realEstate->generateExposeUrl($objJumpTo));
                 }
             }
         }
@@ -448,9 +391,9 @@ abstract class ModuleRealEstate extends \Module
      */
     protected function updateVisitedSession($realEstateId)
     {
-        $_SESSION['REAL_ESTATE_VISITED'] = \is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
+        $_SESSION['REAL_ESTATE_VISITED'] = is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
 
-        if (($key = \array_search($realEstateId, $_SESSION['REAL_ESTATE_VISITED'])) !== false)
+        if (($key = array_search($realEstateId, $_SESSION['REAL_ESTATE_VISITED'])) !== false)
         {
             unset($_SESSION['REAL_ESTATE_VISITED'][$key]);
         }

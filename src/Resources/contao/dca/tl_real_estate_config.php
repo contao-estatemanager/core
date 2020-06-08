@@ -9,7 +9,7 @@
  */
 
 // Load translations
-\System::loadLanguageFile('tl_real_estate_misc');
+Contao\System::loadLanguageFile('tl_real_estate_misc');
 
 $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 (
@@ -24,12 +24,18 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields
 	'fields' => array
 	(
+        'estateManagerAdminEmail' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['estateManagerAdminEmail'],
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'friendly', 'decodeEntities'=>true, 'tl_class'=>'w50')
+        ),
 		'numberFormatDecimals' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatDecimals'],
@@ -75,28 +81,28 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'clr w50'),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'clr w50'),
         ),
         'defaultContactPersonImage' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'defaultContactPersonFemaleImage' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonFemaleImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'defaultContactPersonMaleImage' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonMaleImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Config::get('validImageTypes'), 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'roomOptions' => array
         (
@@ -121,14 +127,3 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
         ),
 	)
 );
-
-/**
- * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Daniele Sciannimanica <https://github.com/doishub>
- */
-class tl_real_estate_config extends Backend
-{
-
-
-}
