@@ -1516,7 +1516,7 @@ class RealEstateModel extends Model
      * @param integer $intOffset   An optional offset
      * @param array   $arrOptions  An optional options array
      *
-     * @return \Model\Collection|RealEstateModel[]|RealEstateModel|null A collection of models or null if there are no real estates
+     * @return Model\Collection|RealEstateModel[]|RealEstateModel|null A collection of models or null if there are no real estates
      */
     public static function findPublishedBy($intLimit=0, $intOffset=0, array $arrOptions=array())
     {
@@ -1557,6 +1557,6 @@ class RealEstateModel extends Model
 
         $arrOptions['limit'] = 1;
 
-        return static::findBy($arrColumns, $varValue, $arrOptions);
+        return static::findOneBy($arrColumns, $varValue, $arrOptions);
     }
 }
