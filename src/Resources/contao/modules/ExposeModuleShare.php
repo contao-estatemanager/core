@@ -11,6 +11,12 @@
 
 namespace ContaoEstateManager;
 
+use Contao\BackendTemplate;
+use Contao\FrontendTemplate;
+use Contao\PageModel;
+use Contao\StringUtil;
+use Patchwork\Utf8;
+
 /**
  * Expose module "share".
  *
@@ -39,7 +45,7 @@ class ExposeModuleShare extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['share'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -60,7 +66,7 @@ class ExposeModuleShare extends ExposeModule
         $arrCollection = array();
 
         // get options
-        $arrOptions = \StringUtil::deserialize($this->share, true);
+        $arrOptions = StringUtil::deserialize($this->share, true);
 
         foreach ($arrOptions as $option)
         {
@@ -105,7 +111,7 @@ class ExposeModuleShare extends ExposeModule
         }
 
         // create Template
-        $objTemplate = new \FrontendTemplate($strTemplate);
+        $objTemplate = new FrontendTemplate($strTemplate);
 
         /** @var PageModel $objPage */
         global $objPage;

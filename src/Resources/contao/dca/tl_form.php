@@ -8,10 +8,13 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+// Add palettes selector
 $GLOBALS['TL_DCA']['tl_form']['palettes']['__selector__'][] = 'attachRealEstateFeedbackXml';
 
+// Add subpalettes
 $GLOBALS['TL_DCA']['tl_form']['subpalettes']['attachRealEstateFeedbackXml'] = 'realEstateFeedbackTemplate';
 
+// Add fields
 $GLOBALS['TL_DCA']['tl_form']['fields']['attachRealEstateFeedbackXml'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_form']['attachRealEstateFeedbackXml'],
@@ -26,7 +29,7 @@ $GLOBALS['TL_DCA']['tl_form']['fields']['realEstateFeedbackTemplate'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_form']['realEstateFeedbackTemplate'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options_callback'        => array('tl_real_estate_form', 'getTemplates'),
+    'options_callback'        => array('tl_form_estate_manager', 'getTemplates'),
     'eval'                    => array('chosen'=>true, 'tl_class'=>'w50'),
     'sql'                     => "varchar(64) NOT NULL default ''"
 );
@@ -41,9 +44,9 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Leo Feyer <https://github.com/leofeyer>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_real_estate_form extends Contao\Backend
+class tl_form_estate_manager extends Contao\Backend
 {
     /**
      * Import the back end user object
@@ -58,7 +61,7 @@ class tl_real_estate_form extends Contao\Backend
      *
      * @return array
      */
-    public function getTemplates()
+    public function getTemplates(): array
     {
         return $this->getTemplateGroup('form_feedback_');
     }

@@ -8,7 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-
 $GLOBALS['TL_DCA']['tl_estate_manager_addon'] = array
 (
 
@@ -40,11 +39,12 @@ $GLOBALS['TL_DCA']['tl_estate_manager_addon'] = array
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_estate_manager_addon extends Backend
+class tl_estate_manager_addon extends Contao\Backend
 {
 
-    public function createInstalledAddonFields()
+    public function createInstalledAddonFields(): void
     {
         if (!array_key_exists('TL_ESTATEMANAGER_ADDONS', $GLOBALS))
         {
@@ -62,7 +62,8 @@ class tl_estate_manager_addon extends Backend
 
             $fieldName = $strClass::$key;
 
-            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $fieldName ] = array(
+            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $fieldName ] = array
+            (
                 'label'           => &$GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $fieldName ],
                 'inputType'       => 'text',
                 'save_callback'   => [['tl_estate_manager_addon', 'checkLicense']],
@@ -79,7 +80,7 @@ class tl_estate_manager_addon extends Backend
         }
     }
 
-    public function checkLicense($varValue, DataContainer $dc)
+    public function checkLicense($varValue, Contao\DataContainer $dc)
     {
         if(!$varValue)
         {
@@ -103,7 +104,7 @@ class tl_estate_manager_addon extends Backend
         return $varValue;
     }
 
-    public function loadLicenseField($varValue, DataContainer $dc)
+    public function loadLicenseField($varValue, Contao\DataContainer $dc)
     {
         if(!$varValue)
         {
@@ -113,14 +114,14 @@ class tl_estate_manager_addon extends Backend
         $strClass = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['addonManager'];
 
         // Check if it is a demo
-        if(strtolower($varValue) === 'demo' && $expTime = \Config::get($dc->field . '_demo'))
+        if(strtolower($varValue) === 'demo' && $expTime = Contao\Config::get($dc->field . '_demo'))
         {
             $curTime = time();
 
             $expTimeEnd = strtotime('+2 weeks', $expTime);
             if($expTimeEnd > $curTime && $expTime <= $curTime)
             {
-                $info = sprintf($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expiration_date'], date(\Config::get('datimFormat'), $expTimeEnd));
+                $info = sprintf($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expiration_date'], date(Contao\Config::get('datimFormat'), $expTimeEnd));
                 $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' validLicense demo';
             }
             else

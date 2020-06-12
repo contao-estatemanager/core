@@ -8,6 +8,7 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+Contao\System::loadLanguageFile('tl_real_estate');
 
 $GLOBALS['TL_DCA']['tl_field_format_action'] = array
 (
@@ -18,10 +19,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'dataContainer'               => 'Table',
         'ptable'                      => 'tl_field_format',
         'enableVersioning'            => true,
-        'onload_callback' => array
-        (
-            array('tl_field_format_action', 'checkPermission')
-        ),
         'sql' => array
         (
             'keys' => array
@@ -48,10 +45,10 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         (
             'all' => array
             (
-                'label'             => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href'              => 'act=select',
-                'class'             => 'header_edit_all',
-                'attributes'        => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
+                'href'                => 'act=select',
+                'class'               => 'header_edit_all',
+                'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             )
         ),
         'operations' => array
@@ -60,7 +57,8 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['edit'],
                 'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
+                'icon'                => 'edit.svg',
+                'button_callback'     => array('tl_field_format_action', 'editFormatAction')
             ),
             'copy' => array
             (
@@ -87,18 +85,18 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'  => array('action'),
-        'default'       => '{type_legend},action;',
-        'prepend'       => '{type_legend},action;{setting_legend},text;',
-        'append'        => '{type_legend},action;{setting_legend},text;',
-        'number_format' => '{type_legend},action;{setting_legend},decimals;',
-        'date_format'   => '{type_legend},action;',
-        'ucfirst'       => '{type_legend},action;{setting_legend};',
-        'wrap'          => '{type_legend},action;{setting_legend},text;',
-        'unserialize'   => '{type_legend},action;{setting_legend},seperator;',
-        'boolToWord'    => '{type_legend},action;{setting_legend},necessary;',
-        'combine'       => '{type_legend},action;{setting_legend},elements,seperator;',
-        'custom'        => '{type_legend},action;{setting_legend},customFunction;'
+        '__selector__'                => array('action'),
+        'default'                     => '{type_legend},action;',
+        'prepend'                     => '{type_legend},action;{setting_legend},text;',
+        'append'                      => '{type_legend},action;{setting_legend},text;',
+        'number_format'               => '{type_legend},action;{setting_legend},decimals;',
+        'date_format'                 => '{type_legend},action;',
+        'ucfirst'                     => '{type_legend},action;{setting_legend};',
+        'wrap'                        => '{type_legend},action;{setting_legend},text;',
+        'unserialize'                 => '{type_legend},action;{setting_legend},seperator;',
+        'boolToWord'                  => '{type_legend},action;{setting_legend},necessary;',
+        'combine'                     => '{type_legend},action;{setting_legend},elements,seperator;',
+        'custom'                      => '{type_legend},action;{setting_legend},customFunction;'
     ),
 
     // Fields
@@ -120,6 +118,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'tstamp' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
+            'exclude'                 => true,
             'default'                 => time(),
             'sorting'                 => true,
             'flag'                    => 6,
@@ -128,46 +127,52 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'action'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
-            'inputType'                 => 'select',
-            'options'                   => array('prepend', 'append', 'number_format', 'date_format', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
-            'reference'                 => &$GLOBALS['TL_LANG']['tl_field_format_action'],
-            'eval'                      => array('helpwizard'=>true, 'tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options'                 => array('prepend', 'append', 'number_format', 'date_format', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_field_format_action'],
+            'eval'                    => array('helpwizard'=>true, 'tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'decimals'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['decimals'],
-            'inputType'                 => 'text',
-            'eval'                      => array('rgxp'=>'digit', 'tl_class'=>'w50'),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['decimals'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'digit', 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'text'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['text'],
-            'inputType'                 => 'text',
-            'eval'                      => array('tl_class'=>'w50', 'mandatory'=>true, 'doNotTrim' => true, 'allowHtml'=>true),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['text'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'doNotTrim' => true, 'allowHtml'=>true),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'seperator'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['seperator'],
-            'inputType'                 => 'text',
-            'eval'                      => array('tl_class'=>'w50', 'doNotTrim' => true),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['seperator'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50', 'doNotTrim' => true),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'necessary'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['necessary'],
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class'=>'w50'),
-            'sql'                       => "char(1) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['necessary'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'elements'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['elements'],
-            'inputType' 	            => 'multiColumnWizard',
-            'eval' 			            => array
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['elements'],
+            'exclude'                 => true,
+            'inputType' 	          => 'multiColumnWizard',
+            'eval' 			          => array
             (
                 'dragAndDrop'  => true,
                 'columnFields' => array
@@ -176,7 +181,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
                     (
                         'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
                         'inputType'             => 'select',
-                        'options_callback'      => array('tl_field_format_action', 'getRealEstateCollumns'),
+                        'options_callback'      => array('tl_field_format', 'getRealEstateColumns'),
                         'eval' 			        => array('style'=>'width:100%', 'chosen' => true)
                     ),
                     'remove' => array
@@ -190,18 +195,20 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'customFunction'  => array
         (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_field_format_action']['customFunction'],
-            'inputType'                 => 'select',
-            'options_callback'          => array('tl_field_format_action', 'getCustomFunctions'),
-            'eval'                      => array('tl_class'=>'w50'),
-            'sql'                       => "varchar(255) NOT NULL default ''"
+            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['customFunction'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options_callback'        => array('tl_field_format_action', 'getCustomFunctions'),
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'sorting'   => array
         (
-            'label'                 => &$GLOBALS['TL_LANG']['MSC']['sorting'],
-            'sorting'               => true,
-            'eval'                  => array('doNotCopy'=>true),
-            'sql'                   => "int(10) unsigned NULL"
+            'label'                   => &$GLOBALS['TL_LANG']['MSC']['sorting'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'eval'                    => array('doNotCopy'=>true),
+            'sql'                     => "int(10) unsigned NULL"
         )
     )
 );
@@ -210,8 +217,9 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_field_format_action extends \Backend
+class tl_field_format_action extends Contao\Backend
 {
 
     /**
@@ -220,17 +228,24 @@ class tl_field_format_action extends \Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
     }
 
     /**
-     * Check permissions to edit table tl_field_format_action
+     * Return the edit format action button
      *
-     * @throws Contao\CoreBundle\Exception\AccessDeniedException
+     * @param array  $row
+     * @param string $href
+     * @param string $label
+     * @param string $title
+     * @param string $icon
+     * @param string $attributes
+     *
+     * @return string
      */
-    public function checkPermission()
+    public function editFormatAction(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return;
+        return $this->User->canEditFieldsOf('tl_field_format_action') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -240,38 +255,18 @@ class tl_field_format_action extends \Backend
      *
      * @return string
      */
-    public function stringifyFormatAction($arrRow)
+    public function stringifyFormatAction(array $arrRow): string
     {
         return '<div class="tl_content_left">' . $arrRow['action'] . '</div>';
     }
 
     /**
-     * Get fields from real estate dca
+     * Return all custom function templates as array
      *
      * @return array
      */
-    public function getRealEstateCollumns(){
-        $options      = array();
-        $skipFields    = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
-
-        $this->loadLanguageFile('tl_real_estate');
-        $this->loadDataContainer('tl_real_estate');
-
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
-        {
-            foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
-            {
-                if (!in_array($field, $skipFields))
-                {
-                    $options[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
-                }
-            }
-        }
-
-        return $options;
-    }
-
-    public function getCustomFunctions(){
+    public function getCustomFunctions(): array
+    {
         return $this->getTemplateGroup('re_ac_');
     }
 }

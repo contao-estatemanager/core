@@ -1,0 +1,81 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_user.php" source-language="en">
+    <body>
+      <trans-unit id="tl_user.filteritems.0">
+        <source>Allowed filter items</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filteritems.1">
+        <source>Here you can grant access to one or more filter items.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filters.0">
+        <source>Allowed filter</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filters.1">
+        <source>Here you can grant access to one or more filter.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filterp.0">
+        <source>Filter permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filterp.1">
+        <source>Here you can define the filter permissions.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.interfaces.0">
+        <source>Allowed interfaces</source>
+      </trans-unit>
+      <trans-unit id="tl_user.interfaces.1">
+        <source>Here you can grant access to one or more interfaces.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.interfacep.0">
+        <source>Interface permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.interfacep.1">
+        <source>Here you can define the interface permissions.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.providers.0">
+        <source>Allowed provider</source>
+      </trans-unit>
+      <trans-unit id="tl_user.providers.1">
+        <source>Here you can grant access to one or more provider.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.providerp.0">
+        <source>Provider permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.providerp.1">
+        <source>Here you can define the provider permissions.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.realestatep.0">
+        <source>Real estate permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.realestatep.1">
+        <source>Here you can define the real estate permissions.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.regroups.0">
+        <source>Allow real estate groups</source>
+      </trans-unit>
+      <trans-unit id="tl_user.regroups.1">
+        <source>Here you can grant access to one or more real estate groups.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.regroupp.0">
+        <source>Real estate group permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.regroupp.1">
+        <source>Here you can define the real estate group permissions.</source>
+      </trans-unit>
+      <trans-unit id="tl_user.filter_legend">
+        <source>Filter permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.interface_legend">
+        <source>Interface permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.provider_legend">
+        <source>Provider permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.real_estate_legend">
+        <source>Real estate permissions</source>
+      </trans-unit>
+      <trans-unit id="tl_user.real_estate_group_legend">
+        <source>Real estate group permissions</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

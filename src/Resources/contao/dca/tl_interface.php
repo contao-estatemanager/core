@@ -23,6 +23,14 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             array('tl_interface', 'checkPermission')
         ),
+        'oncreate_callback' => array
+        (
+            array('tl_interface', 'adjustPermissions')
+        ),
+        'oncopy_callback' => array
+        (
+            array('tl_interface', 'adjustPermissions')
+        ),
         'sql' => array
         (
             'keys' => array
@@ -38,9 +46,9 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('type', 'title', 'lastSync'),
+            'fields'                  => array('type', 'title'),
             'flag'                    => 1,
-            'panelLayout'             => 'filter;search,limit'
+            'panelLayout'             => 'search,limit'
         ),
         'label' => array
         (
@@ -76,7 +84,8 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
                 'href'                => 'key=syncRealEstates',
-                'icon'                => 'sync.svg'
+                'icon'                => 'sync.svg',
+                'button_callback'     => array('tl_interface', 'syncInterface')
             ),
             'copy' => array
             (
@@ -85,11 +94,20 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_interface', 'copyInterface')
             ),
-            'show' => array
+            'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['show'],
-                'href'                => 'act=show',
-                'icon'                => 'show.svg'
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
+                'href'                => 'act=delete',
+                'icon'                => 'delete.svg',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'button_callback'     => array('tl_interface', 'deleteInterface')
+            ),
+            'cleardata' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['cleardata'],
+                'href'                => 'key=clearRealEstates',
+                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'icon'                => 'bundles/estatemanager/icons/clear.svg'
             ),
             'history' => array
             (
@@ -103,20 +121,11 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'href'                => 'table=tl_interface_log',
                 'icon'                => 'bundles/estatemanager/icons/log.svg'
             ),
-            'cleardata' => array
+            'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['cleardata'],
-                'href'                => 'key=clearRealEstates',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'icon'                => 'bundles/estatemanager/icons/clear.svg'
-            ),
-            'delete' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_interface', 'deleteInterface')
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['show'],
+                'href'                => 'act=show',
+                'icon'                => 'show.svg'
             )
         )
     ),
@@ -124,15 +133,15 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'   => array('type', 'importThirdPartyRecords'),
-        'default'        => '{title_legend},title,type',
-        'openimmo'       => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
+        '__selector__'                => array('type', 'importThirdPartyRecords'),
+        'default'                     => '{title_legend},title,type',
+        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
     ),
 
     // Subpalettes
     'subpalettes' => array
     (
-        'importThirdPartyRecords_assign'   => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
+        'importThirdPartyRecords_assign' => 'assignContactPersonKauf,assignContactPersonMietePacht,assignContactPersonErbpacht,assignContactPersonLeasing',
     ),
 
     // Fields
@@ -164,9 +173,10 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['type'],
             'default'                 => 'openimmo',
             'exclude'				  => true,
+            'filter'                  => true,
             'inputType'				  => 'select',
             'options'				  => array ('openimmo'),
-            'eval'					  => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+            'eval'					  => array('helpwizard'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
@@ -201,7 +211,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueField'],
             'exclude'				  => true,
-            'search'                  => true,
+            'filter'                  => true,
             'inputType'				  => 'select',
             'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
             'options_callback'		  => array('tl_interface', 'getUniqueFieldOptions'),
@@ -343,7 +353,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_interface extends Backend
+class tl_interface extends Contao\Backend
 {
 
     /**
@@ -352,10 +362,15 @@ class tl_interface extends Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        $this->import('Contao\BackendUser', 'User');
 
+        $this->loadDataContainer('tl_contact_person');
         $this->loadDataContainer('tl_provider');
         $this->loadDataContainer('tl_real_estate');
+
+        $this->loadLanguageFile('tl_contact_person');
+        $this->loadLanguageFile('tl_provider');
+        $this->loadLanguageFile('tl_real_estate');
     }
 
     /**
@@ -363,9 +378,184 @@ class tl_interface extends Backend
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function checkPermission()
+    public function checkPermission(): void
     {
-        return;
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->interfaces) || !is_array($this->User->interfaces))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->interfaces;
+        }
+
+        if (Contao\Input::get('key') == 'syncRealEstates')
+        {
+            if (!in_array(Contao\Input::get('id'), $root) || !$this->User->hasAccess('sync', 'interfacep'))
+            {
+                throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to sync interface ID ' . Contao\Input::get('id') . '.');
+            }
+        }
+
+        $GLOBALS['TL_DCA']['tl_interface']['list']['sorting']['root'] = $root;
+
+        // Check permissions to add interface
+        if (!$this->User->hasAccess('create', 'interfacep'))
+        {
+            $GLOBALS['TL_DCA']['tl_interface']['config']['closed'] = true;
+            $GLOBALS['TL_DCA']['tl_interface']['config']['notCreatable'] = true;
+            $GLOBALS['TL_DCA']['tl_interface']['config']['notCopyable'] = true;
+        }
+
+        // Check permissions to delete interfaces
+        if (!$this->User->hasAccess('delete', 'interfacep'))
+        {
+            $GLOBALS['TL_DCA']['tl_interface']['config']['notDeletable'] = true;
+        }
+
+        /** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
+        $objSession = Contao\System::getContainer()->get('session');
+
+        // Check current action
+        switch (Contao\Input::get('act'))
+        {
+            case 'select':
+                // Allow
+                break;
+
+            case 'create':
+                if (!$this->User->hasAccess('create', 'interfacep'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create interfaces.');
+                }
+                break;
+
+            case 'edit':
+            case 'copy':
+            case 'delete':
+            case 'show':
+                if (!in_array(Contao\Input::get('id'), $root) || (Contao\Input::get('act') == 'delete' && !$this->User->hasAccess('delete', 'interfacep')))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface ID ' . Contao\Input::get('id') . '.');
+                }
+                break;
+
+            case 'editAll':
+            case 'deleteAll':
+            case 'overrideAll':
+            case 'copyAll':
+                $session = $objSession->all();
+
+                if (Contao\Input::get('act') == 'deleteAll' && !$this->User->hasAccess('delete', 'interfacep'))
+                {
+                    $session['CURRENT']['IDS'] = array();
+                }
+                else
+                {
+                    $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $root);
+                }
+                $objSession->replace($session);
+                break;
+
+            default:
+                if (Contao\Input::get('act'))
+                {
+                    throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Contao\Input::get('act') . ' interface.');
+                }
+                break;
+        }
+    }
+
+    /**
+     * Add the new interface to the permissions
+     *
+     * @param $insertId
+     */
+    public function adjustPermissions($insertId)
+    {
+        // The oncreate_callback passes $insertId as second argument
+        if (func_num_args() == 4)
+        {
+            $insertId = func_get_arg(1);
+        }
+
+        if ($this->User->isAdmin)
+        {
+            return;
+        }
+
+        // Set root IDs
+        if (empty($this->User->interfaces) || !is_array($this->User->interfaces))
+        {
+            $root = array(0);
+        }
+        else
+        {
+            $root = $this->User->interfaces;
+        }
+
+        // The interface is enabled already
+        if (in_array($insertId, $root))
+        {
+            return;
+        }
+
+        /** @var Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface $objSessionBag */
+        $objSessionBag = Contao\System::getContainer()->get('session')->getBag('contao_backend');
+
+        $arrNew = $objSessionBag->get('new_records');
+
+        if (is_array($arrNew['tl_interface']) && in_array($insertId, $arrNew['tl_interface']))
+        {
+            // Add the permissions on group level
+            if ($this->User->inherit != 'custom')
+            {
+                $objGroup = $this->Database->execute("SELECT id, interfaces, interfacep FROM tl_user_group WHERE id IN(" . implode(',', array_map('\intval', $this->User->groups)) . ")");
+
+                while ($objGroup->next())
+                {
+                    $arrInterfacep = Contao\StringUtil::deserialize($objGroup->interfacep);
+
+                    if (is_array($arrInterfacep) && in_array('create', $arrInterfacep))
+                    {
+                        $arrInterfaces = Contao\StringUtil::deserialize($objGroup->interfaces, true);
+                        $arrInterfaces[] = $insertId;
+
+                        $this->Database->prepare("UPDATE tl_user_group SET interfaces=? WHERE id=?")
+                            ->execute(serialize($arrInterfaces), $objGroup->id);
+                    }
+                }
+            }
+
+            // Add the permissions on user level
+            if ($this->User->inherit != 'group')
+            {
+                $objUser = $this->Database->prepare("SELECT interfaces, interfacep FROM tl_user WHERE id=?")
+                    ->limit(1)
+                    ->execute($this->User->id);
+
+                $arrInterfacep = Contao\StringUtil::deserialize($objUser->interfacep);
+
+                if (is_array($arrInterfacep) && in_array('create', $arrInterfacep))
+                {
+                    $arrInterfaces = Contao\StringUtil::deserialize($objUser->interfaces, true);
+                    $arrInterfaces[] = $insertId;
+
+                    $this->Database->prepare("UPDATE tl_user SET interfaces=? WHERE id=?")
+                        ->execute(serialize($arrInterfaces), $this->User->id);
+                }
+            }
+
+            // Add the new element to the user object
+            $root[] = $insertId;
+            $this->User->interfaces = $root;
+        }
     }
 
     /**
@@ -380,9 +570,26 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function editHeader($row, $href, $label, $title, $icon, $attributes)
+    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->canEditFieldsOf('tl_interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->canEditFieldsOf('tl_interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+    }
+
+    /**
+     * Return the sync button
+     *
+     * @param array  $row
+     * @param string $href
+     * @param string $label
+     * @param string $title
+     * @param string $icon
+     * @param string $attributes
+     *
+     * @return string
+     */
+    public function syncInterface(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
+    {
+        return $this->User->hasAccess('sync', 'interfacep') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml( 'bundles/estatemanager/icons/sync_.svg').' ';
     }
 
     /**
@@ -397,9 +604,9 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function copyInterface($row, $href, $label, $title, $icon, $attributes)
+    public function copyInterface(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('create', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('create', 'interfacep') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
@@ -414,23 +621,20 @@ class tl_interface extends Backend
      *
      * @return string
      */
-    public function deleteInterface($row, $href, $label, $title, $icon, $attributes)
+    public function deleteInterface(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
-        return $this->User->hasAccess('delete', 'interface') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        return $this->User->hasAccess('delete', 'interfacep') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
     }
 
     /**
      * Return all unique provider field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getUniqueProviderFieldOptions($dc)
+    public function getUniqueProviderFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_provider');
-        $this->loadLanguageFile('tl_provider');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
@@ -447,15 +651,12 @@ class tl_interface extends Backend
     /**
      * Return all unique field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getUniqueFieldOptions($dc)
+    public function getUniqueFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_real_estate');
-        $this->loadLanguageFile('tl_real_estate');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
@@ -472,15 +673,12 @@ class tl_interface extends Backend
     /**
      * Return all unique field options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getContactPersonUniqueFieldOptions($dc)
+    public function getContactPersonUniqueFieldOptions(Contao\DataContainer $dc): array
     {
-        $this->loadDataContainer('tl_contact_person');
-        $this->loadLanguageFile('tl_contact_person');
-
         $return = array();
 
         foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
@@ -499,11 +697,11 @@ class tl_interface extends Backend
     /**
      * Return all contact person of assigned provider as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getContactPerson($dc)
+    public function getContactPerson(Contao\DataContainer $dc): array
     {
         $objContactPerson = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
 
@@ -525,11 +723,11 @@ class tl_interface extends Backend
     /**
      * Return delete files older than options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getSyncOptions($dc)
+    public function getSyncOptions(Contao\DataContainer $dc): array
     {
         return array
         (
@@ -548,11 +746,11 @@ class tl_interface extends Backend
     /**
      * Return delete files older than options as array
      *
-     * @param \DataContainer  $dc
+     * @param Contao\DataContainer  $dc
      *
      * @return array
      */
-    public function getDeleteFilesOlderThenOptions($dc)
+    public function getDeleteFilesOlderThenOptions(Contao\DataContainer $dc): array
     {
         return array
         (

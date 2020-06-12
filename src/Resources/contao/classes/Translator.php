@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\System;
+
 /**
  * Provide methods to handle real estates translations.
  *
@@ -33,8 +35,8 @@ class Translator
      * Translate value by field value and name
      *
      * @param string|array $value
-     *
      * @param string $field
+     *
      * @return string|array
      */
     public static function translateValue($value, $field = '')
@@ -90,6 +92,9 @@ class Translator
      */
     public static function translate($strVar, $dictionary, $prefixField = '')
     {
+        // Load translation file
+        System::loadLanguageFile($dictionary);
+
         if(is_array($strVar))
         {
             foreach ($strVar as $k=> $v)

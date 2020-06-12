@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
  * Reads and writes real estate groups
@@ -17,36 +19,43 @@ namespace ContaoEstateManager;
  * @property integer $id
  * @property integer $tstamp
  * @property string  $title
- * @property string  $vermarktungsart
+ * @property integer $similarGroup
  * @property integer $referencePage
+ * @property string  $vermarktungsart
  * @property boolean $published
  *
  * @method static RealEstateGroupModel|null findById($id, array $opt=array())
- * @method static RealEstateGroupModel|null findOneBy($col, $val, $opt=array())
- * @method static RealEstateGroupModel|null findOneByTstamp($val, $opt=array())
- * @method static RealEstateGroupModel|null findOneByTitle($val, $opt=array())
- * @method static RealEstateGroupModel|null findOneByVermarktungsart($val, $opt=array())
- * @method static RealEstateGroupModel|null findOneByReferencePage($val, $opt=array())
- * @method static RealEstateGroupModel|null findOneByPublished($val, $opt=array())
+ * @method static RealEstateGroupModel|null findByPk($id, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneBy($col, $val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneByTstamp($val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneByTitle($val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneBySimilarGroup($val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneByReferencePage($val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneByVermarktungsart($val, array $opt=array())
+ * @method static RealEstateGroupModel|null findOneByPublished($val, array $opt=array())
  *
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findMultipleByIds($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTstamp($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTitle($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByVermarktungsart($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByReferencePage($val, array $opt=array())
- * @method static \Model\Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByTitle($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findBySimilarGroup($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByReferencePage($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByVermarktungsart($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findByPublished($val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findMultipleByIds($var, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findBy($col, $val, array $opt=array())
+ * @method static Collection|RealEstateGroupModel[]|RealEstateGroupModel|null findAll(array $opt=array())
  *
  * @method static integer countById($id, array $opt=array())
- * @method static integer countByTstamp($id, array $opt=array())
- * @method static integer countByTitle($id, array $opt=array())
- * @method static integer countByVermarktungsart($id, array $opt=array())
- * @method static integer countByReferencePage($id, array $opt=array())
- * @method static integer countByPublished($id, array $opt=array())
+ * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByTitle($val, array $opt=array())
+ * @method static integer countBySimilarGroup($val, array $opt=array())
+ * @method static integer countByReferencePage($val, array $opt=array())
+ * @method static integer countByVermarktungsart($val, array $opt=array())
+ * @method static integer countByPublished($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 
-class RealEstateGroupModel extends \Model
+class RealEstateGroupModel extends Model
 {
 
     /**

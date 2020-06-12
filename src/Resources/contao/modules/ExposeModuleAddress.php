@@ -11,6 +11,9 @@
 
 namespace ContaoEstateManager;
 
+use Patchwork\Utf8;
+use Contao\BackendTemplate;
+
 /**
  * Expose module "address".
  *
@@ -33,7 +36,7 @@ class ExposeModuleAddress extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['address'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -49,8 +52,5 @@ class ExposeModuleAddress extends ExposeModule
     /**
      * Generate the module
      */
-    protected function compile()
-    {
-        $this->Template->address = $this->realEstate->getLocationString(!!$this->forceFullAddress);
-    }
+    protected function compile(){}
 }
