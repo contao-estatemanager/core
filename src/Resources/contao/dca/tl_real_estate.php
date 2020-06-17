@@ -1374,8 +1374,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['innenCourtage'],
             'exclude'                 => true,
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 32, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'eval'                      => array('maxlength' => 255, 'tl_class' => 'w50'),
+            'sql'                       => "varchar(255) NOT NULL default ''",
         ),
         'innenCourtageMwst'  => array
         (
@@ -1390,8 +1390,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['aussenCourtage'],
             'exclude'                 => true,
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 32, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(32) NOT NULL default ''",
+            'eval'                      => array('maxlength' => 255, 'tl_class' => 'w50'),
+            'sql'                       => "varchar(255) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 830
@@ -1402,8 +1402,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['courtageHinweis'],
             'exclude'                 => true,
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength' => 128, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(128) NOT NULL default ''",
+            'eval'                      => array('maxlength' => 255, 'tl_class' => 'w50'),
+            'sql'                       => "varchar(255) NOT NULL default ''",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 830
