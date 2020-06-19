@@ -162,10 +162,15 @@
         <target>Immobilien synchronisieren.</target>
       </trans-unit>
 
-      <trans-unit id="tl_interface.openimmo">
+      <trans-unit id="tl_interface.openimmo.0">
         <source>OpenImmo</source>
         <target>OpenImmo</target>
       </trans-unit>
+      <trans-unit id="tl_interface.openimmo.1">
+        <source>Import with ZIP or XML files containing OpenImmo structure file</source>
+        <target>Import mit ZIP oder XML-Dateien mit einer OpenImmo-Struktur-Datei.</target>
+      </trans-unit>
+
       <trans-unit id="tl_interface.create">
         <source>Create if record does not exist</source>
         <target>Erstellen, wenn Datensatz nicht vorhanden</target>
