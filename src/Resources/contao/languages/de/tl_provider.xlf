@@ -37,13 +37,25 @@
         <source>Contact person (if possible)</source>
         <target>Ansprechpartner wenn möglich</target>
       </trans-unit>
+      <trans-unit id="tl_provider.contact.1">
+        <source>Try to deliver the e-mail request directly to the contact person.</source>
+        <target>Versucht die E-Mail-Anfrage direkt an die Kontaktperson zu übermitteln.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.provider.0">
         <source>Provider</source>
         <target>Anbieter</target>
       </trans-unit>
+      <trans-unit id="tl_provider.provider.1">
+        <source>Only delivers the e-mail request to the provider</source>
+        <target>Übermittelt die E-Mail-Anfrage ausschließlich an den Anbieter.</target>
+      </trans-unit>
       <trans-unit id="tl_provider.both.0">
         <source>Both</source>
         <target>Beide</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.both.1">
+        <source>Try to send the e-mail request to the provider and the contact person equally.</source>
+        <target>Versucht die E-Mail-Anfrage gleichwertig an den Anbieter und die Kontaktperson zu übermitteln.</target>
       </trans-unit>
       <trans-unit id="tl_provider.forwardingMode.0">
         <source>Forwarding mode</source>
