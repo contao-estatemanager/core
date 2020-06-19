@@ -409,7 +409,7 @@ class tl_filter extends Contao\Backend
      *
      * @param integer $insertId
      */
-    public function adjustPermissions(int $insertId): void
+    public function adjustPermissions($insertId)
     {
         // The oncreate_callback passes $insertId as second argument
         if (func_num_args() == 4)
