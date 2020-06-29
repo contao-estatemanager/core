@@ -5,74 +5,101 @@
       <trans-unit id="tl_real_estate_attribute.anzahlBalkone">
          <source>Balcony/Terrace</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
-         <source>Elevator</source>
+      <trans-unit id="tl_real_estate_attribute.virtuelletour">
+        <source>Virtual tour available</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.sauna">
-         <source>Sauna</source>
+      <trans-unit id="tl_real_estate_attribute.luftbildern">
+        <source>Aerial photographs available</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.swimmingpool">
-         <source>Pool</source>
+      <trans-unit id="tl_real_estate_attribute.zwangsversteigerung">
+        <source>Foreclosure</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.waschTrockenraum">
-         <source>Laundry / dry room</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.barrierefrei">
-         <source>Barrier-free</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.haustiere">
-         <source>Pets</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.moebliert_moebliert">
-         <source>Furnished</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.seniorengerecht">
-         <source>Suitable for the elderly</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.rollstuhlgerecht">
-         <source>Wheelchair access</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
-         <source>Listed building</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.fahrradraum">
-         <source>Bike room</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.gartennutzung">
-         <source>Garden usage</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.klimatisiert">
-         <source>Air-conditioned</source>
+      <trans-unit id="tl_real_estate_attribute.einliegerwohnung">
+        <source>Secondary suite</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wgGeeignet">
-         <source>Flatshare suitable</source>
+        <source>Flatshare suitable</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.gaestewc">
-         <source>Guest toilet</source>
+      <trans-unit id="tl_real_estate_attribute.raeumeVeraenderbar">
+        <source>Rooms can be modified</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.wintergarten">
-         <source>Winter garden</source>
+      <trans-unit id="tl_real_estate_attribute.bad_dusche">
+        <source>Shower</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.dvbt">
-         <source>DVB-T</source>
+      <trans-unit id="tl_real_estate_attribute.bad_wanne">
+        <source>Bathtub</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.kabelSatTv">
-         <source>Cable / satellite TV</source>
+      <trans-unit id="tl_real_estate_attribute.bad_fenster">
+        <source>Window</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.kran">
-         <source>Crane</source>
+      <trans-unit id="tl_real_estate_attribute.bad_bidet">
+        <source>Bidet</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.kantineCafeteria">
-         <source>Canteen/Cafeteria</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_attribute.wellnessbereich">
-         <source>Wellness area</source>
+      <trans-unit id="tl_real_estate_attribute.bad_pissoir">
+        <source>Urinal</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_ebk">
-         <source>Built-in kitchen</source>
+        <source>Built-in kitchen</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kueche_offen">
-         <source>Open kitchen</source>
+        <source>Open kitchen</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kueche_pantry">
+        <source>Pantry</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_fliesen">
+        <source>Tiles</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_stein">
+        <source>Stone</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_teppich">
+        <source>Carpet</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_parkett">
+        <source>Parquet</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_fertigparkett">
+        <source>Prefinished</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_laminat">
+        <source>Laminate</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_dielen">
+        <source>Floorboards</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_kunststoff">
+        <source>Plastic</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_estrich">
+        <source>Screed</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_doppelboden">
+        <source>Raised floor</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_linoleum">
+        <source>Linoleum</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_marmor">
+        <source>Marble</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_terrakotta">
+        <source>Terracotta</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.boden_granit">
+        <source>Granite</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kamin">
+        <source>Fireplace available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.klimatisiert">
+        <source>Air-conditioned</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
+        <source>Elevator</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_lasten">
+        <source>Freight elevator</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_garage">
         <source>Garage</source>
@@ -91,6 +118,165 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.stellplatzart_duplex">
         <source>Duplex</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gartennutzung">
+        <source>Garden usage</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.moebliert_voll">
+        <source>Fully furnished</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.moebliert_teil">
+        <source>Partly furnished</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.moebliert_moebliert">
+         <source>Furnished</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.rollstuhlgerecht">
+        <source>Wheelchair access</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kabelSatTv">
+        <source>Cable / satellite TV</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.dvbt">
+        <source>DVB-T</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.barrierefrei">
+        <source>Barrier-free</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sauna">
+        <source>Sauna</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.swimmingpool">
+        <source>Pool</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.waschTrockenraum">
+        <source>Laundry / dry room</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wintergarten">
+        <source>Winter garden</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.dvVerkabelung">
+        <source>DV-Cable available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.rampe">
+        <source>Ramp available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.hebebuehne">
+        <source>Lifting ramp available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kran">
+        <source>Crane</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gastterrasse">
+        <source>Guest terrace available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kantineCafeteria">
+        <source>Canteen/Cafeteria</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.teekueche">
+        <source>Kitchenette available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.angeschlGastronomie_hotelrestaurant">
+        <source>Hotel restaurant</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.angeschlGastronomie_bar">
+        <source>Bar</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.brauereibindung">
+        <source>Beer supply agreement</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sporteinrichtungen">
+        <source>Sports facilities available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.wellnessbereich">
+        <source>Wellness area</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.serviceleistungen_betreutes_wohnen">
+        <source>Assisted living</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.serviceleistungen_catering">
+        <source>Catering</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.serviceleistungen_reinigung">
+        <source>Cleaning service</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.serviceleistungen_einkauf">
+        <source>Shopping service</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.serviceleistungen_wachdienst">
+        <source>Security service</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.telefonFerienimmobilie">
+        <source>Phone available (vacational real estate)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.breitbandZugang">
+        <source>Broadband access available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.umtsEmpfang">
+        <source>UMTS reception available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sicherheitstechnik_alarmanlage">
+        <source>Alarm system</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sicherheitstechnik_kamera">
+        <source>Video surveillance</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.sicherheitstechnik_polizeiruf">
+        <source>Police emergency</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.unterkellert_ja">
+        <source>With cellar</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.unterkellert_nein">
+        <source>No cellar</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.unterkellert_teil">
+        <source>Partial cellar</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.abstellraum">
+        <source>Storage room available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrradraum">
+        <source>Bike room</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.rolladen">
+        <source>Roller shutters available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.bibliothek">
+        <source>Library available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.dachboden">
+        <source>Attic available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gaestewc">
+        <source>Guest toilet</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.kabelkanaele">
+        <source>Cable TV available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.seniorengerecht">
+        <source>Suitable for the elderly</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.zulieferung">
+        <source>Supply/Delivery available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.nichtraucher">
+        <source>Non-smokers</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.haustiere">
+        <source>Pets</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.denkmalgeschuetzt">
+        <source>Listed building</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.alsFerien">
+        <source>Vacation property</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.gewerblicheNutzung">
+        <source>Commercial use possible</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.hochhaus">
+        <source>High-rise building</source>
       </trans-unit>
     </body>
   </file>
