@@ -2,6 +2,9 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Config;
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
 use Contao\ModuleModel;
 use ContaoEstateManager\EstateManager\Controller\AbstractEstateManagerController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,6 +27,12 @@ class EstateManagerRead extends AbstractEstateManagerController
      * @var string
      */
     private $currParam = null;
+
+    /**
+     * Current Module
+     * @var ModuleRealEstate|null
+     */
+    private $objModule = null;
 
     /**
      * Run the controller
@@ -52,18 +61,17 @@ class EstateManagerRead extends AbstractEstateManagerController
                 $arrValues  = array();
                 $arrOptions = $this->getModelParameters($this->method);
 
+                // prepare module
+                if ($this->currParam['moduleId'])
+                {
+                    $this->objModule = ModuleModel::findByPk($this->currParam['moduleId']);
+                }
+
                 if($this->currParam['filter'] && $this->currParam['filterMode'])
                 {
                     $objSessionFilter = FilterSession::getInstance($this->currParam['pageId']);
 
-                    $objModule = null;
-
-                    if ($this->currParam['moduleId'])
-                    {
-                        $objModule = ModuleModel::findByPk($this->currParam['moduleId']);
-                    }
-
-                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], true, $objModule);
+                    list($arrColumns, $arrValues, $options) = $objSessionFilter->getParameter($this->currParam['groups'], $this->currParam['filterMode'], true, $this->objModule);
 
                     $arrOptions = array_merge($arrOptions, $options);
                 }
@@ -171,10 +179,9 @@ class EstateManagerRead extends AbstractEstateManagerController
     }
 
     /**
-     * Parse and return an array of real estates with given fields
+     * Parse and return an array of real estates
      *
      * @param $objRealEstates
-     * @param $fields
      *
      * @return array
      */
@@ -198,22 +205,27 @@ class EstateManagerRead extends AbstractEstateManagerController
      */
     private function parseRealEstateCollection($objRealEstate)
     {
-        // create RealEstate instance
-        $realEstate = new RealEstate($objRealEstate, null);
-
-        // set id, dateAdded, and tstamp as dateChanged by default
         $collection = array(
             'id'          => $objRealEstate->id,
             'dateAdded'   => $objRealEstate->dateAdded,
             'dateChanged' => $objRealEstate->tstamp
         );
 
+        if(null !== $this->objModule)
+        {
+            $realEstate = new RealEstateModulePreparation($objRealEstate, $this->objModule, null);
+        }
+        else
+        {
+            $realEstate = new RealEstate($objRealEstate, null);
+        }
+
         if(is_array($this->currParam['fields']))
         {
             // create fields array
             $collection['fields'] = array();
 
-            // extract special fields
+            // handle fields
             foreach ($this->currParam['fields'] as $field)
             {
                 $value = null;
@@ -225,21 +237,15 @@ class EstateManagerRead extends AbstractEstateManagerController
                     case 'mainArea':       $value = $realEstate->getMainArea(); break;
                     case 'mainPrice':      $value = $realEstate->getMainPrice(); break;
                     case 'marketingToken': $value = $realEstate->getMarketingToken(); break;
-                    case 'exposeUrl':
-                        if($this->currParam['jumpTo'])
-                        {
-                            $value = $realEstate->generateExposeUrl($this->currParam['jumpTo']);
-                        }
-
-                        break;
+                    case 'exposeUrl':      $value = $realEstate->generateExposeUrl(); break;
                     case 'mainImage':
                         $fallback = false;
                         $mainImage = $realEstate->getMainImageUuid();
-                        $defaultImage = \Config::get('defaultImage');
+                        $defaultImage = Config::get('defaultImage');
 
                         if($mainImage)
                         {
-                            $objFileModel = \FilesModel::findByUuid($mainImage);
+                            $objFileModel = FilesModel::findByUuid($mainImage);
 
                             if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
                             {
@@ -250,7 +256,7 @@ class EstateManagerRead extends AbstractEstateManagerController
 
                         if($fallback && $defaultImage)
                         {
-                            $objFileModel = \FilesModel::findByUuid($defaultImage);
+                            $objFileModel = FilesModel::findByUuid($defaultImage);
 
                             if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
                             {
@@ -276,8 +282,14 @@ class EstateManagerRead extends AbstractEstateManagerController
         // add template
         if($this->currParam['template'])
         {
-            $objTemplate = new \FrontendTemplate($this->currParam['template']);
-            $objTemplate->setData($collection['fields']);
+            $objTemplate = new FrontendTemplate($this->currParam['template']);
+
+            if(null !== $this->objModule)
+            {
+                $objTemplate->setData($this->objModule->row());
+            }
+
+            $objTemplate->realEstate = $realEstate;
             $collection['template'] = $objTemplate->parse();
         }
 
