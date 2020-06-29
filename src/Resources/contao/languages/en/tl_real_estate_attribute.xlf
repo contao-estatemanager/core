@@ -8,6 +8,9 @@
       <trans-unit id="tl_real_estate_attribute.fahrstuhlart_personen">
          <source>Elevator</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.fahrstuhlart_lasten">
+        <source>Freight elevator</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.sauna">
          <source>Sauna</source>
       </trans-unit>
