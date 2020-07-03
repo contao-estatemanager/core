@@ -22,8 +22,12 @@
         <target>Lizenz gültig - Das Addon wurde erfolgreich freigeschaltet.</target>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.invalid_license">
-        <source>This license is invalid. Please check your input and pay attention to 0 (zero) and O (letter) as well as upper/lower case.</source>
-        <target>Die angegebene Lizenz ist ungültig. Bitte prüfen Sie Ihre Eingabe und beachten Sie 0 (Null) und O (Buchstabe) sowie Groß- und Kleinschreibung.</target>
+        <source>This license is invalid. Please check your input and pay attention to 0 (number) and O (letter) as well as upper/lower case.</source>
+        <target>Diese Lizenz ist ungültig. Bitte überprüfen Sie Ihre Eingabe und achten Sie auf 0 (Zahl) und O (Buchstabe) sowie auf Groß-/Kleinschreibung.</target>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.no_addons">
+        <source>No add-ons found</source>
+        <target>Es konnten keine Add-Ons gefunden werden.</target>
       </trans-unit>
     </body>
   </file>
