@@ -8,6 +8,8 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+use Contao\Message;
+
 $GLOBALS['TL_DCA']['tl_estate_manager_addon'] = array
 (
 
@@ -48,6 +50,7 @@ class tl_estate_manager_addon extends Contao\Backend
     {
         if (!array_key_exists('TL_ESTATEMANAGER_ADDONS', $GLOBALS))
         {
+            Message::addInfo($GLOBALS['TL_LANG']['tl_estate_manager_addon']['no_addons']);
             return;
         }
 
@@ -60,15 +63,25 @@ class tl_estate_manager_addon extends Contao\Backend
                 continue;
             }
 
-            $fieldName = $strClass::$key;
+            $fieldName  = $strClass::$key;
+            $packages   = Contao\System::getContainer()->getParameter('kernel.packages');
+            $arrPackage = [
+                'bundle'  => $strClass::$bundle,
+                'package' => $strClass::$package,
+                'manager' => $strClass
+            ];
+
+            if(isset($packages[ $strClass::$package ]))
+            {
+                $arrPackage['version'] = $packages[ $strClass::$package ];
+            }
 
             $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $fieldName ] = array
             (
                 'label'           => &$GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $fieldName ],
-                'inputType'       => 'text',
-                'save_callback'   => [['tl_estate_manager_addon', 'checkLicense']],
+                'inputType'       => 'license',
                 'load_callback'   => [['tl_estate_manager_addon', 'loadLicenseField']],
-                'eval'            => ['tl_class'=>'w50 clr'],
+                'eval'            => ['tl_class'=>'w50 clr license', 'package' => $arrPackage],
                 'addonManager'    => $strClass
             );
 
@@ -78,30 +91,6 @@ class tl_estate_manager_addon extends Contao\Backend
                 $GLOBALS['TL_DCA']['tl_estate_manager_addon']['palettes']['default']
             );
         }
-    }
-
-    public function checkLicense($varValue, Contao\DataContainer $dc)
-    {
-        if(!$varValue)
-        {
-            return $varValue;
-        }
-
-        $strClass = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['addonManager'];
-
-        if(!ContaoEstateManager\EstateManager::checkLicenses($varValue, $strClass::getLicenses(), $strClass::$key))
-        {
-            if(strtolower($varValue) === 'demo')
-            {
-                throw new Exception($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_used']);
-            }
-            else
-            {
-                throw new Exception($GLOBALS['TL_LANG']['tl_estate_manager_addon']['invalid_license']);
-            }
-        }
-
-        return $varValue;
     }
 
     public function loadLicenseField($varValue, Contao\DataContainer $dc)
@@ -132,6 +121,7 @@ class tl_estate_manager_addon extends Contao\Backend
 
             $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['label'] = array($GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $dc->field ][0], $info);
         }
+
         // Check valid license
         elseif(ContaoEstateManager\EstateManager::checkLicenses($varValue, $strClass::getLicenses(), $strClass::$key))
         {

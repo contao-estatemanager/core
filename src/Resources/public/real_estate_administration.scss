@@ -9,6 +9,56 @@
   background:url("/bundles/estatemanager/icons/navi.svg") 4px 1px no-repeat;
 }
 
+#tl_estate_manager_addon{
+
+  .widget.license{
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 80px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    .version{
+      display: flex;
+      position: absolute;
+      left: -10px;
+      bottom: 2px;
+      width: 85px;
+      justify-content: center;
+
+      > span{
+        position: relative;
+        display: inline-block;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        border: 1px solid #ccc;
+        background: #f5f5f5;
+        border-radius: 15px;
+        padding: 1px 4px;
+        white-space: nowrap;
+      }
+    }
+
+    .image{
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 65px;
+      height: 65px;
+      display: block;
+      border-radius: 7px;
+      background: #f1f1f1;
+      overflow: hidden;
+
+      img{
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
 .tl_listing{
 
   .tl_file_list{
@@ -20,12 +70,6 @@
     @for $i from 1 through 7 {
       .log_level_#{$i}{
         padding-left: 10px * $i;
-        //border-left: 10px * $i solid lighten(#cbcbcb, 5% * $i);
-
-        > span:first-child{
-          //padding-right: 10px * $i;
-          //display: none;
-        }
       }
     }
   }
