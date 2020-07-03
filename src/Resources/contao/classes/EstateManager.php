@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Config;
+
 /**
  * Collection of core functions for EstateManager.
  *
@@ -23,26 +25,25 @@ class EstateManager
      * @param $licenceKey
      * @param $arrLicences
      * @param $strAddon
+     *
      * @return bool
      */
     public static function checkLicenses($licenceKey, $arrLicences, $strAddon){
-        // Demo
         if (strtolower($licenceKey) === 'demo')
         {
             $expAddon = $strAddon . '_demo';
-            $expTime  = \Config::get($expAddon);
+            $expTime  = Config::get($expAddon);
             $curTime  = time();
 
             if (!$expTime)
             {
-                \Config::persist($expAddon, $curTime);
+                Config::persist($expAddon, $curTime);
                 $expTime = $curTime;
             }
 
             return strtotime('+2 weeks', $expTime) > $curTime && $expTime <= $curTime;
         }
 
-        // License
         return in_array(md5($licenceKey), $arrLicences);
     }
 

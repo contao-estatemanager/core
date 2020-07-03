@@ -18,7 +18,10 @@
         <source>License valid - The add-on was successfully unlocked.</source>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.invalid_license">
-        <source>This license is invalid. Please check your input and pay attention to 0 (zero) and O (letter) as well as upper/lower case.</source>
+        <source>This license is invalid. Please check your input and pay attention to 0 (number) and O (letter) as well as upper/lower case.</source>
+      </trans-unit>
+      <trans-unit id="tl_estate_manager_addon.no_addons">
+        <source>No add-ons found</source>
       </trans-unit>
     </body>
   </file>
