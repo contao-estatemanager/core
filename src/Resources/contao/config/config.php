@@ -86,6 +86,7 @@ $GLOBALS['TL_MODELS']['tl_real_estate_type']       = 'ContaoEstateManager\RealEs
 
 // Back end form fields
 $GLOBALS['BE_FFL']['exposeModuleWizard']           = 'ContaoEstateManager\ExposeModuleWizard';
+$GLOBALS['BE_FFL']['license']                      = 'ContaoEstateManager\LicenseField';
 
 // Front end modules
 array_insert($GLOBALS['FE_MOD'], 0, array
