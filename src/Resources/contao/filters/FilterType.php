@@ -158,7 +158,7 @@ class FilterType extends FilterWidget
                 'type'     => 'option',
                 'value'    => '',
                 'selected' => $selected ? ' selected' : '',
-                'label'    => '---'
+                'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : ''
             );
         }
 
