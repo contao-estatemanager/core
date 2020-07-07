@@ -28,8 +28,8 @@
           this.settings = this.extend(true, this.defaults, options || {});
 
           this.form = document.querySelector(this.settings.selector);
-          this.fieldMarketingType = document.querySelector(this.settings.selector + ' .widget.real-estate-marketing-type .real-estate-marketing-type');
-          this.fieldRealEstateType = document.querySelector(this.settings.selector + ' .widget.real-estate-type .real-estate-type');
+          this.fieldMarketingType = document.querySelector(this.settings.selector + ' select.real-estate-marketing-type');
+          this.fieldRealEstateType = document.querySelector(this.settings.selector + ' select.real-estate-type');
           this.toggleFilter = document.querySelectorAll(this.settings.selector + ' .real-estate-filter');
           this.buttonReset = document.querySelector(this.settings.selector + ' .widget-reset .reset');
 
