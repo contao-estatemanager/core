@@ -137,6 +137,14 @@
         <source>Here you can specify whether data records should be skipped if one of the specified fields is not filled.</source>
         <target>Hier können Sie angeben, ob Datensätze übersprungen werden sollen, wenn eines der angegebenen Felder nicht gefüllt ist.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.dontPublishRecords.0">
+        <source>Do not publish records</source>
+        <target>Datensätze nicht veröffentlichen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.dontPublishRecords.1">
+        <source>Here you can specify whether real estate records should be initially published on create.</source>
+        <target>Hier können Sie angeben, ob Immobiliendatensätze beim Anlegen initial veröffentlicht werden sollen.</target>
+      </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
         <source>Automatic synchronization</source>
         <target>Automatische Synchronisierung</target>
@@ -162,10 +170,15 @@
         <target>Immobilien synchronisieren.</target>
       </trans-unit>
 
-      <trans-unit id="tl_interface.openimmo">
+      <trans-unit id="tl_interface.openimmo.0">
         <source>OpenImmo</source>
         <target>OpenImmo</target>
       </trans-unit>
+      <trans-unit id="tl_interface.openimmo.1">
+        <source>Import with ZIP or XML files containing OpenImmo structure file</source>
+        <target>Import mit ZIP oder XML-Dateien mit einer OpenImmo-Struktur-Datei.</target>
+      </trans-unit>
+
       <trans-unit id="tl_interface.create">
         <source>Create if record does not exist</source>
         <target>Erstellen, wenn Datensatz nicht vorhanden</target>
@@ -271,7 +284,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.expert_legend">
         <source>Expert settings</source>
-        <target>Experteneinstellungen</target>
+        <target>Experten-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_interface.sync_legend">
         <source>Synchronization settings</source>
@@ -279,7 +292,6 @@
       </trans-unit>
       <trans-unit id="tl_interface.expert_legend">
         <source>Expert-settings</source>
-        <target>Experteneinstellungen</target>
       </trans-unit>
       
       <trans-unit id="tl_interface.new.0">
