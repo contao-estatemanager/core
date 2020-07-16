@@ -27,7 +27,7 @@ class ModuleRealEstateList extends ModuleRealEstate
     protected $strTemplate = 'mod_realEstateList';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
