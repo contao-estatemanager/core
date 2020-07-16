@@ -92,7 +92,7 @@ class EstateManagerRead extends AbstractEstateManagerController
                     $arrValues[]  = $id;
                 }
 
-                $objRealEstates = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
+                $objRealEstates = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
 
                 if($objRealEstates === null){
                     return new JsonResponse($this->error(
