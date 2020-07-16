@@ -137,11 +137,11 @@
       <trans-unit id="tl_module.realEstateContactPersonTemplate.1">
         <source>Here you can overwrite the standard template for displaying contact persons within a real estate template.</source>
       </trans-unit>
-      <trans-unit id="tl_module.allowReferences.0">
-        <source>Allow references</source>
+      <trans-unit id="tl_module.allowUnpublishedRecords.0">
+        <source>Allow unpublished records</source>
       </trans-unit>
-      <trans-unit id="tl_module.allowReferences.1">
-        <source>Here you can specify whether references are can be called via the exposé.</source>
+      <trans-unit id="tl_module.allowUnpublishedRecords.1">
+        <source>Here you can specify whether unpublished records can be called via the exposé.</source>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
         <source>Exposé Modules</source>

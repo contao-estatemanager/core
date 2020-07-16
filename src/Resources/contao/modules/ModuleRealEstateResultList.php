@@ -96,7 +96,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
     {
         list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
 
-        return RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
+        return RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
     }
 
     /**
@@ -119,6 +119,6 @@ class ModuleRealEstateResultList extends ModuleRealEstate
             $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
         }
 
-        return RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
+        return RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
     }
 }

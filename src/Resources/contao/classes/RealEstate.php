@@ -306,7 +306,7 @@ class RealEstate extends System
                 'class' => 'new'
             );
         }
-        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
+        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
         {
             $return[] = array
             (
@@ -314,7 +314,7 @@ class RealEstate extends System
                 'class' => 'reserved'
             );
         }
-        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft')
+        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
         {
             $return[] = array
             (
@@ -322,7 +322,7 @@ class RealEstate extends System
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet)
+        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet && ($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing))
         {
             $return[] = array
             (
