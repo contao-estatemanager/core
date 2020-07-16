@@ -135,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     (
         '__selector__'                => array('type', 'importThirdPartyRecords'),
         'default'                     => '{title_legend},title,type',
-        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{skip_legend},skipRecords;{sync_legend},autoSync,deleteFilesOlderThen',
+        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{expert_legend},skipRecords,dontPublishRecords;{sync_legend},autoSync,deleteFilesOlderThen',
     ),
 
     // Subpalettes
@@ -324,6 +324,14 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'options'                 => array('objekttitel', 'objektbeschreibung'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'dontPublishRecords' => array
+        (
+            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['dontPublishRecords'],
+            'exclude'				  => true,
+            'inputType'				  => 'checkbox',
+            'eval'					  => array('tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'autoSync' => array
         (
