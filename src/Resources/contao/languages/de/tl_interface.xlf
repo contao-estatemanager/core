@@ -274,9 +274,9 @@
         <source>Create &amp; update</source>
         <target>Erstellen &amp; Aktualisieren</target>
       </trans-unit>
-      <trans-unit id="tl_interface.skip_legend">
-        <source>Skip records</source>
-        <target>Datensätze überspringen</target>
+      <trans-unit id="tl_interface.expert_legend">
+        <source>Expert settings</source>
+        <target>Experteneinstellungen</target>
       </trans-unit>
       <trans-unit id="tl_interface.sync_legend">
         <source>Synchronization settings</source>

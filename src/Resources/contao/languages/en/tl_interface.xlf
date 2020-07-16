@@ -104,6 +104,12 @@
       <trans-unit id="tl_interface.skipRecords.1">
         <source>Here you can specify whether data records should be skipped if one of the specified fields is not filled.</source>
       </trans-unit>
+      <trans-unit id="tl_interface.dontPublishRecords.0">
+        <source>Do not publish records</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.dontPublishRecords.1">
+        <source>Here you can specify whether real estate records should be initially published on create.</source>
+      </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
         <source>Automatic synchronization</source>
       </trans-unit>
@@ -208,8 +214,8 @@
       <trans-unit id="tl_interface.related_records_legend">
         <source>Create &amp; update</source>
       </trans-unit>
-      <trans-unit id="tl_interface.skip_legend">
-        <source>Skip records</source>
+      <trans-unit id="tl_interface.expert_legend">
+        <source>Expert settings</source>
       </trans-unit>
       <trans-unit id="tl_interface.sync_legend">
         <source>Synchronization settings</source>

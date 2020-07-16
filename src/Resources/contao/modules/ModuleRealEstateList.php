@@ -87,12 +87,12 @@ class ModuleRealEstateList extends ModuleRealEstate
             case 'group':
                 list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
-                $intCount = RealEstateModel::countBy($arrColumns, $arrValues, $arrOptions);
+                $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'vacation':
                 $arrColumns = array("tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'");
 
-                $intCount = RealEstateModel::countBy($arrColumns, null);
+                $intCount = RealEstateModel::countPublishedBy($arrColumns, null);
                 break;
         }
 
@@ -161,7 +161,7 @@ class ModuleRealEstateList extends ModuleRealEstate
             case 'visited':
                 if (is_array($_SESSION['REAL_ESTATE_VISITED']))
                 {
-                    $objRealEstate = RealEstateModel::findMultipleByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
+                    $objRealEstate = RealEstateModel::findPublishedByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
                 }
                 break;
             case 'group':
@@ -169,12 +169,12 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $arrOptions = array_merge($options, $arrOptions);
 
-                $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
+                $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'vacation':
                 $arrColumns[] = "(tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1') AND nutzungsart!='gewerbe'";
 
-                $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
+                $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, null, $arrOptions);
                 break;
         }
 
