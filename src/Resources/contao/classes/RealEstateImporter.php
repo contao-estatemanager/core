@@ -691,6 +691,22 @@ class RealEstateImporter extends \BackendModule
 
                 if ($realEstateRecords[$i]['AKTIONART'] === 'DELETE')
                 {
+                    $preventDelete = false;
+
+                    // HOOK: before real estate import
+                    if (isset($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord']) && is_array($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord']))
+                    {
+                        foreach ($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord'] as $callback)
+                        {
+                            $this->import($callback[0]);
+                            $this->{$callback[0]}->{$callback[1]}($objRealEstate, $objProvider, $preventDelete, $this);
+                        }
+                    }
+
+                    if ($preventDelete)
+                    {
+                        continue;
+                    }
 
                     // Delete real estate
                     $this->deleteRealEstateImages($objRealEstate, $objProvider);
