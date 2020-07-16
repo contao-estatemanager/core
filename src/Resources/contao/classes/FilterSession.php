@@ -289,7 +289,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        $arrColumns = array("$t.published='1'");
+        $arrColumns = array();
         $arrValues = array();
         $arrOptions = array();
 
@@ -345,7 +345,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        $arrColumns = array("$t.published='1'");
+        $arrColumns = array();
         $arrValues = array();
         $arrOptions = array();
 
@@ -419,7 +419,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        $arrColumns = array("$t.published='1'");
+        $arrColumns = array();
         $arrValues = array();
         $arrOptions = array();
 

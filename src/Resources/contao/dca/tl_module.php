@@ -18,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addSorti
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCustomOrder';
 
 // Add palettes
-$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateExpose']      = '{title_legend},name,headline,type;{config_legend},allowReferences;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateExpose']      = '{title_legend},name,headline,type;{config_legend},allowUnpublishedRecords;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateFilter']      = '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateList']        = '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{sorting_legend},listSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
@@ -240,9 +240,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['statusTokens'] = array
     'sql'                     => "blob NULL"
 );
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['allowReferences'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['allowUnpublishedRecords'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowReferences'],
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowUnpublishedRecords'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'eval'                    => array('tl_class'=>'w50'),

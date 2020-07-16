@@ -1498,6 +1498,7 @@ use Contao\Model\Collection;
  * @method static integer countByPublished($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
+ * @author Fabian Ekert <https://github.com/eki89>
  */
 
 class RealEstateModel extends Model
@@ -1512,18 +1513,69 @@ class RealEstateModel extends Model
     /**
      * Find published real estate items
      *
-     * @param integer $intLimit    An optional limit
-     * @param integer $intOffset   An optional offset
+     * @param array   $arrColumns  An optional columns array
+     * @param array   $arrValues   An optional values array
      * @param array   $arrOptions  An optional options array
      *
      * @return Model\Collection|RealEstateModel[]|RealEstateModel|null A collection of models or null if there are no real estates
      */
-    public static function findPublishedBy($intLimit=0, $intOffset=0, array $arrOptions=array())
+    public static function findPublishedBy($arrColumns, $arrValues, array $arrOptions=array())
     {
-        $arrOptions['limit']  = $intLimit;
-        $arrOptions['offset'] = $intOffset;
+        $t = static::$strTable;
 
-        return static::findBy(null, null, $arrOptions);
+        if (!static::isPreviewMode($arrOptions) && !static::showUnpublished($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
+        return static::findBy($arrColumns, $arrValues, $arrOptions);
+    }
+
+    /**
+     * Count published real estate items
+     *
+     * @param array   $arrColumns  An optional columns array
+     * @param array   $arrValues   An optional values array
+     * @param array   $arrOptions  An optional options array
+     *
+     * @return integer The number of real estate rows
+     */
+    public static function countPublishedBy($arrColumns, $arrValues, array $arrOptions=array())
+    {
+        $t = static::$strTable;
+
+        if (!static::isPreviewMode($arrOptions) && !static::showUnpublished($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
+        return static::countBy($arrColumns, $arrValues, $arrOptions);
+    }
+
+    /**
+     * Find all published real estate items by their IDs
+     *
+     * @param array $arrIds     An array of page IDs
+     * @param array $arrOptions An optional options array
+     *
+     * @return Model\Collection|RealEstateModel[]|RealEstateModel|null A collection of models or null if there are no real estates
+     */
+    public static function findPublishedByIds($arrIds, array $arrOptions=array())
+    {
+        if (empty($arrIds) || !is_array($arrIds))
+        {
+            return null;
+        }
+
+        $t = static::$strTable;
+        $arrColumns = array("$t.id IN(" . implode(',', array_map('\intval', $arrIds)) . ")");
+
+        if (!static::isPreviewMode($arrOptions) && !static::showUnpublished($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
+        return static::findBy($arrColumns, null, $arrOptions);
     }
 
     /**
@@ -1539,6 +1591,11 @@ class RealEstateModel extends Model
         $t = static::$strTable;
         $arrColumns = !is_numeric($varId) ? array("$t.alias=?") : array("$t.id=?");
 
+        if (!static::isPreviewMode($arrOptions) && !static::showUnpublished($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
         return static::findOneBy($arrColumns, $varId, $arrOptions);
     }
 
@@ -1553,10 +1610,32 @@ class RealEstateModel extends Model
     public static function findPublishedByObjektnrIntern($varValue, array $arrOptions=array())
     {
         $t = static::$strTable;
-        $arrColumns = array("$t.objektnrIntern=? AND $t.published='1'");
+        $arrColumns = array("$t.objektnrIntern=?");
+
+        if (!static::isPreviewMode($arrOptions) && !static::showUnpublished($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
 
         $arrOptions['limit'] = 1;
 
         return static::findOneBy($arrColumns, $varValue, $arrOptions);
+    }
+
+    /**
+     * Check if unpublished records should be visible
+     *
+     * @param array $arrOptions The options array
+     *
+     * @return boolean
+     */
+    protected static function showUnpublished(array $arrOptions)
+    {
+        if (isset($arrOptions['showUnpublished']) && $arrOptions['showUnpublished'])
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -88,7 +88,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             /** @var \PageModel $objPage */
             global $objPage;
 
-            $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(Input::get('items'), 7));
+            $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(Input::get('items'), 7), array('showUnpublished'=>!!$this->allowUnpublishedRecords));
 
             if ($objRealEstate !== null)
             {
@@ -107,14 +107,12 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      */
     protected function compile()
     {
-        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(Input::get('items'));
+        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(Input::get('items'), array('showUnpublished'=>!!$this->allowUnpublishedRecords));
 
-        if ($objRealEstate === null || (!$this->allowReferences && $objRealEstate->referenz))
+        if ($objRealEstate === null)
         {
             throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
-
-        $this->updateVisitedSession($objRealEstate->id);
 
         // HOOK: compile real estate expose
         if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
@@ -125,6 +123,8 @@ class ModuleRealEstateExpose extends ModuleRealEstate
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $objRealEstate, $this);
             }
         }
+
+        $this->updateVisitedSession($objRealEstate->id);
 
         $arrCustomSections = array();
         $arrSections = array('header', 'contentTop', 'left', 'right', 'main', 'contentBottom', 'footer');
