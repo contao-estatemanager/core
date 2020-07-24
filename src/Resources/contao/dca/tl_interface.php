@@ -135,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     (
         '__selector__'                => array('type', 'importThirdPartyRecords'),
         'default'                     => '{title_legend},title,type',
-        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{expert_legend},skipRecords,dontPublishRecords;{sync_legend},autoSync,deleteFilesOlderThen',
+        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{expert_legend},skipRecords,dontPublishRecords;{sync_legend},autoSync,deleteFilesOlderThen,filesPerSync',
     ),
 
     // Subpalettes
@@ -351,6 +351,14 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
             'options_callback'        => array('tl_interface', 'getDeleteFilesOlderThenOptions'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        ),
+        'filesPerSync' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPerSync'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>2, 'rgxp'=>'natural', 'tl_class'=>'w50'),
+            'sql'                     => "smallint(2) unsigned NOT NULL default '10'"
         ),
     )
 );
