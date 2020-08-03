@@ -246,7 +246,7 @@ class RealEstateFormatter
                 }
             }
 
-            return substr($txt, 0, $max) . $textOverflow;
+            return substr($txt, 0, $max) . ($max < strlen($text) ? $textOverflow : '');
         }
 
         return $text;
