@@ -304,6 +304,11 @@ class RealEstateFormatter
                     $newValue = ucfirst( strtolower( $value ) );
                     break;
 
+                // Parse about any English textual datetime description into a Unix timestamp (PHP strtotime)
+                case 'strtotime':
+                    $newValue = strtotime( $value );
+                    break;
+
                 // Format a local time/date (PHP date)
                 case 'date_format':
                     $newValue = date( Config::get('dateFormat'), $value );
