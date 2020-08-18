@@ -23,6 +23,9 @@ use Contao\Model\Collection;
  * @property string  $lizenzkennung
  * @property string  $singleSRC
  * @property string  $forwardingMode
+ * @property string  $useOwnSender
+ * @property string  $senderEmail
+ * @property string  $senderName
  * @property string  $firma
  * @property string  $postleitzahl
  * @property string  $ort

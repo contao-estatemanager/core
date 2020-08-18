@@ -113,9 +113,17 @@ class ExposeForm extends \Form
             $email->subject = $arrSubmitted['subject'];
         }
 
-        // Set the admin e-mail as "from" address
-        $email->from = $GLOBALS['TL_ADMIN_EMAIL'];
-        $email->fromName = $GLOBALS['TL_ADMIN_NAME'];
+        if($objProvider->useOwnSender)
+        {
+            $email->from = $objProvider->senderEmail;
+            $email->fromName = $objProvider->senderName;
+        }
+        else
+        {
+            // Set the admin e-mail as "from" address
+            $email->from = $GLOBALS['TL_ADMIN_EMAIL'];
+            $email->fromName = $GLOBALS['TL_ADMIN_NAME'];
+        }
 
         // Attach XML file
         if ($this->format == 'xml')
