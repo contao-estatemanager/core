@@ -50,6 +50,24 @@
       <trans-unit id="tl_provider.forwardingMode.1">
         <source>Please specify the mode of e-mail forwarding.</source>
       </trans-unit>
+      <trans-unit id="tl_provider.useOwnSender.0">
+        <source>Use own sender</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.useOwnSender.1">
+        <source>Allows you to send e-mail using a different e-mail address / name</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderEmail.0">
+        <source>Sender email</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderEmail.1">
+        <source>Define the email of the sender here</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderName.0">
+        <source>Sender Name</source>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderName.1">
+        <source>Define the name of the sender here</source>
+      </trans-unit>
       <trans-unit id="tl_provider.firma.0">
         <source>Company</source>
       </trans-unit>

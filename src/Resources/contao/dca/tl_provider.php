@@ -117,9 +117,16 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,telefon2,fax,email,homepage;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{description_legend},beschreibung;{image_legend:hide},singleSRC;{published_legend},published'
+        '__selector__'                => array('useOwnSender'),
+        'default'                     => '{general_legend},anbieternr,openimmo_anid,lizenzkennung;{config_legend},forwardingMode,useOwnSender;{address_legend},firma,postleitzahl,ort,strasse,hausnummer,bundesland,land,lat,lng,telefon,telefon2,fax,email,homepage;{address_text_legend:hide},firmenanschrift;{impressum_legend},vertretungsberechtigter,berufsaufsichtsbehoerde,handelsregister,handelsregister_nr,umsstid,steuernummer,weiteres;{impressum_text_legend:hide},impressum;{description_legend},beschreibung;{image_legend:hide},singleSRC;{published_legend},published'
     ),
 
+
+    // Palettes
+    'subpalettes' => array
+    (
+        'useOwnSender'                => 'senderEmail,senderName'
+    ),
 
     // Fields
     'fields' => array
@@ -185,6 +192,36 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
             'reference'               => &$GLOBALS['TL_LANG']['tl_provider'],
             'eval'                    => array('helpwizard'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(8) NOT NULL default ''"
+        ),
+        'useOwnSender' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['useOwnSender'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class' => 'w50 m12', 'submitOnChange'=>true),
+            'sql'                     => "char(1) NOT NULL default '0'",
+        ),
+        'senderEmail' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['senderEmail'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'sorting'                 => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true,'rgxp'=>'email','maxlength'=>255,'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'senderName' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['senderName'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'sorting'                 => true,
+            'flag'                    => 1,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true,'maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'firma' => array
         (
