@@ -167,6 +167,18 @@
       <trans-unit id="tl_module.providerImgSize.1">
         <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberOfMainDetails.0">
+        <source>Max number of main details</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberOfMainDetails.1">
+        <source>Specifies how many main details are displayed in lists within a property. If 0, the value is taken from the global settings.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberOfMainAttributes.0">
+        <source>Max number of main attributes</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberOfMainAttributes.1">
+        <source>Specifies how many main attributes are being displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
+      </trans-unit>
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
       </trans-unit>
