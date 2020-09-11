@@ -88,7 +88,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'protected', 'addHeadings', 'attachmentType'),
+        '__selector__'                => array('type', 'attachFeedbackXml', 'protected', 'addHeadings', 'attachmentType'),
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'texts'                       => '{title_legend},name,headline,type;{settings_legend},textBlocks,maxTextLength,addHeadings,hideOnEmpty;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'fieldList'                   => '{title_legend},name,headline,type;{settings_legend},fields;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'contactPerson'               => '{title_legend},name,headline,type;{settings_legend},contactFields,forceFullAddress,useProviderForwarding;{image_legend:hide},imgSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form,hideOnReferences;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'enquiryForm'                 => '{title_legend},name,headline,type;{settings_legend},form,hideOnReferences,attachFeedbackXml;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'html'                        => '{title_legend},name,headline,type;{settings_legend},html;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests',
@@ -113,6 +113,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Subpalettes
     'subpalettes' => array
     (
+        'attachFeedbackXml'           => 'feedbackXmlTemplate',
         'protected'                   => 'groups',
         'addHeadings'                 => 'fontSize',
         'attachmentType_documents'    => 'allowedFileExtensions,forceDownload'
@@ -465,6 +466,25 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'attachFeedbackXml' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['attachFeedbackXml'],
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'feedbackXmlTemplate' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['feedbackXmlTemplate'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options_callback' => function () {
+                return Contao\Controller::getTemplateGroup('form_feedback_');
+            },
+            'eval'                    => array('chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'realEstateTemplate' => array
         (
