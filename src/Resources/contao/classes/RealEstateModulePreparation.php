@@ -195,9 +195,9 @@ class RealEstateModulePreparation extends RealEstate
      */
     public function getMainDetails(int $max=null): array
     {
-        if(null === $max && $this->objModule->numberOfItems)
+        if(null === $max && $this->objModule->numberOfMainDetails)
         {
-            $max = $this->objModule->numberOfItems;
+            $max = $this->objModule->numberOfMainDetails;
         }
 
         if(null === $max)
@@ -217,9 +217,9 @@ class RealEstateModulePreparation extends RealEstate
      */
     public function getMainAttributes(int $max=null): array
     {
-        if(null === $max && $this->objModule->numberOfItems)
+        if(null === $max && $this->objModule->numberOfMainAttributes)
         {
-            $max = $this->objModule->numberOfItems;
+            $max = $this->objModule->numberOfMainAttributes;
         }
 
         if(null === $max)
