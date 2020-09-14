@@ -120,6 +120,14 @@
         <source>Converts a UNIX timestamp to a readable date format.</source>
         <target>Wandelt einen UNIX-Timestamp in ein leserliches Datums-Format um.</target>
       </trans-unit>
+      <trans-unit id="tl_field_format_action.strtotime.0">
+        <source>strtotime</source>
+        <target>strtotime</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.strtotime.1">
+        <source>Parse about any English textual datetime description into a Unix timestamp.</source>
+        <target>Wandelt jede englische textuelle Datetime-Beschreibung in einen Unix-Zeitstempel um.</target>
+      </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.0">
         <source>ucfirst</source>
         <target>ucfirst</target>
