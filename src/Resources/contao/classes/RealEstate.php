@@ -306,7 +306,7 @@ class RealEstate extends System
                 'class' => 'new'
             );
         }
-        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
+        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (

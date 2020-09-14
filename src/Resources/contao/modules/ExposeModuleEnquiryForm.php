@@ -65,7 +65,7 @@ class ExposeModuleEnquiryForm extends ExposeModule
             return '';
         }
 
-        $form = new ExposeForm($objForm);
+        $form = new ExposeForm($objForm, $this);
 
         $form->setStrKey('form');
 

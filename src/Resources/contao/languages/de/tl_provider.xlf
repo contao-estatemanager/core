@@ -65,6 +65,30 @@
         <source>Please specify the mode of e-mail forwarding.</source>
         <target>Bitte geben Sie den Modus der E-Mail Weiterleitung an.</target>
       </trans-unit>
+      <trans-unit id="tl_provider.useOwnSender.0">
+        <source>Use own sender</source>
+        <target>Eigenen Absender verwenden</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.useOwnSender.1">
+        <source>Allows you to send e-mail using a different e-mail address / name</source>
+        <target>Erlaubt es dir E-Mails mit einer abweichenden E-Mail Adresse / Namen zu versenden.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderEmail.0">
+        <source>Sender email</source>
+        <target>Absender E-Mail</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderEmail.1">
+        <source>Define the email of the sender here</source>
+        <target>Definiere die E-Mail Adresse des Absenders hier.</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderName.0">
+        <source>Sender Name</source>
+        <target>Absender Name</target>
+      </trans-unit>
+      <trans-unit id="tl_provider.senderName.1">
+        <source>Define the name of the sender here</source>
+        <target>Definiere den Namen des Absenders hier,</target>
+      </trans-unit>
       <trans-unit id="tl_provider.firma.0">
         <source>Company</source>
         <target>Firma</target>

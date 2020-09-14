@@ -6,7 +6,7 @@
     </sender>
     <objekt>
         <?php if ($this->addRealEstateData): ?>
-            <?php foreach ($this->realEstate as $key=>$value): ?>
+            <?php foreach ($this->realEstateData as $key=>$value): ?>
                 <<?= $key ?>><?= $value ?></<?= $key ?>>
             <?php endforeach; ?>
         <?php endif; ?>

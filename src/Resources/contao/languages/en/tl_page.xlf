@@ -1,12 +1,6 @@
 <?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_page.php" source-language="en">
     <body>
-      <trans-unit id="tl_page.location.0">
-        <source>Location</source>
-      </trans-unit>
-      <trans-unit id="tl_page.location.1">
-        <source>Here you can assign a location to the page which later can be accessed via modules or insert-tags.</source>
-      </trans-unit>
       <trans-unit id="tl_page.setMarketingType.0">
         <source>Specify marketing type</source>
       </trans-unit>

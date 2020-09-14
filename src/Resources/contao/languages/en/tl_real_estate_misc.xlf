@@ -26,6 +26,9 @@
       <trans-unit id="tl_real_estate_misc.vacation">
         <source>Vacation properties</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_misc.provider">
+        <source>Provider</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneDay">
         <source>1 day</source>
       </trans-unit>

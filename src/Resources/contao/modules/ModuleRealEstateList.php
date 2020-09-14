@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
+use Contao\StringUtil;
 use Patchwork\Utf8;
 
 /**
@@ -86,6 +87,21 @@ class ModuleRealEstateList extends ModuleRealEstate
                 break;
             case 'group':
                 list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+
+                $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
+                break;
+            case 'provider':
+                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+
+                $arrProvider = StringUtil::deserialize($this->provider, true);
+
+                if (!count($arrProvider))
+                {
+                    $intCount = 0;
+                    break;
+                }
+
+                $arrColumns[] = "tl_real_estate.provider IN (" . implode(',', $arrProvider) . ")";
 
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
@@ -168,6 +184,23 @@ class ModuleRealEstateList extends ModuleRealEstate
                 list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
                 $arrOptions = array_merge($options, $arrOptions);
+
+                $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
+                break;
+            case 'provider':
+                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+
+                $arrOptions = array_merge($options, $arrOptions);
+
+                $arrProvider = StringUtil::deserialize($this->provider, true);
+
+                if (!count($arrProvider))
+                {
+                    $objRealEstate = null;
+                    break;
+                }
+
+                $arrColumns[] = "tl_real_estate.provider IN (" . implode(',', $arrProvider) . ")";
 
                 $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;

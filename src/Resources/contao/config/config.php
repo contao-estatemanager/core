@@ -163,7 +163,6 @@ $GLOBALS['TL_RAM'] = array
 );
 
 // Hooks
-$GLOBALS['TL_HOOKS']['prepareFormData'][] = array('ContaoEstateManager\RealEstateInquiry', 'attachFile');
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('contao_estate_manager.listener.insert_tags', 'onReplaceInsertTags');
 
 // Cron jobs
