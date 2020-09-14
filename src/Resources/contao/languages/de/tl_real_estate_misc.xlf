@@ -33,6 +33,10 @@
         <source>Vacation properties</source>
         <target>Ferienimmobilien</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_misc.provider">
+        <source>Provider</source>
+        <target>Anbieter</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_misc.oneDay">
         <source>1 day</source>
         <target>1 Tag</target>
