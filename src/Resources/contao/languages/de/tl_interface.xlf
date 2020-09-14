@@ -169,6 +169,14 @@
         <source>Here you can synchronize real estate</source>
         <target>Immobilien synchronisieren.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.filesPerSync.0">
+        <source>Max. files per sync</source>
+        <target>Max. Anzahl an Dateien pro Synchronisation</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.filesPerSync.1">
+        <source>Here you can specify the maximum number of files to be synchronized during an automatic import.</source>
+        <target>Hier kannst du die maximale Anzahl an Dateien definieren, die während des automatischen Imports synchronisiert werden sollen.</target>
+      </trans-unit>
 
       <trans-unit id="tl_interface.openimmo.0">
         <source>OpenImmo</source>
