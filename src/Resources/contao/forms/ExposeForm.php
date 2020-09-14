@@ -11,29 +11,36 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Config;
+use Contao\Date;
+use Contao\Email;
+use Contao\Environment;
+use Contao\Form;
+use Contao\FormModel;
+use Contao\FrontendTemplate;
+use Contao\FrontendUser;
+use Contao\Input;
+use Contao\PageModel;
+use Contao\StringUtil;
+use Contao\Widget;
+
 /**
- * Provide methods to handle front end forms.
+ * Provide methods to handle expose forms.
  *
  * @property integer $id
  * @property string  $title
- * @property string  $formID
- * @property string  $method
  * @property boolean $allowTags
- * @property string  $attributes
- * @property boolean $novalidate
  * @property integer $jumpTo
  * @property boolean $sendViaEmail
  * @property boolean $skipEmpty
  * @property string  $format
- * @property string  $recipient
  * @property string  $subject
  * @property boolean $storeValues
  * @property string  $targetTable
- * @property string  $customTpl
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class ExposeForm extends \Form
+class ExposeForm extends Form
 {
 
 	/**
@@ -41,6 +48,35 @@ class ExposeForm extends \Form
 	 * @var string
 	 */
 	protected $strKey = 'id';
+
+    /**
+     * Module
+     * @var ExposeModuleEnquiryForm
+     */
+	protected $objExposeModule;
+
+    /**
+     * Initialize the object
+     *
+     * @param FormModel               $objForm
+     * @param ExposeModuleEnquiryForm $objExposeModule
+     */
+    public function __construct($objForm, $objExposeModule)
+    {
+        $this->objExposeModule = $objExposeModule;
+
+        parent::__construct($objForm);
+    }
+
+    /**
+     * Set a new strKey.
+     *
+     * @param string $key  The new strKey of object ExposeForm.
+     */
+    public function setStrKey($key)
+    {
+        $this->strKey = $key;
+    }
 
     /**
      * Process form data, store it in the session and redirect to the jumpTo page
@@ -52,7 +88,7 @@ class ExposeForm extends \Form
     protected function processFormData($arrSubmitted, $arrLabels, $arrFields)
     {
         // HOOK: prepare form data callback
-        if (isset($GLOBALS['TL_HOOKS']['prepareFormData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFormData']))
+        if (isset($GLOBALS['TL_HOOKS']['prepareFormData']) && is_array($GLOBALS['TL_HOOKS']['prepareFormData']))
         {
             foreach ($GLOBALS['TL_HOOKS']['prepareFormData'] as $callback)
             {
@@ -61,107 +97,159 @@ class ExposeForm extends \Form
             }
         }
 
-        $keys = array();
-        $values = array();
-        $fields = array();
-        $message = '';
-
-        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(\Input::get('items'));
+        $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(Input::get('items'));
         $objContactPerson = ContactPersonModel::findByPk($objRealEstate->contactPerson);
         $objProvider = ProviderModel::findByPk($objContactPerson->pid);
 
-        foreach ($arrSubmitted as $k=>$v)
+        // Send form data via e-mail
+        if ($this->sendViaEmail)
         {
-            $v = \StringUtil::deserialize($v);
+            $keys = array();
+            $values = array();
+            $fields = array();
+            $message = '';
 
-            // Skip empty fields
-            if ($this->skipEmpty && !\is_array($v) && !\strlen($v))
+            foreach ($arrSubmitted as $k=>$v)
             {
-                continue;
-            }
-
-            // Add field to message
-            $message .= ($arrLabels[$k] ?? ucfirst($k)) . ': ' . (\is_array($v) ? implode(', ', $v) : $v) . "\n";
-
-            // Prepare XML file
-            if ($this->format == 'xml')
-            {
-                $fields[] = array
-                (
-                    'name' => $k,
-                    'values' => (\is_array($v) ? $v : array($v))
-                );
-            }
-
-            // Prepare CSV file
-            if ($this->format == 'csv')
-            {
-                $keys[] = $k;
-                $values[] = (\is_array($v) ? implode(',', $v) : $v);
-            }
-        }
-
-        $recipients = $this->getRecipients($objProvider, $objContactPerson);
-
-        $email = new \Email();
-        $email->subject = $this->subject;
-
-        // Get subject and message
-        if ($this->format == 'email')
-        {
-            $message = $arrSubmitted['message'];
-            $email->subject = $arrSubmitted['subject'];
-        }
-
-        // Set the admin e-mail as "from" address
-        $email->from = $GLOBALS['TL_ADMIN_EMAIL'];
-        $email->fromName = $GLOBALS['TL_ADMIN_NAME'];
-
-        // Attach XML file
-        if ($this->format == 'xml')
-        {
-            $objTemplate = new \FrontendTemplate('form_xml');
-            $objTemplate->fields = $fields;
-            $objTemplate->charset = \Config::get('characterSet');
-
-            $email->attachFileFromString($objTemplate->parse(), 'form.xml', 'application/xml');
-        }
-
-        // Attach CSV file
-        if ($this->format == 'csv')
-        {
-            $email->attachFileFromString(\StringUtil::decodeEntities('"' . implode('";"', $keys) . '"' . "\n" . '"' . implode('";"', $values) . '"'), 'form.csv', 'text/comma-separated-values');
-        }
-
-        $uploaded = '';
-
-        // Attach uploaded files
-        if (!empty($_SESSION['FILES']))
-        {
-            foreach ($_SESSION['FILES'] as $file)
-            {
-                // Add a link to the uploaded file
-                if ($file['uploaded'])
+                if ($k == 'cc')
                 {
-                    $uploaded .= "\n" . \Environment::get('base') . \StringUtil::stripRootDir(\dirname($file['tmp_name'])) . '/' . rawurlencode($file['name']);
                     continue;
                 }
 
-                $email->attachFileFromString(file_get_contents($file['tmp_name']), $file['name'], $file['type']);
+                $v = StringUtil::deserialize($v);
+
+                // Skip empty fields
+                if ($this->skipEmpty && !is_array($v) && !strlen($v))
+                {
+                    continue;
+                }
+
+                // Add field to message
+                $message .= ($arrLabels[$k] ?? ucfirst($k)) . ': ' . (is_array($v) ? implode(', ', $v) : $v) . "\n";
+
+                // Prepare XML file
+                if ($this->format == 'xml')
+                {
+                    $fields[] = array
+                    (
+                        'name' => $k,
+                        'values' => (is_array($v) ? $v : array($v))
+                    );
+                }
+
+                // Prepare CSV file
+                if ($this->format == 'csv')
+                {
+                    $keys[] = $k;
+                    $values[] = (is_array($v) ? implode(',', $v) : $v);
+                }
             }
-        }
 
-        $uploaded = \strlen(trim($uploaded)) ? "\n\n---\n" . $uploaded : '';
-        $email->text = \StringUtil::decodeEntities(trim($message)) . $uploaded . "\n\n";
+            $recipients = $this->getRecipients($objProvider, $objContactPerson);
 
-        // Send the e-mail
-        try
-        {
+            // Format recipients
+            foreach ($recipients as $k=>$v)
+            {
+                $recipients[$k] = str_replace(array('[', ']', '"'), array('<', '>', ''), $v);
+            }
+
+            $email = new Email();
+            $email->subject = $this->subject;
+
+            // Get subject and message
+            if ($this->format == 'email')
+            {
+                $message = $arrSubmitted['message'];
+                $email->subject = $arrSubmitted['subject'];
+            }
+
+            if($objProvider->useOwnSender)
+            {
+                $email->from = $objProvider->senderEmail;
+                $email->fromName = $objProvider->senderName;
+            }
+            else
+            {
+                // Set the admin e-mail as "from" address
+                $email->from = $GLOBALS['TL_ADMIN_EMAIL'];
+                $email->fromName = $GLOBALS['TL_ADMIN_NAME'];
+            }
+
+            // Get the "reply to" address
+            if (!empty(Input::post('email', true)))
+            {
+                $replyTo = Input::post('email', true);
+
+                // Add the name
+                if (!empty(Input::post('name')))
+                {
+                    $replyTo = '"' . Input::post('name') . '" <' . $replyTo . '>';
+                }
+                elseif (!empty(Input::post('firstname')) && !empty(Input::post('lastname')))
+                {
+                    $replyTo = '"' . Input::post('firstname') . ' ' . Input::post('lastname') . '" <' . $replyTo . '>';
+                }
+
+                $email->replyTo($replyTo);
+            }
+
+            // Fallback to default subject
+            if (!$email->subject)
+            {
+                $email->subject = $this->replaceInsertTags($this->subject, false);
+            }
+
+            // Send copy to sender
+            if (!empty($arrSubmitted['cc']))
+            {
+                $email->sendCc(Input::post('email', true));
+                unset($_SESSION['FORM_DATA']['cc']);
+            }
+
+            // Attach XML file
+            if ($this->format == 'xml')
+            {
+                $objTemplate = new FrontendTemplate('form_xml');
+                $objTemplate->fields = $fields;
+                $objTemplate->charset = Config::get('characterSet');
+
+                $email->attachFileFromString($objTemplate->parse(), 'form.xml', 'application/xml');
+            }
+
+            // Attach CSV file
+            if ($this->format == 'csv')
+            {
+                $email->attachFileFromString(StringUtil::decodeEntities('"' . implode('";"', $keys) . '"' . "\n" . '"' . implode('";"', $values) . '"'), 'form.csv', 'text/comma-separated-values');
+            }
+
+            if ($this->objExposeModule->attachFeedbackXml)
+            {
+                $this->attachFeedbackXml($objRealEstate, $arrSubmitted);
+            }
+
+            $uploaded = '';
+
+            // Attach uploaded files
+            if (!empty($_SESSION['FILES']))
+            {
+                foreach ($_SESSION['FILES'] as $file)
+                {
+                    // Add a link to the uploaded file
+                    if ($file['uploaded'])
+                    {
+                        $uploaded .= "\n" . Environment::get('base') . StringUtil::stripRootDir(dirname($file['tmp_name'])) . '/' . rawurlencode($file['name']);
+                        continue;
+                    }
+
+                    $email->attachFileFromString(file_get_contents($file['tmp_name']), $file['name'], $file['type']);
+                }
+            }
+
+            $uploaded = strlen(trim($uploaded)) ? "\n\n---\n" . $uploaded : '';
+            $email->text = StringUtil::decodeEntities(trim($message)) . $uploaded . "\n\n";
+
+            // Send the e-mail
             $email->sendTo($recipients);
-        }
-        catch (\Swift_SwiftException $e)
-        {
-            $this->log('Form "' . $this->title . '" could not be sent: ' . $e->getMessage(), __METHOD__, TL_ERROR);
         }
 
         // Store the values in the database
@@ -183,9 +271,9 @@ class ExposeForm extends \Form
                     $arrSet[$k] = $v;
 
                     // Convert date formats into timestamps (see #6827)
-                    if ($arrSet[$k] != '' && \in_array($arrFields[$k]->rgxp, array('date', 'time', 'datim')))
+                    if ($arrSet[$k] != '' && in_array($arrFields[$k]->rgxp, array('date', 'time', 'datim')))
                     {
-                        $objDate = new \Date($arrSet[$k], \Date::getFormatFromRgxp($arrFields[$k]->rgxp));
+                        $objDate = new Date($arrSet[$k], Date::getFormatFromRgxp($arrFields[$k]->rgxp));
                         $arrSet[$k] = $objDate->tstamp;
                     }
                 }
@@ -198,13 +286,13 @@ class ExposeForm extends \Form
                 {
                     if ($v['uploaded'])
                     {
-                        $arrSet[$k] = \StringUtil::stripRootDir($v['tmp_name']);
+                        $arrSet[$k] = StringUtil::stripRootDir($v['tmp_name']);
                     }
                 }
             }
 
             // HOOK: store form data callback
-            if (isset($GLOBALS['TL_HOOKS']['storeFormData']) && \is_array($GLOBALS['TL_HOOKS']['storeFormData']))
+            if (isset($GLOBALS['TL_HOOKS']['storeFormData']) && is_array($GLOBALS['TL_HOOKS']['storeFormData']))
             {
                 foreach ($GLOBALS['TL_HOOKS']['storeFormData'] as $callback)
                 {
@@ -218,7 +306,7 @@ class ExposeForm extends \Form
             {
                 if ($v === '')
                 {
-                    $arrSet[$k] = \Widget::getEmptyValueByFieldType($GLOBALS['TL_DCA'][$this->targetTable]['fields'][$k]['sql']);
+                    $arrSet[$k] = Widget::getEmptyValueByFieldType($GLOBALS['TL_DCA'][$this->targetTable]['fields'][$k]['sql']);
                 }
             }
 
@@ -229,13 +317,16 @@ class ExposeForm extends \Form
         // Store all values in the session
         foreach (array_keys($_POST) as $key)
         {
-            $_SESSION['FORM_DATA'][$key] = $this->allowTags ? \Input::postHtml($key, true) : \Input::post($key, true);
+            $_SESSION['FORM_DATA'][$key] = $this->allowTags ? Input::postHtml($key, true) : Input::post($key, true);
         }
+
+        // Store the submit time to invalidate the session later on
+        $_SESSION['FORM_DATA']['SUBMITTED_AT'] = time();
 
         $arrFiles = $_SESSION['FILES'];
 
         // HOOK: process form data callback
-        if (isset($GLOBALS['TL_HOOKS']['processFormData']) && \is_array($GLOBALS['TL_HOOKS']['processFormData']))
+        if (isset($GLOBALS['TL_HOOKS']['processFormData']) && is_array($GLOBALS['TL_HOOKS']['processFormData']))
         {
             foreach ($GLOBALS['TL_HOOKS']['processFormData'] as $callback)
             {
@@ -249,7 +340,7 @@ class ExposeForm extends \Form
         // Add a log entry
         if (FE_USER_LOGGED_IN)
         {
-            $this->import('FrontendUser', 'User');
+            $this->import(FrontendUser::class, 'User');
             $this->log('Form "' . $this->title . '" has been submitted by "' . $this->User->username . '".', __METHOD__, TL_FORMS);
         }
         else
@@ -257,9 +348,23 @@ class ExposeForm extends \Form
             $this->log('Form "' . $this->title . '" has been submitted by a guest.', __METHOD__, TL_FORMS);
         }
 
+        // Check whether there is a jumpTo page
+        if (($objJumpTo = $this->objModel->getRelated('jumpTo')) instanceof PageModel)
+        {
+            $this->jumpToOrReload($objJumpTo->row());
+        }
+
         $this->reload();
     }
 
+    /**
+     * Get the list of involved recipient
+     *
+     * @param ProviderModel      $objProvider
+     * @param ContactPersonModel $objContactPerson
+     *
+     * @return array
+     */
     protected function getRecipients($objProvider, $objContactPerson)
     {
         $recipients = array();
@@ -292,13 +397,80 @@ class ExposeForm extends \Form
         return $recipients;
     }
 
-    /**
-     * Set a new strKey.
-     *
-     * @param string $key  The new strKey of object ExposeForm.
-     */
-    public function setStrKey($key)
+    protected function attachFeedbackXml($objRealEstate, $arrSubmitted)
     {
-        $this->strKey = $key;
+        $objFeedbackTemplate = new FrontendTemplate($this->objExposeModule->feedbackXmlTemplate);
+        $objFeedbackTemplate->setData($arrSubmitted);
+
+        $realEstate = new RealEstate($objRealEstate, null);
+        $arrRealEstateData = array();
+
+        $arrRealEstateData['anbieter_id'] = $realEstate->anbieternr;
+        $arrRealEstateData['oobj_id'] = $realEstate->objektnrExtern;
+        $arrRealEstateData['exposeUrl'] = Environment::get('http_origin') . Environment::get('request_uri');
+        $arrRealEstateData['vermarktungsart'] = $this->getMarketingtype($realEstate);
+        $arrRealEstateData['bezeichnung'] = $realEstate->title;
+        if ($realEstate->etage)
+        {
+            $arrRealEstateData['etage'] = $realEstate->etage;
+        }
+        if ($realEstate->hausnummer)
+        {
+            $arrRealEstateData['whg_nr'] = $realEstate->hausnummer;
+        }
+        if ($realEstate->strasse)
+        {
+            $arrRealEstateData['strasse'] = $realEstate->strasse;
+        }
+        if ($realEstate->ort)
+        {
+            $arrRealEstateData['ort'] = $realEstate->ort;
+        }
+        if ($realEstate->land)
+        {
+            $arrRealEstateData['land'] = $realEstate->land;
+        }
+        $arrRealEstateData['preis'] = $realEstate->getMainPrice()['value'];
+        if ($realEstate->anzahlZimmer)
+        {
+            $arrRealEstateData['anzahl_zimmer'] = $realEstate->anzahlZimmer;
+        }
+        $arrRealEstateData['flaeche'] = $realEstate->getMainArea()['value'];
+
+        $objFeedbackTemplate->addRealEstateData = true;
+        $objFeedbackTemplate->realEstateData = $arrRealEstateData;
+        $objFeedbackTemplate->realEstate = $realEstate;
+
+        $fileName = 'feedback' . time() . '.xml';
+        $filePath = 'system/tmp/' . $fileName;
+
+        \File::putContent($filePath, $objFeedbackTemplate->parse());
+
+        $_SESSION['FILES']['feedback'] = array
+        (
+            'tmp_name' => TL_ROOT . '/' . $filePath,
+            'name'     => 'feedback.xml',
+            'type'     => 'xml'
+        );
+    }
+
+    private function getMarketingtype($realEstate)
+    {
+        if ($realEstate->vermarktungsartKauf)
+        {
+            return 'KAUF';
+        }
+        elseif ($realEstate->vermarktungsartErbpacht)
+        {
+            return 'ERBPACHT';
+        }
+        elseif ($realEstate->vermarktungsartMietePacht)
+        {
+            return 'MIETE_PACHT';
+        }
+        elseif ($realEstate->vermarktungsartLeasing)
+        {
+            return 'LEASING';
+        }
     }
 }

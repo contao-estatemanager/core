@@ -92,6 +92,12 @@
       <trans-unit id="tl_field_format_action.date_format.1">
         <source>Converts a UNIX timestamp to a readable date format.</source>
       </trans-unit>
+      <trans-unit id="tl_field_format_action.strtotime.0">
+        <source>strtotime</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.strtotime.1">
+        <source>Parse about any English textual datetime description into a Unix timestamp.</source>
+      </trans-unit>
       <trans-unit id="tl_field_format_action.ucfirst.0">
         <source>ucfirst</source>
       </trans-unit>

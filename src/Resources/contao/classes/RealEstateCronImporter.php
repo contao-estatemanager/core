@@ -57,7 +57,7 @@ class RealEstateCronImporter extends \Frontend
 
                 if ($minDiff - intval($objInterface->autoSync) >= 0)
                 {
-                    $this->sync();
+                    $this->sync($objInterface->current());
                 }
             }
         }
@@ -65,8 +65,10 @@ class RealEstateCronImporter extends \Frontend
 
     /**
      * Synchronize an interface
+     *
+     * @param InterfaceModel $objInterface
      */
-    protected function sync()
+    protected function sync($objInterface)
     {
         // HOOK: add custom logic
         if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeCronSync']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeCronSync']))
@@ -93,7 +95,7 @@ class RealEstateCronImporter extends \Frontend
 
         // ToDo: Use array_filter to remove duplicate files (may its possible if file is not completely transferred)
 
-        $files = array_slice(array_reverse($files), 0, 10);
+        $files = array_slice(array_reverse($files), 0, $objInterface->filesPerSync);
 
         foreach ($files as $file)
         {

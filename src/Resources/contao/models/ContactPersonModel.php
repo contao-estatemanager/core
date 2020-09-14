@@ -179,4 +179,20 @@ class ContactPersonModel extends Model
      * @var string
      */
     protected static $strTable = 'tl_contact_person';
+
+    /**
+     * Find published contact persons by their parent IDs
+     *
+     * @param array $arrPids         Array of provider IDs
+     * @param array $arrOptions      An optional options array
+     *
+     * @return \Model\Collection|ContactPersonModel[]|ContactPersonModel|null A collection of models or null if there are no contact persons
+     */
+    public static function findPublishedByPids($arrPids, $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.pid IN(" . implode(',', array_map('\intval', $arrPids)) . ") AND $t.published='1'");
+
+        return static::findBy($arrColumns, null, $arrOptions);
+    }
 }

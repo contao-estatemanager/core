@@ -20,11 +20,12 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][]        = 'addCusto
 // Add palettes
 $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateExpose']      = '{title_legend},name,headline,type;{config_legend},allowUnpublishedRecords;{module_legend:hide},exposeModules;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateFilter']      = '{title_legend},name,headline,type;{include_legend},filter;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateList']        = '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,hideOnEmpty,listMode;{sorting_legend},listSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateList']        = '{title_legend},name,headline,type;{config_legend},numberOfItems,perPage,numberOfMainDetails,numberOfMainAttributes,hideOnEmpty,listMode;{sorting_legend},listSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,maxTextLength';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_legend},name,headline,type;{config_legend},realEstateGroups,numberOfItems,perPage,numberOfMainDetails,numberOfMainAttributes,filterMode,addCountLabel;{provider_legend},filterByProvider;{sorting_legend},addSorting,addCustomOrder;{redirect_legend},jumpTo;{item_extension_legend:hide},addProvider,addContactPerson;{template_legend:hide},statusTokens,customTpl,realEstateTemplate,realEstateProviderTemplate,realEstateContactPersonTemplate;{image_legend:hide},imgSize,providerImgSize,contactPersonImgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
 // Add subpalettes
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_group']     = 'realEstateGroups,filterMode';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_provider']  = 'realEstateGroups,provider,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['filterByProvider']   = 'provider';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addSorting']         = 'defaultSorting';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addCustomOrder']     = 'customOrder';
@@ -86,7 +87,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => array('visited', 'group', 'vacation'),
+    'options'                 => array('visited', 'group', 'provider', 'vacation'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
     'sql'                     => "varchar(16) NOT NULL default ''"
@@ -284,6 +285,26 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['providerImgSize'] = array
         return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
     },
     'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainDetails'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['numberOfMainDetails'],
+    'default'                 => 0,
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
+    'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainAttributes'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['numberOfMainAttributes'],
+    'default'                 => 0,
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
+    'sql'                     => "smallint(5) unsigned NOT NULL default '0'"
 );
 
 

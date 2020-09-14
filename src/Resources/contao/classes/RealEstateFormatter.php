@@ -246,7 +246,7 @@ class RealEstateFormatter
                 }
             }
 
-            return substr($txt, 0, $max) . $textOverflow;
+            return substr($txt, 0, $max) . ($max < strlen($text) ? $textOverflow : '');
         }
 
         return $text;
@@ -302,6 +302,11 @@ class RealEstateFormatter
                 // Make a string's first character uppercase (PHP ucfirst)
                 case 'ucfirst':
                     $newValue = ucfirst( strtolower( $value ) );
+                    break;
+
+                // Parse about any English textual datetime description into a Unix timestamp (PHP strtotime)
+                case 'strtotime':
+                    $newValue = strtotime( $value );
                     break;
 
                 // Format a local time/date (PHP date)

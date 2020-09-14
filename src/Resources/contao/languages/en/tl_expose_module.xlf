@@ -238,6 +238,18 @@
       <trans-unit id="tl_expose_module.hideOnReferences.1">
         <source>Hides the module for references.</source>
       </trans-unit>
+      <trans-unit id="tl_expose_module.attachFeedbackXml.0">
+        <source>Attach feedback XML</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.attachFeedbackXml.1">
+        <source>Attach an OpenImmo feedback XML to the e-mail request.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.feedbackXmlTemplate.0">
+        <source>Feedback XML template</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.feedbackXmlTemplate.1">
+        <source>Here you can select a feedback XML template for the e-mail request..</source>
+      </trans-unit>
       <trans-unit id="tl_expose_module.text.0">
         <source>Text</source>
       </trans-unit>

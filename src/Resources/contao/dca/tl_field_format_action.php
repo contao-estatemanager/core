@@ -90,6 +90,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'prepend'                     => '{type_legend},action;{setting_legend},text;',
         'append'                      => '{type_legend},action;{setting_legend},text;',
         'number_format'               => '{type_legend},action;{setting_legend},decimals;',
+        'strtotime'                   => '{type_legend},action;',
         'date_format'                 => '{type_legend},action;',
         'ucfirst'                     => '{type_legend},action;{setting_legend};',
         'wrap'                        => '{type_legend},action;{setting_legend},text;',
@@ -130,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('prepend', 'append', 'number_format', 'date_format', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
+            'options'                 => array('prepend', 'append', 'number_format', 'date_format', 'strtotime', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_field_format_action'],
             'eval'                    => array('helpwizard'=>true, 'tl_class'=>'w50', 'chosen' => true, 'submitOnChange'=>true, 'includeBlankOption'=>true),
             'sql'                     => "varchar(255) NOT NULL default ''"

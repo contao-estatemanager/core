@@ -283,7 +283,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'objektart' => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['objektart'],
-            'exclude'                 => true,
+            'exclude'                   => true,
             'inputType'                 => 'select',
             'filter'                    => true,
             'options'                   => array
