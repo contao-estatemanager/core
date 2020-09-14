@@ -299,7 +299,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        //$this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         if ($objRealEstateType === null)
         {
@@ -355,7 +355,7 @@ class FilterSession extends \Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        //$this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
+        $this->addQueryFragmentProvider($arrColumns, $arrValues, $objModule);
 
         $arrTypeColumns = array();
 
@@ -498,19 +498,12 @@ class FilterSession extends \Frontend
      */
     protected function addQueryFragmentProvider(&$arrColumns, &$arrValues, $objModule=null)
     {
-        $t = static::$strTable;
-
-        if (static::$objPage->location)
-        {
-            $arrColumns[] = "$t.provider=?";
-            $arrValues[]  = static::$objPage->location;
-            return;
-        }
-
         if ($objModule === null)
         {
             return;
         }
+
+        $t = static::$strTable;
 
         if ($objModule->filterByProvider)
         {

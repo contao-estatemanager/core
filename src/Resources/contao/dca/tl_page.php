@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setRealEstateType
 // Extend the regular palette
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addLegend('estate_manager_legend', 'publish_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE, true)
-    ->addField(array('location', 'setMarketingType', 'setRealEstateType'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->addField(array('setMarketingType', 'setRealEstateType'), 'estate_manager_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('regular', 'tl_page')
 ;
 
@@ -34,16 +34,6 @@ $GLOBALS['TL_DCA']['tl_page']['subpalettes']['setMarketingType']  = 'marketingTy
 $GLOBALS['TL_DCA']['tl_page']['subpalettes']['setRealEstateType'] = 'realEstateType';
 
 // Add fields
-$GLOBALS['TL_DCA']['tl_page']['fields']['location'] = array
-(
-    'label'                   => &$GLOBALS['TL_LANG']['tl_page']['location'],
-    'exclude'                 => true,
-    'inputType'               => 'select',
-    'options_callback'        => array('tl_page_estate_manager' ,'getLocations'),
-    'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
-    'sql'                     => "int(10) unsigned NOT NULL default '0'",
-);
-
 $GLOBALS['TL_DCA']['tl_page']['fields']['setMarketingType'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_page']['setMarketingType'],
@@ -117,29 +107,6 @@ class tl_page_estate_manager extends Contao\Backend
     {
         parent::__construct();
         $this->import('Contao\BackendUser', 'User');
-    }
-
-    /**
-     * Get all locations and return them as array
-     *
-     * @return array
-     */
-    public function getLocations(): array
-    {
-        $arrLocations = array();
-        $objLocations = ContaoEstateManager\ProviderModel::findAll();
-
-        if ($objLocations === null)
-        {
-            return $arrLocations;
-        }
-
-        while ($objLocations->next())
-        {
-            $arrLocations[ $objLocations->id ] = $objLocations->postleitzahl . ' ' . $objLocations->ort . ' (' . $objLocations->firma . ')';
-        }
-
-        return $arrLocations;
     }
 
     /**

@@ -25,6 +25,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_l
 
 // Add subpalettes
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_group']     = 'realEstateGroups,filterMode';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_provider']  = 'realEstateGroups,provider,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['filterByProvider']   = 'provider';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addSorting']         = 'defaultSorting';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addCustomOrder']     = 'customOrder';
@@ -86,7 +87,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => array('visited', 'group', 'vacation'),
+    'options'                 => array('visited', 'group', 'provider', 'vacation'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
     'sql'                     => "varchar(16) NOT NULL default ''"
