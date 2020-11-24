@@ -1,5 +1,5 @@
 <br/>
-<p align="center"><img src="https://www.contao-estatemanager.com/files/theme/images/logo/logo_dunkel.png"></p>
+<p align="center"><img src="https://www.oveleon.de/share/github-assets/contao-estatemanager/core.png"></p>
 <br/>
 <p align="center">
     <small>The Contao EstateManager is an open source extension for Contao CMS that allows you to import real estate assets from existing ecosystems, display them extensively or manage properties directly in Contao. Visit the <a href="https://www.contao-estatemanager.com" target="_blank">project website</a> for more information.</small>
