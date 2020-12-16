@@ -1,6 +1,6 @@
 <script>
     var EstateManager = {
-<?= \ContaoEstateManager\FilterToggle::getEstateManagerConfig(); ?>
+<?= ContaoEstateManager\FilterToggle::getEstateManagerConfig(); ?>
     };
 </script>
 <script>
