@@ -4,7 +4,7 @@
   "description":"EstateManager for Contao - Manage real estate properties in Contao.",
   "keywords":["contao", "immobilien", "manager", "property", "realestate"],
   "homepage":"https://www.contao-estatemanager.com/",
-  "license":"AGPLv3",
+  "license":"AGPL-3.0-or-later",
   "authors":[
     {
       "name":"Daniele Sciannimanica",
