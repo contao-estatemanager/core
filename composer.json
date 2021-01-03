@@ -65,7 +65,7 @@
   "suggest": {
     "contao-estatemanager/watchlist": "Extends watchlist features",
     "contao-estatemanager/reference": "Extends reference features",
-    "contao-estatemanager/googlemaps": "Extends Google-Maps",
+    "contao-estatemanager/google-maps": "Extends Google-Maps",
     "contao-estatemanager/locations": "Extends additional features for locations",
     "contao-estatemanager/energy-pass": "Extends an energy certificate",
     "contao-estatemanager/featured": "Extends highlighted real estates",
