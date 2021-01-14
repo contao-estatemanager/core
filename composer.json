@@ -63,9 +63,10 @@
     "docs": "https://docs.contao-estatemanager.com/"
   },
   "suggest": {
+    "contao-estatemanager/setup-configurator": "Helps with the initial setup of a new project",
     "contao-estatemanager/watchlist": "Extends watchlist features",
     "contao-estatemanager/reference": "Extends reference features",
-    "contao-estatemanager/googlemaps": "Extends Google-Maps",
+    "contao-estatemanager/google-maps": "Extends Google-Maps",
     "contao-estatemanager/locations": "Extends additional features for locations",
     "contao-estatemanager/energy-pass": "Extends an energy certificate",
     "contao-estatemanager/featured": "Extends highlighted real estates",
@@ -73,7 +74,6 @@
     "contao-estatemanager/video": "Extends video support",
     "contao-estatemanager/virtual-tour": "Extends virtual-tour support",
     "contao-estatemanager/project": "Extends projects with several residential units",
-    "contao-estatemanager/wib-import": "Extends WIB import interface",
-    "contao-estatemanager/skeleton-extension": "Create your own extension for the Contao EstateManager"
+    "contao-estatemanager/wib-import": "Extends WIB import interface"
   }
 }
