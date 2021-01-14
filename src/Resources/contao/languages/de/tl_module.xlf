@@ -221,19 +221,19 @@
         <source>Here you can set the image dimensions and the scaling mode.</source>
         <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus festlegen.</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_config.numberOfMainDetails.0">
+      <trans-unit id="tl_module.numberOfMainDetails.0">
         <source>Max number of main details</source>
         <target>Max. Anzahl der primären Details</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_config.numberOfMainDetails.1">
+      <trans-unit id="tl_module.numberOfMainDetails.1">
         <source>Specifies how many main details are displayed in lists within a property. If 0, the value is taken from the global settings.</source>
         <target>Definiert, wie viele primären Details in Immobilienlisten angezeigt werden dürfen.</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_config.numberOfMainAttributes.0">
+      <trans-unit id="tl_module.numberOfMainAttributes.0">
         <source>Max number of main attributes</source>
         <target>Max. Anzahl der primären Attribute</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_config.numberOfMainAttributes.1">
+      <trans-unit id="tl_module.numberOfMainAttributes.1">
         <source>Specifies how many main attributes are being displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
         <target>Definiert, wie viele primären Attribute in Immobilienlisten angezeigt werden dürfen.</target>
       </trans-unit>
