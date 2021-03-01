@@ -118,6 +118,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         $objPage->pageTitle = $objRealEstate->objekttitel;
+        $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
 
         // HOOK: compile real estate expose
         if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
