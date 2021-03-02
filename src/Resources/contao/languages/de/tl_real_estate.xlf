@@ -468,6 +468,30 @@
         <source>Here you can define the type of interest.</source>
         <target>Definieren Sie hier, um welchen Zins-Typen es sich handelt.</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.metaTitle.0">
+        <source>Page title</source>
+        <target>Seitentitel</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.metaTitle.1">
+        <source>Please enter the page title. Leave it empty to use the property title.</source>
+        <target>Bitte geben Sie den Titel der Seite ein. Bei einem leeren Wert wird der Objekttitel ausgegeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.robots.0">
+        <source>Robots tag</source>
+        <target>Robots-Tag</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.robots.1">
+        <source>Here you can define how search engines handle the page. If left empty, the parent page will set the robots tag.</source>
+        <target>Hier legen Sie fest, wie Suchmaschinen die Seite behandeln. Bei einem leeren Wert wird der Robots-Tag von der Elternseite gesetzt.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.metaDescription.0">
+        <source>Page description</source>
+        <target>Beschreibung der Seite</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.metaDescription.1">
+        <source>Here you can enter a short description of the page which will be evaluated by search engines like Google or Yahoo. Search engines usually indicate between 150 and 300 characters. Leave it empty to use the property description.</source>
+        <target>Hier können Sie eine kurze Beschreibung der Seite eingeben, die von Suchmaschinen wie Google oder Yahoo ausgewertet wird. Suchmaschinen indizieren normalerweise zwischen 150 und 300 Zeichen. Bei einem leeren Wert wird die Immobilienbeschreibung ausgegeben.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisAufAnfrage.0">
         <source>Purchase price on request</source>
         <target>Kaufpreis auf Anfrage</target>

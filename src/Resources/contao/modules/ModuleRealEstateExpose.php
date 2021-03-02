@@ -313,4 +313,34 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         return $blnReturn;
     }
+
+    /**
+     * Set meta data to object page
+     *
+     * @param RealEstateModel
+     */
+    protected function setMetaData($objRealEstate): void
+    {
+        /** @var PageModel $objPage */
+        global $objPage;
+
+        // Meta title
+        $objPage->pageTitle = !empty($objRealEstate->metaTitle) ? $objRealEstate->metaTitle : $objRealEstate->objekttitel;
+
+        // Meta description
+        if (!empty($objRealEstate->metaDescription))
+        {
+            $objPage->description = $objRealEstate->metaDescription;
+        }
+        else
+        {
+            $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
+        }
+
+        // Robots
+        if (!empty($objRealEstate->robots))
+        {
+            $objPage->robots = $objRealEstate->robots;
+        }
+    }
 }
