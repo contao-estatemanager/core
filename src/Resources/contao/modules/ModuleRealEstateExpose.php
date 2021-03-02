@@ -117,8 +117,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
-        $objPage->pageTitle = $objRealEstate->objekttitel;
-        $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
+        $this->setMetaData($objRealEstate);
 
         // HOOK: compile real estate expose
         if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
