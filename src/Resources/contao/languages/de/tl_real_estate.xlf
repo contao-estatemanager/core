@@ -5,6 +5,10 @@
         <source>Title / Publication</source>
         <target>Titel / Veröffentlichung</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.real_estate_meta_legend">
+        <source>Real estate meta data</source>
+        <target>Immobilien Metadaten</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_address_legend">
         <source>Address / Geographical data</source>
         <target>Adresse / Geo-Informationen</target>
