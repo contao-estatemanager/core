@@ -117,8 +117,7 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
 
-        $objPage->pageTitle = $objRealEstate->objekttitel;
-        $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
+        $this->setMetaData($objRealEstate);
 
         // HOOK: compile real estate expose
         if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
@@ -312,5 +311,35 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         return $blnReturn;
+    }
+
+    /**
+     * Set meta data to object page
+     *
+     * @param RealEstateModel
+     */
+    protected function setMetaData($objRealEstate): void
+    {
+        /** @var PageModel $objPage */
+        global $objPage;
+
+        // Meta title
+        $objPage->pageTitle = !empty($objRealEstate->metaTitle) ? $objRealEstate->metaTitle : $objRealEstate->objekttitel;
+
+        // Meta description
+        if (!empty($objRealEstate->metaDescription))
+        {
+            $objPage->description = $objRealEstate->metaDescription;
+        }
+        else
+        {
+            $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
+        }
+
+        // Robots
+        if (!empty($objRealEstate->robots))
+        {
+            $objPage->robots = $objRealEstate->robots;
+        }
     }
 }
