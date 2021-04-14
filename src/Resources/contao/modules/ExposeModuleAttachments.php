@@ -18,6 +18,7 @@ use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\Input;
+use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
 use Patchwork\Utf8;
@@ -128,6 +129,9 @@ class ExposeModuleAttachments extends ExposeModule
      */
     protected function compile()
     {
+        /** @var PageModel $objPage */
+        global $objPage;
+
         $arrCollection = array();
 
         switch($this->attachmentType)
@@ -153,11 +157,12 @@ class ExposeModuleAttachments extends ExposeModule
                         continue;
                     }
 
+                    $arrMeta = $this->getMetaData($objFiles->meta, $objPage->language);
 
                     $objAttachment = new \stdClass();
 
-                    $objAttachment->title = StringUtil::specialchars($objFile->filename);
-                    $objAttachment->name = StringUtil::specialchars($objFile->basename);
+                    $objAttachment->title = StringUtil::specialchars(($arrMeta['title'] ?: $objFile->filename));
+                    $objAttachment->name = StringUtil::specialchars(($arrMeta['caption'] ?: $objFile->basename));
                     $objAttachment->filesize = $this->getReadableSize($objFile->filesize);
                     $objAttachment->mime = $objFile->mime;
                     $objAttachment->extension = $objFile->extension;
