@@ -282,17 +282,18 @@ class RealEstateModulePreparation extends RealEstate
      * Generate the main image
      *
      * @param null $imgSize
+     * @param string|null $strTemplate
      *
      * @return string
      */
-    public function generateMainImage($imgSize=null): string
+    public function generateMainImage($imgSize=null, bool $blnImageFallback=true, $strTemplate=null): string
     {
         if(null === $imgSize && $this->objModule->imgSize)
         {
             $imgSize = $this->objModule->imgSize;
         }
 
-        return parent::generateMainImage($imgSize);
+        return parent::generateMainImage($imgSize, $blnImageFallback, $strTemplate);
     }
 
     /**
@@ -301,16 +302,17 @@ class RealEstateModulePreparation extends RealEstate
      * @param null $imgSize
      * @param array|null $arrFields
      * @param int|null $max
+     * @param string|null $strTemplate
      *
      * @return array
      */
-    public function generateGallery($imgSize=null, array $arrFields=null, int $max=null): array
+    public function generateGallery($imgSize=null, array $arrFields=null, int $max=null, $strTemplate=null): array
     {
         if(null === $imgSize && $this->objModule->imgSize)
         {
             $imgSize = $this->objModule->imgSize;
         }
 
-        return parent::generateGallery($imgSize, $arrFields, $max);
+        return parent::generateGallery($imgSize, $arrFields, $max, $strTemplate);
     }
 }

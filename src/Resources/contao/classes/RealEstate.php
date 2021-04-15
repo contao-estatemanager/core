@@ -847,26 +847,29 @@ class RealEstate extends System
      * Generate the main image
      *
      * @param $imgSize
+     * @param bool $blnImageFallback
+     * @param string|null $strTemplate
      *
      * @return string
      */
-    public function generateMainImage($imgSize): string
+    public function generateMainImage($imgSize, bool $blnImageFallback=true, $strTemplate=null): string
     {
         $objFile = FilesModel::findByUuid($this->getMainImageUuid());
 
-        return $this->parseImageTemplate($objFile, $imgSize);
+        return $this->parseImageTemplate($objFile, $imgSize, $blnImageFallback, $strTemplate);
     }
 
     /**
      * Generate all images
      *
      * @param $imgSize
-     * @param $arrFields
-     * @param $max
+     * @param array|null $arrFields
+     * @param int|null $max
+     * @param string|null $strTemplate
      *
      * @return array
      */
-    public function generateGallery($imgSize, array $arrFields=null, int $max=null): array
+    public function generateGallery($imgSize, array $arrFields=null, int $max=null, $strTemplate=null): array
     {
         $return = array();
 
@@ -878,7 +881,7 @@ class RealEstate extends System
         {
             while ($objFiles->next())
             {
-                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize, false);
+                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize, false, $strTemplate);
 
                 if (empty($strOutput))
                 {
@@ -891,7 +894,7 @@ class RealEstate extends System
 
         if (!count($return))
         {
-            $return[] = $this->parseImageTemplate(null, $imgSize);
+            $return[] = $this->parseImageTemplate(null, $imgSize, true, $strTemplate);
         }
 
         return $return;
@@ -902,10 +905,12 @@ class RealEstate extends System
      *
      * @param $objFile
      * @param $imgSize
+     * @param bool $blnImageFallback
+     * @param string|null $strTemplate
      *
      * @return string
      */
-    private function parseImageTemplate($objFile, $imgSize, $blnImageFallback=true): string
+    private function parseImageTemplate($objFile, $imgSize, bool $blnImageFallback=true, ?string $strTemplate=null): string
     {
         if ($objFile === null || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
         {
@@ -930,7 +935,12 @@ class RealEstate extends System
             'caption'    => null
         );
 
-        $objTemplate = new FrontendTemplate('picture_default');
+        if(!$strTemplate)
+        {
+            $strTemplate = 'picture_default';
+        }
+
+        $objTemplate = new FrontendTemplate($strTemplate);
 
         Controller::addImageToTemplate($objTemplate, $arrImage, null, null, $objFile);
 
