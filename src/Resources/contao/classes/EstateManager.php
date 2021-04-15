@@ -162,42 +162,42 @@ class EstateManager
                 $objInterfaceMapping->oiField = $data[3];
 
                 // format action
-                if($data[4])
+                if(isset($data[4]))
                 {
-                    $objInterfaceMapping->formatType = $data[4][0];
+                    $objInterfaceMapping->formatType = $data[4][0] ?? '';
 
                     switch($data[4][0])
                     {
                         case 'boolean':
-                            $objInterfaceMapping->booleanCompareValue = $data[4][1];
+                            $objInterfaceMapping->booleanCompareValue = $data[4][1] ?? '';
                             break;
                         case 'number':
-                            $objInterfaceMapping->decimals = $data[4][1];
+                            $objInterfaceMapping->decimals = $data[4][1] ?? '';
                             break;
                         case 'date':
-                            $objInterfaceMapping->dateFormat = $data[4][1];
+                            $objInterfaceMapping->dateFormat = $data[4][1] ?? '';
                             break;
                         case 'text':
-                            $objInterfaceMapping->textTransform = $data[4][1];
+                            $objInterfaceMapping->textTransform = $data[4][1] ?? '';
                             break;
                     }
                 }
 
                 // condition
-                if($data[5])
+                if(isset($data[5]))
                 {
-                    $objInterfaceMapping->oiConditionField = $data[5][0];
-                    $objInterfaceMapping->oiConditionValue = $data[5][1];
+                    $objInterfaceMapping->oiConditionField = $data[5][0] ?? '';
+                    $objInterfaceMapping->oiConditionValue = $data[5][1] ?? '';
                 }
 
                 // serialize
-                if($data[6])
+                if(isset($data[6]))
                 {
                     $objInterfaceMapping->serialize = $data[6];
                 }
 
                 // save
-                if($data[7])
+                if(isset($data[7]))
                 {
                     $objInterfaceMapping->saveImage = true;
                 }

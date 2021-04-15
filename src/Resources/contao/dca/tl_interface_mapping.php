@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
                 'href'              => 'key=importDefaultMappings',
                 'class'             => 'header_default_mapping_import',
                 'icon'              => 'sync.svg',
-                'attributes'        => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_interface_mapping']['importConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes'        => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['tl_interface_mapping']['importConfirm'] ?? '') . '\'))return false;Backend.getScrollOffset()"'
             ),
             'all' => array
             (
@@ -433,7 +433,7 @@ class tl_interface_mapping extends Contao\Backend
 
         foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
         {
-            $arrFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
+            $arrFields[$field] = ($GLOBALS['TL_LANG']['tl_real_estate'][$field][0] ?? '') . ' [' . $field . ']';
         }
 
         $arrFields['AUFTRAGSART'] = $GLOBALS['TL_LANG']['tl_real_estate']['AUFTRAGSART'][0] . ' [' . 'AUFTRAGSART' . ']';
