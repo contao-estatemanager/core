@@ -458,7 +458,7 @@ class RealEstateImporter extends \BackendModule
                         // Skip if condition dont match
                         if ($interfaceMapping->oiConditionField && $interfaceMapping->oiConditionValue)
                         {
-                            if ($interfaceMapping->oiConditionValue !== $this->getFieldData($interfaceMapping->oiConditionField, $group))
+                            if (!$this->isValidCondition($interfaceMapping->oiConditionValue, $this->getFieldData($interfaceMapping->oiConditionField, $group)))
                             {
                                 if ($interfaceMapping->forceActive)
                                 {
@@ -551,6 +551,36 @@ class RealEstateImporter extends \BackendModule
         }
 
         return $this->updateCatalog($contactPersonRecords, $realEstateRecords);
+    }
+
+    /**
+     * Checks if the condition is valid
+     *
+     * @param $strCondition
+     * @param $fieldValue
+     *
+     * @return bool
+     */
+    protected function isValidCondition($strCondition, $fieldValue)
+    {
+        $arrConditionValues = explode('|', $strCondition);
+
+        if(count($arrConditionValues) > 1)
+        {
+            foreach ($arrConditionValues as $conditionValue)
+            {
+                if($conditionValue === $fieldValue)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        else
+        {
+            return $strCondition === $fieldValue;
+        }
     }
 
     /**
