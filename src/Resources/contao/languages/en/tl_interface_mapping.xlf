@@ -93,10 +93,10 @@
         <source>Text value is trimmed before importing.</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.0">
-        <source>Save image</source>
+        <source>Save file</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.1">
-        <source>Here you can specify if the image should be saved during mapping processing.</source>
+        <source>Here you can specify if the file should be saved during mapping processing.</source>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.tl_real_estate">
