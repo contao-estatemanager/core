@@ -1260,6 +1260,12 @@ class RealEstateImporter extends \BackendModule
         $objFilesFolder = $interfaceMapping->type === 'tl_contact_person' ? $this->objFilesFolderContactPerson : $this->objFilesFolder;
 
         $check = next($tmpGroup->check);
+        $isMd5 = false;
+
+        if (isset($check) && FilesHelper::isValidMd5($check))
+        {
+            $isMd5 = true;
+        }
 
         // HOOK: add custom logic
         if (isset($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']))
@@ -1285,7 +1291,7 @@ class RealEstateImporter extends \BackendModule
         $filePath = $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . ($interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue . '/' : '') . $value;
         $existingFile = \FilesModel::findByPath($filePath);
 
-        if ($existingFile !== null && $existingFile->hash === $check)
+        if ($existingFile !== null && $isMd5 && $existingFile->hash === $check)
         {
             $values[] = $existingFile->uuid;
             //$this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
@@ -1304,7 +1310,7 @@ class RealEstateImporter extends \BackendModule
         }
 
         // Delete file, if hash dont match
-        if ($check !== false && $objFile->hash !== $check)
+        if ($check !== false && $isMd5 && $objFile->hash !== $check)
         {
             $objFile->delete();
             return false;
