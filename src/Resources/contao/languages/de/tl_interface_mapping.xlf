@@ -122,12 +122,12 @@
         <target>Textwert wird vor dem Importieren getrimmt.</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.0">
-        <source>Save image</source>
-        <target>Bild speichern</target>
+        <source>Save file</source>
+        <target>Datei speichern</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.1">
-        <source>Here you can specify if the image should be saved during mapping processing.</source>
-        <target>Hier können Sie angeben, ob das Bild während der Verarbeitung des Mappings gespeichert werden soll.</target>
+        <source>Here you can specify if the file should be saved during mapping processing.</source>
+        <target>Hier können Sie angeben, ob die Datei während der Verarbeitung des Mappings gespeichert werden soll.</target>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.tl_real_estate">
