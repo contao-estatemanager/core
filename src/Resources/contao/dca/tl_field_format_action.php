@@ -182,7 +182,7 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
                     (
                         'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
                         'inputType'             => 'select',
-                        'options_callback'      => array('tl_field_format', 'getRealEstateColumns'),
+                        'options_callback'      => array('tl_field_format_action', 'getRealEstateColumns'),
                         'eval' 			        => array('style'=>'width:100%', 'chosen' => true)
                     ),
                     'remove' => array
@@ -230,6 +230,32 @@ class tl_field_format_action extends Contao\Backend
     {
         parent::__construct();
         $this->import('Contao\BackendUser', 'User');
+    }
+
+    /**
+     * Get fields from real estate dca
+     *
+     * @return array
+     */
+    public function getRealEstateColumns(): array
+    {
+        $options   = array();
+        $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
+
+        $this->loadDataContainer('tl_real_estate');
+
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        {
+            foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
+            {
+                if (!in_array($field, $skipFields))
+                {
+                    $options[$field] = $field.' ['.$GLOBALS['TL_LANG']['tl_real_estate'][$field][0].']';
+                }
+            }
+        }
+
+        return $options;
     }
 
     /**
