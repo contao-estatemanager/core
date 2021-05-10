@@ -193,7 +193,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getAllProvider'),
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
-            'foreignKey'              => 'tl_provider.name',
+            'foreignKey'              => 'tl_provider.firma',
             'relation'                => array('type'=>'hasMany', 'load'=>'lazy'),
             'sql'                     => "varchar(32) NOT NULL default ''",
         ),
