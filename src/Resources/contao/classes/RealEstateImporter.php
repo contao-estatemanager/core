@@ -851,7 +851,7 @@ class RealEstateImporter extends \BackendModule
         */
 
         try {
-            $this->data = simplexml_load_string($data);
+            $this->data = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
         } catch (\Exception $e) {
             return false;
         }
