@@ -177,6 +177,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['alias'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'save_callback' => array
@@ -667,7 +668,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['robots'],
             'exclude'                 => true,
-            'search'                  => true,
             'inputType'               => 'select',
             'options'                 => array('index,follow', 'index,nofollow', 'noindex,follow', 'noindex,nofollow'),
             'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
