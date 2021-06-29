@@ -17,6 +17,7 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\Environment;
 use Contao\FrontendUser;
 use Contao\Input;
+use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
 use Patchwork\Utf8;
@@ -85,9 +86,8 @@ class ModuleRealEstateExpose extends ModuleRealEstate
 
         if ($internal = strpos(Input::get('items'), 'intern-') === 0)
         {
-            /** @var \PageModel $objPage */
+            /** @var PageModel $objPage */
             global $objPage;
-
             $objRealEstate = RealEstateModel::findPublishedByObjektnrIntern(substr(Input::get('items'), 7), array('showUnpublished'=>!!$this->allowUnpublishedRecords));
 
             if ($objRealEstate !== null)
@@ -107,12 +107,17 @@ class ModuleRealEstateExpose extends ModuleRealEstate
      */
     protected function compile()
     {
+        /** @var PageModel $objPage */
+        global $objPage;
+
         $objRealEstate = RealEstateModel::findPublishedByIdOrAlias(Input::get('items'), array('showUnpublished'=>!!$this->allowUnpublishedRecords));
 
         if ($objRealEstate === null)
         {
             throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
         }
+
+        $this->setMetaData($objRealEstate);
 
         // HOOK: compile real estate expose
         if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
@@ -306,5 +311,35 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         return $blnReturn;
+    }
+
+    /**
+     * Set meta data to object page
+     *
+     * @param RealEstateModel
+     */
+    protected function setMetaData($objRealEstate): void
+    {
+        /** @var PageModel $objPage */
+        global $objPage;
+
+        // Meta title
+        $objPage->pageTitle = !empty($objRealEstate->metaTitle) ? $objRealEstate->metaTitle : $objRealEstate->objekttitel;
+
+        // Meta description
+        if (!empty($objRealEstate->metaDescription))
+        {
+            $objPage->description = $objRealEstate->metaDescription;
+        }
+        else
+        {
+            $objPage->description = $this->prepareMetaDescription($objRealEstate->objektbeschreibung);
+        }
+
+        // Robots
+        if (!empty($objRealEstate->robots))
+        {
+            $objPage->robots = $objRealEstate->robots;
+        }
     }
 }

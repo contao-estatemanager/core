@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         (
             'mode'                    => 4,
             'fields'                  => array('attribute', 'oiFieldGroup'),
-            'headerFields'            => array('title', 'tstamp'),
+            'headerFields'            => array('title', 'type', 'provider'),
             'panelLayout'             => 'filter;sort,search,limit',
             'child_record_callback'   => array('tl_interface_mapping', 'stringifyMapping'),
             'child_record_class'      => 'no_padding'
@@ -126,7 +126,9 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
         ),
         'tstamp' => array
         (
-            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'sorting'                 => true,
+            'flag'                    => 6
         ),
         'type' => array
         (

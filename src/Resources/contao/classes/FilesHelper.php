@@ -114,4 +114,9 @@ class FilesHelper
     {
         return is_writable(TL_ROOT.'/'.$path);
     }
+
+    public static function isValidMd5($hash)
+    {
+        return preg_match('/^[a-f0-9]{32}$/', $hash);
+    }
 }

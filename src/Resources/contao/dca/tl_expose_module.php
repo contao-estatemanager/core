@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'share'                       => '{title_legend},name,headline,type;{settings_legend},share;{template_legend:hide},customTpl,shareEmailTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'print'                       => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'html'                        => '{title_legend},name,headline,type;{settings_legend},html;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests',
-        'attachments'                 => '{title_legend},name,headline,type;{settings_legend},attachmentType;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests'
+        'attachments'                 => '{title_legend},name,headline,type;{settings_legend},attachmentType;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ),
 
     // Subpalettes

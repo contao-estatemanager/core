@@ -343,8 +343,6 @@ class FilterSession extends \Frontend
      */
     public function getTypeParameterByGroups($arrGroups, $mode, $addFragments=true, $objModule=null)
     {
-        $t = static::$strTable;
-
         $arrColumns = array();
         $arrValues = array();
         $arrOptions = array();
@@ -454,6 +452,60 @@ class FilterSession extends \Frontend
         if (isset($GLOBALS['TL_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByGroups']))
         {
             foreach ($GLOBALS['TL_HOOKS']['getParameterByGroups'] as $callback)
+            {
+                $this->import($callback[0]);
+                $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
+            }
+        }
+
+        return array($arrColumns, $arrValues, $arrOptions);
+    }
+
+    /**
+     * Collect and return parameter by a given set of types
+     *
+     * @param array $arrTypes
+     * @param string $mode
+     * @param bool $addFragments
+     *
+     * @return array
+     */
+    public function getParameterByTypes($arrTypes, $mode, $addFragments=true, $objModule=null)
+    {
+        $arrColumns = array();
+        $arrValues = array();
+        $arrOptions = array();
+
+        $arrTypeColumns = array();
+        $objRealEstateTypes = RealEstateTypeModel::findPublishedByIds($arrTypes);
+
+        if($objRealEstateTypes === null)
+        {
+            // ToDo: Exception
+        }
+
+        if($addFragments)
+        {
+            while ($objRealEstateTypes->next())
+            {
+                $arrColumn = array();
+
+                $this->addQueryFragmentBasics($objRealEstateTypes->current(), $arrColumn, $arrValues);
+
+                // ToDo: Hook zum ergänzen von neuen Toggle Filtern
+
+                $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+            }
+
+            $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
+        }
+
+        $arrOptions['order'] = $this->getOrderOption();
+
+        // HOOK: get type parameter by groups
+        if (isset($GLOBALS['TL_HOOKS']['getParameterByTypes']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByTypes']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['getParameterByTypes'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);

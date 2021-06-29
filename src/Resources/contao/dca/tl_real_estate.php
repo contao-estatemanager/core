@@ -106,6 +106,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
     (
         '__selector__'                => array('objektart', 'breitbandZugang','weitergabeGenerell'),
         'default'                     => '{real_estate_legend},objekttitel,alias,objektnrIntern,objektnrExtern,openimmoObid,published,weitergabeGenerell;'.
+                                         '{real_estate_meta_legend},metaTitle,robots,metaDescription,serpPreview;'.
                                          '{real_estate_contact_legend},provider,anbieternr,contactPerson;'.
                                          '{real_estate_basic_legend},vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,vermietet,verkaufstatus,verfuegbarAb,nutzungsart,objektart;'.
                                          '{real_estate_address_legend},plz,ort,strasse,hausnummer,regionalerZusatz,bundesland,land,breitengrad,laengengrad,lageImBau,lageGebiet,gemeindecode,objektadresseFreigeben;'.
@@ -176,6 +177,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['alias'],
             'exclude'                 => true,
+            'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'save_callback' => array
@@ -192,6 +194,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'               => 'select',
             'options_callback'        => array('tl_real_estate', 'getAllProvider'),
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+            'foreignKey'              => 'tl_provider.firma',
+            'relation'                => array('type'=>'hasMany', 'load'=>'lazy'),
             'sql'                     => "varchar(32) NOT NULL default ''",
         ),
         'contactPerson' => array
@@ -643,6 +647,52 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'filter' => true,
                 'group'  => 'objekttyp'
             )
+        ),
+
+        /**
+         * Meta-Data
+         */
+        // Meta title
+        'metaTitle' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['metaTitle'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'decodeEntities'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+
+        // Robots-Tag
+        'robots' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['robots'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options'                 => array('index,follow', 'index,nofollow', 'noindex,follow', 'noindex,nofollow'),
+            'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(32) NOT NULL default ''"
+        ),
+
+        // Meta description
+        'metaDescription' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['metaDescription'],
+            'exclude'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('style'=>'height:60px', 'decodeEntities'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "text NULL"
+        ),
+
+        // Search engine preview
+        'serpPreview' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['MSC']['serpPreview'],
+            'exclude'                 => true,
+            'inputType'               => 'serpPreview',
+            'eval'                    => array('url_callback'=>static function () { return 'http://[your-domain.com]/[alias]/'; }, 'titleFields'=>array('metaTitle', 'objekttitel'), 'descriptionFields'=>array('metaDescription', 'objektbeschreibung')),
+            'sql'                     => null
         ),
 
         /**
