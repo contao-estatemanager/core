@@ -133,6 +133,14 @@
         <source>Here you can specify the real estate groups that are taken into account.</source>
         <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
       </trans-unit>
+      <trans-unit id="tl_module.realEstateTypes.0">
+        <source>Real estate types</source>
+        <target>Objekttypen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTypes.1">
+        <source>Here you can specify the real estate types that are taken into account.</source>
+        <target>Hier können Sie die Objekttypen angeben, die berücksichtigt werden.</target>
+      </trans-unit>
       <trans-unit id="tl_module.filterMode.0">
         <source>Filter mode</source>
         <target>Filter-Modus</target>
