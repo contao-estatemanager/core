@@ -101,6 +101,12 @@
       <trans-unit id="tl_module.realEstateGroups.1">
         <source>Here you can specify the real estate groups that are taken into account.</source>
       </trans-unit>
+      <trans-unit id="tl_module.realEstateTypes.0">
+        <source>Real estate types</source>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateTypes.1">
+        <source>Here you can specify the real estate types that are taken into account.</source>
+      </trans-unit>
       <trans-unit id="tl_module.filterMode.0">
         <source>Filter mode</source>
       </trans-unit>

@@ -25,6 +25,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_l
 
 // Add subpalettes
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_group']     = 'realEstateGroups,filterMode';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_type']      = 'realEstateTypes,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_provider']  = 'realEstateGroups,provider,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['filterByProvider']   = 'provider';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addSorting']         = 'defaultSorting';
@@ -87,7 +88,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['listMode'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => array('visited', 'group', 'provider', 'vacation'),
+    'options'                 => array('visited', 'group', 'type', 'provider', 'vacation'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
     'sql'                     => "varchar(16) NOT NULL default ''"
@@ -111,6 +112,16 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateGroups'] = array
     'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
     'sql'                     => "blob NULL",
     'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTypes'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTypes'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
+    'options_callback'        => array('tl_module_estate_manager', 'getRealEstateTypes'),
+    'sql'                     => "blob NULL"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addCountLabel'] = array
@@ -357,20 +368,30 @@ class tl_module_estate_manager extends Contao\Backend
      *
      * @return array
      */
-    public function getRealEstateGroups(): array
+    public function getRealEstateTypes(): array
     {
         $objGroup = $this->Database->prepare("SELECT id, title FROM tl_real_estate_group")->execute();
+        $arrGroup = $objGroup->fetchEach('title');
 
-        if ($objGroup->numRows < 1)
+        $objTypes = $this->Database->prepare("SELECT id, pid, title, longTitle FROM tl_real_estate_type ORDER BY pid, title")->execute();
+
+        if ($objGroup->numRows < 1 || $objTypes->numRows < 1)
         {
             return array();
         }
 
         $return = array();
+        $currId = 0;
 
-        while ($objGroup->next())
+        while ($objTypes->next())
         {
-            $return[$objGroup->id] = $objGroup->title;
+            if($objTypes->pid !== $currId)
+            {
+                $currId = $objTypes->pid;
+                $return[$arrGroup[$currId]] = [];
+            }
+
+            $return[$arrGroup[$currId]][$objTypes->id] = $objTypes->title . ' [' . $objTypes->longTitle . ']';
         }
 
         return $return;
