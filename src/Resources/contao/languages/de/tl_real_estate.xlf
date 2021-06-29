@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_meta_legend">
         <source>Real estate meta data</source>
-        <target>Immobilien Metadaten</target>
+        <target>Immobilien-Metadaten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.real_estate_address_legend">
         <source>Address / Geographical data</source>
@@ -478,7 +478,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.metaTitle.1">
         <source>Please enter the page title. Leave it empty to use the property title.</source>
-        <target>Bitte geben Sie den Titel der Seite ein. Bei einem leeren Wert wird der Objekttitel ausgegeben.</target>
+        <target>Bitte geben Sie den Seitentitel ein. Lassen Sie diesen leer, um den Objekttitel zu verwenden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.robots.0">
         <source>Robots tag</source>
@@ -486,15 +486,15 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.robots.1">
         <source>Here you can define how search engines handle the page. If left empty, the parent page will set the robots tag.</source>
-        <target>Hier legen Sie fest, wie Suchmaschinen die Seite behandeln. Bei einem leeren Wert wird der Robots-Tag von der Elternseite gesetzt.</target>
+        <target>Hier können Sie festlegen, wie Suchmaschinen die Seite behandeln. Wenn Sie es leer lassen, wird die übergeordnete Seite das robots-Tag setzen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.metaDescription.0">
         <source>Page description</source>
-        <target>Beschreibung der Seite</target>
+        <target>Seitenbeschreibung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.metaDescription.1">
         <source>Here you can enter a short description of the page which will be evaluated by search engines like Google or Yahoo. Search engines usually indicate between 150 and 300 characters. Leave it empty to use the property description.</source>
-        <target>Hier können Sie eine kurze Beschreibung der Seite eingeben, die von Suchmaschinen wie Google oder Yahoo ausgewertet wird. Suchmaschinen indizieren normalerweise zwischen 150 und 300 Zeichen. Bei einem leeren Wert wird die Immobilienbeschreibung ausgegeben.</target>
+        <target>Hier können Sie eine kurze Beschreibung der Seite eingeben, die von Suchmaschinen wie Google oder Yahoo ausgewertet wird. Suchmaschinen geben in der Regel zwischen 150 und 300 Zeichen an. Lassen Sie es leer, um die Objektbeschreibung zu verwenden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kaufpreisAufAnfrage.0">
         <source>Purchase price on request</source>
@@ -2321,7 +2321,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.imageSRC.1">
         <source>Here you can select pictures for the real estate.</source>
-        <target>Wählen Sie ein Fotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Fotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.planImageSRC.0">
         <source>Floor plan picture</source>
@@ -2329,7 +2329,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.planImageSRC.1">
         <source>Here you can select a picture for the floor plan of the real estate.</source>
-        <target>Wählen Sie ein Grundrissfotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Grundrissfotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.interiorViewImageSRC.0">
         <source>Interior pictures</source>
@@ -2337,7 +2337,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.interiorViewImageSRC.1">
         <source>Here you can select pictures for the interior of the real estate.</source>
-        <target>Wählen Sie ein Interior-Fotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Interior-Fotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.exteriorViewImageSRC.0">
         <source>Exterior pictures</source>
@@ -2345,7 +2345,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.exteriorViewImageSRC.1">
         <source>Here you can select pictures for the real estate exterior.</source>
-        <target>Wählen Sie ein Exterior-Fotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Exterior-Fotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mapViewImageSRC.0">
         <source>Map pictures</source>
@@ -2353,7 +2353,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.mapViewImageSRC.1">
         <source>Here you can select map pictures for the real estate.</source>
-        <target>Wählen Sie ein Karten-Fotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Karten-Fotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.panoramaImageSRC.0">
         <source>Panorama photos</source>
@@ -2361,7 +2361,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.panoramaImageSRC.1">
         <source>Here you can select panorama photos for the real estate.</source>
-        <target>Wählen Sie ein Panorama-Fotos der Immobilie aus.</target>
+        <target>Wählen Sie ein oder mehrere Panorama-Fotos der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.epassSkalaImageSRC.0">
         <source>Building energy rating picture</source>
