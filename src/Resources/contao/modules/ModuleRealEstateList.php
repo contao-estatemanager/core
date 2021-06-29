@@ -90,6 +90,11 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
+            case 'type':
+                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode);
+
+                $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
+                break;
             case 'provider':
                 list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
 
@@ -182,6 +187,13 @@ class ModuleRealEstateList extends ModuleRealEstate
                 break;
             case 'group':
                 list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+
+                $arrOptions = array_merge($options, $arrOptions);
+
+                $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
+                break;
+            case 'type':
+                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode);
 
                 $arrOptions = array_merge($options, $arrOptions);
 
