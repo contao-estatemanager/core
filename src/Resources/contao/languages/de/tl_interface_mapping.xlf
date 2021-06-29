@@ -127,7 +127,7 @@
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.1">
         <source>Here you can specify if the file should be saved during mapping processing.</source>
-        <target>Hier können Sie angeben, ob die Datei während der Verarbeitung des Mappings gespeichert werden soll.</target>
+        <target>Hier können Sie angeben, ob die Datei bei der Mapping-Verarbeitung gespeichert werden soll.</target>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.tl_real_estate">
@@ -142,25 +142,45 @@
         <source>Provider</source>
         <target>Anbieter</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.none">
+      <trans-unit id="tl_interface_mapping.none.0">
         <source>None</source>
         <target>Keine</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.number">
+      <trans-unit id="tl_interface_mapping.none.1">
+        <source>Does not apply any formatting</source>
+        <target>Es wird keine Formatierung angewendet</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.number.0">
         <source>Number</source>
         <target>Zahl</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.date">
+      <trans-unit id="tl_interface_mapping.number.1">
+        <source>Formats a numeric value using the number of decimals</source>
+        <target>Formatiert einen Zahlenwert anhand der angegebenen Nachkommastellen.</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.date.0">
         <source>Date</source>
         <target>Datum</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.text">
+      <trans-unit id="tl_interface_mapping.date.1">
+        <source>Formats a date value to a timestamp using a specific date format</source>
+        <target>Formatiert einen Datumswert anhand eines spezischen Datumsformates</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.text.0">
         <source>Text</source>
         <target>Text</target>
       </trans-unit>
-      <trans-unit id="tl_interface_mapping.boolean">
+      <trans-unit id="tl_interface_mapping.text.1">
+        <source>Applies text formatting to a string</source>
+        <target>Wendet eine Textformatierung auf eine Zeichenkette an</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.boolean.0">
         <source>Boolean value</source>
         <target>Boolescher Wert</target>
+      </trans-unit>
+      <trans-unit id="tl_interface_mapping.boolean.1">
+        <source>Returns a boolean value based on a comparison value</source>
+        <target>Gibt einen booleschen Wert anhand eines Vergleichswertes zurück</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.lowercase">
         <source>Lowercase</source>
