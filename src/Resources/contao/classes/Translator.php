@@ -106,7 +106,7 @@ class Translator
         }
 
         // Get the field from the DCA to check values and add a prefix if necessary
-        $dcaField = $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $prefixField ];
+        $dcaField = $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $prefixField ] ?? null;
 
         if(
             $prefixField &&
