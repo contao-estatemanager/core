@@ -393,8 +393,8 @@ return array
     array('tl_real_estate', 'epassSkalaImageSRC',            'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'EPASS-SKALA'), true, true),
     array('tl_real_estate', 'logoImageSRC',                  'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'ANBIETERLOGO'), true, true),
     array('tl_real_estate', 'qrImageSRC',                    'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'QRCODE'), true, true),
-    array('tl_real_estate', 'documents',                     'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'DOKUMENTE'), true),
-    array('tl_real_estate', 'links',                         'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'LINKS'), true),
+    array('tl_real_estate', 'documents',                     'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'DOKUMENTE'), true, true),
+    array('tl_real_estate', 'links',                         'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'LINKS|FILMLINK'), true),
     array('tl_real_estate', 'anbieterobjekturl',             'anhaenge/anhang', 'daten/pfad', null, array('@gruppe', 'ANBOBJURL')),
 
     /** Verwaltung Objekt */

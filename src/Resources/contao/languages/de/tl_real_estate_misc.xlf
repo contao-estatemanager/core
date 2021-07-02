@@ -22,8 +22,12 @@
         <target>Verkauft</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.group">
-        <source>Group</source>
-        <target>Gruppe</target>
+        <source>Property group</source>
+        <target>Objektgruppe</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.type">
+        <source>Property type</source>
+        <target>Objekttyp</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_misc.visited">
         <source>Visited properties</source>

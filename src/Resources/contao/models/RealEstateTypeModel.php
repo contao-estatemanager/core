@@ -169,6 +169,22 @@ class RealEstateTypeModel extends Model
     }
 
     /**
+     * Find published real estate types by their IDs
+     *
+     * @param array $arrIds          Array of filter IDs
+     * @param array $arrOptions      An optional options array
+     *
+     * @return \Model\Collection|RealEstateTypeModel[]|RealEstateTypeModel|null A collection of models or null if there are no real estate types
+     */
+    public static function findPublishedByIds($arrIds, $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.id IN(" . implode(',', array_map('\intval', $arrIds)) . ") AND $t.published='1'");
+
+        return static::findBy($arrColumns, null, $arrOptions);
+    }
+
+    /**
      * Find published real estate types by their parent IDs
      *
      * @param string $mode           Search mode
