@@ -292,7 +292,7 @@ class tl_field_format extends Contao\Backend
     public function getRealEstateColumns(): array
     {
         $options   = array();
-        $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
+        $skipFields = array('id', 'alias', 'serpPreview', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
 
@@ -302,7 +302,7 @@ class tl_field_format extends Contao\Backend
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $options[$field] = $field.' ['.$GLOBALS['TL_LANG']['tl_real_estate'][$field][0].']';
+                    $options[$field] = $field.' [' . $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ']';
                 }
             }
         }

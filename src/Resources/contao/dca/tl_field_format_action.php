@@ -9,6 +9,7 @@
  */
 
 Contao\System::loadLanguageFile('tl_real_estate');
+Contao\System::loadLanguageFile('tl_field_format');
 
 $GLOBALS['TL_DCA']['tl_field_format_action'] = array
 (
