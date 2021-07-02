@@ -119,7 +119,7 @@ class FilterSession extends \Frontend
 
         $this->redirectByGetParameter();
 
-        $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
+        $_SESSION['FILTER_DATA'] = $_SESSION['FILTER_DATA'] ?? [];
 
         if ((!isset($_SESSION['FILTER_DATA']['country']) || !count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
         {
@@ -233,10 +233,12 @@ class FilterSession extends \Frontend
      */
     protected function filterSubmitted()
     {
-        $submitted = !!$_SESSION['FILTER_DATA']['FILTER_SUBMITTED'];
-        unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+        if($submitted = $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] ?? null)
+        {
+            unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+        }
 
-        return $submitted;
+        return !!$submitted;
     }
 
     /**
