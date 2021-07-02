@@ -5466,7 +5466,7 @@ class tl_real_estate extends Contao\Backend
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']))
+        if (isset($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['name']['fields']['published']['save_callback'] as $callback)
             {
@@ -5495,7 +5495,7 @@ class tl_real_estate extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']))
+        if (isset($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback'] as $callback)
             {
@@ -5568,7 +5568,7 @@ class tl_real_estate extends Contao\Backend
         $args[5] = date(Contao\Config::get('datimFormat'), $args[5]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
+        if (isset($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']) && is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] as $callback)
             {
