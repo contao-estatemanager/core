@@ -597,7 +597,7 @@ class tl_real_estate_group extends Contao\Backend
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
+        if (isset($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] as $callback)
             {
@@ -626,7 +626,7 @@ class tl_real_estate_group extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
+        if (isset($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] as $callback)
             {

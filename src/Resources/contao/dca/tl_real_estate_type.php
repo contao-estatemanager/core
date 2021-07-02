@@ -640,7 +640,7 @@ class tl_real_estate_type extends Contao\Backend
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(is_array($data['realEstate']) && $data['realEstate']['price'])
+                if(isset($data['realEstate']) && is_array($data['realEstate']) && isset($data['realEstate']['price']))
                 {
                     $priceFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -663,7 +663,7 @@ class tl_real_estate_type extends Contao\Backend
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(is_array($data['realEstate']) && $data['realEstate']['area'])
+                if(isset($data['realEstate']) && is_array($data['realEstate']) && isset($data['realEstate']['area']))
                 {
                     $areaFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
