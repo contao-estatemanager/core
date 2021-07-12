@@ -1302,6 +1302,10 @@
                 <source>Provider real estate URL</source>
                 <target>Anbieter Immobilien URL</target>
             </trans-unit>
+            <trans-unit id="tl_real_estate_label.new">
+                <source>New</source>
+                <target>Neu</target>
+            </trans-unit>
             <trans-unit id="tl_real_estate_label.offen">
                 <source>Open</source>
                 <target>Offen</target>
