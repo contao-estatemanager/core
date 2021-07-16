@@ -3186,7 +3186,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'pissoir'   => &$GLOBALS['TL_LANG']['tl_real_estate_value']['bad_pissoir']
             ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'w50 clr'),
-            'sql'                       => "varchar(7) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3206,7 +3206,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'pantry'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['kueche_pantry']
             ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
-            'sql'                       => "varchar(6) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3237,7 +3237,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'granit'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['boden_granit']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(13) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'attribute' => true,
@@ -3272,7 +3272,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'fussboden' => &$GLOBALS['TL_LANG']['tl_real_estate_value']['heizungsart_fussboden']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(9) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3302,7 +3302,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'fluessiggas'       => &$GLOBALS['TL_LANG']['tl_real_estate_value']['befeuerung_fluessiggas']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(14) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'filter'   => true,
@@ -3333,7 +3333,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'lasten'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['fahrstuhlart_lasten']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(8) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3355,7 +3355,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'duplex'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['stellplatzart_duplex']
             ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
-            'sql'                       => "varchar(10) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3392,7 +3392,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'suedwest'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_suedwest']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(8) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'filter'   => true
@@ -3409,7 +3409,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'teil'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['moebliert_teil']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(4) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3646,7 +3646,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'bar'               => &$GLOBALS['TL_LANG']['tl_real_estate_value']['angeschlGastronomie_bar']
             ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(15) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3706,7 +3706,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'wachdienst'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['serviceleistungen_wachdienst']
             ),
             'eval'                      => array('multiple'=>true, 'tl_class'=>'clr'),
-            'sql'                       => "varchar(16) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'attribute' => true,
@@ -3791,7 +3791,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'polizeiruf'    => &$GLOBALS['TL_LANG']['tl_real_estate_value']['sicherheitstechnik_polizeiruf']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(11) NOT NULL default ''",
+            'sql'                       => "text NOT NULL default ''",
             'realEstate'                => array(
                 'detail'   => true,
                 'attribute' => true,
