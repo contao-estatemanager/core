@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTemplate'] = array
         return Contao\Controller::getTemplateGroup('real_estate_item_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(64) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = array
@@ -55,7 +55,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = a
         return Contao\Controller::getTemplateGroup('real_estate_itemext_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(64) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
@@ -68,7 +68,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
         return Contao\Controller::getTemplateGroup('real_estate_itemext_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(64) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['filter'] = array
@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
     'options'                 => array('visited', 'group', 'type', 'provider', 'vacation'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(8) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['hideOnEmpty'] = array
@@ -141,7 +141,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listSorting'] = array
     'options'                 => array('none', 'dateAdded_asc', 'dateAdded_desc', 'tstamp_asc', 'tstamp_desc'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(14) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addSorting'] = array
@@ -169,7 +169,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['provider'] = array
     'inputType'               => 'checkboxWizard',
     'foreignKey'              => 'tl_provider.anbieternr',
     'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
-    'sql'                     => "varchar(255) NOT NULL default ''",
+    'sql'                     => "text NOT NULL default ''",
     'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
 );
 
@@ -181,7 +181,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['defaultSorting'] = array
     'options'                 => array('date'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(4) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addCustomOrder'] = array
@@ -199,7 +199,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['customOrder'] = array
     'exclude'                 => true,
     'inputType'               => 'text',
     'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-    'sql'                     => "varchar(255) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addProvider'] = array
@@ -229,7 +229,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['filterMode'] = array
     'options'                 => array('default'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(10) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['maxTextLength'] = array
@@ -281,7 +281,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['contactPersonImgSize'] = array
     {
         return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
     },
-    'sql'                     => "varchar(64) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['providerImgSize'] = array
@@ -295,7 +295,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['providerImgSize'] = array
     {
         return Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(Contao\BackendUser::getInstance());
     },
-    'sql'                     => "varchar(64) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainDetails'] = array
