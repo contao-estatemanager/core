@@ -660,7 +660,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'decodeEntities'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "text NOT NULL default ''"
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
 
         // Robots-Tag
