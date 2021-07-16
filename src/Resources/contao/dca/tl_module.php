@@ -35,7 +35,6 @@ $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addCustomOrder']     = 'customOr
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTemplate'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateTemplate'],
-    'default'                 => 'real_estate_item_default',
     'exclude'                 => true,
     'inputType'               => 'select',
     'options_callback' => function () {
@@ -48,7 +47,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTemplate'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateContactPersonTemplate'],
-    'default'                 => 'real_estate_itemext_contact_person_default',
     'exclude'                 => true,
     'inputType'               => 'select',
     'options_callback' => function () {
@@ -61,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = a
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateProviderTemplate'],
-    'default'                 => 'real_estate_itemext_provider_default',
     'exclude'                 => true,
     'inputType'               => 'select',
     'options_callback' => function () {
@@ -223,7 +220,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['addContactPerson'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['filterMode'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['filterMode'],
-    'default'                 => 'default',
     'exclude'                 => true,
     'inputType'               => 'select',
     'options'                 => array('default'),
@@ -264,7 +260,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['allowUnpublishedRecords'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['exposeModules'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['exposeModules'],
-    'default'                 => array(array('mod'=>0, 'col'=>'wrapper_before', 'enable'=>1)),
     'exclude'                 => true,
     'inputType'               => 'exposeModuleWizard',
     'sql'                     => "blob NULL"
@@ -301,7 +296,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['providerImgSize'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainDetails'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['numberOfMainDetails'],
-    'default'                 => 0,
     'exclude'                 => true,
     'inputType'               => 'text',
     'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
@@ -311,7 +305,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainDetails'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['numberOfMainAttributes'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_module']['numberOfMainAttributes'],
-    'default'                 => 0,
     'exclude'                 => true,
     'inputType'               => 'text',
     'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
