@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateTemplate'] = array
         return Contao\Controller::getTemplateGroup('real_estate_item_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "text NOT NULL default 'real_estate_item_default'"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = array
@@ -55,7 +55,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateContactPersonTemplate'] = a
         return Contao\Controller::getTemplateGroup('real_estate_itemext_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "text NOT NULL default 'real_estate_itemext_contact_person_default'"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
@@ -68,7 +68,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateProviderTemplate'] = array
         return Contao\Controller::getTemplateGroup('real_estate_itemext_');
     },
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "text NOT NULL default 'real_estate_itemext_provider_default'"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['filter'] = array
@@ -141,7 +141,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listSorting'] = array
     'options'                 => array('none', 'dateAdded_asc', 'dateAdded_desc', 'tstamp_asc', 'tstamp_desc'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(14) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addSorting'] = array
@@ -181,7 +181,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['defaultSorting'] = array
     'options'                 => array('date'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(4) NOT NULL default ''"
+    'sql'                     => "text NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addCustomOrder'] = array
@@ -229,7 +229,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['filterMode'] = array
     'options'                 => array('default'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(10) NOT NULL default 'default'"
+    'sql'                     => "text NOT NULL default 'default'"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['maxTextLength'] = array
