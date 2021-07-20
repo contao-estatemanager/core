@@ -1807,6 +1807,24 @@
         <source>Here you can enter forwarding links for the real estate (e.g. external videos from youtube, virtual tours).</source>
       </trans-unit>
 
+      <trans-unit id="tl_real_estate.weitergabeGenerell.0">
+        <source>Transfer / export</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.weitergabeGenerell.1">
+        <source>Do you allow the real estate to be transferred to other platforms?</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.weitergabePositiv.0">
+        <source>Transfer allowed</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.weitergabePositiv.1">
+        <source>Here you can enter platforms (separated by semicola) that you want the real estate to be passed to.</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.weitergabeNegativ.0">
+        <source>Transfer not allowed</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.weitergabeNegativ.1">
+        <source>Here you can enter platforms (separated by semicola) which you DO NOT want the real estate to be passed to.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.wbsSozialwohnung.0">
         <source>Social living/ public housing unit</source>
       </trans-unit>

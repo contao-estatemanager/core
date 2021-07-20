@@ -104,8 +104,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('objektart', 'breitbandZugang'),
-        'default'                     => '{real_estate_legend},objekttitel,alias,objektnrIntern,objektnrExtern,openimmoObid,published;'.
+        '__selector__'                => array('objektart', 'breitbandZugang','weitergabeGenerell'),
+        'default'                     => '{real_estate_legend},objekttitel,alias,objektnrIntern,objektnrExtern,openimmoObid,published,weitergabeGenerell;'.
                                          '{real_estate_meta_legend},metaTitle,robots,metaDescription,serpPreview;'.
                                          '{real_estate_contact_legend},provider,anbieternr,contactPerson;'.
                                          '{real_estate_basic_legend},vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,vermietet,verkaufstatus,verfuegbarAb,nutzungsart,objektart;'.
@@ -138,7 +138,8 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'objektart_zinshaus_renditeobjekt'       => 'zinsTyp',
         'objektart_land_und_forstwirtschaft'     => 'landTyp',
         'objektart_freizeitimmobilie_gewerblich' => 'freizeitTyp',
-        'breitbandZugang'                        => 'breitbandArt,breitbandGeschw'
+        'breitbandZugang'                        => 'breitbandArt,breitbandGeschw',
+        'weitergabeGenerell'                     => 'weitergabePositiv,weitergabeNegativ'
     ),
 
     // Fields
@@ -4974,7 +4975,31 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "int(10) unsigned NOT NULL default 0",
+            'sql'                       => "int(10) unsigned NOT NULL default '0'",
+        ),
+        'weitergabeGenerell'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['weitergabeGenerell'],
+            'exclude'                 => true,
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class' => 'w50 m12', 'submitOnChange'=>true),
+            'sql'                       => "char(1) NOT NULL default '0'",
+        ),
+        'weitergabePositiv'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['weitergabePositiv'],
+            'exclude'                 => true,
+            'inputType'                 => 'text',
+            'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''",
+        ),
+        'weitergabeNegativ'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['weitergabeNegativ'],
+            'exclude'                 => true,
+            'inputType'                 => 'text',
+            'eval'                      => array('maxlength'=>32, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(32) NOT NULL default ''",
         ),
         'sprache' => array
         (
