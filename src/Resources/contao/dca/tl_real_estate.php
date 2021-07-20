@@ -1532,7 +1532,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('maxlength' => 20, 'tl_class' => 'w50'),
-            'sql'                       => "text NOT NULL default ''"
+            'sql'                       => "text NULL"
         ),
         'nettorendite'  => array
         (
@@ -1990,7 +1990,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('tl_class' => 'w50'),
-            'sql'                       => "text NOT NULL default ''"
+            'sql'                       => "text NULL"
         ),
 
         /**
@@ -4585,7 +4585,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('tl_class'=>'w50'),
-            'sql'                       => "text NOT NULL default ''",
+            'sql'                       => "text NULL",
             'realEstate'                => array(
                 'energie'  => true,
                 'order'    => 700
