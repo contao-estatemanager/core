@@ -93,5 +93,10 @@ class ExposeModuleContactPerson extends ExposeModule
                 }
             }
         }
+
+		if(!in_array('name', $arrFields))
+		{
+			$this->Template->name='';
+		}
     }
 }
