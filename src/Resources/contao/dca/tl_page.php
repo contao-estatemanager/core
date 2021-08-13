@@ -29,6 +29,10 @@ if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
     $objPaletteManipulator->applyToPalette('rootfallback', 'tl_page');
 }
 
+// Load language files
+Contao\System::loadLanguageFile('tl_real_estate_countries');
+Contao\System::loadLanguageFile('tl_real_estate_languages');
+
 // Add subpalettes
 $GLOBALS['TL_DCA']['tl_page']['subpalettes']['setMarketingType']  = 'marketingType';
 $GLOBALS['TL_DCA']['tl_page']['subpalettes']['setRealEstateType'] = 'realEstateType';
@@ -77,8 +81,13 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['realEstateQueryLanguage'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_page']['realEstateQueryLanguage'],
     'exclude'                 => true,
-    'inputType'               => 'text',
-    'eval'                    => array('rgxp'=>'language', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
+    'inputType'               => 'select',
+	'options_callback' => static function ()
+	{
+		return array_keys($GLOBALS['TL_LANG']['tl_real_estate_languages']);
+	},
+	'reference'				  => &$GLOBALS['TL_LANG']['tl_real_estate_languages'],
+    'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'rgxp'=>'language', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
     'sql'                     => "varchar(5) NOT NULL default ''"
 );
 
@@ -86,8 +95,13 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['realEstateQueryCountry'] = array
 (
     'label'                   => &$GLOBALS['TL_LANG']['tl_page']['realEstateQueryCountry'],
     'exclude'                 => true,
-    'inputType'               => 'text',
-    'eval'                    => array('rgxp'=>'alpha', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
+    'inputType'               => 'select',
+	'options_callback' => static function ()
+	{
+		return array_keys($GLOBALS['TL_LANG']['tl_real_estate_countries']);
+	},
+	'reference'				  => &$GLOBALS['TL_LANG']['tl_real_estate_countries'],
+    'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
     'sql'                     => "varchar(3) NOT NULL default ''"
 );
 

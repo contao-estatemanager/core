@@ -29,10 +29,13 @@
         <source>Language of real estate records</source>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryLanguage.1">
-        <source>Here you can exclude the real estate records of other languages.</source>
+        <source>Here you can limit the real estate records by language.</source>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryCountry.0">
         <source>Country of real estate records</source>
+      </trans-unit>
+      <trans-unit id="tl_page.realEstateQueryCountry.1">
+        <source>Here you can limit the real estate records by country.</source>
       </trans-unit>
       <trans-unit id="tl_page.estate_manager_legend">
         <source>Real estate settings</source>
