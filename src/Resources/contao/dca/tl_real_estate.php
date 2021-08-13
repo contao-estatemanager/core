@@ -11,6 +11,8 @@
 // load real estate value language file
 Contao\System::loadLanguageFile('tl_real_estate_value');
 Contao\System::loadLanguageFile('tl_real_estate_label');
+Contao\System::loadLanguageFile('tl_real_estate_countries');
+Contao\System::loadLanguageFile('tl_real_estate_languages');
 
 $GLOBALS['TL_DCA']['tl_real_estate'] = array
 (
@@ -2075,14 +2077,19 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'order'   => 210
             )
         ),
-        'land'  => array // ToDo: Isokürzel als Selectfeld
+        'land'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['land'],
             'exclude'                   => true,
-            'inputType'                 => 'text',
+            'inputType'                 => 'select',
             'filter'                    => true,
-            'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
-            'sql'                       => "varchar(64) NOT NULL default ''",
+			'options_callback' => static function ()
+			{
+				return array_keys($GLOBALS['TL_LANG']['tl_real_estate_countries']);
+			},
+			'reference'					=> &$GLOBALS['TL_LANG']['tl_real_estate_countries'],
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+            'sql'                       => "varchar(3) NOT NULL default ''",
             'realEstate'                => array(
                 'group'   => 'address',
                 'filter'   => true,
@@ -5005,9 +5012,14 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['sprache'],
             'exclude'                   => true,
-            'inputType'                 => 'text',
+            'inputType'                 => 'select',
             'filter'                    => true,
-            'eval'                      => array('maxlength'=>5, 'tl_class'=>'w50'),
+			'options_callback' => static function ()
+			{
+				return array_keys($GLOBALS['TL_LANG']['tl_real_estate_languages']);
+			},
+			'reference'					=> &$GLOBALS['TL_LANG']['tl_real_estate_languages'],
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'rgxp'=>'language', 'maxlength'=>5, 'tl_class'=>'w50'),
             'sql'                       => "varchar(5) NOT NULL default ''",
         ),
 

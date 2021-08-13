@@ -2695,8 +2695,8 @@
         <target>Sprache</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sprache.1">
-        <source>Here you can enter the language of your real estate (e.g: en-US or de-DE etc.).</source>
-        <target>Hier können Sie die Sprache Ihrer Immobilie definieren (Bsp.: de-DE oder de-CH, en-US usw.).</target>
+        <source>Here you can select the language of your real estate.</source>
+        <target>Hier können Sie die Sprache Ihrer Immobilie auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.anbieterobjekturl.0">
         <source>Provider real estate URL</source>
