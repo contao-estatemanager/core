@@ -155,13 +155,13 @@ class FilterCountry extends FilterWidget
 
                     if ($objRootPage->realEstateQueryLanguage)
                     {
-                        $language = "WHERE sprache='".$objRootPage->realEstateQueryLanguage."'";
+                        $language = " AND sprache='".$objRootPage->realEstateQueryLanguage."'";
                     }
                 }
 
                 $this->import('Database');
 
-                $query = 'SELECT DISTINCT land FROM tl_real_estate '.$language.' ORDER BY land';
+                $query = "SELECT DISTINCT land FROM tl_real_estate WHERE land !=''" .$language." ORDER BY land";
                 $objCountry = $this->Database->prepare($query)
                     ->execute();
 
