@@ -83,11 +83,11 @@ class EstateManager
                 $objFieldFormat = new FieldFormatModel();
 
                 $objFieldFormat->tstamp = time();
-                $objFieldFormat->fieldname = $data['field'][0];
-                $objFieldFormat->cssClass = $data['field'][1];
-                $objFieldFormat->useCondition = $data['field'][2];
-                $objFieldFormat->conditionFields = $data['field'][3];
-                $objFieldFormat->forceOutput = $data['field'][4];
+                $objFieldFormat->fieldname = $data['field'][0] ?? '';
+                $objFieldFormat->cssClass = $data['field'][1] ?? '';
+                $objFieldFormat->useCondition = $data['field'][2] ?? '';
+                $objFieldFormat->conditionFields = $data['field'][3] ?? '';
+                $objFieldFormat->forceOutput = $data['field'][4] ?? '';
 
                 $objFieldFormat = $objFieldFormat->save();
                 $actionIndex = 0;
@@ -100,14 +100,14 @@ class EstateManager
 
                         $objMarkupAction->pid = $objFieldFormat->id;
                         $objMarkupAction->tstamp = time();
-                        $objMarkupAction->action = $actions[0];
-                        $objMarkupAction->decimals = $actions[1];
-                        $objMarkupAction->text = $actions[2];
-                        $objMarkupAction->seperator = $actions[3];
-                        $objMarkupAction->necessary = $actions[4];
+                        $objMarkupAction->action = $actions[0] ?? '';
+                        $objMarkupAction->decimals = $actions[1] ?? '';
+                        $objMarkupAction->text = $actions[2] ?? '';
+                        $objMarkupAction->seperator = $actions[3] ?? '';
+                        $objMarkupAction->necessary = $actions[4] ?? '';
                         $objMarkupAction->elements = \StringUtil::deserialize($actions[5]);
-                        $objMarkupAction->customFunction = $actions[6];
-                        $objMarkupAction->sorting = $actionIndex;
+                        $objMarkupAction->customFunction = $actions[6] ?? '';
+                        $objMarkupAction->sorting = $actionIndex ?? '';
 
                         $objMarkupAction->save();
 
