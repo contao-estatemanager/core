@@ -47,11 +47,11 @@ class RealEstateFieldMetadata
 
         $arrOrderFields = null;
 
-        if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(!\is_array($data['realEstate']))
+                if(!(is_array($data['realEstate'] ?? null)))
                 {
                     continue;
                 }

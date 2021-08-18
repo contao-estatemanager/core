@@ -161,7 +161,7 @@ class FilterSession extends \Frontend
         {
             $this->strMarketingType = $objPage->marketingType;
         }
-        elseif ($_SESSION['FILTER_DATA']['marketing-type'])
+        elseif (isset($_SESSION['FILTER_DATA']['marketing-type']))
         {
             $this->strMarketingType = $_SESSION['FILTER_DATA']['marketing-type'];
         }
@@ -189,7 +189,7 @@ class FilterSession extends \Frontend
         }
 
         // Break if no real estate type selected
-        if (!$_SESSION['FILTER_DATA']['real-estate-type'])
+        if (!($_SESSION['FILTER_DATA']['real-estate-type'] ?? null))
         {
             $this->objCurrentType = null;
             return;
@@ -814,7 +814,7 @@ class FilterSession extends \Frontend
      */
     protected function getOrderOption()
     {
-        $strOrder = $_SESSION['SORTING'];
+        $strOrder = $_SESSION['SORTING'] ?? null;
 
         if ($strOrder === null)
         {

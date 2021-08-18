@@ -583,16 +583,17 @@ class RealEstate extends System
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
         {
             // check whether the field may be included
-            if(!is_array($data['realEstate']) || !$this->formatter->isValid($field))
+            if(!isset($data['realEstate']) || !$this->formatter->isValid($field))
             {
                 continue;
             }
 
             // get available config keys
             $configKeys = array_keys($data['realEstate']);
+            $currentGroup = $data['realEstate']['group'] ?? [];
 
             // check if there a match with available flags / groups
-            if(!count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $data['realEstate']['group'])))
+            if(!count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $currentGroup)))
             {
                 continue;
             }

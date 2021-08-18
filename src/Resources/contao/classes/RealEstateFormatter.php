@@ -107,7 +107,7 @@ class RealEstateFormatter
                 }
 
                 // add actions
-                if($arrFieldFormatActions[ $objFieldFormats->id ])
+                if(isset($arrFieldFormatActions[ $objFieldFormats->id ]))
                 {
                     $arrFieldFormats[ $objFieldFormats->fieldname ]['actions'] = $arrFieldFormatActions[ $objFieldFormats->id ];
                 }
@@ -175,7 +175,7 @@ class RealEstateFormatter
      */
     public function getClass($field): ?string
     {
-        return $this->arrFieldFormats[ $field ]['class'];
+        return $this->arrFieldFormats[ $field ]['class'] ?? '';
     }
 
     /**
@@ -188,6 +188,7 @@ class RealEstateFormatter
     {
         $val = $this->formatValue($field);
 
+        // ToDo: $val kann niemals false sein?!
         if($val === false)
         {
             return null;
@@ -205,13 +206,13 @@ class RealEstateFormatter
     /**
      * Format field by subordinate actions
      *
-     * @param $field
+     * @param string $field
      *
      * @return string
      */
     public function formatValue(string $field)
     {
-        $actions = $this->arrFieldFormats[ $field ]['actions'];
+        $actions = $this->arrFieldFormats[ $field ]['actions'] ?? null;
 
         if($actions === null)
         {
@@ -398,7 +399,7 @@ class RealEstateFormatter
      */
     public function isFilled(string $field): bool
     {
-        if($this->arrFieldFormats[ $field ]['force'])
+        if(isset($this->arrFieldFormats[ $field ]['force']) && !!$this->arrFieldFormats[ $field ]['force'])
         {
             return true;
         }
