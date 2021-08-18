@@ -323,7 +323,7 @@ class ExposeForm extends Form
         // Store the submit time to invalidate the session later on
         $_SESSION['FORM_DATA']['SUBMITTED_AT'] = time();
 
-        $arrFiles = $_SESSION['FILES'];
+        $arrFiles = $_SESSION['FILES'] ?? null;
 
         // HOOK: process form data callback
         if (isset($GLOBALS['TL_HOOKS']['processFormData']) && is_array($GLOBALS['TL_HOOKS']['processFormData']))
