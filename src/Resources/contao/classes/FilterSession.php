@@ -14,6 +14,7 @@ use Contao\Input;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
+use Contao\Validator;
 
 /**
  * Loads and writes filter information
@@ -105,17 +106,17 @@ class FilterSession extends \Frontend
      */
     protected function initialize($pageId)
     {
-        /** @var \PageModel $objPage */
+        /** @var PageModel $objPage */
         global $objPage;
 
         if ($objPage === null)
         {
-            $objPage = \PageModel::findByPk($pageId);
+            $objPage = PageModel::findByPk($pageId);
         }
 
         static::$objPage = $objPage;
         static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
-        static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
+        static::$objRootPage = static::$objPageDetails !== null ? PageModel::findByPk(static::$objPageDetails->rootId) : null;
 
         $this->redirectByGetParameter();
 
@@ -763,7 +764,7 @@ class FilterSession extends \Frontend
 
         if ($_SESSION['FILTER_DATA']['period_from'])
         {
-            if (\Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
             {
                 $arrColumn[] = "($t.abdatum<=? OR abdatum='')";
 
@@ -773,7 +774,7 @@ class FilterSession extends \Frontend
         }
         if ($_SESSION['FILTER_DATA']['period_to'])
         {
-            if (\Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
             {
                 $arrColumn[] = "($t.bisdatum>=? OR $t.bisdatum='')";
 
@@ -866,7 +867,7 @@ class FilterSession extends \Frontend
             {
                 $objRealEstateType = RealEstateTypeModel::findByPk($_SESSION['FILTER_DATA']['real-estate-type']);
 
-                if ($objRealEstateType->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateType->referencePage)) instanceof \PageModel)
+                if ($objRealEstateType->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateType->referencePage)) instanceof PageModel)
                 {
                     return $objJumpTo;
                 }
@@ -887,14 +888,14 @@ class FilterSession extends \Frontend
                 if ($objRealEstateGroup->count() > 1)
                 {
                     // Start: Hier muss die richtige Referenzseite anhand der gefundenen Gruppen gefunden werden.
-                    if ($objRealEstateGroup->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof \PageModel)
+                    if ($objRealEstateGroup->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof PageModel)
                     {
                         return $objJumpTo;
                     }
                     // Stop
                 }
 
-                if ($objRealEstateGroup->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof \PageModel)
+                if ($objRealEstateGroup->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof PageModel)
                 {
                     return $objJumpTo;
                 }
@@ -941,7 +942,7 @@ class FilterSession extends \Frontend
             $objJumpTo = $this->getReferencePage();
 
             // Redirect if there is a reference page
-            if ($objJumpTo instanceof \PageModel)
+            if ($objJumpTo instanceof PageModel)
             {
                 $this->jumpToOrReload($objJumpTo->row());
             }

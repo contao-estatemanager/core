@@ -11,6 +11,8 @@
 namespace ContaoEstateManager;
 
 
+use Contao\FilesModel;
+
 /**
  * Class FilterSubmit
  *
@@ -104,7 +106,7 @@ class FilterSubmit extends FilterWidget
     {
         if ($this->imageSubmit && $this->singleSRC != '')
         {
-            $objModel = \FilesModel::findByUuid($this->singleSRC);
+            $objModel = FilesModel::findByUuid($this->singleSRC);
 
             if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path)) // ToDo: Replace TL_ROOT with \System::getContainer()->getParameter('kernel.project_dir'): Check compatibility
             {
