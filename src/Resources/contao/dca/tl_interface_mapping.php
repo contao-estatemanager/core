@@ -433,9 +433,12 @@ class tl_interface_mapping extends Contao\Backend
 
         $arrFields = array();
 
-        foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
+        if (is_array($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] ?? null))
         {
-            $arrFields[$field] = ($GLOBALS['TL_LANG']['tl_real_estate'][$field][0] ?? '') . ' [' . $field . ']';
+            foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
+            {
+                $arrFields[$field] = ($GLOBALS['TL_LANG']['tl_real_estate'][$field][0] ?? '') . ' [' . $field . ']';
+            }
         }
 
         $arrFields['AUFTRAGSART'] = $GLOBALS['TL_LANG']['tl_real_estate']['AUFTRAGSART'][0] . ' [' . 'AUFTRAGSART' . ']';
