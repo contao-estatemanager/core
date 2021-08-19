@@ -636,11 +636,11 @@ class tl_real_estate_type extends Contao\Backend
     {
         $priceFields = array();
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(isset($data['realEstate']) && is_array($data['realEstate']) && isset($data['realEstate']['price']))
+                if($data['realEstate']['price'] ?? null)
                 {
                     $priceFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -659,11 +659,11 @@ class tl_real_estate_type extends Contao\Backend
     {
         $areaFields = array();
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(isset($data['realEstate']) && is_array($data['realEstate']) && isset($data['realEstate']['area']))
+                if($data['realEstate']['area'] ?? null)
                 {
                     $areaFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -682,11 +682,11 @@ class tl_real_estate_type extends Contao\Backend
     {
         $filterFields = array();
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(is_array($data['realEstate']) && $data['realEstate']['attribute'])
+                if($data['realEstate']['attribute'] ?? null)
                 {
                     $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -705,11 +705,11 @@ class tl_real_estate_type extends Contao\Backend
     {
         $filterFields = array();
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(is_array($data['realEstate']) && ($data['realEstate']['detail'] || $data['realEstate']['price'] || $data['realEstate']['area']))
+                if($data['realEstate'] ?? null && ($data['realEstate']['detail'] ?? null || $data['realEstate']['price'] ?? null || $data['realEstate']['area'] ?? null))
                 {
                     $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -722,14 +722,13 @@ class tl_real_estate_type extends Contao\Backend
     /**
      * Get fields from real estate dca
      *
-     * @param DataContainer $dc
      * @return array
      */
     public function getRealEstateColumns(){
         $collumns      = array();
         $skipFields    = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
@@ -744,29 +743,6 @@ class tl_real_estate_type extends Contao\Backend
     }
 
     /**
-     * Return all advanced filter fields from real estate dca as array
-     *
-     * @return array
-     */
-    public function getFilterFields(): array
-    {
-        $filterFields = array();
-
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
-        {
-            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
-            {
-                if(is_array($data['realEstate']) && $data['realEstate']['filter'])
-                {
-                    $filterFields[] = $field;
-                }
-            }
-        }
-
-        return $filterFields;
-    }
-
-    /**
      * Return all sorting fields from real estate dca as array
      *
      * @return array
@@ -775,11 +751,11 @@ class tl_real_estate_type extends Contao\Backend
     {
         $sortingFields = array();
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(is_array($data['realEstate']) && $data['realEstate']['sorting'])
+                if($data['realEstate']['sorting'] ?? null)
                 {
                     $sortingFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
                 }
@@ -844,7 +820,7 @@ class tl_real_estate_type extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onload_callback'] as $callback)
             {
@@ -895,7 +871,7 @@ class tl_real_estate_type extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback' ?? null]))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_type']['config']['onsubmit_callback'] as $callback)
             {
