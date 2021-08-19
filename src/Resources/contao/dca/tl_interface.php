@@ -493,7 +493,7 @@ class tl_interface extends Contao\Backend
      *
      * @param $insertId
      */
-    public function adjustPermissions($insertId)
+    public function adjustPermissions($insertId): void
     {
         // The oncreate_callback passes $insertId as second argument
         if (func_num_args() == 4)
@@ -527,7 +527,7 @@ class tl_interface extends Contao\Backend
 
         $arrNew = $objSessionBag->get('new_records');
 
-        if (is_array($arrNew['tl_interface']) && in_array($insertId, $arrNew['tl_interface']))
+        if (is_array($arrNew['tl_interface'] ?? null) && in_array($insertId, $arrNew['tl_interface']))
         {
             // Add the permissions on group level
             if ($this->User->inherit != 'custom')
@@ -653,11 +653,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_provider'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_provider'][$field][0];
+                }
             }
         }
 
@@ -675,11 +678,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0];
+                }
             }
         }
 
@@ -697,11 +703,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_contact_person'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_contact_person'][$field][0];
+                }
             }
         }
 
