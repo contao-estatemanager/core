@@ -29,31 +29,31 @@ class RealEstate extends System
      * RealEstate Object
      * @var null
      */
-    private $objRealEstate = null;
+    private $objRealEstate;
 
     /**
      * Type Object
      * @var RealEstateType|null
      */
-    private $objType = null;
+    private $objType;
 
     /**
      * Formatter Object
      * @var RealEstateFormatter|null
      */
-    private $formatter = null;
+    private $formatter;
 
     /**
      * Sort order
      * @var array|null
      */
-    private $arrFieldOrder = null;
+    private $arrFieldOrder;
 
     /**
      * Object links
      * @var null
      */
-    private $links = null;
+    private $links;
 
     /**
      * RealEstate
@@ -184,7 +184,7 @@ class RealEstate extends System
      */
     public function getFields(array $fields=null): array
     {
-        $arrFields = array();
+        $arrFields = [];
 
         if(!$fields)
         {
@@ -197,7 +197,7 @@ class RealEstate extends System
             {
                 $val = $this->formatter->getFormattedCollection($field);
 
-                if($val !== null)
+                if(null !== $val)
                 {
                     $arrFields[] = $val;
                 }
@@ -235,14 +235,14 @@ class RealEstate extends System
     /**
      * Return image uuid's of the real estate
      *
-     * @param array $arrFields
-     * @param int $max
+     * @param array|null $arrFields
+     * @param int|null $max
      *
      * @return array
      */
     public function getImagesUuids(array $arrFields=null, int $max=null): array
     {
-        $return = array();
+        $return = [];
 
         if(!$arrFields)
         {
@@ -285,13 +285,13 @@ class RealEstate extends System
     /**
      * Return status token
      *
-     * @param array $validStatusToken
+     * @param array|null $validStatusToken
      *
      * @return array
      */
     public function getStatusTokens(array $validStatusToken=null): array
     {
-        $return = array();
+        $return = [];
 
         if(!$validStatusToken)
         {
@@ -379,7 +379,7 @@ class RealEstate extends System
      */
     public function getLocation(bool $forceCompleteAddress=false): array
     {
-        $arrAddress = array();
+        $arrAddress = [];
 
         if ($this->objRealEstate->objektadresseFreigeben || $forceCompleteAddress === true)
         {
@@ -424,21 +424,21 @@ class RealEstate extends System
         $strAddress = '';
         $arrAddress = $this->getLocation($forceCompleteAddress);
 
-        if($arrAddress['hausnummer'])
+        if($arrAddress['strasse'] ?? null && $arrAddress['hausnummer'] ?? null)
         {
             $strAddress .= $arrAddress['strasse'] . ' ' . $arrAddress['hausnummer'] . ', ';
         }
-        elseif($arrAddress['strasse'])
+        elseif($arrAddress['strasse'] ?? null)
         {
             $strAddress .= $arrAddress['strasse'] . ', ';
         }
 
-        if($arrAddress['plz'])
+        if($arrAddress['plz'] ?? null)
         {
             $strAddress .= $arrAddress['plz'] . ' ';
         }
 
-        if($arrAddress['reagionalerZusatz'])
+        if($arrAddress['reagionalerZusatz'] ?? null)
         {
             $strAddress .= $arrAddress['ort'] . ' - ' . $arrAddress['reagionalerZusatz'];
         }
@@ -552,8 +552,8 @@ class RealEstate extends System
      */
     public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail'): array
     {
-        $availableGroups = array();
-        $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
+        $availableGroups = [];
+        $groupSorting = ['area', 'price', 'attribute', 'detail', 'energie'];
 
         // set available groups and sort order
         if(!$validGroups)
@@ -577,7 +577,7 @@ class RealEstate extends System
             $availableGroups[] = 'address';
         }
 
-        $collection = array();
+        $collection = [];
 
         // loop through the real estate fields
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
@@ -599,11 +599,11 @@ class RealEstate extends System
             }
 
             // check if the fields have to be assigned to groups
-            if($separateGroups === null)
+            if(null === $separateGroups)
             {
                 $val = $this->formatter->getFormattedCollection($field);
 
-                if($val !== null)
+                if(null !== $val)
                 {
                     $collection[ $defaultGroup ][ $field ] = $val;
                 }
@@ -653,14 +653,13 @@ class RealEstate extends System
     /**
      * Return main details from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
     public function getMainDetails(int $max=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrMainDetails = StringUtil::deserialize($this->objType->mainDetails, true);
 
         // HOOK: get main details
@@ -695,17 +694,16 @@ class RealEstate extends System
     /**
      * Return main attributes from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
     public function getMainAttributes(int $max=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrMainAttributes = StringUtil::deserialize($this->objType->mainAttributes);
 
-        if($arrMainAttributes === null)
+        if(null === $arrMainAttributes)
         {
             return $return;
         }
@@ -752,8 +750,8 @@ class RealEstate extends System
     /**
      * Return texts from real estate
      *
-     * @param array $validTexts
-     * @param int   $maxTextLength
+     * @param array|null $validTexts
+     * @param int $maxTextLength
      *
      * @return array|null
      */
@@ -805,7 +803,7 @@ class RealEstate extends System
     {
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
 
-        if($objContactPerson === null)
+        if(null === $objContactPerson)
         {
             return null;
         }
@@ -815,7 +813,7 @@ class RealEstate extends System
         # Remove address fields
         if(!$objContactPerson->adressfreigabe && $forceCompleteAddress === false)
         {
-            $arrAddressFields = array('strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld');
+            $arrAddressFields = ['strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld'];
 
             foreach ($arrAddressFields as $arrAddressField)
             {
@@ -872,10 +870,8 @@ class RealEstate extends System
      */
     public function generateGallery($imgSize, array $arrFields=null, int $max=null, $strTemplate=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrImages = $this->getImagesUuids($arrFields, $max);
-
         $objFiles = FilesModel::findMultipleByUuids($arrImages);
 
         if ($objFiles !== null)
