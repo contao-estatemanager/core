@@ -13,6 +13,7 @@ namespace ContaoEstateManager;
 
 use Contao\PageModel;
 use Contao\StringUtil;
+use Contao\System;
 
 /**
  * Class FilterCountry
@@ -107,7 +108,7 @@ class FilterCountry extends FilterWidget
 
         $options = $this->getOptions();
 
-        \System::loadLanguageFile('tl_real_estate_countries');
+        System::loadLanguageFile('tl_real_estate_countries');
 
         $arrOptions = array();
 
@@ -171,7 +172,7 @@ class FilterCountry extends FilterWidget
                 }
                 break;
             case 'selection':
-                $countryOptions = \StringUtil::deserialize($this->countryOptions, true);
+                $countryOptions = StringUtil::deserialize($this->countryOptions, true);
 
                 foreach ($countryOptions as $option)
                 {

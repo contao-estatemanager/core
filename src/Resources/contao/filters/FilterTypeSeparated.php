@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Input;
 use Contao\StringUtil;
 use Model\Collection;
 
@@ -46,7 +47,7 @@ class FilterTypeSeparated extends FilterWidget
      * @var mixed
      */
     protected $varValueRealEstateType;
-    
+
     /**
      * Template
      *
@@ -260,14 +261,14 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function validate()
     {
-        $varMarketingType = $this->validator(\Input::post('marketing-type', true));
-        $varRealEstateType = $this->validator(\Input::post('real-estate-type', true));
+        $varMarketingType = $this->validator(Input::post('marketing-type', true));
+        $varRealEstateType = $this->validator(Input::post('real-estate-type', true));
 
         if ($this->hasErrors())
         {
             $this->class = 'error';
         }
-        
+
         $this->varValueMarketingType = $varMarketingType;
         $this->varValueRealEstateType = $varRealEstateType;
     }

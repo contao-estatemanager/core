@@ -10,6 +10,10 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Date;
+use Contao\Input;
+use Contao\System;
+use Contao\Validator;
 use Contao\Widget;
 
 /**
@@ -97,7 +101,7 @@ abstract class FilterWidget extends Widget
 			$this->strTemplate = $this->customTpl;
 		}
 
-        \System::loadLanguageFile('tl_real_estate_filter');
+        System::loadLanguageFile('tl_real_estate_filter');
 
 		$strBuffer = $this->inherit();
 
@@ -118,7 +122,7 @@ abstract class FilterWidget extends Widget
      */
     public function validate()
     {
-        $varValue = $this->validator(\Input::post($this->name, true));
+        $varValue = $this->validator(Input::post($this->name, true));
 
         if ($this->hasErrors())
         {
@@ -143,7 +147,7 @@ abstract class FilterWidget extends Widget
         }
 
         $arrParts = explode('[', str_replace(']', '', $strKey));
-        $varValue = \Input::post(array_shift($arrParts), true);
+        $varValue = Input::post(array_shift($arrParts), true);
 
         foreach ($arrParts as $part)
         {
@@ -158,14 +162,15 @@ abstract class FilterWidget extends Widget
         return $varValue;
     }
 
-	/**
-	 * Recursively validate an input variable
-	 *
-	 * @param mixed  $varInput The user input
-	 * @param string $rgxp     An optional validation method
-	 *
-	 * @return mixed The original or modified user input
-	 */
+    /**
+     * Recursively validate an input variable
+     *
+     * @param mixed $varInput The user input
+     * @param string $rgxp An optional validation method
+     *
+     * @return mixed The original or modified user input
+     * @throws \Exception
+     */
 	protected function validator($varInput, $rgxp='')
 	{
 		if (\is_array($varInput))
@@ -208,7 +213,7 @@ abstract class FilterWidget extends Widget
 					{
 						$varInput = str_replace(',', '.', $varInput);
 					}
-					if (!\Validator::isNumeric($varInput))
+					if (!Validator::isNumeric($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['digit'], $this->strLabel));
 					}
@@ -216,7 +221,7 @@ abstract class FilterWidget extends Widget
 
 				// Natural numbers (positive integers)
 				case 'natural':
-					if (!\Validator::isNatural($varInput))
+					if (!Validator::isNatural($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['natural'], $this->strLabel));
 					}
@@ -224,7 +229,7 @@ abstract class FilterWidget extends Widget
 
 				// Alphabetic characters (including full stop [.] minus [-] and space [ ])
 				case 'alpha':
-					if (!\Validator::isAlphabetic($varInput))
+					if (!Validator::isAlphabetic($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alpha'], $this->strLabel));
 					}
@@ -232,7 +237,7 @@ abstract class FilterWidget extends Widget
 
 				// Alphanumeric characters (including full stop [.] minus [-], underscore [_] and space [ ])
 				case 'alnum':
-					if (!\Validator::isAlphanumeric($varInput))
+					if (!Validator::isAlphanumeric($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alnum'], $this->strLabel));
 					}
@@ -240,7 +245,7 @@ abstract class FilterWidget extends Widget
 
 				// Do not allow any characters that are usually encoded by class Input ([#<>()\=])
 				case 'extnd':
-					if (!\Validator::isExtendedAlphanumeric(html_entity_decode($varInput)))
+					if (!Validator::isExtendedAlphanumeric(html_entity_decode($varInput)))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['extnd'], $this->strLabel));
 					}
@@ -248,7 +253,7 @@ abstract class FilterWidget extends Widget
 
 				// Check whether the current value is a valid date format
 				case 'date':
-					if (!\Validator::isDate($varInput))
+					if (!Validator::isDate($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['date'], Date::getInputFormat(Date::getNumericDateFormat())));
 					}
@@ -257,7 +262,7 @@ abstract class FilterWidget extends Widget
 						// Validate the date (see #5086)
 						try
 						{
-							new \Date($varInput, \Date::getNumericDateFormat());
+							new Date($varInput, Date::getNumericDateFormat());
 						}
 						catch (\OutOfBoundsException $e)
 						{
@@ -268,24 +273,24 @@ abstract class FilterWidget extends Widget
 
 				// Check whether the current value is a valid time format
 				case 'time':
-					if (!\Validator::isTime($varInput))
+					if (!Validator::isTime($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'], \Date::getInputFormat(\Date::getNumericTimeFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'], Date::getInputFormat(Date::getNumericTimeFormat())));
 					}
 					break;
 
 				// Check whether the current value is a valid date and time format
 				case 'datim':
-					if (!\Validator::isDatim($varInput))
+					if (!Validator::isDatim($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'], \Date::getInputFormat(\Date::getNumericDatimFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'], Date::getInputFormat(Date::getNumericDatimFormat())));
 					}
 					else
 					{
 						// Validate the date (see #5086)
 						try
 						{
-							new \Date($varInput, \Date::getNumericDatimFormat());
+							new \Date($varInput, Date::getNumericDatimFormat());
 						}
 						catch (\OutOfBoundsException $e)
 						{
@@ -296,7 +301,7 @@ abstract class FilterWidget extends Widget
 
 				// Check whether the current value is a percent value
 				case 'prcnt':
-					if (!\Validator::isPercent($varInput))
+					if (!Validator::isPercent($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['prcnt'], $this->strLabel));
 					}
@@ -304,7 +309,7 @@ abstract class FilterWidget extends Widget
 
 				// Check whether the current value is a locale
 				case 'locale':
-					if (!\Validator::isLocale($varInput))
+					if (!Validator::isLocale($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['locale'], $this->strLabel));
 					}
@@ -312,7 +317,7 @@ abstract class FilterWidget extends Widget
 
 				// Check whether the current value is a language code
 				case 'language':
-					if (!\Validator::isLanguage($varInput))
+					if (!Validator::isLanguage($varInput))
 					{
 						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['language'], $this->strLabel));
 					}

@@ -11,6 +11,12 @@
 namespace ContaoEstateManager;
 
 use Contao\Config;
+use Contao\Dbafs;
+use Contao\Files;
+use Contao\FilesModel;
+use Contao\Input;
+use Contao\Message;
+use Contao\System;
 
 /**
  * Collection of core functions for EstateManager.
@@ -54,7 +60,7 @@ class EstateManager
      */
     public function importFieldFormats()
     {
-        $bundleResources = \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/contao-estatemanager/core/src/Resources';
+        $bundleResources = System::getContainer()->getParameter('kernel.project_dir') . '/vendor/contao-estatemanager/core/src/Resources';
 
         $importData = include $bundleResources . '/contao/data/import_field_formats.php';
 
@@ -116,10 +122,10 @@ class EstateManager
                 }
             }
 
-            \Message::addConfirmation($GLOBALS['TL_LANG']['tl_field_format']['imported'][0]);
+            Message::addConfirmation($GLOBALS['TL_LANG']['tl_field_format']['imported'][0]);
             $message = $GLOBALS['TL_LANG']['tl_field_format']['imported'][1];
         }else{
-            \Message::addError($GLOBALS['TL_LANG']['tl_field_format']['import_error'][0]);
+            Message::addError($GLOBALS['TL_LANG']['tl_field_format']['import_error'][0]);
             $message = $GLOBALS['TL_LANG']['tl_field_format']['import_error'][1];
         }
 
@@ -133,11 +139,11 @@ class EstateManager
      */
     public function importDefaultMappings()
     {
-        $bundleResources = \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/contao-estatemanager/core/src/Resources';
+        $bundleResources = System::getContainer()->getParameter('kernel.project_dir') . '/vendor/contao-estatemanager/core/src/Resources';
 
         $importData = include $bundleResources . '/contao/data/import_interface_mappings.php';
 
-        $pid = \Input::get('id');
+        $pid = Input::get('id');
 
         if ($importData != null && count($importData))
         {
@@ -205,21 +211,21 @@ class EstateManager
                 $objInterfaceMapping->save();
             }
 
-            \Message::addConfirmation($GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][0]);
+            Message::addConfirmation($GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][0]);
             $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][1];
         }
         else
         {
-            \Message::addError($GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][0]);
+            Message::addError($GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][0]);
             $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][1];
         }
 
-        return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
+        return Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
     }
 
     public function clearRealEstates()
     {
-        $objInterface = InterfaceModel::findByPk(\Input::get('id'));
+        $objInterface = InterfaceModel::findByPk(Input::get('id'));
 
         if ($objInterface === null)
         {
@@ -240,9 +246,9 @@ class EstateManager
             $arrUnique[] = $objRealEstates->objektnrIntern;
         }
 
-        $filesHandler = \Files::getInstance();
+        $filesHandler = Files::getInstance();
 
-        $objFilesPath = \FilesModel::findByUuid($objInterface->filesPath);
+        $objFilesPath = FilesModel::findByUuid($objInterface->filesPath);
 
         $arrProviderFolder = scandir(TL_ROOT . '/' . $objFilesPath->path);
 
@@ -267,7 +273,7 @@ class EstateManager
                     $deleteFolder = $objFilesPath->path . '/' . $providerFolder . '/' . $realEstateFolder;
 
                     $filesHandler->rrdir($deleteFolder);
-                    \Dbafs::deleteResource($deleteFolder);
+                    Dbafs::deleteResource($deleteFolder);
                 }
             }
         }

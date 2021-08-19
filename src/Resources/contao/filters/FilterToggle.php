@@ -11,6 +11,11 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Config;
+use Contao\FrontendTemplate;
+use Contao\Input;
+use Contao\StringUtil;
+
 /**
  * Class FilterToggle
  *
@@ -149,11 +154,11 @@ class FilterToggle extends FilterWidget
         // Determine actual used toggle filter
         if ($objCurrentTyp !== null)
         {
-            $arrToggleFilter = \StringUtil::deserialize($objCurrentTyp->toggleFilter, true);
+            $arrToggleFilter = StringUtil::deserialize($objCurrentTyp->toggleFilter, true);
         }
         else
         {
-            $arrToggleFilter = \StringUtil::deserialize($this->objFilter->toggleFilter, true);
+            $arrToggleFilter = StringUtil::deserialize($this->objFilter->toggleFilter, true);
         }
 
         $this->loadDataContainer('tl_filter');
@@ -218,7 +223,7 @@ class FilterToggle extends FilterWidget
             if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])
             {
                 $strOptionsField = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'];
-                $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : \Config::get($strOptionsField);
+                $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : Config::get($strOptionsField);
 
                 $options = array_map('trim', explode(',', $strOptions));
                 $arrOptions = array();
@@ -236,8 +241,8 @@ class FilterToggle extends FilterWidget
 
         $toggleTemplate = 'toggle_' . $arrFilterItem['name'];
 
-        /** @var \FrontendTemplate|object $objTemplate */
-        $objTemplate = new \FrontendTemplate($toggleTemplate);
+        /** @var FrontendTemplate|object $objTemplate */
+        $objTemplate = new FrontendTemplate($toggleTemplate);
         $objTemplate->setData($arrFilterItem);
 
         // HOOK: add custom logic
@@ -267,7 +272,7 @@ class FilterToggle extends FilterWidget
         {
             foreach ($group['fields'] as $field)
             {
-                $arrValues[$field] = $this->validator(\Input::post($field, true), $group['rgxp']);
+                $arrValues[$field] = $this->validator(Input::post($field, true), $group['rgxp']);
             }
         }
 
@@ -293,6 +298,7 @@ class FilterToggle extends FilterWidget
      * Get current real estate type by a collection of types
      *
      * @return RealEstateTypeModel|null
+     * @throws \Exception
      */
     protected function getCurrentType()
     {
@@ -376,7 +382,7 @@ class FilterToggle extends FilterWidget
     /**
      * Get list filter of all real estate filter
      *
-     * @return array
+     * @return string
      */
     public static function getEstateManagerConfig()
     {
@@ -394,7 +400,7 @@ class FilterToggle extends FilterWidget
         while ($objFilters->next())
         {
             $strFilter = '';
-            $arrFilters = \StringUtil::deserialize($objFilters->toggleFilter, true);
+            $arrFilters = StringUtil::deserialize($objFilters->toggleFilter, true);
 
             if (count($arrFilters))
             {

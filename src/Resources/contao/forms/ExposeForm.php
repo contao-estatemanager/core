@@ -15,6 +15,7 @@ use Contao\Config;
 use Contao\Date;
 use Contao\Email;
 use Contao\Environment;
+use Contao\File;
 use Contao\Form;
 use Contao\FormModel;
 use Contao\FrontendTemplate;
@@ -444,7 +445,7 @@ class ExposeForm extends Form
         $fileName = 'feedback' . time() . '.xml';
         $filePath = 'system/tmp/' . $fileName;
 
-        \File::putContent($filePath, $objFeedbackTemplate->parse());
+        File::putContent($filePath, $objFeedbackTemplate->parse());
 
         $_SESSION['FILES']['feedback'] = array
         (
