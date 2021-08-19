@@ -306,7 +306,7 @@ class tl_real_estate_group extends Contao\Backend
      *
      * @param $insertId
      */
-    public function adjustPermissions($insertId)
+    public function adjustPermissions($insertId): void
     {
         // The oncreate_callback passes $insertId as second argument
         if (func_num_args() == 4)
@@ -340,7 +340,7 @@ class tl_real_estate_group extends Contao\Backend
 
         $arrNew = $objSessionBag->get('new_records');
 
-        if (is_array($arrNew['tl_real_estate_group']) && in_array($insertId, $arrNew['tl_real_estate_group']))
+        if (is_array($arrNew['tl_real_estate_group'] ?? null) && in_array($insertId, $arrNew['tl_real_estate_group']))
         {
             // Add the permissions on group level
             if ($this->User->inherit != 'custom')
@@ -402,7 +402,7 @@ class tl_real_estate_group extends Contao\Backend
         $autoAlias = false;
 
         // Generate an alias if there is none
-        if ($varValue == '')
+        if (!$varValue)
         {
             $autoAlias = true;
             $varValue = Contao\StringUtil::generateAlias($dc->activeRecord->title);
@@ -558,7 +558,7 @@ class tl_real_estate_group extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback'] as $callback)
             {
@@ -597,7 +597,7 @@ class tl_real_estate_group extends Contao\Backend
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (isset($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] as $callback)
             {
@@ -626,7 +626,7 @@ class tl_real_estate_group extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (isset($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']) && is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] as $callback)
             {
