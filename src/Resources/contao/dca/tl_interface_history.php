@@ -135,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_interface_history extends Backend
+class tl_interface_history extends Contao\Backend
 {
 
     /**

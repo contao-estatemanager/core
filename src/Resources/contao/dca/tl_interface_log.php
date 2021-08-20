@@ -143,7 +143,7 @@ $GLOBALS['TL_DCA']['tl_interface_log'] = array
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class tl_interface_log extends Backend
+class tl_interface_log extends Contao\Backend
 {
 
 	/**

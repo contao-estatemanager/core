@@ -762,7 +762,7 @@ class tl_provider extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback'] as $callback)
             {
@@ -810,7 +810,7 @@ class tl_provider extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback'] as $callback)
             {

@@ -340,7 +340,7 @@ class tl_real_estate_group extends Contao\Backend
 
         $arrNew = $objSessionBag->get('new_records');
 
-        if (is_array($arrNew['tl_real_estate_group'] ?? null) && in_array($insertId, $arrNew['tl_real_estate_group']))
+        if (is_array($arrNew['tl_real_estate_group']) && in_array($insertId, $arrNew['tl_real_estate_group']))
         {
             // Add the permissions on group level
             if ($this->User->inherit != 'custom')

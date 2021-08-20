@@ -527,7 +527,7 @@ class tl_interface extends Contao\Backend
 
         $arrNew = $objSessionBag->get('new_records');
 
-        if (is_array($arrNew['tl_interface'] ?? null) && in_array($insertId, $arrNew['tl_interface']))
+        if (is_array($arrNew['tl_interface']) && in_array($insertId, $arrNew['tl_interface']))
         {
             // Add the permissions on group level
             if ($this->User->inherit != 'custom')

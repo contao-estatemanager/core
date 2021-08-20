@@ -245,7 +245,7 @@ class tl_field_format_action extends Contao\Backend
 
         $this->loadDataContainer('tl_real_estate');
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {

@@ -505,7 +505,7 @@ class tl_filter extends Contao\Backend
         $autoAlias = false;
 
         // Generate alias if there is none
-        if ($varValue == '')
+        if (!$varValue)
         {
             $autoAlias = true;
 

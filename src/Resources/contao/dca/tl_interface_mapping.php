@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_interface_mapping'] = array
                 'href'              => 'key=importDefaultMappings',
                 'class'             => 'header_default_mapping_import',
                 'icon'              => 'sync.svg',
-                'attributes'        => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['tl_interface_mapping']['importConfirm'] ?? '') . '\'))return false;Backend.getScrollOffset()"'
+                'attributes'        => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['tl_interface_mapping']['importConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'all' => array
             (

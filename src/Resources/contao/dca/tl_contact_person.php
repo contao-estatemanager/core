@@ -684,7 +684,7 @@ class tl_contact_person extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] as $callback)
             {
@@ -732,7 +732,7 @@ class tl_contact_person extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] as $callback)
             {
