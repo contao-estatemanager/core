@@ -12,7 +12,12 @@ namespace ContaoEstateManager;
 
 
 use Contao\Dbafs;
-use Contao\FilesModel;
+use Contao\System;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class RealEstateImporter extends \BackendModule
 {
@@ -828,6 +833,31 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->text = $this->importMessage;
         $objInterfaceHistory->status = $this->importStatus;
         $objInterfaceHistory->save();
+
+        if(System::getContainer()->getParameter('contao_estatemanager.send_anonymized_data'))
+        {
+            try{
+                $packages = System::getContainer()->getParameter('kernel.packages');
+                $version = $packages['contao-estatemanager/core'] ?? '0.0.0';
+
+                $stripKeys = ['alias', 'provider', 'contactPerson', 'anbieternr', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
+                $arrRecords = [];
+
+                foreach ($realEstateRecords as $record)
+                {
+                    $arrRecords[] = array_diff_key($record, array_flip($stripKeys));
+                }
+
+                $response = HttpClient::create()->request('POST', 'https://data.contao-estatemanager.com/em/data', [
+                    'body' => [
+                        'version' => $version,
+                        'records' => $arrRecords,
+                    ]
+                ]);
+
+                $response->getContent(false);
+            } catch (TransportExceptionInterface | RedirectionExceptionInterface | ClientExceptionInterface | ServerExceptionInterface $e) {}
+        }
 
         return true;
     }
