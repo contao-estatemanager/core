@@ -117,6 +117,11 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        if ($this->objFilter === null)
+        {
+            return '';
+        }
+
         $arrGroups = StringUtil::deserialize($this->objFilter->groups, true);
 
         $objGroups = RealEstateGroupModel::findPublishedByIds($arrGroups);

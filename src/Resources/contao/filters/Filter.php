@@ -76,7 +76,7 @@ class Filter extends Hybrid
             /** @var \BackendTemplate|object $objTemplate */
             $objTemplate = new BackendTemplate('be_wildcard');
 
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['filter'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['realEstateFilter'][0]) . ' ###';
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
             $objTemplate->href = 'contao/main.php?do=filter&amp;table=tl_filter_item&amp;id=' . $this->id;

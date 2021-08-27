@@ -220,7 +220,7 @@ class FilterToggle extends FilterWidget
             );
 
             // Add options array if needed
-            if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])
+            if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'] ?? null)
             {
                 $strOptionsField = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'];
                 $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : Config::get($strOptionsField);

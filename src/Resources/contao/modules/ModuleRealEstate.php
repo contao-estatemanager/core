@@ -51,7 +51,6 @@ abstract class ModuleRealEstate extends Module
         {
             case 'realEstateGroups':
                 return StringUtil::deserialize($this->objModel->realEstateGroups, true);
-                break;
         }
 
         return parent::__get($strKey);
@@ -362,7 +361,7 @@ abstract class ModuleRealEstate extends Module
 
     protected function redirectIfUnique()
     {
-        if ($_SESSION['FILTER_DATA']['unique'])
+        if ($_SESSION['FILTER_DATA']['unique'] ?? null)
         {
             $objRealEstate = RealEstateModel::findOneBy('objektnrExtern', $_SESSION['FILTER_DATA']['unique']);
             $_SESSION['FILTER_DATA']['last_unique'] = $_SESSION['FILTER_DATA']['unique'];

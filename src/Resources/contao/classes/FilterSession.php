@@ -132,7 +132,7 @@ class FilterSession extends \Frontend
 
         $submitted = $this->filterSubmitted();
 
-        if (!$submitted && $objPage->setRealEstateType)
+        if (!$submitted && $objPage !== null && $objPage->setRealEstateType)
         {
             if (!$objPage->realEstateType && $objPage->setMarketingType)
             {
@@ -158,7 +158,7 @@ class FilterSession extends \Frontend
         }
 
         // Determine current marketing type
-        if ($objPage->setMarketingType)
+        if ($objPage !== null && $objPage->setMarketingType)
         {
             $this->strMarketingType = $objPage->marketingType;
         }
@@ -171,7 +171,7 @@ class FilterSession extends \Frontend
             $this->strMarketingType = 'kauf_erbpacht_miete_leasing';
         }
 
-        if (!$submitted)
+        if (!$submitted && $objPage !== null)
         {
             while ($this->objRealEstateTypes->next())
             {
@@ -199,7 +199,7 @@ class FilterSession extends \Frontend
         // Determine current real estate type
         while ($this->objRealEstateTypes->next())
         {
-            if ($_SESSION['FILTER_DATA']['real-estate-type'])
+            if ($_SESSION['FILTER_DATA']['real-estate-type'] ?? null)
             {
                 if ($_SESSION['FILTER_DATA']['real-estate-type'] == $this->objRealEstateTypes->id)
                 {
@@ -360,7 +360,7 @@ class FilterSession extends \Frontend
 
         $arrTypeColumns = array();
 
-        if($arrGroups !== null)
+        if(count($arrGroups))
         {
             $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
 
@@ -614,7 +614,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['country'])
+        if ($_SESSION['FILTER_DATA']['country'] ?? null)
         {
             $arrColumn[] = "$t.land=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['country'];
@@ -631,7 +631,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['location'])
+        if ($_SESSION['FILTER_DATA']['location'] ?? null)
         {
             $location = $_SESSION['FILTER_DATA']['location'];
             $matches = array();
@@ -663,9 +663,9 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
+        if ($_SESSION['FILTER_DATA']['price_per'] ?? null && $_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
         {
-            if ($_SESSION['FILTER_DATA']['price_from'])
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
@@ -678,7 +678,7 @@ class FilterSession extends \Frontend
                     $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
                 }
             }
-            if ($_SESSION['FILTER_DATA']['price_to'])
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
@@ -694,12 +694,12 @@ class FilterSession extends \Frontend
         }
         else
         {
-            if ($_SESSION['FILTER_DATA']['price_from'])
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
             {
                 $arrColumn[] = "$t.$objRealEstateType->price>=?";
                 $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
             }
-            if ($_SESSION['FILTER_DATA']['price_to'])
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
             {
                 $arrColumn[] = "$t.$objRealEstateType->price<=?";
                 $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
@@ -717,12 +717,12 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['room_from'])
+        if ($_SESSION['FILTER_DATA']['room_from'] ?? null)
         {
             $arrColumn[] = "$t.anzahlZimmer>=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['room_from'];
         }
-        if ($_SESSION['FILTER_DATA']['room_to'])
+        if ($_SESSION['FILTER_DATA']['room_to'] ?? null)
         {
             $arrColumn[] = "$t.anzahlZimmer<=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['room_to'];
@@ -740,12 +740,12 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['area_from'])
+        if ($_SESSION['FILTER_DATA']['area_from'] ?? null)
         {
             $arrColumn[] = "$t.$objRealEstateType->area>=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['area_from'];
         }
-        if ($_SESSION['FILTER_DATA']['area_to'])
+        if ($_SESSION['FILTER_DATA']['area_to'] ?? null)
         {
             $arrColumn[] = "$t.$objRealEstateType->area<=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['area_to'];
@@ -762,7 +762,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['period_from'])
+        if ($_SESSION['FILTER_DATA']['period_from'] ?? null)
         {
             if (Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
             {
@@ -772,7 +772,7 @@ class FilterSession extends \Frontend
                 $arrValues[] = $date->tstamp;
             }
         }
-        if ($_SESSION['FILTER_DATA']['period_to'])
+        if ($_SESSION['FILTER_DATA']['period_to'] ?? null)
         {
             if (Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
             {
@@ -793,7 +793,7 @@ class FilterSession extends \Frontend
      */
     protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues, &$addFragments)
     {
-        if ($_SESSION['FILTER_DATA']['unique-imprecise'])
+        if ($_SESSION['FILTER_DATA']['unique-imprecise'] ?? null)
         {
             $uniqueImprecise = $_SESSION['FILTER_DATA']['unique-imprecise'];
             $_SESSION['FILTER_DATA'] = array();
@@ -861,7 +861,7 @@ class FilterSession extends \Frontend
      */
     public function getReferencePage()
     {
-        if ($_SESSION['FILTER_DATA']['real-estate-type'])
+        if ($_SESSION['FILTER_DATA']['real-estate-type'] ?? null)
         {
             if (is_numeric($_SESSION['FILTER_DATA']['real-estate-type']))
             {
@@ -879,7 +879,7 @@ class FilterSession extends \Frontend
             }
         }
 
-        if ($_SESSION['FILTER_DATA']['marketing-type'])
+        if ($_SESSION['FILTER_DATA']['marketing-type'] ?? null)
         {
             $objRealEstateGroup = RealEstateGroupModel::findByVermarktungsart($_SESSION['FILTER_DATA']['marketing-type']);
 
