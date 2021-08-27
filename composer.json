@@ -24,7 +24,7 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
-    "friendsofphp/php-cs-fixer": "^2.12",
+    "friendsofphp/php-cs-fixer": "^3.0",
     "phpunit/phpunit": "^5.7.26",
     "symfony/phpunit-bridge": "^3.2"
   },
@@ -56,6 +56,9 @@
       "dev-master": "1.0.x-dev"
     },
     "contao-manager-plugin": "ContaoEstateManager\\EstateManager\\ContaoManager\\Plugin"
+  },
+  "scripts": {
+    "php-cs-fixer": "vendor/bin/php-cs-fixer fix"
   },
   "support": {
     "issues": "https://github.com/contao-estatemanager/core/issues",
