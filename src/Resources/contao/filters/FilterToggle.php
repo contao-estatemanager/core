@@ -142,12 +142,13 @@ class FilterToggle extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
-        $objCurrentTyp = $this->getCurrentType();
-
+        // ToDo: Return a backend preview for the filter generator
         if ($this->objFilter === null)
         {
             return '';
         }
+
+        $objCurrentTyp = $this->getCurrentType();
 
         $this->outputAllItems = !$this->objFilter->submitOnChange;
 
@@ -214,7 +215,7 @@ class FilterToggle extends FilterWidget
             (
                 'show'        => $this->rangeMode ? true : $field !== $groupData['hide'],
                 'name'        => $field,
-                'value'       => $_SESSION['FILTER_DATA'][$field],
+                'value'       => $_SESSION['FILTER_DATA'][$field] ?? '',
                 'label'       => $this->showLabel ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
                 'placeholder' => $this->showPlaceholder ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
             );
