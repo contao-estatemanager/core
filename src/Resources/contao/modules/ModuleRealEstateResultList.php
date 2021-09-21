@@ -34,7 +34,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
     protected $strTemplate = 'mod_realEstateResultList';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
@@ -116,7 +116,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
 
         if ($this->addCustomOrder)
         {
-            $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
+            $arrOptions['order'] = $this->customOrder . (isset($arrOptions['order']) ? ', ' . $arrOptions['order'] : '');
         }
 
         return RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
