@@ -118,7 +118,7 @@ class FilterCountry extends FilterWidget
             (
                 'value'    => $option,
                 'selected' => $option === $_SESSION['FILTER_DATA']['country'] ? ' selected' : '',
-                'label'    => $GLOBALS['TL_LANG']['tl_real_estate_countries'][$option]
+                'label'    => array_key_exists($option, $GLOBALS['TL_LANG']['tl_real_estate_countries']) ? $GLOBALS['TL_LANG']['tl_real_estate_countries'][$option] : $option
             );
         }
 
