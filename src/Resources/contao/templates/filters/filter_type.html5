@@ -13,14 +13,14 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('filter_item'); ?>
-  <select name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="<?= $this->select['class'] ?> <?= $this->class ?>"<?= $this->select['submitOnChange'] ? ' data-submit-on-change="1"' : '' ?><?= $this->getAttributes() ?>>
+  <select name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="<?= $this->select['class'] ?> <?= $this->class ?>"<?= $this->getAttributes() ?>>
     <?php foreach ($this->select['options'] as $option): ?>
       <?php if ($option['type'] == 'group_start'): ?>
         <optgroup label="<?= $option['label'] ?>">
       <?php endif; ?>
 
       <?php if ($option['type'] == 'option'): ?>
-        <option value="<?= $option['value'] ?>"<?php if ($option['group']): ?> data-group="<?= $option['group'] ?>"<?php endif; ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
+        <option value="<?= $option['value'] ?>"<?= $option['selected'] ?>><?= $option['label'] ?></option>
       <?php endif; ?>
 
       <?php if ($option['type'] == 'group_end'): ?>
