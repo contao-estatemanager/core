@@ -241,13 +241,13 @@ class RealEstateFormatter
             {
                 $max++;
 
-                if ($max > strlen($txt))
+                if ($max > \strlen($txt))
                 {
                     break;
                 }
             }
 
-            return substr($txt, 0, $max) . ($max < strlen($text) ? $textOverflow : '');
+            return substr($txt, 0, $max) . ($max < \strlen($text) ? $textOverflow : '');
         }
 
         return $text;
