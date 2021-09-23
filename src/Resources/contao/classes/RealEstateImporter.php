@@ -1411,7 +1411,7 @@ class RealEstateImporter extends \BackendModule
 
         foreach ($arrFields as $key => $meta)
         {
-            if (is_int($key))
+            if (\is_int($key))
             {
                 $arrReturn[$meta['name']] = $meta;
             }
