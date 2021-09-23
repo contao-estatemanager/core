@@ -1427,7 +1427,7 @@ class RealEstateImporter extends \BackendModule
 
         if($data !== null)
         {
-            if(is_object($data))
+            if(\is_object($data))
             {
                 $data = json_decode(json_encode($data), true);
             }
