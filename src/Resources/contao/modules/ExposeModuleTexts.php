@@ -64,16 +64,19 @@ class ExposeModuleTexts extends ExposeModule
 
         $arrTexts = $this->realEstate->getTexts($arrBlocks, $this->maxTextLength);
 
-        foreach ($arrTexts as $field => $text)
+        if (is_array($arrTexts))
         {
-            if(!$text['value']){
-                continue;
-            }
+            foreach ($arrTexts as $field => $text)
+            {
+                if(!$text['value']){
+                    continue;
+                }
 
-            $arrCollection[] = array(
-                'label' => Translator::translateExpose('headline_' . $field),
-                'text'  => $text
-            );
+                $arrCollection[] = array(
+                    'label' => Translator::translateExpose('headline_' . $field),
+                    'text'  => $text
+                );
+            }
         }
 
         if($this->hideOnEmpty && !\count($arrCollection))
