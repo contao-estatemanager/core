@@ -929,7 +929,7 @@ class FilterSession extends \Frontend
 
             foreach ($arrParam as $param => $value)
             {
-                if (in_array($param, $validParameter))
+                if (\in_array($param, $validParameter))
                 {
                     $_SESSION['FILTER_DATA'][$param] = $value;
                 }
