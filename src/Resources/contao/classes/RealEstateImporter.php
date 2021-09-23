@@ -1151,7 +1151,7 @@ class RealEstateImporter extends \BackendModule
         switch ($this->objInterfaceMapping->formatType)
         {
             case 'number':
-                $value = number_format(floatval($value), $this->objInterfaceMapping->decimals, '.', '');
+                $value = number_format(\floatval($value), $this->objInterfaceMapping->decimals, '.', '');
 
                 if ($this->objInterfaceMapping->decimals == 0)
                 {
