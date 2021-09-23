@@ -358,7 +358,7 @@ class RealEstateFormatter
 
                     if(is_callable($customFunc['func']))
                     {
-                        $newValue = call_user_func_array($customFunc['func'], array($field, $value, $this->objRealEstate, &$this->arrRemovedCollection));
+                        $newValue = \call_user_func_array($customFunc['func'], array($field, $value, $this->objRealEstate, &$this->arrRemovedCollection));
                     }
                     else
                     {
