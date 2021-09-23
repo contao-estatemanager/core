@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             ),
             'cleardata' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['cleardata'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['clearRealEstates'],
                 'href'                => 'key=clearRealEstates',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'icon'                => 'bundles/estatemanager/icons/clear.svg'

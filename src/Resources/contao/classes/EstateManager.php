@@ -16,6 +16,7 @@ use Contao\Files;
 use Contao\FilesModel;
 use Contao\Input;
 use Contao\Message;
+use Contao\StringUtil;
 use Contao\System;
 
 /**
@@ -34,7 +35,8 @@ class EstateManager
      *
      * @return bool
      */
-    public static function checkLicenses($licenceKey, $arrLicences, $strAddon){
+    public static function checkLicenses($licenceKey, $arrLicences, $strAddon)
+    {
         if (strtolower($licenceKey) === 'demo')
         {
             $expAddon = $strAddon . '_demo';
@@ -50,7 +52,7 @@ class EstateManager
             return strtotime('+2 weeks', $expTime) > $curTime && $expTime <= $curTime;
         }
 
-        return in_array(md5($licenceKey), $arrLicences);
+        return \in_array(md5($licenceKey), $arrLicences);
     }
 
     /**
@@ -111,7 +113,7 @@ class EstateManager
                         $objMarkupAction->text = $actions[2] ?? '';
                         $objMarkupAction->seperator = $actions[3] ?? '';
                         $objMarkupAction->necessary = $actions[4] ?? '';
-                        $objMarkupAction->elements = \StringUtil::deserialize($actions[5]);
+                        $objMarkupAction->elements = StringUtil::deserialize($actions[5]);
                         $objMarkupAction->customFunction = $actions[6] ?? '';
                         $objMarkupAction->sorting = $actionIndex ?? '';
 
@@ -268,7 +270,7 @@ class EstateManager
                     continue;
                 }
 
-                if (!in_array($realEstateFolder, $arrUnique))
+                if (!\in_array($realEstateFolder, $arrUnique))
                 {
                     $deleteFolder = $objFilesPath->path . '/' . $providerFolder . '/' . $realEstateFolder;
 
