@@ -164,7 +164,7 @@ class tl_interface_history extends Contao\Backend
                 break;
 
             default:
-                if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && \is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
+                if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
                 {
                     foreach ($GLOBALS['TL_HOOKS']['colorizeLogEntries'] as $callback)
                     {

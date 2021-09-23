@@ -95,7 +95,7 @@ class Translator
         // Load translation file
         System::loadLanguageFile($dictionary);
 
-        if(is_array($strVar))
+        if(\is_array($strVar))
         {
             foreach ($strVar as $k=> $v)
             {

@@ -26,7 +26,7 @@ class FilesHelper
             } else $ext = array($parts[count($parts)-2],$parts[count($parts)-1]);
         } else $ext = $parts[count($parts)-1];
 
-        if(is_array($ext)) {
+        if(\is_array($ext)) {
             foreach($ext as &$x) {
                 if($uc) $x = strtoupper($x); else $x = strtolower($x);
             }

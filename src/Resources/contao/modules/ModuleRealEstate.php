@@ -390,7 +390,7 @@ abstract class ModuleRealEstate extends Module
      */
     protected function updateVisitedSession($realEstateId)
     {
-        $_SESSION['REAL_ESTATE_VISITED'] = isset($_SESSION['REAL_ESTATE_VISITED']) && is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
+        $_SESSION['REAL_ESTATE_VISITED'] = isset($_SESSION['REAL_ESTATE_VISITED']) && \is_array($_SESSION['REAL_ESTATE_VISITED']) ? $_SESSION['REAL_ESTATE_VISITED'] : array();
 
         if (($key = array_search($realEstateId, $_SESSION['REAL_ESTATE_VISITED'])) !== false)
         {
