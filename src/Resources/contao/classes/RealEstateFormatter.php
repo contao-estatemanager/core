@@ -141,7 +141,7 @@ class RealEstateFormatter
         $this->objRealEstate = $objRealEstate;
 
         // determine fields that may not be displayed
-        if(count($this->arrFieldConditions))
+        if(\count($this->arrFieldConditions))
         {
             foreach ($this->arrFieldConditions as $field => $conditions)
             {

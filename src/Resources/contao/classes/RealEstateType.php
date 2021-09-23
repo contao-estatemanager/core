@@ -53,7 +53,7 @@ class RealEstateType
             }
         }
 
-        if(count($arrTypes) > 1)
+        if(\count($arrTypes) > 1)
         {
             foreach ($arrTypes as $type)
             {

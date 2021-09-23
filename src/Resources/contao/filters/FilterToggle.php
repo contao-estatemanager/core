@@ -403,7 +403,7 @@ class FilterToggle extends FilterWidget
             $strFilter = '';
             $arrFilters = StringUtil::deserialize($objFilters->toggleFilter, true);
 
-            if (count($arrFilters))
+            if (\count($arrFilters))
             {
                 $strFilter = "'".implode("','", $arrFilters)."'";
             }

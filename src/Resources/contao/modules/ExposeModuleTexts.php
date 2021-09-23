@@ -76,7 +76,7 @@ class ExposeModuleTexts extends ExposeModule
             );
         }
 
-        if($this->hideOnEmpty && !count($arrCollection))
+        if($this->hideOnEmpty && !\count($arrCollection))
         {
             $this->isEmpty = true;
             return '';

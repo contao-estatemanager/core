@@ -83,7 +83,7 @@ class ModuleRealEstateList extends ModuleRealEstate
         switch ($this->listMode)
         {
             case 'visited':
-                $intCount = isset($_SESSION['REAL_ESTATE_VISITED']) ? count($_SESSION['REAL_ESTATE_VISITED']) : 0;
+                $intCount = isset($_SESSION['REAL_ESTATE_VISITED']) ? \count($_SESSION['REAL_ESTATE_VISITED']) : 0;
                 break;
             case 'group':
                 list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
@@ -100,7 +100,7 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $arrProvider = StringUtil::deserialize($this->provider, true);
 
-                if (!count($arrProvider))
+                if (!\count($arrProvider))
                 {
                     $intCount = 0;
                     break;
@@ -206,7 +206,7 @@ class ModuleRealEstateList extends ModuleRealEstate
 
                 $arrProvider = StringUtil::deserialize($this->provider, true);
 
-                if (!count($arrProvider))
+                if (!\count($arrProvider))
                 {
                     $objRealEstate = null;
                     break;

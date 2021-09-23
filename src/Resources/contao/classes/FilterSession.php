@@ -122,7 +122,7 @@ class FilterSession extends \Frontend
 
         $_SESSION['FILTER_DATA'] = $_SESSION['FILTER_DATA'] ?? [];
 
-        if ((!isset($_SESSION['FILTER_DATA']['country']) || !count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
+        if ((!isset($_SESSION['FILTER_DATA']['country']) || !\count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
         {
             $_SESSION['FILTER_DATA']['country'] = static::$objRootPage->realEstateQueryCountry;
         }
@@ -360,7 +360,7 @@ class FilterSession extends \Frontend
 
         $arrTypeColumns = array();
 
-        if(count($arrGroups))
+        if(\count($arrGroups))
         {
             $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
 
@@ -564,7 +564,7 @@ class FilterSession extends \Frontend
         {
             $arrProvider = StringUtil::deserialize($objModule->provider, true);
 
-            if (count($arrProvider))
+            if (\count($arrProvider))
             {
                 $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
             }

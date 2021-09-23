@@ -381,7 +381,7 @@ class RealEstateImporter extends \BackendModule
 
         $arrProvider = $this->data->xpath('anbieter');
 
-        if (count($arrProvider) === 0)
+        if (\count($arrProvider) === 0)
         {
             //$this->addLog('No provider data available.', 1, 'error');
             return false;
@@ -514,14 +514,14 @@ class RealEstateImporter extends \BackendModule
 
                     if (\in_array($field, $skipRecords))
                     {
-                        if (!count($values) || !$values[0])
+                        if (!\count($values) || !$values[0])
                         {
                             $this->objInterfaceMapping->reset();
                             continue 2;
                         }
                     }
 
-                    if (!count($values))
+                    if (!\count($values))
                     {
                         switch ($interfaceMapping->type)
                         {
@@ -573,7 +573,7 @@ class RealEstateImporter extends \BackendModule
     {
         $arrConditionValues = explode('|', $strCondition);
 
-        if(count($arrConditionValues) > 1)
+        if(\count($arrConditionValues) > 1)
         {
             foreach ($arrConditionValues as $conditionValue)
             {
@@ -950,13 +950,13 @@ class RealEstateImporter extends \BackendModule
 
             $syncFile = FilesHelper::scandirByExt($this->objImportFolder->path . '/tmp', array('xml'));
 
-            if (count($syncFile) === 0)
+            if (\count($syncFile) === 0)
             {
                 $this->addLog('No OpenImmo file was found in archive.', 0, 'error');
                 return false;
             }
 
-            if (count($syncFile) > 1)
+            if (\count($syncFile) > 1)
             {
                 $this->addLog('More than one OpenImmo file was found in archive. Only one OpenImmo file is allowed per transfer.', 0, 'error');
                 return false;
@@ -1065,7 +1065,7 @@ class RealEstateImporter extends \BackendModule
                                 }
                             }
                         }
-                        if (count($tmp))
+                        if (\count($tmp))
                         {
                             $results[$i] = serialize($tmp);
                         }
@@ -1119,7 +1119,7 @@ class RealEstateImporter extends \BackendModule
             }
         }
 
-        if (count($results) === 1)
+        if (\count($results) === 1)
         {
             // Trim strings
             if (is_string($results[0]))
@@ -1129,7 +1129,7 @@ class RealEstateImporter extends \BackendModule
 
             return $results[0];
         }
-        elseif (count($results) > 1)
+        elseif (\count($results) > 1)
         {
             return serialize($results);
         }

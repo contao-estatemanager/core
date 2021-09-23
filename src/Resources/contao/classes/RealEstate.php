@@ -593,7 +593,7 @@ class RealEstate extends System
             $currentGroup = $data['realEstate']['group'] ?? [];
 
             // check if there a match with available flags / groups
-            if(!count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $currentGroup)))
+            if(!\count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $currentGroup)))
             {
                 continue;
             }
@@ -889,7 +889,7 @@ class RealEstate extends System
             }
         }
 
-        if (!count($return))
+        if (!\count($return))
         {
             $return[] = $this->parseImageTemplate(null, $imgSize, true, $strTemplate);
         }

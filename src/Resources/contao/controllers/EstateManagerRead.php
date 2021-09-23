@@ -170,7 +170,7 @@ class EstateManagerRead extends AbstractEstateManagerController
         }
 
         // set new status if there no data
-        if($data['results'] !== null && count($data['results']))
+        if($data['results'] !== null && \count($data['results']))
         {
             $data['status'] = self::STATUS_SUCCESS;
         }

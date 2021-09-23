@@ -66,7 +66,7 @@ class EstateManager
 
         $importData = include $bundleResources . '/contao/data/import_field_formats.php';
 
-        if ($importData != null && count($importData))
+        if ($importData != null && \count($importData))
         {
             // delete actions
             $objFieldFormatActions = FieldFormatActionModel::findAll();
@@ -147,7 +147,7 @@ class EstateManager
 
         $pid = Input::get('id');
 
-        if ($importData != null && count($importData))
+        if ($importData != null && \count($importData))
         {
             // Delete all existing mappings of interface
             if (($objInterfaceMappings = InterfaceMappingModel::findByPid($pid)) != null)
