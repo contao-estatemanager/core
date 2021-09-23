@@ -512,7 +512,7 @@ class RealEstateImporter extends \BackendModule
                         $values[] = $value;
                     }
 
-                    if (in_array($field, $skipRecords))
+                    if (\in_array($field, $skipRecords))
                     {
                         if (!count($values) || !$values[0])
                         {
@@ -603,8 +603,8 @@ class RealEstateImporter extends \BackendModule
     {
         $actions = StringUtil::deserialize($this->objInterface->contactPersonActions, true);
 
-        $allowCreate = in_array('create', $actions);
-        $allowUpdate = in_array('update', $actions);
+        $allowCreate = \in_array('create', $actions);
+        $allowUpdate = \in_array('update', $actions);
 
         $this->addLog('Update database', 1, 'highlight');
 

@@ -170,7 +170,7 @@ class FilterToggle extends FilterWidget
             // Remove not used available filters if no interactive toggle is needed
             foreach ($arrAvailableFilters as $group => $groupData)
             {
-                if (!in_array($group, $arrToggleFilter))
+                if (!\in_array($group, $arrToggleFilter))
                 {
                     unset($arrAvailableFilters[$group]);
                 }
@@ -182,7 +182,7 @@ class FilterToggle extends FilterWidget
         // Parse leftover filter items
         foreach ($arrAvailableFilters as $group => $groupData)
         {
-            $arrItems[] = $this->parseFilterItem($group, $groupData, in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $this->objFilter->submitOnChange);
+            $arrItems[] = $this->parseFilterItem($group, $groupData, \in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $this->objFilter->submitOnChange);
         }
 
         $this->items = $arrItems;

@@ -66,14 +66,14 @@ class FilesHelper
             $files = scandir(TL_ROOT . '/' . $path);
 
             foreach($files as $file) {
-                if (in_array($file, array('.', '..'))) {
+                if (\in_array($file, array('.', '..'))) {
                     continue;
                 }
 
                 if(!is_dir(TL_ROOT . '/' . $path . '/' . $file)) {
                     $ext = explode('.', $file);
                     $ext = strtolower($ext[count($ext) - 1]);
-                    if (in_array($ext, $extensions, false)) $result[] = $path . '/' . $file;
+                    if (\in_array($ext, $extensions, false)) $result[] = $path . '/' . $file;
                 } elseif ($recursive) {
                     $result = array_merge($result, self::scandirByExt($path . '/' . $file, $extensions, $recursive));
                 }

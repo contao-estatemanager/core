@@ -165,7 +165,7 @@ class FilterTypeSeparated extends FilterWidget
 
         while ($objGroups->next())
         {
-            if (in_array($objGroups->vermarktungsart, $addedMarketingTypes))
+            if (\in_array($objGroups->vermarktungsart, $addedMarketingTypes))
             {
                 continue;
             }

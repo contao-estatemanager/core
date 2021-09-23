@@ -298,7 +298,7 @@ class RealEstate extends System
             return $return;
         }
 
-        if (in_array('new', $validStatusToken) && strtotime(Config::get('statusTokenNewDisplayDuration'), $this->objRealEstate->dateAdded) > time())
+        if (\in_array('new', $validStatusToken) && strtotime(Config::get('statusTokenNewDisplayDuration'), $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (
@@ -306,7 +306,7 @@ class RealEstate extends System
                 'class' => 'new'
             );
         }
-        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
+        if (\in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (
@@ -314,7 +314,7 @@ class RealEstate extends System
                 'class' => 'reserved'
             );
         }
-        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
+        if (\in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
         {
             $return[] = array
             (
@@ -322,7 +322,7 @@ class RealEstate extends System
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet && ($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing))
+        if (\in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet && ($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing))
         {
             $return[] = array
             (
@@ -565,7 +565,7 @@ class RealEstate extends System
             // we have to sort the fields, which contain several options, to be able to fill the groups correctly
             foreach ($groupSorting as $index)
             {
-                if(in_array($index, $validGroups))
+                if(\in_array($index, $validGroups))
                 {
                     $availableGroups[] = $index;
                 }
@@ -616,7 +616,7 @@ class RealEstate extends System
                 // sort order
                 foreach ($availableGroups as $aGroup)
                 {
-                    if(in_array($aGroup, $separateGroups))
+                    if(\in_array($aGroup, $separateGroups))
                     {
                         $sortedGroupOrder[] = $aGroup;
                     }
@@ -626,7 +626,7 @@ class RealEstate extends System
                 foreach ($sortedGroupOrder as $group)
                 {
                     // check if the group is assignable
-                    if(in_array($group, $configKeys))
+                    if(\in_array($group, $configKeys))
                     {
                         $allocationGroup = $group;
                         break;

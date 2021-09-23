@@ -383,7 +383,7 @@ class RealEstateFormatter
      */
     public function isAllowed(string $field): bool
     {
-        if(in_array($field, $this->arrRemovedCollection)){
+        if(\in_array($field, $this->arrRemovedCollection)){
             return false;
         }
 

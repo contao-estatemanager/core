@@ -111,7 +111,7 @@ class ExposeModuleGallery extends ExposeModule
 
         foreach ($arrModules as $module)
         {
-            if(in_array($module, $arrValidFields))
+            if(\in_array($module, $arrValidFields))
             {
                 $arrImages = $this->realEstate->getImagesUuids([$module], $availableSlots);
                 $objFiles = FilesModel::findMultipleByUuids($arrImages);
