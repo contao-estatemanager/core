@@ -428,7 +428,8 @@ class tl_interface_mapping extends Contao\Backend
             return array();
         }
 
-        $this->loadLanguageFile($dc->activeRecord->type);
+        $this->loadLanguageFile('tl_real_estate');
+        $this->loadLanguageFile('tl_contact_person');
         $this->loadDataContainer($dc->activeRecord->type);
 
         $arrFields = array();

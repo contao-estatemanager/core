@@ -526,10 +526,16 @@ class RealEstateImporter extends \BackendModule
                         switch ($interfaceMapping->type)
                         {
                             case 'tl_contact_person':
-                                $contactPerson[$interfaceMapping->attribute] = $contactPersonMeta[$interfaceMapping->attribute]['default'];
+                                if (array_key_exists($interfaceMapping->attribute, $contactPersonMeta))
+                                {
+                                    $contactPerson[$interfaceMapping->attribute] = $contactPersonMeta[$interfaceMapping->attribute]['default'];
+                                }
                                 break;
                             case 'tl_real_estate':
-                                $re[$interfaceMapping->attribute] = $realEstateMeta[$interfaceMapping->attribute]['default'];
+                                if (array_key_exists($interfaceMapping->attribute, $realEstateMeta))
+                                {
+                                    $re[$interfaceMapping->attribute] = $realEstateMeta[$interfaceMapping->attribute]['default'];
+                                }
                                 break;
                         }
 
@@ -783,6 +789,7 @@ class RealEstateImporter extends \BackendModule
             {
                 $dc = new \stdClass();
                 $dc->id = $objRealEstate->id ?: Database::getInstance()->getNextId('tl_real_estate');
+                $dc->activeRecord = null;
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
                 {
@@ -927,9 +934,9 @@ class RealEstateImporter extends \BackendModule
                 "file" => $file,
                 "time" => $mtime,
                 "size" => $size,
-                "user" => $arrSynced[$file]->username,
-                "status" => intval($arrSynced[$file]->status),
-                "synctime" => intval($arrSynced[$file]->tstamp),
+                "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
+                "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
+                "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
                 "checked" => false
             );
         }
@@ -1102,7 +1109,7 @@ class RealEstateImporter extends \BackendModule
                         break;
                     default:
                         // Returns the value of an XML element.
-                        $results[$i] = current($attributes)[$attr];
+                        $results[$i] = current($attributes)[$attr] ?? null;
                         break;
                 }
             }
