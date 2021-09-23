@@ -1122,7 +1122,7 @@ class RealEstateImporter extends \BackendModule
         if (\count($results) === 1)
         {
             // Trim strings
-            if (is_string($results[0]))
+            if (\is_string($results[0]))
             {
                 $results[0] = trim($results[0]);
             }
@@ -1326,7 +1326,7 @@ class RealEstateImporter extends \BackendModule
 
         $titel = current($tmpGroup->anhangtitel);
 
-        if (is_string($titel) && $titel !== '')
+        if (\is_string($titel) && $titel !== '')
         {
             //$this->addLog('Image added: ' . $value, 3, 'success', array(
             //    'title' => $titel,
