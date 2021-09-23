@@ -999,7 +999,7 @@ class RealEstateImporter extends \BackendModule
         {
             $content = $zip->unzip();
             $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
-            $dir = dirname($filePath);
+            $dir = \dirname($filePath);
 
             if (!file_exists($dir))
             {
