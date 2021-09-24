@@ -79,7 +79,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['filter'] = array
     'foreignKey'              => 'tl_filter.title',
     'options_callback'        => array('tl_module_estate_manager', 'getFilter'),
     'eval'                    => array('chosen'=>true, 'tl_class'=>'w50 wizard'),
-    'sql'                     => "int(10) unsigned NOT NULL default '0'",
+    'sql'                     => "int(10) unsigned NOT NULL default 0",
     'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
 );
 
@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listMode'] = array
     'options'                 => array('visited', 'group', 'type', 'provider', 'vacation'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50 clr','submitOnChange'=>true),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['hideOnEmpty'] = array
@@ -141,7 +141,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['listSorting'] = array
     'options'                 => array('none', 'dateAdded_asc', 'dateAdded_desc', 'tstamp_asc', 'tstamp_desc'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addSorting'] = array
@@ -181,7 +181,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['defaultSorting'] = array
     'options'                 => array('date'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['addCustomOrder'] = array
@@ -229,7 +229,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['filterMode'] = array
     'options'                 => array('default'),
     'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
     'eval'                    => array('tl_class'=>'w50'),
-    'sql'                     => "varchar(16) NOT NULL default ''"
+    'sql'                     => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['maxTextLength'] = array
