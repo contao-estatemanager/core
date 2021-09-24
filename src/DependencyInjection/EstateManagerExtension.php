@@ -25,6 +25,8 @@ class EstateManagerExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
@@ -32,5 +34,7 @@ class EstateManagerExtension extends Extension
 
         $loader->load('listener.yml');
         $loader->load('services.yml');
+
+        $container->setParameter('contao_estatemanager.send_anonymized_data', $config['send_anonymized_data']);
     }
 }
