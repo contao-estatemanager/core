@@ -111,7 +111,7 @@ class ExposeModuleGallery extends ExposeModule
 
         foreach ($arrModules as $module)
         {
-            if(in_array($module, $arrValidFields))
+            if(\in_array($module, $arrValidFields))
             {
                 $arrImages = $this->realEstate->getImagesUuids([$module], $availableSlots);
                 $objFiles = FilesModel::findMultipleByUuids($arrImages);
@@ -122,7 +122,7 @@ class ExposeModuleGallery extends ExposeModule
                 // set new available slot count
                 if($availableSlots !== null)
                 {
-                    $availableSlots -= count($arrImages);
+                    $availableSlots -= \count($arrImages);
                 }
             }
             else
@@ -161,7 +161,7 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         // set default image on empty
-        if(!count($arrSlides))
+        if(!\count($arrSlides))
         {
             if($this->gallerySkipOnEmpty)
             {
@@ -184,7 +184,7 @@ class ExposeModuleGallery extends ExposeModule
                 }
             }
 
-            if(!count($arrSlides))
+            if(!\count($arrSlides))
             {
                 $this->isEmpty = true;
                 return '';

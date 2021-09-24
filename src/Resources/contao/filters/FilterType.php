@@ -121,6 +121,12 @@ class FilterType extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        // ToDo: Return a backend preview for the filter generator
+        if ($this->objFilter === null)
+        {
+            return '';
+        }
+
         $strClass = 'select';
 
         // Custom class

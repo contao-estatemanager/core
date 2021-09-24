@@ -12,6 +12,7 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
+use Contao\Environment;
 use Contao\FrontendTemplate;
 use Contao\PageModel;
 use Contao\StringUtil;
@@ -117,7 +118,7 @@ class ExposeModuleShare extends ExposeModule
         global $objPage;
 
         // create email content
-        $link = \Environment::get('base') . $this->realEstate->generateExposeUrl($objPage->id);
+        $link = Environment::get('base') . $this->realEstate->generateExposeUrl($objPage->id);
         $text = Translator::translateExpose('text_share_mail_body');
 
         // set url to email content

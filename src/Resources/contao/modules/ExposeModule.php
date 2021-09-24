@@ -59,7 +59,7 @@ abstract class ExposeModule extends ModuleRealEstate
 
 		// Do not change this order (see #6191)
 		$this->Template->style = !empty($this->arrStyle) ? implode(' ', $this->arrStyle) : '';
-		$this->Template->class = trim('expose_mod_' . $this->type . ' ' . $this->cssID[1]);
+		$this->Template->class = trim('expose_mod_' . $this->type . ' ' . ($this->cssID[1] ?? ''));
 		$this->Template->cssID = !empty($this->cssID[0]) ? ' id="' . $this->cssID[0] . '"' : '';
 
 		$this->Template->inColumn = $this->strColumn;

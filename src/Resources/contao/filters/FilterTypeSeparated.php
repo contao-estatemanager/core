@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Input;
 use Contao\StringUtil;
 use Model\Collection;
 
@@ -46,7 +47,7 @@ class FilterTypeSeparated extends FilterWidget
      * @var mixed
      */
     protected $varValueRealEstateType;
-    
+
     /**
      * Template
      *
@@ -116,6 +117,12 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        // ToDo: Return a backend preview for the filter generator
+        if ($this->objFilter === null)
+        {
+            return '';
+        }
+
         $arrGroups = StringUtil::deserialize($this->objFilter->groups, true);
 
         $objGroups = RealEstateGroupModel::findPublishedByIds($arrGroups);
@@ -158,7 +165,7 @@ class FilterTypeSeparated extends FilterWidget
 
         while ($objGroups->next())
         {
-            if (in_array($objGroups->vermarktungsart, $addedMarketingTypes))
+            if (\in_array($objGroups->vermarktungsart, $addedMarketingTypes))
             {
                 continue;
             }
@@ -260,14 +267,14 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function validate()
     {
-        $varMarketingType = $this->validator(\Input::post('marketing-type', true));
-        $varRealEstateType = $this->validator(\Input::post('real-estate-type', true));
+        $varMarketingType = $this->validator(Input::post('marketing-type', true));
+        $varRealEstateType = $this->validator(Input::post('real-estate-type', true));
 
         if ($this->hasErrors())
         {
             $this->class = 'error';
         }
-        
+
         $this->varValueMarketingType = $varMarketingType;
         $this->varValueRealEstateType = $varRealEstateType;
     }

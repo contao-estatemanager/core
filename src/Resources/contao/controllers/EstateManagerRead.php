@@ -139,7 +139,7 @@ class EstateManagerRead extends AbstractEstateManagerController
                     ));
                 }
 
-                if(is_array($this->currParam['fields']))
+                if(\is_array($this->currParam['fields']))
                 {
                     while($objContacts->next())
                     {
@@ -151,7 +151,7 @@ class EstateManagerRead extends AbstractEstateManagerController
                                 case 'singleSRC':
                                     $imageSize = array();
 
-                                    if(is_array($this->currParam['imgSize']))
+                                    if(\is_array($this->currParam['imgSize']))
                                     {
                                         $imageSize = $this->currParam['imgSize'];
                                     }
@@ -170,7 +170,7 @@ class EstateManagerRead extends AbstractEstateManagerController
         }
 
         // set new status if there no data
-        if($data['results'] !== null && count($data['results']))
+        if($data['results'] !== null && \count($data['results']))
         {
             $data['status'] = self::STATUS_SUCCESS;
         }
@@ -220,7 +220,7 @@ class EstateManagerRead extends AbstractEstateManagerController
             $realEstate = new RealEstate($objRealEstate, null);
         }
 
-        if(is_array($this->currParam['fields']))
+        if(\is_array($this->currParam['fields']))
         {
             // create fields array
             $collection['fields'] = array();

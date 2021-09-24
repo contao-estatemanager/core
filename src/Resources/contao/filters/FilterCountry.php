@@ -13,6 +13,7 @@ namespace ContaoEstateManager;
 
 use Contao\PageModel;
 use Contao\StringUtil;
+use Contao\System;
 
 /**
  * Class FilterCountry
@@ -107,7 +108,7 @@ class FilterCountry extends FilterWidget
 
         $options = $this->getOptions();
 
-        \System::loadLanguageFile('tl_real_estate_countries');
+        System::loadLanguageFile('tl_real_estate_countries');
 
         $arrOptions = array();
 
@@ -117,7 +118,7 @@ class FilterCountry extends FilterWidget
             (
                 'value'    => $option,
                 'selected' => $option === $_SESSION['FILTER_DATA']['country'] ? ' selected' : '',
-                'label'    => $GLOBALS['TL_LANG']['tl_real_estate_countries'][$option]
+                'label'    => array_key_exists($option, $GLOBALS['TL_LANG']['tl_real_estate_countries']) ? $GLOBALS['TL_LANG']['tl_real_estate_countries'][$option] : $option
             );
         }
 
@@ -155,13 +156,13 @@ class FilterCountry extends FilterWidget
 
                     if ($objRootPage->realEstateQueryLanguage)
                     {
-                        $language = "WHERE sprache='".$objRootPage->realEstateQueryLanguage."'";
+                        $language = " AND sprache='".$objRootPage->realEstateQueryLanguage."'";
                     }
                 }
 
                 $this->import('Database');
 
-                $query = 'SELECT DISTINCT land FROM tl_real_estate '.$language.' ORDER BY land';
+                $query = "SELECT DISTINCT land FROM tl_real_estate WHERE land !=''" .$language." ORDER BY land";
                 $objCountry = $this->Database->prepare($query)
                     ->execute();
 
@@ -171,7 +172,7 @@ class FilterCountry extends FilterWidget
                 }
                 break;
             case 'selection':
-                $countryOptions = \StringUtil::deserialize($this->countryOptions, true);
+                $countryOptions = StringUtil::deserialize($this->countryOptions, true);
 
                 foreach ($countryOptions as $option)
                 {

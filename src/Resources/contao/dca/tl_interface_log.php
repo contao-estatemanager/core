@@ -61,7 +61,7 @@ $GLOBALS['TL_DCA']['tl_interface_log'] = array
 				'label'               => &$GLOBALS['TL_LANG']['tl_interface_log']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.svg',
-				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+				'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
 			),
 			'show' => array
 			(
@@ -143,7 +143,7 @@ $GLOBALS['TL_DCA']['tl_interface_log'] = array
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class tl_interface_log extends Backend
+class tl_interface_log extends Contao\Backend
 {
 
 	/**
@@ -175,7 +175,7 @@ class tl_interface_log extends Backend
 				break;
 
 			default:
-				if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && \is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
+				if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
 				{
 					foreach ($GLOBALS['TL_HOOKS']['colorizeLogEntries'] as $callback)
 					{

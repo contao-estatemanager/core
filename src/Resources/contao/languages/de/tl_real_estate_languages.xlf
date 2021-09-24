@@ -1,0 +1,470 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_languages.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_real_estate_languages.af-ZA">
+        <source>Afrikaans (South Africa)</source>
+        <target>Afrikaans (Südafrika)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.am-ET">
+        <source>Amharic (Ethiopia)</source>
+        <target>Amharisch (Äthiopien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ar-AA">
+        <source>Arabic (Unitag)</source>
+        <target>Arabisch (Unitag)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ar-SA">
+        <source>Arabic (Saudi Arabia)</source>
+        <target>Arabisch (Saudi-Arabien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.as-IN">
+        <source>Assamese (India)</source>
+        <target>Assamesisch (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.az-AZ">
+        <source>Azerbaijani (Azerbaijan)</source>
+        <target>Aserbaidschanisch (Aserbaidschan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.be-BY">
+        <source>Belarusian (Belarus)</source>
+        <target>Weißrussisch (Weißrussland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.bg-BG">
+        <source>Bulgarian (Bulgaria)</source>
+        <target>Bulgarisch (Bulgarien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.bn-BD">
+        <source>Bengali (Bangladesh)</source>
+        <target>Bengalisch (Bangladesch)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.bn-ID">
+        <source>Bengali (India)</source>
+        <target>Bengalisch (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.bo-CN">
+        <source>Tibetan (China)</source>
+        <target>Tibetisch (China)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.bs-BA">
+        <source>Bosnian (Bosnia and Herzegovina)</source>
+        <target>Bosnisch (Bosnien und Herzegowina)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ca-ES">
+        <source>Catalan (Spain)</source>
+        <target>Katalanisch (Spanien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.cs-CZ">
+        <source>Czech (Czech Republic)</source>
+        <target>Tschechisch (Tschechische Republik)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.cy-GB">
+        <source>Welsh (United Kingdom)</source>
+        <target>Walisisch (Großbritannien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.da-DK">
+        <source>Danish (Denmark)</source>
+        <target>Dänisch (Dänemark)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.de-AT">
+        <source>German (Austria)</source>
+        <target>Deutsch (Österreich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.de-CH">
+        <source>German (Switzerland)</source>
+        <target>Deutsch (Schweiz)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.de-DE">
+        <source>German (Germany)</source>
+        <target>Deutsch (Deutschland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.dz-BT">
+        <source>Dzongkha (Bhutan)</source>
+        <target>Dzongkha (Bhutan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.el-GR">
+        <source>Greek (Greece)</source>
+        <target>Griechisch (Griechenland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-AU">
+        <source>English (Australia)</source>
+        <target>Englisch (Australien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-CA">
+        <source>English (Canada)</source>
+        <target>Englisch (Kanada)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-GB">
+        <source>English (United Kingdom)</source>
+        <target>Englisch (Großbritannien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-IE">
+        <source>English (Ireland)</source>
+        <target>Englisch (Irland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-US">
+        <source>English (United States)</source>
+        <target>Englisch (Vereinigte Staaten)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.en-ZA">
+        <source>English (South Africa)</source>
+        <target>Englisch (Südafrika)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-AR">
+        <source>Spanish (Argentina)</source>
+        <target>Spanisch (Argentinien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-BO">
+        <source>Spanish (Bolivia)</source>
+        <target>Spanisch (Bolivien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-CL">
+        <source>Spanish (Chile)</source>
+        <target>Spanisch (Chile)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-CO">
+        <source>Spanish (Colombia)</source>
+        <target>Spanisch (Kolumbien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-CR">
+        <source>Spanish (Costa Rica)</source>
+        <target>Spanisch (Costa Rica)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-DO">
+        <source>Spanish (Dominican Republic)</source>
+        <target>Spanisch (Dominikanische Republik)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-EC">
+        <source>Spanish (Ecuador)</source>
+        <target>Spanisch (Ecuador)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-ES">
+        <source>Spanish (Spain)</source>
+        <target>Spanisch (Spanien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-MX">
+        <source>Spanish (Mexico)</source>
+        <target>Spanisch (Mexiko)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-NI">
+        <source>Spanish (Nicaragua)</source>
+        <target>Spanisch (Nicaragua)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-PA">
+        <source>Spanish (Panama)</source>
+        <target>Spanisch (Panama)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-PE">
+        <source>Spanish (Peru)</source>
+        <target>Spanisch (Peru)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-PR">
+        <source>Spanish (Puerto Rico)</source>
+        <target>Spanisch (Puerto Rico)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-PY">
+        <source>Spanish (Paraguay)</source>
+        <target>Spanisch (Paraguay)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-SV">
+        <source>Spanish (El Salvador)</source>
+        <target>Spanisch (El Salvador)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-UY">
+        <source>Spanish (Uruguay)</source>
+        <target>Spanisch (Uruguay)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.es-VE">
+        <source>Spanish (Venezuela)</source>
+        <target>Spanisch (Venezuela)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.et-EE">
+        <source>Estonian (Estonia)</source>
+        <target>Estnisch (Estland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.eu-ES">
+        <source>Basque (Spain)</source>
+        <target>Baskisch (Spanien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fa-IR">
+        <source>Persian (Iran)</source>
+        <target>Persisch (Iran)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fi-FI">
+        <source>Finnish (Finland)</source>
+        <target>Finnisch (Finnland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fo-FO">
+        <source>Faroese (Faroe Islands)</source>
+        <target>Färöisch (Färöer-Inseln)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fr-CA">
+        <source>French (Canada)</source>
+        <target>Französisch (Kanada)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fr-CH">
+        <source>French (Switzerland)</source>
+        <target>Französisch (Schweiz)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fr-FR">
+        <source>French (France)</source>
+        <target>Französisch (Frankreich)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.fy-NL">
+        <source>Western Frisian (Netherlands)</source>
+        <target>Westfriesisch (Niederlande)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ga-IE">
+        <source>Irish (Ireland)</source>
+        <target>Irisch (Irland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.gl-ES">
+        <source>Galician (Spain)</source>
+        <target>Galizisch (Spanien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.gu-IN">
+        <source>Gujarati (India)</source>
+        <target>Gujarati (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.he-IL">
+        <source>Hebrew (Israel)</source>
+        <target>Hebräisch (Israel)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.hi-IN">
+        <source>Hindi (India)</source>
+        <target>Hindi (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.hr-HR">
+        <source>Croatian (Croatia)</source>
+        <target>Kroatisch (Kroatien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.hu-HU">
+        <source>Hungarian (Hungary)</source>
+        <target>Ungarisch (Ungarn)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.hy-AM">
+        <source>Armenian (Armenia)</source>
+        <target>Armenisch (Armenien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.id-ID">
+        <source>Indonesian (Indonesia)</source>
+        <target>Indonesisch (Indonesien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.is-IS">
+        <source>Icelandic (Iceland)</source>
+        <target>Isländisch (Island)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.it-CH">
+        <source>Italian (Switzerland)</source>
+        <target>Italienisch (Schweiz)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.it-IT">
+        <source>Italian (Italy)</source>
+        <target>Italienisch (Italien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ja-JP">
+        <source>Japanese (Japan)</source>
+        <target>Japanisch (Japan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ka-GE">
+        <source>Georgian (Georgia)</source>
+        <target>Georgisch (Georgien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.kk-KZ">
+        <source>Kazakh (Kazakhstan)</source>
+        <target>Kasachisch (Kasachstan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.kn-IN">
+        <source>Kannada (India)</source>
+        <target>Kannada (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ko-KR">
+        <source>Korean (Korea)</source>
+        <target>Koreanisch (Korea)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ks-IN">
+        <source>Kashmiri (India)</source>
+        <target>Kaschmiri (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ku-IQ">
+        <source>Kurdish (Iraq)</source>
+        <target>Kurdisch (Irak)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.lo-LA">
+        <source>Lao (Laos)</source>
+        <target>Laotisch (Laos)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.lt-LT">
+        <source>Lithuanian (Lithuania)</source>
+        <target>Litauisch (Litauen)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.lv-LV">
+        <source>Latvian (Latvia)</source>
+        <target>Lettisch (Lettland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.mk-MK">
+        <source>Macedonian (Macedonia)</source>
+        <target>Mazedonisch (Mazedonien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ml-IN">
+        <source>Malayalam (India)</source>
+        <target>Malayalam (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.mn-MN">
+        <source>Mongolian (Mongolia)</source>
+        <target>Mongolisch (Mongolei)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.mr-IN">
+        <source>Marathi (India)</source>
+        <target>Marathi (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ms-MY">
+        <source>Malay (Malaysia)</source>
+        <target>Malaiisch (Malaysia)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.mt-MT">
+        <source>Maltese (Malta)</source>
+        <target>Maltesisch (Malta)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.my-MM">
+        <source>Burmese (Myanmar)</source>
+        <target>Birmanisch (Myanmar)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ne-NP">
+        <source>Nepali (Nepal)</source>
+        <target>Nepalesisch (Nepal)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.nl-BE">
+        <source>Dutch (Belgium)</source>
+        <target>Niederländisch (Belgien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.nl-NL">
+        <source>Dutch (Netherlands)</source>
+        <target>Niederländisch (Niederlande)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.or-IN">
+        <source>Oriya (India)</source>
+        <target>Oriya (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.pa-IN">
+        <source>Punjabi (India)</source>
+        <target>Punjabi (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.pl-PL">
+        <source>Polish (Poland)</source>
+        <target>Polnisch (Polen)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.pt-BR">
+        <source>Portuguese (Brazil)</source>
+        <target>Portugiesisch (Brasilien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.pt-PT">
+        <source>Portuguese (Portugal)</source>
+        <target>Portugiesisch (Portugal)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ro-RO">
+        <source>Romanian (Romania)</source>
+        <target>Rumänisch (Rumänien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ru-RU">
+        <source>Russian (Russia)</source>
+        <target>Russisch (Russland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.si-LK">
+        <source>Sinhala (Sri Lanka)</source>
+        <target>Singhalesisch (Sri Lanka)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sk-SK">
+        <source>Slovak (Slovakia)</source>
+        <target>Slowakisch (Slowakei)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sl-SI">
+        <source>Slovenian (Slovenia)</source>
+        <target>Slowenisch (Slowenien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sq-AL">
+        <source>Albanian (Albania)</source>
+        <target>Albanisch (Albanien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sr-RS">
+        <source>Serbian (Serbia)</source>
+        <target>Serbisch (Serbien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.st-ZA">
+        <source>Southern Sotho (South Africa)</source>
+        <target>Süd-Sotho (Südafrika)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sv-FI">
+        <source>Swedish (Finland)</source>
+        <target>Schwedisch (Finnland)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sv-SE">
+        <source>Swedish (Sweden)</source>
+        <target>Schwedisch (Schweden)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sw-CD">
+        <source>Swahili (Congo)</source>
+        <target>Suaheli (Kongo)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.sw-KE">
+        <source>Swahili (Kenya)</source>
+        <target>Suaheli (Kenia)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ta-IN">
+        <source>Tamil (India)</source>
+        <target>Tamil (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ta-LK">
+        <source>Tamil (Sri Lanka)</source>
+        <target>Tamil (Sri Lanka)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.te-IN">
+        <source>Telugu (India)</source>
+        <target>Telugu (Indien)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.tg-TJ">
+        <source>Tajik (Tajikistan)</source>
+        <target>Tadschikisch (Tadschikistan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.th-TH">
+        <source>Thai (Thailand)</source>
+        <target>Thailändisch (Thailand)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.tr-TR">
+        <source>Turkish (Turkey)</source>
+        <target>Türkisch (Türkei)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.uk-UA">
+        <source>Ukrainian (Ukraine)</source>
+        <target>Ukrainisch (Ukraine)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.ur-PK">
+        <source>Urdu (Pakistan)</source>
+        <target>Urdu (Pakistan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.vi-VN">
+        <source>Vietnamese (Vietnam)</source>
+        <target>Vietnamesisch (Vietnam)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.wo-SN">
+        <source>Wolof (Senegal)</source>
+        <target>Wolof (Senegal)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.zh-CN">
+        <source>Chinese (China)</source>
+        <target>Chinesisch (China)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.zh-HK">
+        <source>Chinese (Hong Kong)</source>
+        <target>Chinesisch (Hongkong)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.zh-TW">
+        <source>Chinese (Taiwan)</source>
+        <target>Chinesisch (Taiwan)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_languages.zu-ZA">
+        <source>Zulu (South Africa)</source>
+        <target>Zulu (Südafrika)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

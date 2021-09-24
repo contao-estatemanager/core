@@ -95,7 +95,7 @@ class Translator
         // Load translation file
         System::loadLanguageFile($dictionary);
 
-        if(is_array($strVar))
+        if(\is_array($strVar))
         {
             foreach ($strVar as $k=> $v)
             {
@@ -106,17 +106,19 @@ class Translator
         }
 
         // Get the field from the DCA to check values and add a prefix if necessary
-        $dcaField = $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $prefixField ];
+        $dcaField = $GLOBALS['TL_DCA']['tl_real_estate']['fields'][ $prefixField ] ?? null;
+        $inputType = $dcaField['inputType'] ?? '';
+        $isMultiple = (bool) ($dcaField['eval']['multiple'] ?? false);
 
         if(
             $prefixField &&
             $dcaField &&
             (
-                $dcaField['inputType'] == 'select' ||
-                $dcaField['inputType'] == 'checkboxWizard' ||
+                $inputType === 'select' ||
+                $inputType === 'checkboxWizard' ||
                 (
-                    $dcaField['inputType'] == 'checkbox' &&
-                    boolval($dcaField['eval']['multiple'])
+                    $inputType === 'checkbox' &&
+                    $isMultiple
                 )
             )
         )
@@ -124,6 +126,6 @@ class Translator
             $strVar = $prefixField . '_' . $strVar;
         }
 
-        return $GLOBALS['TL_LANG'][ $dictionary ][ $strVar ] ?: $strVar;
+        return $GLOBALS['TL_LANG'][ $dictionary ][ $strVar ] ?? $strVar;
     }
 }
