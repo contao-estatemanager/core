@@ -3,7 +3,7 @@
         <body>
             <trans-unit id="tl_real_estate_label.labelObjectsFound">
                 <source>%s properties found</source>
-                <target>%s Immobilien gefunden</target>
+                <target>%s Immobilie(n) gefunden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.auf_anfrage">
                 <source>Price</source>
@@ -19,7 +19,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.aktivVon">
                 <source>Active from</source>
-                <target>Aktiv von</target>
+                <target>Aktiv seit</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.aktivBis">
                 <source>Active until</source>
@@ -27,7 +27,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.openimmoObid">
                 <source>OpenImmo object ID</source>
-                <target>OpenImmo Objekt-Id</target>
+                <target>OpenImmo Objekt-ID</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kennungUrsprung">
                 <source>Identification source</source>
@@ -39,7 +39,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.provider">
                 <source>Provider</source>
-                <target>Anbieter</target>
+                <target>Anbieter/-in</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.contactPerson">
                 <source>Contact Person</source>
@@ -47,7 +47,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.alias">
                 <source>Alias</source>
-                <target>Alias / SEO-URL</target>
+                <target>Alias/SEO-URL</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreis">
                 <source>Purchase price</source>
@@ -55,11 +55,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreisnetto">
                 <source>Purchase price (net)</source>
-                <target>Kaufpreis (Netto)</target>
+                <target>Kaufpreis (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreisbrutto">
                 <source>Purchase price (gross)</source>
-                <target>Kaufpreis (Brutto)</target>
+                <target>Kaufpreis (brutto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.erbpacht">
                 <source>Hereditary lease</source>
@@ -79,11 +79,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.innenCourtage">
                 <source>Internal commission payment</source>
-                <target>Innen Courtage</target>
+                <target>Verkäuferprovision</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.innenCourtageMwst">
                 <source>Internal commission payment (VAT)</source>
-                <target>Innen Courtage (MwSt.)</target>
+                <target>Verkäuferprovision (inkl. MwSt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.aussenCourtage">
                 <source>Buyer's commission</source>
@@ -91,23 +91,23 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.aussenCourtageMwst">
                 <source>Buyer's commission incl. VAT</source>
-                <target>Käuferprovision mit MwSt.</target>
+                <target>Käuferprovision (inkl. MwSt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.courtageHinweis">
                 <source>Commission information text</source>
-                <target>Courtage Hinweistext</target>
+                <target>Provisionshinweis</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.provisionnetto">
                 <source>Commission (net)</source>
-                <target>Provision (Netto)</target>
+                <target>Provision (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.provisionust">
                 <source>Commission (with sales tax)</source>
-                <target>Provision (UmSt.)</target>
+                <target>Provision (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.provisionbrutto">
                 <source>Commission (gross)</source>
-                <target>Provision (Brutto)</target>
+                <target>Provision (brutto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.waehrung">
                 <source>Currency</source>
@@ -119,11 +119,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.mwstGesamt">
                 <source>Total value added tax</source>
-                <target>Mehrwertsteuer Gesamt</target>
+                <target>Mehrwertsteuer (gesamt)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.xFache">
                 <source>n-times</source>
-                <target>X-fache</target>
+                <target>x-fache</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreisProQm">
                 <source>Purchase price per sqm</source>
@@ -131,7 +131,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.nettokaltmiete">
                 <source>Basic rent (net)</source>
-                <target>Kaltmiete (Netto)</target>
+                <target>Kaltmiete (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bebaubarNach">
                 <source>Developable based on</source>
@@ -159,15 +159,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.monatlichekostennetto">
                 <source>Monthly costs (net)</source>
-                <target>Monatliche Kosten (Netto)</target>
+                <target>Monatliche Kosten (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.monatlichekostenust">
                 <source>Monthly costs (with sales tax)</source>
-                <target>Monatliche Kosten (UmSt.)</target>
+                <target>Monatliche Kosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.monatlichekostenbrutto">
                 <source>Monthly costs (gross)</source>
-                <target>Monatliche Kosten (Brutto)</target>
+                <target>Monatliche Kosten (brutto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.nebenkostenprom2von">
                 <source>Ancillary costs per sqm of</source>
@@ -179,47 +179,47 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.ruecklagenetto">
                 <source>Reserves (net)</source>
-                <target>Rücklagen (Netto)</target>
+                <target>Rücklagen (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.ruecklageust">
                 <source>Reserves (with sales tax)</source>
-                <target>Rücklagen (UmSt.)</target>
+                <target>Rücklagen (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sonstigekostennetto">
                 <source>Other costs (net)</source>
-                <target>Sonstige Kosten (Netto)</target>
+                <target>Sonstige Kosten (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sonstigekostenust">
                 <source>Other costs (with sales tax)</source>
-                <target>Sonstige Kosten (UmSt.)</target>
+                <target>Sonstige Kosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sonstigemietenetto">
                 <source>Other rents (net)</source>
-                <target>Sonstige Mieten (Netto)</target>
+                <target>Sonstige Mietkosten (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sonstigemieteust">
                 <source>Other rents (with sale tax)</source>
-                <target>Sonstige Mieten (Umst.)</target>
+                <target>Sonstige Mietkosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.betriebskostennetto">
                 <source>Operating costs (net)</source>
-                <target>Betriebskosten (Netto)</target>
+                <target>Betriebskosten (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.betriebskostenust">
                 <source>Operating costs (with sales tax)</source>
-                <target>Betriebskosten (UmSt.)</target>
+                <target>Betriebskosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.evbnetto">
                 <source>Maintenance, renewal and improvement fund (net)</source>
-                <target>Erhaltungs- und Verbesserungsbeitrag</target>
+                <target>Instandhaltungskosten</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.evbust">
                 <source>Maintenance / Renewal and improvement fund (with sales tax)</source>
-                <target>Erhaltungs- und Verbesserungsbeitrag (UmSt.)</target>
+                <target>Instandhaltungskosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.preisZeiteinheit">
                 <source>Price per time unit</source>
-                <target>Preis Zeiteinheit</target>
+                <target>Preis pro Zeiteinheit</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.pacht">
                 <source>Lease</source>
@@ -231,7 +231,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kautionText">
                 <source>Deposit note</source>
-                <target>Kautions Hinweis</target>
+                <target>Kautionshinweis</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.geschaeftsguthaben">
                 <source>Credit balances (commercial)</source>
@@ -255,7 +255,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.besichtigungstermin2">
                 <source>Viewing appointment no. 2</source>
-                <target>Besichtigungstermin Nr. 2</target>
+                <target>2. Besichtigungstermin</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.beginnBietzeit">
                 <source>Start of bidding period</source>
@@ -267,7 +267,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hoechstgebotZeigen">
                 <source>Show highest bid</source>
-                <target>Höchstgebot zeigen</target>
+                <target>Höchstgebot anzeigen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.mindestpreis">
                 <source>Minimum price</source>
@@ -283,7 +283,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.zvtermin">
                 <source>Foreclosure appointment</source>
-                <target>Zwangsversteigerungtermin</target>
+                <target>Zwangsversteigerungstermin</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.zusatztermin">
                 <source>Additional appointment</source>
@@ -360,7 +360,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bueroteilflaeche">
                 <source>Partial office space</source>
-                <target>Büro Teilfläche</target>
+                <target>Büro-Teilfläche</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.fensterfront">
                 <source>Glass facade</source>
@@ -392,7 +392,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlWohnSchlafzimmer">
                 <source>Living- / Bedrooms</source>
-                <target>Wohn- / Schlafzimmer</target>
+                <target>Wohn-/Schlafzimmer</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.plaetzeGastraum">
                 <source>Places guestroom</source>
@@ -436,7 +436,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartMietePacht">
                 <source>For Rent / For Lease</source>
-                <target>Mieten / Pachten</target>
+                <target>Mieten/Pachten</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartErbpacht">
                 <source>Hereditary leasehold</source>
@@ -644,7 +644,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.wgGeeignet">
                 <source>Flatshare suitable</source>
-                <target>WG geeignet</target>
+                <target>WG-geeignet</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.zulieferung">
                 <source>Supply/Delivery available</source>
@@ -680,11 +680,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hauptmietzinsnetto">
                 <source>Head lease rent (net)</source>
-                <target>Hauptmietzins (Netto)</target>
+                <target>Hauptmietzins (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hauptmietzinsust">
                 <source>Head lease rent (with sales tax)</source>
-                <target>Hauptmietzins (UmSt.)</target>
+                <target>Hauptmietzins (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.pauschalmiete">
                 <source>Flat-rate rent</source>
@@ -708,15 +708,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.preisZeitraumVon">
                 <source>Price period from</source>
-                <target>Preis-Zeitraum von</target>
+                <target>Preis im Zeitraum von</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.preisZeitraumBis">
                 <source>Price period until</source>
-                <target>Preis-Zeitraum bis</target>
+                <target>Preis im Zeitraum bis</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.ausrichtBalkonTerrasse">
                 <source>Orientation of balcony / terrace</source>
-                <target>Ausrichtung Balkon / Terrasse</target>
+                <target>Ausrichtung Balkon/Terrasse</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.wbsSozialwohnung">
                 <source>Social living/ public housing unit</source>
@@ -744,7 +744,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.stellplatzart">
                 <source>Type of parking space</source>
-                <target>Garage / Stellplatz</target>
+                <target>Garage/Stellplatz</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.stpGarage">
                 <source>Garage parking spaces</source>
@@ -844,7 +844,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kabelSatTv">
                 <source>Cable / satellite TV</source>
-                <target>Kabel- / Sat-TV</target>
+                <target>Kabel-/Sat-TV</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.dvbt">
                 <source>DVBT available</source>
@@ -852,11 +852,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.waschTrockenraum">
                 <source>Laundry / dry room</source>
-                <target>Wasch- / Trockenraum</target>
+                <target>Wasch-/Trockenraum</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.rolladen">
                 <source>Roller shutters</source>
-                <target>Rolladen</target>
+                <target>Rollladen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bibliothek">
                 <source>Library available</source>
@@ -868,7 +868,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gaestewc">
                 <source>Guest toilet</source>
-                <target>Gäste WC</target>
+                <target>Gäste-WC</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlBalkone">
                 <source>Balconies</source>
@@ -888,7 +888,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gastterrasse">
                 <source>Guest terrace</source>
-                <target>Gastterrasse</target>
+                <target>Gästeterrasse</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.stromanschlusswert">
                 <source>Power connection value</source>
@@ -896,7 +896,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kantineCafeteria">
                 <source>Canteen/Cafeteria available</source>
-                <target>Kantine / Cafeteria vorhanden</target>
+                <target>Kantine/Cafeteria vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.teekueche">
                 <source>Kitchenette available</source>
@@ -904,7 +904,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlSepWc">
                 <source>Separate toilet rooms</source>
-                <target>Sep. WC's</target>
+                <target>Sep. WCs</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlEtagen">
                 <source>Number of floors</source>
@@ -920,15 +920,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandZugang">
                 <source>Broadband access available</source>
-                <target>Breitband Zugang vorhanden</target>
+                <target>Breitband-Zugang vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandGeschw">
                 <source>Broadband speed</source>
-                <target>Breitband Geschwindigkeit</target>
+                <target>Breitband-Geschwindigkeit</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandArt">
                 <source>Broadband type</source>
-                <target>Breitband Art</target>
+                <target>Breitband-Art</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.nutzungsart">
                 <source>Type of use</source>
@@ -952,7 +952,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.strasse">
                 <source>Street</source>
-                <target>Strasse</target>
+                <target>Straße</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hausnummer">
                 <source>House number</source>
@@ -988,7 +988,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bisdatum">
                 <source>Until date</source>
-                <target>Bis datum</target>
+                <target>Bis (Datum)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.minMietdauer">
                 <source>Minimum rental period</source>
@@ -1008,7 +1008,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.wohnungTyp">
                 <source>Type of Apartment</source>
-                <target>Wohnung-Typ</target>
+                <target>Wohnungs-Typ</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hausTyp">
                 <source>Type of house</source>
@@ -1016,7 +1016,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.grundstTyp">
                 <source>Type of real estate</source>
-                <target>Grundstück-Typ</target>
+                <target>Grundstücks-Typ</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bueroTyp">
                 <source>Type of office</source>
@@ -1024,7 +1024,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.handelTyp">
                 <source>Type of Trade</source>
-                <target>Handel-Typ</target>
+                <target>Handels-Typ</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gastgewTyp">
                 <source>Type of hospitality / lodging industry</source>
@@ -1044,7 +1044,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sonstigeTyp">
                 <source>Special / Other types</source>
-                <target>Spezielle- / Sonstige-Typ</target>
+                <target>Spezial-Typ/Sonstiger Typ</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.freizeitTyp">
                 <source>Type of leisure</source>
@@ -1064,7 +1064,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.heizkostennetto">
                 <source>Heating costs (net)</source>
-                <target>Heizkosten (Netto)</target>
+                <target>Heizkosten (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.heizkostenust">
                 <source>Heating costs VAT</source>
@@ -1080,7 +1080,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.umtsEmpfang">
                 <source>UMTS reception available</source>
-                <target>UMTS Empfang vorhanden</target>
+                <target>UMTS-Empfang vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.klimatisiert">
                 <source>Air-conditioned</source>
@@ -1104,7 +1104,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.luftbildern">
                 <source>Aerial photographs available</source>
-                <target>Luftbilder vorhanden</target>
+                <target>Luftaufnahmen vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.heizungsart">
                 <source>Type of heating</source>
@@ -1120,11 +1120,11 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gesamtmieteust">
                 <source>Total rent (with sales tax)</source>
-                <target>Summe Miete (UmSt.)</target>
+                <target>Gesamtmiete (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gesamtmietebrutto">
                 <source>Total rent (gross)</source>
-                <target>Gesamtmiete (Brutto)</target>
+                <target>Gesamtmiete (brutto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gesamtbelastungnetto">
                 <source>Total load (net)</source>
@@ -1132,7 +1132,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gesamtbelastungust">
                 <source>Total load (with sales tax)</source>
-                <target>Gesamtbelastung (UmSt.)</target>
+                <target>Gesamtkosten (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.mieteinnahmenIst">
                 <source>Rental income (actual)</source>
@@ -1260,7 +1260,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.energiepassEnergieverbrauchkennwert">
                 <source>Consumption value</source>
-                <target>Verbrauchkennwert</target>
+                <target>Verbrauchskennwert</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.energiepassStromwert">
                 <source>Current (electrical) value</source>
@@ -1300,7 +1300,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anbieterobjekturl">
                 <source>Provider real estate URL</source>
-                <target>Anbieter Immobilien URL</target>
+                <target>Immobilien-URL des Anbieters</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.offen">
                 <source>Open</source>
@@ -1360,15 +1360,15 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.summemieteust">
                 <source>Total rent (with sales tax)</source>
-                <target>Summe Miete (UmSt.)</target>
+                <target>Gesamtmiete (inkl. USt.)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.nettomieteprom2von">
                 <source>Rent (net) per sqm of</source>
-                <target>Miete pro m² von (Netto)</target>
+                <target>Miete pro m² von (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.nettomieteprom2bis">
                 <source>Rent (net) per sqm up to</source>
-                <target>Miete pro m² bis (Netto)</target>
+                <target>Miete pro m² bis (netto)</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.freitextPreis">
                 <source>Price</source>
@@ -1376,7 +1376,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.balkonTerrasseFlaeche">
                 <source>Balcony / Terrace area</source>
-                <target>Balkon- / Terassenfläche</target>
+                <target>Balkon- / Terrassenfläche</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gartenflaeche">
                 <source>Garden area</source>
@@ -1388,7 +1388,7 @@
             </trans-unit>
             <trans-unit id="tl_real_estate_label.fensterfrontQm">
                 <source>Glass facade sqm</source>
-                <target>Fensterfront m²</target>
+                <target>Fensterfront in m²</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.grundstuecksfront">
                 <source>Depth of plot</source>
