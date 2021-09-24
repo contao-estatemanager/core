@@ -9,6 +9,7 @@
  */
 
 Contao\System::loadLanguageFile('tl_real_estate');
+Contao\System::loadLanguageFile('tl_field_format');
 
 $GLOBALS['TL_DCA']['tl_field_format'] = array
 (
@@ -57,7 +58,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
                 'href'                => 'key=importFieldFormats',
                 'class'               => 'header_field_format_import',
                 'icon'                => 'sync.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_field_format']['importConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['tl_field_format']['importConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'all' => array
             (
@@ -94,7 +95,7 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show' => array
             (
@@ -292,17 +293,17 @@ class tl_field_format extends Contao\Backend
     public function getRealEstateColumns(): array
     {
         $options   = array();
-        $skipFields = array('id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
+        $skipFields = array('id', 'alias', 'serpPreview', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links');
 
         $this->loadDataContainer('tl_real_estate');
 
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $options[$field] = $field.' ['.$GLOBALS['TL_LANG']['tl_real_estate'][$field][0].']';
+                    $options[$field] = $field.' [' . $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ']';
                 }
             }
         }

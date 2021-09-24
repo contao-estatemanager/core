@@ -115,7 +115,7 @@ class FilterUnique extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
-        $this->value = $_SESSION['FILTER_DATA']['unique-imprecise'] ?: '';
+        $this->value = $_SESSION['FILTER_DATA']['unique-imprecise'] ?? '';
 
         return parent::parse($arrAttributes);
     }

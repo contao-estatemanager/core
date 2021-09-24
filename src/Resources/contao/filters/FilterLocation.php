@@ -96,7 +96,7 @@ class FilterLocation extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
-        $this->value = $_SESSION['FILTER_DATA']['location'];
+        $this->value = $_SESSION['FILTER_DATA']['location'] ?? '';
 
         return parent::parse($arrAttributes);
     }

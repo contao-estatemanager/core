@@ -19,8 +19,8 @@
   ],
   "require":{
     "php":">=7.2",
-    "contao/core-bundle":"^4.4",
-    "menatwork/contao-multicolumnwizard-bundle": "^3.4"
+    "ext-json": "*",
+    "contao/core-bundle":"^4.4"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",

@@ -89,7 +89,7 @@ class InterfaceMappingModel extends Model
         $arrColumns = array("$t.pid=?");
         $arrValues = array();
 
-        if (count($arrAttributes))
+        if (\count($arrAttributes))
         {
             $attributes = array();
 

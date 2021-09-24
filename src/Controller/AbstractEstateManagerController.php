@@ -58,7 +58,7 @@ class AbstractEstateManagerController extends Frontend
 
         foreach ($arrMethod as $key => $value)
         {
-            if (in_array($key, $arrValidParam))
+            if (\in_array($key, $arrValidParam))
             {
                 $param[$key] = $value;
             }

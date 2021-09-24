@@ -61,6 +61,6 @@ class ExposeModuleStatusToken extends ExposeModule
 
         $this->Template->arrStatusTokens = $arrStatusTokens;
 
-        $this->isEmpty = !count($this->Template->arrStatusTokens);
+        $this->isEmpty = !\count($this->Template->arrStatusTokens);
     }
 }

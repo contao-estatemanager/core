@@ -15,6 +15,7 @@ use Contao\Config;
 use Contao\Date;
 use Contao\Email;
 use Contao\Environment;
+use Contao\File;
 use Contao\Form;
 use Contao\FormModel;
 use Contao\FrontendTemplate;
@@ -22,6 +23,7 @@ use Contao\FrontendUser;
 use Contao\Input;
 use Contao\PageModel;
 use Contao\StringUtil;
+use Contao\System;
 use Contao\Widget;
 
 /**
@@ -88,7 +90,7 @@ class ExposeForm extends Form
     protected function processFormData($arrSubmitted, $arrLabels, $arrFields)
     {
         // HOOK: prepare form data callback
-        if (isset($GLOBALS['TL_HOOKS']['prepareFormData']) && is_array($GLOBALS['TL_HOOKS']['prepareFormData']))
+        if (isset($GLOBALS['TL_HOOKS']['prepareFormData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFormData']))
         {
             foreach ($GLOBALS['TL_HOOKS']['prepareFormData'] as $callback)
             {
@@ -119,13 +121,13 @@ class ExposeForm extends Form
                 $v = StringUtil::deserialize($v);
 
                 // Skip empty fields
-                if ($this->skipEmpty && !is_array($v) && !strlen($v))
+                if ($this->skipEmpty && !\is_array($v) && !\strlen($v))
                 {
                     continue;
                 }
 
                 // Add field to message
-                $message .= ($arrLabels[$k] ?? ucfirst($k)) . ': ' . (is_array($v) ? implode(', ', $v) : $v) . "\n";
+                $message .= ($arrLabels[$k] ?? ucfirst($k)) . ': ' . (\is_array($v) ? implode(', ', $v) : $v) . "\n";
 
                 // Prepare XML file
                 if ($this->format == 'xml')
@@ -133,7 +135,7 @@ class ExposeForm extends Form
                     $fields[] = array
                     (
                         'name' => $k,
-                        'values' => (is_array($v) ? $v : array($v))
+                        'values' => (\is_array($v) ? $v : array($v))
                     );
                 }
 
@@ -141,7 +143,7 @@ class ExposeForm extends Form
                 if ($this->format == 'csv')
                 {
                     $keys[] = $k;
-                    $values[] = (is_array($v) ? implode(',', $v) : $v);
+                    $values[] = (\is_array($v) ? implode(',', $v) : $v);
                 }
             }
 
@@ -237,7 +239,7 @@ class ExposeForm extends Form
                     // Add a link to the uploaded file
                     if ($file['uploaded'])
                     {
-                        $uploaded .= "\n" . Environment::get('base') . StringUtil::stripRootDir(dirname($file['tmp_name'])) . '/' . rawurlencode($file['name']);
+                        $uploaded .= "\n" . Environment::get('base') . StringUtil::stripRootDir(\dirname($file['tmp_name'])) . '/' . rawurlencode($file['name']);
                         continue;
                     }
 
@@ -245,7 +247,7 @@ class ExposeForm extends Form
                 }
             }
 
-            $uploaded = strlen(trim($uploaded)) ? "\n\n---\n" . $uploaded : '';
+            $uploaded = trim($uploaded) ? "\n\n---\n" . $uploaded : '';
             $email->text = StringUtil::decodeEntities(trim($message)) . $uploaded . "\n\n";
 
             // Send the e-mail
@@ -271,7 +273,7 @@ class ExposeForm extends Form
                     $arrSet[$k] = $v;
 
                     // Convert date formats into timestamps (see #6827)
-                    if ($arrSet[$k] != '' && in_array($arrFields[$k]->rgxp, array('date', 'time', 'datim')))
+                    if ($arrSet[$k] != '' && \in_array($arrFields[$k]->rgxp, array('date', 'time', 'datim')))
                     {
                         $objDate = new Date($arrSet[$k], Date::getFormatFromRgxp($arrFields[$k]->rgxp));
                         $arrSet[$k] = $objDate->tstamp;
@@ -292,7 +294,7 @@ class ExposeForm extends Form
             }
 
             // HOOK: store form data callback
-            if (isset($GLOBALS['TL_HOOKS']['storeFormData']) && is_array($GLOBALS['TL_HOOKS']['storeFormData']))
+            if (isset($GLOBALS['TL_HOOKS']['storeFormData']) && \is_array($GLOBALS['TL_HOOKS']['storeFormData']))
             {
                 foreach ($GLOBALS['TL_HOOKS']['storeFormData'] as $callback)
                 {
@@ -323,10 +325,10 @@ class ExposeForm extends Form
         // Store the submit time to invalidate the session later on
         $_SESSION['FORM_DATA']['SUBMITTED_AT'] = time();
 
-        $arrFiles = $_SESSION['FILES'];
+        $arrFiles = $_SESSION['FILES'] ?? null;
 
         // HOOK: process form data callback
-        if (isset($GLOBALS['TL_HOOKS']['processFormData']) && is_array($GLOBALS['TL_HOOKS']['processFormData']))
+        if (isset($GLOBALS['TL_HOOKS']['processFormData']) && \is_array($GLOBALS['TL_HOOKS']['processFormData']))
         {
             foreach ($GLOBALS['TL_HOOKS']['processFormData'] as $callback)
             {
@@ -338,7 +340,7 @@ class ExposeForm extends Form
         $_SESSION['FILES'] = array(); // DO NOT CHANGE
 
         // Add a log entry
-        if (FE_USER_LOGGED_IN)
+        if (System::getContainer()->get('contao.security.token_checker')->hasFrontendUser())
         {
             $this->import(FrontendUser::class, 'User');
             $this->log('Form "' . $this->title . '" has been submitted by "' . $this->User->username . '".', __METHOD__, TL_FORMS);
@@ -444,7 +446,7 @@ class ExposeForm extends Form
         $fileName = 'feedback' . time() . '.xml';
         $filePath = 'system/tmp/' . $fileName;
 
-        \File::putContent($filePath, $objFeedbackTemplate->parse());
+        File::putContent($filePath, $objFeedbackTemplate->parse());
 
         $_SESSION['FILES']['feedback'] = array
         (

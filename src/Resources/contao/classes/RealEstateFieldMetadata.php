@@ -51,7 +51,7 @@ class RealEstateFieldMetadata
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
             {
-                if(!\is_array($data['realEstate']))
+                if(!(\is_array($data['realEstate'] ?? null)))
                 {
                     continue;
                 }
@@ -65,7 +65,7 @@ class RealEstateFieldMetadata
                             break;
 
                         case 'group':
-                            if(!is_array($value))
+                            if(!\is_array($value))
                             {
                                 $value = [$value];
                             }

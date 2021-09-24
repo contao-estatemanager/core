@@ -33,7 +33,10 @@
         <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
-        <source>Edit Format Actions</source>
+        <source>Edit field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.edit.1">
+        <source>Edit field</source>
       </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
         <source>Edit field</source>
