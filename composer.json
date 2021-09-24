@@ -24,7 +24,7 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
-    "friendsofphp/php-cs-fixer": "^3.0",
+    "contao/easy-coding-standard": "^3.4",
     "phpunit/phpunit": "^5.7.26",
     "symfony/phpunit-bridge": "^3.2"
   },
