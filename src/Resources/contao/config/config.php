@@ -169,9 +169,9 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('contao_estate_manager.liste
 $GLOBALS['TL_CRON']['minutely'][] = array('ContaoEstateManager\RealEstateCronImporter', 'run');
 
 // Style sheet
-if (TL_MODE == 'BE')
+if (TL_MODE === 'BE')
 {
-    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/real_estate_administration.css|static';
+    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/real_estate_administration.css';
 }
 
 // Add permissions
