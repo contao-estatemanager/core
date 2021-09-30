@@ -9,64 +9,62 @@
  */
 
 // Back end modules
-array_insert($GLOBALS['BE_MOD'], 1, array
+$GLOBALS['BE_MOD']['estatemanager'] = array
 (
+    'provider' => array
+    (
+        'tables'                => array('tl_provider', 'tl_contact_person'),
+        'hideInNavigation'      => true,
+    ),
     'real_estate' => array
     (
-        'provider' => array
-        (
-            'tables'                => array('tl_provider', 'tl_contact_person'),
-            'hideInNavigation'      => true,
-        ),
-        'real_estate' => array
-        (
-            'tables'                => array('tl_real_estate'),
-        ),
-        'type' => array
-        (
-            'tables'                => array('tl_real_estate_group', 'tl_real_estate_type'),
-            'hideInNavigation'      => true,
-        ),
-        'filter' => array
-        (
-            'tables'                => array('tl_filter', 'tl_filter_item'),
-            'hideInNavigation'      => true,
-        ),
-        'field_format' => array
-        (
-            'tables'                => array('tl_field_format', 'tl_field_format_action'),
-            'importFieldFormats'    => array('ContaoEstateManager\EstateManager', 'importFieldFormats'),
-            'hideInNavigation'      => true,
-        ),
-        'interface' => array
-        (
-            'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_history', 'tl_interface_log'),
-            'syncRealEstates'       => array('ContaoEstateManager\RealEstateImporter', 'sync'),
-            'importDefaultMappings' => array('ContaoEstateManager\EstateManager', 'importDefaultMappings'),
-            'clearRealEstates'      => array('ContaoEstateManager\EstateManager', 'clearRealEstates'),
-            'hideInNavigation'      => true,
-        ),
-        'config' => array
-        (
-            'tables'                => array('tl_real_estate_config'),
-            'hideInNavigation'      => true,
-        ),
-        'addon' => array
-        (
-            'tables'                => array('tl_estate_manager_addon'),
-            'hideInNavigation'      => true,
-        ),
-        'expose_module' => array
-        (
-            'tables'                => array('tl_expose_module'),
-            'hideInNavigation'      => true,
-        ),
-        'administration' => array
-        (
-            'callback'              => 'ContaoEstateManager\ModuleRealEstateAdministration'
-        ),
-    )
-));
+        'tables'                => array('tl_real_estate'),
+    ),
+    'type' => array
+    (
+        'tables'                => array('tl_real_estate_group', 'tl_real_estate_type'),
+        'hideInNavigation'      => true,
+    ),
+    'filter' => array
+    (
+        'tables'                => array('tl_filter', 'tl_filter_item'),
+        'hideInNavigation'      => true,
+    ),
+    'field_format' => array
+    (
+        'tables'                => array('tl_field_format', 'tl_field_format_action'),
+        'importFieldFormats'    => array('ContaoEstateManager\EstateManager', 'importFieldFormats'),
+        'hideInNavigation'      => true,
+    ),
+    'interface' => array
+    (
+        'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_history', 'tl_interface_log'),
+        'syncRealEstates'       => array('ContaoEstateManager\RealEstateImporter', 'sync'),
+        'importDefaultMappings' => array('ContaoEstateManager\EstateManager', 'importDefaultMappings'),
+        'clearRealEstates'      => array('ContaoEstateManager\EstateManager', 'clearRealEstates'),
+        'hideInNavigation'      => true,
+    ),
+    'config' => array
+    (
+        'tables'                => array('tl_real_estate_config'),
+        'hideInNavigation'      => true,
+    ),
+    'addon' => array
+    (
+        'tables'                => array('tl_estate_manager_addon'),
+        'hideInNavigation'      => true,
+    ),
+    'expose_module' => array
+    (
+        'tables'                => array('tl_expose_module'),
+        'hideInNavigation'      => true,
+    ),
+    'administration' => array
+    (
+        'callback'              => 'ContaoEstateManager\ModuleRealEstateAdministration'
+    ),
+);
+
 
 // Models
 $GLOBALS['TL_MODELS']['tl_contact_person']         = 'ContaoEstateManager\ContactPersonModel';
@@ -89,22 +87,16 @@ $GLOBALS['BE_FFL']['exposeModuleWizard']           = 'ContaoEstateManager\Expose
 $GLOBALS['BE_FFL']['license']                      = 'ContaoEstateManager\LicenseField';
 
 // Front end modules
-array_insert($GLOBALS['FE_MOD'], 0, array
+$GLOBALS['FE_MOD']['estatemanager'] = array
 (
-    'estatemanager' => array
-    (
-        'realEstateExpose'       => 'ContaoEstateManager\ModuleRealEstateExpose',
-        'realEstateFilter'       => 'ContaoEstateManager\Filter',
-        'realEstateList'         => 'ContaoEstateManager\ModuleRealEstateList',
-        'realEstateResultList'   => 'ContaoEstateManager\ModuleRealEstateResultList',
-    )
-));
+    'realEstateExpose'       => 'ContaoEstateManager\ModuleRealEstateExpose',
+    'realEstateFilter'       => 'ContaoEstateManager\Filter',
+    'realEstateList'         => 'ContaoEstateManager\ModuleRealEstateList',
+    'realEstateResultList'   => 'ContaoEstateManager\ModuleRealEstateResultList',
+);
 
 // Content elements
-array_insert($GLOBALS['TL_CTE']['includes'], 3, array
-(
-    'realEstateFilter'      => 'ContaoEstateManager\Filter'
-));
+$GLOBALS['TL_CTE']['includes']['realEstateFilter'] = 'ContaoEstateManager\Filter';
 
 // Expose modules
 $GLOBALS['FE_EXPOSE_MOD'] = array
