@@ -13,7 +13,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -22,7 +22,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -31,7 +31,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -40,7 +40,7 @@ return array
         'actions' => array
         (
             array('number_format', '2', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -49,7 +49,7 @@ return array
         'actions' => array
         (
             array('number_format', '2', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -58,7 +58,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -67,7 +67,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -76,7 +76,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -85,7 +85,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -94,7 +94,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -103,7 +103,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -112,7 +112,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -121,7 +121,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -130,7 +130,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -139,7 +139,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -148,7 +148,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -157,7 +157,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -166,7 +166,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -175,7 +175,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -184,7 +184,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -193,7 +193,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -202,7 +202,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -211,7 +211,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, '')
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -794,7 +794,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' € / Jahr', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -803,7 +803,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -812,7 +812,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -821,7 +821,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -830,7 +830,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -839,7 +839,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -872,7 +872,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €/m²', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array
@@ -908,7 +908,7 @@ return array
         'actions' => array
         (
             array('number_format', '0', '', '', '', NULL, ''),
-            array('append', '', ' €/m²', '', '', NULL, ''),
+            array('custom', '', '', '', '', NULL, 're_ac_waehrung')
         )
     ),
     array

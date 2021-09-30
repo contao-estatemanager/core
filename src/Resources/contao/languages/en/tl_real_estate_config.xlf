@@ -9,7 +9,7 @@
         <source>Lists / Visualization</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.number_legend">
-        <source>Price / Area formatting</source>
+        <source>Price / Area</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config_legend">
         <source>Filters</source>
@@ -27,8 +27,20 @@
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.0">
         <source>Decimal separator</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberFormatDecimals.1">
+        <source>Defines the decimal separator</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.0">
         <source>Thousands separator</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberFormatThousands.1">
+        <source>Defines the thousands separator</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultCurrency.0">
+        <source>Currency</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultCurrency.1">
+        <source>Defines the currency in which real estate prices are shown.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.0">
         <source>Max number of main details</source>

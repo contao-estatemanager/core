@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},defaultCurrency,numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
 	),
 
 	// Fields
@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
                 ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
                 '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
             ),
-			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr')
 		),
 		'numberFormatThousands' => array
 		(
@@ -57,6 +57,19 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             (
                 ',' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['comma'],
                 '.' => &$GLOBALS['TL_LANG']['tl_real_estate_config']['dot']
+            ),
+			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
+		),
+		'defaultCurrency' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultCurrency'],
+            'default'                 => 'euro',
+            'inputType'               => 'select',
+            'options'                 => array
+            (
+                'euro' => &$GLOBALS['TL_LANG']['tl_real_estate_misc']['euro'][0],
+                'dollar' => &$GLOBALS['TL_LANG']['tl_real_estate_misc']['dollar'][0],
+                'pound' => &$GLOBALS['TL_LANG']['tl_real_estate_misc']['pound'][0]
             ),
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50')
 		),

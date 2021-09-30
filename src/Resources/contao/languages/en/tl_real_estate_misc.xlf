@@ -50,6 +50,44 @@
       <trans-unit id="tl_real_estate_misc.oneMonth">
         <source>1 month</source>
       </trans-unit>
+
+      <trans-unit id="tl_real_estate_misc.euro.0">
+        <source>Euro (€)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.euro.1">
+        <source>€</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.euro.html">
+        <source>&#8364;</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.dollar.0">
+        <source>Dollar ($)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.dollar.1">
+        <source>$</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.dollar.html">
+        <source>&#36;</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.pound.0">
+        <source>Pound (£)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.pound.1">
+        <source>£</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.pound.html">
+        <source>&#163;</source>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_misc.pricePerYear">
+        <source>%s / year</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.pricePerMonth">
+        <source>%s / month</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_misc.pricePerSquareMeter">
+        <source>%s / m²</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
