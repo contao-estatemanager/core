@@ -1455,7 +1455,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('maxlength' => 255, 'tl_class' => 'w50'),
-            'sql'                       => "varchar(255) NOT NULL default ''",
+            'sql'                       => "text NULL",
             'realEstate'                => array(
                 'price'    => true,
                 'order'    => 830
