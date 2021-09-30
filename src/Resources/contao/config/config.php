@@ -9,7 +9,7 @@
  */
 
 // Back end modules
-$GLOBALS['BE_MOD']['estatemanager'] = array
+$emBackendModules = array
 (
     'provider' => array
     (
@@ -65,6 +65,17 @@ $GLOBALS['BE_MOD']['estatemanager'] = array
     ),
 );
 
+// Check if class exists (Contao >= 4.10)
+if(class_exists('Contao\ArrayUtil'))
+{
+    Contao\ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 1, [
+        'estatemanager' => $emBackendModules
+    ]);
+}
+else
+{
+    $GLOBALS['BE_MOD']['estatemanager'] = $emBackendModules;
+}
 
 // Models
 $GLOBALS['TL_MODELS']['tl_contact_person']         = 'ContaoEstateManager\ContactPersonModel';
@@ -161,7 +172,7 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('contao_estate_manager.liste
 $GLOBALS['TL_CRON']['minutely'][] = array('ContaoEstateManager\RealEstateCronImporter', 'run');
 
 // Style sheet
-if (TL_MODE === 'BE')
+if (defined('TL_MODE') && TL_MODE === 'BE')
 {
     $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/real_estate_administration.css';
 }

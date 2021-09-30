@@ -1,7 +1,3 @@
-.navigation.provider, .navigation.type, .navigation.filter, .navigation.field_format, .navigation.interface, .navigation.config, .navigation.addon, .navigation.expose_module {
-  display: none !important;
-}
-
 #tl_navigation .group-estatemanager {
   background: url("/bundles/estatemanager/icons/navi.svg") 4px 1px no-repeat;
 }
