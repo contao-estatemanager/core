@@ -21,7 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services
         ->set(HeaderCommentFixer::class)
         ->call('configure', [[
-            'header' => "This file is part of Contao EstateManager.\n\n@see        https://www.contao-estatemanager.com/\n@source     https://github.com/contao-estatemanager/locations\n@copyright  Copyright (c) ".date('Y')." Oveleon GbR (https://www.oveleon.de)\n@license    https://www.contao-estatemanager.com/lizenzbedingungen.html",
+            'header' => "This file is part of Contao EstateManager.\n\n@see        https://www.contao-estatemanager.com/\n@source     https://github.com/contao-estatemanager/core\n@copyright  Copyright (c) ".date('Y')." Oveleon GbR (https://www.oveleon.de)\n@license    https://www.contao-estatemanager.com/lizenzbedingungen.html",
         ]])
     ;
 
