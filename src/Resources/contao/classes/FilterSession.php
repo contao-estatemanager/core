@@ -360,7 +360,7 @@ class FilterSession extends \Frontend
 
         $arrTypeColumns = array();
 
-        if(\count($arrGroups))
+        if(($arrGroups ?? null) && \count($arrGroups))
         {
             $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
 
