@@ -2,6 +2,7 @@
 
 namespace ContaoEstateManager\EstateManager\Controller;
 
+use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\FilesModel;
 use Contao\Frontend;
 use Contao\Image;
@@ -27,10 +28,18 @@ class AbstractEstateManagerController extends Frontend
     const STATUS_SUCCESS = 'OK';
 
     /**
+     * @var ContaoFramework
+     */
+    private $framework;
+
+    /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(ContaoFramework $framework)
     {
+        $this->framework = $framework;
+        $this->framework->initialize();
+
         // Load the user object before calling the parent constructor
         $this->import('FrontendUser', 'User');
 
