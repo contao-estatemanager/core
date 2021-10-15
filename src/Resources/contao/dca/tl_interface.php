@@ -115,12 +115,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'href'                => 'table=tl_interface_history',
                 'icon'                => 'bundles/estatemanager/icons/history.svg'
             ),
-            'log' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['log'],
-                'href'                => 'table=tl_interface_log',
-                'icon'                => 'bundles/estatemanager/icons/log.svg'
-            ),
             'show' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['show'],
