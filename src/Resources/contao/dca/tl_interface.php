@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     'config' => array
     (
         'dataContainer'               => 'Table',
-        'ctable'                      => array('tl_interface_mapping', 'tl_interface_log'),
+        'ctable'                      => array('tl_interface_mapping'),
         'switchToEdit'                => true,
         'enableVersioning'            => true,
         'markAsCopy'                  => 'title',

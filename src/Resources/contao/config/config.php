@@ -38,7 +38,7 @@ $emBackendModules = array
     ),
     'interface' => array
     (
-        'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_history', 'tl_interface_log'),
+        'tables'                => array('tl_interface', 'tl_interface_mapping', 'tl_interface_history'),
         'syncRealEstates'       => array('ContaoEstateManager\RealEstateImporter', 'sync'),
         'importDefaultMappings' => array('ContaoEstateManager\EstateManager', 'importDefaultMappings'),
         'clearRealEstates'      => array('ContaoEstateManager\EstateManager', 'clearRealEstates'),
@@ -85,7 +85,6 @@ $GLOBALS['TL_MODELS']['tl_field_format']           = 'ContaoEstateManager\FieldF
 $GLOBALS['TL_MODELS']['tl_filter_item']            = 'ContaoEstateManager\FilterItemModel';
 $GLOBALS['TL_MODELS']['tl_filter']                 = 'ContaoEstateManager\FilterModel';
 $GLOBALS['TL_MODELS']['tl_interface_history']      = 'ContaoEstateManager\InterfaceHistoryModel';
-$GLOBALS['TL_MODELS']['tl_interface_log']          = 'ContaoEstateManager\InterfaceLogModel';
 $GLOBALS['TL_MODELS']['tl_interface_mapping']      = 'ContaoEstateManager\InterfaceMappingModel';
 $GLOBALS['TL_MODELS']['tl_interface']              = 'ContaoEstateManager\InterfaceModel';
 $GLOBALS['TL_MODELS']['tl_provider']               = 'ContaoEstateManager\ProviderModel';
