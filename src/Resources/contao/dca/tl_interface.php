@@ -224,7 +224,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPath'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50 clr'),
             'sql'                     => "binary(16) NULL"
         ),
         'filesPathContactPerson' => array
@@ -232,7 +232,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPathContactPerson'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
-            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50'),
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50 clr'),
             'sql'                     => "binary(16) NULL"
         ),
         'contactPersonActions' => array
