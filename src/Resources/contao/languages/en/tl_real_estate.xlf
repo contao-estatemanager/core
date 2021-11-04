@@ -1088,10 +1088,10 @@
         <source>Here you can specify the cubic index of your real estate.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.bgf.0">
-        <source>Brutto-Geschossflächen-Zahl nach Din277</source>
+        <source>Gross floor area number (Din277)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.bgf.1">
-        <source>Geben Sie hier die Brutto-Geschossflächen-Zahl nach Din277 der Immobilie an</source>
+        <source>Enter here the gross floor area number (according to Din277) of the object.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.grundstuecksflaeche.0">
         <source>Plot area</source>
