@@ -27,7 +27,7 @@ class ApiRealEstateController extends AbstractApiController
      * Return a collection of properties or a single property
      *
      * Parameters:
-     * - filter        Defines whether a filter should be applied. Requires `pageId`. ToDo: Filter -> session?
+     * - session       Defines whether a filtering from SessionManager should be applied. Requires `pageId`.
      * - filterMode    Defines the filter mode.
      * - groups        Defines the groups that will be used for filtering.
      *
@@ -56,7 +56,7 @@ class ApiRealEstateController extends AbstractApiController
         }
 
         // Apply filter
-        if($this->request->get('filter'))
+        if($this->request->get('session'))
         {
             // Apply filtering
             [$arrColumns, $arrValues, $options] = $this->applyFilter();
