@@ -956,7 +956,7 @@ class RealEstate extends System
         $orderedFields = RealEstateFieldMetadata::getInstance()->getOrderFields();
 
         // if there is a separate order in the types, manipulate the default field order
-        if($this->objType->orderFields)
+        if($this->objType->orderFields ?? null)
         {
             $orderValues = StringUtil::deserialize($this->objType->orderedFields, true);
 
