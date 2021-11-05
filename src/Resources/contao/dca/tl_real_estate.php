@@ -4982,7 +4982,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "int(10) unsigned NOT NULL default '0'",
+            'sql'                       => "varchar(10) NOT NULL default ''",
         ),
         'weitergabeGenerell'  => array
         (
