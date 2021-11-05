@@ -33,22 +33,6 @@
         <source>Here you can declare the real estate groups that are taken into account.</source>
         <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
       </trans-unit>
-      <trans-unit id="tl_filter.addBlankMarketingType.0">
-        <source>Display blank marketing type</source>
-        <target>Leere Vermarktungsart anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankMarketingType.1">
-        <source>Displays an empty option for marketing type on first position.</source>
-        <target>Eine leere Option für die Vermarktungsart an erster Stelle anzeigen.</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankRealEstateType.0">
-        <source>Display blank real estate type</source>
-        <target>Leeren Immobilien-Typ anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankRealEstateType.1">
-        <source>Displays an empty option for real estate type on first position.</source>
-        <target>Eine leere Option für den Immobilien-Typ an erster Stelle anzeigen.</target>
-      </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.0">
         <source>Change page when modified</source>
         <target>Bei Änderung Seite wechseln</target>

@@ -27,6 +27,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['realEstateResultList']  = '{title_l
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_group']     = 'realEstateGroups,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_type']      = 'realEstateTypes,filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_provider']  = 'realEstateGroups,provider,filterMode';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_vacation']  = 'filterMode';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['filterByProvider']   = 'provider';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addSorting']         = 'defaultSorting';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['addCustomOrder']     = 'customOrder';

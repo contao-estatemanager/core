@@ -106,7 +106,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
     'palettes' => array
     (
         '__selector__'                => array('excludeTypes', 'orderFields'),
-        'default'                     => '{title_legend},title,longTitle,similarType;{forwarding_legend},referencePage,jumpTo;{field_legend},nutzungsart,vermarktungsart,objektart,excludeTypes;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{language_legend},language;{publish_legend},defaultType,published'
+        'default'                     => '{title_legend},title,longTitle,similarType;{forwarding_legend},referencePage,jumpTo;{field_legend},nutzungsart,vermarktungsart,objektart,excludeTypes;{filter_legend},price,area,toggleFilter,sortingOptions;{display_legend},mainDetails,mainAttributes,orderFields;{language_legend},language;{publish_legend},published'
     ),
 
     // Subpalettes
@@ -397,15 +397,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'language', 'maxlength'=>5, 'nospace'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(5) NOT NULL default ''"
-        ),
-        'defaultType' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_type']['defaultType'],
-            'exclude'                 => true,
-            'flag'                    => 1,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('doNotCopy'=>true),
-            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'published' => array
         (

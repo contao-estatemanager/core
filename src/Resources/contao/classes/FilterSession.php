@@ -216,11 +216,6 @@ class FilterSession extends \Frontend
                     }
                 }
             }
-            elseif ($this->objRealEstateTypes->defaultType)
-            {
-                $this->objCurrentType = $this->objRealEstateTypes->current();
-                break;
-            }
         }
 
         // Reset collection for further functions

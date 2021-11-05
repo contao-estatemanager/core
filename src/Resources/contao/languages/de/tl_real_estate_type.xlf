@@ -225,14 +225,6 @@
         <source>Language</source>
         <target>Sprache</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_type.defaultType.0">
-        <source>Fallback type</source>
-        <target>Fallback-Typ</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.defaultType.1">
-        <source>Should this real estate type be used as a fallback?</source>
-        <target>Soll dieser Immobilien-Typ als Fallback verwendet werden?</target>
-      </trans-unit>
       <trans-unit id="tl_real_estate_type.published.0">
         <source>Publish</source>
         <target>Veröffentlichen</target>

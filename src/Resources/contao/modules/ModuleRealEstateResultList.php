@@ -22,16 +22,16 @@ use Patchwork\Utf8;
 class ModuleRealEstateResultList extends ModuleRealEstate
 {
     /**
-     * Filter session object
-     * @var FilterSession
-     */
-    protected $objFilterSession;
-
-    /**
      * Template
      * @var string
      */
     protected $strTemplate = 'mod_realEstateResultList';
+
+    /**
+     * Session manager object
+     * @var SessionManager
+     */
+    protected $sessionManager;
 
     /**
      * Do not display the module if there are no real estates
@@ -52,7 +52,8 @@ class ModuleRealEstateResultList extends ModuleRealEstate
             return $objTemplate->parse();
         }
 
-        $this->objFilterSession = FilterSession::getInstance();
+        //$this->objFilterSession = FilterSession::getInstance();
+        $this->sessionManager = SessionManager::getInstance();
 
         if ($this->customTpl != '')
         {
@@ -94,7 +95,8 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function countItems()
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
+        //list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
+        list($arrColumns, $arrValues, $arrOptions) = $this->sessionManager->getParameter($this->realEstateGroups, $this);
 
         return RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
     }
@@ -109,7 +111,8 @@ class ModuleRealEstateResultList extends ModuleRealEstate
      */
     protected function fetchItems($limit, $offset)
     {
-        list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
+        //list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameter($this->realEstateGroups, $this->filterMode, true, $this);
+        list($arrColumns, $arrValues, $arrOptions) = $this->sessionManager->getParameter($this->realEstateGroups, $this);
 
         $arrOptions['limit']  = $limit;
         $arrOptions['offset'] = $offset;

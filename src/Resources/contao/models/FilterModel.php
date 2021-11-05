@@ -23,8 +23,6 @@ use Contao\Model\Collection;
  * @property string  $alias
  * @property integer $jumpTo
  * @property string  $groups
- * @property boolean $addBlankMarketingType
- * @property boolean $addBlankRealEstateType
  * @property boolean $submitOnChange
  * @property string  $toggleFilter
  * @property string  $roomOptions
@@ -42,8 +40,6 @@ use Contao\Model\Collection;
  * @method static FilterModel|null findOneByAlias($val, array $opt=array())
  * @method static FilterModel|null findOneByJumpTo($val, array $opt=array())
  * @method static FilterModel|null findOneByGroups($val, array $opt=array())
- * @method static FilterModel|null findOneByAddBlankMarketingType($val, array $opt=array())
- * @method static FilterModel|null findOneByAddBlankRealEstateType($val, array $opt=array())
  * @method static FilterModel|null findOneBySubmitOnChange($val, array $opt=array())
  * @method static FilterModel|null findOneByToggleFilter($val, array $opt=array())
  * @method static FilterModel|null findOneByRoomOptions($val, array $opt=array())
@@ -57,8 +53,6 @@ use Contao\Model\Collection;
  * @method static Collection|FilterModel[]|FilterModel|null findByAlias($val, array $opt=array())
  * @method static Collection|FilterModel[]|FilterModel|null findByJumpTo($val, array $opt=array())
  * @method static Collection|FilterModel[]|FilterModel|null findByGroups($val, array $opt=array())
- * @method static Collection|FilterModel[]|FilterModel|null findByAddBlankMarketingType($val, array $opt=array())
- * @method static Collection|FilterModel[]|FilterModel|null findByAddBlankRealEstateType($val, array $opt=array())
  * @method static Collection|FilterModel[]|FilterModel|null findBySubmitOnChange($val, array $opt=array())
  * @method static Collection|FilterModel[]|FilterModel|null findByToggleFilter($val, array $opt=array())
  * @method static Collection|FilterModel[]|FilterModel|null findByRoomOptions($val, array $opt=array())
@@ -76,8 +70,6 @@ use Contao\Model\Collection;
  * @method static integer countByAlias($val, array $opt=array())
  * @method static integer countByJumpTo($val, array $opt=array())
  * @method static integer countByGroups($val, array $opt=array())
- * @method static integer countByAddBlankMarketingType($val, array $opt=array())
- * @method static integer countByAddBlankRealEstateType($val, array $opt=array())
  * @method static integer countBySubmitOnChange($val, array $opt=array())
  * @method static integer countByToggleFilter($val, array $opt=array())
  * @method static integer countByRoomOptions($val, array $opt=array())
