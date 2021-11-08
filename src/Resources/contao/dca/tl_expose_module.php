@@ -132,7 +132,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'name' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['name'],
             'exclude'                 => true,
             'sorting'                 => true,
             'flag'                    => 1,
@@ -143,7 +142,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'headline' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['headline'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'inputUnit',
@@ -153,7 +151,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'type' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['type'],
             'default'                 => 'title',
             'exclude'                 => true,
             'sorting'                 => true,
@@ -167,7 +164,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'customTpl' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['customTpl'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_expose_module', 'getExposeModuleTemplates'),
@@ -176,7 +172,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'protected' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['protected'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -185,7 +180,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'groups' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['groups'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'foreignKey'              => 'tl_member_group.name',
@@ -195,7 +189,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'guests' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['guests'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -203,7 +196,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'cssID' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['cssID'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
@@ -211,7 +203,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'fontSize' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fontSize'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('h1', 'h2', 'h3', 'h4', 'h5', 'h6'),
@@ -220,7 +211,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'forceFullAddress' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['forceFullAddress'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -228,7 +218,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'galleryModules' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['galleryModules'],
             'default'                 => array('titleImageSRC', 'imageSRC'),
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
@@ -239,7 +228,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'galleryItemTemplate' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['galleryItemTemplate'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_expose_module', 'getGalleryItemTemplates'),
@@ -248,7 +236,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'gallerySkipOnEmpty' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['gallerySkipOnEmpty'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -256,7 +243,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'imgSize' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['imgSize'],
             'exclude'                 => true,
             'inputType'               => 'imageSize',
             'reference'               => &$GLOBALS['TL_LANG']['MSC'],
@@ -269,7 +255,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'numberOfItems' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['numberOfItems'],
             'default'                 => 0,
             'exclude'                 => true,
             'inputType'               => 'text',
@@ -278,7 +263,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'perPage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['perPage'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
@@ -286,7 +270,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'jumpTo' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['jumpTo'],
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
@@ -296,7 +279,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'detailBlocks' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['detailBlocks'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('area', 'price', 'attribute', 'detail', 'energie'),
@@ -306,7 +288,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'summariseDetailBlocks' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['summariseDetailBlocks'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -314,7 +295,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'addHeadings' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['addHeadings'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
@@ -322,7 +302,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'includeAddress' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['includeAddress'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -330,7 +309,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'textBlocks' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['textBlocks'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'),
@@ -340,7 +318,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'maxTextLength' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['maxTextLength'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'natural', 'tl_class'=>'w50'),
@@ -348,7 +325,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'statusTokens' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['statusTokens'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('new', 'reserved', 'rented', 'sold'),
@@ -358,7 +334,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'fields'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fields'],
             'exclude'                 => true,
             'inputType' 	          => 'multiColumnWizard',
             'eval' 			          => array
@@ -379,7 +354,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'contactFields' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['contactFields'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'options'                 => array('personennummer', 'anrede', 'firma', 'vorname', 'name', 'titel', 'position', 'email_zentrale', 'email_direkt', 'email_privat', 'email_sonstige', 'email_feedback', 'tel_zentrale', 'tel_durchw', 'tel_fax', 'tel_handy', 'tel_privat', 'tel_sonstige', 'strasse', 'hausnummer', 'plz', 'ort', 'land', 'freitextfeld', 'singleSRC'),
@@ -389,7 +363,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'useProviderForwarding' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['useProviderForwarding'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -397,7 +370,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'form' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['form'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_form.title',
@@ -408,7 +380,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'share' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['share'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('email'),
@@ -418,7 +389,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'shareEmailTemplate' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['shareEmailTemplate'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_expose_module', 'getShareTemplates'),
@@ -427,7 +397,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'html' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['html'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('allowHtml'=>true, 'class'=>'monospace', 'rte'=>'ace|html', 'helpwizard'=>true),
@@ -436,7 +405,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'text' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['text'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true),
@@ -445,7 +413,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'hideOnEmpty' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['hideOnEmpty'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -453,7 +420,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'fullsize' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['fullsize'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -461,7 +427,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'hideOnReferences' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['hideOnReferences'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -469,7 +434,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'attachFeedbackXml' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['attachFeedbackXml'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50'),
@@ -477,7 +441,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'feedbackXmlTemplate' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['feedbackXmlTemplate'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback' => function () {
@@ -488,7 +451,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'realEstateTemplate' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['realEstateTemplate'],
             'default'                 => 'real_estate_item_default',
             'exclude'                 => true,
             'inputType'               => 'select',
@@ -498,7 +460,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'attachmentType' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['attachmentType'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('documents', 'links'),
@@ -507,7 +468,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'allowedFileExtensions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['allowedFileExtensions'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50'),
@@ -515,7 +475,6 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'forceDownload' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['forceDownload'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),

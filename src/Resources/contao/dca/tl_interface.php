@@ -59,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -69,34 +68,29 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['edit'],
                 'href'                => 'table=tl_interface_mapping',
                 'icon'                => 'edit.svg'
             ),
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['editheader'],
                 'href'                => 'act=edit',
                 'icon'                => 'header.svg',
                 'button_callback'     => array('tl_interface', 'editHeader')
             ),
             'sync' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['sync'],
                 'href'                => 'key=syncRealEstates',
                 'icon'                => 'sync.svg',
                 'button_callback'     => array('tl_interface', 'syncInterface')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_interface', 'copyInterface')
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
@@ -104,20 +98,17 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             ),
             'cleardata' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['clearRealEstates'],
                 'href'                => 'key=clearRealEstates',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'icon'                => 'bundles/estatemanager/icons/clear.svg'
             ),
             'history' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['history'],
                 'href'                => 'table=tl_interface_history',
                 'icon'                => 'bundles/estatemanager/icons/history.svg'
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -155,7 +146,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'title' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['title'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -164,7 +154,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'type' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['type'],
             'default'                 => 'openimmo',
             'exclude'				  => true,
             'filter'                  => true,
@@ -176,7 +165,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'provider' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['provider'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_provider.firma',
@@ -186,7 +174,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'anbieternr' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['anbieternr'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -194,7 +181,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'uniqueProviderField' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueProviderField'],
             'exclude'				  => true,
             'inputType'				  => 'select',
             'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
@@ -203,7 +189,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'uniqueField' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['uniqueField'],
             'exclude'				  => true,
             'filter'                  => true,
             'inputType'				  => 'select',
@@ -213,7 +198,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'importPath' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importPath'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('mandatory'=>true, 'fieldType'=>'radio', 'tl_class'=>'w50'),
@@ -221,7 +205,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'filesPath' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPath'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50 clr'),
@@ -229,7 +212,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'filesPathContactPerson' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPathContactPerson'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'w50 clr'),
@@ -237,7 +219,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'contactPersonActions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['contactPersonActions'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('create', 'update'),
@@ -247,7 +228,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'contactPersonUniqueField' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['contactPersonUniqueField'],
             'default'                 => 'personennummer',
             'exclude'				  => true,
             'inputType'				  => 'select',
@@ -257,7 +237,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'importThirdPartyRecords' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['importThirdPartyRecords'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'eval'                    => array('includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50 clr'),
@@ -267,7 +246,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'assignContactPersonKauf' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonKauf'],
             'exclude'				  => true,
             'inputType'				  => 'select',
             'foreignKey'              => 'tl_contact_person.name',
@@ -278,7 +256,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'assignContactPersonMietePacht' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonMietePacht'],
             'exclude'				  => true,
             'inputType'				  => 'select',
             'foreignKey'              => 'tl_contact_person.name',
@@ -289,7 +266,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'assignContactPersonErbpacht' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonErbpacht'],
             'exclude'				  => true,
             'inputType'				  => 'select',
             'foreignKey'              => 'tl_contact_person.name',
@@ -300,7 +276,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'assignContactPersonLeasing' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['assignContactPersonLeasing'],
             'exclude'				  => true,
             'inputType'				  => 'select',
             'foreignKey'              => 'tl_contact_person.name',
@@ -311,7 +286,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'skipRecords' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['skipRecords'],
             'exclude'				  => true,
             'inputType'				  => 'checkbox',
             'eval'					  => array('multiple'=>true),
@@ -321,7 +295,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'dontPublishRecords' => array
         (
-            'label'					  => &$GLOBALS['TL_LANG']['tl_interface']['dontPublishRecords'],
             'exclude'				  => true,
             'inputType'				  => 'checkbox',
             'eval'					  => array('tl_class'=>'w50'),
@@ -329,7 +302,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'autoSync' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['autoSync'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array(0=>'never', 1=>'min', 10=>'10min', 30=>'30min', 60=>'hourly', 1440=>'daily', 10080=>'weekly'),
@@ -339,7 +311,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'deleteFilesOlderThen' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['deleteFilesOlderThen'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'eval'                    => array('mandatory'=>false, 'tl_class'=>'w50'),
@@ -348,7 +319,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         ),
         'filesPerSync' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface']['filesPerSync'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>2, 'rgxp'=>'natural', 'tl_class'=>'w50'),

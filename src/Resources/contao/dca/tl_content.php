@@ -14,7 +14,6 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['realEstateFilter'] = '{type_legend
 // Add fields
 $GLOBALS['TL_DCA']['tl_content']['fields']['filter'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['filter'],
     'exclude'                 => true,
     'inputType'               => 'select',
     'options_callback'        => array('tl_content_estate_manager', 'getFilter'),
