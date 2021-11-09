@@ -111,7 +111,7 @@ $GLOBALS['FE_MOD']['estatemanager'] = array
 $GLOBALS['TL_CTE']['includes']['realEstateFilter'] = 'ContaoEstateManager\Filter';
 
 // Expose modules
-$GLOBALS['FE_EXPOSE_MOD'] = array
+$GLOBALS['CEM_FE_EXPOSE_MOD'] = array
 (
     'properties' => array
     (
@@ -143,7 +143,7 @@ $GLOBALS['FE_EXPOSE_MOD'] = array
 );
 
 // Back end real estate filter items
-$GLOBALS['TL_RFI'] = array
+$GLOBALS['CEM_RFI'] = array
 (
     'country'               => 'ContaoEstateManager\FilterCountry',
     'location'              => 'ContaoEstateManager\FilterLocation',
@@ -156,7 +156,7 @@ $GLOBALS['TL_RFI'] = array
 );
 
 // Back end real estate administration modules
-$GLOBALS['TL_RAM'] = array
+$GLOBALS['CEM_RAM'] = array
 (
     'configuration' => array('interface', 'config'),
     'realestate'    => array('type', 'real_estate'),

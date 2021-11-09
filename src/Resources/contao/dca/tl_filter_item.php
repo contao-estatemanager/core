@@ -481,7 +481,7 @@ class tl_filter_item extends Contao\Backend
 <div class="cte_type ' . $key . '">' . $GLOBALS['TL_LANG']['RFI'][$arrRow['type']][0] . ($arrRow['name'] ? ' (' . $arrRow['name'] . ')' : '') . '</div>
 <div class="limit_height' . (!Contao\Config::get('doNotCollapse') ? ' h32' : '') . '">';
 
-        $strClass = $GLOBALS['TL_RFI'][$arrRow['type']];
+        $strClass = $GLOBALS['CEM_RFI'][$arrRow['type']];
 
         if (!class_exists($strClass))
         {
@@ -506,7 +506,7 @@ class tl_filter_item extends Contao\Backend
      */
     public function getFilterItems(): array
     {
-        return array_keys($GLOBALS['TL_RFI']);
+        return array_keys($GLOBALS['CEM_RFI']);
     }
 
     /**

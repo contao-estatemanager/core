@@ -49,7 +49,7 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['filteritems'] = array
 (
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'options'                 => array_keys($GLOBALS['TL_RFI']),
+    'options'                 => array_keys($GLOBALS['CEM_RFI']),
     'reference'               => &$GLOBALS['TL_LANG']['RFI'],
     'eval'                    => array('multiple'=>true, 'helpwizard'=>true),
     'sql'                     => "blob NULL"

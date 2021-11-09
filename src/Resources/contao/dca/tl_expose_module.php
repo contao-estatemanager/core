@@ -520,7 +520,7 @@ class tl_expose_module extends Contao\Backend
     {
         $groups = array();
 
-        foreach ($GLOBALS['FE_EXPOSE_MOD'] as $k=>$v)
+        foreach ($GLOBALS['CEM_FE_EXPOSE_MOD'] as $k=>$v)
         {
             foreach (array_keys($v) as $kk)
             {
@@ -620,6 +620,6 @@ class tl_expose_module extends Contao\Backend
      */
     public function listModule(array $row): string
     {
-        return '<div class="tl_content_left">' . $row['name'] . ' <span style="color:#999;padding-left:3px">[' . ($GLOBALS['TL_LANG']['FE_EXPOSE_MOD'][$row['type']][0] ?? $row['type']) . ']</span></div>';
+        return '<div class="tl_content_left">' . $row['name'] . ' <span style="color:#999;padding-left:3px">[' . ($GLOBALS['TL_LANG']['CEM_FE_EXPOSE_MOD'][$row['type']][0] ?? $row['type']) . ']</span></div>';
     }
 }
