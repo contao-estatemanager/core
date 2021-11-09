@@ -3,6 +3,7 @@
 namespace ContaoEstateManager\EstateManager\EventListener;
 
 use Contao\Config;
+use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\Email;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
@@ -20,16 +21,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class ExceptionSubscriber implements EventSubscriberInterface
 {
-    private string $email = '';
+    private ?string $email;
 
     private TranslatorInterface $translator;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(ContaoFramework $framework, TranslatorInterface $translator)
     {
+        $framework->initialize();
+
+        // Set translator
         $this->translator = $translator;
 
         // Get email for reportings
-        $this->email = Config::get('estateManagerAdminEmail');
+        $this->email = Config::get('estateManagerAdminEmail') ?? Config::get('adminEmail');
 
         // Load language file
         System::loadLanguageFile('tl_real_estate_config');

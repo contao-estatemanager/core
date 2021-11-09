@@ -22,6 +22,7 @@ services:
 
     ContaoEstateManager\EstateManager\EventListener\ExceptionSubscriber:
         arguments:
+            - '@contao.framework'
             - '@translator'
         tags:
             - { name: kernel.event_subscriber }
