@@ -15,5 +15,5 @@ namespace ContaoEstateManager\EstateManager\Exception;
 
 class ApiParameterException extends ApiBaseException
 {
-    protected $code = 3;
+    protected $code = 3003;
 }

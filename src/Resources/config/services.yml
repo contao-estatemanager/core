@@ -20,6 +20,12 @@ services:
         tags:
             - controller.service_arguments
 
+    ContaoEstateManager\EstateManager\EventListener\ExceptionSubscriber:
+        arguments:
+            - '@translator'
+        tags:
+            - { name: kernel.event_subscriber }
+
     ContaoEstateManager\EstateManager\EventListener\ApiExceptionSubscriber:
         arguments: []
         tags:

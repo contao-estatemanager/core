@@ -14,6 +14,7 @@ use Contao\BackendModule;
 use Contao\BackendTemplate;
 use Contao\Database;
 use Contao\Dbafs;
+use ContaoEstateManager\EstateManager\Exception\ImportException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -250,7 +251,6 @@ class RealEstateImporter extends BackendModule
         if (!$this->initializeInterface($dc->id))
         {
             $this->logger->error('Interface could not been initialized.');
-            return '';
         }
 
         // HOOK: add custom logic
@@ -375,7 +375,6 @@ class RealEstateImporter extends BackendModule
         if ($this->data->getName() !== 'openimmo')
         {
             $this->logger->error('Invalid OpenImmo data.');
-            return false;
         }
 
         $arrProvider = $this->data->xpath('anbieter');
@@ -383,7 +382,6 @@ class RealEstateImporter extends BackendModule
         if (\count($arrProvider) === 0)
         {
             $this->logger->error('No provider data available.');
-            return false;
         }
 
         $skipRecords = StringUtil::deserialize($this->objInterface->skipRecords, true);
@@ -1002,13 +1000,11 @@ class RealEstateImporter extends BackendModule
             if (\count($syncFile) === 0)
             {
                 $this->logger->error('No OpenImmo file was found in archive.');
-                return false;
             }
 
             if (\count($syncFile) > 1)
             {
                 $this->logger->error('More than one OpenImmo file was found in the archive. Only one OpenImmo file is allowed per transfer.');
-                return false;
             }
 
             return $this->getSyncFile($syncFile[0]);
@@ -1356,8 +1352,6 @@ class RealEstateImporter extends BackendModule
                 'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
                 'fileName' => $value
             ], ImportLogger::LOG_DEV);
-
-            return false;
         }
 
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';

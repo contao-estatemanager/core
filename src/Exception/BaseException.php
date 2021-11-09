@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace ContaoEstateManager\EstateManager\Exception;
 
-class ApiMissingParameterException extends ApiBaseException
+class BaseException extends \RuntimeException
 {
-    protected $code = 3002;
 }

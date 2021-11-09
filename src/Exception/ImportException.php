@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace ContaoEstateManager\EstateManager\Exception;
 
-class ApiMissingParameterException extends ApiBaseException
+class ImportException extends BaseException
 {
-    protected $code = 3002;
+    const CODE = 1001;
+
+    protected $code = self::CODE;
 }

@@ -4,6 +4,7 @@ namespace ContaoEstateManager\EstateManager\EventListener\DataContainer;
 
 use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\DataContainer;
+use Contao\System;
 
 /**
  * Callback handler for the table tl_real_estate_config.
@@ -25,5 +26,24 @@ class ConfigDcaListener
         }
 
         return $value;
+    }
+
+    /**
+     * Return options of exception notifications
+     *
+     * @Callback(table="tl_real_estate_config", target="fields.exceptionNotifications.options")
+     */
+    public function getExceptionNotificationOptions(DataContainer $dc)
+    {
+        System::loadLanguageFile('tl_real_estate_config');
+
+        $values = [];
+
+        foreach ($GLOBALS['CEM_EEN'] as $exceptions => $strClass)
+        {
+            $values[ $exceptions ] = $GLOBALS['TL_LANG']['tl_real_estate_config'][ $exceptions ] ?? '';
+        }
+
+        return $values;
     }
 }

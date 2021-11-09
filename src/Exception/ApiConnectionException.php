@@ -15,5 +15,5 @@ namespace ContaoEstateManager\EstateManager\Exception;
 
 class ApiConnectionException extends ApiBaseException
 {
-    protected $code = 1;
+    protected $code = 3001;
 }

@@ -8,6 +8,8 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
+use ContaoEstateManager\EstateManager\Exception\ImportException;
+
 // Back end modules
 $emBackendModules = array
 (
@@ -162,6 +164,12 @@ $GLOBALS['TL_RAM'] = array
     'filter'        => array('filter'),
     'visualization' => array('field_format', 'expose_module'),
     'addons'        => array('addon', 'addon_catalog'),
+);
+
+// Exception e-mail notifications
+$GLOBALS['CEM_EEN'] = array
+(
+    'exceptionImport'      => ImportException::CODE,
 );
 
 // Hooks

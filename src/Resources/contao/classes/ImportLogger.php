@@ -12,6 +12,7 @@ namespace ContaoEstateManager;
 
 use Contao\Config;
 use Contao\File;
+use ContaoEstateManager\EstateManager\Exception\ImportException;
 
 /**
  * Provide methods to log entries while importing.
@@ -55,13 +56,18 @@ class ImportLogger
     /**
      * Add error log
      */
-    public function error(string $msg, array $context = null, string $logMode = self::LOG_PROD): void
+    public function error(string $msg, array $context = null, string $logMode = self::LOG_PROD, $throwError = true): void
     {
         $e = new \Exception();
 
         $context[] = $e->getTrace()[1] ?? '';
 
         $this->add($msg, $context, self::LEVEL_ERROR, $logMode);
+
+        if($throwError)
+        {
+            throw new ImportException($msg);
+        }
     }
 
     /**
