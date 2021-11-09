@@ -43,7 +43,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $arrExceptions = Config::get('exceptionNotifications');
+        $arrExceptions = Config::get('cemExceptionNotifications');
 
         if($arrExceptions && $arrNotify = StringUtil::deserialize($arrExceptions))
         {

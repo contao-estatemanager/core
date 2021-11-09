@@ -16,7 +16,7 @@ class ConfigDcaListener
     /**
      * Generate Api key if no own one has been set.
      *
-     * @Callback(table="tl_real_estate_config", target="fields.apiKey.save")
+     * @Callback(table="tl_real_estate_config", target="fields.cemApiKey.save")
      */
     public function onSaveApiKey($value, DataContainer $dc)
     {
@@ -31,7 +31,7 @@ class ConfigDcaListener
     /**
      * Return options of exception notifications
      *
-     * @Callback(table="tl_real_estate_config", target="fields.exceptionNotifications.options")
+     * @Callback(table="tl_real_estate_config", target="fields.cemExceptionNotifications.options")
      */
     public function getExceptionNotificationOptions(DataContainer $dc)
     {

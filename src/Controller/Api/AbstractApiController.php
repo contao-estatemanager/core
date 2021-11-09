@@ -74,7 +74,7 @@ class AbstractApiController extends Frontend
             throw new ApiConnectionException('Missing access key. The connection could not be established.');
         }
 
-        if($key !== Config::get('apiKey'))
+        if($key !== Config::get('cemApiKey'))
         {
             throw new ApiConnectionException('The API key used is not valid. The connection could not be established.');
         }

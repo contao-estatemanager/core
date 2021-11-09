@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},defaultCurrency,numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions;{api_legend:hide},apiKey;{exception_legend:hide},estateManagerAdminEmail,exceptionNotifications'
+		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},defaultCurrency,numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions;{api_legend:hide},cemApiKey;{exception_legend:hide},estateManagerAdminEmail,cemExceptionNotifications'
 	),
 
 	// Fields
@@ -124,12 +124,12 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
         ),
-        'apiKey' => array
+        'cemApiKey' => array
         (
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50')
         ),
-        'exceptionNotifications' => array
+        'cemExceptionNotifications' => array
         (
             'inputType'               => 'checkbox',
             'eval'                    => array('multiple' => true, 'tl_class'=>'w50 clr')
