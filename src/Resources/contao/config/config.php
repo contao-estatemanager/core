@@ -181,7 +181,7 @@ $GLOBALS['TL_CRON']['minutely'][] = array('ContaoEstateManager\RealEstateCronImp
 // Style sheet
 if (defined('TL_MODE') && TL_MODE === 'BE')
 {
-    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/real_estate_administration.css';
+    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/styles/real_estate_administration.css';
 }
 
 // Add permissions
