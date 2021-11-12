@@ -3,7 +3,6 @@
 namespace ContaoEstateManager\EstateManager\EventListener\DataContainer;
 
 use Contao\CoreBundle\ServiceAnnotation\Callback;
-use Contao\DataContainer;
 use Contao\System;
 
 /**
@@ -16,9 +15,12 @@ class ConfigDcaListener
     /**
      * Generate Api key if no own one has been set.
      *
-     * @Callback(table="tl_real_estate_config", target="fields.cemApiKey.save")
+     * @Callback(
+     *     table="tl_real_estate_config",
+     *     target="fields.cemApiKey.save"
+     * )
      */
-    public function onSaveApiKey($value, DataContainer $dc)
+    public function onSaveApiKey($value): string
     {
         if(!trim($value))
         {
@@ -31,9 +33,12 @@ class ConfigDcaListener
     /**
      * Return options of exception notifications
      *
-     * @Callback(table="tl_real_estate_config", target="fields.cemExceptionNotifications.options")
+     * @Callback(
+     *     table="tl_real_estate_config",
+     *     target="fields.cemExceptionNotifications.options"
+     * )
      */
-    public function getExceptionNotificationOptions(DataContainer $dc)
+    public function getExceptionNotificationOptions(): array
     {
         System::loadLanguageFile('tl_real_estate_config');
 

@@ -22,7 +22,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ExceptionSubscriber implements EventSubscriberInterface
 {
     private ?string $email;
-
     private TranslatorInterface $translator;
 
     public function __construct(ContaoFramework $framework, TranslatorInterface $translator)

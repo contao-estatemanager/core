@@ -926,7 +926,7 @@ class RealEstate extends System
         (
             'id'         => $objFile->id,
             'singleSRC'  => $objFile->path,
-            'title'      => 'TMP',
+            'title'      => 'TMP',              // ToDo: Set title from meta
             'filesModel' => $objFile,
             'size'       => $imgSize,
             'caption'    => null
