@@ -183,20 +183,9 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'countryOptions'  => array
         (
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'columnFields' => array
-                (
-                    'country' => array
-                    (
-                        'label'             => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
-                        'inputType'         => 'select',
-                        'options_callback'  => array('tl_filter_item', 'getRealEstateCountries'),
-                        'eval' 		        => array('style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
+	        'inputType' 	          => 'cemSelectWizard',
+	        'options_callback'        => array('tl_filter_item', 'getRealEstateCountries'),
+	        'eval'                    => array('chosen'=>true, 'tl_class'=>'clr', 'dragAndDrop'=>true, 'fieldNames'=>array('country'), 'fieldLabels'=>array(&$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'][0])),
             'sql'                     => "blob NULL"
         ),
         'placeholder' => array

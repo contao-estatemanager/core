@@ -334,22 +334,10 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         ),
         'fields'  => array
         (
-            'exclude'                 => true,
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'dragAndDrop'  => true,
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'             => &$GLOBALS['TL_LANG']['tl_expose_module']['show_fields'],
-                        'inputType'         => 'select',
-                        'options_callback'  => array('tl_expose_module', 'getRealEstateFields'),
-                        'eval' 		        => array('includeBlankOption'=>true, 'style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
+	        'exclude'                 => true,
+	        'inputType' 	          => 'cemSelectWizard',
+	        'options_callback'        => array('tl_expose_module', 'getRealEstateFields'),
+	        'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'clr', 'dragAndDrop'=>true, 'fieldNames'=>array('field'), 'fieldLabels'=>array(&$GLOBALS['TL_LANG']['tl_expose_module']['show_fields'][0])),
             'sql'                     => "blob NULL"
         ),
         'contactFields' => array

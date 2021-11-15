@@ -161,26 +161,24 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         'elements'  => array
         (
             'exclude'                 => true,
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'dragAndDrop'  => true,
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
-                        'inputType'             => 'select',
-                        'options_callback'      => array('tl_field_format_action', 'getRealEstateColumns'),
-                        'eval' 			        => array('style'=>'width:100%', 'chosen' => true)
-                    ),
-                    'remove' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['remove'],
-                        'inputType'             => 'checkbox'
-                    ),
-                )
-            ),
+	        'inputType' 	          => 'cemSelectCheckboxWizard',
+	        'options_callback'        => array('tl_field_format_action', 'getRealEstateColumns'),
+	        'eval'                    => array
+	        (
+				'chosen' => true,
+		        'tl_class' => 'clr',
+		        'dragAndDrop' => true,
+		        'fieldNames' => array
+		        (
+					'field',
+			        'remove'
+		        ),
+		        'fieldLabels' => array
+		        (
+					&$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
+			        &$GLOBALS['TL_LANG']['tl_field_format_action']['remove']
+		        )
+	        ),
             'sql'                     => "blob NULL"
         ),
         'customFunction'  => array
