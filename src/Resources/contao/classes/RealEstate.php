@@ -172,7 +172,7 @@ class RealEstate extends System
 
         $params = (Config::get('useAutoItem') ? '/' : '/items/') . ($this->objRealEstate->alias ?: $this->objRealEstate->id);
 
-        return ampersand($objPage->getFrontendUrl($params));
+        return StringUtil::ampersand($objPage->getFrontendUrl($params));
     }
 
     /**

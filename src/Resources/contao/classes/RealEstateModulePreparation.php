@@ -32,6 +32,29 @@ class RealEstateModulePreparation extends RealEstate
     }
 
     /**
+     * Calls functions that are complemented by extensions or parent class
+     *
+     * @param $name
+     * @param $arguments
+     */
+    public function __call($name, $arguments)
+    {
+        // HOOK: extend template functions
+        if (isset($GLOBALS['TL_HOOKS']['cemModulePreparation']) && \is_array($GLOBALS['TL_HOOKS']['cemModulePreparation']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['cemModulePreparation'] as $callback)
+            {
+                $this->import($callback[0]);
+
+                if(null !== ($value = $this->{$callback[0]}->{$callback[1]}($name, $this, ...$arguments)))
+                {
+                    return $value;
+                }
+            }
+        }
+    }
+
+    /**
      * Generate and return the expose url
      *
      * @param int|PageModel $varPage
