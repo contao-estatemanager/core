@@ -97,6 +97,9 @@ $GLOBALS['TL_MODELS']['tl_real_estate_type']       = 'ContaoEstateManager\RealEs
 // Back end form fields
 $GLOBALS['BE_FFL']['exposeModuleWizard']           = 'ContaoEstateManager\ExposeModuleWizard';
 $GLOBALS['BE_FFL']['license']                      = 'ContaoEstateManager\LicenseField';
+$GLOBALS['BE_FFL']['cemSelectWizard']              = 'ContaoEstateManager\SelectWizard';
+$GLOBALS['BE_FFL']['cemSelectTextWizard']          = 'ContaoEstateManager\SelectTextWizard';
+$GLOBALS['BE_FFL']['cemSelectCheckboxWizard']      = 'ContaoEstateManager\SelectCheckboxWizard';
 
 // Front end modules
 $GLOBALS['FE_MOD']['estatemanager'] = array
@@ -181,7 +184,8 @@ $GLOBALS['TL_CRON']['minutely'][] = array('ContaoEstateManager\RealEstateCronImp
 // Style sheet
 if (defined('TL_MODE') && TL_MODE === 'BE')
 {
-    $GLOBALS['TL_CSS'][] = 'bundles/estatemanager/styles/real_estate_administration.css';
+    $GLOBALS['TL_CSS'][] =        'bundles/estatemanager/styles/real_estate_administration.css';
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/estatemanager/scripts/widget.js';
 }
 
 // Add permissions
