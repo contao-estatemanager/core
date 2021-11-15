@@ -283,7 +283,7 @@ class RealEstateFormatter
                     $newValue = (isset($value) && $value !== '') ? $value . $action['text'] : '';
                     break;
 
-                // Deserialized a value to an array and displays it in a list separated by a given seperator
+                // Deserialized a value to an array and displays it in a list separated by a given separator
                 case 'unserialize':
                     $arrValues = StringUtil::deserialize($value);
 
@@ -323,7 +323,7 @@ class RealEstateFormatter
                     }
                     break;
 
-                // Merges multiple fields by a seperator
+                // Merges multiple fields by a separator
                 case 'combine':
                     $arrValues = StringUtil::deserialize($action['elements'], true);
 
