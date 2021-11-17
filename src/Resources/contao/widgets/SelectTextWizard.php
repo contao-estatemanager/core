@@ -134,7 +134,6 @@ class SelectTextWizard extends Widget
 		}
 	}
 
-	// ToDo: Check validation
 	/**
 	 * Check for a valid option
 	 */
@@ -234,7 +233,7 @@ class SelectTextWizard extends Widget
 			$strFields .= vsprintf('<input type="text" name="%s" class="%s" value="%s" onfocus="Backend.getScrollOffset()"></td><td>', [
 				$this->strId . '['.$i.']['.$this->arrFieldNames[1].']',
 				'tl_text',
-				StringUtil::specialchars($this->varValue[$i][$this->arrFieldNames[1]])
+				StringUtil::specialchars($this->varValue[$i][$this->arrFieldNames[1]] ?? null)
 			]);
 
 			// Add the buttons
