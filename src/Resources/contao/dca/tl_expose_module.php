@@ -566,7 +566,7 @@ class tl_expose_module extends Contao\Backend
         {
             foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
             {
-                $filterFields[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
+                $filterFields[$field] = ($GLOBALS['TL_LANG']['tl_real_estate'][$field][0] ?? '') . ' [' . $field . ']';
             }
         }
 
