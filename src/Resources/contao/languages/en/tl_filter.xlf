@@ -26,18 +26,6 @@
       <trans-unit id="tl_filter.groups.1">
         <source>Here you can declare the real estate groups that are taken into account.</source>
       </trans-unit>
-      <trans-unit id="tl_filter.addBlankMarketingType.0">
-        <source>Display blank marketing type</source>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankMarketingType.1">
-        <source>Displays an empty option for marketing type on first position.</source>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankRealEstateType.0">
-        <source>Display blank real estate type</source>
-      </trans-unit>
-      <trans-unit id="tl_filter.addBlankRealEstateType.1">
-        <source>Displays an empty option for real estate type on first position.</source>
-      </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.0">
         <source>Change page when modified</source>
       </trans-unit>

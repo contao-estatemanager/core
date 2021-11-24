@@ -303,28 +303,6 @@ class FilterToggle extends FilterWidget
      */
     protected function getCurrentType()
     {
-        if ($this->objFilterSession->getCurrentRealEstateType() === null)
-        {
-            if ($this->objFilter->toggleMode === 'typeSeparated' && !$this->objFilter->addBlankRealEstateType)
-            {
-                $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
-
-                if ($this->objFilterSession->getCurrentMarketingType() === $objDefaultType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing')
-                {
-                    return $objDefaultType;
-                }
-                else
-                {
-                    return $objDefaultType->getRelated('similarType');
-                }
-            }
-
-            if ($this->objFilter->toggleMode === 'type' && !$this->objFilter->addBlankMarketingType)
-            {
-                return RealEstateTypeModel::findOneByDefaultType(1);
-            }
-        }
-
         return $this->objFilterSession->getCurrentRealEstateType();
     }
 
@@ -408,11 +386,10 @@ class FilterToggle extends FilterWidget
                 $strFilter = "'".implode("','", $arrFilters)."'";
             }
 
-            $filters[] = $objFilters->id.": {addBlankMarketingType: ".json_encode(boolval($objFilters->addBlankMarketingType)).", addBlankRealEstateType: ".json_encode(boolval($objFilters->addBlankRealEstateType)).", submitOnChange: ".json_encode(boolval($objFilters->submitOnChange)).", filter: [".$strFilter."]}";
+            $filters[] = $objFilters->id.": {submitOnChange: ".json_encode(boolval($objFilters->submitOnChange)).", filter: [".$strFilter."]}";
         }
 
 
-        $defaultType = '';
         $types = array();
 
         while ($objTypes->next())
@@ -420,17 +397,11 @@ class FilterToggle extends FilterWidget
             $arrFilters = \StringUtil::deserialize($objTypes->toggleFilter, true);
 
             $types[] = $objTypes->id.": {filter: ['".implode("','", $arrFilters)."'], switchType: ".$objTypes->similarType."}";
-
-            if ($objTypes->defaultType)
-            {
-                $defaultType = $objTypes->id;
-            }
         }
 
 
         $return = array();
 
-        $return[] = "defaultType: ".$defaultType;
         $return[] = "filters: ".PHP_EOL."{".implode(','.PHP_EOL, $filters)."}";
         $return[] = "types: ".PHP_EOL."{".implode(','.PHP_EOL, $types)."}";
 

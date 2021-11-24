@@ -39,7 +39,6 @@ use Contao\Model\Collection;
  * @property boolean $orderFields
  * @property string  $orderedFields
  * @property string  $language
- * @property boolean $defaultType
  * @property boolean $published
  *
  * @method static RealEstateTypeModel|null findById($id, array $opt=array())
@@ -67,7 +66,6 @@ use Contao\Model\Collection;
  * @method static RealEstateTypeModel|null findOneByOrderFields($val, array $opt=array())
  * @method static RealEstateTypeModel|null findOneByOrderedFields($val, array $opt=array())
  * @method static RealEstateTypeModel|null findOneByLanguage($val, array $opt=array())
- * @method static RealEstateTypeModel|null findOneByDefaultType($val, array $opt=array())
  * @method static RealEstateTypeModel|null findOneByPublished($val, array $opt=array())
  *
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPid($val, array $opt=array())
@@ -92,7 +90,6 @@ use Contao\Model\Collection;
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByOrderFields($val, array $opt=array())
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByOrderedFields($val, array $opt=array())
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByLanguage($val, array $opt=array())
- * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByDefaultType($val, array $opt=array())
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findByPublished($val, array $opt=array())
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findMultipleByIds($var, array $opt=array())
  * @method static Collection|RealEstateTypeModel[]|RealEstateTypeModel|null findBy($col, $val, array $opt=array())
@@ -121,7 +118,6 @@ use Contao\Model\Collection;
  * @method static integer countByOrderFields($val, array $opt=array())
  * @method static integer countByOrderedFields($val, array $opt=array())
  * @method static integer countByLanguage($val, array $opt=array())
- * @method static integer countByDefaultType($val, array $opt=array())
  * @method static integer countByPublished($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
@@ -135,6 +131,26 @@ class RealEstateTypeModel extends Model
      * @var string
      */
     protected static $strTable = 'tl_real_estate_type';
+
+    /**
+     * Find all published real estate types
+     *
+     * @param array $arrOptions An optional options array
+     *
+     * @return Collection|RealEstateTypeModel|RealEstateTypeModel[]|null A collection of models or null if there are no real estate types
+     */
+    public static function findAllPublished(array $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array();
+
+        if (!static::isPreviewMode($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
+        return static::findBy($arrColumns, null, $arrOptions);
+    }
 
     /**
      * Find published real estate types by their parent ID
@@ -227,16 +243,7 @@ class RealEstateTypeModel extends Model
             $typeId = $_SESSION['FILTER_DATA']['type'];
         }
 
-        if ($typeId)
-        {
-            $objType = static::findByPk($typeId);
-        }
-        else
-        {
-            $objType = static::findOneByDefaultType(1);
-        }
-
-        return $objType;
+        return $typeId ? static::findByPk($typeId) : null;
     }
 
     /**

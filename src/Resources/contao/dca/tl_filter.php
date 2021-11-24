@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,jumpTo;{config_legend},groups,addBlankMarketingType,addBlankRealEstateType,submitOnChange;{toggle_filter_legend},toggleFilter,roomOptions;{template_legend:hide},customTpl;{expert_legend:hide},attributes,novalidate'
+        'default'                     => '{title_legend},title,alias,jumpTo;{config_legend},groups,submitOnChange;{toggle_filter_legend},toggleFilter,roomOptions;{template_legend:hide},customTpl;{expert_legend:hide},attributes,novalidate'
     ),
 
     // Fields
@@ -152,22 +152,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'tl_class'=>'clr'),
             'sql'                     => "blob NULL",
             'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
-        'addBlankMarketingType' => array
-        (
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
-        'addBlankRealEstateType' => array
-        (
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
         ),
         'submitOnChange' => array
         (
