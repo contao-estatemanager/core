@@ -53,7 +53,7 @@ class ModuleRealEstateAdministration extends BackendModule
 
         $groups = array();
 
-        foreach ($GLOBALS['TL_RAM'] as $group => $modules)
+        foreach ($GLOBALS['CEM_RAM'] as $group => $modules)
         {
             $gp = array(
                 'alias'   => $group,

@@ -13,7 +13,6 @@ Contao\System::loadLanguageFile('tl_real_estate_misc');
 
 $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 (
-
 	// Config
 	'config' => array
 	(
@@ -24,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},defaultCurrency,numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},defaultCurrency,numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions;{api_legend:hide},cemApiKey;{exception_legend:hide},estateManagerAdminEmail,cemExceptionNotifications'
 	),
 
 	// Fields
@@ -32,13 +31,11 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	(
         'estateManagerAdminEmail' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['estateManagerAdminEmail'],
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'friendly', 'decodeEntities'=>true, 'tl_class'=>'w50')
         ),
 		'numberFormatDecimals' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatDecimals'],
             'default'                 => ',',
 			'inputType'               => 'select',
             'options'                 => array
@@ -50,7 +47,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		),
 		'numberFormatThousands' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['numberFormatThousands'],
             'default'                 => '.',
             'inputType'               => 'select',
             'options'                 => array
@@ -62,7 +58,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		),
 		'defaultCurrency' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultCurrency'],
             'default'                 => 'euro',
             'inputType'               => 'select',
             'options'                 => array
@@ -75,7 +70,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		),
 		'defaultSorting' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultSorting'],
             'inputType'               => 'select',
             'options'                 => array('dateAdded', 'tstamp', 'standVom'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_config'],
@@ -83,7 +77,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 		),
         'statusTokenNewDisplayDuration' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['statusTokenNewDisplayDuration'],
             'inputType'               => 'select',
             'options'                 => array('+1 days' => 'oneDay', '+3 days' => 'threeDays', '+1 week' => 'oneWeek', '+2 weeks' => 'twoWeeks', '+3 weeks' => 'threeWeeks', '+4 weeks' => 'oneMonth'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_misc'],
@@ -91,52 +84,55 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
         ),
         'defaultImage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'clr w50'),
         ),
         'defaultContactPersonImage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'defaultContactPersonFemaleImage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonFemaleImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'defaultContactPersonMaleImage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultContactPersonMaleImage'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'isGallery'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
         ),
         'roomOptions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['roomOptions'],
             'default'                 => '1,2,3,4,5,6,7,8,9,10',
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50')
         ),
         'defaultNumberOfMainDetails' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainDetails'],
             'default'                 => '3',
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
         ),
         'defaultNumberOfMainAttr' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['defaultNumberOfMainAttr'],
             'default'                 => '4',
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
+        ),
+        'cemApiKey' => array
+        (
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50')
+        ),
+        'cemExceptionNotifications' => array
+        (
+            'inputType'               => 'checkbox',
+            'eval'                    => array('multiple' => true, 'tl_class'=>'w50 clr')
         ),
 	)
 );

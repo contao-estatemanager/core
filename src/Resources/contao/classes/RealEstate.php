@@ -172,7 +172,7 @@ class RealEstate extends System
 
         $params = (Config::get('useAutoItem') ? '/' : '/items/') . ($this->objRealEstate->alias ?: $this->objRealEstate->id);
 
-        return ampersand($objPage->getFrontendUrl($params));
+        return StringUtil::ampersand($objPage->getFrontendUrl($params));
     }
 
     /**
@@ -926,7 +926,7 @@ class RealEstate extends System
         (
             'id'         => $objFile->id,
             'singleSRC'  => $objFile->path,
-            'title'      => 'TMP',
+            'title'      => 'TMP',              // ToDo: Set title from meta
             'filesModel' => $objFile,
             'size'       => $imgSize,
             'caption'    => null
@@ -956,7 +956,7 @@ class RealEstate extends System
         $orderedFields = RealEstateFieldMetadata::getInstance()->getOrderFields();
 
         // if there is a separate order in the types, manipulate the default field order
-        if($this->objType->orderFields)
+        if($this->objType->orderFields ?? null)
         {
             $orderValues = StringUtil::deserialize($this->objType->orderedFields, true);
 

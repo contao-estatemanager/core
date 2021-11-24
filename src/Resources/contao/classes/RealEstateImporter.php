@@ -10,10 +10,11 @@
 
 namespace ContaoEstateManager;
 
-
+use Contao\BackendModule;
 use Contao\BackendTemplate;
 use Contao\Database;
 use Contao\Dbafs;
+use ContaoEstateManager\EstateManager\Exception\ImportException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -27,7 +28,7 @@ use Contao\StringUtil;
 use Contao\System;
 use Contao\ZipReader;
 
-class RealEstateImporter extends \BackendModule
+class RealEstateImporter extends BackendModule
 {
 
     /**
@@ -50,19 +51,19 @@ class RealEstateImporter extends \BackendModule
 
     /**
      * Import folder model
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objImportFolder;
 
     /**
      * Import folder model
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objFilesFolder;
 
     /**
      * Import folder model for contact person
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objFilesFolderContactPerson;
 
@@ -71,6 +72,11 @@ class RealEstateImporter extends \BackendModule
      * @var \Model\Collection
      */
     protected $objInterfaceMapping;
+
+    /**
+     * Import Logger
+     */
+    protected $logger;
 
     /**
      * Path of sync file
@@ -150,7 +156,7 @@ class RealEstateImporter extends \BackendModule
                 break;
         }
 
-        return parent::__set($strKey, $varValue);
+        parent::__set($strKey, $varValue);
     }
 
     /**
@@ -166,34 +172,24 @@ class RealEstateImporter extends \BackendModule
         {
             case 'interface':
                 return $this->objInterface;
-                break;
             case 'importFolder':
                 return $this->objImportFolder;
-                break;
             case 'filesFolder':
                 return $this->objFilesFolder;
-                break;
             case 'filesFolderContactPerson':
                 return $this->objFilesFolderContactPerson;
-                break;
             case 'interfaceMapping':
                 return $this->objInterfaceMapping;
-                break;
             case 'uniqueProviderValue':
                 return $this->uniqueProviderValue;
-                break;
             case 'uniqueValue':
                 return $this->uniqueValue;
-                break;
             case 'username':
                 return $this->username;
-                break;
             case 'data':
                 return $this->data;
-                break;
             case 'syncFile':
                 return $this->syncFile;
-                break;
         }
 
         return parent::__get($strKey);
@@ -213,6 +209,7 @@ class RealEstateImporter extends \BackendModule
      */
     public function initializeInterface($id)
     {
+        $this->logger = new ImportLogger();
         $this->objInterface = InterfaceModel::findByPk($id);
 
         if ($this->objInterface === null)
@@ -253,8 +250,7 @@ class RealEstateImporter extends \BackendModule
     {
         if (!$this->initializeInterface($dc->id))
         {
-            //\Message::addInfo('Interface could not been initialized.');
-            return;
+            $this->logger->error('Interface could not been initialized.');
         }
 
         // HOOK: add custom logic
@@ -280,8 +276,7 @@ class RealEstateImporter extends \BackendModule
             }
             else
             {
-                //\Message::addError('OpenImmo file could not be loaded.');
-                //$this->addLog('OpenImmo file could not be loaded.', 0, 'error');
+                $this->logger->error('OpenImmo file could not be loaded.');
             }
         }
 
@@ -347,27 +342,26 @@ class RealEstateImporter extends \BackendModule
             return;
         }
 
-        //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
-
         if (($this->loadData()))
         {
-            //$this->addLog('OpenImmo data loaded', 1, 'success');
+            $this->logger->info('OpenImmo file loaded successfully. File import is started.', [
+                'file' => $this->syncFile
+            ]);
 
             if ($this->syncData())
             {
-                //$this->addLog('Import and synchronization was successful', 0, 'success');
-                //\Message::addConfirmation('Import and synchronization was successful');
+                $this->logger->info('Import and synchronization was successful.');
             }
             else
             {
-                //$this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
-                //\Message::addError('OpenImmo data could not be synchronized.');
+                $this->logger->error('OpenImmo data could not be synchronized.');
             }
         }
         else
         {
-            //\Message::addError('OpenImmo data could not be loaded.');
-            //$this->addLog('OpenImmo data could not be loaded.', 0, 'error');
+            $this->logger->error('OpenImmo data could not be loaded.', [
+                'file' => $this->syncFile
+            ]);
         }
     }
 
@@ -380,16 +374,14 @@ class RealEstateImporter extends \BackendModule
     {
         if ($this->data->getName() !== 'openimmo')
         {
-            //$this->addLog('Invalid OpenImmo data.', 1, 'error');
-            return false;
+            $this->logger->error('Invalid OpenImmo data.');
         }
 
         $arrProvider = $this->data->xpath('anbieter');
 
         if (\count($arrProvider) === 0)
         {
-            //$this->addLog('No provider data available.', 1, 'error');
-            return false;
+            $this->logger->error('No provider data available.');
         }
 
         $skipRecords = StringUtil::deserialize($this->objInterface->skipRecords, true);
@@ -411,7 +403,7 @@ class RealEstateImporter extends \BackendModule
 
             if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
             {
-                //$this->addLog('Skip real estate due to missing provider', 1, 'info');
+                $this->logger->info('Skip real estate due to missing provider.', null, ImportLogger::LOG_PROD);
                 continue;
             }
 
@@ -457,7 +449,9 @@ class RealEstateImporter extends \BackendModule
                     continue;
                 }
 
-                //$this->addLog('Import real estate: ' . $this->uniqueValue, 1, 'highlight', $realEstate);
+                $this->logger->info('Import real estate.', [
+                    'id' => $this->uniqueValue
+                ]);
 
                 while ($this->objInterfaceMapping->next())
                 {
@@ -565,7 +559,7 @@ class RealEstateImporter extends \BackendModule
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
 
-                $this->addLog('Fields have been assigned', 2, 'success', $re);
+                $this->logger->info('Fields have been assigned.');
             }
         }
 
@@ -617,7 +611,7 @@ class RealEstateImporter extends \BackendModule
         $allowCreate = \in_array('create', $actions);
         $allowUpdate = \in_array('update', $actions);
 
-        $this->addLog('Update database', 1, 'highlight');
+        $this->logger->info('Update database');
 
         $objProvider = ProviderModel::findByPk($this->objInterface->provider);
 
@@ -677,7 +671,9 @@ class RealEstateImporter extends \BackendModule
                         // Skip if no contact person found and not allowed to create
                         if (!$allowCreate && !$exists)
                         {
-                            $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
+                            $this->logger->info('Skip real estate because no contact person has been assigned or created.', [
+                                'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                            ], ImportLogger::LOG_PROD);
                             continue;
                         }
 
@@ -690,7 +686,10 @@ class RealEstateImporter extends \BackendModule
                             $objContactPerson->published = 1;
                             $objContactPerson->save();
 
-                            $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                            $this->logger->info('New contact person was added.', [
+                                'firstname' => $contactPerson['vorname'],
+                                'lastname' => $contactPerson['name']
+                            ]);
                         }
                         else
                         {
@@ -708,7 +707,10 @@ class RealEstateImporter extends \BackendModule
 
                             $objContactPerson->save();
 
-                            $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                            $this->logger->info('Contact person was updated.', [
+                                'firstname' => $contactPerson['vorname'],
+                                'lastname' => $contactPerson['name']
+                            ]);
                         }
                     }
                 }
@@ -731,7 +733,9 @@ class RealEstateImporter extends \BackendModule
                 $objRealEstate->dateAdded = time();
                 $objRealEstate->published = $this->objInterface->dontPublishRecords ? '' : '1';
 
-                $this->addLog('New real estate was added: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+                $this->logger->info('New real estate was added.', [
+                    'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                ]);
             }
             else
             {
@@ -760,10 +764,16 @@ class RealEstateImporter extends \BackendModule
                     // Delete real estate
                     $this->deleteRealEstateImages($objRealEstate, $objProvider);
                     $objRealEstate->delete();
-                    $this->addLog('Real estate was deleted: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+
+                    $this->logger->info('Real estate was deleted.', [
+                        'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                    ]);
+
                     continue;
                 }else{
-                    $this->addLog('Real estate was updated: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+                    $this->logger->info('Real estate was updated.', [
+                        'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                    ]);
                 }
             }
 
@@ -989,14 +999,12 @@ class RealEstateImporter extends \BackendModule
 
             if (\count($syncFile) === 0)
             {
-                $this->addLog('No OpenImmo file was found in archive.', 0, 'error');
-                return false;
+                $this->logger->error('No OpenImmo file was found in archive.');
             }
 
             if (\count($syncFile) > 1)
             {
-                $this->addLog('More than one OpenImmo file was found in archive. Only one OpenImmo file is allowed per transfer.', 0, 'error');
-                return false;
+                $this->logger->error('More than one OpenImmo file was found in the archive. Only one OpenImmo file is allowed per transfer.');
             }
 
             return $this->getSyncFile($syncFile[0]);
@@ -1339,11 +1347,11 @@ class RealEstateImporter extends \BackendModule
         if ($existingFile !== null && $isMd5 && $existingFile->hash === $check)
         {
             $values[] = $existingFile->uuid;
-            //$this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
-            //    'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
-            //    'fileName' => $value
-            //));
-            return false;
+
+            $this->logger->error(($existingFile->hash === $check ? 'Image was skipped because it already exists and does not contain any changes.' : 'Image was skipped because it does not exist.'), [
+                'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
+                'fileName' => $value
+            ], ImportLogger::LOG_DEV);
         }
 
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
@@ -1365,14 +1373,14 @@ class RealEstateImporter extends \BackendModule
 
         if (\is_string($titel) && $titel !== '')
         {
-            //$this->addLog('Image added: ' . $value, 3, 'success', array(
-            //    'title' => $titel,
-            //    'fileName' => $value
-            //));
+            $this->logger->info('Image added.', [
+                'title' => $titel,
+                'fileName' => $value
+            ]);
 
             $meta = array
             (
-                'de' => array
+                'de' => array // ToDo: Consider real estate language
                 (
                     'title'   => $titel,
                     'alt'     => $titel,
@@ -1455,34 +1463,5 @@ class RealEstateImporter extends \BackendModule
         }
 
         return $arrReturn;
-    }
-
-    public function addLog($strMessage, $level=0, $strType='raw', $data=null)
-    {
-        // ToDo: In Datei auslagern
-        return;
-
-        if($data !== null)
-        {
-            if(\is_object($data))
-            {
-                $data = json_decode(json_encode($data), true);
-            }
-
-            $data = serialize($data);
-        }
-
-        $objLog = new InterfaceLogModel();
-        $objLog->pid = $this->objInterface->id;
-        $objLog->text = $strMessage;
-        $objLog->data = $data;
-        $objLog->action = $strType;
-        $objLog->level = $level;
-        $objLog->source = $this->syncFile;
-        $objLog->tstamp = time();
-
-        // ToDo: username= Username | Cron
-
-        $objLog->save();
     }
 }

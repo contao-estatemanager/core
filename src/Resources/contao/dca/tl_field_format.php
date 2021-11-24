@@ -54,7 +54,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         (
             'importFieldFormats' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['importFieldFormats'],
                 'href'                => 'key=importFieldFormats',
                 'class'               => 'header_field_format_import',
                 'icon'                => 'sync.svg',
@@ -62,7 +61,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
             ),
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -72,34 +70,29 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['edit'],
                 'href'                => 'table=tl_field_format_action',
                 'icon'                => 'edit.svg',
                 'button_callback'     => array('tl_field_format', 'editFormatAction')
             ),
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['editheader'],
                 'href'                => 'act=edit',
                 'icon'                => 'header.svg',
                 'button_callback'     => array('tl_field_format', 'editHeader')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -131,7 +124,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'tstamp' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
             'default'                 => time(),
             'flag'                    => 6,
             'eval'                    => array('rgxp'=>'datim', 'doNotCopy'=>true),
@@ -139,7 +131,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'fieldname'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['fieldname'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'search'                  => true,
@@ -149,7 +140,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'cssClass'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['cssClass'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'search'                  => true,
@@ -158,7 +148,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'forceOutput'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['forceOutput'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'filter'                  => true,
@@ -167,7 +156,6 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'useCondition'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['useCondition'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'filter'                  => true,
@@ -176,28 +164,25 @@ $GLOBALS['TL_DCA']['tl_field_format'] = array
         ),
         'conditionFields'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format']['conditionFields'],
             'exclude'                 => true,
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format']['field'],
-                        'inputType'             => 'select',
-                        'options_callback'      => array('tl_field_format', 'getRealEstateColumns'),
-                        'eval' 			        => array('style'=>'width:100%', 'chosen' => true)
-                    ),
-                    'value' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['value'],
-                        'inputType'             => 'text',
-                        'eval' 			        => array('style'=>'width:100%')
-                    )
-                )
-            ),
+	        'inputType' 	          => 'cemSelectTextWizard',
+	        'options_callback'        => array('tl_field_format', 'getRealEstateColumns'),
+	        'eval'                    => array
+	        (
+				'chosen' => true,
+		        'tl_class' => 'clr',
+		        'dragAndDrop' => true,
+		        'fieldNames' => array
+		        (
+					'field',
+			        'value'
+		        ),
+		        'fieldLabels' => array
+		        (
+			        &$GLOBALS['TL_LANG']['tl_field_format']['field'],
+			        &$GLOBALS['TL_LANG']['tl_field_format']['value']
+		        )
+	        ),
             'sql'                     => "blob NULL"
         ),
     )

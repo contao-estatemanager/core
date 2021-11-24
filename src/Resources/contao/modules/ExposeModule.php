@@ -83,7 +83,7 @@ abstract class ExposeModule extends ModuleRealEstate
 	}
 
 	/**
-	 * Find a front end module in the FE_EXPOSE_MOD array and return the class name
+	 * Find a front end module in the CEM_FE_EXPOSE_MOD array and return the class name
 	 *
 	 * @param string $strName The front end module name
 	 *
@@ -91,7 +91,7 @@ abstract class ExposeModule extends ModuleRealEstate
 	 */
 	public static function findClass($strName): string
 	{
-		foreach ($GLOBALS['FE_EXPOSE_MOD'] as $v)
+		foreach ($GLOBALS['CEM_FE_EXPOSE_MOD'] as $v)
 		{
 			foreach ($v as $kk=>$vv)
 			{

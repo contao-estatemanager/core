@@ -127,7 +127,7 @@ class Filter extends Hybrid
 
         while ($objFilterItem->next())
         {
-            $strClass = $GLOBALS['TL_RFI'][$objFilterItem->type];
+            $strClass = $GLOBALS['CEM_RFI'][$objFilterItem->type];
 
             // Continue if the class is not defined
             if (!class_exists($strClass))

@@ -1,0 +1,6 @@
+<?= $this->headline ?>\n
+<?= $this->text ?>\n\n
+Message: <?=$this->message?>\n
+Code: <?=$this->code?>\n
+File: <?=$this->file?>\n
+Line: <?=$this->line?>

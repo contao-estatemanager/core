@@ -1,3 +1,5 @@
-estatemanager:
-  resource: '@EstateManager/Controller'
+estatemanager_api:
+  resource: '@EstateManager/Controller/Api'
   type: annotation
+  defaults:
+    _format: json

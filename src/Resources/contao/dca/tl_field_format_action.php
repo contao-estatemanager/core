@@ -46,7 +46,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -56,26 +55,22 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['edit'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.svg',
                 'button_callback'     => array('tl_field_format_action', 'editFormatAction')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['copy'],
                 'href'                => 'act=paste&amp;mode=copy',
                 'icon'                => 'copy.svg'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.gif',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show'  => array(
-                'label'               => &$GLOBALS['TL_LANG']['tl_field_format_action']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.gif',
                 'attributes'          => 'style="margin-right:3px"'
@@ -119,7 +114,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'tstamp' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
             'exclude'                 => true,
             'default'                 => time(),
             'sorting'                 => true,
@@ -129,7 +123,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'action'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['action'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('prepend', 'append', 'number_format', 'date_format', 'strtotime', 'ucfirst', 'wrap', 'unserialize', 'combine', 'boolToWord', 'custom'),
@@ -139,7 +132,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'decimals'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['decimals'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'digit', 'tl_class'=>'w50'),
@@ -147,7 +139,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'text'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['text'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'doNotTrim' => true, 'allowHtml'=>true),
@@ -155,7 +146,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'seperator'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['seperator'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50', 'doNotTrim' => true),
@@ -163,7 +153,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'necessary'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['necessary'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -171,33 +160,29 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'elements'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['elements'],
             'exclude'                 => true,
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'dragAndDrop'  => true,
-                'columnFields' => array
-                (
-                    'field' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
-                        'inputType'             => 'select',
-                        'options_callback'      => array('tl_field_format_action', 'getRealEstateColumns'),
-                        'eval' 			        => array('style'=>'width:100%', 'chosen' => true)
-                    ),
-                    'remove' => array
-                    (
-                        'label'                 => &$GLOBALS['TL_LANG']['tl_field_format_action']['remove'],
-                        'inputType'             => 'checkbox'
-                    ),
-                )
-            ),
+	        'inputType' 	          => 'cemSelectCheckboxWizard',
+	        'options_callback'        => array('tl_field_format_action', 'getRealEstateColumns'),
+	        'eval'                    => array
+	        (
+				'chosen' => true,
+		        'tl_class' => 'clr',
+		        'dragAndDrop' => true,
+		        'fieldNames' => array
+		        (
+					'field',
+			        'remove'
+		        ),
+		        'fieldLabels' => array
+		        (
+					&$GLOBALS['TL_LANG']['tl_field_format_action']['field'],
+			        &$GLOBALS['TL_LANG']['tl_field_format_action']['remove']
+		        )
+	        ),
             'sql'                     => "blob NULL"
         ),
         'customFunction'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_field_format_action']['customFunction'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_field_format_action', 'getCustomFunctions'),
@@ -206,7 +191,6 @@ $GLOBALS['TL_DCA']['tl_field_format_action'] = array
         ),
         'sorting'   => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['MSC']['sorting'],
             'exclude'                 => true,
             'sorting'                 => true,
             'eval'                    => array('doNotCopy'=>true),

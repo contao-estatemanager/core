@@ -51,7 +51,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -61,39 +60,33 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['edit'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.svg'
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['copy'],
                 'href'                => 'act=paste&amp;mode=copy',
                 'icon'                => 'copy.svg'
             ),
             'cut' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['cut'],
                 'href'                => 'act=paste&amp;mode=cut',
                 'icon'                => 'cut.svg'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
             ),
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['toggle'],
                 'icon'                => 'visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s,\'tl_filter_item\')"',
                 'button_callback'     => array('tl_filter_item', 'toggleIcon')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -145,7 +138,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'type' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['type'],
             'default'                 => 'type',
             'exclude'                 => true,
             'filter'                  => true,
@@ -157,7 +149,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'label' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['label'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -166,7 +157,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'name' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['name'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -175,7 +165,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'mandatory' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['mandatory'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -184,7 +173,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'countrySource' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['countrySource'],
             'default'                 => 'pool',
             'exclude'                 => true,
             'inputType'               => 'select',
@@ -195,26 +183,13 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'countryOptions'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
-            'inputType' 	          => 'multiColumnWizard',
-            'eval' 			          => array
-            (
-                'columnFields' => array
-                (
-                    'country' => array
-                    (
-                        'label'             => &$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'],
-                        'inputType'         => 'select',
-                        'options_callback'  => array('tl_filter_item', 'getRealEstateCountries'),
-                        'eval' 		        => array('style'=>'width:100%', 'chosen'=>true)
-                    )
-                )
-            ),
+	        'inputType' 	          => 'cemSelectWizard',
+	        'options_callback'        => array('tl_filter_item', 'getRealEstateCountries'),
+	        'eval'                    => array('chosen'=>true, 'tl_class'=>'clr', 'dragAndDrop'=>true, 'fieldNames'=>array('country'), 'fieldLabels'=>array(&$GLOBALS['TL_LANG']['tl_filter_item']['countryOptions'][0])),
             'sql'                     => "blob NULL"
         ),
         'placeholder' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['placeholder'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'search'                  => true,
@@ -223,7 +198,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'showLongTitle' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showLongTitle'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -231,7 +205,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'impreciseMode' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['impreciseMode'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -239,7 +212,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'mergeOptions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['mergeOptions'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -247,7 +219,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'rangeMode' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['rangeMode'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -255,7 +226,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'showLabel' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showLabel'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -263,7 +233,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'showPlaceholder' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['showPlaceholder'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
@@ -271,7 +240,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'class' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['class'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -280,7 +248,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'accesskey' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['accesskey'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -289,7 +256,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'tabindex' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['tabindex'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -298,7 +264,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'customTpl' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['customTpl'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_filter_item', 'getFilterItemTemplates'),
@@ -307,7 +272,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'slabel' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['slabel'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50 clr'),
@@ -315,7 +279,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'imageSubmit' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['imageSubmit'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true),
@@ -323,7 +286,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'singleSRC' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['singleSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'mandatory'=>true, 'tl_class'=>'clr'),
@@ -331,7 +293,6 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
         ),
         'invisible' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter_item']['invisible'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -509,7 +470,7 @@ class tl_filter_item extends Contao\Backend
 <div class="cte_type ' . $key . '">' . $GLOBALS['TL_LANG']['RFI'][$arrRow['type']][0] . ($arrRow['name'] ? ' (' . $arrRow['name'] . ')' : '') . '</div>
 <div class="limit_height' . (!Contao\Config::get('doNotCollapse') ? ' h32' : '') . '">';
 
-        $strClass = $GLOBALS['TL_RFI'][$arrRow['type']];
+        $strClass = $GLOBALS['CEM_RFI'][$arrRow['type']];
 
         if (!class_exists($strClass))
         {
@@ -534,7 +495,7 @@ class tl_filter_item extends Contao\Backend
      */
     public function getFilterItems(): array
     {
-        return array_keys($GLOBALS['TL_RFI']);
+        return array_keys($GLOBALS['CEM_RFI']);
     }
 
     /**

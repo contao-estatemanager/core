@@ -77,6 +77,12 @@
       <trans-unit id="tl_field_format.conditionFields.1">
         <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
       </trans-unit>
+      <trans-unit id="tl_field_format.field">
+        <source>Field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.value">
+        <source>Value</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
