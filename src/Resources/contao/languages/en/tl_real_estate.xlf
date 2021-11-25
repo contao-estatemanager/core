@@ -61,10 +61,10 @@
         <source>Enter the provider number here.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.tstamp.0">
-        <source>Changed on</source>
+        <source>Changed</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.dateAdded.0">
-        <source>Added on</source>
+        <source>Added</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.published.0">
         <source>Publish</source>

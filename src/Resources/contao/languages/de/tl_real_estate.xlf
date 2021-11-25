@@ -75,12 +75,12 @@
         <target>Anbieternummer</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.tstamp.0">
-        <source>Changed on</source>
-        <target>Geändert am</target>
+        <source>Changed</source>
+        <target>Geändert</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.dateAdded.0">
-        <source>Added on</source>
-        <target>Hinzugefügt am</target>
+        <source>Added</source>
+        <target>Hinzugefügt</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.published.0">
         <source>Publish</source>
