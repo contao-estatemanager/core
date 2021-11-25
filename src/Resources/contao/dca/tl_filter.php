@@ -59,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -69,35 +68,30 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter']['edit'],
                 'href'                => 'table=tl_filter_item',
                 'icon'                => 'edit.svg'
             ),
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter']['editheader'],
                 'href'                => 'act=edit',
                 'icon'                => 'header.svg',
                 'button_callback'     => array('tl_filter', 'editHeader')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_filter', 'copyFilter')
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_filter', 'deleteFilter')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_filter']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -107,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{title_legend},title,alias,jumpTo;{config_legend},groups,addBlankMarketingType,addBlankRealEstateType,submitOnChange;{toggle_filter_legend},toggleFilter,roomOptions;{template_legend:hide},customTpl;{expert_legend:hide},attributes,novalidate'
+        'default'                     => '{title_legend},title,alias,jumpTo;{config_legend},groups,submitOnChange;{toggle_filter_legend},toggleFilter,roomOptions;{template_legend:hide},customTpl;{expert_legend:hide},attributes,novalidate'
     ),
 
     // Fields
@@ -123,7 +117,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'title' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['title'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -132,7 +125,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'alias' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['alias'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'doNotCopy'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
@@ -144,7 +136,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'jumpTo' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['jumpTo'],
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
@@ -154,7 +145,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'groups' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['groups'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'foreignKey'              => 'tl_real_estate_group.title',
@@ -163,27 +153,8 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
             'sql'                     => "blob NULL",
             'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
         ),
-        'addBlankMarketingType' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankMarketingType'],
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
-        'addBlankRealEstateType' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['addBlankRealEstateType'],
-            'exclude'                 => true,
-            'filter'                  => true,
-            'inputType'               => 'checkbox',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "char(1) NOT NULL default ''"
-        ),
         'submitOnChange' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['submitOnChange'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -192,7 +163,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'toggleFilter'  => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['toggleFilter'],
             'exclude'                 => true,
             'inputType'               => 'checkboxWizard',
             'options'                 => array('price', 'per', 'room', 'area', 'period'),
@@ -255,7 +225,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'roomOptions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['roomOptions'],
             'default'                 => '1,2,3,4,5,6,7,8',
             'exclude'                 => true,
             'inputType'               => 'text',
@@ -264,7 +233,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'customTpl' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['customTpl'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'options_callback'        => array('tl_filter', 'getFilterWrapperTemplates'),
@@ -273,7 +241,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'attributes' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['attributes'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50'),
@@ -281,7 +248,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'novalidate' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['novalidate'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50 m12'),
@@ -289,7 +255,6 @@ $GLOBALS['TL_DCA']['tl_filter'] = array
         ),
         'toggleMode' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_filter']['toggleMode'],
             'sql'                     => "varchar(32) NOT NULL default 'typeSeparated'"
         ),
     )
@@ -505,7 +470,7 @@ class tl_filter extends Contao\Backend
         $autoAlias = false;
 
         // Generate alias if there is none
-        if ($varValue == '')
+        if (!$varValue)
         {
             $autoAlias = true;
 

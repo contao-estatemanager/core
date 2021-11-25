@@ -116,7 +116,7 @@ class ExposeModuleDetails extends ExposeModule
             }
         }
 
-        if(!count($arrCollection))
+        if(!\count($arrCollection))
         {
             $this->skipDetails = true;
         }

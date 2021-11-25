@@ -29,31 +29,31 @@ class RealEstate extends System
      * RealEstate Object
      * @var null
      */
-    private $objRealEstate = null;
+    private $objRealEstate;
 
     /**
      * Type Object
      * @var RealEstateType|null
      */
-    private $objType = null;
+    private $objType;
 
     /**
      * Formatter Object
      * @var RealEstateFormatter|null
      */
-    private $formatter = null;
+    private $formatter;
 
     /**
      * Sort order
      * @var array|null
      */
-    private $arrFieldOrder = null;
+    private $arrFieldOrder;
 
     /**
      * Object links
      * @var null
      */
-    private $links = null;
+    private $links;
 
     /**
      * RealEstate
@@ -172,7 +172,7 @@ class RealEstate extends System
 
         $params = (Config::get('useAutoItem') ? '/' : '/items/') . ($this->objRealEstate->alias ?: $this->objRealEstate->id);
 
-        return ampersand($objPage->getFrontendUrl($params));
+        return StringUtil::ampersand($objPage->getFrontendUrl($params));
     }
 
     /**
@@ -184,7 +184,7 @@ class RealEstate extends System
      */
     public function getFields(array $fields=null): array
     {
-        $arrFields = array();
+        $arrFields = [];
 
         if(!$fields)
         {
@@ -197,7 +197,7 @@ class RealEstate extends System
             {
                 $val = $this->formatter->getFormattedCollection($field);
 
-                if($val !== null)
+                if(null !== $val)
                 {
                     $arrFields[] = $val;
                 }
@@ -235,14 +235,14 @@ class RealEstate extends System
     /**
      * Return image uuid's of the real estate
      *
-     * @param array $arrFields
-     * @param int $max
+     * @param array|null $arrFields
+     * @param int|null $max
      *
      * @return array
      */
     public function getImagesUuids(array $arrFields=null, int $max=null): array
     {
-        $return = array();
+        $return = [];
 
         if(!$arrFields)
         {
@@ -285,20 +285,20 @@ class RealEstate extends System
     /**
      * Return status token
      *
-     * @param array $validStatusToken
+     * @param array|null $validStatusToken
      *
      * @return array
      */
     public function getStatusTokens(array $validStatusToken=null): array
     {
-        $return = array();
+        $return = [];
 
         if(!$validStatusToken)
         {
             return $return;
         }
 
-        if (in_array('new', $validStatusToken) && strtotime(Config::get('statusTokenNewDisplayDuration'), $this->objRealEstate->dateAdded) > time())
+        if (\in_array('new', $validStatusToken) && strtotime(Config::get('statusTokenNewDisplayDuration'), $this->objRealEstate->dateAdded) > time())
         {
             $return[] = array
             (
@@ -306,7 +306,7 @@ class RealEstate extends System
                 'class' => 'new'
             );
         }
-        if (in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
+        if (\in_array('reserved', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'reserviert')
         {
             $return[] = array
             (
@@ -314,7 +314,7 @@ class RealEstate extends System
                 'class' => 'reserved'
             );
         }
-        if (in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
+        if (\in_array('sold', $validStatusToken) && $this->objRealEstate->verkaufstatus === 'verkauft' && ($this->objRealEstate->vermarktungsartKauf || $this->objRealEstate->vermarktungsartErbpacht))
         {
             $return[] = array
             (
@@ -322,7 +322,7 @@ class RealEstate extends System
                 'class' => 'sold'
             );
         }
-        if (in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet && ($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing))
+        if (\in_array('rented', $validStatusToken) && !!$this->objRealEstate->vermietet && ($this->objRealEstate->vermarktungsartMietePacht || $this->objRealEstate->vermarktungsartLeasing))
         {
             $return[] = array
             (
@@ -379,7 +379,7 @@ class RealEstate extends System
      */
     public function getLocation(bool $forceCompleteAddress=false): array
     {
-        $arrAddress = array();
+        $arrAddress = [];
 
         if ($this->objRealEstate->objektadresseFreigeben || $forceCompleteAddress === true)
         {
@@ -424,21 +424,21 @@ class RealEstate extends System
         $strAddress = '';
         $arrAddress = $this->getLocation($forceCompleteAddress);
 
-        if($arrAddress['hausnummer'])
+        if($arrAddress['strasse'] ?? null && $arrAddress['hausnummer'] ?? null)
         {
             $strAddress .= $arrAddress['strasse'] . ' ' . $arrAddress['hausnummer'] . ', ';
         }
-        elseif($arrAddress['strasse'])
+        elseif($arrAddress['strasse'] ?? null)
         {
             $strAddress .= $arrAddress['strasse'] . ', ';
         }
 
-        if($arrAddress['plz'])
+        if($arrAddress['plz'] ?? null)
         {
             $strAddress .= $arrAddress['plz'] . ' ';
         }
 
-        if($arrAddress['reagionalerZusatz'])
+        if($arrAddress['reagionalerZusatz'] ?? null)
         {
             $strAddress .= $arrAddress['ort'] . ' - ' . $arrAddress['reagionalerZusatz'];
         }
@@ -552,8 +552,8 @@ class RealEstate extends System
      */
     public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail'): array
     {
-        $availableGroups = array();
-        $groupSorting = array('area', 'price', 'attribute', 'detail', 'energie');
+        $availableGroups = [];
+        $groupSorting = ['area', 'price', 'attribute', 'detail', 'energie'];
 
         // set available groups and sort order
         if(!$validGroups)
@@ -565,7 +565,7 @@ class RealEstate extends System
             // we have to sort the fields, which contain several options, to be able to fill the groups correctly
             foreach ($groupSorting as $index)
             {
-                if(in_array($index, $validGroups))
+                if(\in_array($index, $validGroups))
                 {
                     $availableGroups[] = $index;
                 }
@@ -577,32 +577,33 @@ class RealEstate extends System
             $availableGroups[] = 'address';
         }
 
-        $collection = array();
+        $collection = [];
 
         // loop through the real estate fields
         foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $data)
         {
             // check whether the field may be included
-            if(!is_array($data['realEstate']) || !$this->formatter->isValid($field))
+            if(!isset($data['realEstate']) || !$this->formatter->isValid($field))
             {
                 continue;
             }
 
             // get available config keys
             $configKeys = array_keys($data['realEstate']);
+            $currentGroup = $data['realEstate']['group'] ?? [];
 
             // check if there a match with available flags / groups
-            if(!count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $data['realEstate']['group'])))
+            if(!\count(array_intersect($configKeys, $availableGroups)) && !count(array_intersect($availableGroups, (array) $currentGroup)))
             {
                 continue;
             }
 
             // check if the fields have to be assigned to groups
-            if($separateGroups === null)
+            if(null === $separateGroups)
             {
                 $val = $this->formatter->getFormattedCollection($field);
 
-                if($val !== null)
+                if(null !== $val)
                 {
                     $collection[ $defaultGroup ][ $field ] = $val;
                 }
@@ -615,7 +616,7 @@ class RealEstate extends System
                 // sort order
                 foreach ($availableGroups as $aGroup)
                 {
-                    if(in_array($aGroup, $separateGroups))
+                    if(\in_array($aGroup, $separateGroups))
                     {
                         $sortedGroupOrder[] = $aGroup;
                     }
@@ -625,7 +626,7 @@ class RealEstate extends System
                 foreach ($sortedGroupOrder as $group)
                 {
                     // check if the group is assignable
-                    if(in_array($group, $configKeys))
+                    if(\in_array($group, $configKeys))
                     {
                         $allocationGroup = $group;
                         break;
@@ -652,14 +653,13 @@ class RealEstate extends System
     /**
      * Return main details from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
     public function getMainDetails(int $max=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrMainDetails = StringUtil::deserialize($this->objType->mainDetails, true);
 
         // HOOK: get main details
@@ -694,17 +694,16 @@ class RealEstate extends System
     /**
      * Return main attributes from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
     public function getMainAttributes(int $max=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrMainAttributes = StringUtil::deserialize($this->objType->mainAttributes);
 
-        if($arrMainAttributes === null)
+        if(null === $arrMainAttributes)
         {
             return $return;
         }
@@ -751,8 +750,8 @@ class RealEstate extends System
     /**
      * Return texts from real estate
      *
-     * @param array $validTexts
-     * @param int   $maxTextLength
+     * @param array|null $validTexts
+     * @param int $maxTextLength
      *
      * @return array|null
      */
@@ -804,7 +803,7 @@ class RealEstate extends System
     {
         $objContactPerson = $this->objRealEstate->getRelated('contactPerson');
 
-        if($objContactPerson === null)
+        if(null === $objContactPerson)
         {
             return null;
         }
@@ -814,7 +813,7 @@ class RealEstate extends System
         # Remove address fields
         if(!$objContactPerson->adressfreigabe && $forceCompleteAddress === false)
         {
-            $arrAddressFields = array('strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld');
+            $arrAddressFields = ['strasse', 'hausnummer', 'plz', 'ort', 'land', 'zusatzfeld'];
 
             foreach ($arrAddressFields as $arrAddressField)
             {
@@ -871,10 +870,8 @@ class RealEstate extends System
      */
     public function generateGallery($imgSize, array $arrFields=null, int $max=null, $strTemplate=null): array
     {
-        $return = array();
-
+        $return = [];
         $arrImages = $this->getImagesUuids($arrFields, $max);
-
         $objFiles = FilesModel::findMultipleByUuids($arrImages);
 
         if ($objFiles !== null)
@@ -892,7 +889,7 @@ class RealEstate extends System
             }
         }
 
-        if (!count($return))
+        if (!\count($return))
         {
             $return[] = $this->parseImageTemplate(null, $imgSize, true, $strTemplate);
         }
@@ -929,7 +926,7 @@ class RealEstate extends System
         (
             'id'         => $objFile->id,
             'singleSRC'  => $objFile->path,
-            'title'      => 'TMP',
+            'title'      => 'TMP',              // ToDo: Set title from meta
             'filesModel' => $objFile,
             'size'       => $imgSize,
             'caption'    => null
@@ -959,7 +956,7 @@ class RealEstate extends System
         $orderedFields = RealEstateFieldMetadata::getInstance()->getOrderFields();
 
         // if there is a separate order in the types, manipulate the default field order
-        if($this->objType->orderFields)
+        if($this->objType->orderFields ?? null)
         {
             $orderValues = StringUtil::deserialize($this->objType->orderedFields, true);
 

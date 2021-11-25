@@ -9,12 +9,21 @@
         <source>Creating a new format action</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.edit.0">
-        <source>Edit action</source>
+        <source>Edit format action</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.edit.1">
+        <source>Edit format action</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.delete.0">
         <source>Delete action</source>
       </trans-unit>
+      <trans-unit id="tl_field_format_action.delete.1">
+        <source>Delete action</source>
+      </trans-unit>
       <trans-unit id="tl_field_format_action.show.0">
+        <source>Display action information</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.show.1">
         <source>Display action information</source>
       </trans-unit>
 

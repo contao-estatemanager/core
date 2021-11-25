@@ -47,10 +47,9 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
 // Add fields to tl_user_group
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['filteritems'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['filteritems'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'options'                 => array_keys($GLOBALS['TL_RFI']),
+    'options'                 => array_keys($GLOBALS['CEM_RFI']),
     'reference'               => &$GLOBALS['TL_LANG']['RFI'],
     'eval'                    => array('multiple'=>true, 'helpwizard'=>true),
     'sql'                     => "blob NULL"
@@ -58,7 +57,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['filteritems'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['filters'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['filters'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'foreignKey'              => 'tl_filter.title',
@@ -68,7 +66,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['filters'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['filterp'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['filterp'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'options'                 => array('create', 'delete'),
@@ -79,7 +76,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['filterp'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['interfaces'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['interfaces'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'foreignKey'              => 'tl_interface.title',
@@ -89,7 +85,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['interfaces'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['interfacep'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['interfacep'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'options'                 => array('create', 'delete', 'sync'),
@@ -100,7 +95,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['interfacep'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['providers'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['providers'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'foreignKey'              => 'tl_provider.anbieternr',
@@ -110,7 +104,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['providers'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['providerp'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_user']['providerp'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'options'                 => array('create', 'delete'),
@@ -121,7 +114,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['providerp'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['realestatep'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['realestatep'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'options'                 => array('create', 'delete'),
@@ -132,7 +124,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['realestatep'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['regroups'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['regroups'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'foreignKey'              => 'tl_real_estate_group.title',
@@ -142,7 +133,6 @@ $GLOBALS['TL_DCA']['tl_user_group']['fields']['regroups'] = array
 
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['regroupp'] = array
 (
-    'label'                   => &$GLOBALS['TL_LANG']['tl_user']['regroupp'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
     'options'                 => array('create', 'delete'),

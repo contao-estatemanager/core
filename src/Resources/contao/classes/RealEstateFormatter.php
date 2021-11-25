@@ -107,7 +107,7 @@ class RealEstateFormatter
                 }
 
                 // add actions
-                if($arrFieldFormatActions[ $objFieldFormats->id ])
+                if(isset($arrFieldFormatActions[ $objFieldFormats->id ]))
                 {
                     $arrFieldFormats[ $objFieldFormats->fieldname ]['actions'] = $arrFieldFormatActions[ $objFieldFormats->id ];
                 }
@@ -141,7 +141,7 @@ class RealEstateFormatter
         $this->objRealEstate = $objRealEstate;
 
         // determine fields that may not be displayed
-        if(count($this->arrFieldConditions))
+        if(\count($this->arrFieldConditions))
         {
             foreach ($this->arrFieldConditions as $field => $conditions)
             {
@@ -175,7 +175,7 @@ class RealEstateFormatter
      */
     public function getClass($field): ?string
     {
-        return $this->arrFieldFormats[ $field ]['class'];
+        return $this->arrFieldFormats[ $field ]['class'] ?? '';
     }
 
     /**
@@ -188,6 +188,7 @@ class RealEstateFormatter
     {
         $val = $this->formatValue($field);
 
+        // ToDo: $val kann niemals false sein?!
         if($val === false)
         {
             return null;
@@ -205,13 +206,13 @@ class RealEstateFormatter
     /**
      * Format field by subordinate actions
      *
-     * @param $field
+     * @param string $field
      *
      * @return string
      */
     public function formatValue(string $field)
     {
-        $actions = $this->arrFieldFormats[ $field ]['actions'];
+        $actions = $this->arrFieldFormats[ $field ]['actions'] ?? null;
 
         if($actions === null)
         {
@@ -240,13 +241,13 @@ class RealEstateFormatter
             {
                 $max++;
 
-                if ($max > strlen($txt))
+                if ($max > \strlen($txt))
                 {
                     break;
                 }
             }
 
-            return substr($txt, 0, $max) . ($max < strlen($text) ? $textOverflow : '');
+            return substr($txt, 0, $max) . ($max < \strlen($text) ? $textOverflow : '');
         }
 
         return $text;
@@ -282,7 +283,7 @@ class RealEstateFormatter
                     $newValue = (isset($value) && $value !== '') ? $value . $action['text'] : '';
                     break;
 
-                // Deserialized a value to an array and displays it in a list separated by a given seperator
+                // Deserialized a value to an array and displays it in a list separated by a given separator
                 case 'unserialize':
                     $arrValues = StringUtil::deserialize($value);
 
@@ -322,7 +323,7 @@ class RealEstateFormatter
                     }
                     break;
 
-                // Merges multiple fields by a seperator
+                // Merges multiple fields by a separator
                 case 'combine':
                     $arrValues = StringUtil::deserialize($action['elements'], true);
 
@@ -357,7 +358,7 @@ class RealEstateFormatter
 
                     if(is_callable($customFunc['func']))
                     {
-                        $newValue = call_user_func_array($customFunc['func'], array($field, $value, $this->objRealEstate, &$this->arrRemovedCollection));
+                        $newValue = \call_user_func_array($customFunc['func'], array($field, $value, $this->objRealEstate, &$this->arrRemovedCollection));
                     }
                     else
                     {
@@ -382,7 +383,7 @@ class RealEstateFormatter
      */
     public function isAllowed(string $field): bool
     {
-        if(in_array($field, $this->arrRemovedCollection)){
+        if(\in_array($field, $this->arrRemovedCollection)){
             return false;
         }
 
@@ -398,7 +399,7 @@ class RealEstateFormatter
      */
     public function isFilled(string $field): bool
     {
-        if($this->arrFieldFormats[ $field ]['force'])
+        if(isset($this->arrFieldFormats[ $field ]['force']) && !!$this->arrFieldFormats[ $field ]['force'])
         {
             return true;
         }

@@ -18,8 +18,8 @@
           this.destroy();
 
           this.defaults = {
-              addBlankMarketingType: false,
-              addBlankRealEstateType: false,
+              addBlankMarketingType: true,
+              addBlankRealEstateType: true,
               filter: [],
               submitOnChange: false
           };

@@ -19,7 +19,6 @@ use Contao\Widget;
  *
  * @property array $package
  *
- * @author Leo Feyer <https://github.com/leofeyer> (TextStore)
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 class LicenseField extends Widget

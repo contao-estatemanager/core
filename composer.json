@@ -18,13 +18,14 @@
     }
   ],
   "require":{
-    "php":">=7.2",
-    "contao/core-bundle":"^4.4",
-    "menatwork/contao-multicolumnwizard-bundle": "^3.4"
+    "php":"^7.4 || ^8.0",
+    "ext-json": "*",
+    "contao/core-bundle":"^4.9",
+    "contao-estatemanager/backend-real-estate-management": ">=0.1.0"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
-    "friendsofphp/php-cs-fixer": "^2.12",
+    "contao/easy-coding-standard": "^3.4",
     "phpunit/phpunit": "^5.7.26",
     "symfony/phpunit-bridge": "^3.2"
   },
@@ -53,9 +54,12 @@
   },
   "extra":{
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-master": "1.1.x-dev"
     },
     "contao-manager-plugin": "ContaoEstateManager\\EstateManager\\ContaoManager\\Plugin"
+  },
+  "scripts": {
+    "php-cs-fixer": "vendor/bin/php-cs-fixer fix"
   },
   "support": {
     "issues": "https://github.com/contao-estatemanager/core/issues",

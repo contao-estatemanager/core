@@ -47,7 +47,6 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -57,14 +56,12 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         (
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface_history']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface_history']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.gif'
             ),
@@ -84,7 +81,6 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         ),
         'tstamp' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['tstamp'],
             'filter'                  => true,
             'sorting'                 => true,
             'flag'                    => 6,
@@ -92,7 +88,6 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         ),
         'source' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['source'],
             'filter'                  => true,
             'sorting'                 => true,
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface_history'],
@@ -100,14 +95,12 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         ),
         'action' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['action'],
             'filter'                  => true,
             'sorting'                 => true,
             'sql'                     => "varchar(32) NOT NULL default ''"
         ),
         'username' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['username'],
             'search'                  => true,
             'filter'                  => true,
             'sorting'                 => true,
@@ -115,13 +108,11 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
         ),
         'text' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['text'],
             'search'                  => true,
             'sql'                     => "text NULL"
         ),
         'status' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['username'],
             'search'                  => true,
             'filter'                  => true,
             'sql'                     => "int(1) NOT NULL default '0'"
@@ -135,7 +126,7 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class tl_interface_history extends Backend
+class tl_interface_history extends Contao\Backend
 {
 
     /**
@@ -164,7 +155,7 @@ class tl_interface_history extends Backend
                 break;
 
             default:
-                if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && \is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
+                if (isset($GLOBALS['TL_HOOKS']['colorizeLogEntries']) && is_array($GLOBALS['TL_HOOKS']['colorizeLogEntries']))
                 {
                     foreach ($GLOBALS['TL_HOOKS']['colorizeLogEntries'] as $callback)
                     {

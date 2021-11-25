@@ -161,8 +161,8 @@ class ExposeModuleAttachments extends ExposeModule
 
                     $objAttachment = new \stdClass();
 
-                    $objAttachment->title = StringUtil::specialchars(($arrMeta['title'] ?: $objFile->filename));
-                    $objAttachment->name = StringUtil::specialchars(($arrMeta['title'] ?: $objFile->basename));
+                    $objAttachment->title = StringUtil::specialchars(($arrMeta['title'] ?? $objFile->filename));
+                    $objAttachment->name = StringUtil::specialchars(($arrMeta['title'] ?? $objFile->basename));
                     $objAttachment->filesize = $this->getReadableSize($objFile->filesize);
                     $objAttachment->mime = $objFile->mime;
                     $objAttachment->extension = $objFile->extension;

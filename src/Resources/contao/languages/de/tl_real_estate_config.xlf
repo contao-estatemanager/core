@@ -10,8 +10,8 @@
         <target>Listen / Darstellung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.number_legend">
-        <source>Price / Area formatting</source>
-        <target>Preis- / Flächenformatierung</target>
+        <source>Price / Area</source>
+        <target>Preise / Flächen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config_legend">
         <source>Filters</source>
@@ -34,9 +34,25 @@
         <source>Decimal separator</source>
         <target>Dezimal-Trennzeichen</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberFormatDecimals.1">
+        <source>Defines the decimal separator</source>
+        <target>Definiert das Dezimal-Trennzeichen</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.0">
         <source>Thousands separator</source>
         <target>Tausender-Trennzeichen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.numberFormatThousands.1">
+        <source>Defines the thousands separator</source>
+        <target>Definiert das Tausender-Trennzeichen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultCurrency.0">
+        <source>Currency</source>
+        <target>Währung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.defaultCurrency.1">
+        <source>Defines the currency in which real estate prices are shown.</source>
+        <target>Legt die Währung fest, in der die Immobilienpreise angezeigt werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.0">
         <source>Max number of main details</source>

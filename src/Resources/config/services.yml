@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autowire: true
+
+    ContaoEstateManager\EstateManager\:
+        resource: ../../
+        exclude: ../../{Model,DependencyInjection,Resources}
+
+    ContaoEstateManager\EstateManager\Controller\Api\ApiRealEstateController:
+        arguments:
+            - '@contao.framework'
+            - '@request_stack'
+        tags:
+            - controller.service_arguments
+
+    ContaoEstateManager\EstateManager\Controller\Api\ApiProviderController:
+        arguments:
+            - '@contao.framework'
+            - '@request_stack'
+        tags:
+            - controller.service_arguments
+
+    ContaoEstateManager\EstateManager\EventListener\ExceptionSubscriber:
+        arguments:
+            - '@contao.framework'
+            - '@translator'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    ContaoEstateManager\EstateManager\EventListener\ApiExceptionSubscriber:
+        arguments: []
+        tags:
+            - { name: kernel.event_subscriber }

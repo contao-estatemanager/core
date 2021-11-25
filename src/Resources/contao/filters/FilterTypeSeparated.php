@@ -11,6 +11,7 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Input;
 use Contao\StringUtil;
 use Model\Collection;
 
@@ -46,7 +47,7 @@ class FilterTypeSeparated extends FilterWidget
      * @var mixed
      */
     protected $varValueRealEstateType;
-    
+
     /**
      * Template
      *
@@ -116,6 +117,12 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        // ToDo: Return a backend preview for the filter generator
+        if ($this->objFilter === null)
+        {
+            return '';
+        }
+
         $arrGroups = StringUtil::deserialize($this->objFilter->groups, true);
 
         $objGroups = RealEstateGroupModel::findPublishedByIds($arrGroups);
@@ -138,27 +145,24 @@ class FilterTypeSeparated extends FilterWidget
         // Vermarktungsart Start
         $arrOptions = array();
 
-        if ($this->objFilter->addBlankMarketingType)
-        {
-            $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
+        $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
 
-            $arrOptions[] = array
-            (
-                'type'     => 'option',
-                'value'    => '',
-                'selected' => $selected ? ' selected' : '',
-                'label'    => $this->showPlaceholder ? Translator::translateFilter('kauf_erbpacht_miete_leasing') : ''
-            );
+        $arrOptions[] = array
+        (
+            'type'     => 'option',
+            'value'    => '',
+            'selected' => $selected ? ' selected' : '',
+            'label'    => $this->showPlaceholder ? Translator::translateFilter('kauf_erbpacht_miete_leasing') : ''
+        );
 
-            $selectedMarketingType = 'kauf_erbpacht_miete_leasing';
-            $showAllTypes = true;
-        }
+        $selectedMarketingType = 'kauf_erbpacht_miete_leasing';
+        $showAllTypes = true;
 
         $addedMarketingTypes = array();
 
         while ($objGroups->next())
         {
-            if (in_array($objGroups->vermarktungsart, $addedMarketingTypes))
+            if (\in_array($objGroups->vermarktungsart, $addedMarketingTypes))
             {
                 continue;
             }
@@ -166,12 +170,6 @@ class FilterTypeSeparated extends FilterWidget
             $addedMarketingTypes[] = $objGroups->vermarktungsart;
 
             $selected = $this->isMarketingOptionSelected($objGroups->vermarktungsart);
-
-            // Select marketing type of current real estate type if no marketing type will match
-            if (!$this->objFilter->addBlankMarketingType && $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing') && $this->objFilterSession->getCurrentRealEstateType() !== null)
-            {
-                $selected = $this->objFilterSession->getCurrentRealEstateType()->vermarktungsart === $objGroups->vermarktungsart;
-            }
 
             $arrOptions[] = array
             (
@@ -201,17 +199,14 @@ class FilterTypeSeparated extends FilterWidget
         // Objektart Start
         $arrOptions = array();
 
-        if ($this->objFilter->addBlankRealEstateType)
-        {
-            $arrOptions[] = array
-            (
-                'type'     => 'option',
-                'value'    => '',
-                'selected' => '',
-                'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : '',
-                'show'     => true
-            );
-        }
+        $arrOptions[] = array
+        (
+            'type'     => 'option',
+            'value'    => '',
+            'selected' => '',
+            'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : '',
+            'show'     => true
+        );
 
         $objGroups->reset();
 
@@ -260,14 +255,14 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function validate()
     {
-        $varMarketingType = $this->validator(\Input::post('marketing-type', true));
-        $varRealEstateType = $this->validator(\Input::post('real-estate-type', true));
+        $varMarketingType = $this->validator(Input::post('marketing-type', true));
+        $varRealEstateType = $this->validator(Input::post('real-estate-type', true));
 
         if ($this->hasErrors())
         {
             $this->class = 'error';
         }
-        
+
         $this->varValueMarketingType = $varMarketingType;
         $this->varValueRealEstateType = $varRealEstateType;
     }
@@ -284,21 +279,6 @@ class FilterTypeSeparated extends FilterWidget
             'marketing-type' => $this->varValueMarketingType,
             'real-estate-type' => $this->varValueRealEstateType
         );
-    }
-
-    /**
-     * Get current real estate type by a collection of types
-     *
-     * @return RealEstateTypeModel|null
-     */
-    protected function getCurrentType()
-    {
-        if (!$this->objFilter->addBlankRealEstateType)
-        {
-            return $this->objFilterSession->getCurrentRealEstateType();
-        }
-
-        return null;
     }
 
     /**
@@ -335,7 +315,7 @@ class FilterTypeSeparated extends FilterWidget
      */
     protected function isMarketingOptionSelected($marketingType)
     {
-        return $this->objFilterSession->getCurrentMarketingType() === $marketingType;
+        return $this->sessionManager->getSelectedMarketingType() === $marketingType;
     }
 
     /**
@@ -347,22 +327,12 @@ class FilterTypeSeparated extends FilterWidget
      */
     protected function isRealEstateOptionSelected($objType)
     {
-        if ($this->objFilterSession->getCurrentRealEstateType() === null)
+        if ($this->sessionManager->getSelectedType() === null)
         {
-            // Just used, if different addBlankRealEstateType configurations available: Not recommended!
-            if (!$this->blnMarketingTypeMatched && !$this->objFilter->addBlankRealEstateType && ($this->objFilterSession->getCurrentMarketingType() === $objType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing'))
-            {
-                if ($objType->defaultType || $objType->getRelated('similarType')->defaultType)
-                {
-                    $this->blnMarketingTypeMatched = true;
-                    return true;
-                }
-            }
-
             return false;
         }
 
-        if ($objType->id === $this->objFilterSession->getCurrentRealEstateType()->id)
+        if ($objType->id === $this->sessionManager->getSelectedType()->id)
         {
             return true;
         }

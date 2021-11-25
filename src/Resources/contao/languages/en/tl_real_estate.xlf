@@ -57,6 +57,9 @@
       <trans-unit id="tl_real_estate.anbieternr.0">
         <source>Provider Number</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.anbieternr.1">
+        <source>Enter the provider number here.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.tstamp.0">
         <source>Changed on</source>
       </trans-unit>
@@ -84,8 +87,14 @@
       <trans-unit id="tl_real_estate.aktivVon.0">
         <source>Active from</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.aktivVon.1">
+        <source>From when should the object be active in the real estate portal.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.aktivBis.0">
         <source>Active until</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.aktivBis.1">
+        <source>Until when should the object be active in the real estate portal.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.openimmoObid.0">
         <source>OpenImmo object ID</source>
@@ -98,6 +107,9 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.standVom.0">
         <source>Status as of</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.standVom.1">
+        <source>Date of the last change in the exporting system.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.provider.0">
         <source>Provider</source>
@@ -181,6 +193,9 @@
       <trans-unit id="tl_real_estate.wohnungsnr.0">
         <source>Apartment number</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.wohnungsnr.1">
+        <source>Number of the apartment for residential complexes.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.lageGebiet.0">
         <source>Location type</source>
       </trans-unit>
@@ -257,6 +272,9 @@
       <trans-unit id="tl_real_estate.branchen.0">
         <source>Industry sectors</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.branchen.1">
+        <source>Define here for which industries the commercial use is possible.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.verfuegbarAb.0">
         <source>Available on</source>
       </trans-unit>
@@ -266,17 +284,32 @@
       <trans-unit id="tl_real_estate.abdatum.0">
         <source>From date</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.abdatum.1">
+        <source>Define here when the object is available/ready for takeover?</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.bisdatum.0">
         <source>Until date</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.bisdatum.1">
+        <source>Define here until when the object is available.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.minMietdauer.0">
         <source>Minimum rental period</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.minMietdauer.1">
+        <source>Minimum period for which the property must be rented.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.maxMietdauer.0">
         <source>Maximum rental period</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.maxMietdauer.1">
+        <source>Maximum period for which the property can be rented.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.versteigerungstermin.0">
         <source>Auction date</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.versteigerungstermin.1">
+        <source>Define the date of the auction here.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.zimmerTyp.0">
         <source>Type of room</source>
@@ -783,6 +816,9 @@
       <trans-unit id="tl_real_estate.waehrung.0">
         <source>Currency</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.waehrung.1">
+        <source>Define here the currency in which the object is marketed.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.mwstSatz.0">
         <source>VAT rate</source>
       </trans-unit>
@@ -883,41 +919,83 @@
       <trans-unit id="tl_real_estate.beginnAngebotsphase.0">
         <source>Start bidding phase</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.beginnAngebotsphase.1">
+        <source>Define here the date from when the offer phase starts.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin.0">
         <source>Viewing appointment</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.besichtigungstermin.1">
+        <source>Define here the date, for a viewing appointment.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin2.0">
         <source>Viewing appointment no. 2</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.besichtigungstermin2.1">
+        <source>Define here an alternative date, for a viewing appointment.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.beginnBietzeit.0">
         <source>Start of bidding period</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.beginnBietzeit.0">
+        <source>Start of bidding period</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.beginnBietzeit.1">
+        <source>Define here the date for the start of the bidding period.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.endeBietzeit.0">
         <source>End of bidding period</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.endeBietzeit.1">
+        <source>Define here the date for the end of the bidding period.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.hoechstgebotZeigen.0">
         <source>Show highest bid</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hoechstgebotZeigen.1">
+        <source>Define here whether the highest bid may be displayed.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.mindestpreis.0">
         <source>Minimum price</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.mindestpreis.1">
+        <source>Define here, the minimum bid.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.zwangsversteigerung.0">
         <source>Foreclosure</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zwangsversteigerung.1">
+        <source>Define here if the object is foreclosed.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.aktenzeichen.0">
         <source>File number</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.aktenzeichen.1">
+        <source>Define here, the file number of the foreclosure.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.zvtermin.0">
         <source>Foreclosure appointment</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zvtermin.1">
+        <source>Define here, the foreclosure date.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.zusatztermin.0">
         <source>Additional appointment</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.zusatztermin.1">
+        <source>Define here an additional date of the foreclosure sale.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.amtsgericht.0">
         <source>District Court</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.amtsgericht.1">
+        <source>Define the responsible district court here.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.verkehrswert.0">
         <source>Market value</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.verkehrswert.1">
+        <source>Define here the price that could probably be achieved in free sale.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.wohnflaeche.0">
         <source>Living space</source>
@@ -1010,10 +1088,10 @@
         <source>Here you can specify the cubic index of your real estate.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.bgf.0">
-        <source>Brutto-Geschossflächen-Zahl nach Din277</source>
+        <source>Gross floor area number (Din277)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.bgf.1">
-        <source>Geben Sie hier die Brutto-Geschossflächen-Zahl nach Din277 der Immobilie an</source>
+        <source>Enter here the gross floor area number (according to Din277) of the object.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.grundstuecksflaeche.0">
         <source>Plot area</source>
@@ -1342,6 +1420,9 @@
       <trans-unit id="tl_real_estate.stromanschlusswert.0">
         <source>Power connection value</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.stromanschlusswert.1">
+        <source>Amount of the power connection value in KW.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kantineCafeteria.0">
         <source>Canteen/Cafeteria available</source>
       </trans-unit>
@@ -1350,6 +1431,9 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.hallenhoehe.0">
         <source>Height of the hall</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.hallenhoehe.1">
+        <source>Height of the hall in m.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.brauereibindung.0">
         <source>Beer supply agreement</source>
@@ -1415,19 +1499,34 @@
         <source>Aerial photographs available</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.einliegerwohnung.0">
-        <source>Secondary suite</source>
+        <source>Granny annexe available</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.einliegerwohnung.1">
+        <source>Define here if Granny annexe is present.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.kubatur.0">
         <source>Cubature</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kubatur.1">
+        <source>The volume of a structure in m³.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.ausnuetzungsziffer.0">
         <source>Floor space index</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.ausnuetzungsziffer.1">
+        <source>Ratio between plot area and gross floor area; defines the maximum permissible overbuilding of a plot of land.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.flaechevon.0">
         <source>Area from</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.flaechevon.1">
+        <source>For commercial objects in rent and buy.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.flaechebis.0">
         <source>Area up to</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.flaechebis.1">
+        <source>For commercial objects in rent and buy.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.wgGeeignet.0">
         <source>Flatshare suitable</source>
@@ -1495,6 +1594,9 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.altlasten.0">
         <source>Contaminated sites</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.altlasten.1">
+        <source>General information about existing contaminated sites.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.ausblick.0">
         <source>View</source>
@@ -1840,6 +1942,9 @@
       <trans-unit id="tl_real_estate.geschlecht.0">
         <source>Gender</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.geschlecht.1">
+        <source>Defines whether the object may be rented only to women or only to men.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.denkmalgeschuetzt.0">
         <source>Listed building / memorial</source>
       </trans-unit>
@@ -1852,6 +1957,9 @@
       <trans-unit id="tl_real_estate.hochhaus.0">
         <source>High-rise building</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.hochhaus.1">
+        <source>Define here if the building is a high-rise building</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.vermietet.0">
         <source>Rented</source>
       </trans-unit>
@@ -1861,14 +1969,23 @@
       <trans-unit id="tl_real_estate.gruppennummer.0">
         <source>Group number</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.gruppennummer.1">
+        <source>Group number/master object if objects are grouped or a common master object.</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.zugang.0">
         <source>Access</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zugang.1">
+        <source>From when there is access to the object.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.laufzeit.0">
         <source>Duration</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.maxPersonen.0">
-        <source>Maximum capacity</source>
+        <source>Maximum persons</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.maxPersonen.1">
+        <source>Max. Number of people who can live/sleep in the object.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.flur.0">
         <source>Area</source>
@@ -1952,8 +2069,14 @@
       <trans-unit id="tl_real_estate.plaetzeGastraum.0">
         <source>Places guestroom</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate.plaetzeGastraum.1">
+        <source>Number of places in the guest room(s).</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.anzahlBetten.0">
         <source>Number of beds</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.anzahlBetten.1">
+        <source>Number of beds in the hotel/pension.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.anzahlTagungsraeume.0">
         <source>Number of conference rooms</source>
@@ -2026,10 +2149,13 @@
         <source>Language</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.sprache.1">
-        <source>Here you can enter the language of your real estate (e.g: en-US or de-DE etc.).</source>
+        <source>Here you can select the language of your real estate.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.anbieterobjekturl.0">
         <source>Provider real estate URL</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.anbieterobjekturl.1">
+        <source>Provider website.</source>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.offen.0">

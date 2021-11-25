@@ -47,7 +47,6 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -57,41 +56,35 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['edit'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.svg',
                 'button_callback'     => array('tl_contact_person', 'editContactPerson')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg'
             ),
             'cut' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['cut'],
                 'href'                => 'act=paste&amp;mode=cut',
                 'icon'                => 'cut.svg'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_contact_person', 'deleteContactPerson')
             ),
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['toggle'],
                 'icon'                => 'visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s,\'tl_contact_person\')"',
                 'button_callback'     => array('tl_contact_person', 'toggleIcon')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_contact_person']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -684,7 +677,7 @@ class tl_contact_person extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onload_callback'] as $callback)
             {
@@ -732,7 +725,7 @@ class tl_contact_person extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_contact_person']['config']['onsubmit_callback'] as $callback)
             {

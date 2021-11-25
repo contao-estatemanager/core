@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?= $this->title ?></title>
+
+    <style type="text/css">
+        body {margin: 0; padding: 0; min-width: 100%!important;}
+        h2{font-size: 20px; color: #2885F0; font-family: sans-serif;}
+        .content {width: 100%; max-width: 600px; font-family: sans-serif;}
+        .innerpadding {padding: 30px 30px 30px 30px;}
+        .datatable { border: 1px solid #ccc; padding: 5px }
+    </style>
+</head>
+<body>
+    <table width="100%" bgcolor="#efefef" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <table class="content" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff">
+                    <tbody>
+                        <tr>
+                            <td class="innerpadding">
+                                <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="h2"><?= $this->headline ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><?= $this->text ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table class="datatable" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Message:</td>
+                                                            <td><?=$this->message?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Code:</td>
+                                                            <td><?=$this->code?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>File:</td>
+                                                            <td><?=$this->file?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Line:</td>
+                                                            <td><?=$this->line?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -796,7 +796,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_freiplatz">
-        <source>Private parking place</source>
+        <source>Outdoor parking place</source>
         <target>Außenstellplatz</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_garage">

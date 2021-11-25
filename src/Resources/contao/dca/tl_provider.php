@@ -8,8 +8,6 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-use ContaoEstateManager\ProviderModel;
-
 $GLOBALS['TL_DCA']['tl_provider'] = array
 (
     // Config
@@ -61,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -71,43 +68,37 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['editheader'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.svg',
                 'button_callback'     => array('tl_provider', 'editHeader')
             ),
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['edit'],
                 'href'                => 'table=tl_contact_person',
                 'icon'                => 'user.svg',
                 'button_callback'     => array('tl_provider', 'editContactPerson')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_provider', 'copyProvider')
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_provider', 'deleteProvider')
             ),
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['toggle'],
                 'icon'                => 'visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s,\'tl_provider\')"',
                 'button_callback'     => array('tl_provider', 'toggleIcon')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_provider']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -142,7 +133,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'anbieternr' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['anbieternr'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -156,7 +146,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'openimmo_anid' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['openimmo_anid'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -168,7 +157,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'lizenzkennung' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lizenzkennung'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>8, 'tl_class'=>'w50'),
@@ -176,7 +164,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'singleSRC' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['singleSRC'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>Contao\Config::get('validImageTypes'), 'tl_class'=>'w50'),
@@ -184,7 +171,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'forwardingMode' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['forwardingMode'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'select',
@@ -195,7 +181,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'useOwnSender' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['useOwnSender'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class' => 'w50 m12', 'submitOnChange'=>true),
@@ -203,7 +188,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'senderEmail' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['senderEmail'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -214,7 +198,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'senderName' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['senderName'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -225,7 +208,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'firma' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firma'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -236,7 +218,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'postleitzahl' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['postleitzahl'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -247,7 +228,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'ort' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['ort'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -258,7 +238,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'strasse' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['strasse'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -267,7 +246,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'hausnummer' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['hausnummer'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>8, 'tl_class'=>'w50'),
@@ -275,7 +253,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'bundesland' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['bundesland'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -284,7 +261,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'land' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['land'],
             'exclude'                 => true,
             'filter'                  => true,
             'search'                  => true,
@@ -295,7 +271,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'lat' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lat'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50'),
@@ -303,7 +278,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'lng' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['lng'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50'),
@@ -311,7 +285,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'telefon' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon'],
             'exclude'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
@@ -320,7 +293,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'telefon2' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['telefon2'],
             'exclude'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
@@ -329,7 +301,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'fax' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['fax'],
             'exclude'                 => true,
             'flag'                    => 1,
             'inputType'               => 'text',
@@ -338,7 +309,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'email' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['email'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
@@ -346,7 +316,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'homepage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['homepage'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -354,7 +323,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'firmenanschrift' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['firmenanschrift'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
@@ -362,7 +330,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'vertretungsberechtigter' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['vertretungsberechtigter'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -370,7 +337,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'berufsaufsichtsbehoerde' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['berufsaufsichtsbehoerde'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -378,7 +344,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'handelsregister' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['handelsregister'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -386,7 +351,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'handelsregister_nr' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['handelsregister_nr'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -394,7 +358,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'umsstid' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['umsstid'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -402,7 +365,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'steuernummer' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['steuernummer'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -410,7 +372,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'weiteres' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['weiteres'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
@@ -418,7 +379,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'impressum' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['impressum'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
@@ -426,7 +386,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'beschreibung' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['beschreibung'],
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
@@ -434,7 +393,6 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         ),
         'published' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_provider']['published'],
             'exclude'                 => true,
             'filter'                  => true,
             'flag'                    => 1,
@@ -762,7 +720,7 @@ class tl_provider extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onload_callback'] as $callback)
             {
@@ -810,7 +768,7 @@ class tl_provider extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_provider']['config']['onsubmit_callback'] as $callback)
             {

@@ -1,10 +1,5 @@
-estatemanager_api_read:
-  path: /api/estatemanager/v{version}/{module}/{id}
+estatemanager_api:
+  resource: '@EstateManager/Controller/Api'
+  type: annotation
   defaults:
-    _controller: "EstateManager:EstateManager:read"
-    _scope: frontend
-    _token_check: false
-    id: null
-  requirements:
-    version: '\d+'
-  methods: [GET]
+    _format: json

@@ -97,6 +97,14 @@
         <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
         <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt oder nicht gefüllt ist.</target>
       </trans-unit>
+      <trans-unit id="tl_field_format.field">
+        <source>Field</source>
+        <target>Feld</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.value">
+        <source>Value</source>
+        <target>Wert</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

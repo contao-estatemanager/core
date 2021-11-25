@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Database;
 use Contao\Model;
 use Contao\Model\Collection;
 
@@ -65,6 +66,26 @@ class RealEstateGroupModel extends Model
     protected static $strTable = 'tl_real_estate_group';
 
     /**
+     * Find all published real estate groups
+     *
+     * @param array $arrOptions An optional options array
+     *
+     * @return Collection|RealEstateGroupModel|RealEstateGroupModel[]|null A collection of models ot null if there are no groups
+     */
+    public static function findAllPublished(array $arrOptions=array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array();
+
+        if (!static::isPreviewMode($arrOptions))
+        {
+            $arrColumns[] = "$t.published='1'";
+        }
+
+        return static::findBy($arrColumns, null, $arrOptions);
+    }
+
+    /**
      * Find all published real estate groups by their IDs and sort them if no order is given
      *
      * @param array $arrIds      An array of IDs
@@ -84,7 +105,7 @@ class RealEstateGroupModel extends Model
 
         if (!isset($arrOptions['order']))
         {
-            $arrOptions['order'] = \Database::getInstance()->findInSet("$t.id", $arrIds);
+            $arrOptions['order'] = Database::getInstance()->findInSet("$t.id", $arrIds);
         }
 
         return static::findBy($arrColumns, null, $arrOptions);

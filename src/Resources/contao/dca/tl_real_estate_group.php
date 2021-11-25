@@ -61,7 +61,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         (
             'all' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'                => 'act=select',
                 'class'               => 'header_edit_all',
                 'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
@@ -71,42 +70,36 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['edit'],
                 'href'                => 'table=tl_real_estate_type',
                 'icon'                => 'edit.svg'
             ),
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['editheader'],
                 'href'                => 'act=edit',
                 'icon'                => 'header.svg',
                 'button_callback'     => array('tl_real_estate_group', 'editHeader')
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['copy'],
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
                 'button_callback'     => array('tl_real_estate_group', 'copy')
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_real_estate_group', 'delete')
             ),
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['toggle'],
                 'icon'                => 'visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s,\'tl_real_estate_group\')"',
                 'button_callback'     => array('tl_real_estate_group', 'toggleIcon')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_real_estate_group']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -132,7 +125,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         ),
         'title' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['title'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -141,7 +133,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         ),
         'similarGroup' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['similarGroup'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_real_estate_group.title',
@@ -152,7 +143,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         ),
         'referencePage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['referencePage'],
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
@@ -162,7 +152,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         ),
         'vermarktungsart' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['vermarktungsart'],
             'exclude'                 => true,
             'inputType'               => 'select',
             'filter'                  => true,
@@ -173,7 +162,6 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
         ),
         'published' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_group']['published'],
             'exclude'                 => true,
             'filter'                  => true,
             'flag'                    => 1,
@@ -306,7 +294,7 @@ class tl_real_estate_group extends Contao\Backend
      *
      * @param $insertId
      */
-    public function adjustPermissions($insertId)
+    public function adjustPermissions($insertId): void
     {
         // The oncreate_callback passes $insertId as second argument
         if (func_num_args() == 4)
@@ -402,7 +390,7 @@ class tl_real_estate_group extends Contao\Backend
         $autoAlias = false;
 
         // Generate an alias if there is none
-        if ($varValue == '')
+        if (!$varValue)
         {
             $autoAlias = true;
             $varValue = Contao\StringUtil::generateAlias($dc->activeRecord->title);
@@ -558,7 +546,7 @@ class tl_real_estate_group extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onload_callback'] as $callback)
             {
@@ -597,7 +585,7 @@ class tl_real_estate_group extends Contao\Backend
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['fields']['published']['save_callback'] as $callback)
             {
@@ -626,7 +614,7 @@ class tl_real_estate_group extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate_group']['config']['onsubmit_callback'] as $callback)
             {

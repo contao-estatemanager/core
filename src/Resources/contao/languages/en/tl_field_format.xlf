@@ -33,7 +33,10 @@
         <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
-        <source>Edit Format Actions</source>
+        <source>Edit field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.edit.1">
+        <source>Edit field</source>
       </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
         <source>Edit field</source>
@@ -73,6 +76,12 @@
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.1">
         <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.field">
+        <source>Field</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.value">
+        <source>Value</source>
       </trans-unit>
     </body>
   </file>

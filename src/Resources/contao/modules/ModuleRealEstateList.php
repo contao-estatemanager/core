@@ -28,6 +28,12 @@ class ModuleRealEstateList extends ModuleRealEstate
     protected $strTemplate = 'mod_realEstateList';
 
     /**
+     * Session manager object
+     * @var SessionManager
+     */
+    protected $sessionManager;
+
+    /**
      * Do not display the module if there are no real estates
      *
      * @return string
@@ -46,7 +52,8 @@ class ModuleRealEstateList extends ModuleRealEstate
             return $objTemplate->parse();
         }
 
-        $this->objFilterSession = FilterSession::getInstance();
+        //$this->objFilterSession = FilterSession::getInstance();
+        $this->sessionManager = SessionManager::getInstance();
 
         // HOOK: real estate list generate
         if (isset($GLOBALS['TL_HOOKS']['generateRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateList']))
@@ -83,24 +90,27 @@ class ModuleRealEstateList extends ModuleRealEstate
         switch ($this->listMode)
         {
             case 'visited':
-                $intCount = is_array($_SESSION['REAL_ESTATE_VISITED']) ? count($_SESSION['REAL_ESTATE_VISITED']) : 0;
+                $intCount = isset($_SESSION['REAL_ESTATE_VISITED']) ? \count($_SESSION['REAL_ESTATE_VISITED']) : 0;
                 break;
             case 'group':
-                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+                //list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $arrOptions) = $this->sessionManager->getParameterByGroups($this->realEstateGroups, $this);
 
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'type':
-                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode);
+                //list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $arrOptions) = $this->sessionManager->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this);
 
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'provider':
-                list($arrColumns, $arrValues, $arrOptions) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+                //list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $arrOptions) = $this->sessionManager->getParameterByGroups($this->realEstateGroups, $this);
 
                 $arrProvider = StringUtil::deserialize($this->provider, true);
 
-                if (!count($arrProvider))
+                if (!\count($arrProvider))
                 {
                     $intCount = 0;
                     break;
@@ -111,6 +121,7 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'vacation':
+                // ToDo: Der Filter-Modus wird nicht berücksichtigt. Muss mit dem SessionManager verheiratet werden.
                 $arrColumns = array("tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1'");
 
                 $intCount = RealEstateModel::countPublishedBy($arrColumns, null);
@@ -164,7 +175,7 @@ class ModuleRealEstateList extends ModuleRealEstate
 
         if ($this->addCustomOrder)
         {
-            $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
+            $arrOptions['order'] = $this->customOrder . (isset($arrOptions['order']) ? ', ' . $arrOptions['order'] : '');
         }
 
         // HOOK: real estate list fetch items
@@ -180,33 +191,36 @@ class ModuleRealEstateList extends ModuleRealEstate
         switch ($this->listMode)
         {
             case 'visited':
-                if (is_array($_SESSION['REAL_ESTATE_VISITED']))
+                if (isset($_SESSION['REAL_ESTATE_VISITED']))
                 {
                     $objRealEstate = RealEstateModel::findPublishedByIds($_SESSION['REAL_ESTATE_VISITED'], $arrOptions);
                 }
                 break;
             case 'group':
-                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+                //list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $options) = $this->sessionManager->getParameterByGroups($this->realEstateGroups, $this);
 
                 $arrOptions = array_merge($options, $arrOptions);
 
                 $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'type':
-                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode);
+                //list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $options) = $this->sessionManager->getParameterByTypes(StringUtil::deserialize($this->realEstateTypes, true), $this);
 
                 $arrOptions = array_merge($options, $arrOptions);
 
                 $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'provider':
-                list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode);
+                //list($arrColumns, $arrValues, $options) = $this->objFilterSession->getParameterByGroups($this->realEstateGroups, $this->filterMode, true, $this);
+                list($arrColumns, $arrValues, $options) = $this->sessionManager->getParameterByGroups($this->realEstateGroups, $this);
 
                 $arrOptions = array_merge($options, $arrOptions);
 
                 $arrProvider = StringUtil::deserialize($this->provider, true);
 
-                if (!count($arrProvider))
+                if (!\count($arrProvider))
                 {
                     $objRealEstate = null;
                     break;
@@ -217,6 +231,7 @@ class ModuleRealEstateList extends ModuleRealEstate
                 $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);
                 break;
             case 'vacation':
+                // ToDo: Der Filter-Modus wird nicht berücksichtigt. Muss mit dem SessionManager verheiratet werden.
                 $arrColumns[] = "(tl_real_estate.wohnungTyp='ferienwohnung' OR tl_real_estate.hausTyp='ferienhaus' OR tl_real_estate.alsFerien='1') AND nutzungsart!='gewerbe'";
 
                 $objRealEstate = RealEstateModel::findPublishedBy($arrColumns, null, $arrOptions);

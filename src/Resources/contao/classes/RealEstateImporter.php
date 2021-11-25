@@ -10,11 +10,25 @@
 
 namespace ContaoEstateManager;
 
-
+use Contao\BackendModule;
+use Contao\BackendTemplate;
+use Contao\Database;
 use Contao\Dbafs;
+use ContaoEstateManager\EstateManager\Exception\ImportException;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Contao\Files;
 use Contao\FilesModel;
+use Contao\Folder;
+use Contao\Input;
+use Contao\StringUtil;
+use Contao\System;
+use Contao\ZipReader;
 
-class RealEstateImporter extends \BackendModule
+class RealEstateImporter extends BackendModule
 {
 
     /**
@@ -37,19 +51,19 @@ class RealEstateImporter extends \BackendModule
 
     /**
      * Import folder model
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objImportFolder;
 
     /**
      * Import folder model
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objFilesFolder;
 
     /**
      * Import folder model for contact person
-     * @var \FilesModel
+     * @var FilesModel
      */
     protected $objFilesFolderContactPerson;
 
@@ -58,6 +72,11 @@ class RealEstateImporter extends \BackendModule
      * @var \Model\Collection
      */
     protected $objInterfaceMapping;
+
+    /**
+     * Import Logger
+     */
+    protected $logger;
 
     /**
      * Path of sync file
@@ -137,7 +156,7 @@ class RealEstateImporter extends \BackendModule
                 break;
         }
 
-        return parent::__set($strKey, $varValue);
+        parent::__set($strKey, $varValue);
     }
 
     /**
@@ -153,34 +172,24 @@ class RealEstateImporter extends \BackendModule
         {
             case 'interface':
                 return $this->objInterface;
-                break;
             case 'importFolder':
                 return $this->objImportFolder;
-                break;
             case 'filesFolder':
                 return $this->objFilesFolder;
-                break;
             case 'filesFolderContactPerson':
                 return $this->objFilesFolderContactPerson;
-                break;
             case 'interfaceMapping':
                 return $this->objInterfaceMapping;
-                break;
             case 'uniqueProviderValue':
                 return $this->uniqueProviderValue;
-                break;
             case 'uniqueValue':
                 return $this->uniqueValue;
-                break;
             case 'username':
                 return $this->username;
-                break;
             case 'data':
                 return $this->data;
-                break;
             case 'syncFile':
                 return $this->syncFile;
-                break;
         }
 
         return parent::__get($strKey);
@@ -200,6 +209,7 @@ class RealEstateImporter extends \BackendModule
      */
     public function initializeInterface($id)
     {
+        $this->logger = new ImportLogger();
         $this->objInterface = InterfaceModel::findByPk($id);
 
         if ($this->objInterface === null)
@@ -207,15 +217,15 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
-        $this->objImportFolder = \FilesModel::findByUuid($this->objInterface->importPath);
-        $this->objFilesFolder = \FilesModel::findByUuid($this->objInterface->filesPath);
+        $this->objImportFolder = FilesModel::findByUuid($this->objInterface->importPath);
+        $this->objFilesFolder = FilesModel::findByUuid($this->objInterface->filesPath);
 
         if ($this->objImportFolder === null || $this->objFilesFolder === null)
         {
             return false;
         }
 
-        $this->objFilesFolderContactPerson = \FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
+        $this->objFilesFolderContactPerson = FilesModel::findByUuid($this->objInterface->filesPathContactPerson);
 
         $arrOptions = array('order'=>'saveImage');
 
@@ -240,8 +250,7 @@ class RealEstateImporter extends \BackendModule
     {
         if (!$this->initializeInterface($dc->id))
         {
-            //\Message::addInfo('Interface could not been initialized.');
-            return;
+            $this->logger->error('Interface could not been initialized.');
         }
 
         // HOOK: add custom logic
@@ -257,7 +266,7 @@ class RealEstateImporter extends \BackendModule
         $this->import('BackendUser', 'User');
         $this->username = $this->User->username;
 
-        if (\Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = html_entity_decode(\Input::post('file'))) !== '')
+        if (Input::post('FORM_SUBMIT') === 'tl_real_estate_import' && ($this->syncFile = html_entity_decode(Input::post('file'))) !== '')
         {
             $this->originalSyncFile = $this->syncFile;
 
@@ -267,14 +276,13 @@ class RealEstateImporter extends \BackendModule
             }
             else
             {
-                //\Message::addError('OpenImmo file could not be loaded.');
-                //$this->addLog('OpenImmo file could not be loaded.', 0, 'error');
+                $this->logger->error('OpenImmo file could not be loaded.');
             }
         }
 
-        \System::loadLanguageFile('tl_real_estate_sync');
+        System::loadLanguageFile('tl_real_estate_sync');
 
-        $this->Template = new \BackendTemplate($this->strTemplate);
+        $this->Template = new BackendTemplate($this->strTemplate);
 
         $files = $this->getSyncFiles();
 
@@ -304,7 +312,7 @@ class RealEstateImporter extends \BackendModule
 
         @ini_set('max_execution_time', 0);
 
-        // Consider the suhosin.memory_limit (see #7035)
+        // Consider the suhosin.memory_limit (see contao#7035)
         if (\extension_loaded('suhosin'))
         {
             if (($limit = ini_get('suhosin.memory_limit')) !== '')
@@ -334,27 +342,26 @@ class RealEstateImporter extends \BackendModule
             return;
         }
 
-        //$this->addLog('Start import from file: ' . $this->syncFile, 0, 'success');
-
         if (($this->loadData()))
         {
-            //$this->addLog('OpenImmo data loaded', 1, 'success');
+            $this->logger->info('OpenImmo file loaded successfully. File import is started.', [
+                'file' => $this->syncFile
+            ]);
 
             if ($this->syncData())
             {
-                //$this->addLog('Import and synchronization was successful', 0, 'success');
-                //\Message::addConfirmation('Import and synchronization was successful');
+                $this->logger->info('Import and synchronization was successful.');
             }
             else
             {
-                //$this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
-                //\Message::addError('OpenImmo data could not be synchronized.');
+                $this->logger->error('OpenImmo data could not be synchronized.');
             }
         }
         else
         {
-            //\Message::addError('OpenImmo data could not be loaded.');
-            //$this->addLog('OpenImmo data could not be loaded.', 0, 'error');
+            $this->logger->error('OpenImmo data could not be loaded.', [
+                'file' => $this->syncFile
+            ]);
         }
     }
 
@@ -367,19 +374,17 @@ class RealEstateImporter extends \BackendModule
     {
         if ($this->data->getName() !== 'openimmo')
         {
-            //$this->addLog('Invalid OpenImmo data.', 1, 'error');
-            return false;
+            $this->logger->error('Invalid OpenImmo data.');
         }
 
         $arrProvider = $this->data->xpath('anbieter');
 
-        if (count($arrProvider) === 0)
+        if (\count($arrProvider) === 0)
         {
-            //$this->addLog('No provider data available.', 1, 'error');
-            return false;
+            $this->logger->error('No provider data available.');
         }
 
-        $skipRecords = \StringUtil::deserialize($this->objInterface->skipRecords, true);
+        $skipRecords = StringUtil::deserialize($this->objInterface->skipRecords, true);
 
         $contactPersonMeta = $this->getTableMetaData('tl_contact_person');
         $realEstateMeta = $this->getTableMetaData('tl_real_estate');
@@ -398,7 +403,7 @@ class RealEstateImporter extends \BackendModule
 
             if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
             {
-                //$this->addLog('Skip real estate due to missing provider', 1, 'info');
+                $this->logger->info('Skip real estate due to missing provider.', null, ImportLogger::LOG_PROD);
                 continue;
             }
 
@@ -444,7 +449,9 @@ class RealEstateImporter extends \BackendModule
                     continue;
                 }
 
-                //$this->addLog('Import real estate: ' . $this->uniqueValue, 1, 'highlight', $realEstate);
+                $this->logger->info('Import real estate.', [
+                    'id' => $this->uniqueValue
+                ]);
 
                 while ($this->objInterfaceMapping->next())
                 {
@@ -504,24 +511,30 @@ class RealEstateImporter extends \BackendModule
                         $values[] = $value;
                     }
 
-                    if (in_array($field, $skipRecords))
+                    if (\in_array($field, $skipRecords))
                     {
-                        if (!count($values) || !$values[0])
+                        if (!\count($values) || !$values[0])
                         {
                             $this->objInterfaceMapping->reset();
                             continue 2;
                         }
                     }
 
-                    if (!count($values))
+                    if (!\count($values))
                     {
                         switch ($interfaceMapping->type)
                         {
                             case 'tl_contact_person':
-                                $contactPerson[$interfaceMapping->attribute] = $contactPersonMeta[$interfaceMapping->attribute]['default'];
+                                if (array_key_exists($interfaceMapping->attribute, $contactPersonMeta))
+                                {
+                                    $contactPerson[$interfaceMapping->attribute] = $contactPersonMeta[$interfaceMapping->attribute]['default'];
+                                }
                                 break;
                             case 'tl_real_estate':
-                                $re[$interfaceMapping->attribute] = $realEstateMeta[$interfaceMapping->attribute]['default'];
+                                if (array_key_exists($interfaceMapping->attribute, $realEstateMeta))
+                                {
+                                    $re[$interfaceMapping->attribute] = $realEstateMeta[$interfaceMapping->attribute]['default'];
+                                }
                                 break;
                         }
 
@@ -546,7 +559,7 @@ class RealEstateImporter extends \BackendModule
                 $contactPersonRecords[] = $contactPerson;
                 $realEstateRecords[] = $re;
 
-                $this->addLog('Fields have been assigned', 2, 'success', $re);
+                $this->logger->info('Fields have been assigned.');
             }
         }
 
@@ -565,7 +578,7 @@ class RealEstateImporter extends \BackendModule
     {
         $arrConditionValues = explode('|', $strCondition);
 
-        if(count($arrConditionValues) > 1)
+        if(\count($arrConditionValues) > 1)
         {
             foreach ($arrConditionValues as $conditionValue)
             {
@@ -593,12 +606,12 @@ class RealEstateImporter extends \BackendModule
      */
     protected function updateCatalog($contactPersonRecords, $realEstateRecords)
     {
-        $actions = \StringUtil::deserialize($this->objInterface->contactPersonActions, true);
+        $actions = StringUtil::deserialize($this->objInterface->contactPersonActions, true);
 
-        $allowCreate = in_array('create', $actions);
-        $allowUpdate = in_array('update', $actions);
+        $allowCreate = \in_array('create', $actions);
+        $allowUpdate = \in_array('update', $actions);
 
-        $this->addLog('Update database', 1, 'highlight');
+        $this->logger->info('Update database');
 
         $objProvider = ProviderModel::findByPk($this->objInterface->provider);
 
@@ -658,7 +671,9 @@ class RealEstateImporter extends \BackendModule
                         // Skip if no contact person found and not allowed to create
                         if (!$allowCreate && !$exists)
                         {
-                            $this->addLog('Skip real estate ' . $realEstateRecords[$i][$this->objInterface->uniqueField] . ': No contact person was found and no contact person may be created', 2, 'info');
+                            $this->logger->info('Skip real estate because no contact person has been assigned or created.', [
+                                'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                            ], ImportLogger::LOG_PROD);
                             continue;
                         }
 
@@ -671,7 +686,10 @@ class RealEstateImporter extends \BackendModule
                             $objContactPerson->published = 1;
                             $objContactPerson->save();
 
-                            $this->addLog('New contact person was added: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                            $this->logger->info('New contact person was added.', [
+                                'firstname' => $contactPerson['vorname'],
+                                'lastname' => $contactPerson['name']
+                            ]);
                         }
                         else
                         {
@@ -689,7 +707,10 @@ class RealEstateImporter extends \BackendModule
 
                             $objContactPerson->save();
 
-                            $this->addLog('Contact person was updated: ' . $contactPerson['vorname'] . ' ' . $contactPerson['name'], 2, 'success');
+                            $this->logger->info('Contact person was updated.', [
+                                'firstname' => $contactPerson['vorname'],
+                                'lastname' => $contactPerson['name']
+                            ]);
                         }
                     }
                 }
@@ -712,7 +733,9 @@ class RealEstateImporter extends \BackendModule
                 $objRealEstate->dateAdded = time();
                 $objRealEstate->published = $this->objInterface->dontPublishRecords ? '' : '1';
 
-                $this->addLog('New real estate was added: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+                $this->logger->info('New real estate was added.', [
+                    'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                ]);
             }
             else
             {
@@ -741,10 +764,16 @@ class RealEstateImporter extends \BackendModule
                     // Delete real estate
                     $this->deleteRealEstateImages($objRealEstate, $objProvider);
                     $objRealEstate->delete();
-                    $this->addLog('Real estate was deleted: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+
+                    $this->logger->info('Real estate was deleted.', [
+                        'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                    ]);
+
                     continue;
                 }else{
-                    $this->addLog('Real estate was updated: ' . $realEstateRecords[$i][$this->objInterface->uniqueField], 2, 'success');
+                    $this->logger->info('Real estate was updated.', [
+                        'id' => $realEstateRecords[$i][$this->objInterface->uniqueField]
+                    ]);
                 }
             }
 
@@ -774,7 +803,8 @@ class RealEstateImporter extends \BackendModule
             if (\is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback']))
             {
                 $dc = new \stdClass();
-                $dc->id = $objRealEstate->id ?: \Database::getInstance()->getNextId('tl_real_estate');
+                $dc->id = $objRealEstate->id ?: Database::getInstance()->getNextId('tl_real_estate');
+                $dc->activeRecord = null;
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
                 {
@@ -810,7 +840,7 @@ class RealEstateImporter extends \BackendModule
         }
 
         try {
-            $tmpFolder = new \Folder($this->objImportFolder->path . '/tmp');
+            $tmpFolder = new Folder($this->objImportFolder->path . '/tmp');
         } catch (\Exception $e) {
             return;
         }
@@ -828,6 +858,31 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->text = $this->importMessage;
         $objInterfaceHistory->status = $this->importStatus;
         $objInterfaceHistory->save();
+
+        if(System::getContainer()->getParameter('contao_estatemanager.send_anonymized_data'))
+        {
+            try{
+                $packages = System::getContainer()->getParameter('kernel.packages');
+                $version = $packages['contao-estatemanager/core'] ?? '0.0.0';
+
+                $stripKeys = ['alias', 'provider', 'contactPerson', 'anbieternr', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
+                $arrRecords = [];
+
+                foreach ($realEstateRecords as $record)
+                {
+                    $arrRecords[] = array_diff_key($record, array_flip($stripKeys));
+                }
+
+                $response = HttpClient::create()->request('POST', 'https://data.contao-estatemanager.com/em/data', [
+                    'body' => [
+                        'version' => $version,
+                        'records' => $arrRecords,
+                    ]
+                ]);
+
+                $response->getContent(false);
+            } catch (TransportExceptionInterface | RedirectionExceptionInterface | ClientExceptionInterface | ServerExceptionInterface $e) {}
+        }
 
         return true;
     }
@@ -869,7 +924,7 @@ class RealEstateImporter extends \BackendModule
     public function getSyncFiles($searchForZip=true)
     {
         try {
-            $folder = new \Folder($this->objImportFolder->path);
+            $folder = new Folder($this->objImportFolder->path);
         } catch (\Exception $e) {
             return array();
         }
@@ -919,9 +974,9 @@ class RealEstateImporter extends \BackendModule
                 "file" => $file,
                 "time" => $mtime,
                 "size" => $size,
-                "user" => $arrSynced[$file]->username,
-                "status" => intval($arrSynced[$file]->status),
-                "synctime" => intval($arrSynced[$file]->tstamp),
+                "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
+                "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
+                "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
                 "checked" => false
             );
         }
@@ -942,16 +997,14 @@ class RealEstateImporter extends \BackendModule
 
             $syncFile = FilesHelper::scandirByExt($this->objImportFolder->path . '/tmp', array('xml'));
 
-            if (count($syncFile) === 0)
+            if (\count($syncFile) === 0)
             {
-                $this->addLog('No OpenImmo file was found in archive.', 0, 'error');
-                return false;
+                $this->logger->error('No OpenImmo file was found in archive.');
             }
 
-            if (count($syncFile) > 1)
+            if (\count($syncFile) > 1)
             {
-                $this->addLog('More than one OpenImmo file was found in archive. Only one OpenImmo file is allowed per transfer.', 0, 'error');
-                return false;
+                $this->logger->error('More than one OpenImmo file was found in the archive. Only one OpenImmo file is allowed per transfer.');
             }
 
             return $this->getSyncFile($syncFile[0]);
@@ -970,7 +1023,7 @@ class RealEstateImporter extends \BackendModule
     public function unzipArchive($path)
     {
         try {
-            $tmpFolder = new \Folder(FilesHelper::fileDirPath($path) . 'tmp');
+            $tmpFolder = new Folder(FilesHelper::fileDirPath($path) . 'tmp');
         } catch (\Exception $e) {
             return;
         }
@@ -983,7 +1036,7 @@ class RealEstateImporter extends \BackendModule
 
         $tmpPath = $tmpFolder->__get('value');
 
-        $zip = new \ZipReader($path);
+        $zip = new ZipReader($path);
         $files = $zip->getFileList();
         $zip->first();
 
@@ -991,7 +1044,7 @@ class RealEstateImporter extends \BackendModule
         {
             $content = $zip->unzip();
             $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
-            $dir = dirname($filePath);
+            $dir = \dirname($filePath);
 
             if (!file_exists($dir))
             {
@@ -1057,7 +1110,7 @@ class RealEstateImporter extends \BackendModule
                                 }
                             }
                         }
-                        if (count($tmp))
+                        if (\count($tmp))
                         {
                             $results[$i] = serialize($tmp);
                         }
@@ -1094,7 +1147,7 @@ class RealEstateImporter extends \BackendModule
                         break;
                     default:
                         // Returns the value of an XML element.
-                        $results[$i] = current($attributes)[$attr];
+                        $results[$i] = current($attributes)[$attr] ?? null;
                         break;
                 }
             }
@@ -1111,17 +1164,17 @@ class RealEstateImporter extends \BackendModule
             }
         }
 
-        if (count($results) === 1)
+        if (\count($results) === 1)
         {
             // Trim strings
-            if (is_string($results[0]))
+            if (\is_string($results[0]))
             {
                 $results[0] = trim($results[0]);
             }
 
             return $results[0];
         }
-        elseif (count($results) > 1)
+        elseif (\count($results) > 1)
         {
             return serialize($results);
         }
@@ -1143,7 +1196,7 @@ class RealEstateImporter extends \BackendModule
         switch ($this->objInterfaceMapping->formatType)
         {
             case 'number':
-                $value = number_format(floatval($value), $this->objInterfaceMapping->decimals, '.', '');
+                $value = number_format(\floatval($value), $this->objInterfaceMapping->decimals, '.', '');
 
                 if ($this->objInterfaceMapping->decimals == 0)
                 {
@@ -1289,16 +1342,16 @@ class RealEstateImporter extends \BackendModule
         }
 
         $filePath = $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . ($interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue . '/' : '') . $value;
-        $existingFile = \FilesModel::findByPath($filePath);
+        $existingFile = FilesModel::findByPath($filePath);
 
         if ($existingFile !== null && $isMd5 && $existingFile->hash === $check)
         {
             $values[] = $existingFile->uuid;
-            //$this->addLog('Skip image: ' . ($existingFile->hash === $check ? 'Image already exists and has not changed' : 'Image does not exist'), 3, 'info', array(
-            //    'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
-            //    'fileName' => $value
-            //));
-            return false;
+
+            $this->logger->error(($existingFile->hash === $check ? 'Image was skipped because it already exists and does not contain any changes.' : 'Image was skipped because it does not exist.'), [
+                'filePath' => $objFilesFolder->path . '/' . $this->uniqueProviderValue . '/' . $this->uniqueValue . '/',
+                'fileName' => $value
+            ], ImportLogger::LOG_DEV);
         }
 
         $subDirectory = $interfaceMapping->type === 'tl_real_estate' ? $this->uniqueValue : '';
@@ -1318,16 +1371,16 @@ class RealEstateImporter extends \BackendModule
 
         $titel = current($tmpGroup->anhangtitel);
 
-        if (is_string($titel) && $titel !== '')
+        if (\is_string($titel) && $titel !== '')
         {
-            //$this->addLog('Image added: ' . $value, 3, 'success', array(
-            //    'title' => $titel,
-            //    'fileName' => $value
-            //));
+            $this->logger->info('Image added.', [
+                'title' => $titel,
+                'fileName' => $value
+            ]);
 
             $meta = array
             (
-                'de' => array
+                'de' => array // ToDo: Consider real estate language
                 (
                     'title'   => $titel,
                     'alt'     => $titel,
@@ -1350,7 +1403,7 @@ class RealEstateImporter extends \BackendModule
     {
         if (FilesHelper::isWritable($objFolder->path))
         {
-            $objFiles = \Files::getInstance();
+            $objFiles = Files::getInstance();
 
             $filePathProvider = $objFolder->path . '/' . $providerDirectoryName;
             $filePathRecord = $filePathProvider . ($directoryName !== '' ? '/' . $directoryName : '');
@@ -1383,8 +1436,8 @@ class RealEstateImporter extends \BackendModule
     {
         $deleteFolder = $this->objFilesFolder->path . '/' . $objProvider->anbieternr . '/' . $objRealEstate->{$this->objInterface->uniqueField};
 
-        \Files::getInstance()->rrdir($deleteFolder);
-        \Dbafs::deleteResource($deleteFolder);
+        Files::getInstance()->rrdir($deleteFolder);
+        Dbafs::deleteResource($deleteFolder);
     }
 
     /**
@@ -1398,46 +1451,17 @@ class RealEstateImporter extends \BackendModule
     {
         $arrReturn = array();
 
-        $objDatabase = \Database::getInstance();
+        $objDatabase = Database::getInstance();
         $arrFields = $objDatabase->listFields($strTable);
 
         foreach ($arrFields as $key => $meta)
         {
-            if (is_int($key))
+            if (\is_int($key))
             {
                 $arrReturn[$meta['name']] = $meta;
             }
         }
 
         return $arrReturn;
-    }
-
-    public function addLog($strMessage, $level=0, $strType='raw', $data=null)
-    {
-        // ToDo: In Datei auslagern
-        return;
-
-        if($data !== null)
-        {
-            if(is_object($data))
-            {
-                $data = json_decode(json_encode($data), true);
-            }
-
-            $data = serialize($data);
-        }
-
-        $objLog = new InterfaceLogModel();
-        $objLog->pid = $this->objInterface->id;
-        $objLog->text = $strMessage;
-        $objLog->data = $data;
-        $objLog->action = $strType;
-        $objLog->level = $level;
-        $objLog->source = $this->syncFile;
-        $objLog->tstamp = time();
-
-        // ToDo: username= Username | Cron
-
-        $objLog->save();
     }
 }

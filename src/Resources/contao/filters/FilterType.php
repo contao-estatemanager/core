@@ -11,8 +11,8 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Model\Collection;
 use Contao\StringUtil;
-use Model\Collection;
 
 /**
  * Class FilterType
@@ -121,6 +121,12 @@ class FilterType extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        // ToDo: Return a backend preview for the filter generator
+        if ($this->objFilter === null)
+        {
+            return '';
+        }
+
         $strClass = 'select';
 
         // Custom class
@@ -149,18 +155,15 @@ class FilterType extends FilterWidget
 
         $arrOptions = array();
 
-        if ($this->objFilter->addBlankMarketingType)
-        {
-            $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
+        $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
 
-            $arrOptions[] = array
-            (
-                'type'     => 'option',
-                'value'    => '',
-                'selected' => $selected ? ' selected' : '',
-                'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : ''
-            );
-        }
+        $arrOptions[] = array
+        (
+            'type'     => 'option',
+            'value'    => '',
+            'selected' => $selected ? ' selected' : '',
+            'label'    => $this->showPlaceholder ? Translator::translateFilter('all_types') : ''
+        );
 
         while ($objGroups->next())
         {
@@ -170,19 +173,6 @@ class FilterType extends FilterWidget
                 (
                     'type'     => 'group_start',
                     'label'    => $objGroups->title
-                );
-            }
-
-            if ($this->objFilter->addBlankRealEstateType)
-            {
-                $selected = $this->isMarketingOptionSelected($objGroups->vermarktungsart);
-
-                $arrOptions[] = array
-                (
-                    'type'     => 'option',
-                    'value'    => $objGroups->vermarktungsart,
-                    'selected' => $selected ? ' selected' : '',
-                    'label'    => 'Alle (' . $objGroups->title . ')'
                 );
             }
 
@@ -199,7 +189,7 @@ class FilterType extends FilterWidget
                 (
                     'type'     => 'option',
                     'value'    => $objGroupTypes->id,
-                    'selected' => $this->isRealEstateOptionSelected($objGroupTypes) ? ' selected' : '',
+                    'selected' => $this->isRealEstateOptionSelected($objGroupTypes->current()) ? ' selected' : '',
                     'label'    => $this->showLongTitle ? $objGroupTypes->longTitle : $objGroupTypes->title
                 );
             }
@@ -220,21 +210,6 @@ class FilterType extends FilterWidget
         );
 
         return parent::parse($arrAttributes);
-    }
-
-    /**
-     * Get current real estate type by a collection of types
-     *
-     * @return RealEstateTypeModel|null
-     */
-    protected function getCurrentType()
-    {
-        if (!$this->objFilter->addBlankMarketingType && !$this->objFilter->addBlankRealEstateType)
-        {
-            return RealEstateTypeModel::findOneByDefaultType(1);
-        }
-
-        return null;
     }
 
     /**
@@ -273,11 +248,6 @@ class FilterType extends FilterWidget
     {
         if ($this->objFilterSession->getCurrentRealEstateType() === null)
         {
-            if (!$this->objFilter->addBlankMarketingType && $objType->defaultType)
-            {
-                return true;
-            }
-
             return false;
         }
 

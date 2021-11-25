@@ -32,6 +32,29 @@ class RealEstateModulePreparation extends RealEstate
     }
 
     /**
+     * Calls functions that are complemented by extensions or parent class
+     *
+     * @param $name
+     * @param $arguments
+     */
+    public function __call($name, $arguments)
+    {
+        // HOOK: extend template functions
+        if (isset($GLOBALS['TL_HOOKS']['cemModulePreparation']) && \is_array($GLOBALS['TL_HOOKS']['cemModulePreparation']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['cemModulePreparation'] as $callback)
+            {
+                $this->import($callback[0]);
+
+                if(null !== ($value = $this->{$callback[0]}->{$callback[1]}($name, $this, ...$arguments)))
+                {
+                    return $value;
+                }
+            }
+        }
+    }
+
+    /**
      * Generate and return the expose url
      *
      * @param int|PageModel $varPage
@@ -51,7 +74,7 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return a collection of parsed real estate fields
      *
-     * @param array $fields
+     * @param array|null $fields
      *
      * @return array
      */
@@ -68,8 +91,8 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return image uuid's of the real estate
      *
-     * @param array $arrFields
-     * @param int $max
+     * @param array|null $arrFields
+     * @param int|null $max
      *
      * @return array
      */
@@ -91,7 +114,7 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return status token
      *
-     * @param array $validStatusToken
+     * @param array|null $validStatusToken
      *
      * @return array
      */
@@ -189,7 +212,7 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return main details from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
@@ -211,7 +234,7 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return main details from real estate
      *
-     * @param int $max
+     * @param int|null $max
      *
      * @return array
      */
@@ -233,8 +256,8 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return texts from real estate
      *
-     * @param array $validTexts
-     * @param int   $maxTextLength
+     * @param array|null $validTexts
+     * @param int|null $maxTextLength
      *
      * @return array|null
      */
@@ -282,6 +305,7 @@ class RealEstateModulePreparation extends RealEstate
      * Generate the main image
      *
      * @param null $imgSize
+     * @param bool $blnImageFallback
      * @param string|null $strTemplate
      *
      * @return string

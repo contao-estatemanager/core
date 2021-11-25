@@ -11,6 +11,11 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Config;
+use Contao\FrontendTemplate;
+use Contao\Input;
+use Contao\StringUtil;
+
 /**
  * Class FilterToggle
  *
@@ -137,23 +142,24 @@ class FilterToggle extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
-        $objCurrentTyp = $this->getCurrentType();
-
+        // ToDo: Return a backend preview for the filter generator
         if ($this->objFilter === null)
         {
             return '';
         }
+
+        $objCurrentTyp = $this->getCurrentType();
 
         $this->outputAllItems = !$this->objFilter->submitOnChange;
 
         // Determine actual used toggle filter
         if ($objCurrentTyp !== null)
         {
-            $arrToggleFilter = \StringUtil::deserialize($objCurrentTyp->toggleFilter, true);
+            $arrToggleFilter = StringUtil::deserialize($objCurrentTyp->toggleFilter, true);
         }
         else
         {
-            $arrToggleFilter = \StringUtil::deserialize($this->objFilter->toggleFilter, true);
+            $arrToggleFilter = StringUtil::deserialize($this->objFilter->toggleFilter, true);
         }
 
         $this->loadDataContainer('tl_filter');
@@ -164,7 +170,7 @@ class FilterToggle extends FilterWidget
             // Remove not used available filters if no interactive toggle is needed
             foreach ($arrAvailableFilters as $group => $groupData)
             {
-                if (!in_array($group, $arrToggleFilter))
+                if (!\in_array($group, $arrToggleFilter))
                 {
                     unset($arrAvailableFilters[$group]);
                 }
@@ -176,7 +182,7 @@ class FilterToggle extends FilterWidget
         // Parse leftover filter items
         foreach ($arrAvailableFilters as $group => $groupData)
         {
-            $arrItems[] = $this->parseFilterItem($group, $groupData, in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $this->objFilter->submitOnChange);
+            $arrItems[] = $this->parseFilterItem($group, $groupData, \in_array($group, $arrToggleFilter) ? true : false, $objCurrentTyp, $this->objFilter->submitOnChange);
         }
 
         $this->items = $arrItems;
@@ -209,16 +215,16 @@ class FilterToggle extends FilterWidget
             (
                 'show'        => $this->rangeMode ? true : $field !== $groupData['hide'],
                 'name'        => $field,
-                'value'       => $_SESSION['FILTER_DATA'][$field],
+                'value'       => $_SESSION['FILTER_DATA'][$field] ?? '',
                 'label'       => $this->showLabel ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
                 'placeholder' => $this->showPlaceholder ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
             );
 
             // Add options array if needed
-            if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'])
+            if ($GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'] ?? null)
             {
                 $strOptionsField = $GLOBALS['TL_DCA']['tl_filter']['fields']['toggleFilter']['toggleFields'][$name]['options'];
-                $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : \Config::get($strOptionsField);
+                $strOptions = $this->objFilter->{$strOptionsField} ? $this->objFilter->{$strOptionsField} : Config::get($strOptionsField);
 
                 $options = array_map('trim', explode(',', $strOptions));
                 $arrOptions = array();
@@ -236,8 +242,8 @@ class FilterToggle extends FilterWidget
 
         $toggleTemplate = 'toggle_' . $arrFilterItem['name'];
 
-        /** @var \FrontendTemplate|object $objTemplate */
-        $objTemplate = new \FrontendTemplate($toggleTemplate);
+        /** @var FrontendTemplate|object $objTemplate */
+        $objTemplate = new FrontendTemplate($toggleTemplate);
         $objTemplate->setData($arrFilterItem);
 
         // HOOK: add custom logic
@@ -267,7 +273,7 @@ class FilterToggle extends FilterWidget
         {
             foreach ($group['fields'] as $field)
             {
-                $arrValues[$field] = $this->validator(\Input::post($field, true), $group['rgxp']);
+                $arrValues[$field] = $this->validator(Input::post($field, true), $group['rgxp']);
             }
         }
 
@@ -293,31 +299,10 @@ class FilterToggle extends FilterWidget
      * Get current real estate type by a collection of types
      *
      * @return RealEstateTypeModel|null
+     * @throws \Exception
      */
     protected function getCurrentType()
     {
-        if ($this->objFilterSession->getCurrentRealEstateType() === null)
-        {
-            if ($this->objFilter->toggleMode === 'typeSeparated' && !$this->objFilter->addBlankRealEstateType)
-            {
-                $objDefaultType = RealEstateTypeModel::findOneByDefaultType(1);
-
-                if ($this->objFilterSession->getCurrentMarketingType() === $objDefaultType->vermarktungsart || $this->objFilterSession->getCurrentMarketingType() === 'kauf_erbpacht_miete_leasing')
-                {
-                    return $objDefaultType;
-                }
-                else
-                {
-                    return $objDefaultType->getRelated('similarType');
-                }
-            }
-
-            if ($this->objFilter->toggleMode === 'type' && !$this->objFilter->addBlankMarketingType)
-            {
-                return RealEstateTypeModel::findOneByDefaultType(1);
-            }
-        }
-
         return $this->objFilterSession->getCurrentRealEstateType();
     }
 
@@ -376,7 +361,7 @@ class FilterToggle extends FilterWidget
     /**
      * Get list filter of all real estate filter
      *
-     * @return array
+     * @return string
      */
     public static function getEstateManagerConfig()
     {
@@ -394,18 +379,17 @@ class FilterToggle extends FilterWidget
         while ($objFilters->next())
         {
             $strFilter = '';
-            $arrFilters = \StringUtil::deserialize($objFilters->toggleFilter, true);
+            $arrFilters = StringUtil::deserialize($objFilters->toggleFilter, true);
 
-            if (count($arrFilters))
+            if (\count($arrFilters))
             {
                 $strFilter = "'".implode("','", $arrFilters)."'";
             }
 
-            $filters[] = $objFilters->id.": {addBlankMarketingType: ".json_encode(boolval($objFilters->addBlankMarketingType)).", addBlankRealEstateType: ".json_encode(boolval($objFilters->addBlankRealEstateType)).", submitOnChange: ".json_encode(boolval($objFilters->submitOnChange)).", filter: [".$strFilter."]}";
+            $filters[] = $objFilters->id.": {submitOnChange: ".json_encode(boolval($objFilters->submitOnChange)).", filter: [".$strFilter."]}";
         }
 
 
-        $defaultType = '';
         $types = array();
 
         while ($objTypes->next())
@@ -413,17 +397,11 @@ class FilterToggle extends FilterWidget
             $arrFilters = \StringUtil::deserialize($objTypes->toggleFilter, true);
 
             $types[] = $objTypes->id.": {filter: ['".implode("','", $arrFilters)."'], switchType: ".$objTypes->similarType."}";
-
-            if ($objTypes->defaultType)
-            {
-                $defaultType = $objTypes->id;
-            }
         }
 
 
         $return = array();
 
-        $return[] = "defaultType: ".$defaultType;
         $return[] = "filters: ".PHP_EOL."{".implode(','.PHP_EOL, $filters)."}";
         $return[] = "types: ".PHP_EOL."{".implode(','.PHP_EOL, $types)."}";
 

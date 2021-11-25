@@ -1,0 +1,29 @@
+<?php
+/**
+ * This file is part of Contao EstateManager.
+ *
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/core
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
+ */
+
+return array('func' => function($field, $varValue, $objRealEstate, &$arrRemovedCollection){
+    \Contao\System::loadLanguageFile('tl_real_estate_misc');
+
+    $currentCurrency = \Contao\Config::get('defaultCurrency');
+    $htmlCurrency = $GLOBALS['TL_LANG']['tl_real_estate_misc'][ $currentCurrency ]['html'] ?? '';
+
+    switch ($field)
+    {
+        case 'pacht':
+            $htmlCurrency = sprintf($GLOBALS['TL_LANG']['tl_real_estate_misc']['pricePerYear'], $htmlCurrency);
+            break;
+        case 'mietpreisProQm':
+        case 'kaufpreisProQm':
+            $htmlCurrency = sprintf($GLOBALS['TL_LANG']['tl_real_estate_misc']['pricePerSquareMeter'], $htmlCurrency);
+            break;
+    }
+
+    return $varValue . ' ' . $htmlCurrency;
+});
