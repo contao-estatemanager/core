@@ -6,29 +6,22 @@
         <source>New format action</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.new.1">
-        <source>Creating a new format action</source>
+        <source>Create a new format action</source>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.edit.0">
-        <source>Edit format action</source>
+      <trans-unit id="tl_field_format_action.edit">
+        <source>Edit format action ID %s</source>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.edit.1">
-        <source>Edit format action</source>
+      <trans-unit id="tl_field_format_action.copy">
+        <source>Duplicate format action ID %s</source>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.delete.0">
-        <source>Delete action</source>
+      <trans-unit id="tl_field_format_action.delete">
+        <source>Delete format action ID %s</source>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.delete.1">
-        <source>Delete action</source>
+      <trans-unit id="tl_field_format_action.show">
+        <source>Show the details of format action ID %s</source>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.show.0">
-        <source>Display action information</source>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.show.1">
-        <source>Display action information</source>
-      </trans-unit>
-
       <trans-unit id="tl_field_format_action.type_legend">
-        <source>Format-action</source>
+        <source>Format Action</source>
       </trans-unit>
       <trans-unit id="tl_field_format_action.setting_legend">
         <source>Action settings</source>
