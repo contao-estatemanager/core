@@ -41,19 +41,27 @@
         <source>Please make sure that the file &quot;data/import_field_formats.php&quot; can be retrieved.</source>
         <target>Bitte stellen Sie sicher, dass die Datei &quot;data/import_field_formats.php&quot; abgerufen werden kann.</target>
       </trans-unit>
-      <trans-unit id="tl_field_format.edit.0">
-        <source>Edit Format Actions</source>
-        <target>Formataktionen bearbeiten</target>
-      </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
-        <source>Edit field</source>
-        <target>Feld bearbeiten</target>
+        <source>Edit field format</source>
+        <target>Feldformatierung bearbeiten</target>
       </trans-unit>
-      <trans-unit id="tl_field_format.delete.0">
-        <source>Delete field</source>
-        <target>Feld löschen</target>
+      <trans-unit id="tl_field_format.editheader.1">
+        <source>Edit field format ID %s</source>
+        <target>Feldformatierung ID %s bearbeiten</target>
       </trans-unit>
-      <trans-unit id="tl_field_format.show.0">
+      <trans-unit id="tl_field_format.edit">
+        <source>Edit format action ID %s</source>
+        <target>Formataktion ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.copy">
+        <source>Copy field format ID %s</source>
+        <target>Feldformatierung ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.delete">
+        <source>Delete field format ID %s</source>
+        <target>Feldformatierung ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format.show">
         <source>Display field information</source>
         <target>Feldinformationen anzeigen</target>
       </trans-unit>
@@ -66,7 +74,7 @@
         <target>Bitte wählen Sie ein Feld.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.0">
-        <source>CSS Class</source>
+        <source>CSS class</source>
         <target>CSS-Klasse</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.1">
