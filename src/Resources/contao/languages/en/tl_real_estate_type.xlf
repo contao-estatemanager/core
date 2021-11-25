@@ -170,12 +170,6 @@
       <trans-unit id="tl_real_estate_type.language.0">
         <source>Language</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_type.defaultType.0">
-        <source>Fallback type</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_type.defaultType.1">
-        <source>Should this real estate type be used as a fallback?</source>
-      </trans-unit>
       <trans-unit id="tl_real_estate_type.published.0">
         <source>Publish</source>
       </trans-unit>

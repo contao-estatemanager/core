@@ -54,6 +54,7 @@ abstract class FilterWidget extends Widget
         $this->objFilter = $objFilter;
 
         $this->objFilterSession = FilterSession::getInstance();
+        $this->sessionManager = SessionManager::getInstance();
 
         parent::__construct($arrAttributes);
     }
@@ -72,7 +73,6 @@ abstract class FilterWidget extends Widget
         {
             case 'multiple':
                 return $this->blnMultiple;
-                break;
         }
 
         return parent::__get($strKey);
@@ -355,6 +355,6 @@ abstract class FilterWidget extends Widget
      */
     protected function isMarketingOptionSelected($marketingType)
     {
-        return $this->objFilterSession->getCurrentMarketingType() === $marketingType;
+        return $this->sessionManager->getSelectedMarketingType() === $marketingType;
     }
 }
