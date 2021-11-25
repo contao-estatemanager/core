@@ -67,9 +67,6 @@ $emBackendModules = array
     ),
 );
 
-// Add table for be field dependency
-$GLOBALS['BE_FIELD_DEPENDENCY_TABLES'][] = 'tl_real_estate';
-
 // Check if class exists (Contao >= 4.10)
 if(class_exists('Contao\ArrayUtil'))
 {
@@ -81,6 +78,9 @@ else
 {
     $GLOBALS['BE_MOD']['estatemanager'] = $emBackendModules;
 }
+
+// Add table for be field dependency
+$GLOBALS['BE_FIELD_DEPENDENCY_TABLES'][] = 'tl_real_estate';
 
 // Models
 $GLOBALS['TL_MODELS']['tl_contact_person']         = 'ContaoEstateManager\ContactPersonModel';

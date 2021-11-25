@@ -221,7 +221,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'anlage'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_anlage'],
                 'waz'     => &$GLOBALS['TL_LANG']['tl_real_estate_value']['nutzungsart_waz']
             ),
-            'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
+            'eval'                      => array('includeBlankOption'=>true, 'tl_class'=>'w50', 'mandatory'=>true),
             'sql'                       => "varchar(7) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'  => true,
@@ -289,7 +289,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'freizeitimmobilie_gewerblich'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_freizeitimmobilie_gewerblich'],
                 'zinshaus_renditeobjekt'        => &$GLOBALS['TL_LANG']['tl_real_estate_value']['objektart_zinshaus_renditeobjekt']
             ),
-            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
+            'eval'                      => array('includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50', 'mandatory'=>true),
             'sql'                       => "varchar(64) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'  => true,
@@ -5229,7 +5229,13 @@ class tl_real_estate extends Contao\Backend
      */
     private function getTranslatedType(array $row): string
     {
-        $subpalette = $GLOBALS['TL_DCA']['tl_real_estate']['subpalettes']['objektart_'.$row['objektart']];
+        $subpalette = $GLOBALS['TL_DCA']['tl_real_estate']['subpalettes']['objektart_'.$row['objektart']] ?? null;
+
+        if(!$subpalette)
+        {
+            return '';
+        }
+
         $type = $row[$subpalette];
 
         if (empty($type))

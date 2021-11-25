@@ -855,7 +855,7 @@ class RealEstate extends System
     {
         $objFile = FilesModel::findByUuid($this->getMainImageUuid());
 
-        return $this->parseImageTemplate($objFile, $imgSize, $blnImageFallback, $strTemplate);
+        return self::parseImageTemplate($objFile, $imgSize, $blnImageFallback, $strTemplate);
     }
 
     /**
@@ -878,7 +878,7 @@ class RealEstate extends System
         {
             while ($objFiles->next())
             {
-                $strOutput = $this->parseImageTemplate($objFiles->current(), $imgSize, false, $strTemplate);
+                $strOutput = self::parseImageTemplate($objFiles->current(), $imgSize, false, $strTemplate);
 
                 if (empty($strOutput))
                 {
@@ -891,7 +891,7 @@ class RealEstate extends System
 
         if (!\count($return))
         {
-            $return[] = $this->parseImageTemplate(null, $imgSize, true, $strTemplate);
+            $return[] = self::parseImageTemplate(null, $imgSize, true, $strTemplate);
         }
 
         return $return;
@@ -907,7 +907,7 @@ class RealEstate extends System
      *
      * @return string
      */
-    private function parseImageTemplate($objFile, $imgSize, bool $blnImageFallback=true, ?string $strTemplate=null): string
+    public static function parseImageTemplate($objFile, $imgSize, bool $blnImageFallback=true, ?string $strTemplate=null): string
     {
         if ($objFile === null || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
         {
