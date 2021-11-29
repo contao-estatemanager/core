@@ -152,8 +152,8 @@
         <target>Gibt die Adresse der Immobilie aus.</target>
       </trans-unit>
       <trans-unit id="FMD.gallery.0">
-        <source>Gallery / Slider</source>
-        <target>Galerie / Slider</target>
+        <source>Gallery</source>
+        <target>Galerie</target>
       </trans-unit>
       <trans-unit id="FMD.gallery.1">
         <source>Outputs the images of the real estate.</source>
