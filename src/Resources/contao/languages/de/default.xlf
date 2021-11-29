@@ -2,8 +2,8 @@
   <file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="CTE.realEstateFilter.0">
-        <source>Filter</source>
-        <target>Filter</target>
+        <source>Real estate filter</source>
+        <target>Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="CTE.realEstateFilter.1">
         <source>Inserts a real estate filter.</source>
