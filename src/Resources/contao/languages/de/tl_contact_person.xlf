@@ -1,6 +1,18 @@
 <?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_contact_person.php" source-language="en" target-language="de">
     <body>
+      <trans-unit id="tl_contact_person.id.0">
+        <source>Contact person ID</source>
+        <target>Kontaktperson ID</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.pid.0">
+        <source>Provider ID</source>
+        <target>Anbieter ID</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.tstamp.0">
+        <source>Changed</source>
+        <target>Geändert</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.anrede.0">
         <source>Prefix</source>
         <target>Anrede</target> <!-- Form of address -->
