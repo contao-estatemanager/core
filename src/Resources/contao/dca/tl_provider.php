@@ -311,7 +311,7 @@ $GLOBALS['TL_DCA']['tl_provider'] = array
         (
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'eval'                    => array('maxlength'=>64, 'rgxp'=>'email', 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'homepage' => array

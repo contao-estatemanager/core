@@ -30,8 +30,8 @@
         <target>Anbieter Logo</target>
       </trans-unit>
       <trans-unit id="tl_provider.singleSRC.1">
-        <source>Here you can enter the logo of the provider.</source>
-        <target>Hier können Sie das Logo des Anbieters angeben.</target>
+        <source>Here you can select a logo for the provider</source>
+        <target>Hier können Sie ein Logo für den Anbieter auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_provider.contact.0">
         <source>Contact person (if possible)</source>
@@ -298,7 +298,7 @@
         <target>Weiterleitung</target>
       </trans-unit>
       <trans-unit id="tl_provider.image_legend">
-        <source>Imagesettings</source>
+        <source>Image settings</source>
         <target>Bild-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_provider.description_legend">
