@@ -7,8 +7,8 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.group_provider">
-        <source>Provider / Locations</source>
-        <target>Anbieter / Standorte</target>
+        <source>Provider &amp; Locations</source>
+        <target>Anbieter &amp; Standorte</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_configuration">
         <source>System</source>
@@ -23,8 +23,8 @@
         <target>Filter</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_visualization">
-        <source>Representation / Modules</source>
-        <target>Darstellung / Module</target>
+        <source>Representation &amp; Modules</source>
+        <target>Darstellung &amp; Module</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_addons">
         <source>Add-Ons</source>
@@ -33,11 +33,11 @@
 
       <trans-unit id="tl_real_estate_administration.provider.0">
         <source>Manage providers / locations</source>
-        <target>Anbieter / Standorte verwalten</target>
+        <target>Anbieter/Standorte verwalten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.provider.1">
         <source>Manage all providers / locations and contact persons in the system.</source>
-        <target>Verwalten Sie alle Anbieter / Standorte und Kontaktpersonen im System.</target>
+        <target>Verwalten Sie alle Anbieter/Standorte und Kontaktpersonen im System.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.filter.0">
@@ -54,7 +54,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.type.1">
         <source>Here you can control the general behavior of real estate groups and types.</source>
-        <target>Hier kann das allgemeine Verhalten von Immobilien-Gruppen, sowie Immobilien-Typen gesteuert werden.</target>
+        <target>Hier kann das allgemeine Verhalten von Objektgruppen und Objekttypen gesteuert werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.field_format.0">
         <source>Manage field formatting</source>
@@ -62,7 +62,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.field_format.1">
         <source>Here you can manage the display and formatting of the real estate details / fields.</source>
-        <target>Hier kann die Darstellung und Formatierung der Immobilien-Details / Felder verwalten werden.</target>
+        <target>Hier kann die Darstellung und Formatierung der Objektdetails verwaltet werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.interface.0">
         <source>Manage interfaces</source>
@@ -86,7 +86,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.expose_module.1">
         <source>Setting up and editing the modules of an exposee.</source>
-        <target>Einrichten und Bearbeiten der Module eines Exposés.</target>
+        <target>Erstellen und Bearbeiten von Exposé-Modulen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.addon.0">
         <source>Manage licenses</source>
