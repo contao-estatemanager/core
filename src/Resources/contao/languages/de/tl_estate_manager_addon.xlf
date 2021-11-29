@@ -3,7 +3,7 @@
     <body>
       <trans-unit id="tl_estate_manager_addon.license_legend">
         <source>Add-on Licenses</source>
-        <target>Addon Lizenzen</target>
+        <target>Add-On-Lizenzen</target>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.demo_expiration_date">
         <source>This trial ends on %s</source>
@@ -11,15 +11,15 @@
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.demo_expired">
         <source>The trial period has expired, please purchase a license to continue usage.</source>
-        <target>Diese Demo ist abgelaufen, um das Addon weiterhin zu nutzen erwerben Sie bitte eine Lizenz.</target>
+        <target>Diese Demo-Version ist abgelaufen, um das Add-On weiterhin nutzen zu können, erwerben Sie bitte eine Lizenz.</target>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.demo_used">
         <source>The trial has already been used, please purchase a license to continue usage.</source>
-        <target>Der Zeitraum für eine Demoversion dieses Addons wurde bereits ausgeschöpft, um das Addon weiterhin zu nutzen erwerben Sie bitte eine Lizenz.</target>
+        <target>Die Demo-Version dieses Add-Ons ist abgelaufen. Um das Add-on weiterhin nutzen zu können, erwerben Sie bitte eine Lizenz.</target>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.valid_license">
         <source>License valid - The add-on was successfully unlocked.</source>
-        <target>Lizenz gültig - Das Addon wurde erfolgreich freigeschaltet.</target>
+        <target>Lizenz gültig - das Add-On wurde erfolgreich freigeschaltet.</target>
       </trans-unit>
       <trans-unit id="tl_estate_manager_addon.invalid_license">
         <source>This license is invalid. Please check your input and pay attention to 0 (number) and O (letter) as well as upper/lower case.</source>
