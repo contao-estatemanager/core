@@ -62,39 +62,47 @@ class ExposeModuleContactPerson extends ExposeModule
 
         foreach ($arrFields as $field)
         {
-            if($field === 'singleSRC')
+            switch($field)
             {
-                $varSingleSrc = $contactPerson['singleSRC'] ?? null;
-
-                if($varSingleSrc === null)
-                {
-                    if ($contactPerson['anrede'] ?? null)
-                    {
-                        switch(strtolower($contactPerson['anrede']))
-                        {
-                            case 'frau':
-                                $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
-                                break;
-                            case 'herr':
-                                $varSingleSrc = Config::get('defaultContactPersonMaleImage');
-                                break;
-                        }
-                    }
+                case 'singleSRC':
+                    $varSingleSrc = $contactPerson['singleSRC'] ?? null;
 
                     if($varSingleSrc === null)
                     {
-                        $varSingleSrc = Config::get('defaultContactPersonImage');
-                    }
-                }
+                        if ($contactPerson['anrede'] ?? null)
+                        {
+                            switch(strtolower($contactPerson['anrede']))
+                            {
+                                case 'frau':
+                                    $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
+                                    break;
+                                case 'herr':
+                                    $varSingleSrc = Config::get('defaultContactPersonMaleImage');
+                                    break;
+                            }
+                        }
 
-                $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $varSingleSrc, $this->imgSize);
-            }
-            else
-            {
-                if($contactPerson[$field] ?? null)
-                {
-                    $this->Template->{$field} = $contactPerson[ $field ];
-                }
+                        if($varSingleSrc === null)
+                        {
+                            $varSingleSrc = Config::get('defaultContactPersonImage');
+                        }
+                    }
+
+                    $this->Template->addImage = $this->addSingleImageToTemplate($this->Template, $varSingleSrc, $this->imgSize);
+                    break;
+
+                case 'anrede':
+                    if ($contactPerson[$field] && $contactPerson[$field] !== 'divers' && $translatedSalutation = ($GLOBALS['TL_LANG']['tl_contact_person'][$contactPerson[$field]][0] ?? null))
+                    {
+                        $this->Template->{$field} = $translatedSalutation;
+                    }
+                    break;
+
+                default:
+                    if($contactPerson[$field] ?? null)
+                    {
+                        $this->Template->{$field} = $contactPerson[ $field ];
+                    }
             }
         }
 

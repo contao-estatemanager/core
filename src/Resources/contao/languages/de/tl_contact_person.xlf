@@ -17,6 +17,10 @@
         <source>Mrs.</source>
         <target>Frau</target>
       </trans-unit>
+      <trans-unit id="tl_contact_person.divers.0">
+        <source>Divers</source>
+        <target>Divers</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
         <source>Dear</source>
         <target>Sehr geehrter</target>
@@ -24,6 +28,10 @@
       <trans-unit id="tl_contact_person.salutationMrs.0">
         <source>Dear</source>
         <target>Sehr geehrte</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationDivers.0">
+        <source>Hello</source>
+        <target>Hallo</target>
       </trans-unit>
 
       <trans-unit id="tl_contact_person.firma.0">
