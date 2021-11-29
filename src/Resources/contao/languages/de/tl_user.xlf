@@ -3,7 +3,7 @@
     <body>
       <trans-unit id="tl_user.filteritems.0">
         <source>Allowed filter items</source>
-        <target>Erlaubte Filterelemente</target>
+        <target>Immobilien-Filter-Elemente</target>
       </trans-unit>
       <trans-unit id="tl_user.filteritems.1">
         <source>Here you can grant access to one or more filter items.</source>
@@ -11,11 +11,11 @@
       </trans-unit>
       <trans-unit id="tl_user.filters.0">
         <source>Allowed filter</source>
-        <target>Erlaubte Filter</target>
+        <target>Erlaubte Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="tl_user.filters.1">
         <source>Here you can grant access to one or more filter.</source>
-        <target>Hier können Sie die erlaubten Filter auswählen.</target>
+        <target>Hier können Sie den Zugriff auf einen oder mehrere Immobilien-Filter erlauben.</target>
       </trans-unit>
       <trans-unit id="tl_user.filterp.0">
         <source>Filter permissions</source>
@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="tl_user.interfaces.1">
         <source>Here you can grant access to one or more interfaces.</source>
-        <target>Hier können Sie die erlaubten Schnittstellen auswählen.</target>
+        <target>Hier können Sie den Zugriff auf eine oder mehrere Schnittstellen erlauben.</target>
       </trans-unit>
       <trans-unit id="tl_user.interfacep.0">
         <source>Interface permissions</source>
@@ -47,7 +47,7 @@
       </trans-unit>
       <trans-unit id="tl_user.providers.1">
         <source>Here you can grant access to one or more provider.</source>
-        <target>Hier können Sie die erlaubten Anbieter auswählen.</target>
+        <target>Hier können Sie den Zugriff auf einen oder mehrere Anbieter erlauben.</target>
       </trans-unit>
       <trans-unit id="tl_user.providerp.0">
         <source>Provider permissions</source>
@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="tl_user.regroups.1">
         <source>Here you can grant access to one or more real estate groups.</source>
-        <target>Hier können Sie die erlaubten Immobiliengruppen festlegen.</target>
+        <target>Hier können Sie den Zugriff auf eine oder mehrere Immobiliengruppen festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_user.regroupp.0">
         <source>Real estate group permissions</source>
@@ -83,7 +83,7 @@
       </trans-unit>
       <trans-unit id="tl_user.filter_legend">
         <source>Filter permissions</source>
-        <target>Filter-Rechte</target>
+        <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user.interface_legend">
         <source>Interface permissions</source>
