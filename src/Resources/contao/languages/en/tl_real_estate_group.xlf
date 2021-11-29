@@ -12,13 +12,13 @@
         <source>Title</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.title.1">
-        <source>Please enter the title of the real estate groups.</source>
+        <source>Please enter the title of the real estate group.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.similarGroup.0">
         <source>Equivalent group</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.similarGroup.1">
-        <source>Please enter the equivalent group.</source>
+        <source>Here you can select an equivalent group.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.0">
         <source>Reference page</source>
