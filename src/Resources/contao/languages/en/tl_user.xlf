@@ -2,13 +2,13 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_user.php" source-language="en">
     <body>
       <trans-unit id="tl_user.filteritems.0">
-        <source>Allowed filter items</source>
+        <source>Real estate filter elements</source>
       </trans-unit>
       <trans-unit id="tl_user.filteritems.1">
         <source>Here you can grant access to one or more filter items.</source>
       </trans-unit>
       <trans-unit id="tl_user.filters.0">
-        <source>Allowed filter</source>
+        <source>Real estate filter</source>
       </trans-unit>
       <trans-unit id="tl_user.filters.1">
         <source>Here you can grant access to one or more filter.</source>
@@ -62,7 +62,7 @@
         <source>Here you can define the real estate group permissions.</source>
       </trans-unit>
       <trans-unit id="tl_user.filter_legend">
-        <source>Filter permissions</source>
+        <source>Real estate filter permissions</source>
       </trans-unit>
       <trans-unit id="tl_user.interface_legend">
         <source>Interface permissions</source>

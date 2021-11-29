@@ -2,16 +2,16 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_user.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_user.filteritems.0">
-        <source>Allowed filter items</source>
-        <target>Erlaubte Filterelemente</target>
+        <source>Real estate filter elements</source>
+        <target>Immobilien-Filter-Elemente</target>
       </trans-unit>
       <trans-unit id="tl_user.filteritems.1">
         <source>Here you can grant access to one or more filter items.</source>
         <target>Hier können Sie die erlaubten Filterelemente auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_user.filters.0">
-        <source>Allowed filter</source>
-        <target>Erlaubte Filter</target>
+        <source>Allowed real estate filter</source>
+        <target>Erlaubte Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="tl_user.filters.1">
         <source>Here you can grant access to one or more filter.</source>
@@ -82,8 +82,8 @@
         <target>Hier können Sie Imobiliengruppenrechte festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_user.filter_legend">
-        <source>Filter permissions</source>
-        <target>Filter-Rechte</target>
+        <source>Real estate filter permissions</source>
+        <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user.interface_legend">
         <source>Interface permissions</source>
