@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.title.1">
         <source>Please enter the title of the real estate groups.</source>
-        <target>Bitte geben Sie den Titel der Immobilien-Gruppen ein.</target>
+        <target>Bitte geben Sie den Titel der Objektgruppe ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.similarGroup.0">
         <source>Equivalent group</source>
@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.similarGroup.1">
         <source>Please enter the equivalent group.</source>
-        <target>Bitte geben Sie die äquivalente Gruppe an.</target>
+        <target>Hier können Sie eine äquivalente Gruppe auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.0">
         <source>Reference page</source>
@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.1">
         <source>This page is called if no unique real estate type could be determined.</source>
-        <target>Diese Seite wird aufgerufen, wenn kein eindeutiger Immobilientyp ermittelt werden konnte.</target>
+        <target>Diese Seite wird aufgerufen, wenn kein eindeutiger Objekttyp ermittelt werden konnte.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.0">
         <source>Marketing type</source>
@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.vermarktungsart.1">
         <source>Please indicate the type of marketing.</source>
-        <target>Bitte geben Sie die Vermarktungsart an.</target>
+        <target>Bitte wählen Sie die Vermarktungsart aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.kauf_erbpacht">
         <source>Buy</source>
@@ -55,7 +55,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.published.1">
         <source>Make the group publicly visible on the website.</source>
-        <target>Die Gruppe auf der Webseite anzeigen.</target>
+        <target>Die Gruppe auf der Website anzeigen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_group.title_legend">
@@ -73,11 +73,11 @@
 
       <trans-unit id="tl_real_estate_group.new.0">
         <source>New real estate group</source>
-        <target>Neue Immobilien-Gruppe</target>
+        <target>Neue Objektgruppe</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.new.1">
         <source>Create a new real estate group</source>
-        <target>Eine neue Immobilien-Gruppe erstellen</target>
+        <target>Eine neue Objektgruppe erstellen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.edit.0">
         <source>Edit group</source>
