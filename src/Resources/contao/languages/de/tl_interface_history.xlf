@@ -47,7 +47,7 @@
             </trans-unit>
             <trans-unit id="tl_interface_history.show.1">
                 <source>Show details of entry ID %s</source>
-                <target>Den Eintrag ID %s anzeigen</target>
+                <target>Details des Eintrags mit der ID %s anzeigen</target>
             </trans-unit>
             <trans-unit id="tl_interface_history.delete.0">
                 <source>Delete</source>
