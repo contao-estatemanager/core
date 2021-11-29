@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.virtuelletour">
         <source>Virtual tour available</source>
-        <target>Virtuelle-Tour</target>
+        <target>Virtuelle Tour</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.luftbildern">
         <source>Aerial photographs available</source>
@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wgGeeignet">
         <source>Flatshare suitable</source>
-        <target>WG-geeignet</target>
+        <target>WG geeignet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.raeumeVeraenderbar">
         <source>Rooms can be modified</source>
