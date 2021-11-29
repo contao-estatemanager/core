@@ -3,7 +3,7 @@
     <body>
       <trans-unit id="tl_user_group.filter_legend">
         <source>Filter permissions</source>
-        <target>Filter-Rechte</target>
+        <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user_group.interface_legend">
         <source>Interface permissions</source>
