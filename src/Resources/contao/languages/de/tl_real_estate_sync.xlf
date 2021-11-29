@@ -3,11 +3,11 @@
     <body>
       <trans-unit id="tl_real_estate_sync.syncFile">
         <source>File</source>
-        <target>Datei</target>
+        <target>Dateipfad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.fileTime">
         <source>Date of change</source>
-        <target>Änderungsdatum</target>
+        <target>Letzte Änderung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.fileSize">
         <source>File size</source>
@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.syncTime">
         <source>Date of sync</source>
-        <target>Synchronisierungsdatum</target>
+        <target>Letzte Synchronisierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.syncUser">
         <source>User</source>
