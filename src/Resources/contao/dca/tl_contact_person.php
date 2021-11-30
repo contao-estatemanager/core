@@ -333,6 +333,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true, 'tl_class'=>'clr'),
+	        'explanation'             => 'insertTags',
             'sql'                     => "text NULL"
         ),
         'adressfreigabe' => array

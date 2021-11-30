@@ -18,8 +18,8 @@
         <target>Anrede</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede.1">
-        <source>Please enter a prefix.</source>
-        <target>Bitte geben Sie eine Anrede ein.</target> <!-- Form of address -->
+        <source>Please select a prefix.</source>
+        <target>Hier kann eine Anrede ausgewählt werden.</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.herr.0">
         <source>Mr.</source>
@@ -30,7 +30,7 @@
         <target>Frau</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.divers.0">
-        <source>Divers</source>
+        <source>Diverse</source>
         <target>Divers</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
@@ -42,7 +42,7 @@
         <target>Sehr geehrte</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationDivers.0">
-        <source>Hello</source>
+        <source>Dear</source>
         <target>Hallo</target>
       </trans-unit>
 
@@ -219,8 +219,8 @@
         <target>Land</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.land.1">
-        <source>Please select the country.</source>
-        <target>Bitte wählen Sie ein Land.</target>
+        <source>Please enter the country.</source>
+        <target>Hier können Sie ein Land eintragen</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.zusatzfeld.0">
         <source>Additional field</source>
@@ -239,7 +239,7 @@
         <target>Hier können Sie optional die Adresse als Freitext angeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.0">
-        <source>Address enable</source>
+        <source>Show address</source>
         <target>Adressfreigabe</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.1">
@@ -251,8 +251,8 @@
         <target>Bild des Ansprechpartners</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.1">
-        <source>Here you can choose / enter the picture of the contact person.</source>
-        <target>Hier können Sie das Bild des Ansprechpartners angeben.</target>
+        <source>Here you can choose the picture of the contact person.</source>
+        <target>Hier können Sie das Bild des Ansprechpartners/der Ansprechpartnerin auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.0">
         <source>Post office box</source>

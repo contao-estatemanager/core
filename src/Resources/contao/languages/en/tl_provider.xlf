@@ -108,7 +108,7 @@
         <source>Country</source>
       </trans-unit>
       <trans-unit id="tl_provider.land.1">
-        <source>Please select the country.</source>
+        <source>Please enter the country.</source>
       </trans-unit>
       <trans-unit id="tl_provider.lat.0">
         <source>Latitude</source>

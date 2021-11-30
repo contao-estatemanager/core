@@ -142,7 +142,7 @@
         <target>Land</target>
       </trans-unit>
       <trans-unit id="tl_provider.land.1">
-        <source>Please select the country.</source>
+        <source>Please enter the country.</source>
         <target>Bitte wählen Sie ein Land.</target>
       </trans-unit>
       <trans-unit id="tl_provider.lat.0">
