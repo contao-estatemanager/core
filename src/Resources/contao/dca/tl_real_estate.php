@@ -2012,7 +2012,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'detail'   => true
             )
         ),
-        'wohnungsnr'  => array // ToDo: Bei Adressfreigabe falls vohanden aufnehmen?!
+        'wohnungsnr'  => array
         (
             'exclude'                   => true,
             'inputType'                 => 'text',
