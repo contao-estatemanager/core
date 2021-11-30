@@ -30,7 +30,7 @@
         <source>Mandatory field</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.mandatory.1">
-        <source>The form will not submit if the field is empty.</source>
+        <source>The filter will not submit if the field is empty.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.countrySource.0">
         <source>Source</source>
@@ -51,10 +51,10 @@
         <source>Here you can specify the mode of the field.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.0">
-        <source>Display long real estate title</source>
+        <source>Display detailed title</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.1">
-        <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
+        <source>Display the detailed title of the real estate type.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.impreciseMode.0">
         <source>Allow inaccurate search</source>
@@ -66,10 +66,13 @@
         <source>Merge options</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.mergeOptions.1">
-        <source>Options are displayed merged.</source>
+        <source>The options are output together.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.rangeMode.0">
         <source>Range mode</source>
+      </trans-unit>
+      <trans-unit id="tl_filter_item.rangeMode.1">
+        <source>Allows filtering in a range of two values.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.typeItem.0">
         <source>Type field</source>
@@ -134,6 +137,9 @@
       <trans-unit id="tl_filter_item.singleSRC.0">
         <source>Source file</source>
       </trans-unit>
+      <trans-unit id="tl_filter_item.singleSRC.1">
+        <source>Please select a file or folder from the files directory.</source>
+      </trans-unit>
       <trans-unit id="tl_filter_item.class.0">
         <source>CSS class</source>
       </trans-unit>
@@ -144,19 +150,19 @@
         <source>Hotkey</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.accesskey.1">
-        <source>A form field can be focused by simultaneously pressing the hotkey and [ALT] or [CTRL] key.</source>
+        <source>A filter field can be focused by simultaneously pressing the hotkey and [ALT] or [CTRL] key.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.0">
         <source>Tabulator index</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.1">
-        <source>The position of the form field in the tab order.</source>
+        <source>The position of the filter field in the tab order.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.customTpl.0">
-        <source>Custom form field template</source>
+        <source>Custom template</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.customTpl.1">
-        <source>Here you can overwrite the default form field template.</source>
+        <source>Here you can overwrite the default template.</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.invisible.0">
         <source>Invisible</source>
@@ -234,10 +240,10 @@
         <source>Delete field ID %s</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.editheader.0">
-        <source>Edit form</source>
+        <source>Edit filter field</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.editheader.1">
-        <source>Edit the form settings</source>
+        <source>Edit the filter field settings</source>
       </trans-unit>
       <trans-unit id="tl_filter_item.pasteafter.0">
         <source>Insert above</source>

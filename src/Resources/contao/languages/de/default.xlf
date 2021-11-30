@@ -65,64 +65,64 @@
         <target>Land</target>
       </trans-unit>
       <trans-unit id="RFI.country.1">
-        <source>A field for filtering real estates by country.</source>
-        <target>Ein Feld zum Filtern von Immobilien anhand der Länderauswahl.</target>
+        <source>A field for filtering real estates by country</source>
+        <target>Ein Feld zum Filtern von Immobilien anhand der Länderauswahl</target>
       </trans-unit>
       <trans-unit id="RFI.location.0">
         <source>Address field</source>
         <target>Adressfeld</target>
       </trans-unit>
       <trans-unit id="RFI.location.1">
-        <source>An address field for filtering based on address entries.</source>
-        <target>Ein Adressfeld zum Filtern anhand von Adresseingaben.</target>
+        <source>An address field for filtering based on address entries</source>
+        <target>Ein Adressfeld zum Filtern anhand von Adresseingaben</target>
       </trans-unit>
       <trans-unit id="RFI.unique.0">
         <source>Unique field</source>
         <target>Eindeutiges Feld</target>
       </trans-unit>
       <trans-unit id="RFI.unique.1">
-        <source>A field for filtering based on an unique field (e.g. property ID).</source>
-        <target>Ein Feld zum Filtern anhand eines eindeutigen Feldes (z.B. Objektnummer).</target>
+        <source>A field for filtering based on an unique field (e.g. property ID)</source>
+        <target>Ein Feld zum Filtern anhand eines eindeutigen Feldes (z.B. Objektnummer)</target>
       </trans-unit>
       <trans-unit id="RFI.type.0">
         <source>Real estate type (combined)</source>
-        <target>Immobilien-Typ (kombiniert)</target>
+        <target>Objekttyp (kombiniert)</target>
       </trans-unit>
       <trans-unit id="RFI.type.1">
-        <source>A combined filter for real estate groups and real estate types.</source>
-        <target>Ein kombinierter Filter für Immobilien-Gruppen und Immobilien-Typen.</target>
+        <source>A combined filter for real estate groups and real estate types</source>
+        <target>Ein kombinierter Filter für Objektgruppen und Objekttypen</target>
       </trans-unit>
       <trans-unit id="RFI.typeSeparated.0">
         <source>Real estate type (separated)</source>
-        <target>Immobilien-Typ (separiert)</target>
+        <target>Objekttyp (separiert)</target>
       </trans-unit>
       <trans-unit id="RFI.typeSeparated.1">
-        <source>A separated filter for real estate groups and real estate types.</source>
-        <target>Ein separierter Filter für Immobilien-Gruppen und Immobilien-Typen.</target>
+        <source>A separated filter for real estate groups and real estate types</source>
+        <target>Ein separierter Filter für Objektgruppen und Objekttypen</target>
       </trans-unit>
       <trans-unit id="RFI.toggle.0">
         <source>Primary fields</source>
         <target>Primäre Felder</target>
       </trans-unit>
       <trans-unit id="RFI.toggle.1">
-        <source>Filters depending on real estate type properties.</source>
-        <target>Vom Immobilien-Typ abhängige Filter.</target>
+        <source>Filters depending on real estate types</source>
+        <target>Vom Objekttyp abhängige Filter</target>
       </trans-unit>
       <trans-unit id="RFI.reset.0">
         <source>Reset</source>
         <target>Zurücksetzen</target>
       </trans-unit>
       <trans-unit id="RFI.reset.1">
-        <source>A button to reset the filters.</source>
-        <target>Eine Absende-Schaltfläche zum Zurücksetzen des Filters.</target>
+        <source>A button to reset the filters</source>
+        <target>Eine Absende-Schaltfläche zum Zurücksetzen des Filters</target>
       </trans-unit>
       <trans-unit id="RFI.submit.0">
         <source>Submit button</source>
         <target>Absendefeld</target>
       </trans-unit>
       <trans-unit id="RFI.submit.1">
-        <source>A button to submit the filter.</source>
-        <target>Eine Absende-Schaltfläche zum Übernehmen der vorgenommenen Filtereinstellungen.</target>
+        <source>A button to submit the filter</source>
+        <target>Eine Absende-Schaltfläche zum Übernehmen der vorgenommenen Filtereinstellungen</target>
       </trans-unit>
     </body>
   </file>
