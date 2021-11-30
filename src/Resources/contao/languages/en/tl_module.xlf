@@ -2,44 +2,35 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en">
     <body>
-      <trans-unit id="tl_module.list_mode_legend">
-        <source>Output settings</source>
-      </trans-unit>
-      <trans-unit id="tl_module.list_config_legend">
-        <source>List settings</source>
-      </trans-unit>
-      <trans-unit id="tl_module.status_token_legend">
-        <source>Status output</source>
-      </trans-unit>
       <trans-unit id="tl_module.module_legend">
-        <source>Exposé-Modules</source>
+        <source>Exposee modules</source>
       </trans-unit>
       <trans-unit id="tl_module.item_extension_legend">
-        <source>Real estate Item Extensions</source>
+        <source>Real estate extensions</source>
       </trans-unit>
       <trans-unit id="tl_module.provider_legend">
-        <source>Provider</source>
+        <source>Provider settings</source>
       </trans-unit>
       <trans-unit id="tl_module.sorting_legend">
-        <source>Sorting</source>
+        <source>Sorting settings</source>
       </trans-unit>
       <trans-unit id="tl_module.filter.0">
-        <source>Filter</source>
+        <source>Real estate filter</source>
       </trans-unit>
       <trans-unit id="tl_module.filter.1">
-        <source>Here you can specify the filter.</source>
+        <source>Please select a filter.</source>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.0">
-        <source>Add counting</source>
+        <source>Display number of properties</source>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.1">
-        <source>Adds a label that displays the number of found real estate</source>
+        <source>Show the number of results in the list.</source>
       </trans-unit>
       <trans-unit id="tl_module.listSorting.0">
-        <source>Sort order</source>
+        <source>Sorting order</source>
       </trans-unit>
       <trans-unit id="tl_module.listSorting.1">
-        <source>Please choose the sort order.</source>
+        <source>Here you can select a sorting order for the output of the results.</source>
       </trans-unit>
       <trans-unit id="tl_module.filterByProvider.0">
         <source>Filter by provider</source>
@@ -51,25 +42,25 @@
         <source>Provider</source>
       </trans-unit>
       <trans-unit id="tl_module.provider.1">
-        <source>Records will be filtered by the selected provider.</source>
+        <source>Here you can select one or more providers whose records will be displayed.</source>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
-        <source>Add sorting</source>
+        <source>Sort records</source>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.1">
-        <source>Adds a sorting  option</source>
+        <source>Sort the records by an option.</source>
       </trans-unit>
       <trans-unit id="tl_module.defaultSorting.0">
         <source>Default sorting</source>
       </trans-unit>
       <trans-unit id="tl_module.defaultSorting.1">
-        <source>The default sorting must be defined here.</source>
+        <source>Here you can select a default sorting for the records.</source>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.0">
-        <source>Add custom sorting</source>
+        <source>Custom sorting</source>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.1">
-        <source>Subsequent sorting of the result</source>
+        <source>Perform a subsequent sorting of the results.</source>
       </trans-unit>
       <trans-unit id="tl_module.customOrder.0">
         <source>Custom sorting</source>
@@ -78,13 +69,13 @@
         <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.0">
-        <source>Add provider</source>
+        <source>Show provider</source>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.1">
-        <source>Adds the provider to the property</source>
+        <source>Display the provider of the property in the list.</source>
       </trans-unit>
       <trans-unit id="tl_module.addContactPerson.0">
-        <source>Add contact person</source>
+        <source>Show contact person</source>
       </trans-unit>
       <trans-unit id="tl_module.addContactPerson.1">
         <source>Adds the contact person to the property</source>
@@ -99,13 +90,13 @@
         <source>Real estate groups</source>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.1">
-        <source>Here you can specify the real estate groups that are taken into account.</source>
+        <source>Here you can select one or more object groups to be considered.</source>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTypes.0">
         <source>Real estate types</source>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTypes.1">
-        <source>Here you can specify the real estate types that are taken into account.</source>
+        <source>Here you can select one or more real estate types to be considered.</source>
       </trans-unit>
       <trans-unit id="tl_module.filterMode.0">
         <source>Filter mode</source>
@@ -123,7 +114,7 @@
         <source>Valid status tokens</source>
       </trans-unit>
       <trans-unit id="tl_module.statusTokens.1">
-        <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
+        <source>Here you can define the output and order of valid status tokens.</source>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTemplate.0">
         <source>Real estate template</source>
@@ -147,19 +138,19 @@
         <source>Allow unpublished records</source>
       </trans-unit>
       <trans-unit id="tl_module.allowUnpublishedRecords.1">
-        <source>Here you can specify whether unpublished records can be called via the exposé.</source>
+        <source>Here you can specify whether unpublished records can be called via the exposee.</source>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.0">
-        <source>Exposé Modules</source>
+        <source>Exposee modules</source>
       </trans-unit>
       <trans-unit id="tl_module.exposeModules.1">
-        <source>Here you can place modules at the desired position in the exposé.</source>
+        <source>Here you can place modules at the desired position in the exposee.</source>
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.0">
         <source>Maximum text length</source>
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.1">
-        <source>Here texts can be limited to a maximum number of letters.</source>
+        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with "...". Type "0" to output the full text.</source>
       </trans-unit>
       <trans-unit id="tl_module.contactPersonImgSize.0">
         <source>Contact person image size</source>
@@ -174,16 +165,16 @@
         <source>Here you can set the image dimensions and the scaling mode.</source>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainDetails.0">
-        <source>Max number of main details</source>
+        <source>Maximum number of main details</source>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainDetails.1">
-        <source>Specifies how many main details are displayed in lists within a property. If 0, the value is taken from the global settings.</source>
+        <source>Here you can specify how many main details are displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainAttributes.0">
-        <source>Max number of main attributes</source>
+        <source>Maximum number of main attributes</source>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainAttributes.1">
-        <source>Specifies how many main attributes are being displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
+        <source>Here you can specify how many main attributes are displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
       </trans-unit>
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
