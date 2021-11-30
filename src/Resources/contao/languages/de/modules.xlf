@@ -70,11 +70,11 @@
         <target>Feldformatierungen verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.expose_module.0">
-        <source>Exposé modules</source>
+        <source>Exposee modules</source>
         <target>Exposé-Module</target>
       </trans-unit>
       <trans-unit id="MOD.expose_module.1">
-        <source>Manage exposé modules</source>
+        <source>Manage exposee modules</source>
         <target>Exposé-Module verwalten</target>
       </trans-unit>
       <trans-unit id="MOD.addon.0">
@@ -104,92 +104,92 @@
       </trans-unit>
 
       <trans-unit id="FMD.realEstateExpose.0">
-        <source>Real estate exposé</source>
+        <source>Real estate exposee</source>
         <target>Immobilien-Exposé</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.1">
-        <source>Generates a real estate exposé</source>
-        <target>Erzeugt ein Immobilien-Exposé</target>
+        <source>Generates a real estate exposee, that can be displayed in a detail page</source>
+        <target>Erzeugt ein Immobilien-Exposé, welches in einer Detailseite angezeigt werden kann</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.0">
         <source>Real estate filters</source>
         <target>Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.1">
-        <source>Creates a real estate filter</source>
-        <target>Erzeugt einen Immobilienfilter</target>
+        <source>Creates a real estate filter for searching and filtering properties. The filter is combined with a real estate results list</source>
+        <target>Erzeugt einen Immobilienfilter zur Suche und Filterung von Objekten. Der Filter wird mit einer Immobilien-Ergebnisliste kombiniert</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.0">
         <source>Real estate list</source>
         <target>Immobilien-Liste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.1">
-        <source>Generates a real estate list.</source>
-        <target>Erzeugt eine Immobilienliste.</target>
+        <source>Adds a list of real estate to the page</source>
+        <target>Fügt der Seite eine Immobilienliste hinzu</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.0">
         <source>Real estate results list</source>
         <target>Immobilien-Ergebnisliste</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
-        <source>Creates a real estate list, which can react to a filter.</source>
-        <target>Erzeugt eine Immobilienliste, welche auf einen Filter reagieren kann.</target>
+        <source>Adds a list of filtered real estate to the page. The filtered results can react to a real estate filter</source>
+        <target>Fügt der Seite eine filterbare Immobilienliste hinzu. Die gefilterten Ergebnisse können auf einen Immobilienfilter reagieren</target>
       </trans-unit>
       <trans-unit id="FMD.title.0">
         <source>Title</source>
         <target>Titel</target>
       </trans-unit>
       <trans-unit id="FMD.title.1">
-        <source>Outputs the title of the real estate.</source>
-        <target>Gibt den Titel der Immobilie aus.</target>
+        <source>Outputs the title of the real estate</source>
+        <target>Zeigt den Titel der Immobilie an</target>
       </trans-unit>
       <trans-unit id="FMD.address.0">
         <source>Address</source>
         <target>Adresse</target>
       </trans-unit>
       <trans-unit id="FMD.address.1">
-        <source>Outputs the address of the real estate.</source>
-        <target>Gibt die Adresse der Immobilie aus.</target>
+        <source>Outputs the address of the real estate</source>
+        <target>Zeigt die Adresse der Immobilie an</target>
       </trans-unit>
       <trans-unit id="FMD.gallery.0">
         <source>Gallery</source>
         <target>Galerie</target>
       </trans-unit>
       <trans-unit id="FMD.gallery.1">
-        <source>Outputs the images of the real estate.</source>
-        <target>Gibt die Bilder der Immobilie aus.</target>
+        <source>Outputs the images of the real estate</source>
+        <target>Zeigt die Bilder der Immobilie an</target>
       </trans-unit>
       <trans-unit id="FMD.details.0">
         <source>Details</source>
         <target>Details</target>
       </trans-unit>
       <trans-unit id="FMD.details.1">
-        <source>Outputs the details of the real estate.</source>
-        <target>Gibt die Details der Immobilie aus.</target>
+        <source>Outputs the details of the real estate</source>
+        <target>Zeigt die Details der Immobilie an</target>
       </trans-unit>
       <trans-unit id="FMD.texts.0">
         <source>Texts</source>
         <target>Texte</target>
       </trans-unit>
       <trans-unit id="FMD.texts.1">
-        <source>Outputs the description of the real estate.</source>
-        <target>Gibt die Beschreibung der Immobilie aus.</target>
+        <source>Outputs the description of the real estate</source>
+        <target>Zeigt die Beschreibung der Immobilie an</target>
       </trans-unit>
       <trans-unit id="FMD.mainDetails.0">
         <source>Main details</source>
         <target>Primäre Details</target>
       </trans-unit>
       <trans-unit id="FMD.mainDetails.1">
-        <source>Displays the primary details stored in the property type.</source>
-        <target>Gibt die im Objekttypen hinterlegten primären Details aus.</target>
+        <source>Displays the primary details stored in the property type</source>
+        <target>Zeigt die im Objekttypen hinterlegten primären Details an</target>
       </trans-unit>
       <trans-unit id="FMD.mainAttributes.0">
         <source>Main attributes</source>
         <target>Primäre Attribute</target>
       </trans-unit>
       <trans-unit id="FMD.mainAttributes.1">
-        <source>Displays the primary attributes stored in the property type.</source>
-        <target>Gibt die im Objekttypen hinterlegten primären Attribute aus.</target>
+        <source>Displays the primary attributes stored in the property type</source>
+        <target>Zeigt die im Objekttypen hinterlegten primären Attribute an</target>
       </trans-unit>
       <trans-unit id="FMD.mainPrice.0">
         <source>Main price</source>
@@ -197,7 +197,7 @@
       </trans-unit>
       <trans-unit id="FMD.mainPrice.1">
         <source>Outputs the main price</source>
-        <target>Gibt den primären Preis aus</target>
+        <target>Zeigt den primären Preis an</target>
       </trans-unit>
       <trans-unit id="FMD.mainArea.0">
         <source>Main area</source>
@@ -205,23 +205,23 @@
       </trans-unit>
       <trans-unit id="FMD.mainArea.1">
         <source>Outputs the main area</source>
-        <target>Gibt die primäre Fläche aus</target>
+        <target>Zeigt die primäre Fläche an</target>
       </trans-unit>
       <trans-unit id="FMD.statusToken.0">
-        <source>Status-token</source>
+        <source>Status token</source>
         <target>Status-Token</target>
       </trans-unit>
       <trans-unit id="FMD.statusToken.1">
-        <source>Outputs the status tokens of the property. (e.g. New, Sold,...)</source>
-        <target>Gibt die Status-Tokens des Objektes aus. (Bspw. Neu, Verkauft,...)</target>
+        <source>Outputs the status tokens of the property (e.g. New, Sold, ...)</source>
+        <target>Gibt die Status-Tokens des Objektes aus (bspw. Neu, Verkauft, ...)</target>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.0">
-        <source>Marketing-token</source>
+        <source>Marketing token</source>
         <target>Vermarktungs-Token</target>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.1">
-        <source>Outputs the marketing type as a token (e.g. for rent / for purchase)</source>
-        <target>Gibt die Vermarktungsart als Token aus (z.B. zum Kauf, zur Miete)</target>
+        <source>Displays the marketing type as a token (e.g. for rent / for purchase)</source>
+        <target>Zeigt die Vermarktungsart als Token an (z. B. zum Kauf, zur Miete)</target>
       </trans-unit>
       <trans-unit id="FMD.fieldList.0">
         <source>Fieldlist</source>
@@ -237,23 +237,23 @@
       </trans-unit>
       <trans-unit id="FMD.contactPerson.1">
         <source>Output of the assigned contact person</source>
-        <target>Ausgabe der zugewiesenen Kontaktperson</target>
+        <target>Anzeige der zugewiesenen Kontaktperson</target>
       </trans-unit>
       <trans-unit id="FMD.enquiryForm.0">
         <source>Inquiry form</source>
         <target>Anfrageformular</target>
       </trans-unit>
       <trans-unit id="FMD.enquiryForm.1">
-        <source>Enables the output of a form produced by the form generator.</source>
-        <target>Ermöglicht die Ausgabe eines vom Formulargenerator erzeugten Formulars.</target>
+        <source>Enables the output of a form produced by the form generator</source>
+        <target>Ermöglicht die Ausgabe eines vom Formulargenerator erzeugten Formulars</target>
       </trans-unit>
       <trans-unit id="FMD.attachments.0">
         <source>Attachments</source>
         <target>Anhänge</target>
       </trans-unit>
       <trans-unit id="FMD.attachments.1">
-        <source>Outputs attachments of the real estate.</source>
-        <target>Liefert die Anhänge einer Immobilie aus.</target>
+        <source>Outputs attachments of the real estate</source>
+        <target>Zeigt die Anhänge zu einer Immobilie an</target>
       </trans-unit>
 
       <trans-unit id="FMD.titleImageSRC.0">
@@ -270,11 +270,11 @@
       </trans-unit>
       <trans-unit id="FMD.interiorViewImageSRC.0">
         <source>Interior pictures</source>
-        <target>Interior-Bilder</target>
+        <target>Interieur-Bilder</target>
       </trans-unit>
       <trans-unit id="FMD.exteriorViewImageSRC.0">
         <source>Exterior pictures</source>
-        <target>Exterior-Bilder</target>
+        <target>Exterieur-Bilder</target>
       </trans-unit>
       <trans-unit id="FMD.mapViewImageSRC.0">
         <source>Map view</source>
@@ -388,11 +388,18 @@
         <source>Print</source>
         <target>Drucken</target>
       </trans-unit>
+      <trans-unit id="FMD.print.1">
+        <source>Creates a print button</source>
+        <target>Erstellt einen Drucken Button</target>
+      </trans-unit>
       <trans-unit id="FMD.share.0">
         <source>Share</source>
         <target>Teilen</target>
       </trans-unit>
-
+      <trans-unit id="FMD.share.1">
+        <source>Creates a list of sharing options</source>
+        <target>Erstellt eine Liste mit Freigabeoptionen</target>
+      </trans-unit>
       <trans-unit id="FMD.link.0">
         <source>Link</source>
         <target>Link</target>
