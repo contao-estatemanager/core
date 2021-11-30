@@ -19,31 +19,31 @@
       </trans-unit>
       <trans-unit id="tl_module.item_extension_legend">
         <source>Real estate Item Extensions</source>
-        <target>Immobilien Erweiterung</target>
+        <target>Immobilien-Erweiterungen</target>
       </trans-unit>
       <trans-unit id="tl_module.provider_legend">
         <source>Provider</source>
-        <target>Anbieter</target>
+        <target>Anbieter-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_module.sorting_legend">
         <source>Sorting</source>
-        <target>Sortierung</target>
+        <target>Sortierungseinstellungen</target>
       </trans-unit>
       <trans-unit id="tl_module.filter.0">
         <source>Filter</source>
-        <target>Filter</target>
+        <target>Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="tl_module.filter.1">
         <source>Here you can specify the filter.</source>
-        <target>Hier können Sie den Filter festlegen.</target>
+        <target>Bitte wählen Sie einen Filter.</target>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.0">
         <source>Add counting</source>
-        <target>Anzahl der Immobilien ausgeben</target>
+        <target>Anzahl der Objekte ausgeben</target>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.1">
         <source>Adds a label that displays the number of found real estate</source>
-        <target>Gibt die Anzahl der gefundenen Immobilien aus.</target>
+        <target>Die Anzahl der Ergebnisse in der Liste anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_module.listSorting.0">
         <source>Sort order</source>
@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="tl_module.listSorting.1">
         <source>Please choose the sort order.</source>
-        <target>Bitte wählen Sie die Sortierreihenfolge aus.</target>
+        <target>Hier können Sie eine Sortierreihenfolge für die Ausgabe der Ergebnisse auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_module.filterByProvider.0">
         <source>Filter by provider</source>
@@ -59,7 +59,7 @@
       </trans-unit>
       <trans-unit id="tl_module.filterByProvider.1">
         <source>Filter records by a specific provider.</source>
-        <target>Datensätze anhand eines spezifischen Anbieters filtern</target>
+        <target>Datensätze anhand eines spezifischen Anbieters filtern.</target>
       </trans-unit>
       <trans-unit id="tl_module.provider.0">
         <source>Provider</source>
@@ -67,15 +67,15 @@
       </trans-unit>
       <trans-unit id="tl_module.provider.1">
         <source>Records will be filtered by the selected provider.</source>
-        <target>Datensätze werden anhand eines ausgewählten Anbieters gefiltert</target>
+        <target>Hier können Sie einen oder mehrere Anbieter auswählen, deren Datensätze angezeigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.0">
         <source>Add sorting</source>
-        <target>Sortierung hinzufügen</target>
+        <target>Datensätze sortieren</target>
       </trans-unit>
       <trans-unit id="tl_module.addSorting.1">
         <source>Adds a sorting  option</source>
-        <target>Fügt eine Sortiermöglichkeit hinzu.</target>
+        <target>Die Datensätze anhand einer Option sortieren.</target>
       </trans-unit>
       <trans-unit id="tl_module.defaultSorting.0">
         <source>Default sorting</source>
@@ -83,15 +83,15 @@
       </trans-unit>
       <trans-unit id="tl_module.defaultSorting.1">
         <source>The default sorting must be defined here.</source>
-        <target>Hier muss die Standard-Sortierung definiert werden.</target>
+        <target>Hier kann eine Standard-Sortierung für die Datensätze ausgewählt werden.</target>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.0">
         <source>Add custom sorting</source>
-        <target>Benutzerdefinierte Sortierung hinzufügen</target>
+        <target>Benutzerdefinierte Sortierung</target>
       </trans-unit>
       <trans-unit id="tl_module.addCustomOrder.1">
         <source>Subsequent sorting of the result</source>
-        <target>Nachträgliche Sortierung des Ergebnisses.</target>
+        <target>Eine nachträgliche Sortierung der Datensätze ausführen.</target>
       </trans-unit>
       <trans-unit id="tl_module.customOrder.0">
         <source>Custom sorting</source>
@@ -99,23 +99,23 @@
       </trans-unit>
       <trans-unit id="tl_module.customOrder.1">
         <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
-        <target>Hier muss das Benutzerdefinierte SQL-Order-Statement eingetragen werden (z.B. FIELD(anbieternr, 'xyz')).</target>
+        <target>Hier muss das benutzerdefinierte SQL-Order-Statement eingetragen werden (z.B. FIELD(anbieternr, 'xyz')).</target>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.0">
         <source>Add provider</source>
-        <target>Anbieter hinzufügen</target>
+        <target>Anbieter anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.1">
         <source>Adds the provider to the property</source>
-        <target>Fügt den Anbieter zur Immobilie hinzu.</target>
+        <target>Den Anbieter des Objektes in der Liste anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_module.addContactPerson.0">
         <source>Add contact person</source>
-        <target>Kontaktperson hinzufügen</target>
+        <target>Kontaktperson anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_module.addContactPerson.1">
         <source>Adds the contact person to the property</source>
-        <target>Fügt die Kontaktperson zur Immobilie hinzu.</target>
+        <target>Die Kontaktperson des Objektes in der Liste anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_module.listMode.0">
         <source>Output mode</source>
@@ -123,15 +123,15 @@
       </trans-unit>
       <trans-unit id="tl_module.listMode.1">
         <source>Select a mode to determine the contents of the list</source>
-        <target>Wählen Sie einen Modus um die Inhalte der Liste zu bestimmen.</target>
+        <target>Wählen Sie einen Modus, um die Inhalte der Liste zu bestimmen.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.0">
         <source>Real estate groups</source>
-        <target>Immobilien-Gruppen</target>
+        <target>Objektgruppen</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.1">
         <source>Here you can specify the real estate groups that are taken into account.</source>
-        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
+        <target>Hier können Sie eine oder mehrere Objektgruppen auswählen, die berücksichtigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTypes.0">
         <source>Real estate types</source>
@@ -139,7 +139,7 @@
       </trans-unit>
       <trans-unit id="tl_module.realEstateTypes.1">
         <source>Here you can specify the real estate types that are taken into account.</source>
-        <target>Hier können Sie die Objekttypen angeben, die berücksichtigt werden.</target>
+        <target>Hier können Sie eine oder mehrere Objekttypen auswählen, die berücksichtigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_module.filterMode.0">
         <source>Filter mode</source>
@@ -163,31 +163,31 @@
       </trans-unit>
       <trans-unit id="tl_module.statusTokens.1">
         <source>Select valid status tokens. These are output in supported templates, if applicable.</source>
-        <target>Wählen Sie die erlaubten Status-Token. Diese werden, sofern diese zutreffen, in unterstützten Templates ausgegeben.</target>
+        <target>Hier können Sie die Ausgabe und Reihenfolge der erlaubten Status-Token definieren.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTemplate.0">
         <source>Real estate template</source>
-        <target>Immobilien Template</target>
+        <target>Immobilien-Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTemplate.1">
         <source>Choose a template to set the representation of a single real estate.</source>
-        <target>Wählen Sie ein Template um die Darstellung einer einzelnen Immobilie zu setzen.</target>
+        <target>Wählen Sie ein Template, um die Darstellung einer einzelnen Immobilie zu setzen.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateProviderTemplate.0">
         <source>Real Estate Template Extension: Provider</source>
-        <target>Immobilien Template Erweiterung: Anbieter</target>
+        <target>Anbieter-Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateProviderTemplate.1">
         <source>Here you can overwrite the standard template for displaying providers within a real estate template.</source>
-        <target>Hier können Sie das Standard-Template für die Darstellung von Anbietern innerhalb eines Immobilien Templates überschreiben.</target>
+        <target>Hier können Sie das Standard-Template für die Darstellung von Anbietern innerhalb eines Immobilien-Templates überschreiben.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateContactPersonTemplate.0">
         <source>Real Estate Template Extension: Contact Person</source>
-        <target>Immobilien Template Erweiterung: Kontaktperson</target>
+        <target>Kontaktperson-Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateContactPersonTemplate.1">
         <source>Here you can overwrite the standard template for displaying contact persons within a real estate template.</source>
-        <target>Hier können Sie das Standard-Template für die Darstellung von Kontaktpersonen innerhalb eines Immobilien Templates überschreiben.</target>
+        <target>Hier können Sie das Standard-Template für die Darstellung von Kontaktpersonen innerhalb eines Immobilien-Templates überschreiben.</target>
       </trans-unit>
       <trans-unit id="tl_module.allowUnpublishedRecords.0">
         <source>Allow unpublished records</source>
@@ -211,7 +211,7 @@
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.1">
         <source>Here texts can be limited to a maximum number of letters.</source>
-        <target>Hier können Texte auf eine maximale anzahl an Buchstaben beschränkt werden.</target>
+        <target>Hier können Sie die maximale Anzahl der Buchstaben eingeben. Texte werden immer nach einem Wort gekürzt und mit &quot;...&quot; versehen. Bei &quot;0&quot; wird der Text ungekürzt ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_module.contactPersonImgSize.0">
         <source>Contact person image size</source>
@@ -231,19 +231,19 @@
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainDetails.0">
         <source>Max number of main details</source>
-        <target>Max. Anzahl der primären Details</target>
+        <target>Maximale Anzahl der primären Details</target>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainDetails.1">
         <source>Specifies how many main details are displayed in lists within a property. If 0, the value is taken from the global settings.</source>
-        <target>Definiert, wie viele primären Details in Immobilienlisten angezeigt werden dürfen.</target>
+        <target>Hier können Sie angeben, wie viele primäre Details in Listen innerhalb einer Immobilie ausgegeben werden. Bei Eingabe von 0 wird der Wert aus den globalen Einstellungen übernommen.</target>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainAttributes.0">
         <source>Max number of main attributes</source>
-        <target>Max. Anzahl der primären Attribute</target>
+        <target>Maximale Anzahl der primären Attribute</target>
       </trans-unit>
       <trans-unit id="tl_module.numberOfMainAttributes.1">
         <source>Specifies how many main attributes are being displayed in lists within a real estate. If 0, the value is taken from the global settings.</source>
-        <target>Definiert, wie viele primären Attribute in Immobilienlisten angezeigt werden dürfen.</target>
+        <target>Hier können Sie angeben, wie viele primäre Attribute in Listen innerhalb einer Immobilie ausgegeben werden. Bei Eingabe von 0 wird der Wert aus den globalen Einstellungen übernommen.</target>
       </trans-unit>
       <trans-unit id="tl_module.date.0">
         <source>Date</source>
