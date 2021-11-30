@@ -451,6 +451,7 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'exclude'                 => true,
             'inputType'               => 'select',
             'options'                 => array('documents', 'links'),
+	        'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate'],
             'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),

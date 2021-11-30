@@ -6,25 +6,25 @@
         <source>Edit</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.edit.1">
-        <source>Edit Exposé module</source>
+        <source>Edit exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.new.0">
-        <source>New Exposé module</source>
+        <source>New exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.new.1">
-        <source>Create a new Exposé module</source>
+        <source>Create a new exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.copy.0">
-        <source>Copy Exposé module</source>
+        <source>Copy exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.copy.1">
-        <source>Create a copy of this Exposé module</source>
+        <source>Create a copy of this exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.delete.0">
-        <source>Delete Exposé module</source>
+        <source>Delete exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.delete.1">
-        <source>Delete Exposé module</source>
+        <source>Delete exposee module</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.show.0">
         <source>Display information</source>
@@ -56,7 +56,7 @@
         <source>Title</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.name.1">
-        <source>Please enter the title of the Exposé module.</source>
+        <source>Please enter the exposee module title.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.headline.0">
         <source>Headline</source>
@@ -65,10 +65,10 @@
         <source>Here you can add a headline to the module.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.type.0">
-        <source>Exposé Module Type</source>
+        <source>Exposee module type</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.type.1">
-        <source>Please select the type of the Exposé module.</source>
+        <source>Please choose the type of exposee module.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.customTpl.0">
         <source>Individual template</source>
@@ -101,16 +101,16 @@
         <source>These groups will be able to see the module.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fontSize.0">
-        <source>Fontsize</source>
+        <source>Font size</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fontSize.1">
-        <source>Define the font size of the output</source>
+        <source>Here you can define the font size for the output.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.0">
         <source>Force full address</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.1">
-        <source>The complete address will be enforced, regardless of whether it is released or not.</source>
+        <source>Output the complete address regardless of the address release.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.useProviderForwarding.0">
         <source>Use provider forwarding</source>
@@ -119,13 +119,13 @@
         <source>Use the forwarding mode stored in the provider. If you use this function, the telephone number (Headquarters) and e-mail (Headquarters) are overwritten if necessary.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.0">
-        <source>Gallery Categories</source>
+        <source>Gallery categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryModules.1">
-        <source>Select and sort the images that should be output by this module.</source>
+        <source>Here you can select and sort the gallery categories that will be output.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryItemTemplate.0">
-        <source>Gallery Item-Template</source>
+        <source>Gallery item template</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.galleryItemTemplate.1">
         <source>Here you can overwrite the default template.</source>
@@ -140,25 +140,25 @@
         <source>Hide on empty</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.gallerySkipOnEmpty.1">
-        <source>Forces the module to be hidden if no images are found. Otherwise, the default image stored in the settings is always displayed.</source>
+        <source>If no pictures are found, the module will not be displayed. Otherwise, the default image stored in the settings is used.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.numberOfItems.0">
-        <source>Number of items</source>
+        <source>Maximum number of items</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.numberOfItems.1">
-        <source>Here you can limit the number of items. Set to 0 to show all.</source>
+        <source>Here you can limit the number of items. Set to 0 to display all items.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.0">
         <source>Detail Categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.detailBlocks.1">
-        <source>Define the order and output of the details. Keep in mind that the sequence of the individual fields can be defined using the object types.</source>
+        <source>Here you can define the output and order of the details. Note that the order of individual fields is defined in the object types.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.0">
-        <source>Summarize detail categories</source>
+        <source>Combine categories</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.summariseDetailBlocks.1">
-        <source>Instead of individual categories, the details are summarized in a list.</source>
+        <source>Combine all categories into one list. Otherwise they are displayed in separated categories.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.0">
         <source>Add real estate address</source>
@@ -167,7 +167,7 @@
         <source>Adds the address of the property to the list of details.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.addHeadings.0">
-        <source>Output headings</source>
+        <source>Display headings</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.addHeadings.1">
         <source>Displays headings for the selected items.</source>
@@ -176,25 +176,25 @@
         <source>Texts</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.textBlocks.1">
-        <source>Specify and sort the texts to be output.</source>
+        <source>Here you can define the output and order of the real estate texts</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.0">
-        <source>max. text length</source>
+        <source>Maximum text length</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.1">
-        <source>Specify a number to shorten the text at a desired position or type "0" to output the text in an unabridged form.</source>
+        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with "...". Type "0" to output the full text.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.statusTokens.0">
         <source>Valid status token</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.statusTokens.1">
-        <source>Select valid status tokens. If applicable, these are output in supported templates.</source>
+        <source>Here you can define the output and order of valid status tokens.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fields.0">
         <source>Field list</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.fields.1">
-        <source>Select the fields you want to display. Fields that do not contain a value are skipped and not displayed.</source>
+        <source>Here you can select one or more fields to be output as a list. Fields that do not contain a value are skipped and not displayed.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.show_fields.0">
         <source>Fields to be displayed</source>
@@ -203,7 +203,7 @@
         <source>Fields</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.contactFields.1">
-        <source>Select the fields to be output</source>
+        <source>Here you can select the contact information that should be output.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.form.0">
         <source>Form</source>
@@ -212,13 +212,16 @@
         <source>Please select a form.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.share.0">
-        <source>Share on</source>
+        <source>Share via</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.share.1">
-        <source>Select which share-options should be available.</source>
+        <source>Here you can select the channels that can be used to share the object.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.shareEmailTemplate.0">
-        <source>Send via e-mail template</source>
+        <source>*Via email* template</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.shareEmailTemplate.1">
+        <source>Here you can select the template for the e-mail sharing option.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.html.0">
         <source>HTML code</source>
@@ -230,7 +233,7 @@
         <source>Hide on empty</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.hideOnEmpty.1">
-        <source>This module is only output if results to display have been found.</source>
+        <source>Output this module only if results for display were found.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.hideOnReferences.0">
         <source>Hide for references</source>
@@ -242,13 +245,13 @@
         <source>Attach feedback XML</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.attachFeedbackXml.1">
-        <source>Attach an OpenImmo feedback XML to the e-mail request.</source>
+        <source>Attach an OpenImmo feedback XML to enquiries.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.feedbackXmlTemplate.0">
         <source>Feedback XML template</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.feedbackXmlTemplate.1">
-        <source>Here you can select a feedback XML template for the e-mail request..</source>
+        <source>Here you can select a feedback XML template for enquiries.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.text.0">
         <source>Text</source>
@@ -281,10 +284,10 @@
         <source>Open the full size image in a lightbox or open it in a new browser window.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.attachmentType.0">
-        <source>Attachment type</source>
+        <source>Attachments</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.attachmentType.1">
-        <source>Please select an attachment type.</source>
+        <source>Please select the type of attachment.</source>
       </trans-unit>
       <trans-unit id="tl_expose_module.allowedFileExtensions.0">
         <source>Allowed file extensions</source>
