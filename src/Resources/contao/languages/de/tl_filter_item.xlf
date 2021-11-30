@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.mandatory.1">
         <source>The form will not submit if the field is empty.</source>
-        <target>Das Feld muss zum Abschicken des Formulars ausgefüllt werden.</target>
+        <target>Das Feld muss zum Abschicken des Filters ausgefüllt werden.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.countrySource.0">
         <source>Source</source>
@@ -67,11 +67,11 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.0">
         <source>Display long real estate title</source>
-        <target>Langen Immobilien-Titel verwenden</target>
+        <target>Detaillierte Bezeichnung verwenden</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLongTitle.1">
         <source>Displays the long real estate title. (e.g. 'rental apartment' instead of 'apartment')</source>
-        <target>Den langen Immobilien-Titel verwenden.</target>
+        <target>Die detaillierte Bezeichnung des Objekttypen anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.impreciseMode.0">
         <source>Allow inaccurate search</source>
@@ -91,7 +91,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.rangeMode.0">
         <source>Range mode</source>
-        <target>Range-Modus</target>
+        <target>Bereichs-Modus</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.typeItem.0">
         <source>Type field</source>
@@ -111,11 +111,11 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.group.0">
         <source>Real estate group</source>
-        <target>Immobilien-Gruppe</target>
+        <target>Objektgruppe</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.group.1">
         <source>Please select the real estate group.</source>
-        <target>Bitte die Immobilien-Gruppe auswählen.</target>
+        <target>Bitte die Objektgruppe auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.submitOnChange.0">
         <source>Submit on modification</source>
@@ -139,7 +139,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.displayMode.1">
         <source>Here you can specify the display mode.</source>
-        <target>Hier können Sie en Anzeige-Modus angeben.</target>
+        <target>Hier können Sie den Anzeige-Modus angeben.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.0">
         <source>Show label</source>
@@ -147,7 +147,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.1">
         <source>Here you can specify if the label should be displayed.</source>
-        <target>Hier können Sie angeben, ob des Label angezeigt werden soll.</target>
+        <target>Hier können Sie angeben, ob das Label angezeigt werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showPlaceholder.0">
         <source>Show placeholder</source>
@@ -191,7 +191,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.accesskey.1">
         <source>A form field can be focused by simultaneously pressing the hotkey and [ALT] or [CTRL] key.</source>
-        <target>Ein Formularfeld kann direkt angewählt werden, indem man gleichzeitig die [ALT]- bzw. [STRG]-Taste und das Tastaturkürzel drückt.</target>
+        <target>Ein Filterfeld kann direkt angewählt werden, indem man gleichzeitig die [ALT]- bzw. [STRG]-Taste und das Tastaturkürzel drückt.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.0">
         <source>Tabulator index</source>
@@ -199,7 +199,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.tabindex.1">
         <source>The position of the form field in the tab order.</source>
-        <target>Die Position des Formularfeldes innerhalb der Tabulator-Reihenfolge.</target>
+        <target>Die Position des Filterfeldes innerhalb der Tabulator-Reihenfolge.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.customTpl.0">
         <source>Custom form field template</source>
@@ -310,11 +310,11 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.editheader.0">
         <source>Edit form</source>
-        <target>Formular bearbeiten</target>
+        <target>Filterfeld bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.editheader.1">
         <source>Edit the form settings</source>
-        <target>Die Formular-Einstellungen bearbeiten</target>
+        <target>Die Filterfeld-Einstellungen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.pasteafter.0">
         <source>Insert above</source>
