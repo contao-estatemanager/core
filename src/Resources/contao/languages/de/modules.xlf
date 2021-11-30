@@ -109,7 +109,7 @@
       </trans-unit>
       <trans-unit id="FMD.realEstateExpose.1">
         <source>Generates a real estate exposé</source>
-        <target>Erzeugt ein Immobilien-Exposé</target>
+        <target>Erzeugt ein Immobilien-Exposé, welches in einer Detailseite angezeigt werden kann</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.0">
         <source>Real estate filters</source>
@@ -117,7 +117,7 @@
       </trans-unit>
       <trans-unit id="FMD.realEstateFilter.1">
         <source>Creates a real estate filter</source>
-        <target>Erzeugt einen Immobilienfilter</target>
+        <target>Erzeugt einen Immobilienfilter zur Suche und Filterung von Objekten. Der Filter wird mit einer Immobilien-Ergebnisliste kombiniert</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateList.0">
         <source>Real estate list</source>
@@ -125,7 +125,7 @@
       </trans-unit>
       <trans-unit id="FMD.realEstateList.1">
         <source>Generates a real estate list.</source>
-        <target>Erzeugt eine Immobilienliste</target>
+        <target>Fügt der Seite eine Immobilienliste hinzu</target>
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.0">
         <source>Real estate results list</source>
@@ -133,7 +133,7 @@
       </trans-unit>
       <trans-unit id="FMD.realEstateResultList.1">
         <source>Creates a real estate list, which can react to a filter.</source>
-        <target>Erzeugt eine filterbare Immobilienliste</target>
+        <target>Fügt der Seite eine filterbare Immobilienliste hinzu. Die gefilterten Ergebnisse können auf einen Immobilienfilter reagieren</target>
       </trans-unit>
       <trans-unit id="FMD.title.0">
         <source>Title</source>
@@ -213,7 +213,7 @@
       </trans-unit>
       <trans-unit id="FMD.statusToken.1">
         <source>Outputs the status tokens of the property. (e.g. New, Sold,...)</source>
-        <target>Gibt die Status-Tokens des Objektes aus (Neu, Verkauft, etc.)</target>
+        <target>Gibt die Status-Tokens des Objektes aus (bspw. Neu, Verkauft, ...)</target>
       </trans-unit>
       <trans-unit id="FMD.marketingToken.0">
         <source>Marketing-token</source>
@@ -221,7 +221,7 @@
       </trans-unit>
       <trans-unit id="FMD.marketingToken.1">
         <source>Outputs the marketing type as a token (e.g. for rent / for purchase)</source>
-        <target>Zeigt die Vermarktungsart als Token an (zum Kauf, zur Miete, etc.)</target>
+        <target>Zeigt die Vermarktungsart als Token an (z. B. zum Kauf, zur Miete)</target>
       </trans-unit>
       <trans-unit id="FMD.fieldList.0">
         <source>Fieldlist</source>
