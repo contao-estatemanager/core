@@ -18,7 +18,7 @@
         <source>Equivalent real estate type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.similarType.1">
-        <source>Please enter the equivalent real estate type.</source>
+        <source>Please select the equivalent real estate type.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.0">
         <source>Reference page</source>
@@ -30,13 +30,13 @@
         <source>Special exposee page</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.jumpTo.1">
-        <source>Here you can navigate to a real estate type specific expose page.</source>
+        <source>Here you can select a special exposee page for this real estate type.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.0">
         <source>Type of use</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.1">
-        <source>Please enter the type of use.</source>
+        <source>Here you can select the type of usage</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart_wohnen">
         <source>Living</source>
@@ -54,10 +54,10 @@
         <source>Marketing type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.vermarktungsart.1">
-        <source>Please enter the marketing type.</source>
+        <source>Here you can select the marketing type.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.kauf_erbpacht">
-        <source>Buy</source>
+        <source>Purchase</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.miete_leasing">
         <source>Rent</source>
@@ -66,7 +66,7 @@
         <source>Property type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart.1">
-        <source>Please enter the object type.</source>
+        <source>Here you can select the property type.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_zimmer">
         <source>Rooms</source>
@@ -99,10 +99,10 @@
         <source>Parking</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_sonstige">
-        <source>Miscellaneous</source>
+        <source>Other</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_freizeitimmobilie_gewerblich">
-        <source>Leisure home (used for commercial purposes)</source>
+        <source>Leisure home (commercial)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_zinshaus_renditeobjekt">
         <source>Revenue property</source>
@@ -111,7 +111,7 @@
         <source>Exclude real estate types</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.1">
-        <source>Here you can exclude individual real estate categories from the search if the field configuration for real estate types overlaps.</source>
+        <source>If the field configurations for real estate types overlap, you can exclude individual real estate types for the search here.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludedTypes.0">
         <source>Excluded real estate types</source>
@@ -120,46 +120,46 @@
         <source>Excluded real estate types are not taken into account when searching for this explicit real estate type.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.price.0">
-        <source>Primary price field</source>
+        <source>Main price field</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.price.1">
-        <source>Please enter the primary price field.</source>
+        <source>Please select the main price field.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.0">
-        <source>Primary area-field</source>
+        <source>Main area field</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.1">
-        <source>Please enter the primary-area field.</source>
+        <source>Please select the main field for areas.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggleFilter.0">
-        <source>Primary filter</source>
+        <source>Main filters</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggleFilter.1">
-        <source>Please choose the primary filter.</source>
+        <source>Here you can select and sort the main filters.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.0">
         <source>Sorting options</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.1">
-        <source>Please enter the sorting options.</source>
+        <source>Here you can select and sort the sorting options that will be output.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.0">
-        <source>Primary details</source>
+        <source>Main details</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.1">
-        <source>Please enter the primary details.</source>
+        <source>Here you can select and sort the main details that will be output.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.0">
-        <source>Primary attributes</source>
+        <source>Main attributes</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.1">
-        <source>Please enter the primary attributes of the real estate.</source>
+        <source>Here you can select and sort the main attributes that will be output.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.0">
-        <source>Sort fields</source>
+        <source>Sort details</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.1">
-        <source>Should the fields of a real estate be displayed in a user-defined order?</source>
+        <source>Activate user-defined sorting of real estate details in the exposee module *Details*.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderedFields.0">
         <source>Field sorting</source>
@@ -177,7 +177,7 @@
         <source>Publish real estate type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.title_legend">
-        <source>Title &amp; type settings</source>
+        <source>Title &amp; type</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.forwarding_legend">
         <source>Forwarding</source>
