@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.title.1">
         <source>Please enter the title of the property type.</source>
-        <target>Bitte geben Sie die Bezeichnung des Immobilientyps ein.</target>
+        <target>Bitte geben Sie die Bezeichnung des Objekttypen ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.longTitle.0">
         <source>Detailed title</source>
@@ -15,23 +15,23 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.longTitle.1">
         <source>Please enter the detailed title of the property type.</source>
-        <target>Bitte geben Sie die detaillierte Bezeichnung des Immobilientyps ein.</target>
+        <target>Bitte geben Sie die detaillierte Bezeichnung des Objekttypen ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.similarType.0">
         <source>Equivalent real estate type</source>
-        <target>Äquivalenter Immobilientyp</target>
+        <target>Äquivalenter Objekttyp</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.similarType.1">
         <source>Please enter the equivalent real estate type.</source>
-        <target>Bitte wählen Sie den äquivalenten Immobilientyp aus.</target>
+        <target>Bitte wählen Sie den äquivalenten Objekttypen aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.0">
         <source>Reference page</source>
-        <target>Referenz-Seite</target>
+        <target>Referenzseite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.referencePage.1">
         <source>This page is called if this unique real estate type could be determined.</source>
-        <target>Diese Seite wird aufgerufen, wenn dieser eindeutige Immobilientyp ermittelt werden konnte.</target>
+        <target>Diese Seite wird aufgerufen, wenn dieser eindeutige Objekttyp ermittelt werden konnte.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.jumpTo.0">
         <source>Special exposee page</source>
@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.jumpTo.1">
         <source>Here you can navigate to a real estate type specific expose page.</source>
-        <target>Hier können Sie eine Immobilientyp-spezifische Exposé-Seite ansteuern.</target>
+        <target>Hier können Sie eine spezielle Exposé-Seite für diesen Objekttypen auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.0">
         <source>Type of use</source>
@@ -47,7 +47,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.1">
         <source>Please enter the type of use.</source>
-        <target>Bitte geben Sie die Nutzungsart an.</target>
+        <target>Hier können Sie die Nutzungsart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart_wohnen">
         <source>Living</source>
@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.vermarktungsart.1">
         <source>Please enter the marketing type.</source>
-        <target>Bitte geben Sie die Vermarktungsart an.</target>
+        <target>Hier können Sie die Vermarktungsart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.kauf_erbpacht">
         <source>Buy</source>
@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart.1">
         <source>Please enter the object type.</source>
-        <target>Bitte geben Sie die Objektart an.</target>
+        <target>Hier können Sie die Objektart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_zimmer">
         <source>Rooms</source>
@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_hallen_lager_prod">
         <source>Halls / Warehouse / Workshops</source>
-        <target>Hallen/Lager/Prod.</target>
+        <target>Hallen/Lager/Produktion</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_land_und_forstwirtschaft">
         <source>Agriculture and forestry</source>
@@ -127,11 +127,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_parken">
         <source>Parking</source>
-        <target>Stellplatz</target>
+        <target>Parken</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_sonstige">
         <source>Miscellaneous</source>
-        <target>Sonstiges</target>
+        <target>Sonstige</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_freizeitimmobilie_gewerblich">
         <source>Leisure home (used for commercial purposes)</source>
@@ -143,19 +143,19 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.0">
         <source>Exclude real estate types</source>
-        <target>Immobilientypen ausschließen</target>
+        <target>Objekttypen ausschließen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.1">
         <source>Here you can exclude individual real estate categories from the search if the field configuration for real estate types overlaps.</source>
-        <target>Bei Überschneidungen der Feld-Konfigurationen für Immobilientypen können Sie einzelne Immobilientypen für die Suche hier ausschließen.</target>
+        <target>Bei Überschneidungen der Feld-Konfigurationen für Objekttypen können Sie hier einzelne Objekttypen für die Suche ausschließen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludedTypes.0">
         <source>Excluded real estate types</source>
-        <target>Ausgeschlossene Immobilientypen</target>
+        <target>Ausgeschlossene Objekttypen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludedTypes.1">
         <source>Excluded real estate types are not taken into account when searching for this explicit real estate type.</source>
-        <target>Ausgeschlossene Immobilientypen werden bei der Suche dieses expliziten Immobilientyps nicht berücksichtigt.</target>
+        <target>Ausgeschlossene Objekttypen werden bei der Suche dieses expliziten Objekttypen nicht berücksichtigt.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.price.0">
         <source>Primary price field</source>
@@ -163,7 +163,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.price.1">
         <source>Please enter the primary price field.</source>
-        <target>Bitte geben Sie das primäre Preisfeld an.</target>
+        <target>Bitte wählen Sie das primäre Preisfeld aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.0">
         <source>Primary area-field</source>
@@ -171,7 +171,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.area.1">
         <source>Please enter the primary-area field.</source>
-        <target>Bitte geben Sie das primäre Flächenfeld an.</target>
+        <target>Bitte wählen Sie das primäre Flächenfeld aus.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggleFilter.0">
         <source>Primary filter</source>
@@ -179,7 +179,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggleFilter.1">
         <source>Please choose the primary filter.</source>
-        <target>Hier können Sie die primären Filter auswählen.</target>
+        <target>Hier können Sie die primären Filter auswählen und sortieren.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.0">
         <source>Sorting options</source>
@@ -187,7 +187,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.sortingOptions.1">
         <source>Please enter the sorting options.</source>
-        <target>Bitte geben Sie die Sortieroptionen an.</target>
+        <target>Hier können Sie die Sortieroptionen auswählen und sortieren.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.0">
         <source>Primary details</source>
@@ -195,7 +195,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainDetails.1">
         <source>Please enter the primary details.</source>
-        <target>Bitte geben Sie die primären Details an.</target>
+        <target>Hier können Sie die primären Details auswählen und sortieren.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.0">
         <source>Primary attributes</source>
@@ -203,15 +203,15 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.mainAttributes.1">
         <source>Please enter the primary attributes of the real estate.</source>
-        <target>Bitte geben Sie die primären Attribute der Immobilie an.</target>
+        <target>Hier können Sie die primären Attribute auswählen und sortieren.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.0">
         <source>Sort fields</source>
-        <target>Felder sortieren</target>
+        <target>Details sortieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderFields.1">
         <source>Should the fields of a real estate be displayed in a user-defined order?</source>
-        <target>Sollen die Felder einer Immobilie in einer benutzerdefinierten Reihenfolge ausgegeben werden?</target>
+        <target>Benutzerdefinierte Sortierung der Details einer Immobilie im Exposé-Modul *Details* aktivieren.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.orderedFields.0">
         <source>Field sorting</source>
@@ -231,11 +231,11 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.published.1">
         <source>Publish real estate type</source>
-        <target>Immobilien-Typ veröffentlichen</target>
+        <target>Objekttyp veröffentlichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.title_legend">
         <source>Title &amp; type settings</source>
-        <target>Titel- und Typ-Einstellungen</target>
+        <target>Titel und Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.forwarding_legend">
         <source>Forwarding</source>
@@ -263,31 +263,31 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.new.0">
         <source>New real estate type</source>
-        <target>Neuer Immobilientyp</target>
+        <target>Neuer Objekttyp</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.new.1">
         <source>Create a new real estate type</source>
-        <target>Eine neue Immobilien-Gruppe erstellen</target>
+        <target>Einen neuen Objekttypen erstellen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.edit.0">
         <source>Edit real estate type</source>
-        <target>Immobilien-Typ bearbeiten</target>
+        <target>Objekttyp bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.edit.1">
         <source>Edit real estate type ID %s</source>
-        <target>Immobilien-Typ ID %s bearbeiten</target>
+        <target>Objekttyp ID %s bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.cut.0">
         <source>Move real estate type</source>
-        <target>Immobilien-Typ verschieben</target>
+        <target>Objekttyp verschieben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.cut.1">
         <source>Move real estate type ID %s</source>
-        <target>Immobilien-Typ ID %s verschieben</target>
+        <target>Objekttyp ID %s verschieben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.editheader.0">
         <source>Edit real estate type</source>
-        <target>Immobilien-Typ bearbeiten</target>
+        <target>Objekttyp bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.editheader.1">
         <source>Edit the real estate type settings</source>
@@ -295,43 +295,43 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.copy.0">
         <source>Duplicate real estate type</source>
-        <target>Immobilien-Typ duplizieren</target>
+        <target>Objekttyp duplizieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.copy.1">
         <source>Duplicate real estate type ID %s</source>
-        <target>Immobilien-Typ ID %s duplizieren</target>
+        <target>Objekttyp ID %s duplizieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.delete.0">
         <source>Delete real estate type</source>
-        <target>Immobilien-Typ löschen</target>
+        <target>Objekttyp löschen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.delete.1">
         <source>Delete real estate type ID %s</source>
-        <target>Immobilien-Typ ID %s löschen</target>
+        <target>Objekttyp ID %s löschen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggle.0">
         <source>Activate/deactivate real estate type</source>
-        <target>Immobilien-Typ aktivieren/deaktivieren</target>
+        <target>Objekttyp aktivieren/deaktivieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.toggle.1">
         <source>Activate/deactivate real estate type ID %s</source>
-        <target>Immobilien-Typ ID %s aktivieren/deaktivieren</target>
+        <target>Objekttyp ID %s aktivieren/deaktivieren</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.show.0">
         <source>Real estate type details</source>
-        <target>Immobilien-Typ Details</target>
+        <target>Objekttyp Details</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.show.1">
         <source>Show the details of real estate type ID %s</source>
-        <target>Die Details des Immobilien-Typ ID %s anzeigen</target>
+        <target>Die Details des Objekttypen ID %s anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.pastenew.0">
         <source>Add new at the top</source>
-        <target>Neuen Immobilien-Typ oben erstellen</target>
+        <target>Neuen Objekttyp oben erstellen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.pastenew.1">
         <source>Add new after real estate type ID %s</source>
-        <target>Neuen Immobilien-Typ nach ID %s erstellen</target>
+        <target>Neuen Objekttyp nach ID %s erstellen</target>
       </trans-unit>
     </body>
   </file>
