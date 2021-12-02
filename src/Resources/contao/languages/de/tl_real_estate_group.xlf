@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.0">
         <source>Reference page</source>
-        <target>Referenz-Seite</target>
+        <target>Referenzseite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.1">
         <source>This page is called if no unique real estate type could be determined.</source>
