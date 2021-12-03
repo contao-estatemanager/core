@@ -87,8 +87,8 @@
         <target>Veröffentlichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.published.1">
-        <source>The real estate will be displayed on the homepage.</source>
-        <target>Die Immobilie wird auf der Website ausgegeben.</target>
+        <source>The real estate will be displayed on the website.</source>
+        <target>Das Objekt wird auf der Website ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektnrIntern.0">
         <source>Internal object number</source>
@@ -147,12 +147,12 @@
         <target>Wählen Sie den Ansprechpartner der Immobilie.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.0">
-        <source>Alias</source>
+        <source>Alias / SEO-URI</source>
         <target>Alias/SEO-URL</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.1">
         <source>Enter the alias of the real estate here or leave the field blank to generate the alias automatically.</source>
-        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei um den Alias automatisch generieren zu lassen.</target>
+        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei, um den Alias automatisch generieren zu lassen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.plz.0">
@@ -256,16 +256,16 @@
         <target>Geben Sie hier den Gemeindecode der Immobilie ein.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektadresseFreigeben.0">
-        <source>Release property address</source>
+        <source>Publish property address</source>
         <target>Objektadresse freigeben</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektadresseFreigeben.1">
-        <source>Here you can specify if the address of the property will be displayed for visitors / on the homepage.</source>
-        <target>Geben Sie hier an, ob die Objektadresse für Besucher / auf der Website sichtbar sein darf.</target>
+        <source>Here you can specify if the address of the property should be displayed for visitors on the website.</source>
+        <target>Hier können Sie definieren, ob die Adresse des Objektes freigegeben werden darf.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.vermarktungsartKauf.0">
-        <source>Buy</source>
+        <source>Purchase</source>
         <target>Kaufen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermarktungsartKauf.1">
@@ -309,16 +309,16 @@
         <target>Objektart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.objektart.1">
-        <source>Here you can enter the property type of the real estate.</source>
-        <target>Geben Sie hier die Objektart der Immobilie an.</target>
+        <source>Here you can select the property type of the real estate.</source>
+        <target>Hier können Sie die Objektart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzungsart.0">
         <source>Type of use</source>
         <target>Nutzungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzungsart.1">
-        <source>Here you can enter the type of use for the property.</source>
-        <target>Geben Sie hier die Nutzungsart der Immobilie an.</target>
+        <source>Here you can select the type of use for the property.</source>
+        <target>Hier können Sie die Nutzungsart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alsFerien.0">
         <source>Vacation property</source>
@@ -746,7 +746,7 @@
         <target>Definieren Sie hier die Gesamtbelastung (brutto).</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2von.0">
-        <source>Total costs per sqm of</source>
+        <source>Total costs per sqm from</source>
         <target>Gesamtkosten pro m² von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gesamtkostenprom2von.1">
@@ -786,7 +786,7 @@
         <target>Definieren Sie hier die monatlichen Kosten (brutto).</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2von.0">
-        <source>Ancillary costs per sqm of</source>
+        <source>Ancillary costs per sqm from</source>
         <target>Nebenkosten pro m² von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nebenkostenprom2von.1">
@@ -866,7 +866,7 @@
         <target>Definieren Sie hier die Summe Miete (inkl. USt.).</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2von.0">
-        <source>Rent (net) per sqm of</source>
+        <source>Rent (net) per sqm from</source>
         <target>Miete pro m² von (netto)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nettomieteprom2von.1">
@@ -964,6 +964,10 @@
       <trans-unit id="tl_real_estate.provisionTeilen.0">
         <source>Share commission</source>
         <target>Provision teilen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.provisionTeilen.1">
+        <source>Split commission payment for partner transactions.</source>
+        <target>Aufteilung der Provision bei Partnergeschäften. Auch &quot;A Meta&quot; Geschäft.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.provisionTeilenWert.0">
         <source>Share commission</source>
@@ -1637,8 +1641,8 @@
         <target>Ausstattungskategorie</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.ausstattKategorie.1">
-        <source>Here you can enter the furnishing category for your real estate.</source>
-        <target>Geben Sie hier die Ausstattungskategorie der Immobilie an.</target>
+        <source>Here you can select the furnishing category for your real estate.</source>
+        <target>Hier können Sie die Ausstattungskategorie des Objektes auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bad.0">
         <source>Bathroom furnishings</source>
@@ -1906,7 +1910,7 @@
         <target>WG-geeignet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zulieferung.0">
-        <source>Supply/Delivery available</source>
+        <source>Supply/Delivery possible</source>
         <target>Zulieferung möglich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kamin.0">

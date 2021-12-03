@@ -1311,7 +1311,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'order'    => 825
             )
         ),
-        'provisionTeilenWert'  => array
+        'provisionTeilenWert'  => array // ToDo: Elaborate if this field should be 'provisionTeilen'
         (
             'exclude'                   => true,
             'inputType'                 => 'select',
