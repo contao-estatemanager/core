@@ -10,7 +10,7 @@
         <target>Preise/Flächen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config_legend">
-        <source>Filters</source>
+        <source>Filter settings</source>
         <target>Filter-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.provider_contact_legend">

@@ -7,7 +7,7 @@
       </trans-unit>
 
       <trans-unit id="tl_real_estate_administration.group_provider">
-        <source>Provider / Locations</source>
+        <source>Provider &amp; Locations</source>
         <target>Anbieter &amp; Standorte</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_configuration">
@@ -23,7 +23,7 @@
         <target>Filter</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_visualization">
-        <source>Representation / Modules</source>
+        <source>Representation &amp; Modules</source>
         <target>Darstellung &amp; Module</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_administration.group_addons">

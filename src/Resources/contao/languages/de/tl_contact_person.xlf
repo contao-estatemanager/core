@@ -1,13 +1,25 @@
 <?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_contact_person.php" source-language="en" target-language="de">
     <body>
+      <trans-unit id="tl_contact_person.id.0">
+        <source>Contact person ID</source>
+        <target>Kontaktperson ID</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.pid.0">
+        <source>Provider ID</source>
+        <target>Anbieter ID</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.tstamp.0">
+        <source>Changed</source>
+        <target>Geändert</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.anrede.0">
         <source>Prefix</source>
         <target>Anrede</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede.1">
-        <source>Please enter a prefix.</source>
-        <target>Hier kann eine Anrede ausgewählt werden</target> <!-- Form of address -->
+        <source>Please select a prefix.</source>
+        <target>Hier kann eine Anrede ausgewählt werden.</target> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.herr.0">
         <source>Mr.</source>
@@ -17,6 +29,10 @@
         <source>Mrs.</source>
         <target>Frau</target>
       </trans-unit>
+      <trans-unit id="tl_contact_person.divers.0">
+        <source>Diverse</source>
+        <target>Divers</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
         <source>Dear</source>
         <target>Sehr geehrter</target>
@@ -24,6 +40,10 @@
       <trans-unit id="tl_contact_person.salutationMrs.0">
         <source>Dear</source>
         <target>Sehr geehrte</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationDivers.0">
+        <source>Dear</source>
+        <target>Hallo</target>
       </trans-unit>
 
       <trans-unit id="tl_contact_person.firma.0">
@@ -199,8 +219,8 @@
         <target>Land</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.land.1">
-        <source>Please select the country.</source>
-        <target>Hier können Sie ein Land eintragen</target>
+        <source>Please enter the country.</source>
+        <target>Hier können Sie ein Land eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.zusatzfeld.0">
         <source>Additional field</source>
@@ -219,7 +239,7 @@
         <target>Hier können Sie optional die Adresse als Freitext angeben.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.0">
-        <source>Address enable</source>
+        <source>Show address</source>
         <target>Adressfreigabe</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.1">
@@ -231,7 +251,7 @@
         <target>Bild des Ansprechpartners/der Ansprechpartnerin</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.1">
-        <source>Here you can choose / enter the picture of the contact person.</source>
+        <source>Here you can choose the picture of the contact person.</source>
         <target>Hier können Sie das Bild des Ansprechpartners/der Ansprechpartnerin auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.0">

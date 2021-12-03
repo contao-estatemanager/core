@@ -6,11 +6,11 @@
          <target>Balkon/Terrasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.virtuelletour">
-        <source>Virtual tour available</source>
+        <source>Virtual tour</source>
         <target>Virtuelle Tour</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.luftbildern">
-        <source>Aerial photographs available</source>
+        <source>Aerial photographs</source>
         <target>Luftaufnahmen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.zwangsversteigerung">
@@ -22,7 +22,7 @@
         <target>Einliegerwohnung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wgGeeignet">
-        <source>Flatshare suitable</source>
+        <source>Flat share suitable</source>
         <target>WG geeignet</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.raeumeVeraenderbar">
@@ -38,7 +38,7 @@
         <target>Badewanne</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.bad_fenster">
-        <source>Window</source>
+        <source>Bathroom window</source>
         <target>Fenster im Bad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.bad_bidet">
@@ -66,7 +66,7 @@
         <target>Fliesenboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_stein">
-        <source>Stone</source>
+        <source>Stone floor</source>
         <target>Steinboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_teppich">
@@ -78,7 +78,7 @@
         <target>Parkettboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_fertigparkett">
-        <source>Prefinished</source>
+        <source>Prefinished parquet</source>
         <target>Fertigparkett</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_laminat">
@@ -90,7 +90,7 @@
         <target>Dielen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_kunststoff">
-        <source>Plastic</source>
+        <source>Vinyl flooring</source>
         <target>Kunststoffboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_estrich">
@@ -102,7 +102,7 @@
         <target>Doppelboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_linoleum">
-        <source>Linoleum</source>
+        <source>Linoleum flooring</source>
         <target>Linoleumboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.boden_marmor">
@@ -206,15 +206,15 @@
         <target>Wintergarten</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dvVerkabelung">
-        <source>DV-Cable available</source>
+        <source>DV-Cable</source>
         <target>DV-Verkabelung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.rampe">
-        <source>Ramp available</source>
+        <source>Ramp</source>
         <target>Rampe</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.hebebuehne">
-        <source>Lifting ramp available</source>
+        <source>Lifting ramp</source>
         <target>Hebebühne</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kran">
@@ -222,7 +222,7 @@
         <target>Kran</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.gastterrasse">
-        <source>Guest terrace available</source>
+        <source>Guest terrace</source>
         <target>Gästeterrasse</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kantineCafeteria">
@@ -230,7 +230,7 @@
         <target>Kantine/Cafeteria</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.teekueche">
-        <source>Kitchenette available</source>
+        <source>Kitchenette</source>
         <target>Teeküche</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.angeschlGastronomie_hotelrestaurant">
@@ -246,7 +246,7 @@
         <target>Brauereibindung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.sporteinrichtungen">
-        <source>Sports facilities available</source>
+        <source>Sports facilities</source>
         <target>Sporteinrichtungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.wellnessbereich">
@@ -274,15 +274,15 @@
         <target>Wachdienst</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.telefonFerienimmobilie">
-        <source>Phone available (vacational real estate)</source>
+        <source>Phone</source>
         <target>Telefon</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.breitbandZugang">
-        <source>Broadband access available</source>
+        <source>Broadband access</source>
         <target>Breitbandzugang (DSL)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.umtsEmpfang">
-        <source>UMTS reception available</source>
+        <source>UMTS reception</source>
         <target>UMTS-Empfang</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.sicherheitstechnik_alarmanlage">
@@ -310,7 +310,7 @@
         <target>Teilunterkellert</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.abstellraum">
-        <source>Storage room available</source>
+        <source>Storage room</source>
         <target>Abstellraum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.fahrradraum">
@@ -318,15 +318,15 @@
         <target>Fahrradraum</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.rolladen">
-        <source>Roller shutters available</source>
+        <source>Roller shutters</source>
         <target>Rollladen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.bibliothek">
-        <source>Library available</source>
+        <source>Library</source>
         <target>Bibliothek</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.dachboden">
-        <source>Attic available</source>
+        <source>Attic</source>
         <target>Dachboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.gaestewc">
@@ -334,19 +334,19 @@
         <target>Gäste-WC</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.kabelkanaele">
-        <source>Cable TV available</source>
+        <source>Cable TV</source>
         <target>Kabel-TV</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.seniorengerecht">
-        <source>Suitable for the elderly</source>
+        <source>Senior-friendly</source>
         <target>Seniorengerecht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.zulieferung">
-        <source>Supply/Delivery available</source>
+        <source>Supply/Delivery</source>
         <target>Zulieferung möglich</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.nichtraucher">
-        <source>Non-smokers</source>
+        <source>Non-smoking</source>
         <target>Nichtraucher</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_attribute.haustiere">

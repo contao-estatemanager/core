@@ -2,7 +2,7 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_content.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_content.filter.0">
-        <source>Real Estate Filters</source>
+        <source>Real estate filters</source>
         <target>Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="tl_content.filter.1">

@@ -1,6 +1,6 @@
 <?php foreach ($this->slides as $slide): ?>
-    <div class="gallery-item <?=$slide->isImage ? 'image' : 'html'?>">
-        <?php if($slide->isImage): ?>
+    <div class="gallery-item <?=is_object($slide) && $slide->isImage ? 'image' : 'html'?>">
+        <?php if(is_object($slide) && $slide->isImage): ?>
             <figure>
                 <?php if (isset($slide->href)): ?>
                     <a href="<?= $slide->href ?>"<?= $slide->attributes ?><?php if ($slide->linkTitle) echo ' title="' . $slide->linkTitle . '"'; ?>>

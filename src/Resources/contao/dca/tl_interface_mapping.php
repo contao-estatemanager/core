@@ -438,7 +438,7 @@ class tl_interface_mapping extends Contao\Backend
         {
             foreach ($GLOBALS['TL_DCA'][$dc->activeRecord->type]['fields'] as $field => $config)
             {
-                $arrFields[$field] = ($GLOBALS['TL_LANG']['tl_real_estate'][$field][0] ?? '') . ' [' . $field . ']';
+                $arrFields[$field] = ($GLOBALS['TL_LANG'][$dc->activeRecord->type][$field][0] ?? '') . ' [' . $field . ']';
             }
         }
 

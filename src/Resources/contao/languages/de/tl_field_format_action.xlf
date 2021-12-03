@@ -6,8 +6,24 @@
         <target>Neue Formataktion</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.new.1">
-        <source>Creating a new format action</source>
+        <source>Create a new format action</source>
         <target>Neue Formataktion anlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.edit">
+        <source>Edit format action ID %s</source>
+        <target>Formataktion ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.copy">
+        <source>Duplicate format action ID %s</source>
+        <target>Formataktion ID %s duplizieren</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.delete">
+        <source>Delete format action ID %s</source>
+        <target>Formataktion ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.show">
+        <source>Show the details of format action ID %s</source>
+        <target>Details der Formataktion %s anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.edit.0">
         <source>Edit format action</source>
@@ -35,7 +51,7 @@
       </trans-unit>
 
       <trans-unit id="tl_field_format_action.type_legend">
-        <source>Format-action</source>
+        <source>Format Action</source>
         <target>Formataktion</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.setting_legend">

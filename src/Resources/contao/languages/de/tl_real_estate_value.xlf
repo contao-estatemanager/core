@@ -100,11 +100,11 @@
         <target>Parken</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_sonstige">
-        <source>Miscellaneous</source>
+        <source>Other</source>
         <target>Sonstige</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_freizeitimmobilie_gewerblich">
-        <source>Leisure home (used for commercial purposes)</source>
+        <source>Leisure home (commercial)</source>
         <target>Freizeitimmobilie (gewerblich)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.objektart_zinshaus_renditeobjekt">
@@ -152,11 +152,11 @@
         <target>Parken</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstige">
-        <source>Miscellaneous</source>
+        <source>Other</source>
         <target>Sonstige</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.freizeitimmobilie_gewerblich">
-        <source>Leisure home (used for commercial purposes)</source>
+        <source>Leisure home (commercial)</source>
         <target>Freizeitimmobilie (gewerblich)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.zinshaus_renditeobjekt">
@@ -234,7 +234,7 @@
         <target>Reihenhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reihenend">
-        <source>End terrace</source>
+        <source>End-terrace</source>
         <target>Reihenendhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reihenmittel">
@@ -242,7 +242,7 @@
         <target>Reihenmittelhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_reiheneck">
-        <source>Corner terraced house</source>
+        <source>Corner-terraced house</source>
         <target>Reiheneckhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.hausTyp_doppelhaushaelfte">
@@ -662,7 +662,7 @@
         <target>Krankenhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.sonstigeTyp_sonstige">
-        <source>Miscellaneous</source>
+        <source>Other</source>
         <target>Sonstige</target>
       </trans-unit>
 
@@ -820,7 +820,7 @@
         <target>Parkhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_sonstiges">
-        <source>Miscellaneous</source>
+        <source>Other</source>
         <target>Sonstiges</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageImBau_links">
@@ -944,7 +944,7 @@
         <target>Fliesenboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_stein">
-        <source>Stone</source>
+        <source>Stone floor</source>
         <target>Steinboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_teppich">
@@ -956,7 +956,7 @@
         <target>Parkettboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_fertigparkett">
-        <source>Prefinished</source>
+        <source>Prefinished parquet</source>
         <target>Fertigparkett</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_laminat">
@@ -968,7 +968,7 @@
         <target>Dielen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_kunststoff">
-        <source>Plastic</source>
+        <source>Vinyl flooring</source>
         <target>Kunststoffboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_estrich">
@@ -980,7 +980,7 @@
         <target>Doppelboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_linoleum">
-        <source>Linoleum</source>
+        <source>Linoleum flooring</source>
         <target>Linoleumboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_marmor">

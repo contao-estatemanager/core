@@ -46,7 +46,7 @@
                 <target>Kontaktperson</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.alias">
-                <source>Alias</source>
+                <source>Alias/SEO-URI</source>
                 <target>Alias/SEO-URL</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreis">
@@ -315,7 +315,7 @@
                 <target>Freifläche</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermietbareFlaeche">
-                <source>Rentable Area</source>
+                <source>Rentable area</source>
                 <target>Vermietbare Fläche</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gastroflaeche">
@@ -335,7 +335,7 @@
                 <target>Baumassen-Zahl</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bgf">
-                <source>Brutto-Geschossflächen-Zahl nach Din277</source>
+                <source>Gross floor area according to Din227</source>
                 <target>Brutto-Geschossflächen-Zahl nach DIN 277</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.lagerflaeche">
@@ -427,11 +427,11 @@
                 <target>Gemeindecode</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.objektadresseFreigeben">
-                <source>Release property address</source>
+                <source>Publish property address</source>
                 <target>Objektadresse freigeben</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartKauf">
-                <source>Buy</source>
+                <source>Purchase</source>
                 <target>Kaufen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartMietePacht">
@@ -579,11 +579,11 @@
                 <target>Ausnützungsziffer</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.flaechevon">
-                <source>Area from</source>
+                <source>Min. area</source>
                 <target>Fläche von</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.flaechebis">
-                <source>Area up to</source>
+                <source>Max. area</source>
                 <target>Fläche bis</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.denkmalgeschuetzt">
@@ -655,16 +655,16 @@
                 <target>DV-Verkabelung</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.rampe">
-                <source>Ramp available</source>
-                <target>Rampe vorhanden</target>
+                <source>Ramp</source>
+                <target>Rampe</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hebebuehne">
-                <source>Lifting ramp available</source>
-                <target>Hebebühne vorhanden</target>
+                <source>Lifting ramp</source>
+                <target>Hebebühne</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kran">
-                <source>Crane available</source>
-                <target>Kran vorhanden</target>
+                <source>Crane</source>
+                <target>Kran</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sauna">
                 <source>Sauna</source>
@@ -859,7 +859,7 @@
                 <target>Rollladen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bibliothek">
-                <source>Library available</source>
+                <source>Library</source>
                 <target>Bibliothek</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.dachboden">
@@ -895,11 +895,11 @@
                 <target>Stromanschlusswert</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kantineCafeteria">
-                <source>Canteen/Cafeteria available</source>
+                <source>Canteen/Cafeteria</source>
                 <target>Kantine/Cafeteria</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.teekueche">
-                <source>Kitchenette available</source>
+                <source>Kitchenette</source>
                 <target>Teeküche</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlSepWc">
@@ -915,11 +915,11 @@
                 <target>Wellnessbereich</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.telefonFerienimmobilie">
-                <source>Phone available (vacational real estate)</source>
+                <source>Phone available</source>
                 <target>Telefon vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandZugang">
-                <source>Broadband access available</source>
+                <source>Broadband access</source>
                 <target>Breitband-Zugang</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandGeschw">
@@ -1099,11 +1099,11 @@
                 <target>Mikro-Karte vorhanden</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.virtuelletour">
-                <source>Virtual tour available</source>
+                <source>Virtual tour</source>
                 <target>Virtuelle-Tour</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.luftbildern">
-                <source>Aerial photographs available</source>
+                <source>Aerial photographs</source>
                 <target>Luftaufnahmen</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.heizungsart">
@@ -1331,7 +1331,7 @@
                 <target>Längengrad</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.lageImBau">
-                <source>Location of Property</source>
+                <source>Location of property</source>
                 <target>Lage im Bau</target>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.wohnungsnr">

@@ -2,7 +2,7 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_user_group.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_user_group.filter_legend">
-        <source>Filter permissions</source>
+        <source>Real estate filter permissions</source>
         <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user_group.interface_legend">
@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="tl_user_group.real_estate_group_legend">
         <source>Real estate group permissions</source>
-        <target>Immobiliengruppen-Rechte</target>
+        <target>Objektgruppen-Rechte</target>
       </trans-unit>
     </body>
   </file>

@@ -24,7 +24,7 @@
         <source>Logo of provider</source>
       </trans-unit>
       <trans-unit id="tl_provider.singleSRC.1">
-        <source>Here you can enter the logo of the provider.</source>
+        <source>Here you can select a logo for the provider.</source>
       </trans-unit>
       <trans-unit id="tl_provider.contact.0">
         <source>Contact person (if possible)</source>
@@ -108,7 +108,7 @@
         <source>Country</source>
       </trans-unit>
       <trans-unit id="tl_provider.land.1">
-        <source>Please select the country.</source>
+        <source>Please enter the country.</source>
       </trans-unit>
       <trans-unit id="tl_provider.lat.0">
         <source>Latitude</source>
@@ -225,7 +225,7 @@
         <source>Redirecting</source>
       </trans-unit>
       <trans-unit id="tl_provider.image_legend">
-        <source>Imagesettings</source>
+        <source>Image settings</source>
       </trans-unit>
       <trans-unit id="tl_provider.description_legend">
         <source>Description</source>

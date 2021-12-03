@@ -2,11 +2,20 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_contact_person.php" source-language="en">
     <body>
+      <trans-unit id="tl_contact_person.id.0">
+        <source>Contact person ID</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.pid.0">
+        <source>Provider ID</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.tstamp.0">
+        <source>Changed</source>
+      </trans-unit>
       <trans-unit id="tl_contact_person.anrede.0">
         <source>Prefix</source> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.anrede.1">
-        <source>Please enter a prefix.</source> <!-- Form of address -->
+        <source>Please select a prefix.</source> <!-- Form of address -->
       </trans-unit>
       <trans-unit id="tl_contact_person.herr.0">
         <source>Mr.</source>
@@ -14,13 +23,18 @@
       <trans-unit id="tl_contact_person.frau.0">
         <source>Mrs.</source>
       </trans-unit>
+      <trans-unit id="tl_contact_person.divers.0">
+        <source>Diverse</source>
+      </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
         <source>Dear</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationMrs.0">
         <source>Dear</source>
       </trans-unit>
-
+      <trans-unit id="tl_contact_person.salutationDivers.0">
+        <source>Dear</source>
+      </trans-unit>
       <trans-unit id="tl_contact_person.firma.0">
         <source>Company</source>
       </trans-unit>
@@ -151,7 +165,7 @@
         <source>Country</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.land.1">
-        <source>Please select the country.</source>
+        <source>Please enter the country.</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.zusatzfeld.0">
         <source>Additional field</source>
@@ -166,7 +180,7 @@
         <source>Optional entry for your address as free-form text</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.0">
-        <source>Address enable</source>
+        <source>Show address</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.1">
         <source>Here you can specify if the contact person's address should be displayed.</source>
@@ -175,7 +189,7 @@
         <source>Picture of the contact person</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.1">
-        <source>Here you can choose / enter the picture of the contact person.</source>
+        <source>Here you can choose the picture of the contact person.</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.0">
         <source>Post office box</source>

@@ -2,7 +2,7 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_user.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_user.filteritems.0">
-        <source>Allowed filter items</source>
+        <source>Real estate filter elements</source>
         <target>Immobilien-Filter-Elemente</target>
       </trans-unit>
       <trans-unit id="tl_user.filteritems.1">
@@ -10,7 +10,7 @@
         <target>Hier können Sie die erlaubten Filterelemente auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_user.filters.0">
-        <source>Allowed filter</source>
+        <source>Allowed real estate filter</source>
         <target>Erlaubte Immobilien-Filter</target>
       </trans-unit>
       <trans-unit id="tl_user.filters.1">
@@ -67,22 +67,22 @@
       </trans-unit>
       <trans-unit id="tl_user.regroups.0">
         <source>Allow real estate groups</source>
-        <target>Erlaubte Immobiliengruppen</target>
+        <target>Erlaubte Objektgruppen</target>
       </trans-unit>
       <trans-unit id="tl_user.regroups.1">
         <source>Here you can grant access to one or more real estate groups.</source>
-        <target>Hier können Sie den Zugriff auf eine oder mehrere Immobiliengruppen festlegen.</target>
+        <target>Hier können Sie den Zugriff auf eine oder mehrere Objektgruppen festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_user.regroupp.0">
         <source>Real estate group permissions</source>
-        <target>Immobiliengruppen-Rechte</target>
+        <target>Objektgruppen-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user.regroupp.1">
         <source>Here you can define the real estate group permissions.</source>
         <target>Hier können Sie Imobiliengruppenrechte festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_user.filter_legend">
-        <source>Filter permissions</source>
+        <source>Real estate filter permissions</source>
         <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user.interface_legend">
@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="tl_user.real_estate_group_legend">
         <source>Real estate group permissions</source>
-        <target>Immobiliengruppen-Rechte</target>
+        <target>Objektgruppen-Rechte</target>
       </trans-unit>
     </body>
   </file>

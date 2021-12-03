@@ -2,11 +2,11 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_sync.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_real_estate_sync.syncFile">
-        <source>File</source>
+        <source>File path</source>
         <target>Dateipfad</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.fileTime">
-        <source>Date of change</source>
+        <source>Last change</source>
         <target>Letzte Änderung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.fileSize">
@@ -14,7 +14,7 @@
         <target>Dateigröße</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.syncTime">
-        <source>Date of sync</source>
+        <source>Last sync</source>
         <target>Letzte Synchronisierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_sync.syncUser">

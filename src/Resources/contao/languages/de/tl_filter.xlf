@@ -46,7 +46,7 @@
         <target>Standardfilter</target>
       </trans-unit>
       <trans-unit id="tl_filter.toggleFilter.1">
-        <source>Display default filters if no real estate type selected.</source>
+        <source>The default filters are displayed if no real estate type has been selected.</source>
         <target>Die Standardfilter werden angezeigt, wenn kein Objekttyp ausgewählt wurde.</target>
       </trans-unit>
       <trans-unit id="tl_filter.price.0">
@@ -74,7 +74,7 @@
         <target>Verfügbare Optionen: Zimmer</target>
       </trans-unit>
       <trans-unit id="tl_filter.roomOptions.1">
-        <source>Here you can enter a comma-separated list of options that should be available for the number of rooms.</source>
+        <source>Here you can enter a comma separated list of options that should be available for the number of rooms.</source>
         <target>Hier können Sie die eine kommagetrennte Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen sollen.</target>
       </trans-unit>
       <trans-unit id="tl_filter.customTpl.0">
