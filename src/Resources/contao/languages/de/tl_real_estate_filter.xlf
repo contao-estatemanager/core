@@ -328,7 +328,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.wohnflaeche_desc">
         <source>Living space (highest to lowest)</source>
-        <target>Wohnfläche (größste zuerst)</target>
+        <target>Wohnfläche (größte zuerst)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.gesamtflaeche_asc">
         <source>Total area (lowest to highest)</source>
@@ -336,7 +336,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.gesamtflaeche_desc">
         <source>Total area (highest to lowest)</source>
-        <target>Gesamtfläche (größste zuerst)</target>
+        <target>Gesamtfläche (größte zuerst)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_asc">
         <source>Plot area (lowest to highest)</source>
@@ -344,7 +344,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_desc">
         <source>Plot area (highest to lowest)</source>
-        <target>Grundstücksfläche (größste zuerst)</target>
+        <target>Grundstücksfläche (größte zuerst)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_asc">
         <source>Rentable area (lowest to highest)</source>
@@ -352,7 +352,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_desc">
         <source>Rentable area (highest to lowest)</source>
-        <target>Vermietbare Fläche (größste zuerst)</target>
+        <target>Vermietbare Fläche (größte zuerst)</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_filter.country">
