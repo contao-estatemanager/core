@@ -36,7 +36,7 @@
                 <source>Contact Person</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.alias">
-                <source>Alias</source>
+                <source>Alias/SEO-URI</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kaufpreis">
                 <source>Purchase price</source>
@@ -238,7 +238,7 @@
                 <source>Open area</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermietbareFlaeche">
-                <source>Rentable Area</source>
+                <source>Rentable area</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.gastroflaeche">
                 <source>Restaurant area</source>
@@ -253,7 +253,7 @@
                 <source>Cubic index</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bgf">
-                <source>Brutto-Geschossflächen-Zahl nach Din277</source>
+                <source>Gross floor area according to Din227</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.lagerflaeche">
                 <source>Storage space</source>
@@ -322,10 +322,10 @@
                 <source>Community code</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.objektadresseFreigeben">
-                <source>Release property address</source>
+                <source>Publish property address</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartKauf">
-                <source>Buy</source>
+                <source>Purchase</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.vermarktungsartMietePacht">
                 <source>For Rent / For Lease</source>
@@ -436,10 +436,10 @@
                 <source>Floor space index</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.flaechevon">
-                <source>Area from</source>
+                <source>Min. area</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.flaechebis">
-                <source>Area up to</source>
+                <source>Max. area</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.denkmalgeschuetzt">
                 <source>Listed building</source>
@@ -493,13 +493,13 @@
                 <source>DV Cable</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.rampe">
-                <source>Ramp available</source>
+                <source>Ramp</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.hebebuehne">
-                <source>Lifting ramp available</source>
+                <source>Lifting ramp</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kran">
-                <source>Crane available</source>
+                <source>Crane</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.sauna">
                 <source>Sauna</source>
@@ -646,7 +646,7 @@
                 <source>Roller shutters</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.bibliothek">
-                <source>Library available</source>
+                <source>Library</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.dachboden">
                 <source>Attic</source>
@@ -673,10 +673,10 @@
                 <source>Power connection value</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.kantineCafeteria">
-                <source>Canteen/Cafeteria available</source>
+                <source>Canteen/Cafeteria</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.teekueche">
-                <source>Kitchenette available</source>
+                <source>Kitchenette</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.anzahlSepWc">
                 <source>Separate toilet rooms</source>
@@ -688,10 +688,10 @@
                 <source>Wellness area</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.telefonFerienimmobilie">
-                <source>Phone available (vacational real estate)</source>
+                <source>Phone available</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandZugang">
-                <source>Broadband access available</source>
+                <source>Broadband access</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.breitbandGeschw">
                 <source>Broadband speed</source>
@@ -826,10 +826,10 @@
                 <source>Micro-map available</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.virtuelletour">
-                <source>Virtual tour available</source>
+                <source>Virtual tour</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.luftbildern">
-                <source>Aerial photographs available</source>
+                <source>Aerial photographs</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.heizungsart">
                 <source>Type of heating</source>
@@ -1000,7 +1000,7 @@
                 <source>Longitude</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.lageImBau">
-                <source>Location of Property</source>
+                <source>Location of property</source>
             </trans-unit>
             <trans-unit id="tl_real_estate_label.wohnungsnr">
                 <source>Apartment number</source>

@@ -127,7 +127,7 @@
         <source>Please select the contact person for the property.</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.0">
-        <source>Alias /SEO-URI</source>
+        <source>Alias/SEO-URI</source>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.1">
         <source>Enter the alias of the real estate here or leave the field blank to generate the alias automatically.</source>
