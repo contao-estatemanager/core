@@ -11,12 +11,14 @@
 namespace ContaoEstateManager;
 
 
+use Contao\Frontend;
+
 /**
  * Handles real estate update cron jobs
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class RealEstateCronImporter extends \Frontend
+class RealEstateCronImporter extends Frontend
 {
     /**
      * @var RealEstateImporter
