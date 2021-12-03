@@ -26,16 +26,28 @@
         <target>Details der Formataktion %s anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.edit.0">
-        <source>Edit action</source>
-        <target>Aktion bearbeiten</target>
+        <source>Edit format action</source>
+        <target>Formataktion ID %s bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.edit.1">
+        <source>Edit format action</source>
+        <target>Formataktion ID %s bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.delete.0">
         <source>Delete action</source>
-        <target>Aktion löschen</target>
+        <target>Formataktion ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.delete.1">
+        <source>Delete action</source>
+        <target>Formataktion ID %s löschen</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.show.0">
         <source>Display action information</source>
-        <target>Aktioninformationen anzeigen</target>
+        <target>Details der Formataktion %s anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tl_field_format_action.show.1">
+        <source>Display action information</source>
+        <target>Details der Formataktion %s anzeigen</target>
       </trans-unit>
 
       <trans-unit id="tl_field_format_action.type_legend">
@@ -60,7 +72,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.decimals.1">
         <source>Please indicate the length of the displayed decimal places</source>
-        <target>Geben Sie bitte die länge der Nachkommastellen an.</target>
+        <target>Geben Sie bitte die Anzahl der Nachkommastellen an.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.text.0">
         <source>Text</source>
@@ -76,7 +88,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.elements.1">
         <source>Select one or more fields to be concatenated. Please note that you have to include your own field if you want to concatenate it with the other fields.</source>
-        <target>Wählen Sie ein oder meherer Felder, welche kombiniert werden sollen. Bitte beachten Sie, dass das eigene Feld mit aufgenommen werden muss, sofern dieses mit kombiniert werden soll.</target>
+        <target>Wählen Sie ein oder mehrere Felder aus, die verkettet werden sollen. Bitte beachten Sie, dass Sie Ihr eigenes Feld einschließen müssen, wenn Sie es mit den anderen Feldern verketten wollen.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.necessary.0">
         <source>Force</source>
@@ -110,7 +122,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.prepend.1">
         <source>Inserts a definable text before the value.</source>
-        <target>Fügt einen beliebigen Text vor den Wert ein.</target>
+        <target>Fügt einen beliebigen Text vor dem Wert ein.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.append.0">
         <source>append</source>
@@ -118,7 +130,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.append.1">
         <source>Inserts a definable text after the value.</source>
-        <target>Fügt einen beliebigen Text nach den Wert ein.</target>
+        <target>Fügt einen beliebigen Text nach dem Wert ein.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.number_format.0">
         <source>number format</source>
@@ -134,7 +146,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.date_format.1">
         <source>Converts a UNIX timestamp to a readable date format.</source>
-        <target>Wandelt einen UNIX-Timestamp in ein leserliches Datums-Format um.</target>
+        <target>Wandelt einen UNIX-Timestamp in ein leserliches Datumsformat um.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.strtotime.0">
         <source>strtotime</source>
@@ -182,7 +194,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.boolToWord.1">
         <source>Converts boolean values ('0', '1') to words ('No' / 'Yes').</source>
-        <target>Wandelt Werte mit &quot;0&quot; oder &quot;1&quot; in &quot;Nein&quot; oder &quot;Ja&quot;.</target>
+        <target>Wandelt Werte mit &quot;0&quot; oder &quot;1&quot; in &quot;Nein&quot; oder &quot;Ja&quot; um.</target>
       </trans-unit>
       <trans-unit id="tl_field_format_action.custom.0">
         <source>custom</source>
@@ -190,7 +202,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format_action.custom.1">
         <source>Enables usage of a custom function. These need to be created as a template and need &quot;re_ac_&quot; as a prefix.(Example: re_ac_openimmo_propertytype.html5)</source>
-        <target>Verwendung einer eigenen Funktion. Eigene Funktionen müssen dabei als Template mit dem Prefix &quot;re_ac_&quot; angelegt werden. (Beispiel: re_ac_openimmo_objektart.html5)</target>
+        <target>Verwendung einer eigenen Funktion. Eigene Funktionen müssen dabei als Template mit dem Präfix &quot;re_ac_&quot; angelegt werden. (Beispiel: re_ac_openimmo_objektart.html5)</target>
       </trans-unit>
     </body>
   </file>

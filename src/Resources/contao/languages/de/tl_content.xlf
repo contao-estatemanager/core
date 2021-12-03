@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_content.filter.1">
         <source>Please select a filter.</source>
-        <target>Bitte wählen Sie einen Filter.</target>
+        <target>Bitte wählen Sie einen Filter aus.</target>
       </trans-unit>
     </body>
   </file>

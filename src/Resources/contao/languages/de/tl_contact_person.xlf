@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.firma.1">
         <source>Please enter the company name.</source>
-        <target>Bitte geben Sie den Firmennamen ein.</target>
+        <target>Hier können Sie eine Firma eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.vorname.0">
         <source>First name</source>
@@ -100,7 +100,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.email_zentrale.1">
         <source>Please enter the email address (Headquarters).</source>
-        <target>Bitte geben Sie die E-Mail Adresse (Zentrale) ein.</target>
+        <target>Bitte geben Sie die E-Mail-Adresse (Zentrale) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_direkt.0">
         <source>E-Mail (corporate)</source>
@@ -108,7 +108,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.email_direkt.1">
         <source>Please enter the email address (corporate).</source>
-        <target>Bitte geben Sie die E-Mail Adresse (Direkt) ein.</target>
+        <target>Bitte geben Sie die E-Mail-Adresse (Direkt) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.0">
         <source>E-Mail (personal)</source>
@@ -116,7 +116,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.email_privat.1">
         <source>Please enter the email address (personal).</source>
-        <target>Bitte geben Sie die E-Mail Adresse (Privat) ein.</target>
+        <target>Bitte geben Sie die E-Mail-Adresse (Privat) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.0">
         <source>E-Mail (other)</source>
@@ -124,7 +124,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.email_sonstige.1">
         <source>Please enter the email address (other).</source>
-        <target>Bitte geben Sie die E-Mail Adresse (Sonstige) ein.</target>
+        <target>Bitte geben Sie die E-Mail-Adresse (Sonstige) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.0">
         <source>E-Mail (feedback)</source>
@@ -132,7 +132,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.email_feedback.1">
         <source>Please enter the email address (feedback).</source>
-        <target>Bitte geben Sie die E-Mail Adresse (Feedback) ein.</target>
+        <target>Bitte geben Sie die E-Mail-Adresse (Feedback) ein.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.tel_zentrale.0">
         <source>Phone number (Headquarters)</source>
@@ -220,7 +220,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.land.1">
         <source>Please enter the country.</source>
-        <target>Hier können Sie ein Land eintragen</target>
+        <target>Hier können Sie ein Land eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.zusatzfeld.0">
         <source>Additional field</source>
@@ -244,11 +244,11 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.adressfreigabe.1">
         <source>Here you can specify if the contact person's address should be displayed.</source>
-        <target>Hier können Sie angeben, ob die Adresse des Ansprechpartners freigegeben werden soll.</target>
+        <target>Hier können Sie angeben, ob die Adresse des Ansprechpartners/der Ansprechpartnerin freigegeben werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.0">
         <source>Picture of the contact person</source>
-        <target>Bild des Ansprechpartners</target>
+        <target>Bild des Ansprechpartners/der Ansprechpartnerin</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.singleSRC.1">
         <source>Here you can choose the picture of the contact person.</source>
@@ -260,7 +260,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach.1">
         <source>Here you can enter the post office box.</source>
-        <target>Hier können Sie das Postfach eingeben.</target>
+        <target>Hier können Sie das Postfach eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_plz.0">
         <source>Post office box (postal code)</source>
@@ -268,7 +268,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_plz.1">
         <source>Here you can enter the postal code for the post office box.</source>
-        <target>Hier können Sie die Postfach PLZ eingeben.</target>
+        <target>Hier können Sie die PLZ des Postfachs eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_ort.0">
         <source>Post office box (city)</source>
@@ -276,7 +276,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.postfach_ort.1">
         <source>Here you can enter the city of the post office box</source>
-        <target>Hier können Sie den Ort des Postfachs eingeben.</target>
+        <target>Hier können Sie den Ort des Postfachs eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.personennummer.0">
         <source>Personal identification number</source>
@@ -288,19 +288,19 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.immobilientreuhaenderid.0">
         <source>Real estate trustee ID</source>
-        <target>Immobilientreuhänder ID</target>
+        <target>Immobilientreuhänder-ID</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.immobilientreuhaenderid.1">
         <source>Here you can enter the real estate trustee ID.</source>
-        <target>Hier können Sie die Immobilientreuhänder ID eingeben.</target>
+        <target>Hier können Sie die Immobilientreuhänder-ID eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.published.0">
         <source>Publish contact person</source>
-        <target>Ansprechpartner veröffentlichen</target>
+        <target>Ansprechpartner / Ansprechpartnerin veröffentlichen</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.published.1">
         <source>Make the contact person publicly visible on the website.</source>
-        <target>Den Ansprechpartner auf der Webseite veröffentlichen.</target>
+        <target>Den Ansprechpartner/die Ansprechpartnerin auf der Webseite veröffentlichen.</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.title_legend">
         <source>General</source>
@@ -364,7 +364,7 @@
       </trans-unit>
       <trans-unit id="tl_contact_person.show.0">
         <source>Contact person details</source>
-        <target>Kontaktperson Details</target>
+        <target>Details zur Kontaktperson</target>
       </trans-unit>
       <trans-unit id="tl_contact_person.show.1">
         <source>Show the details of contact person ID %s</source>

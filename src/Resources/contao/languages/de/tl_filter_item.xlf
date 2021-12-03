@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.mandatory.1">
         <source>The filter will not submit if the field is empty.</source>
-        <target>Das Feld muss zum Abschicken des Filter ausgefüllt werden.</target>
+        <target>Das Feld muss zum Abschicken des Filters ausgefüllt werden.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.countrySource.0">
         <source>Source</source>
@@ -115,11 +115,11 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.group.0">
         <source>Real estate group</source>
-        <target>Immobilien-Gruppe</target>
+        <target>Objektgruppe</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.group.1">
         <source>Please select the real estate group.</source>
-        <target>Bitte die Immobilien-Gruppe auswählen.</target>
+        <target>Bitte die Objektgruppe auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.submitOnChange.0">
         <source>Submit on modification</source>
@@ -143,7 +143,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.displayMode.1">
         <source>Here you can specify the display mode.</source>
-        <target>Hier können Sie en Anzeige-Modus angeben.</target>
+        <target>Hier können Sie den Anzeige-Modus angeben.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.0">
         <source>Show label</source>
@@ -151,7 +151,7 @@
       </trans-unit>
       <trans-unit id="tl_filter_item.showLabel.1">
         <source>Here you can specify if the label should be displayed.</source>
-        <target>Hier können Sie angeben, ob des Label angezeigt werden soll.</target>
+        <target>Hier können Sie angeben, ob das Label angezeigt werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_filter_item.showPlaceholder.0">
         <source>Show placeholder</source>

@@ -159,7 +159,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.1">
         <source>Here you can specify when old synchronization files should be finally deleted.</source>
-        <target>Hier können Sie angeben, wann alte Synchronisierungsdateien endgültig gelöscht werden sollen.</target>
+        <target>Hier können Sie auswählen, wann alte Synchronisierungsdateien endgültig gelöscht werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.0">
         <source>Synchronize real estate</source>
@@ -168,6 +168,14 @@
       <trans-unit id="tl_interface.syncRealEstates.1">
         <source>Synchronize real estate</source>
         <target>Objekte synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.0">
+        <source>Clean up images and files</source>
+        <target>Bilder und Dateien bereinigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.1">
+        <source>Perform real estate file clean up</source>
+        <target>Bereinigung von Objektdateien ausführen</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPerSync.0">
         <source>Max. files per sync</source>
@@ -320,11 +328,11 @@
       </trans-unit>
       <trans-unit id="tl_interface.edit.0">
         <source>Edit interface mappings</source>
-        <target>Schnittstellen-Mappings bearbeiten</target>
+        <target>Zuordnungen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.edit.1">
         <source>Edit assigned interface mappings</source>
-        <target>Zugehörige Schnittstellen-Mappings bearbeiten</target>
+        <target>Zuordnungen dieser Schnittstelle bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.copy.0">
         <source>Duplicate interface</source>

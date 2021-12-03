@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.new.1">
         <source>Create a new exposee module</source>
-        <target>Erzeugen Sie ein neues Exposé-Modul.</target>
+        <target>Ein neues Exposé-Modul erstellen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.copy.0">
         <source>Copy exposee module</source>
@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.copy.1">
         <source>Create a copy of this exposee module</source>
-        <target>Eine Kopie von diesem Exposé-Modul erzeugen.</target>
+        <target>Eine Kopie von diesem Exposé-Modul erzeugen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.delete.0">
         <source>Delete exposee module</source>
@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.delete.1">
         <source>Delete exposee module</source>
-        <target>Exposé-Modul löschen.</target>
+        <target>Exposé-Modul löschen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.show.0">
         <source>Display information</source>
@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.show.1">
         <source>Display information</source>
-        <target>Informationen anzeigen.</target>
+        <target>Informationen anzeigen</target>
       </trans-unit>
 
       <trans-unit id="tl_expose_module.title_legend">
@@ -85,7 +85,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.type.0">
         <source>Exposee module type</source>
-        <target>Expose-Modultyp</target>
+        <target>Exposé-Modultyp</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.type.1">
         <source>Please choose the type of exposee module.</source>
@@ -213,11 +213,11 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.0">
         <source>Add real estate address</source>
-        <target>Immobilien-Adresse hinzufügen</target>
+        <target>Objekt-Adresse hinzufügen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.includeAddress.1">
         <source>Adds the address of the property to the list of details.</source>
-        <target>Fügt die Adresse der Immobilie in die Liste der Details ein.</target>
+        <target>Fügt die Adresse des Objektes in die Liste der Details ein.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.addHeadings.0">
         <source>Display headings</source>
@@ -240,8 +240,8 @@
         <target>Maximale Textlänge</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.1">
-        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with "...". Type "0" to output the full text.</source>
-        <target>Hier können Sie die maximale Anzahl der Buchstaben eingeben. Texte werden immer nach einem Wort gekürzt und mit "..." versehen. Bei "0" wird der Text ungekürzt ausgegeben.</target>
+        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with &quot;...&quot;. Type &quot;0&quot; to output the full text.</source>
+        <target>Hier können Sie die maximale Anzahl der Buchstaben eingeben. Texte werden immer nach einem Wort gekürzt und mit &quot;...&quot; versehen. Bei &quot;0&quot; wird der Text ungekürzt ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.statusTokens.0">
         <source>Valid status token</source>
@@ -389,7 +389,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.allowedFileExtensions.1">
         <source>Please provide a comma-separated list of file extensions which should not be output. (e.g pdf,doc)</source>
-        <target>Bitte geben Sie eine durch Komma getrennte Liste von Dateierweiterungen an, die nicht ausgegeben werden sollen (z.B. pdf,doc).</target>
+        <target>Bitte geben Sie eine durch Komma getrennte Liste von Dateierweiterungen an, die nicht ausgegeben werden sollen (z. B. pdf,doc).</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceDownload.0">
         <source>Force download</source>

@@ -31,11 +31,11 @@
       </trans-unit>
       <trans-unit id="tl_field_format.imported.1">
         <source>All standard field formattings and actions were successfully imported.</source>
-        <target>Alle Standard Feldformatierungen und Aktionen wurden erfolgreich importiert.</target>
+        <target>Alle Standard-Feldformatierungen und Aktionen wurden erfolgreich importiert.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.0">
         <source>File does not exist or is corrupted</source>
-        <target>Keine oder fehlerhafte Datei</target>
+        <target>Die Datei existiert nicht oder ist beschädigt</target>
       </trans-unit>
       <trans-unit id="tl_field_format.import_error.1">
         <source>Please make sure that the file &quot;data/import_field_formats.php&quot; can be retrieved.</source>
@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format.edit">
         <source>Edit format action ID %s</source>
-        <target>Formataktion ID %s bearbeiten</target>
+        <target>Feldformatierung ID %s bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_field_format.copy">
         <source>Copy field format ID %s</source>
@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format.fieldname.1">
         <source>Please select a field.</source>
-        <target>Bitte wählen Sie ein Feld.</target>
+        <target>Bitte wählen Sie ein Feld aus.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.0">
         <source>CSS class</source>
@@ -103,7 +103,7 @@
       </trans-unit>
       <trans-unit id="tl_field_format.conditionFields.1">
         <source>Select the fields which the condition is attached to and specify (optional) a value that triggers the condition. If no value is specified, the system checks whether the value is filled or not.</source>
-        <target>Wählen Sie die Felder an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft ob dieser gefüllt oder nicht gefüllt ist.</target>
+        <target>Wählen Sie die Felder, an denen die Bedingung geknüpft ist, und geben Sie optional einen Wert an, der die Bedingung auslöst. Sollte kein Wert angegeben werden, wird geprüft, ob dieser gefüllt oder nicht gefüllt ist.</target>
       </trans-unit>
       <trans-unit id="tl_field_format.field">
         <source>Field</source>

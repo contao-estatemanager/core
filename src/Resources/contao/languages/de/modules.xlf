@@ -233,7 +233,7 @@
       </trans-unit>
       <trans-unit id="FMD.contactPerson.0">
         <source>Provider / Contact person</source>
-        <target>Kontaktperson / Ansprechpartner</target>
+        <target>Kontaktperson / Ansprechpartner(/-in)</target>
       </trans-unit>
       <trans-unit id="FMD.contactPerson.1">
         <source>Output of the assigned contact person</source>

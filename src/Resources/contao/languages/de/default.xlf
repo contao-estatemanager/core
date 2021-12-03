@@ -36,7 +36,7 @@
       </trans-unit>
       <trans-unit id="MSC.estatemanager_website">
         <source>Project website</source>
-        <target>Projekt-Homepage</target>
+        <target>Projekt-Website</target>
       </trans-unit>
       <trans-unit id="MSC.estatemanager_issue">
         <source>Report an error</source>
@@ -66,7 +66,7 @@
       </trans-unit>
       <trans-unit id="RFI.country.1">
         <source>A field for filtering real estates by country</source>
-        <target>Ein Feld zum Filtern von Immobilien anhand der Länderauswahl</target>
+        <target>Ein Feld zum Filtern von Objekten anhand der Länderauswahl</target>
       </trans-unit>
       <trans-unit id="RFI.location.0">
         <source>Address field</source>
@@ -74,7 +74,7 @@
       </trans-unit>
       <trans-unit id="RFI.location.1">
         <source>An address field for filtering based on address entries</source>
-        <target>Ein Adressfeld zum Filtern anhand von Adresseingaben</target>
+        <target>Ein Feld zum Filtern von Objekten anhand der Adresseingabe</target>
       </trans-unit>
       <trans-unit id="RFI.unique.0">
         <source>Unique field</source>

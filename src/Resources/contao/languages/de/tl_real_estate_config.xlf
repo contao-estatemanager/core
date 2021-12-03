@@ -1,17 +1,13 @@
 <?xml version="1.0" ?><xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_real_estate_config.php" source-language="en" target-language="de">
     <body>
-      <trans-unit id="tl_real_estate_config.global_legend">
-        <source>Global configuration</source>
-        <target>Globale Konfiguration</target>
-      </trans-unit>
       <trans-unit id="tl_real_estate_config.real_estate_list_legend">
         <source>Lists / Visualization</source>
-        <target>Listen / Darstellung</target>
+        <target>Listen/Darstellung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.number_legend">
         <source>Price / Area</source>
-        <target>Preise / Flächen</target>
+        <target>Preise/Flächen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.filter_config_legend">
         <source>Filter settings</source>
@@ -19,12 +15,20 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.provider_contact_legend">
         <source>Provider / Contact Persons</source>
-        <target>Anbieter / Kontaktpersonen</target>
+        <target>Anbieter/Kontaktpersonen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.api_legend">
+        <source>API</source>
+        <target>API-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.exception_legend">
+        <source>Administration / Error notification</source>
+        <target>Administration/Fehlermeldung</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_config.estateManagerAdminEmail.0">
         <source>E-mail address of the technical administrator</source>
-        <target>E-Mail-Adresse des technische Administrators</target>
+        <target>E-Mail-Adresse des technischen Administrators</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.estateManagerAdminEmail.1">
         <source>Auto-generated messages like error messages will be sent to this address.</source>
@@ -32,19 +36,19 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.0">
         <source>Decimal separator</source>
-        <target>Dezimal-Trennzeichen</target>
+        <target>Dezimaltrennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatDecimals.1">
         <source>Defines the decimal separator</source>
-        <target>Definiert das Dezimal-Trennzeichen</target>
+        <target>Definiert das Dezimaltrennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.0">
         <source>Thousands separator</source>
-        <target>Tausender-Trennzeichen</target>
+        <target>Tausendertrennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.numberFormatThousands.1">
         <source>Defines the thousands separator</source>
-        <target>Definiert das Tausender-Trennzeichen</target>
+        <target>Definiert das Tausendertrennzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultCurrency.0">
         <source>Currency</source>
@@ -60,7 +64,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainDetails.1">
         <source>Specifies how many main details are being displayed in lists within a real estate.</source>
-        <target>Gibt an wie viele primäre Details in Listen innerhalb einer Immobilie ausgegeben werden.</target>
+        <target>Gibt an, wie viele primäre Details in Listen innerhalb einer Immobilie ausgegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.0">
         <source>Max number of main attributes</source>
@@ -68,7 +72,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultNumberOfMainAttr.1">
         <source>Specifies how many main attributes are being displayed in lists within a real estate.</source>
-        <target>Gibt an wie viele primäre Attribute in Listen innerhalb einer Immobilie ausgegeben werden.</target>
+        <target>Gibt an, wie viele primäre Attribute in Listen innerhalb einer Immobilie ausgegeben werden.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.statusTokenNewDisplayDuration.0">
         <source>Display duration for status token: &quot;New&quot;</source>
@@ -80,7 +84,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.0">
         <source>Default sorting</source>
-        <target>Standard Sortierung</target>
+        <target>Standard-Sortierung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultSorting.1">
         <source>Here you can specify which sort order will be considered for the default system.</source>
@@ -96,7 +100,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.0">
         <source>Default contact person image</source>
-        <target>Standard-Bild Kontaktperson</target>
+        <target>Standard-Bild für Kontaktpersonen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
@@ -104,7 +108,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.0">
         <source>Default contact person image (female)</source>
-        <target>Standard-Bild Kontaktpersonen (weiblich)</target>
+        <target>Standard-Bild für weibliche Kontaktpersonen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonFemaleImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
@@ -112,7 +116,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.0">
         <source>Default contact person image (male)</source>
-        <target>Standard-Bild Kontaktpersonen (männlich)</target>
+        <target>Standard-Bild für männliche Kontaktpersonen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.defaultContactPersonMaleImage.1">
         <source>Select the default image which will be displayed incase contact persons do not contain images.</source>
@@ -120,11 +124,27 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.0">
         <source>Available options: Rooms</source>
-        <target>Verfügbare Optionen: Zimmer</target>
+        <target>Verfügbare Optionen: Zimmeranzahl</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.roomOptions.1">
         <source>Here you can enter a comma separated list of options which should be available for the number of rooms.</source>
-        <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
+        <target>Hier können Sie die eine kommagetrennte Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen sollen.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.cemApiKey.0">
+        <source>API Key</source>
+        <target>API-Schlüssel</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.cemApiKey.1">
+        <source>The API can only be accessed via such a key. If the field is left blank, the key will be generated automatically.</source>
+        <target>Die API kann nur mit einem solchen Schlüssel aufgerufen werden. Wenn das Feld leer gelassen wird, wird der Schlüssel automatisch generiert.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.cemExceptionNotifications.0">
+        <source>Email notifications</source>
+        <target>E-Mail-Benachrichtigungen</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.cemExceptionNotifications.1">
+        <source>Define here when an e-mail may be sent to the technical administrator in the event of an error.</source>
+        <target>Hier können Sie festlegen, wann im Falle eines Fehlers eine E-Mail an den technischen Administrator gesendet werden darf.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_config.dateAdded">
@@ -146,6 +166,28 @@
       <trans-unit id="tl_real_estate_config.dot">
         <source>Dot (.)</source>
         <target>Punkt (.)</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_config.exceptionImport">
+        <source>Import</source>
+        <target>Import</target>
+      </trans-unit>
+
+      <trans-unit id="tl_real_estate_config.reportFromName">
+        <source>Contao EstateManager</source>
+        <target>Contao EstateManager</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.reportSubject">
+        <source>Error report</source>
+        <target>Fehlermeldung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.reportHeadline">
+        <source>Error report</source>
+        <target>Fehlermeldung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.reportText">
+        <source>A critical error has occurred:</source>
+        <target>Es ist ein kritischer Fehler aufgetreten:</target>
       </trans-unit>
     </body>
   </file>

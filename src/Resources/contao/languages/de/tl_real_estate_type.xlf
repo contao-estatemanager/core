@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_hallen_lager_prod">
         <source>Halls / Warehouse / Workshops</source>
-        <target>Hallen/Lager/Prod.</target>
+        <target>Hallen/Lager/Produktion</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.objektart_land_und_forstwirtschaft">
         <source>Agriculture and forestry</source>
@@ -323,7 +323,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.show.1">
         <source>Show the details of real estate type ID %s</source>
-        <target>Die Details des Objekttypen %s anzeigen</target>
+        <target>Die Details des Objekttypen ID %s anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.pastenew.0">
         <source>Add new at the top</source>

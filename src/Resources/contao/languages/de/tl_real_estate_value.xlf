@@ -941,19 +941,19 @@
 
       <trans-unit id="tl_real_estate_value.boden_fliesen">
         <source>Tiles</source>
-        <target>Fliesen</target>
+        <target>Fliesenboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_stein">
         <source>Stone floor</source>
-        <target>Stein</target>
+        <target>Steinboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_teppich">
         <source>Carpet</source>
-        <target>Teppich</target>
+        <target>Teppichboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_parkett">
         <source>Parquet</source>
-        <target>Parkett</target>
+        <target>Parkettboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_fertigparkett">
         <source>Prefinished parquet</source>
@@ -969,7 +969,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_kunststoff">
         <source>Vinyl flooring</source>
-        <target>Kunststoff</target>
+        <target>Kunststoffboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_estrich">
         <source>Screed</source>
@@ -981,24 +981,24 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_linoleum">
         <source>Linoleum flooring</source>
-        <target>Linoleum</target>
+        <target>Linoleumboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_marmor">
         <source>Marble</source>
-        <target>Marmor</target>
+        <target>Marmorboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_terrakotta">
         <source>Terracotta</source>
-        <target>Terrakotta</target>
+        <target>Terrakottaboden</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.boden_granit">
         <source>Granite</source>
-        <target>Granit</target>
+        <target>Granitboden</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_value.heizungsart_ofen">
         <source>Furnace heating</source>
-        <target>Ofen</target>
+        <target>Ofenheizung</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.heizungsart_etage">
         <source>Floor heating</source>
@@ -1311,7 +1311,7 @@
 
       <trans-unit id="tl_real_estate_value.erschliessung_unerschlossen">
         <source>Undeveloped</source>
-        <target>unerschlossen</target>
+        <target>Unerschlossen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.erschliessung_teilerschlossen">
         <source>Partly developed</source>

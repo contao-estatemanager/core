@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.0">
         <source>Reference page</source>
-        <target>Referenz-Seite</target>
+        <target>Referenzseite</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.referencePage.1">
         <source>This page is called if no unique real estate type could be determined.</source>
@@ -55,7 +55,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_group.published.1">
         <source>Make the group publicly visible on the website.</source>
-        <target>Die Gruppe auf der Webseite anzeigen.</target>
+        <target>Die Gruppe auf der Website anzeigen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_group.title_legend">
@@ -73,11 +73,11 @@
 
       <trans-unit id="tl_real_estate_group.new.0">
         <source>New real estate group</source>
-        <target>Neue Immobilien-Gruppe</target>
+        <target>Neue Objektgruppe</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.new.1">
         <source>Create a new real estate group</source>
-        <target>Eine neue Immobilien-Gruppe erstellen</target>
+        <target>Eine neue Objektgruppe erstellen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_group.edit.0">
         <source>Edit group</source>

@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="tl_module.customOrder.1">
         <source>The user-defined SQL order statement must be entered here (e.g. FIELD(anbieternr, 'xyz').</source>
-        <target>Hier muss das Benutzerdefinierte SQL-Order-Statement eingetragen werden (z.B. FIELD(anbieternr, 'xyz')).</target>
+        <target>Hier muss das benutzerdefinierte SQL-Order-Statement eingetragen werden (z.B. FIELD(anbieternr, 'xyz')).</target>
       </trans-unit>
       <trans-unit id="tl_module.addProvider.0">
         <source>Show provider</source>
@@ -198,8 +198,8 @@
         <target>Maximale Textlänge</target>
       </trans-unit>
       <trans-unit id="tl_module.maxTextLength.1">
-        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with "...". Type "0" to output the full text.</source>
-        <target>Hier können Sie die maximale Anzahl der Buchstaben eingeben. Texte werden immer nach einem Wort gekürzt und mit "..." versehen. Bei "0" wird der Text ungekürzt ausgegeben.</target>
+        <source>Here you can enter the maximum number of letters. Texts are always shortened after one word and provided with &quot;...&quot;. Type &quot;0&quot; to output the full text.</source>
+        <target>Hier können Sie die maximale Anzahl der Buchstaben eingeben. Texte werden immer nach einem Wort gekürzt und mit &quot;...&quot; versehen. Bei &quot;0&quot; wird der Text ungekürzt ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_module.contactPersonImgSize.0">
         <source>Contact person image size</source>

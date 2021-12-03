@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_filter.title.1">
         <source>Please enter the filter title.</source>
-        <target>Bitte geben Sie den Filter-Titel ein.</target>
+        <target>Bitte geben Sie den Titel des Filters ein.</target>
       </trans-unit>
       <trans-unit id="tl_filter.alias.0">
         <source>Filter alias</source>
@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_filter.alias.1">
         <source>The filter alias is a unique reference which can be called instead of its numeric ID.</source>
-        <target>Der Filteralias ist eine eindeutige Referenz, die anstelle der numerischen Form-ID aufgerufen werden kann.</target>
+        <target>Der Filteralias ist eine eindeutige Referenz, die anstelle der numerischen Filter-ID aufgerufen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_filter.jumpTo.0">
         <source>Forwarding page</source>
@@ -27,11 +27,11 @@
       </trans-unit>
       <trans-unit id="tl_filter.groups.0">
         <source>Real estate groups</source>
-        <target>Immobilien-Gruppen</target>
+        <target>Objektgruppen</target>
       </trans-unit>
       <trans-unit id="tl_filter.groups.1">
         <source>Here you can declare the real estate groups that are taken into account.</source>
-        <target>Hier können Sie die Immobilien-Gruppen angeben, die berücksichtigt werden sollen.</target>
+        <target>Hier können Sie eine oder mehrere Objektgruppen auswählen, welche berücksichtigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.0">
         <source>Change page when modified</source>
@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_filter.submitOnChange.1">
         <source>The page will be changed if another type of property type is selected.</source>
-        <target>Die Seite wird gewechselt, sobald ein anderer Immobilien-Typ ausgewählt wurde.</target>
+        <target>Die Seite wechseln, wenn ein anderer Objekttyp im Filter ausgewählt wurde.</target>
       </trans-unit>
       <trans-unit id="tl_filter.toggleFilter.0">
         <source>Default filter</source>
