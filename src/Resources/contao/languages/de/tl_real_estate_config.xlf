@@ -18,7 +18,7 @@
         <target>Anbieter/Kontaktpersonen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.api_legend">
-        <source>API</source>
+        <source>API settings</source>
         <target>API-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.exception_legend">
@@ -131,19 +131,19 @@
         <target>Hier können Sie die eine kommagetrennte Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen sollen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.cemApiKey.0">
-        <source>API Key</source>
+        <source>API key</source>
         <target>API-Schlüssel</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.cemApiKey.1">
-        <source>The API can only be accessed via such a key. If the field is left blank, the key will be generated automatically.</source>
+        <source>The API can only be accessed with such a key. If the field is left blank, the key is generated automatically.</source>
         <target>Die API kann nur mit einem solchen Schlüssel aufgerufen werden. Wenn das Feld leer gelassen wird, wird der Schlüssel automatisch generiert.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.cemExceptionNotifications.0">
-        <source>Email notifications</source>
+        <source>E-Mail notifications</source>
         <target>E-Mail-Benachrichtigungen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_config.cemExceptionNotifications.1">
-        <source>Define here when an e-mail may be sent to the technical administrator in the event of an error.</source>
+        <source>Here you can define when an e-mail may be sent to the technical administrator in the event of an error.</source>
         <target>Hier können Sie festlegen, wann im Falle eines Fehlers eine E-Mail an den technischen Administrator gesendet werden darf.</target>
       </trans-unit>
 
