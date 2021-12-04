@@ -41,6 +41,10 @@
         <source>Please make sure that the file &quot;data/import_field_formats.php&quot; can be retrieved.</source>
         <target>Bitte stellen Sie sicher, dass die Datei &quot;data/import_field_formats.php&quot; abgerufen werden kann.</target>
       </trans-unit>
+      <trans-unit id="tl_field_format.edit.0">
+        <source>Edit format action</source>
+        <target>Formataktion ID %s bearbeiten</target>
+      </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
         <source>Edit field format</source>
         <target>Feldformatierung bearbeiten</target>
