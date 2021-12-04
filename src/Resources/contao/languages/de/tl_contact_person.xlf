@@ -45,7 +45,6 @@
         <source>Dear</source>
         <target>Hallo</target>
       </trans-unit>
-
       <trans-unit id="tl_contact_person.firma.0">
         <source>Company</source>
         <target>Firma</target>
