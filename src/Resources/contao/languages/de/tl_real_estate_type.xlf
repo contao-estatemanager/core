@@ -46,7 +46,7 @@
         <target>Nutzungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart.1">
-        <source>Here you can select the type of usage.</source>
+        <source>Here you can select the type of usage</source>
         <target>Hier können Sie die Nutzungsart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.nutzungsart_wohnen">
@@ -147,7 +147,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludeTypes.1">
         <source>If the field configurations for real estate types overlap, you can exclude individual real estate types for the search here.</source>
-        <target>Bei Überschneidungen der Feld-Konfigurationen für Objekttypen können Sie hier einzelne Objekttypen für die Suche ausschließen</target>
+        <target>Bei Überschneidungen der Feld-Konfigurationen für Objekttypen können Sie hier einzelne Objekttypen für die Suche ausschließen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.excludedTypes.0">
         <source>Excluded real estate types</source>
@@ -235,7 +235,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_type.title_legend">
         <source>Title &amp; type</source>
-        <target>Titel und Typ</target>
+        <target>Titel &amp; Typ</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_type.forwarding_legend">
         <source>Forwarding</source>
