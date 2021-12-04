@@ -25,31 +25,6 @@
         <source>Show the details of format action ID %s</source>
         <target>Details der Formataktion %s anzeigen</target>
       </trans-unit>
-      <trans-unit id="tl_field_format_action.edit.0">
-        <source>Edit format action</source>
-        <target>Formataktion ID %s bearbeiten</target>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.edit.1">
-        <source>Edit format action</source>
-        <target>Formataktion ID %s bearbeiten</target>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.delete.0">
-        <source>Delete action</source>
-        <target>Formataktion ID %s löschen</target>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.delete.1">
-        <source>Delete action</source>
-        <target>Formataktion ID %s löschen</target>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.show.0">
-        <source>Display action information</source>
-        <target>Details der Formataktion %s anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tl_field_format_action.show.1">
-        <source>Display action information</source>
-        <target>Details der Formataktion %s anzeigen</target>
-      </trans-unit>
-
       <trans-unit id="tl_field_format_action.type_legend">
         <source>Format Action</source>
         <target>Formataktion</target>
