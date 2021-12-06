@@ -14,8 +14,8 @@
         <target>Typ</target>
       </trans-unit>
       <trans-unit id="tl_interface.type.1">
-        <source>Please enter the type to be used for the import.</source>
-        <target>Bitte geben Sie den Typ an, der für den Import verwendet werden soll.</target>
+        <source>Please select the type to be used for the import.</source>
+        <target>Bitte wählen Sie den Typen aus, der für den Import verwendet werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_interface.provider.0">
         <source>Provider</source>
@@ -47,31 +47,31 @@
       </trans-unit>
       <trans-unit id="tl_interface.uniqueField.1">
         <source>Please select a unique field, through which the real estate data record can be identified.</source>
-        <target>Hier wird ein eindeutiges Feld ausgewählt, anhand der Immobilie-Datensatz identifiziert werden kann.</target>
+        <target>Bitte wählen Sie ein eindeutiges Feld, über das der Immobiliendatensatz identifiziert werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_interface.importPath.0">
         <source>Import directory</source>
         <target>Importverzeichnis</target>
       </trans-unit>
       <trans-unit id="tl_interface.importPath.1">
-        <source>Please enter the import directory where transmissions are stored and cached.</source>
-        <target>Bitte geben Sie das Importverzeichnis an, in dem eine Übertragungen abgelegt und zwischengespeichert werden.</target>
+        <source>Please choose the import directory where transferred files are stored and cached.</source>
+        <target>Bitte wählen Sie das Importverzeichnis aus, in dem Übertragungen abgelegt und zwischengespeichert werden.</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPath.0">
         <source>Target directory</source>
         <target>Zielverzeichnis</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPath.1">
-        <source>Please enter the target directory where imported files are to be stored.</source>
-        <target>Bitte geben Sie das Zielverzeichnis an, in das importierte Dateien abgelegt werden sollen.</target>
+        <source>Please select the target directory in which imported files should be stored.</source>
+        <target>Bitte wählen Sie das Zielverzeichnis aus, in welches importierte Dateien abgelegt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPathContactPerson.0">
-        <source>Import directory Contact person</source>
+        <source>Import directory contact person</source>
         <target>Importverzeichnis Kontaktperson</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPathContactPerson.1">
-        <source>Please enter the target directory where contact person files should be stored.</source>
-        <target>Bitte geben Sie das Zielverzeichnis an, in das Dateien von Kontaktpersonen abgelegt werden sollen.</target>
+        <source>Please select the target directory where files from contacts should be stored.</source>
+        <target>Bitte wählen Sie das Zielverzeichnis aus, in das Dateien von Kontaktpersonen abgelegt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.contactPersonActions.0">
         <source>Contact person</source>
@@ -94,8 +94,8 @@
         <target>Datensätze anderer Anbieter importieren</target>
       </trans-unit>
       <trans-unit id="tl_interface.importThirdPartyRecords.1">
-        <source>Here you can specify how records from other providers should be handled.</source>
-        <target>Hier können Sie angeben, wie mit Datensätzen anderer Anbieter umgegangen werden sollen.</target>
+        <source>Here you can select how records from other providers are handled.</source>
+        <target>Hier können Sie auswählen, wie mit Datensätzen anderer Anbieter umgegangen wird.</target>
       </trans-unit>
       <trans-unit id="tl_interface.assignContactPersonKauf.0">
         <source>Contact person - Properties for sale</source>
@@ -134,8 +134,8 @@
         <target>Datensätze überspringen</target>
       </trans-unit>
       <trans-unit id="tl_interface.skipRecords.1">
-        <source>Here you can specify whether data records should be skipped if one of the specified fields is not filled.</source>
-        <target>Hier können Sie angeben, ob Datensätze übersprungen werden sollen, wenn eines der angegebenen Felder nicht gefüllt ist.</target>
+        <source>Here you can select fields that have to be filled in for records to be imported.</source>
+        <target>Hier können Sie Felder auswählen, welche ausgefüllt sein müssen, damit Datensätze importiert werden.</target>
       </trans-unit>
       <trans-unit id="tl_interface.dontPublishRecords.0">
         <source>Do not publish records</source>
@@ -155,19 +155,27 @@
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.0">
         <source>Delete files older than</source>
-        <target>Dateien älter als löschen</target>
+        <target>Dateien älter als  * löschen</target>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.1">
         <source>Here you can specify when old synchronization files should be finally deleted.</source>
-        <target>Hier können Sie angeben, wann alte Synchronisierungsdateien endgültig gelöscht werden sollen.</target>
+        <target>Hier können Sie auswählen, wann alte Synchronisierungsdateien endgültig gelöscht werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.0">
         <source>Synchronize real estate</source>
-        <target>Immobilien synchronisieren</target>
+        <target>Objekte synchronisieren</target>
       </trans-unit>
       <trans-unit id="tl_interface.syncRealEstates.1">
-        <source>Here you can synchronize real estate</source>
-        <target>Immobilien synchronisieren.</target>
+        <source>Synchronize real estate</source>
+        <target>Objekte synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.0">
+        <source>Clean up images and files</source>
+        <target>Bilder und Dateien bereinigen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.1">
+        <source>Perform real estate file clean up</source>
+        <target>Bereinigung von Objektdateien ausführen</target>
       </trans-unit>
       <trans-unit id="tl_interface.filesPerSync.0">
         <source>Max. files per sync</source>
@@ -175,7 +183,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.filesPerSync.1">
         <source>Here you can specify the maximum number of files to be synchronized during an automatic import.</source>
-        <target>Hier kannst du die maximale Anzahl an Dateien definieren, die während des automatischen Imports synchronisiert werden sollen.</target>
+        <target>Hier können Sie die maximale Anzahl an Dateien definieren, die während des automatischen Imports synchronisiert werden sollen.</target>
       </trans-unit>
 
       <trans-unit id="tl_interface.openimmo.0">
@@ -184,7 +192,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.openimmo.1">
         <source>Import with ZIP or XML files containing OpenImmo structure file</source>
-        <target>Import mit ZIP oder XML-Dateien mit einer OpenImmo-Struktur-Datei.</target>
+        <target>Import mit ZIP oder XML-Dateien mit einer OpenImmo-Struktur-Datei</target>
       </trans-unit>
 
       <trans-unit id="tl_interface.create">
@@ -193,7 +201,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.update">
         <source>Update when changes occur</source>
-        <target>Aktualisieren, bei Änderungen</target>
+        <target>Bei Änderungen aktualisieren</target>
       </trans-unit>
       <trans-unit id="tl_interface.import">
         <source>Import</source>
@@ -283,12 +291,12 @@
         <target>Titel &amp; Typ</target>
       </trans-unit>
       <trans-unit id="tl_interface.oi_field_legend">
-        <source>OpenImmo field-config</source>
+        <source>OpenImmo field configuration</source>
         <target>OpenImmo Feld-Konfiguration</target>
       </trans-unit>
       <trans-unit id="tl_interface.related_records_legend">
-        <source>Create &amp; update</source>
-        <target>Erstellen &amp; Aktualisieren</target>
+        <source>Contact person settings</source>
+        <target>Kontaktperson-Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_interface.expert_legend">
         <source>Expert settings</source>
@@ -320,11 +328,11 @@
       </trans-unit>
       <trans-unit id="tl_interface.edit.0">
         <source>Edit interface mappings</source>
-        <target>Schnittstellen-Mappings bearbeiten</target>
+        <target>Zuordnungen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.edit.1">
         <source>Edit assigned interface mappings</source>
-        <target>Zugehörige Schnittstellen-Mappings bearbeiten</target>
+        <target>Zuordnungen dieser Schnittstelle bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.copy.0">
         <source>Duplicate interface</source>
@@ -380,7 +388,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.cleardata.1">
         <source>Clears files of real estate records that do not exist in the database</source>
-        <target>Löscht Dateien von Immobilien-Datensätzen, die nicht in der Datenbank vorhanden sind</target>
+        <target>Löscht Dateien von Objekt-Datensätzen, die nicht in der Datenbank vorhanden sind</target>
       </trans-unit>
     </body>
   </file>

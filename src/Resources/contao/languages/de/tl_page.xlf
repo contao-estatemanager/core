@@ -19,19 +19,19 @@
       </trans-unit>
       <trans-unit id="tl_page.setRealEstateType.0">
         <source>Define real estate type</source>
-        <target>Immobilien-Typ festlegen</target>
+        <target>Objekttyp festlegen</target>
       </trans-unit>
       <trans-unit id="tl_page.setRealEstateType.1">
         <source>Here you can specify if the real estate type should automatically be set to a fixed value when the page is entered.</source>
-        <target>Hier können Sie festlegen, ob der Immobilien-Typ automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
+        <target>Hier können Sie festlegen, ob der Objekttyp automatisch auf einen festen Wert gesetzt werden soll, wenn die Seite betreten wird.</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateType.0">
         <source>Real estate type</source>
-        <target>Immobilien-Typ</target>
+        <target>Objekttyp</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateType.1">
         <source>Here you can specify the real estate type that will automatically be selected when the page is entered.</source>
-        <target>Hier können Sie den Immobilien-Typ festlegen, der automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
+        <target>Hier können Sie den Objekttyp festlegen, der automatisch ausgewählt werden soll, wenn die Seite betreten wird.</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryLanguage.0">
         <source>Language of real estate records</source>
@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryLanguage.1">
         <source>Here you can limit the real estate records by language.</source>
-        <target>Hier können Sie die Ausgabe der Immobilien-Datensätze anhand der Sprache beschränken.</target>
+        <target>Hier können Sie die Immobilien-Datensätze anhand der Sprache eingrenzen.</target>
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryCountry.0">
         <source>Country of real estate records</source>
@@ -47,7 +47,7 @@
       </trans-unit>
       <trans-unit id="tl_page.realEstateQueryCountry.1">
         <source>Here you can limit the real estate records by country.</source>
-        <target>Hier können Sie die Ausgabe der Immobilien-Datensätze anhand des Landes beschränken.</target>
+        <target>Hier können Sie die Immobilien-Datensätze anhand des Landes eingrenzen.</target>
       </trans-unit>
       <trans-unit id="tl_page.estate_manager_legend">
         <source>Real estate settings</source>
@@ -55,7 +55,7 @@
       </trans-unit>
       <trans-unit id="tl_page.kauf_erbpacht_miete_leasing">
         <source>Buy / Rent</source>
-        <target>Kaufen / Mieten</target>
+        <target>Kaufen/Mieten</target>
       </trans-unit>
       <trans-unit id="tl_page.kauf_erbpacht">
         <source>Buy</source>

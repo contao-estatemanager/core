@@ -33,18 +33,24 @@
         <source>Please make sure that the file "data/import_field_formats.php" can be retrieved.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.edit.0">
-        <source>Edit field</source>
-      </trans-unit>
-      <trans-unit id="tl_field_format.edit.1">
-        <source>Edit field</source>
+        <source>Edit format action</source>
       </trans-unit>
       <trans-unit id="tl_field_format.editheader.0">
-        <source>Edit field</source>
+        <source>Edit field format</source>
       </trans-unit>
-      <trans-unit id="tl_field_format.delete.0">
-        <source>Delete field</source>
+      <trans-unit id="tl_field_format.editheader.1">
+        <source>Edit field format ID %s</source>
       </trans-unit>
-      <trans-unit id="tl_field_format.show.0">
+      <trans-unit id="tl_field_format.edit">
+        <source>Edit format action ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.copy">
+        <source>Copy field format ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.delete">
+        <source>Delete field format ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_field_format.show">
         <source>Display field information</source>
       </trans-unit>
       <trans-unit id="tl_field_format.fieldname.0">
@@ -54,7 +60,7 @@
         <source>Please select a field.</source>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.0">
-        <source>CSS Class</source>
+        <source>CSS class</source>
       </trans-unit>
       <trans-unit id="tl_field_format.cssClass.1">
         <source>Several classes can be specified if separated by a blank space.</source>

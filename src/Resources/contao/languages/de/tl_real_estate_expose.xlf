@@ -65,11 +65,11 @@
 
       <trans-unit id="tl_real_estate_expose.text_share_mail_subject">
         <source>Could this be a property for you?</source>
-        <target>Ist diese Immobilie eventuell etwas für dich?</target>
+        <target>Ist diese Immobilie eventuell etwas für Sie?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_expose.text_share_mail_body">
         <source>Hello,\rthis property could be something for you:\r%s</source>
-        <target>Hallo,\rdiese Immobilie könnte etwas für dich sein:\r%s</target>
+        <target>Hallo,\rdiese Immobilie könnte Sie interessieren:\r%s</target>
       </trans-unit>
     </body>
   </file>

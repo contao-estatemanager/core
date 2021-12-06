@@ -33,6 +33,14 @@
                 <source>Name of the logged-in user</source>
                 <target>Name des angemeldeten Benutzers</target>
             </trans-unit>
+            <trans-unit id="tl_interface_history.status.0">
+                <source>State</source>
+                <target>Bundesland</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.status.1">
+                <source>State of the import.</source>
+                <target>Status des Imports.</target>
+            </trans-unit>
             <trans-unit id="tl_interface_history.text.0">
                 <source>Details</source>
                 <target>Details</target>
@@ -47,7 +55,7 @@
             </trans-unit>
             <trans-unit id="tl_interface_history.show.1">
                 <source>Show details of entry ID %s</source>
-                <target>Den Eintrag ID %s anzeigen</target>
+                <target>Details des Eintrags mit der ID %s anzeigen</target>
             </trans-unit>
             <trans-unit id="tl_interface_history.delete.0">
                 <source>Delete</source>

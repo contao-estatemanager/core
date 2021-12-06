@@ -119,10 +119,10 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('herr','frau'),
+            'options'                 => array('herr','frau','divers'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
             'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(4) NOT NULL default ''"
+            'sql'                     => "varchar(6) NOT NULL default ''"
         ),
         'firma' => array
         (
@@ -333,6 +333,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'exclude'                 => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true, 'tl_class'=>'clr'),
+	        'explanation'             => 'insertTags',
             'sql'                     => "text NULL"
         ),
         'adressfreigabe' => array
@@ -555,16 +556,24 @@ class tl_contact_person extends Contao\Backend
      */
     public function generateSalutation(string $varValue, Contao\DataContainer $dc): string
     {
-        // Generate salutation if there is none
         if ($varValue == '')
         {
-            if($dc->activeRecord->anrede == 'herr'){
-                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMr'][0];
-            }else{
+            if($dc->activeRecord->anrede == 'herr')
+            {
+                $salutation = $GLOBALS['TL_LANG']['tl_contact_person']['salutationMr'][0];
+                $salutation .= ' ' . $GLOBALS['TL_LANG']['tl_contact_person'][$dc->activeRecord->anrede][0];
+            }
+            elseif($dc->activeRecord->anrede == 'frau')
+            {
                 $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMrs'][0];
+                $salutation .= ' ' . $GLOBALS['TL_LANG']['tl_contact_person'][$dc->activeRecord->anrede][0];
+            }
+            else
+            {
+                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationDivers'][0];
             }
 
-            $varValue = $salutation . ' ' . $GLOBALS['TL_LANG']['tl_contact_person'][$dc->activeRecord->anrede][0] . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
+            $varValue = $salutation . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
         }
 
         return $varValue;

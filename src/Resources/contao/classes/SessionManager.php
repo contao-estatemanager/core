@@ -13,7 +13,10 @@ namespace ContaoEstateManager;
 use Contao\Config;
 use Contao\Frontend;
 use Contao\Model\Collection;
+use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\StringUtil;
+use Contao\Validator;
 
 class SessionManager extends Frontend
 {
@@ -61,8 +64,11 @@ class SessionManager extends Frontend
         /** @var PageModel $objPage */
         global $objPage;
 
-        $this->objPage = $objPage->loadDetails();
-        $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
+        if ($objPage !== null)
+        {
+            $this->objPage = $objPage->loadDetails();
+            $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
+        }
 
         $this->objGroups = RealEstateGroupModel::findAllPublished();
         $this->objTypes = RealEstateTypeModel::findAllPublished();
@@ -104,7 +110,7 @@ class SessionManager extends Frontend
             return $this->getTypeParameter($objSelectedType, $objModule);
         }
 
-        return $this->getParameterByGroups($arrGroups, $objModule);
+        return $this->getParameterByGroups($arrGroups, $objModule, true);
     }
 
     protected function getTypeParameter($objType, $objModule): array
@@ -114,15 +120,27 @@ class SessionManager extends Frontend
         $arrOptions = array();
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentCountry($arrColumns, $arrValues);
-        $this->addQueryFragmentBasics($objType, $arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $objModule);
 
-        $arrOptions['order'] = $this->getOrderOption();
-
-        // HOOK: get type parameter by groups
-        if (isset($GLOBALS['CEM_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['CEM_HOOKS']['getTypeParameter']))
+        if ($objType === null)
         {
-            foreach ($GLOBALS['CEM_HOOKS']['getTypeParameter'] as $callback)
+            // ToDo: Throw Exception
+        }
+
+        $this->addQueryFragmentBasics($objType, $arrColumns, $arrValues);
+        $this->addQueryFragmentCountry($arrColumns, $arrValues);
+        $this->addQueryFragmentLocation($arrColumns, $arrValues);
+        $this->addQueryFragmentPrice($objType, $arrColumns, $arrValues);
+        $this->addQueryFragmentRoom($arrColumns, $arrValues);
+        $this->addQueryFragmentArea($objType, $arrColumns, $arrValues);
+        $this->addQueryFragmentPeriod($arrColumns, $arrValues);
+
+        $arrOptions['order']  = $this->getOrderOption();
+
+        // HOOK: get filtered type parameter
+        if (isset($GLOBALS['TL_HOOKS']['getFilteredTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getFilteredTypeParameter']))
+        {
+            foreach ($GLOBALS['TL_HOOKS']['getFilteredTypeParameter'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $objModule);
@@ -135,7 +153,7 @@ class SessionManager extends Frontend
     /**
      * Collect and return parameter by a given set of groups
      */
-    public function getParameterByGroups(array $arrGroups, $objModule): array
+    public function getParameterByGroups(array $arrGroups, $objModule, bool $blnFiltered=false): array
     {
         $arrColumns = array();
         $arrValues = array();
@@ -151,13 +169,24 @@ class SessionManager extends Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentCountry($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $objModule);
+        //$this->addQueryFragmentCountry($arrColumns, $arrValues); // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
 
         foreach ($objTypes as $objType)
         {
             $arrColumn = array();
 
             $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
+
+            if ($blnFiltered)
+            {
+                $this->addQueryFragmentCountry($arrColumn, $arrValues);
+                $this->addQueryFragmentLocation($arrColumn, $arrValues);
+                $this->addQueryFragmentPrice($objType, $arrColumn, $arrValues);
+                $this->addQueryFragmentRoom($arrColumn, $arrValues);
+                $this->addQueryFragmentArea($objType, $arrColumn, $arrValues);
+                $this->addQueryFragmentPeriod($arrColumn, $arrValues);
+            }
 
             // ToDo: Hook to add new toggle filter
 
@@ -199,7 +228,8 @@ class SessionManager extends Frontend
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentCountry($arrColumns, $arrValues);
+        $this->addQueryFragmentProvider($arrColumns, $objModule);
+        //$this->addQueryFragmentCountry($arrColumns, $arrValues); // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
 
         foreach ($objTypes as $objType)
         {
@@ -264,6 +294,195 @@ class SessionManager extends Frontend
         {
             $arrColumns[] = "$t.land=?";
             $arrValues[] = $this->objRootPage->realEstateQueryCountry;
+        }
+    }
+
+    /**
+     * Add query fragment for the location field
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentLocation(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['location'] ?? null)
+        {
+            $location = $_SESSION['FILTER_DATA']['location'];
+            $matches = array();
+
+            if (preg_match('/[0-9]{3,5}/', $location, $matches, PREG_UNMATCHED_AS_NULL))
+            {
+                $arrColumn[] = "$t.plz LIKE ?";
+                $arrValues[] = $matches[0].'%';
+                $location = trim(str_replace($matches[0], '', $location));
+            }
+
+            if ($location)
+            {
+                $arrColumn[] = "($t.ort LIKE ? OR $t.regionalerZusatz LIKE ?)";
+                $arrValues[] = $location.'%';
+                $arrValues[] = $location.'%';
+            }
+        }
+    }
+
+    /**
+     * Add query fragment for price fields
+     *
+     * @param RealEstateTypeModel $objRealEstateType
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentPrice($objRealEstateType, &$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['price_per'] ?? null && $_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
+        {
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
+            {
+                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                {
+                    $arrColumn[] = "$t.mietpreisProQm>=?";
+                    $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+                }
+                else
+                {
+                    $arrColumn[] = "$t.kaufpreisProQm>=?";
+                    $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+                }
+            }
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
+            {
+                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                {
+                    $arrColumn[] = "$t.mietpreisProQm<=?";
+                    $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+                }
+                else
+                {
+                    $arrColumn[] = "$t.kaufpreisProQm<=?";
+                    $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+                }
+            }
+        }
+        else
+        {
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
+            {
+                $arrColumn[] = "$t.$objRealEstateType->price>=?";
+                $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+            }
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
+            {
+                $arrColumn[] = "$t.$objRealEstateType->price<=?";
+                $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+            }
+        }
+    }
+
+    /**
+     * Add query fragment for room fields
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentRoom(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['room_from'] ?? null)
+        {
+            $arrColumn[] = "$t.anzahlZimmer>=?";
+            $arrValues[] = $_SESSION['FILTER_DATA']['room_from'];
+        }
+        if ($_SESSION['FILTER_DATA']['room_to'] ?? null)
+        {
+            $arrColumn[] = "$t.anzahlZimmer<=?";
+            $arrValues[] = $_SESSION['FILTER_DATA']['room_to'];
+        }
+    }
+
+    /**
+     * Add query fragment for area fields
+     *
+     * @param RealEstateTypeModel $objRealEstateType
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentArea($objRealEstateType, &$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['area_from'] ?? null)
+        {
+            $arrColumn[] = "$t.$objRealEstateType->area>=?";
+            $arrValues[] = $_SESSION['FILTER_DATA']['area_from'];
+        }
+        if ($_SESSION['FILTER_DATA']['area_to'] ?? null)
+        {
+            $arrColumn[] = "$t.$objRealEstateType->area<=?";
+            $arrValues[] = $_SESSION['FILTER_DATA']['area_to'];
+        }
+    }
+
+    /**
+     * Add query fragment for period fields
+     *
+     * @param array               $arrColumn
+     * @param array               $arrValues
+     */
+    protected function addQueryFragmentPeriod(&$arrColumn, &$arrValues)
+    {
+        $t = static::$strTable;
+
+        if ($_SESSION['FILTER_DATA']['period_from'] ?? null)
+        {
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
+            {
+                $arrColumn[] = "($t.abdatum<=? OR abdatum='')";
+
+                $date = new \Date($_SESSION['FILTER_DATA']['period_from']);
+                $arrValues[] = $date->tstamp;
+            }
+        }
+        if ($_SESSION['FILTER_DATA']['period_to'] ?? null)
+        {
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
+            {
+                $arrColumn[] = "($t.bisdatum>=? OR $t.bisdatum='')";
+
+                $date = new \Date($_SESSION['FILTER_DATA']['period_to']);
+                $arrValues[] = $date->tstamp;
+            }
+        }
+    }
+
+    /**
+     * Add provider query fragment
+     *
+     * @param array               $arrColumns
+     * @param ModuleModel         $objModule
+     */
+    protected function addQueryFragmentProvider(&$arrColumns, $objModule=null)
+    {
+        if ($objModule === null)
+        {
+            return;
+        }
+
+        $t = static::$strTable;
+
+        if ($objModule->filterByProvider)
+        {
+            $arrProvider = StringUtil::deserialize($objModule->provider, true);
+
+            if (\count($arrProvider))
+            {
+                $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
+            }
         }
     }
 

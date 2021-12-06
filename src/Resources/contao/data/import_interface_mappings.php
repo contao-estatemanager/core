@@ -6,6 +6,8 @@
  * @author  Daniele Sciannimanica <https://github.com/doishub>
  * @author  Fabian Ekert <https://github.com/eki89>
  */
+
+// ToDo: Check field provision_teilen and it's field format action -> None
 return array
 (
     /** Kontaktperson */

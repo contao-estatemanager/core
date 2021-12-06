@@ -2,8 +2,8 @@
   <file datatype="php" original="src/Resources/contao/languages/en/tl_user_group.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_user_group.filter_legend">
-        <source>Filter permissions</source>
-        <target>Filter-Rechte</target>
+        <source>Real estate filter permissions</source>
+        <target>Immobilienfilter-Rechte</target>
       </trans-unit>
       <trans-unit id="tl_user_group.interface_legend">
         <source>Interface permissions</source>
