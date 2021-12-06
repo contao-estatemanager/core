@@ -71,9 +71,7 @@ class SessionManager extends Frontend
     /**
      * Prevent cloning of the object (Singleton)
      */
-    final public function __clone()
-    {
-    }
+    final public function __clone() {}
 
     /**
      * Return the current object instance (Singleton)
