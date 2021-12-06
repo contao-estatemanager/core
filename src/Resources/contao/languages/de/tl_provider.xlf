@@ -30,7 +30,7 @@
         <target>Anbieter-Logo</target>
       </trans-unit>
       <trans-unit id="tl_provider.singleSRC.1">
-        <source>Here you can select a logo for the provider</source>
+        <source>Here you can select a logo for the provider.</source>
         <target>Hier können Sie ein Logo für den Anbieter auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_provider.contact.0">

@@ -60,11 +60,11 @@
         <target>Pauschalmiete</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pauschalmiete_price_from">
-        <source>min. inclusive rent</source>
+        <source>Min. inclusive rent</source>
         <target>Pauschalmiete ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pauschalmiete_price_to">
-        <source>max. inclusive rent</source>
+        <source>Max. inclusive rent</source>
         <target>Pauschalmiete bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht">
@@ -72,11 +72,11 @@
         <target>Pacht</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht_price_from">
-        <source>min. lease</source>
+        <source>Min. lease</source>
         <target>Pacht ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht_price_to">
-        <source>max. lease</source>
+        <source>Max. lease</source>
         <target>Pacht bis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kaufpreis">
@@ -84,11 +84,11 @@
         <target>Kaufpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kaufpreis_price_from">
-        <source>min. purchase price</source>
+        <source>Min. purchase price</source>
         <target>Kaufpreis ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kaufpreis_price_to">
-        <source>max. purchase price</source>
+        <source>Max. purchase price</source>
         <target>Kaufpreis bis</target>
       </trans-unit>
 
@@ -132,7 +132,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.area_from">
         <source>Min. area</source>
-        <target>Fläche ab</target>
+        <target>Fläche von</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.area_to">
         <source>Max. area</source>
@@ -235,7 +235,7 @@
         <target>Gastrofläche ab</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.gastroflaeche_area_to">
-        <source>Max. restaurant area up to</source>
+        <source>Max. restaurant area</source>
         <target>Gastrofläche bis</target>
       </trans-unit>
 

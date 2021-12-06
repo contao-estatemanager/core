@@ -138,6 +138,9 @@
         <source>Identification source</source>
         <target>Kennung Ursprung</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kennungUrsprung.0">
+        <source>Here you can enter the identification source</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate.standVom.0">
         <source>Status as of</source>
         <target>Stand vom</target>
@@ -163,12 +166,12 @@
         <target>Wählen Sie den Ansprechpartner des Objektes.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.0">
-        <source>Alias / SEO-URI</source>
+        <source>Alias/SEO-URI</source>
         <target>Alias/SEO-URL</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alias.1">
         <source>Enter the alias of the real estate here or leave the field blank to generate the alias automatically.</source>
-        <target>Geben Sie hier den Alias der Immobilie an oder lassen Sie das Feld frei, um den Alias automatisch generieren zu lassen.</target>
+        <target>Geben Sie hier den Alias des Objektes an oder lassen Sie das Feld frei, um den diesen automatisch generieren zu lassen.</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.plz.0">
@@ -337,7 +340,7 @@
         <target>Nutzungsart</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.nutzungsart.1">
-        <source>Here you can select the type of use for the property.</source>
+        <source>Here you can enter the type of use for the property.</source>
         <target>Hier können Sie die Nutzungsart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.alsFerien.0">
@@ -377,7 +380,7 @@
         <target>Ab (Datum)</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.abdatum.1">
-        <source>Define here when the object is available/ready for takeover?</source>
+        <source>Define here when the object is available/ready for takeover</source>
         <target>Geben Sie hier an, ab wann das Objekt übernommen werden kann.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bisdatum.0">
@@ -675,7 +678,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate.zzgMehrwertsteuer.1">
         <source>Add a VAT (value-added-tax) to the real estate.</source>
-        <target>Hier kommt eine MwSt. dazu, einmal pro Objekt.</target>
+        <target>Hier können Sie eine MwSt. zum Objekt hinzufügen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mietzuschlaege.0">
         <source>Additional rental surcharges</source>
@@ -1227,7 +1230,7 @@
         <target>Beginn der Angebotsphase</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.beginnAngebotsphase.1">
-        <source>Define here the date from when the offer phase starts.</source>
+        <source>Here you can define the date from when the offer phase starts.</source>
         <target>Hier können Sie ein Datum auswählen, an wann die Angebotsphase startet.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin.0">
@@ -1235,7 +1238,7 @@
         <target>Besichtigungstermin</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin.1">
-        <source>Define here the date, for a viewing appointment.</source>
+        <source>Here you can define a date for a viewing appointment.</source>
         <target>Hier können Sie ein Datum für einen Besichtigungstermin auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin2.0">
@@ -1243,18 +1246,15 @@
         <target>2. Besichtigungstermin</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.besichtigungstermin2.1">
-        <source>Define here an alternative date, for a viewing appointment.</source>
-        <target>Hier können Sie ein Datum für einen zweiten Besichtigungstermin auswählen.</target>
+        <source>Here you can define an alternative date for a viewing appointment.</source>
+        <target>&gt;Hier können Sie ein Datum für einen zweiten Besichtigungstermin auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.beginnBietzeit.0">
         <source>Start of bidding period</source>
         <target>Beginn der Bietzeit</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate.beginnBietzeit.0">
-        <source>Start of bidding period</source>
-      </trans-unit>
       <trans-unit id="tl_real_estate.beginnBietzeit.1">
-        <source>Define here the date for the start of the bidding period.</source>
+        <source>Here you can define the start of the bidding period.</source>
         <target>Hier können Sie den Start der Bietzeit festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.endeBietzeit.0">
@@ -1262,7 +1262,7 @@
         <target>Ende der Bietzeit</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.endeBietzeit.1">
-        <source>Define here the date for the end of the bidding period.</source>
+        <source>Here you can define the end of the bidding period.</source>
         <target>Hier können Sie das Ende der Bietzeit festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hoechstgebotZeigen.0">
@@ -1278,7 +1278,7 @@
         <target>Mindestpreis</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.mindestpreis.1">
-        <source>Define here, the minimum bid.</source>
+        <source>Here you can define the minimum bid.</source>
         <target>Hier können Sie das Mindestgebot angeben.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zwangsversteigerung.0">
@@ -1294,7 +1294,7 @@
         <target>Aktenzeichen</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.aktenzeichen.1">
-        <source>Define here, the file number of the foreclosure.</source>
+        <source>Here you can define the file number of the foreclosure.</source>
         <target>Hier können Sie das Aktenzeichen angeben.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zvtermin.0">
@@ -1302,7 +1302,7 @@
         <target>Zwangsversteigerungstermin</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zvtermin.1">
-        <source>Define here, the foreclosure date.</source>
+        <source>Here you can define the foreclosure date.</source>
         <target>Hier können Sie ein Datum für die Zwangsversteigerung auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.zusatztermin.0">
@@ -1840,53 +1840,105 @@
         <source>Wheelchair accessible</source>
         <target>Rollstuhlgerecht</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.rollstuhlgerecht.1">
+        <source>Is there a wheelchair entrance?</source>
+        <target>Gibt es einen Eingang für Rollstuhlfahrer?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kabelSatTv.0">
         <source>Cable / satellite TV</source>
         <target>Kabel/Sat-TV</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.kabelSatTv.1">
+        <source>Does the real estate have cable / seatellite tv?</source>
+        <target>Verfügt das Objekt über Kabel-/Satellitenfernsehen?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.dvbt.0">
         <source>DVBT available</source>
         <target>DVBT vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.dvbt.1">
+        <source>Does the real estate have DVBT?</source>
+        <target>Verfügt das Objekt über DVBT?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.barrierefrei.0">
         <source>Barrier-free</source>
         <target>Barrierefrei</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.barrierefrei.1">
+        <source>Is the real estate barrier-free?</source>
+        <target>Ist das Objekt barrierefrei?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.sauna.0">
         <source>Sauna available</source>
         <target>Sauna vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.sauna.1">
+        <source>Does the real estate have a sauna?</source>
+        <target>Verfügt das Objekt über eine Sauna?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.swimmingpool.0">
         <source>Pool available</source>
         <target>Schwimmbad/Pool vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.swimmingpool.1">
+        <source>Does the real estate have a swimming pool?</source>
+        <target>Verfügt das Objekt über einen Pool?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.waschTrockenraum.0">
         <source>Laundry / dry room available</source>
         <target>Wasch-/Trockenraum vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.waschTrockenraum.1">
+        <source>Does the real estate provide a room for hanging and drying laundry?</source>
+        <target>Gibt es im Objekt einen Wasch-/Trockenraum?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.wintergarten.0">
         <source>Winter garden available</source>
         <target>Wintergarten vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.wintergarten.1">
+        <source>Does the real estate have a winter garden?</source>
+        <target>Besitzt das Objekt einen Wintergarten?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.dvVerkabelung.0">
         <source>DV-Cable available</source>
         <target>DV-Verkabelung vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.dvVerkabelung.1">
+        <source>Does the real estate provide DV-cable?</source>
+        <target>Verfügt das Objekt über DV-Verkabelung?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.rampe.0">
         <source>Ramp available</source>
         <target>Rampe vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.rampe.1">
+        <source>Does the real estate have a ramp?</source>
+        <target>Besitzt das Objekt eine Rampe?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hebebuehne.0">
         <source>Lifting ramp available</source>
         <target>Hebebühne vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.hebebuehne.1">
+        <source>Does the real estate have a lifting ramp?</source>
+        <target>Besitzt das Objekt eine Hebebühne?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kran.0">
         <source>Crane available</source>
         <target>Kran vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kran.1">
+        <source>Does the real estate have a crane?</source>
+        <target>Gibt es einen Kran?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.gastterrasse.0">
         <source>Guest terrace available</source>
         <target>Gastterrasse vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gastterrasse.1">
+        <source>Does the real estate have a guest terrace?</source>
+        <target>Verfügt das Objekt über eine Gastterrasse?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.stromanschlusswert.0">
         <source>Power connection value</source>
@@ -1900,9 +1952,17 @@
         <source>Canteen/Cafeteria available</source>
         <target>Kantine/Cafeteria vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kantineCafeteria.1">
+        <source>Does the real estate have a canteen or cafeteria?</source>
+        <target>Gibt es im Objekt eine Kantine oder Cafeteria?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.teekueche.0">
         <source>Kitchenette available</source>
         <target>Teeküche vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.teekueche.1">
+        <source>Does the real estate have a kitchenette?</source>
+        <target>Gibt es im Objekt eine Teeküche?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hallenhoehe.0">
         <source>Height of the hall</source>
@@ -1916,85 +1976,169 @@
         <source>Beer supply agreement</source>
         <target>Brauereibindung</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.brauereibindung.1">
+        <source>Is the property tied to a beer supply agreement?</source>
+        <target>Ist das Objekt brauereigebunden?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.sporteinrichtungen.0">
         <source>Sports facilities available</source>
         <target>Sporteinrichtungen vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.sporteinrichtungen.1">
+        <source>Does the real estate offer sports facilities?</source>
+        <target>Gibt es Sporteinrichtungen?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.wellnessbereich.0">
         <source>Wellness area available</source>
         <target>Wellnessbereich vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.wellnessbereich.1">
+        <source>Does the real estate have a wellness area?</source>
+        <target>Verfügt das Objekt über einen Wellnessbereich?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.telefonFerienimmobilie.0">
         <source>Phone available (vacational real estate)</source>
         <target>Telefon vorhanden (Ferienimmobilie)</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.telefonFerienimmobilie.1">
+        <source>Does the real estate have a phone?</source>
+        <target>Gibt es ein Telefon?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.breitbandZugang.0">
         <source>Broadband access available</source>
         <target>Breitband-Zugang vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.breitbandZugang.1">
+        <source>Does the real estate have broadband access?</source>
+        <target>Verfügt das Objekt über einen Breitbandzugang?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.breitbandGeschw.0">
         <source>Broadband speed</source>
         <target>Breitband-Geschwindigkeit</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.breitbandGeschw.1">
+        <source>Here you can enter the internet speed.</source>
+        <target>Hier können Sie die Breitbandgeschwindigkeit eintragen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.breitbandArt.0">
         <source>Broadband type</source>
         <target>Breitband-Art</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.breitbandArt.1">
+        <source>Here you can choose the type of broadband.</source>
+        <target>Hier können Sie die Breitbandart auswählen.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.unterkellert.0">
         <source>With a cellar</source>
         <target>Unterkellert</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.unterkellert.1">
+        <source>Here you can choose the type of cellar if one exists.</source>
+        <target>Hier können Sie die Kellerart auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.umtsEmpfang.0">
         <source>UMTS reception available</source>
         <target>UMTS-Empfang vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.umtsEmpfang.1">
+        <source>Does the real estate have UMTS reception?</source>
+        <target>Verfügt das Objekt über UMTS-Empfang?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.abstellraum.0">
         <source>Storage room available</source>
         <target>Abstellraum vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.abstellraum.1">
+        <source>Does the real estate have a storage room?</source>
+        <target>Gibt es einen Abstellraum?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.fahrradraum.0">
         <source>Bike room available</source>
         <target>Fahrradraum vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.fahrradraum.1">
+        <source>Does the real estate offer a room to store bikes in?</source>
+        <target>Gibt es einen Fahrradraum?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.rolladen.0">
         <source>Roller shutters available</source>
         <target>Rollladen vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.rolladen.1">
+        <source>Are there roller shutters on the windows?</source>
+        <target>Gibt es Rollläden?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.bibliothek.0">
         <source>Library available</source>
         <target>Bibliothek vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.bibliothek.1">
+        <source>Does the real estate offer a library?</source>
+        <target>Verfügt das Objekt über eine Bibliothek?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.dachboden.0">
         <source>Attic available</source>
         <target>Dachboden vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.dachboden.1">
+        <source>Does the real estate have an attic?</source>
+        <target>Verfügt das Objekt über einen Dachboden?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.gaestewc.0">
         <source>Guest toilet available</source>
         <target>Gäste-WC vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.gaestewc.1">
+        <source>Does the real estate have a toilet for guests?</source>
+        <target>Verfügt das Objekt über Gästetoiletten?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kabelkanaele.0">
         <source>Cable TV available</source>
         <target>Kabelkanäle vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.kabelkanaele.1">
+        <source>Does the real estate offer cable tv?</source>
+        <target>Gibt es Kabel-TV?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.seniorengerecht.0">
         <source>Suitable for the elderly</source>
         <target>Seniorengerecht</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.seniorengerecht.1">
+        <source>Is the real estate suitable for older people?</source>
+        <target>Ist das Objekt seniorengerecht?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.kartenMakro.0">
         <source>Macro-map available</source>
         <target>Makro-Karte vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.kartenMakro.1">
+        <source>Do you offer a macro map for the real estate?</source>
+        <target>Gibt es eine Makrokarte?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kartenMikro.0">
         <source>Micro-map available</source>
         <target>Mikro-Karte vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kartenMikro.1">
+        <source>Do you offer a micro map for the real estate?</source>
+        <target>Gibt es eine Mikrokarte?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.virtuelletour.0">
         <source>Virtual tour available</source>
         <target>Virtuelle-Tour verfügbar</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.virtuelletour.1">
+        <source>Do you offer a virtual tour for this real estate?</source>
+        <target>Gibt es einen virtuellen Rundgang?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.luftbildern.0">
         <source>Aerial photographs available</source>
         <target>Luftaufnahmen vorhanden</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.luftbildern.1">
+        <source>Do you offer aerial photographs for this real estate?</source>
+        <target>Gibt es für das Objekt Luftaufnahmen?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.einliegerwohnung.0">
         <source>Granny annexe available</source>
@@ -2040,21 +2184,41 @@
         <source>Flatshare suitable</source>
         <target>WG-geeignet</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.wgGeeignet.1">
+        <source>Is the real estate suitable for flat share?</source>
+        <target>Ist das Objekt WG-geeignet?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.zulieferung.0">
         <source>Supply/Delivery possible</source>
         <target>Zulieferung möglich</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.zulieferung.1">
+        <source>Is deliver possible? E.g. Trucks.</source>
+        <target>Ist eine Zulieferung möglich? Z. B. Lkws.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.kamin.0">
         <source>Fireplace available</source>
         <target>Kamin vorhanden</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.kamin.1">
+        <source>Does the real estate offer a fireplace?</source>
+        <target>Gibt es einen Kamin?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.klimatisiert.0">
         <source>Air-conditioned</source>
         <target>Klimatisiert</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.klimatisiert.1">
+        <source>Is the real estate air conditioned?</source>
+        <target>Ist das Objekt klimatisiert?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.gartennutzung.0">
         <source>Garden usage</source>
         <target>Gartennutzung</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.gartennutzung.1">
+        <source>Can you use a garden in this real estate?</source>
+        <target>Ist eine Gartennutzung möglich?</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate.baujahr.0">
@@ -2579,9 +2743,17 @@
         <source>Non-smokers</source>
         <target>Nichtraucher</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.nichtraucher.1">
+        <source>Here you can specify whether smoking in this real estate is not allowed.</source>
+        <target>Hier können Sie angeben, ob das Rauchen in dieser Immobilie nicht erlaubt ist.</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.haustiere.0">
         <source>Pets allowed</source>
         <target>Haustiere erlaubt</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.haustiere.1">
+        <source>Are pets allowed in this real estate?</source>
+        <target>Sind Haustiere erlaubt?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.geschlecht.0">
         <source>Gender</source>
@@ -2603,13 +2775,17 @@
         <source>Rooms can be modified</source>
         <target>Räume veränderbar</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate.raeumeVeraenderbar.1">
+        <source>Are you able to modify rooms in this real estate?</source>
+        <target>Sind die Räume des Objektes veränderbar?</target>
+      </trans-unit>
       <trans-unit id="tl_real_estate.hochhaus.0">
         <source>High-rise building</source>
         <target>Hochhaus</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.hochhaus.1">
-        <source>Define here if the building is a high-rise building</source>
-        <target>Das Objekt befindet sich in einem Hochhaus oder ist ein Hochhaus.</target>
+        <source>Define here if the real estate is in a high-rise building.</source>
+        <target>Befindet sich das Objekt in einem Hochhaus?</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.vermietet.0">
         <source>Rented</source>
@@ -2638,6 +2814,10 @@
       <trans-unit id="tl_real_estate.laufzeit.0">
         <source>Duration</source>
         <target>Laufzeit</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate.laufzeit.1">
+        <source>Here you can enter the duration.</source>
+        <target>Hier können Sie die Laufzeit festlegen.</target>
       </trans-unit>
       <trans-unit id="tl_real_estate.maxPersonen.0">
         <source>Maximum persons</source>

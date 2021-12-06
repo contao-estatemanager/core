@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="tl_user_group.real_estate_group_legend">
         <source>Real estate group permissions</source>
-        <target>Objektgruppen-Rechte</target>
+        <target>Immobiliengruppen-Rechte</target>
       </trans-unit>
     </body>
   </file>

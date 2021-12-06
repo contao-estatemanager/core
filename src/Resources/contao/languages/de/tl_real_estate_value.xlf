@@ -821,7 +821,7 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_value.stpSonstigePlatzart_sonstiges">
         <source>Other</source>
-        <target>Sonstiges</target>
+        <target>Sonstige</target>
       </trans-unit>
       <trans-unit id="tl_real_estate_value.lageImBau_links">
         <source>Left</source>

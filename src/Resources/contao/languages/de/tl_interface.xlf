@@ -14,7 +14,7 @@
         <target>Typ</target>
       </trans-unit>
       <trans-unit id="tl_interface.type.1">
-        <source>Please choose the type to be used for the import.</source>
+        <source>Please select the type to be used for the import.</source>
         <target>Bitte wählen Sie den Typen aus, der für den Import verwendet werden soll.</target>
       </trans-unit>
       <trans-unit id="tl_interface.provider.0">
@@ -155,7 +155,7 @@
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.0">
         <source>Delete files older than</source>
-        <target>Dateien älter als * löschen</target>
+        <target>Dateien älter als  * löschen</target>
       </trans-unit>
       <trans-unit id="tl_interface.deleteFilesOlderThen.1">
         <source>Here you can specify when old synchronization files should be finally deleted.</source>

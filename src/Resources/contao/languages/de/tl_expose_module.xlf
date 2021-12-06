@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.edit.1">
         <source>Edit exposee module</source>
-        <target>Exposé-Modul bearbeiten.</target>
+        <target>Exposé-Modul bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.new.0">
         <source>New exposee module</source>
@@ -137,7 +137,7 @@
       </trans-unit>
       <trans-unit id="tl_expose_module.fontSize.1">
         <source>Here you can define the font size for the output.</source>
-        <target>Hier können Sie die Schriftgröße der Ausgabe definieren.</target>
+        <target>Hier können Sie die Schriftgröße der Ausgabe auswählen.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.forceFullAddress.0">
         <source>Force full address</source>
@@ -232,7 +232,7 @@
         <target>Texte</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.textBlocks.1">
-        <source>Here you can define the output and order of the real estate texts.</source>
+        <source>Here you can define the output and order of the real estate texts</source>
         <target>Hier können Sie die Ausgabe und Reihenfolge der Objekt-Texte definieren.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.maxTextLength.0">
@@ -264,7 +264,7 @@
         <target>Anzuzeigende Felder</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.contactFields.0">
-        <source>Contact information</source>
+        <source>Fields</source>
         <target>Kontaktinformationen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.contactFields.1">
@@ -380,7 +380,7 @@
         <target>Anhänge</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.attachmentType.1">
-        <source>Please select the type of attachment..</source>
+        <source>Please select the type of attachment.</source>
         <target>Bitte wählen Sie den Typen des Anhangs aus.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.allowedFileExtensions.0">

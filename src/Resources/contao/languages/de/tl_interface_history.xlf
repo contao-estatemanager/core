@@ -35,11 +35,11 @@
             </trans-unit>
             <trans-unit id="tl_interface_history.status.0">
                 <source>State</source>
-                <target>Status</target>
+                <target>Bundesland</target>
             </trans-unit>
             <trans-unit id="tl_interface_history.status.1">
                 <source>State of the import.</source>
-                <target>Status des Imports</target>
+                <target>Status des Imports.</target>
             </trans-unit>
             <trans-unit id="tl_interface_history.text.0">
                 <source>Details</source>
