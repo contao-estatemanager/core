@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="tl_module.filter.1">
         <source>Please select a filter.</source>
-        <target>Bitte wählen Sie einen Filter.</target>
+        <target>Bitte wählen Sie einen Filter aus.</target>
       </trans-unit>
       <trans-unit id="tl_module.addCountLabel.0">
         <source>Display number of properties</source>
@@ -102,7 +102,7 @@
         <target>Kontaktperson anzeigen</target>
       </trans-unit>
       <trans-unit id="tl_module.addContactPerson.1">
-        <source>Display the contact person of the property in the list.</source>
+        <source>Adds the contact person to the property</source>
         <target>Die Kontaktperson des Objektes in der Liste anzeigen.</target>
       </trans-unit>
       <trans-unit id="tl_module.listMode.0">
@@ -118,7 +118,7 @@
         <target>Objektgruppen</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateGroups.1">
-        <source>Here you can select one or more real estate groups to be considered.</source>
+        <source>Here you can select one or more object groups to be considered.</source>
         <target>Hier können Sie eine oder mehrere Objektgruppen auswählen, die berücksichtigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateTypes.0">
@@ -162,7 +162,7 @@
         <target>Wählen Sie ein Template, um die Darstellung einer einzelnen Immobilie zu setzen.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateProviderTemplate.0">
-        <source>Provider template</source>
+        <source>Real Estate Template Extension: Provider</source>
         <target>Anbieter-Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateProviderTemplate.1">
@@ -170,7 +170,7 @@
         <target>Hier können Sie das Standard-Template für die Darstellung von Anbietern innerhalb eines Immobilien-Templates überschreiben.</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateContactPersonTemplate.0">
-        <source>Contact person template</source>
+        <source>Real Estate Template Extension: Contact Person</source>
         <target>Kontaktperson-Template</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateContactPersonTemplate.1">
