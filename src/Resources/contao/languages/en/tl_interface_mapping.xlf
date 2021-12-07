@@ -6,7 +6,7 @@
         <source>Type</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.type.1">
-        <source>Please specify the data type to which the mapping should point.</source>
+        <source>Please specify the data type to which the field mapping should point.</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.attribute.0">
         <source>Attribute</source>
@@ -96,7 +96,7 @@
         <source>Save file</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.1">
-        <source>Here you can specify if the file should be saved during mapping processing.</source>
+        <source>Here you can specify if the file should be saved during the field mapping processing.</source>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.tl_real_estate">
@@ -168,40 +168,40 @@
       </trans-unit>
       
       <trans-unit id="tl_interface_mapping.new.0">
-        <source>New mapping</source>
+        <source>New field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.new.1">
-        <source>Create a new mapping</source>
+        <source>Create a new field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.edit.0">
-        <source>Edit mapping</source>
+        <source>Edit field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.edit.1">
-        <source>Edit mapping ID %s</source>
+        <source>Edit field mapping ID %s</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.copy.0">
-        <source>Duplicate mapping</source>
+        <source>Duplicate field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.copy.1">
-        <source>Duplicate mapping ID %s</source>
+        <source>Duplicate field mapping ID %s</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.delete.0">
-        <source>Delete mapping</source>
+        <source>Delete field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.delete.1">
-        <source>Delete mapping ID %s</source>
+        <source>Delete field mapping ID %s</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.toggle.0">
-        <source>Activate/deactivate mapping</source>
+        <source>Activate/deactivate field mapping</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.toggle.1">
-        <source>Activate/deactivate mapping ID %s</source>
+        <source>Activate/deactivate field mapping ID %s</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.show.0">
         <source>Mapping details</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.show.1">
-        <source>Show details of mapping ID %s</source>
+        <source>Show details of field mapping ID %s</source>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.importDefaultMappings.0">
@@ -211,7 +211,7 @@
         <source>Restore to standard OpenImmo mapping fields</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.importConfirm">
-        <source>Are you sure you want to reset all mapping fields? Your own adjustments will be lost.</source>
+        <source>Are you sure you want to reset all field mappings? Your own adjustments will be lost.</source>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.imported.0">
         <source>All fields successfully reset</source>
