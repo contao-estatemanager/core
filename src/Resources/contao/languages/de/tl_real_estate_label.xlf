@@ -69,14 +69,6 @@
                 <source>Subject to commission</source>
                 <target>Provisionspflichtig</target>
             </trans-unit>
-            <trans-unit id="tl_real_estate_label.provisionTeilen">
-                <source>Share commission</source>
-                <target>Provision teilen</target>
-            </trans-unit>
-            <trans-unit id="tl_real_estate_label.provisionTeilenWert">
-                <source>Share commission</source>
-                <target>Provision teilen</target>
-            </trans-unit>
             <trans-unit id="tl_real_estate_label.innenCourtage">
                 <source>Internal commission payment</source>
                 <target>Verkäuferprovision</target>
