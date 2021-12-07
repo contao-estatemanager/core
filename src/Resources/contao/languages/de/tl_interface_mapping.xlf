@@ -127,7 +127,7 @@
       </trans-unit>
       <trans-unit id="tl_interface_mapping.saveImage.1">
         <source>Here you can specify if the file should be saved during the field mapping processing.</source>
-        <target>Hier können Sie angeben, ob die Datei bei der Felduordnung gespeichert werden soll.</target>
+        <target>Hier können Sie angeben, ob die Datei bei der Feldzuordnung gespeichert werden soll.</target>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.tl_real_estate">
@@ -261,11 +261,11 @@
       </trans-unit>
       <trans-unit id="tl_interface_mapping.show.0">
         <source>Mapping details</source>
-        <target>Mappingdetails</target>
+        <target>Zuordnungsdetails</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.show.1">
         <source>Show details of field mapping ID %s</source>
-        <target>Die Details der Feldzuordnung ID %s anzeigen.</target>
+        <target>Die Details der Feldzuordnung ID %s anzeigen</target>
       </trans-unit>
 
       <trans-unit id="tl_interface_mapping.importDefaultMappings.0">
@@ -277,7 +277,7 @@
         <target>Standard OpenImmo-Feldzuweisung wiederherstellen</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.importConfirm">
-        <source>Are you sure you want to reset all mapping fields? Your own adjustments will be lost.</source>
+        <source>Are you sure you want to reset all field mappings? Your own adjustments will be lost.</source>
         <target>Sind Sie sicher, dass alle Felder zurückgesetzt werden sollen? Eigene Anpassungen gehen dadurch verloren.</target>
       </trans-unit>
       <trans-unit id="tl_interface_mapping.imported.0">
