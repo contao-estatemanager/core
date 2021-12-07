@@ -249,10 +249,10 @@
         <source>Edit interface ID %s</source>
       </trans-unit>
       <trans-unit id="tl_interface.edit.0">
-        <source>Edit interface mappings</source>
+        <source>Edit interface field mappings</source>
       </trans-unit>
       <trans-unit id="tl_interface.edit.1">
-        <source>Edit assigned interface mappings</source>
+        <source>Edit assigned field mappings</source>
       </trans-unit>
       <trans-unit id="tl_interface.copy.0">
         <source>Duplicate interface</source>
