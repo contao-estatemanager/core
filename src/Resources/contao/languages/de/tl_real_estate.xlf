@@ -1008,22 +1008,6 @@
         <source>Is the property subject to commission?</source>
         <target>Ist das Objekt provisionspflichtig?</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilen.0">
-        <source>Share commission</source>
-        <target>Provision teilen</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilen.1">
-        <source>Split commission payment for partner transactions.</source>
-        <target>Aufteilung der Provision bei Partnergeschäften. Auch &quot;A Meta&quot; Geschäft.</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilenWert.0">
-        <source>Share commission</source>
-        <target>Provision teilen</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilenWert.1">
-        <source>Split commission payment for partner transactions.</source>
-        <target>Aufteilung der Provision bei Partnergeschäften. Auch &quot;A Meta&quot; Geschäft.</target>
-      </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtage.0">
         <source>Internal commission payment</source>
         <target>Verkäuferprovision</target>

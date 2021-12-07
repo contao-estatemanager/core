@@ -97,8 +97,6 @@ use Contao\Model\Collection;
  * @property string  $mietpreisProQm
  * @property string  $kaufpreisProQm
  * @property boolean $provisionspflichtig
- * @property boolean $provisionTeilen
- * @property string  $provisionTeilenWert
  * @property string  $innenCourtage
  * @property boolean $innenCourtageMwst
  * @property string  $aussenCourtage
@@ -469,8 +467,6 @@ use Contao\Model\Collection;
  * @method static RealEstateModel|null findOneByMietpreisProQm($val, array $opt=array())
  * @method static RealEstateModel|null findOneByKaufpreisProQm($val, array $opt=array())
  * @method static RealEstateModel|null findOneByProvisionspflichtig($val, array $opt=array())
- * @method static RealEstateModel|null findOneByProvisionTeilen($val, array $opt=array())
- * @method static RealEstateModel|null findOneByProvisionTeilenWert($val, array $opt=array())
  * @method static RealEstateModel|null findOneByInnenCourtage($val, array $opt=array())
  * @method static RealEstateModel|null findOneByInnenCourtageMwst($val, array $opt=array())
  * @method static RealEstateModel|null findOneByAussenCourtage($val, array $opt=array())
@@ -837,8 +833,6 @@ use Contao\Model\Collection;
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByMietpreisProQm($val, array $opt=array())
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByKaufpreisProQm($val, array $opt=array())
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByProvisionspflichtig($val, array $opt=array())
- * @method static Collection|RealEstateModel[]|RealEstateModel|null findByProvisionTeilen($val, array $opt=array())
- * @method static Collection|RealEstateModel[]|RealEstateModel|null findByProvisionTeilenWert($val, array $opt=array())
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByInnenCourtage($val, array $opt=array())
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByInnenCourtageMwst($val, array $opt=array())
  * @method static Collection|RealEstateModel[]|RealEstateModel|null findByAussenCourtage($val, array $opt=array())
@@ -1209,8 +1203,6 @@ use Contao\Model\Collection;
  * @method static integer countByMietpreisProQm($val, array $opt=array())
  * @method static integer countByKaufpreisProQm($val, array $opt=array())
  * @method static integer countByProvisionspflichtig($val, array $opt=array())
- * @method static integer countByProvisionTeilen($val, array $opt=array())
- * @method static integer countByProvisionTeilenWert($val, array $opt=array())
  * @method static integer countByInnenCourtage($val, array $opt=array())
  * @method static integer countByInnenCourtageMwst($val, array $opt=array())
  * @method static integer countByAussenCourtage($val, array $opt=array())

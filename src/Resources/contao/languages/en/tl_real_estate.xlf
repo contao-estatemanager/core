@@ -759,18 +759,6 @@
       <trans-unit id="tl_real_estate.provisionspflichtig.1">
         <source>Is the property subject to commission?</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilen.0">
-        <source>Share commission</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilen.1">
-        <source>Split commission payment for partner transactions.</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilenWert.0">
-        <source>Share commission</source>
-      </trans-unit>
-      <trans-unit id="tl_real_estate.provisionTeilenWert.1">
-        <source>Split commission payment for partner transactions.</source>
-      </trans-unit>
       <trans-unit id="tl_real_estate.innenCourtage.0">
         <source>Internal commission payment</source>
       </trans-unit>

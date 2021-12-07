@@ -327,12 +327,12 @@
         <target>Schnittstelle ID %s bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.edit.0">
-        <source>Edit interface mappings</source>
-        <target>Zuordnungen bearbeiten</target>
+        <source>Edit interface field mappings</source>
+        <target>Feldzuordnungen bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.edit.1">
-        <source>Edit assigned interface mappings</source>
-        <target>Zuordnungen dieser Schnittstelle bearbeiten</target>
+        <source>Edit assigned field mappings</source>
+        <target>Feldzuordnungen dieser Schnittstelle bearbeiten</target>
       </trans-unit>
       <trans-unit id="tl_interface.copy.0">
         <source>Duplicate interface</source>
