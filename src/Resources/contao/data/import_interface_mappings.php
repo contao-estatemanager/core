@@ -7,7 +7,6 @@
  * @author  Fabian Ekert <https://github.com/eki89>
  */
 
-// ToDo: Check field provision_teilen and it's field format action -> None
 return array
 (
     /** Kontaktperson */
@@ -147,7 +146,6 @@ return array
     array('tl_real_estate', 'mietpreisProQm',              'preise', 'mietpreis_pro_qm'),
     array('tl_real_estate', 'kaufpreisProQm',              'preise', 'kaufpreis_pro_qm'),
     array('tl_real_estate', 'provisionspflichtig',         'preise', 'provisionspflichtig', array('boolean')),
-    array('tl_real_estate', 'provisionTeilen',             'preise', 'provision_teilen', array('boolean')),
     array('tl_real_estate', 'innenCourtage',               'preise', 'innen_courtage'),
     array('tl_real_estate', 'innenCourtageMwst',           'preise', 'innen_courtage@mit_mwst', array('boolean')),
     array('tl_real_estate', 'aussenCourtage',              'preise', 'aussen_courtage'),

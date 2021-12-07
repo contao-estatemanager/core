@@ -69,14 +69,6 @@
                 <source>Subject to commission</source>
                 <target>Sujeto a comisión</target>
             </trans-unit>
-            <trans-unit id="tl_real_estate_label.provisionTeilen">
-                <source>Share commission</source>
-                <target>Dividir de comisión</target>
-            </trans-unit>
-            <trans-unit id="tl_real_estate_label.provisionTeilenWert">
-                <source>Share commission</source>
-                <target>Dividir de comisión</target>
-            </trans-unit>
             <trans-unit id="tl_real_estate_label.innenCourtage">
                 <source>Internal commission payment</source>
                 <target>Pago de comisiones internas</target>

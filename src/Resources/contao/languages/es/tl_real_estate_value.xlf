@@ -748,18 +748,6 @@
         <source>Year</source>
         <target>Año</target>
       </trans-unit>
-      <trans-unit id="tl_real_estate_value.provisionTeilenWert_absolut">
-        <source>Absolute</source>
-        <target>Absoluto</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_value.provisionTeilenWert_prozent">
-        <source>Procent</source>
-        <target>Procent</target>
-      </trans-unit>
-      <trans-unit id="tl_real_estate_value.provisionTeilenWert_text">
-        <source>Text</source>
-        <target>Texto</target>
-      </trans-unit>
 
       <trans-unit id="tl_real_estate_value.mieteinnahmenIstPeriode_tag">
         <source>Day</source>
