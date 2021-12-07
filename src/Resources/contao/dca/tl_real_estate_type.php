@@ -510,22 +510,29 @@ class tl_real_estate_type extends Contao\Backend
      */
     public function getRealEstateTypes(Contao\DataContainer $dc): array
     {
-        $objTypes = $this->Database->prepare("SELECT id, title, longTitle FROM tl_real_estate_type WHERE id!=?")
-            ->execute($dc->activeRecord->id);
+        $objTypes = $this->Database->prepare("SELECT id, pid, title, longTitle FROM tl_real_estate_type WHERE id!=? ORDER BY pid")->execute($dc->activeRecord->id);
 
         if ($objTypes->numRows < 1)
         {
-            return array();
+            return [];
         }
 
-        $arrTypes = array();
+        $objGroups = \ContaoEstateManager\RealEstateGroupModel::findAll();
+        $arrGroups = [];
+        $arrReturn = [];
 
-        while ($objTypes->next())
+        foreach ($objGroups as $group)
         {
-            $arrTypes[$objTypes->id] = $objTypes->title . ' (' . $objTypes->longTitle . ')';
+            $arrGroups[$group->id] = $group->title ?? $group->id;
         }
 
-        return $arrTypes;
+        while($objTypes->next())
+        {
+            $strGroup = $arrGroups[$objTypes->pid] ?? $objTypes->pid;
+            $arrReturn[$strGroup][$objTypes->id] = $objTypes->title . ' (' . $objTypes->longTitle . ')';
+        }
+
+        return $arrReturn;
     }
 
     /**
