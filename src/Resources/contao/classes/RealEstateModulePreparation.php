@@ -182,14 +182,15 @@ class RealEstateModulePreparation extends RealEstate
     /**
      * Return details from real estate
      *
-     * @param null|array    $separateGroups: area, price, attribute, detail
-     * @param bool          $includeAddress
-     * @param null|array    $validGroups
-     * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param null|array $separateGroups : area, price, attribute, detail
+     * @param bool $includeAddress
+     * @param null|array $validGroups
+     * @param string $defaultGroup : Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param array|null $sortingFields
      *
      * @return array        array('group1' [,group2,group3,...])
      */
-    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = null, array $validGroups=null, string $defaultGroup='detail'): array
+    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = null, array $validGroups=null, string $defaultGroup='detail', ?array $sortingFields = null): array
     {
         if(null === $separateGroups && $this->objModule->detailBlocks)
         {
@@ -206,7 +207,16 @@ class RealEstateModulePreparation extends RealEstate
             $validGroups = StringUtil::deserialize($this->objModule->detailBlocks);
         }
 
-        return parent::getPropertiesByGroup($separateGroups, $includeAddress, $validGroups, $defaultGroup);
+        if(null === $sortingFields && $this->objModule->overwriteFieldSorting && $userDefinedSorting = StringUtil::deserialize($this->objModule->fieldSorting))
+        {
+            // Flatten sorting array
+            foreach ($userDefinedSorting as $sortingField)
+            {
+                $sortingFields[] = $sortingField['field'];
+            }
+        }
+
+        return parent::getPropertiesByGroup($separateGroups, $includeAddress, $validGroups, $defaultGroup, $sortingFields);
     }
 
     /**

@@ -57,6 +57,8 @@ use Contao\Model\Collection;
  * @property string  $attachmentType
  * @property string  $allowedFileExtensions
  * @property boolean $forceDownload
+ * @property boolean $overwriteFieldSorting
+ * @property string  $fieldSorting
  *
  * @method static ExposeModuleModel|null findById($id, array $opt=array())
  * @method static ExposeModuleModel|null findByPk($id, array $opt=array())
