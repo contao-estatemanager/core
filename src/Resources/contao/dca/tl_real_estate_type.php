@@ -12,7 +12,6 @@
 Contao\System::loadLanguageFile('tl_real_estate');
 Contao\System::loadLanguageFile('tl_filter');
 
-
 $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
 (
 

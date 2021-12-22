@@ -16,7 +16,6 @@ Contao\System::loadLanguageFile('tl_real_estate_languages');
 
 $GLOBALS['TL_DCA']['tl_real_estate'] = array
 (
-
     // Config
     'config' => array
     (
@@ -36,7 +35,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             )
         )
     ),
-
     // List
     'list' => array
     (
@@ -68,20 +66,17 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             (
                 'href'                => 'act=edit',
                 'icon'                => 'edit.svg',
-                'button_callback'     => array('tl_real_estate', 'editHeader')
             ),
             'copy' => array
             (
                 'href'                => 'act=copy',
                 'icon'                => 'copy.svg',
-                'button_callback'     => array('tl_real_estate', 'copyRealEstate')
             ),
             'delete' => array
             (
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
-                'button_callback'     => array('tl_real_estate', 'deleteRealEstate')
             ),
             'toggle' => array
             (
@@ -96,7 +91,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             )
         )
     ),
-
     // Palettes
     'palettes' => array
     (
@@ -117,7 +111,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                                          '{real_estate_media_legend:hide},titleImageSRC,imageSRC,planImageSRC,interiorViewImageSRC,exteriorViewImageSRC,mapViewImageSRC,panoramaImageSRC,epassSkalaImageSRC,logoImageSRC,qrImageSRC,documents,links;' .
                                          '{real_estate_more_props_legend:hide},flur,flurstueck,gemarkung,beginnAngebotsphase,besichtigungstermin,besichtigungstermin2,beginnBietzeit,endeBietzeit,hoechstgebotZeigen,mindestpreis,zwangsversteigerung,aktenzeichen,zvtermin,zusatztermin,amtsgericht,verkehrswert,plaetzeGastraum,anzahlBetten,kubatur,ausnuetzungsziffer,flaechevon,flaechebis,stromanschlusswert,hallenhoehe,altlasten,ausblick,distanzFlughafen,distanzFernbahnhof,distanzAutobahn,distanzUsBahn,distanzBus,distanzKindergarten,distanzGrundschule,distanzHauptschule,distanzRealschule,distanzGesamtschule,distanzGymnasium,distanzZentrum,distanzEinkaufsmoeglichkeiten,distanzGaststaetten,distanzSportStrand,distanzSportSee,distanzSportMeer,distanzSportSkigebiet,distanzSportSportanlagen,distanzSportWandergebiete,distanzSportNaherholung,abdatum,bisdatum,minMietdauer,maxMietdauer,versteigerungstermin,gruppennummer,zugang,laufzeit,maxPersonen,geschlecht,branchen,aktivVon,aktivBis,kennungUrsprung,standVom,sprache,anbieterobjekturl;'
     ),
-
     // Subpalettes
     'subpalettes' => array
     (
@@ -137,7 +130,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'breitbandZugang'                        => 'breitbandArt,breitbandGeschw',
         'weitergabeGenerell'                     => 'weitergabePositiv,weitergabeNegativ'
     ),
-
     // Fields
     'fields' => array
     (
@@ -183,7 +175,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'filter'                  => true,
             'inputType'               => 'select',
-            'options_callback'        => array('tl_real_estate', 'getAllProvider'),
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'foreignKey'              => 'tl_provider.firma',
             'relation'                => array('type'=>'hasMany', 'load'=>'lazy'),
@@ -194,7 +185,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'filter'                  => true,
             'inputType'               => 'select',
-            'options_callback'        => array('tl_real_estate', 'getContactPerson'),
             'foreignKey'              => 'tl_contact_person.name',
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default 0",
@@ -4859,126 +4849,6 @@ class tl_real_estate extends Contao\Backend
         }
 
         return $varValue;
-    }
-
-    /**
-     * Return the edit header button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function editHeader(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
-    {
-        return $this->User->canEditFieldsOf('tl_real_estate') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-    }
-
-    /**
-     * Return the copy real estate button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function copyRealEstate(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
-    {
-        return $this->User->hasAccess('create', 'realestatep') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-    }
-
-    /**
-     * Return the delete real estate button
-     *
-     * @param array  $row
-     * @param string $href
-     * @param string $label
-     * @param string $title
-     * @param string $icon
-     * @param string $attributes
-     *
-     * @return string
-     */
-    public function deleteRealEstate(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
-    {
-        return $this->User->hasAccess('delete', 'realestatep') ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label).'</a> ' : Contao\Image::getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-    }
-
-    /**
-     * Return all provider as array
-     *
-     * @param Contao\DataContainer $dc
-     *
-     * @return array
-     */
-    public function getContactPerson(Contao\DataContainer $dc): array
-    {
-        $arrContactPersons = array();
-
-        if ($dc->activeRecord === null)
-        {
-            $objContactPersons = $this->Database->execute("SELECT id, name, vorname FROM tl_contact_person");
-
-            if ($objContactPersons->numRows < 1)
-            {
-                return array();
-            }
-
-            while ($objContactPersons->next())
-            {
-                $arrContactPersons[$objContactPersons->id] = $objContactPersons->vorname . ' ' . $objContactPersons->name;
-            }
-
-            return $arrContactPersons;
-        }
-
-        $objContactPersons = $this->Database->prepare("SELECT id, name, vorname FROM tl_contact_person WHERE pid=?")->execute($dc->activeRecord->provider);
-
-        if ($objContactPersons->numRows < 1)
-        {
-            return array();
-        }
-
-        while ($objContactPersons->next())
-        {
-            $arrContactPersons[$objContactPersons->id] = $objContactPersons->vorname . ' ' . $objContactPersons->name;
-        }
-
-        return $arrContactPersons;
-    }
-
-    /**
-     * Return all provider as array
-     *
-     * @param Contao\DataContainer $dc
-     *
-     * @return array
-     */
-    public function getAllProvider(Contao\DataContainer $dc): array
-    {
-        $objProviders = $this->Database->execute("SELECT id, anbieternr, firma FROM tl_provider");
-
-        if ($objProviders->numRows < 1)
-        {
-            return array();
-        }
-
-        $arrProviders = array();
-
-        while ($objProviders->next())
-        {
-            $arrProviders[$objProviders->id] = $objProviders->firma . ' (' . $objProviders->anbieternr . ')';
-        }
-
-        return $arrProviders;
     }
 
     /**
