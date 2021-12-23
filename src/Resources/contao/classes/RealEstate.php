@@ -44,12 +44,6 @@ class RealEstate extends System
     private $formatter;
 
     /**
-     * Sort order
-     * @var array|null
-     */
-    private $arrFieldOrder;
-
-    /**
      * Object links
      * @var null
      */
@@ -81,9 +75,6 @@ class RealEstate extends System
 
         $this->formatter = RealEstateFormatter::getInstance();
         $this->formatter->setRealEstateModel($objRealEstate);
-
-        // prepare default and custom sort order
-        $this->arrFieldOrder = $this->prepareOrderFields();
 
         // collect links
         $arrLinks = StringUtil::deserialize($this->objRealEstate->links, true);
@@ -543,14 +534,15 @@ class RealEstate extends System
     /**
      * Return details from real estate
      *
-     * @param null|array    $separateGroups
-     * @param bool          $includeAddress
-     * @param null|array    $validGroups
-     * @param string        $defaultGroup: Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param null|array $separateGroups
+     * @param bool $includeAddress
+     * @param null|array $validGroups
+     * @param string $defaultGroup Allows you to add non-assignable fields to a custom group name or add them to an existing group
+     * @param array|null $sortingFields Custom field order
      *
-     * @return array        array('group1' [,group2,group3,...])
+     * @return array array('group1' [,group2,group3,...])
      */
-    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail'): array
+    public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail', ?array $sortingFields = null): array
     {
         $availableGroups = [];
         $groupSorting = ['area', 'price', 'attribute', 'detail', 'energie'];
@@ -644,7 +636,7 @@ class RealEstate extends System
 
         // sort fields within the group
         foreach ($collection as $group => $fieldList) {
-            $collection[ $group ] = $this->sort($fieldList);
+            $collection[ $group ] = $this->sort($fieldList, $sortingFields);
         }
 
         return $collection;
@@ -926,7 +918,7 @@ class RealEstate extends System
         (
             'id'         => $objFile->id,
             'singleSRC'  => $objFile->path,
-            'title'      => 'TMP',              // ToDo: Set title from meta
+            'title'      => '',              // ToDo: Set title from meta
             'filesModel' => $objFile,
             'size'       => $imgSize,
             'caption'    => null
@@ -947,48 +939,49 @@ class RealEstate extends System
     }
 
     /**
-     * Prepare and return standard and custom sort order
+     * Sorts an array by order fields
+     *
+     * @param $arrList
+     * @param array|null $sortingFields
      *
      * @return array
      */
-    private function prepareOrderFields(): array
+    private function sort($arrList, ?array $sortingFields = null): array
     {
-        $orderedFields = RealEstateFieldMetadata::getInstance()->getOrderFields();
+        $ordered = [];
+        $arrFieldOrder = RealEstateFieldMetadata::getInstance()->getOrderFields();
 
-        // if there is a separate order in the types, manipulate the default field order
+        $repositionField = static function(&$arr, $fieldName){
+            if(false !== ($pos = array_search($fieldName, $arr)))
+            {
+                unset($arr[ $pos ]);
+                array_unshift($arr, $fieldName);
+            }
+        };
+
+        // Check module sorting fields
+        if(null !== $sortingFields)
+        {
+            $orderCompareFields = array_intersect($sortingFields, $arrFieldOrder);
+
+            foreach (array_reverse($orderCompareFields) as $orderCompareField)
+            {
+                $repositionField($arrFieldOrder, $orderCompareField);
+            }
+        }
+
+        // Check object type sorting fields
         if($this->objType->orderFields ?? null)
         {
             $orderValues = StringUtil::deserialize($this->objType->orderedFields, true);
 
             foreach (array_reverse($orderValues) as $order)
             {
-                $pos = array_search($order['field'], $orderedFields);
-
-                if(false !== $pos)
-                {
-                    unset($orderedFields[ $pos ]);
-                }
-
-                // add the field to the first position
-                array_unshift($orderedFields, $order['field']);
+                $repositionField($arrFieldOrder, $order['field']);
             }
         }
 
-        return $orderedFields;
-    }
-
-    /**
-     * Sorts an array by order fields
-     *
-     * @param $arrList
-     *
-     * @return array
-     */
-    private function sort($arrList): array
-    {
-        $ordered = array();
-
-        foreach ($this->arrFieldOrder as $index => $key) {
+        foreach ($arrFieldOrder as $key) {
             if (array_key_exists($key, $arrList)) {
                 $ordered[$key] = $arrList[$key];
                 unset($arrList[$key]);

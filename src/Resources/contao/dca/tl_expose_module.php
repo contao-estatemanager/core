@@ -88,12 +88,12 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
     // Palettes
     'palettes' => array
     (
-        '__selector__'                => array('type', 'attachFeedbackXml', 'protected', 'addHeadings', 'attachmentType'),
+        '__selector__'                => array('type', 'attachFeedbackXml', 'protected', 'addHeadings', 'attachmentType', 'overwriteFieldSorting'),
         'default'                     => '{title_legend},name,headline,type',
         'title'                       => '{title_legend},name,headline,type;{settings_legend},fontSize;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'address'                     => '{title_legend},name,headline,type;{settings_legend},forceFullAddress;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'gallery'                     => '{title_legend},name,headline,type;{settings_legend},galleryModules,numberOfItems,fullsize,gallerySkipOnEmpty;{image_legend:hide},imgSize;{template_legend:hide},customTpl,galleryItemTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
-        'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
+        'details'                     => '{title_legend},name,headline,type;{settings_legend},detailBlocks,summariseDetailBlocks,includeAddress,overwriteFieldSorting,addHeadings;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'mainDetails'                 => '{title_legend},name,headline,type;{settings_legend},numberOfItems;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'mainAttributes'              => '{title_legend},name,headline,type;{settings_legend},numberOfItems;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
         'mainPrice'                   => '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID',
@@ -116,7 +116,8 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
         'attachFeedbackXml'           => 'feedbackXmlTemplate',
         'protected'                   => 'groups',
         'addHeadings'                 => 'fontSize',
-        'attachmentType_documents'    => 'allowedFileExtensions,forceDownload'
+        'attachmentType_documents'    => 'allowedFileExtensions,forceDownload',
+        'overwriteFieldSorting'       => 'fieldSorting'
     ),
 
     // Fields
@@ -469,6 +470,20 @@ $GLOBALS['TL_DCA']['tl_expose_module'] = array
             'eval'                    => array('tl_class'=>'w50 m12'),
             'sql'                     => "char(1) NOT NULL default ''"
         ),
+        'overwriteFieldSorting' => array (
+            'exclude'                 => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50 m12', 'submitOnChange'=>true),
+            'sql'                     => "char(1) NOT NULL default ''"
+        ),
+        'fieldSorting'  => array
+        (
+            'exclude'                 => true,
+            'inputType' 	          => 'cemSelectWizard',
+            'options_callback'        => array('tl_expose_module', 'getRealEstateColumns'),
+            'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'clr', 'dragAndDrop'=>true, 'fieldNames'=>array('field'), 'fieldLabels'=>array('')),
+            'sql'                     => "blob NULL"
+        ),
     )
 );
 
@@ -572,6 +587,31 @@ class tl_expose_module extends Contao\Backend
         }
 
         return $filterFields;
+    }
+
+    /**
+     * Get fields from real estate dca
+     *
+     * @return array
+     */
+    public function getRealEstateColumns(){
+        Contao\Controller::loadDataContainer('tl_real_estate');
+
+        $columns   = [];
+        $skipFields = ['id', 'alias', 'published', 'titleImageSRC', 'imageSRC', 'planImageSRC', 'interiorViewImageSRC', 'exteriorViewImageSRC', 'mapViewImageSRC', 'panormaImageSRC', 'epassSkalaImageSRC', 'logoImageSRC', 'qrImageSRC', 'documents', 'links'];
+
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
+        {
+            foreach (array_keys($GLOBALS['TL_DCA']['tl_real_estate']['fields']) as $field)
+            {
+                if (!in_array($field, $skipFields))
+                {
+                    $columns[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ' [' . $field . ']';
+                }
+            }
+        }
+
+        return $columns;
     }
 
     /**

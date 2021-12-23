@@ -301,6 +301,22 @@
       <trans-unit id="tl_expose_module.forceDownload.1">
         <source>Forces the download of the file</source>
       </trans-unit>
+
+      <trans-unit id="tl_expose_module.overwriteFieldSorting.0">
+        <source>Individual field sorting</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.overwriteFieldSorting.1">
+        <source>Define here the order of the fields that will be applied within the own category. Object type dependent sorting can be further specified within the object types. The sort order within the object types is always observed first.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fieldSorting.0">
+        <source>Field order</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fieldSorting.1">
+        <source>Define the fields and their order here. If fields are defined within the object type, the order defined here will only be taken into account afterwards.</source>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.sortingLabel">
+        <source>My Label</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

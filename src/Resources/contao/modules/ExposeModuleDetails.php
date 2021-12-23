@@ -57,17 +57,27 @@ class ExposeModuleDetails extends ExposeModule
      */
     protected function compile()
     {
-        $this->skipDetails = false;
+        $this->skipDetails =false;
 
+        $arrSorting = null;
         $arrBlocks = StringUtil::deserialize($this->detailBlocks);
 
-        $arrCollection = array();
+        if($this->overwriteFieldSorting && $userDefinedSorting = StringUtil::deserialize($this->fieldSorting))
+        {
+            // Flatten sorting array
+            foreach ($userDefinedSorting as $sortingField)
+            {
+                $arrSorting[] = $sortingField['field'];
+            }
+        }
+
+        $arrCollection = [];
 
         if($arrBlocks)
         {
             $seperateBlocks = $arrBlocks;
 
-            $arrDetails = $this->realEstate->getPropertiesByGroup($seperateBlocks, $this->includeAddress, $arrBlocks);
+            $arrDetails = $this->realEstate->getPropertiesByGroup($seperateBlocks, $this->includeAddress, $arrBlocks, 'detail', $arrSorting);
 
             // sort by user preference
             $orderedDetails = array();
