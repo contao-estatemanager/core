@@ -399,6 +399,27 @@
         <source>Forces the download of the file</source>
         <target>Erzwingt den Download und öffnet einen Download-Dialog.</target>
       </trans-unit>
+
+      <trans-unit id="tl_expose_module.overwriteFieldSorting.0">
+        <source>Individual field sorting</source>
+        <target>Individuelle Feldsortierung</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.overwriteFieldSorting.1">
+        <source>Define here the order of the fields that will be applied within the own category. Object type dependent sorting can be further specified within the object types. The sort order within the object types is always observed first.</source>
+        <target>Hier können Sie die Reihenfolge der Felder festlegen, die innerhalb der eigenen Kategorie angewendet werden soll. Die objekttypabhängige Sortierung kann innerhalb der Objekttypen weiter spezifiziert werden. Die Sortierreihenfolge innerhalb der Objekttypen wird immer zuerst eingehalten.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fieldSorting.0">
+        <source>Field order</source>
+        <target>Feldreihenfolge</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.fieldSorting.1">
+        <source>Define the fields and their order here. If fields are defined within the object type, the order defined here will only be taken into account afterwards.</source>
+        <target>Hier können Sie die Felder und deren Reihenfolge festlegen. Wenn Felder innerhalb des Objekttyps definiert werden, wird die hier definierte Reihenfolge erst danach berücksichtigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.sortingLabel">
+        <source>My Label</source>
+        <target>Sortierung</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
