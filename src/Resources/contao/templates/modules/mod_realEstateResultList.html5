@@ -3,7 +3,7 @@
 <?php $this->block('content'); ?>
   <?php if ($this->addCountLabel): ?>
     <div class="result-count">
-        <?= $this->Template->labelObjectsFound ?>
+        <?= $this->labelObjectsFound ?>
     </div>
   <?php endif; ?>
   <?php if ($this->addSorting): ?>
