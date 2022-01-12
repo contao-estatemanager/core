@@ -10,6 +10,7 @@ use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\DataContainer;
 use Contao\Image;
 use Contao\StringUtil;
+use Contao\System;
 use ContaoEstateManager\RealEstateDcaHelper;
 use Symfony\Component\Security\Core\Security;
 
@@ -52,6 +53,11 @@ class RealEstateDcaListener
     private $backend;
 
     /**
+     * @var System
+     */
+    private $system;
+
+    /**
      * @var BackendUser
      */
     private $user;
@@ -73,6 +79,10 @@ class RealEstateDcaListener
         $backend = $this->framework->getAdapter(Backend::class);
         $this->backend = $backend;
 
+        /** @var System $system */
+        $system = $this->framework->getAdapter(System::class);
+        $this->system = $system;
+
         /** @var BackendUser $user */
         $user = $this->framework->getAdapter(BackendUser::class);
         $this->user = $user->getInstance();
@@ -88,6 +98,18 @@ class RealEstateDcaListener
         if(!$this->security->isGranted(ContaoCorePermissions::USER_CAN_EDIT_FIELDS_OF_TABLE, $this->table))
         {
             return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
+        }
+
+        $packages = $this->system->getContainer()->getParameter('kernel.packages');
+
+        if(array_key_exists('contao-estatemanager/backend-real-estate-management', $packages))
+        {
+            return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
+                '/contao/realestate/edit/'.$row['id'],
+                StringUtil::specialchars($title),
+                $attributes,
+                $this->image->getHtml($icon, $label)
+            ]);
         }
 
         return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
