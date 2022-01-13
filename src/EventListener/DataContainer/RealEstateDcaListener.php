@@ -100,20 +100,16 @@ class RealEstateDcaListener
             return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
         }
 
+        $strHref = $this->backend->addToUrl($href.'&amp;id='.$row['id']);
         $packages = $this->system->getContainer()->getParameter('kernel.packages');
 
         if(array_key_exists('contao-estatemanager/backend-real-estate-management', $packages))
         {
-            return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
-                '/contao/realestate/edit/'.$row['id'],
-                StringUtil::specialchars($title),
-                $attributes,
-                $this->image->getHtml($icon, $label)
-            ]);
+            $strHref = '/contao/realestate/edit/'.$row['id'];
         }
 
         return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
-            $this->backend->addToUrl($href.'&amp;id='.$row['id']),
+            $strHref,
             StringUtil::specialchars($title),
             $attributes,
             $this->image->getHtml($icon, $label)
