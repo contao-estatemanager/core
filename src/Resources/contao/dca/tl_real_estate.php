@@ -164,10 +164,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-            'save_callback' => array
-            (
-                array('tl_real_estate', 'generateAlias')
-            ),
             'sql'                     => "varchar(255) COLLATE utf8_bin NOT NULL default ''"
         ),
         'provider' => array
@@ -4817,38 +4813,6 @@ class tl_real_estate extends Contao\Backend
         {
             $GLOBALS['TL_DCA']['tl_real_estate']['config']['notDeletable'] = true;
         }
-    }
-
-    /**
-     * Auto-generate a real estate alias if it has not been set yet
-     *
-     * @param mixed                $varValue
-     * @param mixed                $dc
-     * @param string               $title
-     *
-     * @return string
-     *
-     * @throws Exception
-     */
-    public function generateAlias($varValue, $dc, string $title=''): string
-    {
-        // Generate alias if there is none
-        if (!$varValue)
-        {
-            $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
-            $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate($title);
-        }
-
-        $objAlias = $this->Database->prepare("SELECT id FROM tl_real_estate WHERE alias=? AND id!=?")
-            ->execute($varValue, $dc->id);
-
-        // Check whether the real estate alias exists
-        if ($objAlias->numRows)
-        {
-            $varValue .= '-' . $dc->id;
-        }
-
-        return $varValue;
     }
 
     /**

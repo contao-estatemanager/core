@@ -29,11 +29,15 @@ class RealEstateDcaHelper extends Backend
     }
 
     /**
+     * Check if an alias exists
+     */
+    public function aliasExists(string $alias, string $table, int $id, string $field = 'alias'): bool
+    {
+        return $this->Database->prepare('SELECT id FROM '.$table.' WHERE '.$field.'=?  AND id!=?')->execute($alias, $id)->numRows > 0;
+    }
+
+    /**
      * Return all contact persons
-     *
-     * @param DataContainer $dc
-     *
-     * @return array
      */
     public function getContactPersons(DataContainer $dc): array
     {
@@ -73,8 +77,6 @@ class RealEstateDcaHelper extends Backend
 
     /**
      * Return all provider
-     *
-     * @return array
      */
     public function getAllProvider(): array
     {

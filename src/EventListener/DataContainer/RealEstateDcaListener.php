@@ -4,9 +4,11 @@ namespace ContaoEstateManager\EstateManager\EventListener\DataContainer;
 
 use Contao\Backend;
 use Contao\BackendUser;
+use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Security\ContaoCorePermissions;
 use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\Slug\Slug;
 use Contao\DataContainer;
 use Contao\Image;
 use Contao\StringUtil;
@@ -21,71 +23,72 @@ use Symfony\Component\Security\Core\Security;
  */
 class RealEstateDcaListener
 {
-    /**
-     * Table
-     * @var string
-     */
-    protected $table = 'tl_real_estate';
+    protected string $table = 'tl_real_estate';
+
+    private ContaoFramework $framework;
+    private Security $security;
+    private Slug $slug;
+    private RealEstateDcaHelper $dcaHelper;
 
     /**
-     * @var ContaoFramework
+     * @var Adapter<Image>
      */
-    private $framework;
+    private Adapter $image;
 
     /**
-     * @var Security
+     * @var Adapter<Backend>
      */
-    private $security;
+    private Adapter $backend;
 
     /**
-     * @var RealEstateDcaHelper
+     * @var Adapter<System>
      */
-    private $dcaHelper;
+    private Adapter $system;
 
     /**
-     * @var Image
+     * @var Adapter<BackendUser>
      */
-    private $image;
-
-    /**
-     * @var Backend
-     */
-    private $backend;
-
-    /**
-     * @var System
-     */
-    private $system;
-
-    /**
-     * @var BackendUser
-     */
-    private $user;
+    private Adapter $user;
 
     /**
      * Constructor
      */
-    public function __construct(ContaoFramework $framework, Security $security, RealEstateDcaHelper $dcaHelper)
+    public function __construct(ContaoFramework $framework, Security $security, Slug $slug, RealEstateDcaHelper $dcaHelper)
     {
         $this->framework = $framework;
         $this->dcaHelper = $dcaHelper;
         $this->security = $security;
+        $this->slug = $slug;
 
-        /** @var Image $image */
-        $image = $this->framework->getAdapter(Image::class);
-        $this->image = $image;
+        $this->image = $this->framework->getAdapter(Image::class);
+        $this->backend = $this->framework->getAdapter(Backend::class);
+        $this->system = $this->framework->getAdapter(System::class);
+        $this->user = $this->framework->getAdapter(BackendUser::class);
+    }
 
-        /** @var Backend $backend */
-        $backend = $this->framework->getAdapter(Backend::class);
-        $this->backend = $backend;
+    /**
+     * Auto-generate a real estate alias if it has not been set yet
+     *
+     * @Callback(table="tl_real_estate", target="fields.alias.save")
+     */
+    public function generateAlias($varValue, $dc, string $title=''): string
+    {
+        if($varValue)
+        {
+            if($this->dcaHelper->aliasExists($varValue, $this->table, $dc->id))
+            {
+                throw new \RuntimeException('Alias already exists.');
+            }
 
-        /** @var System $system */
-        $system = $this->framework->getAdapter(System::class);
-        $this->system = $system;
+            return $varValue;
+        }
 
-        /** @var BackendUser $user */
-        $user = $this->framework->getAdapter(BackendUser::class);
-        $this->user = $user->getInstance();
+        // Generate an alias if there is none
+        return $this->slug->generate(
+            ($dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title),
+            [],
+            fn ($alias) => $this->dcaHelper->aliasExists($alias, $this->table, $dc->id)
+        );
     }
 
     /**
@@ -95,63 +98,24 @@ class RealEstateDcaListener
      */
     public function editHeaderButton(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
+        // Check if a user has access
         if(!$this->security->isGranted(ContaoCorePermissions::USER_CAN_EDIT_FIELDS_OF_TABLE, $this->table))
         {
             return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
         }
 
+        // Get default route
         $strHref = $this->backend->addToUrl($href.'&amp;id='.$row['id']);
-        $packages = $this->system->getContainer()->getParameter('kernel.packages');
 
-        if(array_key_exists('contao-estatemanager/backend-real-estate-management', $packages))
+        // If the backend-real-estate-management package exists, set the route to the new backend management
+        if(array_key_exists('contao-estatemanager/backend-real-estate-management', $this->system->getContainer()->getParameter('kernel.packages')))
         {
             $strHref = '/contao/realestate/edit/'.$row['id'];
         }
 
+        // Return edit button
         return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
             $strHref,
-            StringUtil::specialchars($title),
-            $attributes,
-            $this->image->getHtml($icon, $label)
-        ]);
-    }
-
-    /**
-     * Return the copy real estate button
-     *
-     * @Callback(table="tl_real_estate", target="list.operations.copy.button")
-     */
-    public function copyRealEstateButton(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
-    {
-        // ToDo: Remove user adapter and check rights via Security isGranted method (see editHeaderButton)
-        if(!$this->user->hasAccess('create', 'realestatep'))
-        {
-            return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-        }
-
-        return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
-            $this->backend->addToUrl($href.'&amp;id='.$row['id']),
-            StringUtil::specialchars($title),
-            $attributes,
-            $this->image->getHtml($icon, $label)
-        ]);
-    }
-
-    /**
-     * Return the delete real estate button
-     *
-     * @Callback(table="tl_real_estate", target="list.operations.delete.button")
-     */
-    public function deleteRealEstateButton(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
-    {
-        // ToDo: Remove user adapter and check rights via Security isGranted method (see editHeaderButton)
-        if(!$this->user->hasAccess('delete', 'realestatep'))
-        {
-            return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
-        }
-
-        return vsprintf('<a href="%s" title="%s"%s>%s</a> ', [
-            $this->backend->addToUrl($href.'&amp;id='.$row['id']),
             StringUtil::specialchars($title),
             $attributes,
             $this->image->getHtml($icon, $label)
@@ -165,6 +129,7 @@ class RealEstateDcaListener
      */
     public function providerOptionsCallback(): array
     {
+        // Return all provider
         return $this->dcaHelper->getAllProvider();
     }
 
@@ -175,6 +140,7 @@ class RealEstateDcaListener
      */
     public function contactPersonOptionsCallback(DataContainer $dc): array
     {
+        // Return all contact persons
         return $this->dcaHelper->getContactPersons($dc);
     }
 }
