@@ -3,7 +3,6 @@
 namespace ContaoEstateManager\EstateManager\EventListener\DataContainer;
 
 use Contao\Backend;
-use Contao\BackendUser;
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Security\ContaoCorePermissions;
@@ -46,11 +45,6 @@ class RealEstateDcaListener
     private Adapter $system;
 
     /**
-     * @var Adapter<BackendUser>
-     */
-    private Adapter $user;
-
-    /**
      * Constructor
      */
     public function __construct(ContaoFramework $framework, Security $security, Slug $slug, RealEstateDcaHelper $dcaHelper)
@@ -63,7 +57,6 @@ class RealEstateDcaListener
         $this->image = $this->framework->getAdapter(Image::class);
         $this->backend = $this->framework->getAdapter(Backend::class);
         $this->system = $this->framework->getAdapter(System::class);
-        $this->user = $this->framework->getAdapter(BackendUser::class);
     }
 
     /**
