@@ -124,7 +124,7 @@ class RealEstateImporter extends \BackendModule
     public $skipContactPerson = false;
 
     /**
-     * Prevent direct instantiation (Singleton)
+     * Initialize the object
      */
     public function __construct()
     {
