@@ -48,8 +48,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'label' => array
         (
             'fields'                  => array('id', 'objekttitel', 'objektart', 'nutzungsart', 'dateAdded', 'tstamp'),
-            'showColumns'             => true,
-            'label_callback'          => array('tl_real_estate', 'addPreviewImageAndInformation')
+            'showColumns'             => true
         ),
         'global_operations' => array
         (
@@ -4955,128 +4954,5 @@ class tl_real_estate extends Contao\Backend
         }
 
         $objVersions->create();
-    }
-
-    /**
-     * Add an image to each record
-     *
-     * @param array                $row
-     * @param string               $label
-     * @param Contao\DataContainer $dc
-     * @param array                $args
-     *
-     * @return array
-     */
-    public function addPreviewImageAndInformation(array $row, string $label, Contao\DataContainer $dc, array $args): array
-    {
-        $objFile = null;
-
-        if ($row['titleImageSRC'] != '') {
-            $objFile = Contao\FilesModel::findByUuid($row['titleImageSRC']);
-        }
-
-        if (($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path)) && Contao\Config::get('defaultImage'))
-        {
-            $objFile = Contao\FilesModel::findByUuid(Contao\Config::get('defaultImage'));
-        }
-
-        // open information block
-        $args[0] = '<div class="object-information">';
-
-        if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
-        {
-            // add preview image
-            $args[0] .= '<div class="image">' . Contao\Image::getHtml(Contao\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, array(118, 75, 'center_center'))->getUrl(TL_ROOT), '', 'class="estate_preview"') . '</div>';
-        }
-
-        $args[0] .= '<div class="info">';
-        $args[0] .=     '<div><span>ID:</span> <span>'. $row['id'] . '</span></div>';
-        $args[0] .=     '<div><span>Intern:</span> <span>' . $row['objektnrIntern'] . '</span></div>';
-        $args[0] .=     '<div><span>Extern:</span> <span>' . $row['objektnrExtern'] . '</span></div>';
-        $args[0] .= '</div>';
-
-        // close information block
-        $args[0] .= '</div>';
-
-        // add address information
-        $args[1] .= '<div style="color:#999;display:block;margin-top:5px">' . $row['plz'] . ' ' . $row['ort'] . ' · ' . $row['strasse'] . ' ' . $row['hausnummer'] . '</div>';
-
-        // extend object type
-        $args[2] .= '<div style="color:#999;display:block;margin-top:5px">' . $this->getTranslatedType($row) . '</div>';
-
-        $args[3] = $this->getTranslatedMarketingtype($row);
-        $args[3] .= '<div style="color:#999;display:block;margin-top:5px">' . ContaoEstateManager\Translator::translateValue('nutzungsart_'.$row['nutzungsart']) . '</div>';
-
-        // translate date
-        $args[5] = date(Contao\Config::get('datimFormat'), $args[5]);
-
-        // Call post_label_callbacks ($row, $label, $dc, $args)
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] ?? null))
-        {
-            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] as $callback)
-            {
-                $strClass = $callback[0];
-                $strMethod = $callback[1];
-
-                $this->import($strClass);
-                $args = $this->$strClass->$strMethod($row, $label, $dc, $args);
-            }
-        }
-
-        return $args;
-    }
-
-    /**
-     * Retrieve translated type
-     *
-     * @param array $row
-     *
-     * @return string
-     */
-    private function getTranslatedType(array $row): string
-    {
-        $subpalette = $GLOBALS['TL_DCA']['tl_real_estate']['subpalettes']['objektart_'.$row['objektart']] ?? null;
-
-        if(!$subpalette)
-        {
-            return '';
-        }
-
-        $type = $row[$subpalette];
-
-        if (empty($type))
-        {
-            return '';
-        }
-
-        return ContaoEstateManager\Translator::translateValue($subpalette . '_' . $type);
-    }
-
-    /**
-     * Retrieve translated marketing types
-     *
-     * @param array $row
-     *
-     * @return string
-     */
-    private function getTranslatedMarketingtype(array $row): string
-    {
-        $arrMarketingTypes = array();
-        $availableMarketingTypes = array('vermarktungsartKauf', 'vermarktungsartMietePacht', 'vermarktungsartErbpacht', 'vermarktungsartLeasing');
-
-        foreach ($availableMarketingTypes as $marketingType)
-        {
-            if ($row[$marketingType] === '1')
-            {
-                $arrMarketingTypes[] = $marketingType;
-            }
-        }
-
-        foreach ($arrMarketingTypes as $index => $marktingType)
-        {
-            $arrMarketingTypes[$index] = ContaoEstateManager\Translator::translateLabel($marktingType);
-        }
-
-        return implode(' / ', $arrMarketingTypes);
     }
 }
