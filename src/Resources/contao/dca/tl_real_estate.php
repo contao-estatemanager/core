@@ -3115,7 +3115,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'suedwest'  => &$GLOBALS['TL_LANG']['tl_real_estate_value']['ausrichtBalkonTerrasse_suedwest']
             ),
             'eval'                      => array('multiple'=>true),
-            'sql'                       => "varchar(128) NOT NULL default ''",
+            'sql'                       => "varchar(255) NOT NULL default ''",
             'realEstate'                => array(
                 'detail'    => true,
                 'filter'   => true
