@@ -14,8 +14,8 @@ use Contao\FilesModel;
 use Contao\Image;
 use Contao\StringUtil;
 use Contao\System;
-use ContaoEstateManager\RealEstateDcaHelper;
 use ContaoEstateManager\Translator;
+use Doctrine\DBAL\Connection;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -25,12 +25,10 @@ use Symfony\Component\Security\Core\Security;
  */
 class RealEstateDcaListener
 {
-    protected string $table = 'tl_real_estate';
+    use DcaListenerTrait;
 
-    private ContaoFramework $framework;
     private Security $security;
     private Slug $slug;
-    private RealEstateDcaHelper $dcaHelper;
 
     /**
      * @var Adapter<Image>
@@ -55,10 +53,11 @@ class RealEstateDcaListener
     /**
      * Constructor
      */
-    public function __construct(ContaoFramework $framework, Security $security, Slug $slug, RealEstateDcaHelper $dcaHelper)
+    public function __construct(ContaoFramework $framework, Connection $connection, Security $security, Slug $slug)
     {
         $this->framework = $framework;
-        $this->dcaHelper = $dcaHelper;
+        $this->connection = $connection;
+
         $this->security = $security;
         $this->slug = $slug;
 
@@ -78,7 +77,7 @@ class RealEstateDcaListener
     {
         if($varValue)
         {
-            if($this->dcaHelper->aliasExists($varValue, $this->table, $dc->id))
+            if($this->aliasExists($varValue, $dc->table, $dc->id))
             {
                 throw new \RuntimeException('Alias already exists.');
             }
@@ -90,7 +89,7 @@ class RealEstateDcaListener
         return $this->slug->generate(
             ($dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title),
             [],
-            fn ($alias) => $this->dcaHelper->aliasExists($alias, $this->table, $dc->id)
+            fn ($alias) => $this->aliasExists($alias, $dc->table, $dc->id)
         );
     }
 
@@ -102,7 +101,7 @@ class RealEstateDcaListener
     public function editHeaderButton(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
     {
         // Check if a user has access
-        if(!$this->security->isGranted(ContaoCorePermissions::USER_CAN_EDIT_FIELDS_OF_TABLE, $this->table))
+        if(!$this->security->isGranted(ContaoCorePermissions::USER_CAN_EDIT_FIELDS_OF_TABLE, 'tl_real_estate'))
         {
             return $this->image->getHtml(preg_replace('/\.svg$/i', '_.svg', $icon)).' ';
         }
@@ -216,7 +215,7 @@ class RealEstateDcaListener
      */
     public function providerOptionsCallback(): array
     {
-        return $this->dcaHelper->getAllProvider();
+        return $this->getAllProvider();
     }
 
     /**
@@ -226,7 +225,7 @@ class RealEstateDcaListener
      */
     public function contactPersonOptionsCallback(DataContainer $dc): array
     {
-        return $this->dcaHelper->getContactPersons($dc);
+        return $this->getContactPersons($dc);
     }
 
     /**
