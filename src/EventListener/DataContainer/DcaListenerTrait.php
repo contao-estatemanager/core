@@ -9,6 +9,8 @@ use Contao\DataContainer;
 use Doctrine\DBAL\Connection;
 
 /**
+ * Recurring DCA functions
+ *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
 trait DcaListenerTrait
