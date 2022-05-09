@@ -57,7 +57,7 @@ trait DcaListenerTrait
     {
         $arrContactPersons = [];
 
-        if ($dc->activeRecord === null)
+        if ($dc->activeRecord === null || !$dc->activeRecord->provider)
         {
             $objContactPersons = $this->connection->fetchAllAssociative("SELECT id, name, vorname FROM tl_contact_person");
 
