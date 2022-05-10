@@ -405,9 +405,10 @@ class ExposeForm extends Form
         $objFeedbackTemplate->setData($arrSubmitted);
 
         $realEstate = new RealEstate($objRealEstate, null);
+        $objProvider = $realEstate->getProvider();
         $arrRealEstateData = array();
 
-        $arrRealEstateData['anbieter_id'] = $realEstate->anbieternr;
+        $arrRealEstateData['anbieter_id'] = $objProvider->anbieternr;
         $arrRealEstateData['oobj_id'] = $realEstate->objektnrExtern;
         $arrRealEstateData['exposeUrl'] = Environment::get('http_origin') . Environment::get('request_uri');
         $arrRealEstateData['vermarktungsart'] = $this->getMarketingtype($realEstate);

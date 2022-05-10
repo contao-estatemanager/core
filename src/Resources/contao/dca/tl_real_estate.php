@@ -96,7 +96,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         '__selector__'                => array('objektart', 'breitbandZugang','weitergabeGenerell'),
         'default'                     => '{real_estate_legend},objekttitel,alias,objektnrIntern,objektnrExtern,openimmoObid,published,weitergabeGenerell;'.
                                          '{real_estate_meta_legend},metaTitle,robots,metaDescription,serpPreview;'.
-                                         '{real_estate_contact_legend},provider,anbieternr,contactPerson;'.
+                                         '{real_estate_contact_legend},provider,contactPerson;'.
                                          '{real_estate_basic_legend},vermarktungsartKauf,vermarktungsartMietePacht,vermarktungsartErbpacht,vermarktungsartLeasing,vermietet,verkaufstatus,verfuegbarAb,nutzungsart,objektart;'.
                                          '{real_estate_address_legend},plz,ort,strasse,hausnummer,regionalerZusatz,bundesland,land,breitengrad,laengengrad,lageImBau,lageGebiet,gemeindecode,objektadresseFreigeben;'.
                                          '{real_estate_props_legend:hide},etage,anzahlEtagen,alsFerien,gewerblicheNutzung,denkmalgeschuetzt,wbsSozialwohnung,einliegerwohnung,raeumeVeraenderbar,barrierefrei,rollstuhlgerecht,seniorengerecht,wgGeeignet,nichtraucher,hochhaus,haustiere;'.
@@ -159,7 +159,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'alias' => array
         (
-            'exclude'                   => true,
+            'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -167,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         ),
         'provider' => array
         (
-            'exclude'                   => true,
+            'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'select',
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
@@ -184,13 +184,6 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default 0",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
-        ),
-        'anbieternr' => array
-        (
-            'exclude'                   => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>32, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
 
          // Objektkategorien
