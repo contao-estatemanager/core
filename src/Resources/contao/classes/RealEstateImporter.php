@@ -804,6 +804,7 @@ class RealEstateImporter extends BackendModule
             {
                 $dc = new \stdClass();
                 $dc->id = $objRealEstate->id ?: Database::getInstance()->getNextId('tl_real_estate');
+                $dc->table = 'tl_real_estate';
                 $dc->activeRecord = null;
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
@@ -1077,7 +1078,7 @@ class RealEstateImporter extends BackendModule
             $field = substr($field, 0, $attr_pos);
         }
 
-        $xmlNodes = $field === '' ? array($group) : $group->xpath($field);
+        $xmlNodes = $field === '' ? array($group) : ($group ? $group->xpath($field) : []);
         $results = array();
 
         foreach ($xmlNodes as $i => $xmlNode)
