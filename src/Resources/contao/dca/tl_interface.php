@@ -120,7 +120,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
     (
         '__selector__'                => array('type', 'importThirdPartyRecords'),
         'default'                     => '{title_legend},title,type',
-        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,anbieternr,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{expert_legend},skipRecords,dontPublishRecords;{sync_legend},autoSync,deleteFilesOlderThen,filesPerSync',
+        'openimmo'                    => '{title_legend},title,type;{oi_field_legend},provider,uniqueProviderField,uniqueField,importPath,filesPath,filesPathContactPerson;{related_records_legend},contactPersonActions,contactPersonUniqueField,importThirdPartyRecords;{expert_legend},skipRecords,dontPublishRecords;{sync_legend},autoSync,deleteFilesOlderThen,filesPerSync',
     ),
 
     // Subpalettes
@@ -171,13 +171,6 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'eval'                    => array('submitOnChange'=>true, 'includeBlankOption'=>true, 'chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",
             'relation'                => array('type'=>'hasOne', 'load'=>'lazy')
-        ),
-        'anbieternr' => array
-        (
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'uniqueProviderField' => array
         (
@@ -231,7 +224,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
             'default'                 => 'personennummer',
             'exclude'				  => true,
             'inputType'				  => 'select',
-            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'eval'					  => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
             'options_callback'		  => array('tl_interface', 'getContactPersonUniqueFieldOptions'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
@@ -239,7 +232,7 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
         (
             'exclude'                 => true,
             'inputType'               => 'select',
-            'eval'                    => array('includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+            'eval'                    => array('includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50'),
             'options'                 => array('import', 'assign'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_interface'],
             'sql'                     => "varchar(32) NOT NULL default ''"

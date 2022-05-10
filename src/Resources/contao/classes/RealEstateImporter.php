@@ -395,13 +395,14 @@ class RealEstateImporter extends BackendModule
         foreach ($arrProvider as $provider)
         {
             $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
+            $objProvider = $this->objInterface->getRelated('provider');
 
             if (empty($this->uniqueProviderValue))
             {
-                $this->uniqueProviderValue = $this->objInterface->anbieternr;
+                $this->uniqueProviderValue = $objProvider->anbieternr;
             }
 
-            if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
+            if (!$this->objInterface->importThirdPartyRecords && $objProvider->anbieternr !== $this->uniqueProviderValue)
             {
                 $this->logger->info('Skip real estate due to missing provider.', null, ImportLogger::LOG_PROD);
                 continue;
@@ -409,8 +410,6 @@ class RealEstateImporter extends BackendModule
 
             if ($this->objInterface->importThirdPartyRecords === 'import')
             {
-                $objProvider = ProviderModel::findOneByAnbieternr($this->uniqueProviderValue);
-
                 if ($objProvider === null)
                 {
                     $this->importStatus = 2;
@@ -613,11 +612,11 @@ class RealEstateImporter extends BackendModule
 
         $this->logger->info('Update database');
 
-        $objProvider = ProviderModel::findByPk($this->objInterface->provider);
+        $objProvider = $this->objInterface->getRelated('provider');
 
         foreach ($contactPersonRecords as $i => $contactPerson)
         {
-            if ($this->objInterface->importThirdPartyRecords === 'assign' && $realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr)
+            if ($this->objInterface->importThirdPartyRecords === 'assign' && $realEstateRecords[$i]['ANBIETER'] !== $objProvider->anbieternr)
             {
                 if ($realEstateRecords[$i]['vermarktungsartKauf'])
                 {
