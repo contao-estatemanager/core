@@ -865,7 +865,7 @@ class RealEstateImporter extends BackendModule
                 $packages = System::getContainer()->getParameter('kernel.packages');
                 $version = $packages['contao-estatemanager/core'] ?? '0.0.0';
 
-                $stripKeys = ['alias', 'provider', 'contactPerson', 'anbieternr', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
+                $stripKeys = ['alias', 'provider', 'contactPerson', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
                 $arrRecords = [];
 
                 foreach ($realEstateRecords as $record)
