@@ -16,6 +16,7 @@ use Contao\Model\Collection;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\Validator;
+use ContaoEstateManager\EstateManager\Exception\ObjectTypeException;
 
 class SessionManager extends System
 {
@@ -119,6 +120,7 @@ class SessionManager extends System
 
         if ($objType === null)
         {
+
             // ToDo: Throw Exception
         }
 
@@ -159,7 +161,7 @@ class SessionManager extends System
 
         if ($objTypes === null)
         {
-            // ToDo: Throw Exception
+            throw new ObjectTypeException('No object type could be found.');
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
@@ -218,7 +220,7 @@ class SessionManager extends System
 
         if ($objTypes === null)
         {
-            // ToDo: Throw Exception
+            throw new ObjectTypeException('No object type could be found.');
         }
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
