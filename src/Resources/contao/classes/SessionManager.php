@@ -121,7 +121,7 @@ class SessionManager extends System
         if ($objType === null)
         {
 
-            // ToDo: Throw Exception
+            throw new ObjectTypeException('No object type could be found.');
         }
 
         $this->addQueryFragmentBasics($objType, $arrColumns, $arrValues);
