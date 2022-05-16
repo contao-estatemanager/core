@@ -120,7 +120,6 @@ class SessionManager extends System
 
         if ($objType === null)
         {
-
             throw new ObjectTypeException('No object type could be found.');
         }
 
@@ -184,7 +183,15 @@ class SessionManager extends System
                 $this->addQueryFragmentPeriod($arrColumn, $arrValues);
             }
 
-            // ToDo: Hook to add new toggle filter
+            // HOOK: modify parameter fragments
+            if (isset($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments']))
+            {
+                foreach ($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
+                }
+            }
 
             $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
         }
@@ -233,7 +240,15 @@ class SessionManager extends System
 
             $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
 
-            // ToDo: Hook to add new toggle filter
+            // HOOK: modify parameter fragments
+            if (isset($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments']))
+            {
+                foreach ($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
+                }
+            }
 
             $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
         }
