@@ -133,9 +133,9 @@ class SessionManager extends System
         $arrOptions['order']  = $this->getOrderOption();
 
         // HOOK: get filtered type parameter
-        if (isset($GLOBALS['TL_HOOKS']['getFilteredTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getFilteredTypeParameter']))
+        if (isset($GLOBALS['CEM_HOOKS']['getFilteredTypeParameter']) && \is_array($GLOBALS['CEM_HOOKS']['getFilteredTypeParameter']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getFilteredTypeParameter'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getFilteredTypeParameter'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $objModule);

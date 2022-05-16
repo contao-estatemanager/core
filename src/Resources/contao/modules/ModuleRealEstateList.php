@@ -55,9 +55,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         $this->sessionManager = SessionManager::getInstance();
 
         // HOOK: real estate list generate
-        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateList']))
+        if (isset($GLOBALS['CEM_HOOKS']['generateRealEstateList']) && \is_array($GLOBALS['CEM_HOOKS']['generateRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateList'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['generateRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this);
@@ -128,9 +128,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         }
 
         // HOOK: real estate list count items
-        if (isset($GLOBALS['TL_HOOKS']['countItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['countItemsRealEstateList']))
+        if (isset($GLOBALS['CEM_HOOKS']['countItemsRealEstateList']) && \is_array($GLOBALS['CEM_HOOKS']['countItemsRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['countItemsRealEstateList'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['countItemsRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($intCount, $this);
@@ -178,9 +178,9 @@ class ModuleRealEstateList extends ModuleRealEstate
         }
 
         // HOOK: real estate list fetch items
-        if (isset($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']) && \is_array($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList']))
+        if (isset($GLOBALS['CEM_HOOKS']['fetchItemsRealEstateList']) && \is_array($GLOBALS['CEM_HOOKS']['fetchItemsRealEstateList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['fetchItemsRealEstateList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objRealEstate, $arrOptions, $this);

@@ -127,9 +127,9 @@ class ExposeModuleGallery extends ExposeModule
             else
             {
                 // HOOK: add custom logic for gallery single slide
-                if (isset($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']))
+                if (isset($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery']) && \is_array($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery']))
                 {
-                    foreach ($GLOBALS['TL_HOOKS']['parseSlideExposeGallery'] as $callback)
+                    foreach ($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery'] as $callback)
                     {
                         $this->import($callback[0]);
                         $this->{$callback[0]}->{$callback[1]}($objTemplate, $module, $arrSlides, $this->realEstate, $this);
@@ -150,9 +150,9 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         // HOOK: add custom logic for gallery slides
-        if (isset($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']))
+        if (isset($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrSlides, $this->realEstate, $this);

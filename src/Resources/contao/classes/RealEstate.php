@@ -291,9 +291,9 @@ class RealEstate extends System
         }
 
         // HOOK: get status tokens
-        if (isset($GLOBALS['TL_HOOKS']['getStatusTokens']) && \is_array($GLOBALS['TL_HOOKS']['getStatusTokens']))
+        if (isset($GLOBALS['CEM_HOOKS']['getStatusTokens']) && \is_array($GLOBALS['CEM_HOOKS']['getStatusTokens']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getStatusTokens'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getStatusTokens'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($validStatusToken, $return, $this);
@@ -585,9 +585,9 @@ class RealEstate extends System
         $arrMainDetails = StringUtil::deserialize($this->objType->mainDetails, true);
 
         // HOOK: get main details
-        if (isset($GLOBALS['TL_HOOKS']['getMainDetails']) && \is_array($GLOBALS['TL_HOOKS']['getMainDetails']))
+        if (isset($GLOBALS['CEM_HOOKS']['getMainDetails']) && \is_array($GLOBALS['CEM_HOOKS']['getMainDetails']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getMainDetails'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getMainDetails'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrMainDetails, $this->objRealEstate, $max, $this);

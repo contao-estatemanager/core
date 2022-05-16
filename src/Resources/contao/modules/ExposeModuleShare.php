@@ -82,9 +82,9 @@ class ExposeModuleShare extends ExposeModule
         $this->Template->label = Translator::translateExpose('button_share');
 
         // HOOK: add some more share options
-        if (isset($GLOBALS['TL_HOOKS']['compileExposeShare']) && \is_array($GLOBALS['TL_HOOKS']['compileExposeShare']))
+        if (isset($GLOBALS['CEM_HOOKS']['compileExposeShare']) && \is_array($GLOBALS['CEM_HOOKS']['compileExposeShare']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['compileExposeShare'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['compileExposeShare'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);

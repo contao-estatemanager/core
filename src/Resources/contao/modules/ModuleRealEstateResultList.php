@@ -60,9 +60,9 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         }
 
         // HOOK: real estate result list generate
-        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateResultList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateResultList']))
+        if (isset($GLOBALS['CEM_HOOKS']['generateRealEstateResultList']) && \is_array($GLOBALS['CEM_HOOKS']['generateRealEstateResultList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateResultList'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['generateRealEstateResultList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this);

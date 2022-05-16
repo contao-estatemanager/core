@@ -116,9 +116,9 @@ class ExposeModuleDetails extends ExposeModule
         }
 
         // HOOK: custom logic for details
-        if (isset($GLOBALS['TL_HOOKS']['compileExposeDetails']) && \is_array($GLOBALS['TL_HOOKS']['compileExposeDetails']))
+        if (isset($GLOBALS['CEM_HOOKS']['compileExposeDetails']) && \is_array($GLOBALS['CEM_HOOKS']['compileExposeDetails']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['compileExposeDetails'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['compileExposeDetails'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);

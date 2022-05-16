@@ -214,9 +214,9 @@ class Filter extends Hybrid
     protected function processFilterData($arrSubmitted, $arrLabels)
     {
         // HOOK: prepare filter data
-        if (isset($GLOBALS['TL_HOOKS']['prepareFilterData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFilterData']))
+        if (isset($GLOBALS['CEM_HOOKS']['prepareFilterData']) && \is_array($GLOBALS['CEM_HOOKS']['prepareFilterData']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['prepareFilterData'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['prepareFilterData'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $arrLabels, $this);
@@ -232,9 +232,9 @@ class Filter extends Hybrid
         $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] = true;
 
         // HOOK: process filter data
-        if (isset($GLOBALS['TL_HOOKS']['processFilterData']) && \is_array($GLOBALS['TL_HOOKS']['processFilterData']))
+        if (isset($GLOBALS['CEM_HOOKS']['processFilterData']) && \is_array($GLOBALS['CEM_HOOKS']['processFilterData']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['processFilterData'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['processFilterData'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $this->arrData, $arrLabels, $this);

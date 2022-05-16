@@ -97,9 +97,9 @@ abstract class ModuleRealEstate extends Module
         }
 
         // HOOK: parse real estate
-        if (isset($GLOBALS['TL_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['TL_HOOKS']['parseRealEstate']))
+        if (isset($GLOBALS['CEM_HOOKS']['parseRealEstate']) && \is_array($GLOBALS['CEM_HOOKS']['parseRealEstate']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['parseRealEstate'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['parseRealEstate'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objTemplate, $realEstate, $this);
@@ -345,9 +345,9 @@ abstract class ModuleRealEstate extends Module
             }
 
             // HOOK: add real estate sorting
-            if (isset($GLOBALS['TL_HOOKS']['addRealEstateSorting']) && \is_array($GLOBALS['TL_HOOKS']['addRealEstateSorting']))
+            if (isset($GLOBALS['CEM_HOOKS']['addRealEstateSorting']) && \is_array($GLOBALS['CEM_HOOKS']['addRealEstateSorting']))
             {
-                foreach ($GLOBALS['TL_HOOKS']['addRealEstateSorting'] as $callback)
+                foreach ($GLOBALS['CEM_HOOKS']['addRealEstateSorting'] as $callback)
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($arrOptions, $this);

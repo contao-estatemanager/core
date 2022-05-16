@@ -73,9 +73,9 @@ class RealEstateCronImporter extends Frontend
     protected function sync($objInterface)
     {
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeCronSync']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeCronSync']))
+        if (isset($GLOBALS['CEM_HOOKS']['realEstateImportBeforeCronSync']) && \is_array($GLOBALS['CEM_HOOKS']['realEstateImportBeforeCronSync']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeCronSync'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['realEstateImportBeforeCronSync'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->importer);

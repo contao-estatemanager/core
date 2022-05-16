@@ -105,9 +105,9 @@ abstract class FilterWidget extends Widget
 
 		$strBuffer = $this->inherit();
 
-		if (isset($GLOBALS['TL_HOOKS']['parseFilterWidget']) && \is_array($GLOBALS['TL_HOOKS']['parseFilterWidget']))
+		if (isset($GLOBALS['CEM_HOOKS']['parseFilterWidget']) && \is_array($GLOBALS['CEM_HOOKS']['parseFilterWidget']))
 		{
-			foreach ($GLOBALS['TL_HOOKS']['parseFilterWidget'] as $callback)
+			foreach ($GLOBALS['CEM_HOOKS']['parseFilterWidget'] as $callback)
 			{
 				$this->import($callback[0]);
 				$strBuffer = $this->{$callback[0]}->{$callback[1]}($strBuffer, $this);
@@ -325,9 +325,9 @@ abstract class FilterWidget extends Widget
 
 				// HOOK: pass unknown tags to callback functions
 				default:
-					if (isset($GLOBALS['TL_HOOKS']['addCustomRegexp']) && \is_array($GLOBALS['TL_HOOKS']['addCustomRegexp']))
+					if (isset($GLOBALS['CEM_HOOKS']['addCustomRegexp']) && \is_array($GLOBALS['CEM_HOOKS']['addCustomRegexp']))
 					{
-						foreach ($GLOBALS['TL_HOOKS']['addCustomRegexp'] as $callback)
+						foreach ($GLOBALS['CEM_HOOKS']['addCustomRegexp'] as $callback)
 						{
 							$this->import($callback[0]);
 							$break = $this->{$callback[0]}->{$callback[1]}($rgxp, $varInput, $this);

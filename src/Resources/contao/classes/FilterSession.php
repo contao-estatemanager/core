@@ -318,9 +318,9 @@ class FilterSession extends \Frontend
         }
 
         // HOOK: get type parameter by groups
-        if (isset($GLOBALS['TL_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameter']))
+        if (isset($GLOBALS['CEM_HOOKS']['getTypeParameter']) && \is_array($GLOBALS['CEM_HOOKS']['getTypeParameter']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getTypeParameter'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getTypeParameter'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
@@ -390,9 +390,9 @@ class FilterSession extends \Frontend
         }
 
         // HOOK: get type parameter by groups
-        if (isset($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getTypeParameterByGroups']))
+        if (isset($GLOBALS['CEM_HOOKS']['getTypeParameterByGroups']) && \is_array($GLOBALS['CEM_HOOKS']['getTypeParameterByGroups']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getTypeParameterByGroups'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getTypeParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
@@ -447,9 +447,9 @@ class FilterSession extends \Frontend
         $arrOptions['order']  = $this->getOrderOption();
 
         // HOOK: get type parameter by groups
-        if (isset($GLOBALS['TL_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByGroups']))
+        if (isset($GLOBALS['CEM_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['CEM_HOOKS']['getParameterByGroups']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getParameterByGroups'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getParameterByGroups'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);
@@ -501,9 +501,9 @@ class FilterSession extends \Frontend
         $arrOptions['order'] = $this->getOrderOption();
 
         // HOOK: get type parameter by groups
-        if (isset($GLOBALS['TL_HOOKS']['getParameterByTypes']) && \is_array($GLOBALS['TL_HOOKS']['getParameterByTypes']))
+        if (isset($GLOBALS['CEM_HOOKS']['getParameterByTypes']) && \is_array($GLOBALS['CEM_HOOKS']['getParameterByTypes']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getParameterByTypes'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getParameterByTypes'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrColumns, $arrValues, $arrOptions, $mode, $addFragments, $objModule, $this);

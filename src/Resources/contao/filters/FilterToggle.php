@@ -247,9 +247,9 @@ class FilterToggle extends FilterWidget
         $objTemplate->setData($arrFilterItem);
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['parseFilterItem']) && \is_array($GLOBALS['TL_HOOKS']['parseFilterItem']))
+        if (isset($GLOBALS['CEM_HOOKS']['parseFilterItem']) && \is_array($GLOBALS['CEM_HOOKS']['parseFilterItem']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['parseFilterItem'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['parseFilterItem'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrFilterItem, $this);

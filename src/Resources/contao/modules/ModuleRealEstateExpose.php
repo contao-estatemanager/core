@@ -119,9 +119,9 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         $this->setMetaData($objRealEstate);
 
         // HOOK: compile real estate expose
-        if (isset($GLOBALS['TL_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['TL_HOOKS']['compileRealEstateExpose']))
+        if (isset($GLOBALS['CEM_HOOKS']['compileRealEstateExpose']) && \is_array($GLOBALS['CEM_HOOKS']['compileRealEstateExpose']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['compileRealEstateExpose'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['compileRealEstateExpose'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $objRealEstate, $this);
@@ -244,9 +244,9 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         $strBuffer = $objModule->generate();
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['getExposeModule']) && \is_array($GLOBALS['TL_HOOKS']['getExposeModule']))
+        if (isset($GLOBALS['CEM_HOOKS']['getExposeModule']) && \is_array($GLOBALS['CEM_HOOKS']['getExposeModule']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getExposeModule'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getExposeModule'] as $callback)
             {
                 $strBuffer = \System::importStatic($callback[0])->{$callback[1]}($objRow, $strBuffer, $objModule);
             }
@@ -301,9 +301,9 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         }
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['isVisibleElement']) && \is_array($GLOBALS['TL_HOOKS']['isVisibleElement']))
+        if (isset($GLOBALS['CEM_HOOKS']['isVisibleElement']) && \is_array($GLOBALS['CEM_HOOKS']['isVisibleElement']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['isVisibleElement'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['isVisibleElement'] as $callback)
             {
                 $blnReturn = System::importStatic($callback[0])->{$callback[1]}($objElement, $blnReturn);
             }

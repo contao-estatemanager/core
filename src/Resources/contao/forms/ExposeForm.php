@@ -90,9 +90,9 @@ class ExposeForm extends Form
     protected function processFormData($arrSubmitted, $arrLabels, $arrFields)
     {
         // HOOK: prepare form data callback
-        if (isset($GLOBALS['TL_HOOKS']['prepareFormData']) && \is_array($GLOBALS['TL_HOOKS']['prepareFormData']))
+        if (isset($GLOBALS['CEM_HOOKS']['prepareFormData']) && \is_array($GLOBALS['CEM_HOOKS']['prepareFormData']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['prepareFormData'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['prepareFormData'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $arrLabels, $arrFields, $this);
@@ -294,9 +294,9 @@ class ExposeForm extends Form
             }
 
             // HOOK: store form data callback
-            if (isset($GLOBALS['TL_HOOKS']['storeFormData']) && \is_array($GLOBALS['TL_HOOKS']['storeFormData']))
+            if (isset($GLOBALS['CEM_HOOKS']['storeFormData']) && \is_array($GLOBALS['CEM_HOOKS']['storeFormData']))
             {
-                foreach ($GLOBALS['TL_HOOKS']['storeFormData'] as $callback)
+                foreach ($GLOBALS['CEM_HOOKS']['storeFormData'] as $callback)
                 {
                     $this->import($callback[0]);
                     $arrSet = $this->{$callback[0]}->{$callback[1]}($arrSet, $this);
@@ -328,9 +328,9 @@ class ExposeForm extends Form
         $arrFiles = $_SESSION['FILES'] ?? null;
 
         // HOOK: process form data callback
-        if (isset($GLOBALS['TL_HOOKS']['processFormData']) && \is_array($GLOBALS['TL_HOOKS']['processFormData']))
+        if (isset($GLOBALS['CEM_HOOKS']['processFormData']) && \is_array($GLOBALS['CEM_HOOKS']['processFormData']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['processFormData'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['processFormData'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrSubmitted, $this->arrData, $arrFiles, $arrLabels, $this);
