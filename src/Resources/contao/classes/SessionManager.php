@@ -11,26 +11,19 @@
 namespace ContaoEstateManager;
 
 use Contao\Config;
-use Contao\Frontend;
+use Contao\System;
 use Contao\Model\Collection;
-use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\Validator;
 
-class SessionManager extends Frontend
+class SessionManager extends System
 {
     /**
      * Object instance (Singleton)
      * @var SessionManager
      */
     protected static $objInstance;
-
-    /**
-     * Table name
-     * @var string
-     */
-    protected static $strTable = 'tl_real_estate';
 
     /**
      * PageModel of the current page
@@ -61,6 +54,8 @@ class SessionManager extends Frontend
      */
     protected function __construct()
     {
+        parent::__construct();
+
         /** @var PageModel $objPage */
         global $objPage;
 
@@ -82,7 +77,7 @@ class SessionManager extends Frontend
     /**
      * Return the current object instance (Singleton)
      */
-    public static function getInstance(): SessionManager
+    public static function getInstance(): self
     {
         if (static::$objInstance === null)
         {
@@ -94,7 +89,7 @@ class SessionManager extends Frontend
     }
 
     /**
-     * Load all needed data
+     * Create session bag
      */
     protected function initialize(): void
     {
@@ -115,9 +110,9 @@ class SessionManager extends Frontend
 
     protected function getTypeParameter($objType, $objModule): array
     {
-        $arrColumns = array();
-        $arrValues = array();
-        $arrOptions = array();
+        $arrColumns = [];
+        $arrValues = [];
+        $arrOptions = [];
 
         $this->addQueryFragmentLanguage($arrColumns, $arrValues);
         $this->addQueryFragmentProvider($arrColumns, $objModule);
@@ -147,7 +142,7 @@ class SessionManager extends Frontend
             }
         }
 
-        return array($arrColumns, $arrValues, $arrOptions);
+        return [$arrColumns, $arrValues, $arrOptions];
     }
 
     /**
@@ -155,11 +150,10 @@ class SessionManager extends Frontend
      */
     public function getParameterByGroups(array $arrGroups, $objModule, bool $blnFiltered=false): array
     {
-        $arrColumns = array();
-        $arrValues = array();
-        $arrOptions = array();
-
-        $arrTypeColumns = array();
+        $arrColumns = [];
+        $arrValues = [];
+        $arrOptions = [];
+        $arrTypeColumns = [];
 
         $objTypes = $this->getTypeCollectionByPids($arrGroups);
 
@@ -174,7 +168,7 @@ class SessionManager extends Frontend
 
         foreach ($objTypes as $objType)
         {
-            $arrColumn = array();
+            $arrColumn = [];
 
             $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
 
@@ -206,7 +200,7 @@ class SessionManager extends Frontend
             }
         }
 
-        return array($arrColumns, $arrValues, $arrOptions);
+        return [$arrColumns, $arrValues, $arrOptions];
     }
 
     /**
@@ -214,11 +208,11 @@ class SessionManager extends Frontend
      */
     public function getParameterByTypes(array $arrTypes, $objModule): array
     {
-        $arrColumns = array();
-        $arrValues = array();
-        $arrOptions = array();
+        $arrColumns = [];
+        $arrValues = [];
+        $arrOptions = [];
 
-        $arrTypeColumns = array();
+        $arrTypeColumns = [];
 
         $objTypes = $this->getTypeCollectionByIds($arrTypes);
 
@@ -233,7 +227,7 @@ class SessionManager extends Frontend
 
         foreach ($objTypes as $objType)
         {
-            $arrColumn = array();
+            $arrColumn = [];
 
             $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
 
@@ -255,18 +249,15 @@ class SessionManager extends Frontend
             }
         }
 
-        return array($arrColumns, $arrValues, $arrOptions);
+        return [$arrColumns, $arrValues, $arrOptions];
     }
 
     /**
      * Add language query fragment
-     *
-     * @param array               $arrColumns
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentLanguage(&$arrColumns, &$arrValues): void
+    protected function addQueryFragmentLanguage(array &$arrColumns, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($this->objRootPage->realEstateQueryLanguage)
         {
@@ -277,13 +268,10 @@ class SessionManager extends Frontend
 
     /**
      * Add country query fragment
-     *
-     * @param array               $arrColumns
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentCountry(&$arrColumns, &$arrValues): void
+    protected function addQueryFragmentCountry(array &$arrColumns, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['country'] ?? null)
         {
@@ -299,18 +287,15 @@ class SessionManager extends Frontend
 
     /**
      * Add query fragment for the location field
-     *
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentLocation(&$arrColumn, &$arrValues)
+    protected function addQueryFragmentLocation(array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['location'] ?? null)
         {
             $location = $_SESSION['FILTER_DATA']['location'];
-            $matches = array();
+            $matches = [];
 
             if (preg_match('/[0-9]{3,5}/', $location, $matches, PREG_UNMATCHED_AS_NULL))
             {
@@ -330,14 +315,10 @@ class SessionManager extends Frontend
 
     /**
      * Add query fragment for price fields
-     *
-     * @param RealEstateTypeModel $objRealEstateType
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentPrice($objRealEstateType, &$arrColumn, &$arrValues)
+    protected function addQueryFragmentPrice(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['price_per'] ?? null && $_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
         {
@@ -385,13 +366,10 @@ class SessionManager extends Frontend
 
     /**
      * Add query fragment for room fields
-     *
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentRoom(&$arrColumn, &$arrValues)
+    protected function addQueryFragmentRoom(array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['room_from'] ?? null)
         {
@@ -407,14 +385,10 @@ class SessionManager extends Frontend
 
     /**
      * Add query fragment for area fields
-     *
-     * @param RealEstateTypeModel $objRealEstateType
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentArea($objRealEstateType, &$arrColumn, &$arrValues)
+    protected function addQueryFragmentArea(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['area_from'] ?? null)
         {
@@ -430,13 +404,10 @@ class SessionManager extends Frontend
 
     /**
      * Add query fragment for period fields
-     *
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentPeriod(&$arrColumn, &$arrValues)
+    protected function addQueryFragmentPeriod(array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($_SESSION['FILTER_DATA']['period_from'] ?? null)
         {
@@ -462,18 +433,15 @@ class SessionManager extends Frontend
 
     /**
      * Add provider query fragment
-     *
-     * @param array               $arrColumns
-     * @param ModuleModel         $objModule
      */
-    protected function addQueryFragmentProvider(&$arrColumns, $objModule=null)
+    protected function addQueryFragmentProvider(array &$arrColumns, $objModule=null): void
     {
         if ($objModule === null)
         {
             return;
         }
 
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($objModule->filterByProvider)
         {
@@ -488,14 +456,10 @@ class SessionManager extends Frontend
 
     /**
      * Add basic real estate type query fragment
-     *
-     * @param RealEstateTypeModel $objType
-     * @param array               $arrColumn
-     * @param array               $arrValues
      */
-    protected function addQueryFragmentBasics($objType, &$arrColumn, &$arrValues)
+    protected function addQueryFragmentBasics(RealEstateTypeModel $objType, array &$arrColumn, array &$arrValues): void
     {
-        $t = static::$strTable;
+        $t = RealEstateModel::getTable();
 
         if ($objType->vermarktungsart === 'kauf_erbpacht')
         {
@@ -543,14 +507,14 @@ class SessionManager extends Frontend
     /**
      * Get collection of real estate group models by their IDs
      */
-    public function getGroupCollectionByIds(array $arrIds=array()): ?Collection
+    public function getGroupCollectionByIds(array $arrIds= []): ?Collection
     {
         if (empty($arrIds) || $this->objGroups === null)
         {
             return null;
         }
 
-        $arrModels = array();
+        $arrModels = [];
 
         foreach ($this->objGroups as $objGroup)
         {
@@ -587,14 +551,14 @@ class SessionManager extends Frontend
     /**
      * Get collection of real estate type models by their IDs
      */
-    public function getTypeCollectionByIds(array $arrIds=array()): ?Collection
+    public function getTypeCollectionByIds(array $arrIds = []): ?Collection
     {
         if (empty($arrIds) || $this->objTypes === null)
         {
             return null;
         }
 
-        $arrModels = array();
+        $arrModels = [];
 
         foreach ($this->objTypes as $objType)
         {
@@ -610,14 +574,14 @@ class SessionManager extends Frontend
     /**
      * Get collection of real estate type models by their parent IDs
      */
-    public function getTypeCollectionByPids(array $arrPids=array()): ?Collection
+    public function getTypeCollectionByPids(array $arrPids = []): ?Collection
     {
         if (empty($arrPids) || $this->objTypes === null)
         {
             return null;
         }
 
-        $arrModels = array();
+        $arrModels = [];
 
         foreach ($this->objTypes as $objType)
         {
@@ -630,7 +594,7 @@ class SessionManager extends Frontend
         return new Collection($arrModels, 'tl_real_estate_type');
     }
 
-    public function getSelectedMarketingType()
+    public function getSelectedMarketingType(): string
     {
         $strMarketingType = 'kauf_erbpacht_miete_leasing';
 
