@@ -22,33 +22,28 @@ class SessionManager extends System
 {
     /**
      * Object instance (Singleton)
-     * @var SessionManager
      */
     protected static $objInstance;
 
     /**
      * PageModel of the current page
-     * @var PageModel
      */
-    protected $objPage;
+    protected PageModel $objPage;
 
     /**
      * PageModel of the current root page
-     * @var PageModel
      */
-    protected $objRootPage;
+    protected PageModel $objRootPage;
 
     /**
      * Real estate group object
-     * @var Collection|RealEstateGroupModel
      */
-    protected $objGroups;
+    protected ?Collection $objGroups;
 
     /**
      * Real estate type object
-     * @var Collection|RealEstateTypeModel
      */
-    protected $objTypes;
+    protected ?Collection $objTypes;
 
     /**
      * Prevent direct instantiation (Singleton)
@@ -109,7 +104,7 @@ class SessionManager extends System
         return $this->getParameterByGroups($arrGroups, $objModule, true);
     }
 
-    protected function getTypeParameter($objType, $objModule): array
+    protected function getTypeParameter(?RealEstateTypeModel $objType, $objModule): array
     {
         $arrColumns = [];
         $arrValues = [];
@@ -158,7 +153,7 @@ class SessionManager extends System
 
         $objTypes = $this->getTypeCollectionByPids($arrGroups);
 
-        if ($objTypes === null)
+        if (null === $objTypes)
         {
             throw new ObjectTypeException('No object type could be found.');
         }
@@ -184,9 +179,9 @@ class SessionManager extends System
             }
 
             // HOOK: modify parameter fragments
-            if (isset($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments']))
+            if (isset($GLOBALS['CEM_HOOKS']['getGroupQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['getGroupQueryFragments']))
             {
-                foreach ($GLOBALS['CEM_HOOKS']['modifyGroupParameterQueryFragments'] as $callback)
+                foreach ($GLOBALS['CEM_HOOKS']['getGroupQueryFragments'] as $callback)
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
@@ -241,9 +236,9 @@ class SessionManager extends System
             $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
 
             // HOOK: modify parameter fragments
-            if (isset($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments']))
+            if (isset($GLOBALS['CEM_HOOKS']['getTypeQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['getTypeQueryFragments']))
             {
-                foreach ($GLOBALS['CEM_HOOKS']['modifyTypeParameterQueryFragments'] as $callback)
+                foreach ($GLOBALS['CEM_HOOKS']['getTypeQueryFragments'] as $callback)
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
