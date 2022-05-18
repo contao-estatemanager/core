@@ -19,6 +19,7 @@ use Contao\Validator;
 use ContaoEstateManager\EstateManager\Exception\ObjectTypeException;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+// ToDo: Rename to FilterManger? The filter should also work via request parameters in the future, so the naming would be wrong.
 class SessionManager extends System
 {
     const STORAGE_KEY = 'FILTER_DATA';
