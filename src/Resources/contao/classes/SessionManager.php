@@ -17,9 +17,13 @@ use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\Validator;
 use ContaoEstateManager\EstateManager\Exception\ObjectTypeException;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class SessionManager extends System
 {
+    const MODE_SESSION = 0;
+    const MODE_REQUEST = 1;
+
     /**
      * Object instance (Singleton)
      */
@@ -46,19 +50,26 @@ class SessionManager extends System
     protected ?Collection $objTypes;
 
     /**
+     * Current mode
+     */
+    protected ?int $mode;
+
+    /**
      * Prevent direct instantiation (Singleton)
      */
     protected function __construct()
     {
         parent::__construct();
 
+        // Set default mode
+        $this->setMode(self::MODE_SESSION);
+
         /** @var PageModel $objPage */
         global $objPage;
 
         if ($objPage !== null)
         {
-            $this->objPage = $objPage->loadDetails();
-            $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
+            $this->setPage($objPage);
         }
 
         $this->objGroups = RealEstateGroupModel::findAllPublished();
@@ -89,10 +100,61 @@ class SessionManager extends System
      */
     protected function initialize(): void
     {
-        $_SESSION['FILTER_DATA'] = $_SESSION['FILTER_DATA'] ?? [];
+        $session = System::getContainer()->get('session');
+
+        if(!$session->has('contao_em_filter'))
+        {
+            $session->set('contao_em_filter', []);
+        }
     }
 
-    public function getParameter(array $arrGroups, $objModule): array
+    /**
+     * Set page scope by PageModel or ID
+     */
+    public function setPage($page): void
+    {
+        if(!($page instanceof PageModel))
+        {
+            $page = PageModel::findById($page);
+        }
+
+        $this->objPage = $page->loadDetails();
+        $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
+    }
+
+    /**
+     * Set source mode
+     */
+    public function setMode(int $mode): void
+    {
+        $this->mode = $mode;
+    }
+
+    /**
+     * Get data by current mode
+     */
+    public function data(): ParameterBag
+    {
+        $container = System::getContainer();
+
+        switch ($this->mode)
+        {
+            case self::MODE_REQUEST:
+                $dataContainer = $container->get('request_stack')->getCurrentRequest();
+                $dataContainer = $dataContainer->query->all();
+                break;
+
+            default:
+                $dataContainer = $container->get('session')->get('contao_em_filter');
+        }
+
+        return new ParameterBag($dataContainer);
+    }
+
+    /**
+     * Collect and return parameters for a given group, considering the selected type
+     */
+    public function getParameter(array $arrGroups, $objModule = null): array
     {
         $objSelectedType = $this->getSelectedType();
 
@@ -104,7 +166,10 @@ class SessionManager extends System
         return $this->getParameterByGroups($arrGroups, $objModule, true);
     }
 
-    protected function getTypeParameter(?RealEstateTypeModel $objType, $objModule): array
+    /**
+     * Collect and return parameter by a given type
+     */
+    protected function getTypeParameter(?RealEstateTypeModel $objType, $objModule = null): array
     {
         $arrColumns = [];
         $arrValues = [];
@@ -285,10 +350,10 @@ class SessionManager extends System
     {
         $t = RealEstateModel::getTable();
 
-        if ($_SESSION['FILTER_DATA']['country'] ?? null)
+        if ($country = $this->data()->get('country'))
         {
             $arrColumns[] = "$t.land=?";
-            $arrValues[] = $_SESSION['FILTER_DATA']['country'];
+            $arrValues[] = $country;
         }
         elseif ($this->objRootPage->realEstateQueryCountry)
         {
@@ -304,9 +369,8 @@ class SessionManager extends System
     {
         $t = RealEstateModel::getTable();
 
-        if ($_SESSION['FILTER_DATA']['location'] ?? null)
+        if ($location = $this->data()->get('location'))
         {
-            $location = $_SESSION['FILTER_DATA']['location'];
             $matches = [];
 
             if (preg_match('/[0-9]{3,5}/', $location, $matches, PREG_UNMATCHED_AS_NULL))
@@ -331,47 +395,49 @@ class SessionManager extends System
     protected function addQueryFragmentPrice(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
         $t = RealEstateModel::getTable();
+        $d = $this->data();
 
-        if ($_SESSION['FILTER_DATA']['price_per'] ?? null && $_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
+        if ($d->get('price_per') === 'square_meter')
         {
-            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
+            if ($priceFrom = $d->get('price_from'))
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
                     $arrColumn[] = "$t.mietpreisProQm>=?";
-                    $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+                    $arrValues[] = $priceFrom;
                 }
                 else
                 {
                     $arrColumn[] = "$t.kaufpreisProQm>=?";
-                    $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+                    $arrValues[] = $priceFrom;
                 }
             }
-            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
+
+            if ($priceTo = $d->get('price_to'))
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
                     $arrColumn[] = "$t.mietpreisProQm<=?";
-                    $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+                    $arrValues[] = $priceTo;
                 }
                 else
                 {
                     $arrColumn[] = "$t.kaufpreisProQm<=?";
-                    $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+                    $arrValues[] = $priceTo;
                 }
             }
         }
         else
         {
-            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
+            if ($priceFrom = $d->get('price_from'))
             {
                 $arrColumn[] = "$t.$objRealEstateType->price>=?";
-                $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
+                $arrValues[] = $priceFrom;
             }
             if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
             {
                 $arrColumn[] = "$t.$objRealEstateType->price<=?";
-                $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
+                $arrValues[] = $priceFrom;
             }
         }
     }
@@ -382,16 +448,18 @@ class SessionManager extends System
     protected function addQueryFragmentRoom(array &$arrColumn, array &$arrValues): void
     {
         $t = RealEstateModel::getTable();
+        $d = $this->data();
 
-        if ($_SESSION['FILTER_DATA']['room_from'] ?? null)
+        if ($roomFrom = $d->get('room_from'))
         {
             $arrColumn[] = "$t.anzahlZimmer>=?";
-            $arrValues[] = $_SESSION['FILTER_DATA']['room_from'];
+            $arrValues[] = $roomFrom;
         }
-        if ($_SESSION['FILTER_DATA']['room_to'] ?? null)
+
+        if ($roomTo = $d->get('room_to'))
         {
             $arrColumn[] = "$t.anzahlZimmer<=?";
-            $arrValues[] = $_SESSION['FILTER_DATA']['room_to'];
+            $arrValues[] = $roomTo;
         }
     }
 
@@ -401,16 +469,17 @@ class SessionManager extends System
     protected function addQueryFragmentArea(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
         $t = RealEstateModel::getTable();
+        $d = $this->data();
 
-        if ($_SESSION['FILTER_DATA']['area_from'] ?? null)
+        if ($areaFrom = $d->get('area_from'))
         {
             $arrColumn[] = "$t.$objRealEstateType->area>=?";
-            $arrValues[] = $_SESSION['FILTER_DATA']['area_from'];
+            $arrValues[] = $areaFrom;
         }
-        if ($_SESSION['FILTER_DATA']['area_to'] ?? null)
+        if ($areaTo = $d->get('area_to'))
         {
             $arrColumn[] = "$t.$objRealEstateType->area<=?";
-            $arrValues[] = $_SESSION['FILTER_DATA']['area_to'];
+            $arrValues[] = $areaTo;
         }
     }
 
@@ -420,24 +489,25 @@ class SessionManager extends System
     protected function addQueryFragmentPeriod(array &$arrColumn, array &$arrValues): void
     {
         $t = RealEstateModel::getTable();
+        $d = $this->data();
 
-        if ($_SESSION['FILTER_DATA']['period_from'] ?? null)
+        if ($periodFrom = $d->get('period_from'))
         {
-            if (Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
+            if (Validator::isDate($periodFrom))
             {
                 $arrColumn[] = "($t.abdatum<=? OR abdatum='')";
 
-                $date = new \Date($_SESSION['FILTER_DATA']['period_from']);
+                $date = new \Date($periodFrom);
                 $arrValues[] = $date->tstamp;
             }
         }
-        if ($_SESSION['FILTER_DATA']['period_to'] ?? null)
+        if ($periodTo = $d->get('period_to'))
         {
-            if (Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
+            if (Validator::isDate($periodTo))
             {
                 $arrColumn[] = "($t.bisdatum>=? OR $t.bisdatum='')";
 
-                $date = new \Date($_SESSION['FILTER_DATA']['period_to']);
+                $date = new \Date($periodTo);
                 $arrValues[] = $date->tstamp;
             }
         }
@@ -614,9 +684,9 @@ class SessionManager extends System
         {
             $strMarketingType = $this->objPage->marketingType;
         }
-        elseif ($_SESSION['FILTER_DATA']['marketing-type'] ?? null)
+        elseif ($marketingType = $this->data()->get('marketing-type'))
         {
-            $strMarketingType = $_SESSION['FILTER_DATA']['marketing-type'];
+            $strMarketingType = $marketingType;
         }
 
         return $strMarketingType;
@@ -633,9 +703,9 @@ class SessionManager extends System
         {
             $objType = $this->getTypeById($this->objPage->realEstateType);
         }
-        elseif ($_SESSION['FILTER_DATA']['real-estate-type'] ?? null)
+        elseif ($realEstateType = $this->data()->get('real-estate-type'))
         {
-            $objType = $this->getTypeById($_SESSION['FILTER_DATA']['real-estate-type']);
+            $objType = $this->getTypeById($realEstateType);
         }
 
         if ($objType !== null && $objType->vermarktungsart !== $this->getSelectedMarketingType())

@@ -14,6 +14,7 @@ use ContaoEstateManager\EstateManager\Exception\ApiMissingParameterException;
 use ContaoEstateManager\EstateManager\Exception\ApiResponseException;
 use ContaoEstateManager\FilterSession;
 use ContaoEstateManager\ModuleRealEstate;
+use ContaoEstateManager\SessionManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -89,10 +90,18 @@ class AbstractApiController extends Frontend
         $this->checkMissingParameter(['pageId', 'groups', 'filterMode']);
 
         // Get filter instance
-        $objSessionFilter = FilterSession::getInstance($this->request->get('pageId'));
+        $objSessionFilter = SessionManager::getInstance();
+
+        // Set page scope
+        $objSessionFilter->setPage($this->request->get('pageId'));
+
+        // ToDo: New Method for apply filtering by GET-Parameter instead of session
+        //$objSessionFilter->setMode(SessionManager::MODE_REQUEST);
 
         // Return filter query
-        return $objSessionFilter->getParameter($this->request->get('groups'), $this->request->get('filterMode'), true, $this->objModule);
+        return $objSessionFilter->getParameter(
+            $this->request->get('groups')
+        );
     }
 
     /**
