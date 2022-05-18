@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class SessionManager extends System
 {
+    const STORAGE_KEY = 'FILTER_DATA';
+
     const MODE_SESSION = 0;
     const MODE_REQUEST = 1;
 
@@ -96,16 +98,11 @@ class SessionManager extends System
     }
 
     /**
-     * Create session bag
+     * Initialize
      */
     protected function initialize(): void
     {
-        $session = System::getContainer()->get('session');
-
-        if(!$session->has('contao_em_filter'))
-        {
-            $session->set('contao_em_filter', []);
-        }
+        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
     }
 
     /**
@@ -135,17 +132,16 @@ class SessionManager extends System
      */
     public function data(): ParameterBag
     {
-        $container = System::getContainer();
-
         switch ($this->mode)
         {
             case self::MODE_REQUEST:
-                $dataContainer = $container->get('request_stack')->getCurrentRequest();
+                $dataContainer = System::getContainer()->get('request_stack')->getCurrentRequest();
                 $dataContainer = $dataContainer->query->all();
                 break;
 
             default:
-                $dataContainer = $container->get('session')->get('contao_em_filter');
+                // ToDo: Use Symfony Session?
+                $dataContainer = $_SESSION[self::STORAGE_KEY];
         }
 
         return new ParameterBag($dataContainer);
@@ -434,10 +430,10 @@ class SessionManager extends System
                 $arrColumn[] = "$t.$objRealEstateType->price>=?";
                 $arrValues[] = $priceFrom;
             }
-            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
+            if ($priceTo = $d->get('price_to'))
             {
                 $arrColumn[] = "$t.$objRealEstateType->price<=?";
-                $arrValues[] = $priceFrom;
+                $arrValues[] = $priceTo;
             }
         }
     }
