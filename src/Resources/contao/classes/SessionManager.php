@@ -31,6 +31,12 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  *  // Use request parameter instead of session (Default: MODE_SESSION)
  *  $manager->setMode(SessionManager::MODE_REQUEST);
  *
+ *  // Set filter parameter
+ *  $manager->set('preis_ab', 420000);
+ *
+ *  // Get filter parameter
+ *  $manager->get('preis_ab');
+ *
  *  $parameter = $manager->getParameter([0,1,2]);
  *  $parameter = $manager->getTypeParameter($objType);
  *  $parameter = $manager->getParameterByGroups([0,1,2]);
