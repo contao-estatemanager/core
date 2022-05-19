@@ -96,7 +96,7 @@ class AbstractApiController extends Frontend
         $objSessionFilter->setPage($this->request->get('pageId'));
 
         // ToDo: New Method for apply filtering by GET-Parameter instead of session
-        $objSessionFilter->setMode(SessionManager::MODE_REQUEST);
+        //$objSessionFilter->setMode(SessionManager::MODE_REQUEST);
 
         // Return filter query
         return $objSessionFilter->getParameter(
