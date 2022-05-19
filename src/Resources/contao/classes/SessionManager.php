@@ -55,37 +55,37 @@ class SessionManager extends System
     const MODE_REQUEST = 1;
 
     /**
-     * Object instance (Singleton)
+     * Object instance (Singleton).
      */
     protected static $objInstance;
 
     /**
-     * PageModel of the current page
+     * PageModel of the current page.
      */
     protected PageModel $objPage;
 
     /**
-     * PageModel of the current root page
+     * PageModel of the current root page.
      */
     protected PageModel $objRootPage;
 
     /**
-     * Real estate group object
+     * Real estate group object.
      */
     protected ?Collection $objGroups;
 
     /**
-     * Real estate type object
+     * Real estate type object.
      */
     protected ?Collection $objTypes;
 
     /**
-     * Current mode
+     * Current mode.
      */
     protected ?int $mode;
 
     /**
-     * Prevent direct instantiation (Singleton)
+     * Prevent direct instantiation (Singleton).
      */
     protected function __construct()
     {
@@ -107,12 +107,12 @@ class SessionManager extends System
     }
 
     /**
-     * Prevent cloning of the object (Singleton)
+     * Prevent cloning of the object (Singleton).
      */
     final public function __clone() {}
 
     /**
-     * Return the current object instance (Singleton)
+     * Return the current object instance (Singleton).
      */
     public static function getInstance(): self
     {
@@ -126,7 +126,7 @@ class SessionManager extends System
     }
 
     /**
-     * Initialize session
+     * Initialize session.
      *
      * @todo Use Symfony Session
      */
@@ -136,7 +136,7 @@ class SessionManager extends System
     }
 
     /**
-     * Set page scope by PageModel or ID
+     * Set page scope by PageModel or ID.
      */
     public function setPage($page): void
     {
@@ -150,7 +150,7 @@ class SessionManager extends System
     }
 
     /**
-     * Set source mode
+     * Set source mode.
      */
     public function setMode(int $mode): void
     {
@@ -158,7 +158,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get data by current mode
+     * Get data by current mode.
      *
      * @todo Use Symfony Session
      */
@@ -179,7 +179,7 @@ class SessionManager extends System
     }
 
     /**
-     * Set a new key-value pair for applying filtering
+     * Set a new key-value pair for applying filtering.
      *
      * @todo Use Symfony Session
      */
@@ -198,15 +198,23 @@ class SessionManager extends System
     }
 
     /**
-     * Return the value of a given key
+     * Return the value of a given key with the possibility to define a default value if the key is not found.
      */
-    public function get($key): string
+    public function get($key, $default = '')
     {
-        return $this->data()->get($key);
+        return $this->data()->get($key, $default);
     }
 
     /**
-     * Collect and return parameters for a given group, considering the selected type
+     * Returns true if the parameter is defined.
+     */
+    public function has($key): bool
+    {
+        return $this->data()->has($key);
+    }
+
+    /**
+     * Collect and return parameters for a given group, considering the selected type.
      */
     public function getParameter(array $arrGroups, $objModule = null): array
     {
@@ -221,7 +229,7 @@ class SessionManager extends System
     }
 
     /**
-     * Collect and return parameter by a given type
+     * Collect and return parameter by a given type.
      *
      * @todo: Maybe it makes sense to outsource all QueryFragments to a FilterFragment class? I am unsure.
      */
@@ -263,7 +271,7 @@ class SessionManager extends System
     }
 
     /**
-     * Collect and return parameter by a given set of groups
+     * Collect and return parameter by a given set of groups.
      */
     public function getParameterByGroups(array $arrGroups, $objModule, bool $blnFiltered=false): array
     {
@@ -329,7 +337,7 @@ class SessionManager extends System
     }
 
     /**
-     * Collect and return parameter by a given set of types
+     * Collect and return parameter by a given set of types.
      */
     public function getParameterByTypes(array $arrTypes, $objModule): array
     {
@@ -386,7 +394,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add language query fragment
+     * Add language query fragment.
      */
     protected function addQueryFragmentLanguage(array &$arrColumns, array &$arrValues): void
     {
@@ -400,7 +408,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add country query fragment
+     * Add country query fragment.
      */
     protected function addQueryFragmentCountry(array &$arrColumns, array &$arrValues): void
     {
@@ -419,7 +427,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add query fragment for the location field
+     * Add query fragment for the location field.
      */
     protected function addQueryFragmentLocation(array &$arrColumn, array &$arrValues): void
     {
@@ -446,7 +454,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add query fragment for price fields
+     * Add query fragment for price fields.
      */
     protected function addQueryFragmentPrice(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
@@ -499,7 +507,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add query fragment for room fields
+     * Add query fragment for room fields.
      */
     protected function addQueryFragmentRoom(array &$arrColumn, array &$arrValues): void
     {
@@ -520,7 +528,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add query fragment for area fields
+     * Add query fragment for area fields.
      */
     protected function addQueryFragmentArea(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
     {
@@ -540,7 +548,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add query fragment for period fields
+     * Add query fragment for period fields.
      */
     protected function addQueryFragmentPeriod(array &$arrColumn, array &$arrValues): void
     {
@@ -570,7 +578,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add provider query fragment
+     * Add provider query fragment.
      */
     protected function addQueryFragmentProvider(array &$arrColumns, $objModule=null): void
     {
@@ -593,7 +601,7 @@ class SessionManager extends System
     }
 
     /**
-     * Add basic real estate type query fragment
+     * Add basic real estate type query fragment.
      */
     protected function addQueryFragmentBasics(RealEstateTypeModel $objType, array &$arrColumn, array &$arrValues): void
     {
@@ -622,7 +630,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get a real estate group model by its ID
+     * Get a real estate group model by its ID.
      */
     public function getGroupById(int $id): ?RealEstateGroupModel
     {
@@ -643,7 +651,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get collection of real estate group models by their IDs
+     * Get collection of real estate group models by their IDs.
      */
     public function getGroupCollectionByIds(array $arrIds= []): ?Collection
     {
@@ -666,7 +674,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get a real estate type model by its ID
+     * Get a real estate type model by its ID.
      */
     public function getTypeById(int $id): ?RealEstateTypeModel
     {
@@ -687,7 +695,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get collection of real estate type models by their IDs
+     * Get collection of real estate type models by their IDs.
      */
     public function getTypeCollectionByIds(array $arrIds = []): ?Collection
     {
@@ -710,7 +718,7 @@ class SessionManager extends System
     }
 
     /**
-     * Get collection of real estate type models by their parent IDs
+     * Get collection of real estate type models by their parent IDs.
      */
     public function getTypeCollectionByPids(array $arrPids = []): ?Collection
     {
@@ -749,7 +757,7 @@ class SessionManager extends System
     }
 
     /**
-     * Return the selected real estate type model
+     * Return the selected real estate type model.
      */
     public function getSelectedType(): ?RealEstateTypeModel
     {
@@ -773,7 +781,7 @@ class SessionManager extends System
     }
 
     /**
-     * Return the order option as string
+     * Return the order option as string.
      */
     protected function getOrderOption(): string
     {
