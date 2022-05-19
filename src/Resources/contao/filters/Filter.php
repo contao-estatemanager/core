@@ -85,6 +85,7 @@ class Filter extends Hybrid
 
         if (Input::post('reset'))
         {
+            // ToDo: Use SessionManager "reset" Method - does not yet exists ;-)
             $_SESSION['FILTER_DATA'] = array();
             unset($_POST['reset']);
         }
@@ -166,6 +167,7 @@ class Filter extends Hybrid
                         foreach ($submitted as $field => $value)
                         {
                             $arrSubmitted[$field] = $value;
+                            // ToDo: Use SessionManager "set" Method
                             $_SESSION['FILTER_DATA'][$field] = $value;
                             unset($_POST[$field]);
                         }
@@ -173,6 +175,7 @@ class Filter extends Hybrid
                     else
                     {
                         $arrSubmitted[$objFilterWidget->name] = $objFilterWidget->value;
+                        // ToDo: Use SessionManager "set" Method
                         $_SESSION['FILTER_DATA'][$objFilterWidget->name] = $objFilterWidget->value;
                         unset($_POST[$objFilterWidget->name]);
                     }
@@ -226,9 +229,11 @@ class Filter extends Hybrid
         // Store all values in the session
         foreach (array_keys($_POST) as $key)
         {
+            // ToDo: Use SessionManager "set" Method or switch to MODE_REQUEST?
             $_SESSION['FILTER_DATA'][$key] = Input::post($key, true);
         }
 
+        // ToDo: Use SessionManager "set" Method
         $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] = true;
 
         // HOOK: process filter data

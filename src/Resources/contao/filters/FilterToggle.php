@@ -215,7 +215,7 @@ class FilterToggle extends FilterWidget
             (
                 'show'        => $this->rangeMode ? true : $field !== $groupData['hide'],
                 'name'        => $field,
-                'value'       => $_SESSION['FILTER_DATA'][$field] ?? '',
+                'value'       => $_SESSION['FILTER_DATA'][$field] ?? '', // ToDo: Use SessionManager "get" Method
                 'label'       => $this->showLabel ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
                 'placeholder' => $this->showPlaceholder ? $this->translateLabel($name, $field, $objCurrentTyp, $submitOnChange) : '',
             );

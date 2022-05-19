@@ -18,7 +18,7 @@ namespace ContaoEstateManager;
  */
 class FilterUnique extends FilterWidget
 {
-    
+
     /**
      * Submit user input
      *
@@ -115,6 +115,7 @@ class FilterUnique extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
+        // ToDo: Use SessionManager to
         $this->value = $_SESSION['FILTER_DATA']['unique-imprecise'] ?? '';
 
         return parent::parse($arrAttributes);

@@ -19,7 +19,28 @@ use Contao\Validator;
 use ContaoEstateManager\EstateManager\Exception\ObjectTypeException;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-// ToDo: Rename to FilterManger? The filter should also work via request parameters in the future, so the naming would be wrong.
+/**
+ * Handle real estate filtering
+ *
+ * Usage:
+ *  $manager = SessionManager::getInstance();
+ *
+ *  // Use active session in controllers
+ *  $manager->setPage(1);
+ *
+ *  // Use request parameter instead of session (Default: MODE_SESSION)
+ *  $manager->setMode(SessionManager::MODE_REQUEST);
+ *
+ *  $parameter = $manager->getParameter([0,1,2]);
+ *  $parameter = $manager->getTypeParameter($objType);
+ *  $parameter = $manager->getParameterByGroups([0,1,2]);
+ *  ...
+ *
+ * @todo: Rename to FilterManger? The filter should also work via request parameters in the future, so the naming would be wrong.
+ *
+ * @author Fabian Ekert <https://github.com/eki89>
+ * @author Daniele Sciannimanica <https://github.com/doishub>
+ */
 class SessionManager extends System
 {
     const STORAGE_KEY = 'FILTER_DATA';
@@ -99,7 +120,9 @@ class SessionManager extends System
     }
 
     /**
-     * Initialize
+     * Initialize session
+     *
+     * @todo Use Symfony Session
      */
     protected function initialize(): void
     {
@@ -130,8 +153,10 @@ class SessionManager extends System
 
     /**
      * Get data by current mode
+     *
+     * @todo Use Symfony Session
      */
-    public function data(): ParameterBag
+    protected function data(): ParameterBag
     {
         switch ($this->mode)
         {
@@ -141,11 +166,37 @@ class SessionManager extends System
                 break;
 
             default:
-                // ToDo: Use Symfony Session?
                 $dataContainer = $_SESSION[self::STORAGE_KEY];
         }
 
         return new ParameterBag($dataContainer);
+    }
+
+    /**
+     * Set a new key-value pair for applying filtering
+     *
+     * @todo Use Symfony Session
+     */
+    public function set($key, $value): void
+    {
+        switch ($this->mode)
+        {
+            case self::MODE_REQUEST:
+                $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+                $request->query->set($key, $value);
+                break;
+
+            default:
+                $_SESSION[self::STORAGE_KEY][$key] = $value;
+        }
+    }
+
+    /**
+     * Return the value of a given key
+     */
+    public function get($key): string
+    {
+        return $this->data()->get($key);
     }
 
     /**
@@ -165,6 +216,8 @@ class SessionManager extends System
 
     /**
      * Collect and return parameter by a given type
+     *
+     * @todo: Maybe it makes sense to outsource all QueryFragments to a FilterFragment class? I am unsure.
      */
     protected function getTypeParameter(?RealEstateTypeModel $objType, $objModule = null): array
     {
