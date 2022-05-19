@@ -40,9 +40,9 @@ class RealEstateModulePreparation extends RealEstate
     public function __call($name, $arguments)
     {
         // HOOK: extend template functions
-        if (isset($GLOBALS['CEM_HOOKS']['cemModulePreparation']) && \is_array($GLOBALS['CEM_HOOKS']['cemModulePreparation']))
+        if (isset($GLOBALS['CEM_HOOKS']['extendTemplateModule']) && \is_array($GLOBALS['CEM_HOOKS']['extendTemplateModule']))
         {
-            foreach ($GLOBALS['CEM_HOOKS']['cemModulePreparation'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['extendTemplateModule'] as $callback)
             {
                 $this->import($callback[0]);
 
