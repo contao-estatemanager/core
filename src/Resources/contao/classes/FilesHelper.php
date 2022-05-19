@@ -10,6 +10,8 @@
 
 namespace ContaoEstateManager;
 
+use Contao\System;
+
 /**
  * Loads and writes filter information
  *
@@ -61,16 +63,17 @@ class FilesHelper
     public static function scandirByExt($path, $extensions=array(), $recursive=false)
     {
         $result = array();
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
 
-        if(is_dir(TL_ROOT . '/' . $path)) {
-            $files = scandir(TL_ROOT . '/' . $path);
+        if(is_dir($strRoot . '/' . $path)) {
+            $files = scandir($strRoot . '/' . $path);
 
             foreach($files as $file) {
                 if (\in_array($file, array('.', '..'))) {
                     continue;
                 }
 
-                if(!is_dir(TL_ROOT . '/' . $path . '/' . $file)) {
+                if(!is_dir($strRoot . '/' . $path . '/' . $file)) {
                     $ext = explode('.', $file);
                     $ext = strtolower($ext[\count($ext) - 1]);
                     if (\in_array($ext, $extensions, false)) $result[] = $path . '/' . $file;
@@ -85,15 +88,19 @@ class FilesHelper
 
     public static function fileModTime($path)
     {
-        if(file_exists(TL_ROOT . '/'. $path)) {
-            return filemtime(TL_ROOT . '/'. $path);
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
+
+        if(file_exists($strRoot . '/'. $path)) {
+            return filemtime($strRoot . '/'. $path);
         } else return false;
     }
 
     public static function fileSize($path)
     {
-        if(file_exists(TL_ROOT . '/'. $path)) {
-            return filesize(TL_ROOT . '/' . $path);
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
+
+        if(file_exists($strRoot . '/'. $path)) {
+            return filesize($strRoot . '/' . $path);
         } else return false;
     }
 
@@ -112,7 +119,7 @@ class FilesHelper
 
     public static function isWritable($path)
     {
-        return is_writable(TL_ROOT.'/'.$path);
+        return is_writable(System::getContainer()->getParameter('kernel.project_dir') . '/' . $path);
     }
 
     public static function isValidMd5($hash)

@@ -451,7 +451,7 @@ class ExposeForm extends Form
 
         $_SESSION['FILES']['feedback'] = array
         (
-            'tmp_name' => TL_ROOT . '/' . $filePath,
+            'tmp_name' => System::getContainer()->getParameter('kernel.project_dir') . '/' . $filePath,
             'name'     => 'feedback.xml',
             'type'     => 'xml'
         );
@@ -461,7 +461,7 @@ class ExposeForm extends Form
     {
         if ($realEstate->vermarktungsartKauf)
         {
-            return 'KAUF';
+            return 'KAUF'; // ToDo: Use constants!
         }
         elseif ($realEstate->vermarktungsartErbpacht)
         {

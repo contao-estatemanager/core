@@ -17,6 +17,7 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
+use Contao\System;
 
 /**
  * Expose module "gallery".
@@ -212,7 +213,7 @@ class ExposeModuleGallery extends ExposeModule
             while ($objFiles->next())
             {
                 // continue if the files has been processed or does not exist
-                if (isset($arrImages[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path)) {
+                if (isset($arrImages[$objFiles->path]) || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFiles->path)) {
                     continue;
                 }
 

@@ -145,8 +145,10 @@ class RealEstateDcaListener
             $objFile = FilesModel::findByUuid(Config::get('defaultImage'));
         }
 
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
+
         // If a picture could be used, add it to the arguments
-        if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
+        if ($objFile !== null && is_file($strRoot . '/' . $objFile->path))
         {
             $imageUrl = $this->system->getContainer()
                                      ->get('contao.image.image_factory')

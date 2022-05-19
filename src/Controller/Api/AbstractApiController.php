@@ -189,9 +189,14 @@ class AbstractApiController extends Frontend
                 $objModel = $varSingleSrc;
             }
 
-            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+            $container = System::getContainer();
+            $strRoot = $container->getParameter('kernel.project_dir');
+
+            if ($objModel !== null && is_file($strRoot . '/' . $objModel->path))
             {
-                return Image::getPath(System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objModel->path, $imgSize)->getUrl(TL_ROOT));
+                return Image::getPath(
+                    $container->get('contao.image.image_factory')->create($strRoot . '/' . $objModel->path, $imgSize)->getUrl($strRoot)
+                );
             }
         }
 

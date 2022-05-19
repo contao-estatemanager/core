@@ -12,6 +12,7 @@ namespace ContaoEstateManager;
 
 
 use Contao\Frontend;
+use Contao\System;
 
 /**
  * Handles real estate update cron jobs
@@ -127,7 +128,7 @@ class RealEstateCronImporter extends Frontend
 
             if ($daysDiff > $days)
             {
-                unlink(TL_ROOT . '/' . $syncFile['file']);
+                unlink(System::getContainer()->getParameter('kernel.project_dir') . '/' . $syncFile['file']);
             }
         }
     }

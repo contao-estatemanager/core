@@ -894,7 +894,7 @@ class RealEstateImporter extends BackendModule
      */
     protected function loadData()
     {
-        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
+        $data = file_get_contents(System::getContainer()->getParameter('kernel.project_dir') . '/' . $this->syncFile);
 
         /* FlowFact
         $data = str_replace('<imo:', '<', $data);
@@ -1040,10 +1040,12 @@ class RealEstateImporter extends BackendModule
         $files = $zip->getFileList();
         $zip->first();
 
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
+
         foreach ($files as $file)
         {
             $content = $zip->unzip();
-            $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
+            $filePath = $strRoot . '/' . $tmpPath . '/' . $file;
             $dir = \dirname($filePath);
 
             if (!file_exists($dir))
@@ -1051,7 +1053,7 @@ class RealEstateImporter extends BackendModule
                 mkdir($dir);
             }
 
-            file_put_contents(TL_ROOT . '/' . $tmpPath . '/' . $file, $content);
+            file_put_contents($strRoot . '/' . $tmpPath . '/' . $file, $content);
             $zip->next();
         }
     }
