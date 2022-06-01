@@ -56,6 +56,8 @@ class RealEstate extends System
     {
         parent::__construct();
 
+        Controller::loadDataContainer('tl_real_estate');
+
         $this->objRealEstate = $objRealEstate;
 
         /** @var RealEstateType $realEstateType */
