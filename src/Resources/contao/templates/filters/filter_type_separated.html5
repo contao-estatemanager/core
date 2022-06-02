@@ -32,7 +32,7 @@
     <select name="real-estate-type" id="ctrl_<?= $this->id ?>_type" class="select <?= $this->realEstateType['class'] ?> <?= $this->class ?>"<?= $this->realEstateType['disabled'] ? ' disabled' : '' ?><?= $this->getAttributes() ?>>
       <?php foreach ($this->realEstateType['options'] as $option): ?>
         <?php if ($option['type'] == 'option'): ?>
-          <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['show'] ? '' : ' style="display:none;"' ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
+          <option value="<?= $option['value'] ?>"<?php if ($option['marketingType']): ?> data-marketing-type="<?= $option['marketingType'] ?>"<?php endif; ?><?= $option['selected'] ?>><?= $option['label'] ?></option>
         <?php endif; ?>
       <?php endforeach; ?>
     </select>
