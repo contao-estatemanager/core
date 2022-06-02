@@ -218,7 +218,7 @@
         {
             if(this.fieldMarketingType)
             {
-                this.fieldMarketingType.removeEventListener('change', this._marketingTypeChanged, false);
+                this.fieldMarketingType.removeEventListener('change', this._checkMarketingType, false);
             }
 
             if(this.fieldRealEstateType)
