@@ -41,7 +41,7 @@ class AbstractApiController extends Frontend
     /**
      * Current Module
      */
-    protected ?ModuleModel $objModule = null;
+    protected $objModule = null;
 
     /**
      * Constructor
@@ -73,6 +73,14 @@ class AbstractApiController extends Frontend
     {
         if(!$key)
         {
+            // Access is allowed if the request comes from the same host.
+            $ref = parse_url($this->request->headers->get('referer'));
+
+            if($this->request->getHost() === preg_replace("(^https?://)", "", $ref['host']))
+            {
+                return;
+            }
+
             throw new ApiConnectionException('Missing access key. The connection could not be established.');
         }
 
