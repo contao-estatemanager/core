@@ -303,7 +303,7 @@ class FilterToggle extends FilterWidget
      */
     protected function getCurrentType()
     {
-        return $this->objFilterSession->getCurrentRealEstateType();
+        return $this->sessionManager->getCurrentRealEstateType();
     }
 
     /**

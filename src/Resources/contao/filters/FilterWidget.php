@@ -53,7 +53,7 @@ abstract class FilterWidget extends Widget
     {
         $this->objFilter = $objFilter;
 
-        $this->objFilterSession = FilterSession::getInstance(); // ToDo: Remove
+        //$this->objFilterSession = FilterSession::getInstance(); // ToDo: Remove
         $this->sessionManager = SessionManager::getInstance();
 
         parent::__construct($arrAttributes);

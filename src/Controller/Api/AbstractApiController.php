@@ -7,6 +7,7 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\FilesModel;
 use Contao\Frontend;
 use Contao\Image;
+use Contao\ModuleModel;
 use Contao\System;
 use Contao\Validator;
 use ContaoEstateManager\EstateManager\Exception\ApiConnectionException;
@@ -40,7 +41,7 @@ class AbstractApiController extends Frontend
     /**
      * Current Module
      */
-    protected ?ModuleRealEstate $objModule = null;
+    protected ?ModuleModel $objModule = null;
 
     /**
      * Constructor
@@ -90,13 +91,7 @@ class AbstractApiController extends Frontend
         $this->checkMissingParameter(['pageId', 'groups', 'filterMode']);
 
         // Get filter instance
-        $objSessionFilter = SessionManager::getInstance();
-
-        // Set page scope
-        $objSessionFilter->setPage($this->request->get('pageId'));
-
-        // ToDo: New Method for apply filtering by GET-Parameter instead of session
-        //$objSessionFilter->setMode(SessionManager::MODE_REQUEST);
+        $objSessionFilter = SessionManager::getInstance($this->request->get('pageId'));
 
         // Return filter query
         return $objSessionFilter->getParameter(

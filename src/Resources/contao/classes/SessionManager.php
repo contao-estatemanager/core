@@ -80,6 +80,18 @@ class SessionManager extends System
     protected ?Collection $objTypes;
 
     /**
+     * Selected marketing type
+     * @var string
+     */
+    protected $marketingType = 'kauf_erbpacht_miete_leasing';
+
+    /**
+     * Selected real estate type
+     * @var RealEstateTypeModel
+     */
+    protected $objCurrentType;
+
+    /**
      * Current mode.
      */
     protected ?int $mode;
@@ -87,18 +99,22 @@ class SessionManager extends System
     /**
      * Prevent direct instantiation (Singleton).
      */
-    protected function __construct()
+    protected function __construct($pageId=null)
     {
         parent::__construct();
 
         // Set default mode
         $this->setMode(self::MODE_SESSION);
 
-        /** @var PageModel $objPage */
-        global $objPage;
-
-        if ($objPage !== null)
+        if ($pageId !== null)
         {
+            $this->setPage($pageId);
+        }
+        else
+        {
+            /** @var PageModel $objPage */
+            global $objPage;
+
             $this->setPage($objPage);
         }
 
@@ -114,11 +130,18 @@ class SessionManager extends System
     /**
      * Return the current object instance (Singleton).
      */
-    public static function getInstance(): self
+    public static function getInstance($pageId=null): ?self
     {
+        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
+
+        if (TL_MODE !== 'FE')
+        {
+            return null;
+        }
+
         if (static::$objInstance === null)
         {
-            static::$objInstance = new static();
+            static::$objInstance = new static($pageId);
             static::$objInstance->initialize();
         }
 
@@ -133,6 +156,113 @@ class SessionManager extends System
     protected function initialize(): void
     {
         $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
+
+        $d = $this->data();
+        $submitted = $this->filterSubmitted();
+
+        if (!$submitted)
+        {
+            $objGroups = $this->getGroupCollectionByReferencePage($this->objPage->id);
+            $objTypes = $this->getTypeCollectionByReferencePage($this->objPage->id);
+
+            // Objekttyp und Objektgruppe auf Referenzseite gefunden
+            if ($objGroups->count() > 0 && $objTypes->count() > 0)
+            {
+                foreach ($objTypes as $objType)
+                {
+                    if ($d->get('real-estate-type') == $objType->id)
+                    {
+                        $this->marketingType = ($d->has('marketing-type') || $d->get('marketing-type') === 'kauf_erbpacht_miete_leasing') ? 'kauf_erbpacht_miete_leasing' : $objType->vermarktungsart;
+                        $this->objCurrentType = $objType;
+
+                        return;
+                    }
+                }
+
+                foreach ($objGroups as $objGroup)
+                {
+                    if ($d->get('marketing-type') === $objGroup->vermarktungsart)
+                    {
+                        $this->marketingType = $objGroup->vermarktungsart;
+                        $this->objCurrentType = null;
+
+                        $this->set('real-estate-type', '');
+
+                        return;
+                    }
+                }
+            }
+
+            if ($objGroups->count() === 0 && $objTypes->count() === 0)
+            {
+                $this->marketingType = 'kauf_erbpacht_miete_leasing';
+                $this->objCurrentType = null;
+
+                $this->set('marketing-type', $this->marketingType);
+                $this->set('real-estate-type', '');
+
+                return;
+            }
+
+            if ($objGroups->count() === 0 && $objTypes->count() > 0)
+            {
+                foreach ($objTypes as $objType)
+                {
+                    //$this->marketingType = ($d->get('marketing-type') === '' || $d->get('marketing-type') === 'kauf_erbpacht_miete_leasing') ? 'kauf_erbpacht_miete_leasing' : $objType->vermarktungsart;
+                    $this->marketingType = $objType->vermarktungsart;
+                    $this->objCurrentType = $objType;
+
+                    $this->set('marketing-type', $this->marketingType);
+                    $this->set('real-estate-type', $objType->id);
+
+                    return;
+                }
+            }
+
+            foreach ($objGroups as $objGroup)
+            {
+                $this->marketingType = $objGroup->vermarktungsart;
+                $this->objCurrentType = null;
+
+                $this->set('marketing-type', $objGroup->vermarktungsart);
+                $this->set('real-estate-type', '');
+
+                return;
+            }
+        }
+
+        if(!empty($d->get('real-estate-type')))
+        {
+            $objType = $this->getTypeById(intval($d->get('real-estate-type')));
+
+            $this->marketingType = $objType->vermarktungsart;
+            $this->objCurrentType = $objType;
+
+            $this->set('marketing-type', $this->marketingType);
+            $this->set('real-estate-type', $objType->id);
+            return;
+        }
+
+        if(!empty($d->get('marketing-type')))
+        {
+            $this->marketingType = $d->get('marketing-type');
+            $this->objCurrentType = null;
+        }
+    }
+
+    /**
+     * Return true if filter submitted during this request and unset session indicator
+     *
+     * @return boolean
+     */
+    protected function filterSubmitted()
+    {
+        if($submitted = $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] ?? null)
+        {
+            unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+        }
+
+        return !!$submitted;
     }
 
     /**
@@ -218,11 +348,24 @@ class SessionManager extends System
      */
     public function getParameter(array $arrGroups, $objModule = null): array
     {
-        $objSelectedType = $this->getSelectedType();
-
-        if ($objSelectedType !== null)
+        if ($this->objCurrentType !== null)
         {
-            return $this->getTypeParameter($objSelectedType, $objModule);
+            return $this->getTypeParameter($this->objCurrentType, $objModule);
+        }
+
+        if (is_array($arrGroups) && $this->marketingType !== 'kauf_erbpacht_miete_leasing')
+        {
+            // Unset real estate groups if marketing type not apply
+            foreach ($this->objGroups as $objGroup)
+            {
+                if (($index = array_search($objGroup->id, $arrGroups)) !== false)
+                {
+                    if ($objGroup->vermarktungsart !== $this->marketingType)
+                    {
+                        unset($arrGroups[$index]);
+                    }
+                }
+            }
         }
 
         return $this->getParameterByGroups($arrGroups, $objModule, true);
@@ -653,7 +796,7 @@ class SessionManager extends System
     /**
      * Get collection of real estate group models by their IDs.
      */
-    public function getGroupCollectionByIds(array $arrIds= []): ?Collection
+    public function getGroupCollectionByIds(array $arrIds= [], ?string $marketingType=null): ?Collection
     {
         if (empty($arrIds) || $this->objGroups === null)
         {
@@ -665,6 +808,31 @@ class SessionManager extends System
         foreach ($this->objGroups as $objGroup)
         {
             if (in_array($objGroup->id, $arrIds))
+            {
+                if ($marketingType === null)
+                {
+                    $arrModels[] = $objGroup;
+                }
+                elseif ($marketingType === $objGroup->vermarktungsart)
+                {
+                    $arrModels[] = $objGroup;
+                }
+            }
+        }
+
+        return new Collection($arrModels, 'tl_real_estate_group');
+    }
+
+    /**
+     * Get collection of real estate group models by their reference page.
+     */
+    public function getGroupCollectionByReferencePage(int $id): ?Collection
+    {
+        $arrModels = [];
+
+        foreach ($this->objGroups as $objGroup)
+        {
+            if ($objGroup->referencePage === $id)
             {
                 $arrModels[] = $objGroup;
             }
@@ -740,15 +908,29 @@ class SessionManager extends System
         return new Collection($arrModels, 'tl_real_estate_type');
     }
 
+    /**
+     * Get collection of real estate type models by their reference page.
+     */
+    public function getTypeCollectionByReferencePage(int $id): ?Collection
+    {
+        $arrModels = [];
+
+        foreach ($this->objTypes as $objType)
+        {
+            if ($objType->referencePage === $id)
+            {
+                $arrModels[] = $objType;
+            }
+        }
+
+        return new Collection($arrModels, 'tl_real_estate_type');
+    }
+
     public function getSelectedMarketingType(): string
     {
         $strMarketingType = 'kauf_erbpacht_miete_leasing';
 
-        if ($this->objPage->setMarketingType)
-        {
-            $strMarketingType = $this->objPage->marketingType;
-        }
-        elseif ($marketingType = $this->data()->get('marketing-type'))
+        if ($marketingType = $this->data()->get('marketing-type'))
         {
             $strMarketingType = $marketingType;
         }
@@ -763,19 +945,15 @@ class SessionManager extends System
     {
         $objType = null;
 
-        if ($this->objPage->setRealEstateType)
-        {
-            $objType = $this->getTypeById($this->objPage->realEstateType);
-        }
-        elseif ($realEstateType = $this->data()->get('real-estate-type'))
+        if ($realEstateType = $this->data()->get('real-estate-type'))
         {
             $objType = $this->getTypeById($realEstateType);
         }
 
-        if ($objType !== null && $objType->vermarktungsart !== $this->getSelectedMarketingType())
+        /*if ($objType !== null && $objType->vermarktungsart !== $this->getSelectedMarketingType())
         {
             $objType = $this->getTypeById($objType->similarType);
-        }
+        }*/
 
         return $objType;
     }
@@ -802,5 +980,65 @@ class SessionManager extends System
         }
 
         return $strOrder;
+    }
+
+    /**
+     * Get current real estate type
+     */
+    public function getCurrentRealEstateType(): ?RealEstateTypeModel
+    {
+        $objType = null;
+
+        if ($realEstateType = $this->data()->get('real-estate-type'))
+        {
+            $objType = $this->getTypeById($realEstateType);
+        }
+
+        return $objType;
+    }
+
+    /**
+     * Determine current reference page
+     */
+    public function getJumpToPage(array $arrGroups): ?PageModel
+    {
+        $d = $this->data();
+
+        // Filterung nach Objekttyp
+        if ($realEstateType = $d->get('real-estate-type'))
+        {
+            $objType = $this->getTypeById($realEstateType);
+
+            // Wenn Objektyp eine Referenzseite hat --> Zur Referenzseite weiterleiten
+            if (in_array($objType->pid, $arrGroups) && ($objJumpTo = $objType->getRelated('referencePage')) instanceof PageModel)
+            {
+                return $objJumpTo;
+            }
+
+            // Wenn Objekttyp keine Referenzseite hat --> Zur Referenzseite der Gruppe weiterleiten
+            if (($objJumpTo = $objType->getRelated('pid')->getRelated('referencePage')) instanceof PageModel)
+            {
+                return $objJumpTo;
+            }
+        }
+
+        // Filterung nach Vermarktungsart
+        if ($marketingType = $d->get('marketing-type'))
+        {
+            $objGroups = $this->getGroupCollectionByIds($arrGroups, $marketingType);
+
+            // Wenn genau eine Objektgruppe gefunden wurde --> Zur Referenzseite weiterleiten
+            // Wurden mehr als eine Objektgruppe gefunden --> Zur Weiterleitungsseite des Filters weiterleiten (Fallback) --> Alle Immobilien mehrerer Objektgruppen, aber ausschließlich einer Vermarktungsart werden in Übersichtsseite angezeigt
+            if ($objGroups !== null && $objGroups->count() === 1)
+            {
+                if (($objJumpTo = $objGroups->getRelated('referencePage')) instanceof PageModel)
+                {
+                    return $objJumpTo;
+                }
+            }
+        }
+
+        // Zur Weiterleitungsseite des Filters weiterleiten (Fallback)
+        return null;
     }
 }

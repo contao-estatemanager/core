@@ -330,7 +330,7 @@ abstract class ModuleRealEstate extends Module
             $defaultSorting = Config::get('defaultSorting').'_desc';
             $arrOptions = array($defaultSorting => Translator::translateFilter($defaultSorting));
 
-            if (($objCurrentType = $this->objFilterSession->getCurrentRealEstateType()) !== null)
+            if (($objCurrentType = $this->sessionManager->getCurrentRealEstateType()) !== null)
             {
                 $sortingOptions = StringUtil::deserialize($objCurrentType->sortingOptions);
 

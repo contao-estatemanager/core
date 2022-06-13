@@ -40,10 +40,10 @@ class Filter extends Hybrid
     protected $objModel;
 
     /**
-     * Filter session object
-     * @var FilterSession
+     * Session manager object
+     * @var SessionManager
      */
-    protected $objFilterSession;
+    protected $sessionManager;
 
     /**
      * Key
@@ -62,6 +62,24 @@ class Filter extends Hybrid
      * @var string
      */
     protected $strTemplate = 'filter_wrapper';
+
+    /**
+     * Return an object property
+     *
+     * @param string $strKey The property name
+     *
+     * @return string The property value
+     */
+    public function __get($strKey)
+    {
+        switch ($strKey)
+        {
+            case 'realEstateGroups':
+                return StringUtil::deserialize($this->groups, true);
+        }
+
+        return parent::__get($strKey);
+    }
 
     /**
      * Remove name attributes in the back end so the filter is not validated
@@ -90,7 +108,7 @@ class Filter extends Hybrid
             unset($_POST['reset']);
         }
 
-        $this->objFilterSession = FilterSession::getInstance();
+        $this->sessionManager = SessionManager::getInstance();
 
         if ($this->customTpl != '')
         {
@@ -246,7 +264,22 @@ class Filter extends Hybrid
             }
         }
 
-        $objJumpTo = $this->objFilterSession->getReferencePage();
+        $objJumpTo = $this->sessionManager->getJumpToPage($this->realEstateGroups);
+
+        if ($objJumpTo === null && $this->jumpTo)
+        {
+            $objJumpTo = $this->objModel->getRelated('jumpTo');
+        }
+
+        // Redirect if there is a reference page
+        if ($objJumpTo instanceof PageModel)
+        {
+            $this->jumpToOrReload($objJumpTo->row());
+        }
+
+        $this->reload();
+
+        /*$objJumpTo = $this->sessionManager->getReferencePage();
 
         if ($objJumpTo === null && $this->jumpTo)
         {
@@ -259,7 +292,7 @@ class Filter extends Hybrid
             $this->jumpToOrReload($objJumpTo->row());
         }
 
-        $this->reload();
+        $this->reload();*/
     }
 
     /**
