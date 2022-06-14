@@ -103,20 +103,14 @@ class SessionManager extends System
     {
         parent::__construct();
 
+        // Initialize session
+        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
+
         // Set default mode
         $this->setMode(self::MODE_SESSION);
 
-        if ($pageId !== null)
-        {
-            $this->setPage($pageId);
-        }
-        else
-        {
-            /** @var PageModel $objPage */
-            global $objPage;
-
-            $this->setPage($objPage);
-        }
+        // Set page
+        $this->setPage($pageId);
 
         $this->objGroups = RealEstateGroupModel::findAllPublished();
         $this->objTypes = RealEstateTypeModel::findAllPublished();
@@ -132,8 +126,6 @@ class SessionManager extends System
      */
     public static function getInstance($pageId=null): ?self
     {
-        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
-
         if (TL_MODE !== 'FE')
         {
             return null;
@@ -155,8 +147,6 @@ class SessionManager extends System
      */
     protected function initialize(): void
     {
-        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
-
         $d = $this->data();
         $submitted = $this->filterSubmitted();
 
@@ -270,12 +260,21 @@ class SessionManager extends System
      */
     public function setPage($page): void
     {
-        if(!($page instanceof PageModel))
+        if($page === null)
         {
-            $page = PageModel::findById($page);
+            /** @var PageModel $objPage */
+            global $objPage;
+        }
+        elseif(is_numeric($page))
+        {
+            $objPage = PageModel::findById($page);
+        }
+        elseif($page instanceof PageModel)
+        {
+            $objPage = $page;
         }
 
-        $this->objPage = $page->loadDetails();
+        $this->objPage = $objPage->loadDetails();
         $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
     }
 
