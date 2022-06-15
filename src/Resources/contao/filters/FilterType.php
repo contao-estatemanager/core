@@ -63,13 +63,6 @@ class FilterType extends FilterWidget
     protected $select = array();
 
     /**
-     * Marketing type matched flag
-     *
-     * @var boolean
-     */
-    private $blnMarketingTypeMatched = false;
-
-    /**
      * Initialize the object
      *
      * @param array       $arrAttributes Attributes array
@@ -246,12 +239,12 @@ class FilterType extends FilterWidget
      */
     protected function isRealEstateOptionSelected($objType)
     {
-        if ($this->objFilterSession->getCurrentRealEstateType() === null)
+        if ($this->sessionManager->getCurrentRealEstateType() === null)
         {
             return false;
         }
 
-        if ($objType->id === $this->objFilterSession->getCurrentRealEstateType()->id)
+        if ($objType->id === $this->sessionManager->getCurrentRealEstateType()->id)
         {
             return true;
         }

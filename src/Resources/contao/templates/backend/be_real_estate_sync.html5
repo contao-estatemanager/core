@@ -36,7 +36,7 @@
               <td colspan="1" class="tl_file_list col_file_size"><?= $file['size'] ?></td>
               <td colspan="1" class="tl_file_list col_sync_time"><?= ($file['synctime']) ? date('H:i:s d.m.Y', $file['synctime']) : ''; ?></td>
               <td colspan="1" class="tl_file_list col_user"><?= $file['user'] ?></td>
-              <td class="tl_file_list tl_right_nowrap">
+              <td class="tl_file_list">
                 <button type="submit" name="file" value="<?= $file['file'] ?>" class="clrbtn">
                   <img src="system/themes/flexible/icons/sync.svg" width="16" height="16" alt="sync">
                 </button>

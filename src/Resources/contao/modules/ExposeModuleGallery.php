@@ -17,7 +17,7 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
-use Patchwork\Utf8;
+use Contao\System;
 
 /**
  * Expose module "gallery".
@@ -48,7 +48,7 @@ class ExposeModuleGallery extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['gallery'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['gallery'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -128,9 +128,9 @@ class ExposeModuleGallery extends ExposeModule
             else
             {
                 // HOOK: add custom logic for gallery single slide
-                if (isset($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlideExposeGallery']))
+                if (isset($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery']) && \is_array($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery']))
                 {
-                    foreach ($GLOBALS['TL_HOOKS']['parseSlideExposeGallery'] as $callback)
+                    foreach ($GLOBALS['CEM_HOOKS']['parseSlideExposeGallery'] as $callback)
                     {
                         $this->import($callback[0]);
                         $this->{$callback[0]}->{$callback[1]}($objTemplate, $module, $arrSlides, $this->realEstate, $this);
@@ -151,9 +151,9 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         // HOOK: add custom logic for gallery slides
-        if (isset($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery']))
+        if (isset($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery']) && \is_array($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['parseSlidesExposeGallery'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['parseSlidesExposeGallery'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objTemplate, $arrSlides, $this->realEstate, $this);
@@ -213,7 +213,7 @@ class ExposeModuleGallery extends ExposeModule
             while ($objFiles->next())
             {
                 // continue if the files has been processed or does not exist
-                if (isset($arrImages[$objFiles->path]) || !file_exists(TL_ROOT . '/' . $objFiles->path)) {
+                if (isset($arrImages[$objFiles->path]) || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFiles->path)) {
                     continue;
                 }
 

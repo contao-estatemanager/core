@@ -58,7 +58,7 @@
       };
 
       EstateManagerFilter.prototype.marketingTypeChanged = function () {
-          var switchType = EstateManager.types[this.fieldRealEstateType.value].switchType;
+          var switchType = EstateManager.types[this.fieldRealEstateType.value] ? EstateManager.types[this.fieldRealEstateType.value].switchType : 0;
 
           if (!switchType && (this.fieldRealEstateType.selectedOptions[0].dataset.marketingType != this.fieldMarketingType.value && this.fieldMarketingType.value)) {
               this.fieldRealEstateType.options[0].selected = true;

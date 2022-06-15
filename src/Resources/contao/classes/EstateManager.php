@@ -248,11 +248,11 @@ class EstateManager
             $arrUnique[] = $objRealEstates->objektnrIntern;
         }
 
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
         $filesHandler = Files::getInstance();
-
         $objFilesPath = FilesModel::findByUuid($objInterface->filesPath);
 
-        $arrProviderFolder = scandir(TL_ROOT . '/' . $objFilesPath->path);
+        $arrProviderFolder = scandir($strRoot . '/' . $objFilesPath->path);
 
         foreach ($arrProviderFolder as $providerFolder)
         {
@@ -261,7 +261,7 @@ class EstateManager
                 continue;
             }
 
-            $arrRealEstateFolder = scandir(TL_ROOT . '/' . $objFilesPath->path . '/' . $providerFolder);
+            $arrRealEstateFolder = scandir($strRoot . '/' . $objFilesPath->path . '/' . $providerFolder);
 
             foreach ($arrRealEstateFolder as $realEstateFolder)
             {

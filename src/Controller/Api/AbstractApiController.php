@@ -7,6 +7,7 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\FilesModel;
 use Contao\Frontend;
 use Contao\Image;
+use Contao\ModuleModel;
 use Contao\System;
 use Contao\Validator;
 use ContaoEstateManager\EstateManager\Exception\ApiConnectionException;
@@ -14,6 +15,7 @@ use ContaoEstateManager\EstateManager\Exception\ApiMissingParameterException;
 use ContaoEstateManager\EstateManager\Exception\ApiResponseException;
 use ContaoEstateManager\FilterSession;
 use ContaoEstateManager\ModuleRealEstate;
+use ContaoEstateManager\SessionManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -39,7 +41,7 @@ class AbstractApiController extends Frontend
     /**
      * Current Module
      */
-    protected ?ModuleRealEstate $objModule = null;
+    protected $objModule = null;
 
     /**
      * Constructor
@@ -71,6 +73,14 @@ class AbstractApiController extends Frontend
     {
         if(!$key)
         {
+            // Access is allowed if the request comes from the same host.
+            $ref = parse_url($this->request->headers->get('referer'));
+
+            if($this->request->getHost() === preg_replace("(^https?://)", "", $ref['host']))
+            {
+                return;
+            }
+
             throw new ApiConnectionException('Missing access key. The connection could not be established.');
         }
 
@@ -89,10 +99,12 @@ class AbstractApiController extends Frontend
         $this->checkMissingParameter(['pageId', 'groups', 'filterMode']);
 
         // Get filter instance
-        $objSessionFilter = FilterSession::getInstance($this->request->get('pageId'));
+        $objSessionFilter = SessionManager::getInstance($this->request->get('pageId'));
 
         // Return filter query
-        return $objSessionFilter->getParameter($this->request->get('groups'), $this->request->get('filterMode'), true, $this->objModule);
+        return $objSessionFilter->getParameter(
+            $this->request->get('groups')
+        );
     }
 
     /**
@@ -180,9 +192,14 @@ class AbstractApiController extends Frontend
                 $objModel = $varSingleSrc;
             }
 
-            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+            $container = System::getContainer();
+            $strRoot = $container->getParameter('kernel.project_dir');
+
+            if ($objModel !== null && is_file($strRoot . '/' . $objModel->path))
             {
-                return Image::getPath(System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objModel->path, $imgSize)->getUrl(TL_ROOT));
+                return Image::getPath(
+                    $container->get('contao.image.image_factory')->create($strRoot . '/' . $objModel->path, $imgSize)->getUrl($strRoot)
+                );
             }
         }
 

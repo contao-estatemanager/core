@@ -256,7 +256,7 @@ return array
     array('tl_real_estate', 'vermietbareFlaeche',          'flaechen', 'vermietbare_flaeche'),
     array('tl_real_estate', 'anzahlWohneinheiten',         'flaechen', 'anzahl_wohneinheiten'),
     array('tl_real_estate', 'anzahlGewerbeeinheiten',      'flaechen', 'anzahl_gewerbeeinheiten'),
-    array('tl_real_estate', 'einliegerwohnung',            'flaechen', 'einliegerwohnung'),
+    array('tl_real_estate', 'einliegerwohnung',            'flaechen', 'einliegerwohnung', array('boolean')),
     array('tl_real_estate', 'kubatur',                     'flaechen', 'kubatur'),
     array('tl_real_estate', 'ausnuetzungsziffer',          'flaechen', 'ausnuetzungsziffer'),
     array('tl_real_estate', 'flaechevon',                  'flaechen', 'flaechevon'),

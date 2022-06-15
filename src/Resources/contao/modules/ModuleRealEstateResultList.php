@@ -11,7 +11,6 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
-use Patchwork\Utf8;
 
 /**
  * Front end module "real estate result list".
@@ -43,7 +42,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateResultList'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateResultList'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -61,9 +60,9 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         }
 
         // HOOK: real estate result list generate
-        if (isset($GLOBALS['TL_HOOKS']['generateRealEstateResultList']) && \is_array($GLOBALS['TL_HOOKS']['generateRealEstateResultList']))
+        if (isset($GLOBALS['CEM_HOOKS']['generateRealEstateResultList']) && \is_array($GLOBALS['CEM_HOOKS']['generateRealEstateResultList']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['generateRealEstateResultList'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['generateRealEstateResultList'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this);

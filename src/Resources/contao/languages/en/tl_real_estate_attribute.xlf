@@ -233,6 +233,9 @@
       <trans-unit id="tl_real_estate_attribute.unterkellert_teil">
         <source>Partial cellar</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_attribute.unterkellert_unterkellert">
+        <source>With basement</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_attribute.abstellraum">
         <source>Storage room</source>
       </trans-unit>

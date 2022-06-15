@@ -51,14 +51,13 @@ class RealEstate extends System
 
     /**
      * RealEstate
-     *
-     * Initialize the object
-     *
-     * @param RealEstateModel $objRealEstate
-     * @param int|null $typeId
      */
     public function __construct($objRealEstate, int $typeId=null)
     {
+        parent::__construct();
+
+        Controller::loadDataContainer('tl_real_estate');
+
         $this->objRealEstate = $objRealEstate;
 
         /** @var RealEstateType $realEstateType */
@@ -92,10 +91,6 @@ class RealEstate extends System
 
     /**
      * Return a parameter/value
-     *
-     * @param string $name The field name
-     *
-     * @return mixed The field value
      */
     public function __get($name)
     {
@@ -121,20 +116,14 @@ class RealEstate extends System
 
     /**
      * Return a formatted parameter/value
-     *
-     * @param $name
-     *
-     * @return array|null
      */
-    public function get($name): ?array
+    public function get(string $name): ?array
     {
         return $this->formatter->getFormattedCollection($name);
     }
 
     /**
      * Returns the current type
-     *
-     * @return RealEstateTypeModel
      */
     public function getType(): RealEstateTypeModel
     {
@@ -143,10 +132,6 @@ class RealEstate extends System
 
     /**
      * Generate and return the expose url
-     *
-     * @param int|PageModel $varPage
-     *
-     * @return string
      */
     public function generateExposeUrl($varPage): string
     {
@@ -168,10 +153,6 @@ class RealEstate extends System
 
     /**
      * Return a collection of parsed real estate fields
-     *
-     * @param array $fields
-     *
-     * @return array
      */
     public function getFields(array $fields=null): array
     {
@@ -200,8 +181,6 @@ class RealEstate extends System
 
     /**
      * Return the first assignable image uuid
-     *
-     * @return string
      */
     public function getMainImageUuid(): string
     {
@@ -225,11 +204,6 @@ class RealEstate extends System
 
     /**
      * Return image uuid's of the real estate
-     *
-     * @param array|null $arrFields
-     * @param int|null $max
-     *
-     * @return array
      */
     public function getImagesUuids(array $arrFields=null, int $max=null): array
     {
@@ -275,10 +249,6 @@ class RealEstate extends System
 
     /**
      * Return status token
-     *
-     * @param array|null $validStatusToken
-     *
-     * @return array
      */
     public function getStatusTokens(array $validStatusToken=null): array
     {
@@ -323,9 +293,9 @@ class RealEstate extends System
         }
 
         // HOOK: get status tokens
-        if (isset($GLOBALS['TL_HOOKS']['getStatusTokens']) && \is_array($GLOBALS['TL_HOOKS']['getStatusTokens']))
+        if (isset($GLOBALS['CEM_HOOKS']['getStatusTokens']) && \is_array($GLOBALS['CEM_HOOKS']['getStatusTokens']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getStatusTokens'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getStatusTokens'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($validStatusToken, $return, $this);
@@ -337,8 +307,6 @@ class RealEstate extends System
 
     /**
      * Return marketing token
-     *
-     * @return null|array
      */
     public function getMarketingToken(): ?array
     {
@@ -363,10 +331,6 @@ class RealEstate extends System
 
     /**
      * Return the location
-     *
-     * @param bool $forceCompleteAddress
-     *
-     * @return array
      */
     public function getLocation(bool $forceCompleteAddress=false): array
     {
@@ -405,10 +369,6 @@ class RealEstate extends System
 
     /**
      * Return location as string
-     *
-     * @param bool $forceCompleteAddress
-     *
-     * @return string
      */
     public function getLocationString(bool $forceCompleteAddress=false): string
     {
@@ -444,8 +404,6 @@ class RealEstate extends System
 
     /**
      * Returns the price that can be assigned first
-     *
-     * @return array
      */
     public function getMainPrice(): array
     {
@@ -471,8 +429,6 @@ class RealEstate extends System
 
     /**
      * Returns the area that can be assigned first
-     *
-     * @return array
      */
     public function getMainArea(): array
     {
@@ -481,8 +437,6 @@ class RealEstate extends System
 
     /**
      * Returns all area fields
-     *
-     * @return array|null
      */
     public function getAreas(): ?array
     {
@@ -491,8 +445,6 @@ class RealEstate extends System
 
     /**
      * Returns all price fields
-     *
-     * @return array|null
      */
     public function getPrices(): ?array
     {
@@ -501,8 +453,6 @@ class RealEstate extends System
 
     /**
      * Returns all attribute fields
-     *
-     * @return array|null
      */
     public function getAttributes(): ?array
     {
@@ -511,10 +461,6 @@ class RealEstate extends System
 
     /**
      * Returns all detail fields
-     *
-     * @param bool $includeAddress
-     *
-     * @return array|null
      */
     public function getDetails(bool $includeAddress = false): ?array
     {
@@ -523,8 +469,6 @@ class RealEstate extends System
 
     /**
      * Returns all energy pass fields
-     *
-     * @return array|null
      */
     public function getEnergy(): ?array
     {
@@ -533,14 +477,6 @@ class RealEstate extends System
 
     /**
      * Return details from real estate
-     *
-     * @param null|array $separateGroups
-     * @param bool $includeAddress
-     * @param null|array $validGroups
-     * @param string $defaultGroup Allows you to add non-assignable fields to a custom group name or add them to an existing group
-     * @param array|null $sortingFields Custom field order
-     *
-     * @return array array('group1' [,group2,group3,...])
      */
     public function getPropertiesByGroup(array $separateGroups=null, bool $includeAddress = false, array $validGroups = null, string $defaultGroup = 'detail', ?array $sortingFields = null): array
     {
@@ -644,10 +580,6 @@ class RealEstate extends System
 
     /**
      * Return main details from real estate
-     *
-     * @param int|null $max
-     *
-     * @return array
      */
     public function getMainDetails(int $max=null): array
     {
@@ -655,9 +587,9 @@ class RealEstate extends System
         $arrMainDetails = StringUtil::deserialize($this->objType->mainDetails, true);
 
         // HOOK: get main details
-        if (isset($GLOBALS['TL_HOOKS']['getMainDetails']) && \is_array($GLOBALS['TL_HOOKS']['getMainDetails']))
+        if (isset($GLOBALS['CEM_HOOKS']['getMainDetails']) && \is_array($GLOBALS['CEM_HOOKS']['getMainDetails']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['getMainDetails'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['getMainDetails'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($arrMainDetails, $this->objRealEstate, $max, $this);
@@ -685,10 +617,6 @@ class RealEstate extends System
 
     /**
      * Return main attributes from real estate
-     *
-     * @param int|null $max
-     *
-     * @return array
      */
     public function getMainAttributes(int $max=null): array
     {
@@ -741,11 +669,6 @@ class RealEstate extends System
 
     /**
      * Return texts from real estate
-     *
-     * @param array|null $validTexts
-     * @param int $maxTextLength
-     *
-     * @return array|null
      */
     public function getTexts(array $validTexts=null, int $maxTextLength=0): ?array
     {
@@ -773,8 +696,6 @@ class RealEstate extends System
 
     /**
      * Return object of the assigned provider
-     *
-     * @throws \Exception
      */
     public function getProvider()
     {
@@ -783,13 +704,6 @@ class RealEstate extends System
 
     /**
      * Return data of the assigned contact person
-     *
-     * @param bool $forceCompleteAddress
-     * @param bool $useProviderForwarding
-     *
-     * @return array|null
-     *
-     * @throws \Exception
      */
     public function getContactPerson(bool $forceCompleteAddress=false, bool $useProviderForwarding=false): ?array
     {
@@ -836,12 +750,6 @@ class RealEstate extends System
 
     /**
      * Generate the main image
-     *
-     * @param $imgSize
-     * @param bool $blnImageFallback
-     * @param string|null $strTemplate
-     *
-     * @return string
      */
     public function generateMainImage($imgSize, bool $blnImageFallback=true, $strTemplate=null): string
     {
@@ -852,15 +760,8 @@ class RealEstate extends System
 
     /**
      * Generate all images
-     *
-     * @param $imgSize
-     * @param array|null $arrFields
-     * @param int|null $max
-     * @param string|null $strTemplate
-     *
-     * @return array
      */
-    public function generateGallery($imgSize, array $arrFields=null, int $max=null, $strTemplate=null): array
+    public function generateGallery($imgSize, array $arrFields=null, int $max=null, ?string $strTemplate=null): array
     {
         $return = [];
         $arrImages = $this->getImagesUuids($arrFields, $max);
@@ -891,13 +792,6 @@ class RealEstate extends System
 
     /**
      * Parse an image with the picture_default template
-     *
-     * @param $objFile
-     * @param $imgSize
-     * @param bool $blnImageFallback
-     * @param string|null $strTemplate
-     *
-     * @return string
      */
     public static function parseImageTemplate($objFile, $imgSize, bool $blnImageFallback=true, ?string $strTemplate=null): string
     {
@@ -940,11 +834,6 @@ class RealEstate extends System
 
     /**
      * Sorts an array by order fields
-     *
-     * @param $arrList
-     * @param array|null $sortingFields
-     *
-     * @return array
      */
     private function sort($arrList, ?array $sortingFields = null): array
     {

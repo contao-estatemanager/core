@@ -254,9 +254,9 @@ class RealEstateImporter extends BackendModule
         }
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync']))
+        if (isset($GLOBALS['CEM_HOOKS']['realEstateImportBeforeSync']) && \is_array($GLOBALS['CEM_HOOKS']['realEstateImportBeforeSync']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeSync'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['realEstateImportBeforeSync'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this);
@@ -328,9 +328,9 @@ class RealEstateImporter extends BackendModule
         $skip = false;
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData']))
+        if (isset($GLOBALS['CEM_HOOKS']['realEstateImportBeforeLoadData']) && \is_array($GLOBALS['CEM_HOOKS']['realEstateImportBeforeLoadData']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateImportBeforeLoadData'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['realEstateImportBeforeLoadData'] as $callback)
             {
                 $this->import($callback[0]);
                 $skip = $this->{$callback[0]}->{$callback[1]}($this);
@@ -395,13 +395,14 @@ class RealEstateImporter extends BackendModule
         foreach ($arrProvider as $provider)
         {
             $this->uniqueProviderValue = trim(current($provider->{$this->objInterface->uniqueProviderField}));
+            $objProvider = $this->objInterface->getRelated('provider');
 
             if (empty($this->uniqueProviderValue))
             {
-                $this->uniqueProviderValue = $this->objInterface->anbieternr;
+                $this->uniqueProviderValue = $objProvider->anbieternr;
             }
 
-            if (!$this->objInterface->importThirdPartyRecords && $this->objInterface->anbieternr !== $this->uniqueProviderValue)
+            if (!$this->objInterface->importThirdPartyRecords && $objProvider->anbieternr !== $this->uniqueProviderValue)
             {
                 $this->logger->info('Skip real estate due to missing provider.', null, ImportLogger::LOG_PROD);
                 continue;
@@ -409,8 +410,6 @@ class RealEstateImporter extends BackendModule
 
             if ($this->objInterface->importThirdPartyRecords === 'import')
             {
-                $objProvider = ProviderModel::findOneByAnbieternr($this->uniqueProviderValue);
-
                 if ($objProvider === null)
                 {
                     $this->importStatus = 2;
@@ -435,9 +434,9 @@ class RealEstateImporter extends BackendModule
                 );
 
                 // HOOK: add custom logic
-                if (isset($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord']))
+                if (isset($GLOBALS['CEM_HOOKS']['realEstateImportPrePrepareRecord']) && \is_array($GLOBALS['CEM_HOOKS']['realEstateImportPrePrepareRecord']))
                 {
-                    foreach ($GLOBALS['TL_HOOKS']['realEstateImportPrePrepareRecord'] as $callback)
+                    foreach ($GLOBALS['CEM_HOOKS']['realEstateImportPrePrepareRecord'] as $callback)
                     {
                         $this->import($callback[0]);
                         $this->{$callback[0]}->{$callback[1]}($realEstate, $re, $contactPerson, $skip, $this);
@@ -613,11 +612,11 @@ class RealEstateImporter extends BackendModule
 
         $this->logger->info('Update database');
 
-        $objProvider = ProviderModel::findByPk($this->objInterface->provider);
+        $objProvider = $this->objInterface->getRelated('provider');
 
         foreach ($contactPersonRecords as $i => $contactPerson)
         {
-            if ($this->objInterface->importThirdPartyRecords === 'assign' && $realEstateRecords[$i]['ANBIETER'] !== $this->objInterface->anbieternr)
+            if ($this->objInterface->importThirdPartyRecords === 'assign' && $realEstateRecords[$i]['ANBIETER'] !== $objProvider->anbieternr)
             {
                 if ($realEstateRecords[$i]['vermarktungsartKauf'])
                 {
@@ -649,9 +648,9 @@ class RealEstateImporter extends BackendModule
                     $this->skipContactPerson = false;
 
                     // HOOK: import third party contact person
-                    if (isset($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson']) && \is_array($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson']))
+                    if (isset($GLOBALS['CEM_HOOKS']['importThirdPartyContactPerson']) && \is_array($GLOBALS['CEM_HOOKS']['importThirdPartyContactPerson']))
                     {
-                        foreach ($GLOBALS['TL_HOOKS']['importThirdPartyContactPerson'] as $callback)
+                        foreach ($GLOBALS['CEM_HOOKS']['importThirdPartyContactPerson'] as $callback)
                         {
                             $this->import($callback[0]);
                             $objContactPerson = $this->{$callback[0]}->{$callback[1]}($objProvider, $contactPerson, $realEstateRecords[$i], $allowCreate, $allowUpdate, $this);
@@ -747,9 +746,9 @@ class RealEstateImporter extends BackendModule
                     $preventDelete = false;
 
                     // HOOK: before real estate import
-                    if (isset($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord']) && is_array($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord']))
+                    if (isset($GLOBALS['CEM_HOOKS']['realEstateImportDeleteRecord']) && is_array($GLOBALS['CEM_HOOKS']['realEstateImportDeleteRecord']))
                     {
-                        foreach ($GLOBALS['TL_HOOKS']['realEstateImportDeleteRecord'] as $callback)
+                        foreach ($GLOBALS['CEM_HOOKS']['realEstateImportDeleteRecord'] as $callback)
                         {
                             $this->import($callback[0]);
                             $this->{$callback[0]}->{$callback[1]}($objRealEstate, $objProvider, $preventDelete, $this);
@@ -804,6 +803,7 @@ class RealEstateImporter extends BackendModule
             {
                 $dc = new \stdClass();
                 $dc->id = $objRealEstate->id ?: Database::getInstance()->getNextId('tl_real_estate');
+                $dc->table = 'tl_real_estate';
                 $dc->activeRecord = null;
 
                 foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields']['alias']['save_callback'] as $callback)
@@ -821,9 +821,9 @@ class RealEstateImporter extends BackendModule
             }
 
             // HOOK: before real estate import
-            if (isset($GLOBALS['TL_HOOKS']['beforeRealEstateImport']) && \is_array($GLOBALS['TL_HOOKS']['beforeRealEstateImport']))
+            if (isset($GLOBALS['CEM_HOOKS']['beforeRealEstateImport']) && \is_array($GLOBALS['CEM_HOOKS']['beforeRealEstateImport']))
             {
-                foreach ($GLOBALS['TL_HOOKS']['beforeRealEstateImport'] as $callback)
+                foreach ($GLOBALS['CEM_HOOKS']['beforeRealEstateImport'] as $callback)
                 {
                     $this->import($callback[0]);
                     $this->{$callback[0]}->{$callback[1]}($objRealEstate, $this);
@@ -865,7 +865,7 @@ class RealEstateImporter extends BackendModule
                 $packages = System::getContainer()->getParameter('kernel.packages');
                 $version = $packages['contao-estatemanager/core'] ?? '0.0.0';
 
-                $stripKeys = ['alias', 'provider', 'contactPerson', 'anbieternr', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
+                $stripKeys = ['alias', 'provider', 'contactPerson', 'qrImageSRC', 'logoImageSRC', 'epassSkalaImageSRC', 'panoramaImageSRC', 'mapViewImageSRC', 'exteriorViewImageSRC', 'interiorViewImageSRC', 'planImageSRC', 'imageSRC', 'titleImageSRC', 'objekttitel', 'objektbeschreibung', 'ausstattBeschr', 'lage', 'sonstigeAngaben', 'objektText', 'dreizeiler'];
                 $arrRecords = [];
 
                 foreach ($realEstateRecords as $record)
@@ -894,7 +894,7 @@ class RealEstateImporter extends BackendModule
      */
     protected function loadData()
     {
-        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
+        $data = file_get_contents(System::getContainer()->getParameter('kernel.project_dir') . '/' . $this->syncFile);
 
         /* FlowFact
         $data = str_replace('<imo:', '<', $data);
@@ -1040,10 +1040,12 @@ class RealEstateImporter extends BackendModule
         $files = $zip->getFileList();
         $zip->first();
 
+        $strRoot = System::getContainer()->getParameter('kernel.project_dir');
+
         foreach ($files as $file)
         {
             $content = $zip->unzip();
-            $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
+            $filePath = $strRoot . '/' . $tmpPath . '/' . $file;
             $dir = \dirname($filePath);
 
             if (!file_exists($dir))
@@ -1051,7 +1053,7 @@ class RealEstateImporter extends BackendModule
                 mkdir($dir);
             }
 
-            file_put_contents(TL_ROOT . '/' . $tmpPath . '/' . $file, $content);
+            file_put_contents($strRoot . '/' . $tmpPath . '/' . $file, $content);
             $zip->next();
         }
     }
@@ -1077,7 +1079,7 @@ class RealEstateImporter extends BackendModule
             $field = substr($field, 0, $attr_pos);
         }
 
-        $xmlNodes = $field === '' ? array($group) : $group->xpath($field);
+        $xmlNodes = $field === '' ? array($group) : ($group ? $group->xpath($field) : []);
         $results = array();
 
         foreach ($xmlNodes as $i => $xmlNode)
@@ -1321,9 +1323,9 @@ class RealEstateImporter extends BackendModule
         }
 
         // HOOK: add custom logic
-        if (isset($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']) && \is_array($GLOBALS['TL_HOOKS']['realEstateImportSaveImage']))
+        if (isset($GLOBALS['CEM_HOOKS']['realEstateImportSaveImage']) && \is_array($GLOBALS['CEM_HOOKS']['realEstateImportSaveImage']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['realEstateImportSaveImage'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['realEstateImportSaveImage'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($objFilesFolder, $value, $tmpGroup, $values, $skip, $this);

@@ -6,10 +6,6 @@ services:
         resource: ../../
         exclude: ../../{Model,DependencyInjection,Resources}
 
-    ContaoEstateManager\RealEstateDcaHelper:
-        tags:
-            - controller.service_arguments
-
     ContaoEstateManager\EstateManager\Controller\Api\ApiRealEstateController:
         arguments:
             - '@contao.framework'

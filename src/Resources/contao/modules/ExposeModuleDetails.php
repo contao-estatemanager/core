@@ -13,7 +13,6 @@ namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "details".
@@ -38,7 +37,7 @@ class ExposeModuleDetails extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['details'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['details'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -117,9 +116,9 @@ class ExposeModuleDetails extends ExposeModule
         }
 
         // HOOK: custom logic for details
-        if (isset($GLOBALS['TL_HOOKS']['compileExposeDetails']) && \is_array($GLOBALS['TL_HOOKS']['compileExposeDetails']))
+        if (isset($GLOBALS['CEM_HOOKS']['compileExposeDetails']) && \is_array($GLOBALS['CEM_HOOKS']['compileExposeDetails']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['compileExposeDetails'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['compileExposeDetails'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);

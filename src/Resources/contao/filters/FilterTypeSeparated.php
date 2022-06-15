@@ -63,13 +63,6 @@ class FilterTypeSeparated extends FilterWidget
     protected $strPrefix = 'widget widget-type-separated';
 
     /**
-     * Marketing type matched flag
-     *
-     * @var boolean
-     */
-    private $blnMarketingTypeMatched = false;
-
-    /**
      * Initialize the object
      *
      * @param array       $arrAttributes Attributes array
@@ -125,16 +118,16 @@ class FilterTypeSeparated extends FilterWidget
 
         $arrGroups = StringUtil::deserialize($this->objFilter->groups, true);
 
-        $objGroups = RealEstateGroupModel::findPublishedByIds($arrGroups);
+        $objGroups = $this->sessionManager->getGroupCollectionByIds($arrGroups);
 
-        if ($objGroups === null)
+        if ($objGroups->count() === 0)
         {
             return '';
         }
 
-        $objTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
+        $objTypes = $this->sessionManager->getTypeCollectionByPids($arrGroups);
 
-        if ($objTypes === null)
+        if ($objTypes->count() === 0)
         {
             return '';
         }
@@ -160,30 +153,30 @@ class FilterTypeSeparated extends FilterWidget
 
         $addedMarketingTypes = array();
 
-        while ($objGroups->next())
+        foreach ($objGroups as $objGroup)
         {
-            if (\in_array($objGroups->vermarktungsart, $addedMarketingTypes))
+            if (\in_array($objGroup->vermarktungsart, $addedMarketingTypes))
             {
                 continue;
             }
 
-            $addedMarketingTypes[] = $objGroups->vermarktungsart;
+            $addedMarketingTypes[] = $objGroup->vermarktungsart;
 
-            $selected = $this->isMarketingOptionSelected($objGroups->vermarktungsart);
+            $selected = $this->isMarketingOptionSelected($objGroup->vermarktungsart);
 
             $arrOptions[] = array
             (
                 'type'          => 'option',
-                'value'         => $objGroups->vermarktungsart,
+                'value'         => $objGroup->vermarktungsart,
                 'selected'      => $selected ? ' selected' : '',
-                'label'         => Translator::translateFilter($objGroups->vermarktungsart),
-                'marketingType' => $objGroups->vermarktungsart
+                'label'         => Translator::translateFilter($objGroup->vermarktungsart),
+                'marketingType' => $objGroup->vermarktungsart
             );
 
             // Set selected marketing type
             if ($selectedMarketingType === null || $selected)
             {
-                $selectedMarketingType = $objGroups->vermarktungsart;
+                $selectedMarketingType = $objGroup->vermarktungsart;
                 $showAllTypes = false;
             }
         }
@@ -208,27 +201,25 @@ class FilterTypeSeparated extends FilterWidget
             'show'     => true
         );
 
-        $objGroups->reset();
-
-        while ($objGroups->next())
+        foreach ($objGroups as $objGroup)
         {
-            $objGroupTypes = $this->getGroupTypes($objTypes, $objGroups->id);
+            $objGroupTypes = $this->getGroupTypes($objTypes, $objGroup->id);
 
-            if ($objGroupTypes === null)
+            if ($objGroupTypes->count() === 0)
             {
                 continue;
             }
 
-            while ($objGroupTypes->next())
+            foreach ($objGroupTypes as $objGroupType)
             {
                 $arrOptions[] = array
                 (
                     'type'          => 'option',
-                    'value'         => $objGroupTypes->id,
-                    'selected'      => $this->isRealEstateOptionSelected($objGroupTypes) ? ' selected' : '',
-                    'label'         => $this->showLongTitle ? $objGroupTypes->longTitle : $objGroupTypes->title,
-                    'marketingType' => $objGroups->vermarktungsart,
-                    'show'          => !(!$showAllTypes && $objGroups->vermarktungsart != $selectedMarketingType)
+                    'value'         => $objGroupType->id,
+                    'selected'      => $this->isRealEstateOptionSelected($objGroupType) ? ' selected' : '',
+                    'label'         => $this->showLongTitle ? $objGroupType->longTitle : $objGroupType->title,
+                    'marketingType' => $objGroup->vermarktungsart,
+                    'show'          => !(!$showAllTypes && $objGroup->vermarktungsart != $selectedMarketingType)
                 );
             }
         }
@@ -293,15 +284,13 @@ class FilterTypeSeparated extends FilterWidget
     {
         $arrTypes = array();
 
-        while ($objTypes->next())
+        foreach ($objTypes as $objType)
         {
-            if ($objTypes->pid == $pid)
+            if ($objType->pid == $pid)
             {
-                $arrTypes[] = $objTypes->current();
+                $arrTypes[] = $objType;
             }
         }
-
-        $objTypes->reset();
 
         return new Collection($arrTypes, 'tl_real_estate_type');
     }

@@ -86,67 +86,68 @@
   position: absolute;
   display: block;
   bottom: 11px;
-  right: 11px;
-  font-size: 12px;
+  left: 10px;
+  font-size: 10px;
   text-transform: uppercase;
   text-align: center;
-  border: 1px solid #e9e9e9;
   border-radius: 3px;
   background: #fff;
   width: 8px;
   padding: 2px;
   overflow: hidden;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  cursor: help;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(0) {
-  right: -20px;
+  left: -20px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(1) {
-  right: -4px;
+  left: -4px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(2) {
-  right: 12px;
+  left: 12px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(3) {
-  right: 28px;
+  left: 28px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(4) {
-  right: 44px;
+  left: 44px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(5) {
-  right: 60px;
+  left: 60px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(6) {
-  right: 76px;
+  left: 76px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(7) {
-  right: 92px;
+  left: 92px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(8) {
-  right: 108px;
+  left: 108px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(9) {
-  right: 124px;
+  left: 124px;
 }
 .tl_listing td.col_id span.token + span.token:nth-child(10) {
-  right: 140px;
+  left: 140px;
 }
 .tl_listing .object-information {
   display: flex;
+  align-items: center;
   font-size: 12px;
-  border: 1px solid #e9e9e9;
-  background: #f3f3f5;
-  padding: 5px;
   box-sizing: border-box;
 }
 .tl_listing .object-information .image {
-  width: 118px;
+  width: 85px;
   margin-right: 10px;
+}
+.tl_listing .object-information .image img {
+  border-radius: 3px;
 }
 .tl_listing .object-information .info {
   display: table;
   width: 100%;
-  min-width: 140px;
-  margin-bottom: 22px;
+  min-width: 105px;
 }
 .tl_listing .object-information .info > div {
   display: table-row;
@@ -155,7 +156,6 @@
   display: table-cell;
   padding-top: 3px;
   padding-bottom: 3px;
-  border-top: 1px solid #e3e3e3;
 }
 .tl_listing .object-information .info > div > span:first-child {
   font-weight: 600;
@@ -165,7 +165,6 @@
 }
 .tl_listing .object-information .info > div:first-child > span {
   padding-top: 0;
-  border-top: 0 none;
 }
 .tl_listing .object-information:after {
   display: block;

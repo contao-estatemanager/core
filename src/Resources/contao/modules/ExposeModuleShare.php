@@ -16,7 +16,6 @@ use Contao\Environment;
 use Contao\FrontendTemplate;
 use Contao\PageModel;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "share".
@@ -47,7 +46,7 @@ class ExposeModuleShare extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['share'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['share'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -83,9 +82,9 @@ class ExposeModuleShare extends ExposeModule
         $this->Template->label = Translator::translateExpose('button_share');
 
         // HOOK: add some more share options
-        if (isset($GLOBALS['TL_HOOKS']['compileExposeShare']) && \is_array($GLOBALS['TL_HOOKS']['compileExposeShare']))
+        if (isset($GLOBALS['CEM_HOOKS']['compileExposeShare']) && \is_array($GLOBALS['CEM_HOOKS']['compileExposeShare']))
         {
-            foreach ($GLOBALS['TL_HOOKS']['compileExposeShare'] as $callback)
+            foreach ($GLOBALS['CEM_HOOKS']['compileExposeShare'] as $callback)
             {
                 $this->import($callback[0]);
                 $this->{$callback[0]}->{$callback[1]}($this->Template, $arrCollection, $this);

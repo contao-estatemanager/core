@@ -6,6 +6,7 @@ use Contao\Config;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\ModuleModel;
+use Contao\System;
 use ContaoEstateManager\EstateManager\Exception\ApiParameterException;
 use ContaoEstateManager\RealEstate;
 use ContaoEstateManager\RealEstateModel;
@@ -144,6 +145,7 @@ class ApiRealEstateController extends AbstractApiController
 
             // Create fields array
             $collection['fields'] = [];
+            $strRoot = System::getContainer()->getParameter('kernel.project_dir');
 
             // handle fields
             foreach ($arrFields as $field)
@@ -165,7 +167,7 @@ class ApiRealEstateController extends AbstractApiController
                         {
                             $objFileModel = FilesModel::findByUuid($mainImage);
 
-                            if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
+                            if ($objFileModel !== null && is_file($strRoot . '/' . $objFileModel->path))
                             {
                                 $value = $objFileModel->path;
                             }
@@ -176,7 +178,7 @@ class ApiRealEstateController extends AbstractApiController
                         {
                             $objFileModel = FilesModel::findByUuid($defaultImage);
 
-                            if ($objFileModel !== null && is_file(TL_ROOT . '/' . $objFileModel->path))
+                            if ($objFileModel !== null && is_file($strRoot . '/' . $objFileModel->path))
                             {
                                 $value = $objFileModel->path;
                             }

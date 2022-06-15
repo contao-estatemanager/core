@@ -12,7 +12,6 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
-use Patchwork\Utf8;
 
 /**
  * Expose module "main details".
@@ -37,7 +36,7 @@ class ExposeModuleMainDetails extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['mainDetails'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['mainDetails'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -46,7 +45,8 @@ class ExposeModuleMainDetails extends ExposeModule
             return $objTemplate->parse();
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+        return $this->isEmpty ? '' : $strBuffer;
     }
 
     /**
@@ -62,5 +62,10 @@ class ExposeModuleMainDetails extends ExposeModule
         }
 
         $this->Template->mainDetails = $this->realEstate->getMainDetails($limit);
+
+        if($this->hideOnEmpty && empty($this->Template->mainDetails))
+        {
+            $this->isEmpty = true;
+        }
     }
 }
