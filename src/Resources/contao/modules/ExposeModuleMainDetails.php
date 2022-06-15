@@ -45,7 +45,8 @@ class ExposeModuleMainDetails extends ExposeModule
             return $objTemplate->parse();
         }
 
-        return parent::generate();
+        $strBuffer = parent::generate();
+        return $this->isEmpty ? '' : $strBuffer;
     }
 
     /**
@@ -61,5 +62,10 @@ class ExposeModuleMainDetails extends ExposeModule
         }
 
         $this->Template->mainDetails = $this->realEstate->getMainDetails($limit);
+
+        if($this->hideOnEmpty && empty($this->Template->mainDetails))
+        {
+            $this->isEmpty = true;
+        }
     }
 }
