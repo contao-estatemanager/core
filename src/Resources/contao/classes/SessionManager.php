@@ -343,6 +343,14 @@ class SessionManager extends System
     }
 
     /**
+     * Returns all parameter.
+     */
+    public function all(): array
+    {
+        return $this->data()->all();
+    }
+
+    /**
      * Collect and return parameters for a given group, considering the selected type.
      */
     public function getParameter(array $arrGroups, $objModule = null): array
