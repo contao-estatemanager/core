@@ -49,8 +49,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  */
 class SessionManager extends System
 {
-    const STORAGE_KEY = 'FILTER_DATA';
-
     const MODE_SESSION = 0;
     const MODE_REQUEST = 1;
 
@@ -81,15 +79,13 @@ class SessionManager extends System
 
     /**
      * Selected marketing type
-     * @var string
      */
-    protected $marketingType = 'kauf_erbpacht_miete_leasing';
+    protected string $marketingType = Filter::MARKETING_TYPE_ALL;
 
     /**
      * Selected real estate type
-     * @var RealEstateTypeModel
      */
-    protected $objCurrentType;
+    protected ?RealEstateTypeModel $objCurrentType;
 
     /**
      * Current mode.
@@ -104,7 +100,7 @@ class SessionManager extends System
         parent::__construct();
 
         // Initialize session
-        $_SESSION[self::STORAGE_KEY] = $_SESSION[self::STORAGE_KEY] ?? [];
+        $_SESSION[Filter::STORAGE_KEY] = $_SESSION[Filter::STORAGE_KEY] ?? [];
 
         // Set default mode
         $this->setMode(self::MODE_SESSION);
@@ -160,9 +156,9 @@ class SessionManager extends System
             {
                 foreach ($objTypes as $objType)
                 {
-                    if ($d->get('real-estate-type') == $objType->id)
+                    if ($d->get(Filter::PROPERTY_TYPE_KEY) == $objType->id)
                     {
-                        $this->marketingType = ($d->has('marketing-type') || $d->get('marketing-type') === 'kauf_erbpacht_miete_leasing') ? 'kauf_erbpacht_miete_leasing' : $objType->vermarktungsart;
+                        $this->marketingType = ($d->has(Filter::MARKETING_TYPE_KEY) || $d->get(Filter::MARKETING_TYPE_KEY) === Filter::MARKETING_TYPE_ALL) ? Filter::MARKETING_TYPE_ALL : $objType->vermarktungsart;
                         $this->objCurrentType = $objType;
 
                         return;
@@ -171,12 +167,12 @@ class SessionManager extends System
 
                 foreach ($objGroups as $objGroup)
                 {
-                    if ($d->get('marketing-type') === $objGroup->vermarktungsart)
+                    if ($d->get(Filter::MARKETING_TYPE_KEY) === $objGroup->vermarktungsart)
                     {
                         $this->marketingType = $objGroup->vermarktungsart;
                         $this->objCurrentType = null;
 
-                        $this->set('real-estate-type', '');
+                        $this->set(Filter::PROPERTY_TYPE_KEY, '');
 
                         return;
                     }
@@ -185,11 +181,11 @@ class SessionManager extends System
 
             if ($objGroups->count() === 0 && $objTypes->count() === 0)
             {
-                $this->marketingType = 'kauf_erbpacht_miete_leasing';
+                $this->marketingType = Filter::MARKETING_TYPE_ALL;
                 $this->objCurrentType = null;
 
-                $this->set('marketing-type', $this->marketingType);
-                $this->set('real-estate-type', '');
+                $this->set(Filter::MARKETING_TYPE_KEY, $this->marketingType);
+                $this->set(Filter::PROPERTY_TYPE_KEY, '');
 
                 return;
             }
@@ -198,12 +194,12 @@ class SessionManager extends System
             {
                 foreach ($objTypes as $objType)
                 {
-                    //$this->marketingType = ($d->get('marketing-type') === '' || $d->get('marketing-type') === 'kauf_erbpacht_miete_leasing') ? 'kauf_erbpacht_miete_leasing' : $objType->vermarktungsart;
+                    //$this->marketingType = ($d->get(Filter::MARKETING_TYPE_KEY) === '' || $d->get(Filter::MARKETING_TYPE_KEY) === Filter::MARKETING_TYPE_ALL) ? Filter::MARKETING_TYPE_ALL : $objType->vermarktungsart;
                     $this->marketingType = $objType->vermarktungsart;
                     $this->objCurrentType = $objType;
 
-                    $this->set('marketing-type', $this->marketingType);
-                    $this->set('real-estate-type', $objType->id);
+                    $this->set(Filter::MARKETING_TYPE_KEY, $this->marketingType);
+                    $this->set(Filter::PROPERTY_TYPE_KEY, $objType->id);
 
                     return;
                 }
@@ -214,28 +210,28 @@ class SessionManager extends System
                 $this->marketingType = $objGroup->vermarktungsart;
                 $this->objCurrentType = null;
 
-                $this->set('marketing-type', $objGroup->vermarktungsart);
-                $this->set('real-estate-type', '');
+                $this->set(Filter::MARKETING_TYPE_KEY, $objGroup->vermarktungsart);
+                $this->set(Filter::PROPERTY_TYPE_KEY, '');
 
                 return;
             }
         }
 
-        if(!empty($d->get('real-estate-type')))
+        if(!empty($d->get(Filter::PROPERTY_TYPE_KEY)))
         {
-            $objType = $this->getTypeById(intval($d->get('real-estate-type')));
+            $objType = $this->getTypeById(intval($d->get(Filter::PROPERTY_TYPE_KEY)));
 
             $this->marketingType = $objType->vermarktungsart;
             $this->objCurrentType = $objType;
 
-            $this->set('marketing-type', $this->marketingType);
-            $this->set('real-estate-type', $objType->id);
+            $this->set(Filter::MARKETING_TYPE_KEY, $this->marketingType);
+            $this->set(Filter::PROPERTY_TYPE_KEY, $objType->id);
             return;
         }
 
-        if(!empty($d->get('marketing-type')))
+        if(!empty($d->get(Filter::MARKETING_TYPE_KEY)))
         {
-            $this->marketingType = $d->get('marketing-type');
+            $this->marketingType = $d->get(Filter::MARKETING_TYPE_KEY);
             $this->objCurrentType = null;
         }
     }
@@ -247,9 +243,9 @@ class SessionManager extends System
      */
     protected function filterSubmitted()
     {
-        if($submitted = $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] ?? null)
+        if($submitted = $_SESSION[Filter::STORAGE_KEY]['FILTER_SUBMITTED'] ?? null)
         {
-            unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+            unset($_SESSION[Filter::STORAGE_KEY]['FILTER_SUBMITTED']);
         }
 
         return !!$submitted;
@@ -301,7 +297,7 @@ class SessionManager extends System
                 break;
 
             default:
-                $dataContainer = $_SESSION[self::STORAGE_KEY];
+                $dataContainer = $_SESSION[Filter::STORAGE_KEY];
         }
 
         return new ParameterBag($dataContainer);
@@ -322,7 +318,7 @@ class SessionManager extends System
                 break;
 
             default:
-                $_SESSION[self::STORAGE_KEY][$key] = $value;
+                $_SESSION[Filter::STORAGE_KEY][$key] = $value;
         }
     }
 
@@ -360,7 +356,7 @@ class SessionManager extends System
             return $this->getTypeParameter($this->objCurrentType, $objModule);
         }
 
-        if (is_array($arrGroups) && $this->marketingType !== 'kauf_erbpacht_miete_leasing')
+        if (is_array($arrGroups) && $this->marketingType !== Filter::MARKETING_TYPE_ALL)
         {
             // Unset real estate groups if marketing type not apply
             foreach ($this->objGroups as $objGroup)
@@ -615,7 +611,7 @@ class SessionManager extends System
         {
             if ($priceFrom = $d->get('price_from'))
             {
-                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                if ($objRealEstateType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
                 {
                     $arrColumn[] = "$t.mietpreisProQm>=?";
                     $arrValues[] = $priceFrom;
@@ -629,7 +625,7 @@ class SessionManager extends System
 
             if ($priceTo = $d->get('price_to'))
             {
-                if ($objRealEstateType->vermarktungsart === 'miete_leasing')
+                if ($objRealEstateType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
                 {
                     $arrColumn[] = "$t.mietpreisProQm<=?";
                     $arrValues[] = $priceTo;
@@ -757,11 +753,11 @@ class SessionManager extends System
     {
         $t = RealEstateModel::getTable();
 
-        if ($objType->vermarktungsart === 'kauf_erbpacht')
+        if ($objType->vermarktungsart === Filter::MARKETING_TYPE_BUY)
         {
             $arrColumn[] = "($t.vermarktungsartKauf='1' OR $t.vermarktungsartErbpacht='1')";
         }
-        elseif ($objType->vermarktungsart === 'miete_leasing')
+        elseif ($objType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
         {
             $arrColumn[] = "($t.vermarktungsartMietePacht='1' OR $t.vermarktungsartLeasing='1')";
         }
@@ -935,9 +931,9 @@ class SessionManager extends System
 
     public function getSelectedMarketingType(): string
     {
-        $strMarketingType = 'kauf_erbpacht_miete_leasing';
+        $strMarketingType = Filter::MARKETING_TYPE_ALL;
 
-        if ($marketingType = $this->data()->get('marketing-type'))
+        if ($marketingType = $this->data()->get(Filter::MARKETING_TYPE_KEY))
         {
             $strMarketingType = $marketingType;
         }
@@ -952,7 +948,7 @@ class SessionManager extends System
     {
         $objType = null;
 
-        if ($realEstateType = $this->data()->get('real-estate-type'))
+        if ($realEstateType = $this->data()->get(Filter::PROPERTY_TYPE_KEY))
         {
             $objType = $this->getTypeById($realEstateType);
         }
@@ -996,7 +992,7 @@ class SessionManager extends System
     {
         $objType = null;
 
-        if ($realEstateType = $this->data()->get('real-estate-type'))
+        if ($realEstateType = $this->data()->get(Filter::PROPERTY_TYPE_KEY))
         {
             $objType = $this->getTypeById($realEstateType);
         }
@@ -1012,7 +1008,7 @@ class SessionManager extends System
         $d = $this->data();
 
         // Filterung nach Objekttyp
-        if ($realEstateType = $d->get('real-estate-type'))
+        if ($realEstateType = $d->get(Filter::PROPERTY_TYPE_KEY))
         {
             $objType = $this->getTypeById($realEstateType);
 
@@ -1030,7 +1026,7 @@ class SessionManager extends System
         }
 
         // Filterung nach Vermarktungsart
-        if ($marketingType = $d->get('marketing-type'))
+        if ($marketingType = $d->get(Filter::MARKETING_TYPE_KEY))
         {
             $objGroups = $this->getGroupCollectionByIds($arrGroups, $marketingType);
 

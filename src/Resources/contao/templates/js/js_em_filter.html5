@@ -26,8 +26,8 @@
           this.settings = this.extend(true, this.defaults, options || {});
 
           this.form = document.querySelector(this.settings.selector);
-          this.fieldMarketingType = document.querySelector(this.settings.selector + ' select.real-estate-marketing-type');
-          this.fieldRealEstateType = document.querySelector(this.settings.selector + ' select.real-estate-type');
+          this.fieldMarketingType = document.querySelector(this.settings.selector + ' select.marketingType');
+          this.fieldRealEstateType = document.querySelector(this.settings.selector + ' select.realEstateType');
           this.toggleFilter = document.querySelectorAll(this.settings.selector + ' .real-estate-filter');
           this.buttonReset = document.querySelector(this.settings.selector + ' .widget-reset .reset');
 
@@ -110,7 +110,7 @@
           event.preventDefault();
           for (var i=0; i<this.form.elements.length; i++) {
               if (this.form.elements[i].type !== 'hidden') {
-                  if (this.form.elements[i].name === 'country' || this.settings.submitOnChange && (this.form.elements[i].name === 'marketing-type' || this.form.elements[i].name === 'real-estate-type')) {
+                  if (this.form.elements[i].name === 'country' || this.settings.submitOnChange && (this.form.elements[i].name === 'marketingType' || this.form.elements[i].name === 'realEstateType')) {
                       continue;
                   }
                   this.form.elements[i].value = '';

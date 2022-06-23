@@ -84,7 +84,7 @@ class FilterType extends FilterWidget
         switch ($strKey)
         {
             case 'name':
-                $this->strName = 'real-estate-type';
+                $this->strName = Filter::PROPERTY_TYPE_KEY;
                 break;
 
             case 'mandatory':
@@ -148,7 +148,7 @@ class FilterType extends FilterWidget
 
         $arrOptions = array();
 
-        $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
+        $selected = $this->isMarketingOptionSelected(Filter::MARKETING_TYPE_ALL);
 
         $arrOptions[] = array
         (
@@ -199,7 +199,7 @@ class FilterType extends FilterWidget
         $this->select = array
         (
             'options' => $arrOptions,
-            'class' => 'real-estate-type'
+            'class' => Filter::PROPERTY_TYPE_KEY
         );
 
         return parent::parse($arrAttributes);

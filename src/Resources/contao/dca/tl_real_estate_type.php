@@ -9,6 +9,8 @@
  */
 
 // load real estate language and filter file
+use ContaoEstateManager\Filter;
+
 Contao\System::loadLanguageFile('tl_real_estate');
 Contao\System::loadLanguageFile('tl_filter');
 
@@ -192,7 +194,10 @@ $GLOBALS['TL_DCA']['tl_real_estate_type'] = array
         (
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('kauf_erbpacht', 'miete_leasing'),
+            'options'                 => array(
+                Filter::MARKETING_TYPE_BUY,
+                Filter::MARKETING_TYPE_RENT
+            ),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_type'],
             'eval'                    => array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",

@@ -34,7 +34,7 @@ class RealEstateType
     public function getTypeByRealEstate($objRealEstate)
     {
         $arrTypes = $this->objTypes->fetchAll();
-        
+
         foreach ($arrTypes as $index => $type)
         {
             if (!empty($type['nutzungsart']) && $type['nutzungsart'] !== $objRealEstate->nutzungsart) {
@@ -42,7 +42,7 @@ class RealEstateType
                 continue;
             }
 
-            if (($type['vermarktungsart'] === 'miete_leasing' && ($objRealEstate->vermarktungsartKauf || $objRealEstate->vermarktungsartErbpacht)) || ($type['vermarktungsart'] === 'kauf_erbpacht' && ($objRealEstate->vermarktungsartMietePacht || $objRealEstate->vermarktungsartLeasing)) ) {
+            if (($type['vermarktungsart'] === Filter::MARKETING_TYPE_RENT && ($objRealEstate->vermarktungsartKauf || $objRealEstate->vermarktungsartErbpacht)) || ($type['vermarktungsart'] === Filter::MARKETING_TYPE_BUY && ($objRealEstate->vermarktungsartMietePacht || $objRealEstate->vermarktungsartLeasing)) ) {
                 unset($arrTypes[$index]);
                 continue;
             }

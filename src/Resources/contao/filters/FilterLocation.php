@@ -96,8 +96,7 @@ class FilterLocation extends FilterWidget
      */
     public function parse($arrAttributes=null)
     {
-        // ToDo: Use SessionManager "get" Method
-        $this->value = $_SESSION['FILTER_DATA']['location'] ?? '';
+        $this->value = SessionManager::getInstance()->get('location');
 
         return parent::parse($arrAttributes);
     }

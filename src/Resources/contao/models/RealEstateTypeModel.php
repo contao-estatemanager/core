@@ -234,13 +234,15 @@ class RealEstateTypeModel extends Model
      */
     public static function findCurrentRealEstateType()
     {
-        if (isset($_SESSION['FILTER_DATA']['REAL_ESTATE_TYPE_FIELD']))
+        $sessionManager = SessionManager::getInstance();
+
+        if ($type = $sessionManager->get('REAL_ESTATE_TYPE_FIELD', null))
         {
-            $typeId = $_SESSION['FILTER_DATA'][$_SESSION['FILTER_DATA']['REAL_ESTATE_TYPE_FIELD']];
+            $typeId = $type;
         }
         else
         {
-            $typeId = $_SESSION['FILTER_DATA']['type'];
+            $typeId = $sessionManager->get('type');
         }
 
         return $typeId ? static::findByPk($typeId) : null;
@@ -255,15 +257,15 @@ class RealEstateTypeModel extends Model
      */
     public static function findCurrentType($pageId=null)
     {
+        $sessionManager = SessionManager::getInstance();
+
         if ($pageId !== null && ($objType = static::findOneByReferencePage($pageId)) instanceof RealEstateTypeModel)
         {
             return $objType;
         }
 
-        if (isset($_SESSION['FILTER_DATA']['type']))
+        if ($typeId = $sessionManager->get('type', null))
         {
-            $typeId = $_SESSION['FILTER_DATA']['type'];
-
             return static::findByPk($typeId);
         }
 

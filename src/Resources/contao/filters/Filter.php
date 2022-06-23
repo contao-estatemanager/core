@@ -32,6 +32,15 @@ use Contao\System;
  */
 class Filter extends Hybrid
 {
+    const STORAGE_KEY = 'FILTER_DATA';
+    const SUBMITTED_KEY = 'FILTER_SUBMITTED';
+
+    const PROPERTY_TYPE_KEY = 'realEstateType';
+    const MARKETING_TYPE_KEY = 'marketingType';
+
+    const MARKETING_TYPE_ALL = 'kauf_erbpacht_miete_leasing';
+    const MARKETING_TYPE_BUY = 'kauf_erbpacht';
+    const MARKETING_TYPE_RENT = 'miete_leasing';
 
     /**
      * Model
@@ -104,7 +113,7 @@ class Filter extends Hybrid
         if (Input::post('reset'))
         {
             // ToDo: Use SessionManager "reset" Method - does not yet exists ;-)
-            $_SESSION['FILTER_DATA'] = array();
+            $_SESSION[self::STORAGE_KEY] = array();
             unset($_POST['reset']);
         }
 
@@ -185,16 +194,16 @@ class Filter extends Hybrid
                         foreach ($submitted as $field => $value)
                         {
                             $arrSubmitted[$field] = $value;
-                            // ToDo: Use SessionManager "set" Method
-                            $_SESSION['FILTER_DATA'][$field] = $value;
+                            $this->sessionManager->set($field, $value);
+
                             unset($_POST[$field]);
                         }
                     }
                     else
                     {
                         $arrSubmitted[$objFilterWidget->name] = $objFilterWidget->value;
-                        // ToDo: Use SessionManager "set" Method
-                        $_SESSION['FILTER_DATA'][$objFilterWidget->name] = $objFilterWidget->value;
+                        $this->sessionManager->set($objFilterWidget->name, $objFilterWidget->value);
+
                         unset($_POST[$objFilterWidget->name]);
                     }
                 }
@@ -247,12 +256,11 @@ class Filter extends Hybrid
         // Store all values in the session
         foreach (array_keys($_POST) as $key)
         {
-            // ToDo: Use SessionManager "set" Method or switch to MODE_REQUEST?
-            $_SESSION['FILTER_DATA'][$key] = Input::post($key, true);
+            $this->sessionManager->set($key, Input::post($key, true));
         }
 
-        // ToDo: Use SessionManager "set" Method
-        $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] = true;
+        // Set submit to true
+        $this->sessionManager->set(self::SUBMITTED_KEY, true);
 
         // HOOK: process filter data
         if (isset($GLOBALS['CEM_HOOKS']['processFilterData']) && \is_array($GLOBALS['CEM_HOOKS']['processFilterData']))
@@ -264,6 +272,7 @@ class Filter extends Hybrid
             }
         }
 
+        // ToDo: Eki, ist realEstateGroups nicht ein String und muss vorerst deserialisiert werden? Du erwartest hier ein array.
         $objJumpTo = $this->sessionManager->getJumpToPage($this->realEstateGroups);
 
         if ($objJumpTo === null && $this->jumpTo)

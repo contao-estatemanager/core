@@ -125,10 +125,8 @@ class RealEstateGroupModel extends Model
             return $objGroup;
         }
 
-        if (isset($_SESSION['FILTER_DATA']['group']))
+        if ($group = SessionManager::getInstance()->get('group'))
         {
-            $group = $_SESSION['FILTER_DATA']['group'];
-
             return static::findOneByVermarktungsart($group);
         }
 

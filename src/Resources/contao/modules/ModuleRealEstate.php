@@ -132,7 +132,7 @@ abstract class ModuleRealEstate extends Module
 
         if ($this->forceEmpty)
         {
-            $this->Template->empty = sprintf($GLOBALS['TL_LANG']['MSC']['noUniqueRealEstateResult'], '<span class="unique">'.$_SESSION['FILTER_DATA']['last_unique'].'</span>');
+            $this->Template->empty = sprintf($GLOBALS['TL_LANG']['MSC']['noUniqueRealEstateResult'], '<span class="unique">'.SessionManager::getInstance()->get('last_unique').'</span>');
             return;
         }
 
@@ -361,10 +361,15 @@ abstract class ModuleRealEstate extends Module
 
     protected function redirectIfUnique()
     {
-        if ($_SESSION['FILTER_DATA']['unique'] ?? null)
+        $sessionManager = SessionManager::getInstance();
+
+        if ($unique = $sessionManager->get('unique', null))
         {
-            $objRealEstate = RealEstateModel::findOneBy('objektnrExtern', $_SESSION['FILTER_DATA']['unique']);
-            $_SESSION['FILTER_DATA']['last_unique'] = $_SESSION['FILTER_DATA']['unique'];
+            $objRealEstate = RealEstateModel::findOneBy('objektnrExtern', $unique);
+
+            $sessionManager->set('last_unique', $unique);
+
+            // ToDo: Create remove function in SessionManager
             unset($_SESSION['FILTER_DATA']['unique']);
 
             if ($objRealEstate === null)

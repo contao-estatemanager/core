@@ -138,17 +138,17 @@ class FilterTypeSeparated extends FilterWidget
         // Vermarktungsart Start
         $arrOptions = array();
 
-        $selected = $this->isMarketingOptionSelected('kauf_erbpacht_miete_leasing');
+        $selected = $this->isMarketingOptionSelected(Filter::MARKETING_TYPE_ALL);
 
         $arrOptions[] = array
         (
             'type'     => 'option',
             'value'    => '',
             'selected' => $selected ? ' selected' : '',
-            'label'    => $this->showPlaceholder ? Translator::translateFilter('kauf_erbpacht_miete_leasing') : ''
+            'label'    => $this->showPlaceholder ? Translator::translateFilter(Filter::MARKETING_TYPE_ALL) : ''
         );
 
-        $selectedMarketingType = 'kauf_erbpacht_miete_leasing';
+        $selectedMarketingType = Filter::MARKETING_TYPE_ALL;
         $showAllTypes = true;
 
         $addedMarketingTypes = array();
@@ -184,7 +184,7 @@ class FilterTypeSeparated extends FilterWidget
         $this->marketingType = array
         (
             'options' => $arrOptions,
-            'class' => 'real-estate-marketing-type'
+            'class' => Filter::MARKETING_TYPE_KEY
         );
         // Vermarktungsart Stop
 
@@ -227,15 +227,15 @@ class FilterTypeSeparated extends FilterWidget
         $this->realEstateType = array
         (
             'options'  => $arrOptions,
-            'class'    => 'real-estate-type'
+            'class'    => Filter::PROPERTY_TYPE_KEY
         );
         // Objektart Stop
 
         // Add labels
         if ($this->showLabel)
         {
-            $this->labelMarketingType  = Translator::translateFilter('marketingType');
-            $this->labelRealEstateType = Translator::translateFilter('realEstateType');
+            $this->labelMarketingType  = Translator::translateFilter(Filter::MARKETING_TYPE_KEY);
+            $this->labelRealEstateType = Translator::translateFilter(Filter::PROPERTY_TYPE_KEY);
         }
 
         return parent::parse($arrAttributes);
@@ -246,8 +246,8 @@ class FilterTypeSeparated extends FilterWidget
      */
     public function validate()
     {
-        $varMarketingType = $this->validator(Input::post('marketing-type', true));
-        $varRealEstateType = $this->validator(Input::post('real-estate-type', true));
+        $varMarketingType = $this->validator(Input::post(Filter::MARKETING_TYPE_KEY, true));
+        $varRealEstateType = $this->validator(Input::post(Filter::PROPERTY_TYPE_KEY, true));
 
         if ($this->hasErrors())
         {
@@ -267,8 +267,8 @@ class FilterTypeSeparated extends FilterWidget
     {
         return array
         (
-            'marketing-type' => $this->varValueMarketingType,
-            'real-estate-type' => $this->varValueRealEstateType
+            Filter::MARKETING_TYPE_KEY => $this->varValueMarketingType,
+            Filter::PROPERTY_TYPE_KEY => $this->varValueRealEstateType
         );
     }
 

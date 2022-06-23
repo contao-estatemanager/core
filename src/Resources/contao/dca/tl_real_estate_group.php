@@ -9,6 +9,8 @@
  */
 
 
+use ContaoEstateManager\Filter;
+
 $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
 (
 
@@ -155,7 +157,10 @@ $GLOBALS['TL_DCA']['tl_real_estate_group'] = array
             'exclude'                 => true,
             'inputType'               => 'select',
             'filter'                  => true,
-            'options'                 => array('kauf_erbpacht', 'miete_leasing'),
+            'options'                 => array(
+                Filter::MARKETING_TYPE_BUY,
+                Filter::MARKETING_TYPE_RENT
+            ),
             'reference'               => &$GLOBALS['TL_LANG']['tl_real_estate_group'],
             'eval'                    => array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(32) NOT NULL default ''",

@@ -117,7 +117,7 @@ class FilterCountry extends FilterWidget
             $arrOptions[] = array
             (
                 'value'    => $option,
-                'selected' => $option === $_SESSION['FILTER_DATA']['country'] ? ' selected' : '', // ToDo: Use SessionManager "get" Method
+                'selected' => $option === SessionManager::getInstance()->get('country') ? ' selected' : '',
                 'label'    => array_key_exists($option, $GLOBALS['TL_LANG']['tl_real_estate_countries']) ? $GLOBALS['TL_LANG']['tl_real_estate_countries'][$option] : $option
             );
         }

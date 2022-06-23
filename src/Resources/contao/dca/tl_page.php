@@ -9,6 +9,8 @@
  */
 
 // Add palette selectors
+use ContaoEstateManager\Filter;
+
 $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setMarketingType';
 $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'setRealEstateType';
 
@@ -52,7 +54,11 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['marketingType'] = array
     'label'                   => &$GLOBALS['TL_LANG']['tl_page']['marketingType'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => array('kauf_erbpacht_miete_leasing' ,'kauf_erbpacht', 'miete_leasing'),
+    'options'                 => array(
+        Filter::MARKETING_TYPE_ALL,
+        Filter::MARKETING_TYPE_BUY,
+        Filter::MARKETING_TYPE_RENT
+    ),
     'reference'               => &$GLOBALS['TL_LANG']['tl_page'],
     'eval'                    => array('tl_class'=>'w50'),
     'sql'                     => "varchar(32) NOT NULL default ''",
