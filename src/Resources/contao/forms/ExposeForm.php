@@ -453,7 +453,7 @@ class ExposeForm extends Form
         (
             'tmp_name' => System::getContainer()->getParameter('kernel.project_dir') . '/' . $filePath,
             'name'     => 'feedback.xml',
-            'type'     => 'xml'
+            'type'     => 'application/xml'
         );
     }
 
