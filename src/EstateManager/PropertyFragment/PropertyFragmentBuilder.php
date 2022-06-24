@@ -175,7 +175,7 @@ class PropertyFragmentBuilder
                 (new QueryFragment())
                     ->column("vermarktungsartKauf='1'")
                     ->column("vermarktungsartErbpacht='1'")
-                    ->operator(QueryFragment::OPERATOR_OR)
+                    ->operator(QueryFragment::OR)
             );
         }
         elseif ($this->objType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
@@ -184,7 +184,7 @@ class PropertyFragmentBuilder
                 (new QueryFragment())
                     ->column("vermarktungsartMietePacht='1'")
                     ->column("vermarktungsartLeasing='1'")
-                    ->operator(QueryFragment::OPERATOR_OR)
+                    ->operator(QueryFragment::OR)
             );
         }
 
@@ -260,9 +260,9 @@ class PropertyFragmentBuilder
                     (new QueryFragment())
                         ->columnParts(
                             'plz',
-                            $this->provider->getOperator(QueryFragment::OPERATOR_STARTS_WITH),
+                            $this->provider->getOperator(QueryFragment::STARTS_WITH),
                             $matches[0],
-                            $this->provider->getModifier(QueryFragment::MODIFIER_STARTS_WITH)
+                            $this->provider->getModifier(QueryFragment::STARTS_WITH)
                         )
                 );
 
@@ -275,17 +275,17 @@ class PropertyFragmentBuilder
                     (new QueryFragment())
                         ->columnParts(
                             'ort',
-                            $this->provider->getOperator(QueryFragment::OPERATOR_STARTS_WITH),
+                            $this->provider->getOperator(QueryFragment::STARTS_WITH),
                             $location,
-                            $this->provider->getModifier(QueryFragment::MODIFIER_STARTS_WITH)
+                            $this->provider->getModifier(QueryFragment::STARTS_WITH)
                         )
                         ->columnParts(
                             'regionalerZusatz',
-                            $this->provider->getOperator(QueryFragment::OPERATOR_STARTS_WITH),
+                            $this->provider->getOperator(QueryFragment::STARTS_WITH),
                             $location,
-                            $this->provider->getModifier(QueryFragment::MODIFIER_STARTS_WITH)
+                            $this->provider->getModifier(QueryFragment::STARTS_WITH)
                         )
-                        ->operator(QueryFragment::OPERATOR_OR)
+                        ->operator(QueryFragment::OR)
                 );
             }
         }
@@ -430,7 +430,7 @@ class PropertyFragmentBuilder
                         ->column("abdatum<=?")
                         ->column("abdatum=''")
                         ->value((new Date($periodFrom))->tstamp)
-                        ->operator(QueryFragment::OPERATOR_OR)
+                        ->operator(QueryFragment::OR)
                 );
             }
         }
@@ -443,7 +443,7 @@ class PropertyFragmentBuilder
                         ->column("bisdatum<=?")
                         ->column("bisdatum=''")
                         ->value((new Date($periodTo))->tstamp)
-                        ->operator(QueryFragment::OPERATOR_OR)
+                        ->operator(QueryFragment::OR)
                 );
             }
         }
@@ -469,9 +469,9 @@ class PropertyFragmentBuilder
                     (new QueryFragment())
                         ->columnParts(
                             'provider',
-                            $this->provider->getOperator(QueryFragment::OPERATOR_IN),
-                            '(' . implode(',', array_map('intval', $arrProvider)) . ')',
-                            $this->provider->getModifier(QueryFragment::MODIFIER_IN)
+                            $this->provider->getOperator(QueryFragment::IN),
+                            array_map('intval', $arrProvider),
+                            $this->provider->getModifier(QueryFragment::IN),
                         )
                 );
             }

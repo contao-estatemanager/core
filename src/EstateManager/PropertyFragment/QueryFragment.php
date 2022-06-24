@@ -8,21 +8,15 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 class QueryFragment
 {
     /**
-     * Operators
+     * Operator and Modifier constants
      */
-    const OPERATOR_IN           = 'IN';
-    const OPERATOR_OR           = 'OR';
-    const OPERATOR_AND          = 'AND';
-    const OPERATOR_LIKE         = 'LIKE';
-    const OPERATOR_STARTS_WITH  = 'STARTS_WITH';
-    const OPERATOR_ENDS_WITH    = 'ENDS_WITH';
-
-    /**
-     * Modifiers
-     */
-    const MODIFIER_IN           = 'IN';
-    const MODIFIER_STARTS_WITH  = 'STARTS_WITH';
-    const MODIFIER_ENDS_WITH    = 'ENDS_WITH';
+    const IN           = 'IN';
+    const NOT_IN       = 'NOT_IN';
+    const OR           = 'OR';
+    const AND          = 'AND';
+    const LIKE         = 'LIKE';
+    const STARTS_WITH  = 'STARTS_WITH';
+    const ENDS_WITH    = 'ENDS_WITH';
 
     /**
      * Columns and values
@@ -33,7 +27,7 @@ class QueryFragment
     /**
      * Default operator
      */
-    public string $operator = self::OPERATOR_OR;
+    public string $operator = self::OR;
 
     /**
      * Custom parameter
@@ -62,18 +56,19 @@ class QueryFragment
 
     public function columnParts($field, $operator, $value, $modifier = null): QueryFragment
     {
-        // Check if a modifier was passed
-        if(null === $modifier)
+        if(null !== $modifier)
         {
-            $modifier = 'field operator value';
+            $this->columns[] = (new ExpressionLanguage())->evaluate($modifier, [
+                'field'     => $field,
+                'value'     => $value,
+                'operator'  => $operator,
+                'context'   => $this      // ToDo: Exclude Expression Functions in its own class (escape, arrayList, etc)??
+            ]);
         }
-
-        $this->columns[] = (new ExpressionLanguage())->evaluate($modifier, [
-            'field'     => $field,
-            'value'     => $value,
-            'operator'  => $operator,
-            'context'   => $this
-        ]);
+        else
+        {
+            $this->columns[] = implode(" ", [$field, $operator, $value]);
+        }
 
         return $this;
     }
@@ -97,7 +92,7 @@ class QueryFragment
         return $this;
     }
 
-    public function escape($v): string
+    public static function escape($v): string
     {
         $connection = System::getContainer()->get('database_connection');
 
@@ -113,5 +108,10 @@ class QueryFragment
             default:
                 return $v ?? 'NULL';
         }
+    }
+
+    public static function list($v, $wrapStart = '(', $wrapEnd = ')', $escapeValue = true, $separator = ','): string
+    {
+        return $wrapStart . implode($separator, $escapeValue ? array_map(fn($val) => self::escape($val), $v) : $v) . $wrapEnd;
     }
 }

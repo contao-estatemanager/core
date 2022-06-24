@@ -47,12 +47,13 @@ class SqlPropertyFragmentProvider implements PropertyFragmentInterface
     public function getOperator(string $operator): ?string
     {
         $operators = [
-            QueryFragment::OPERATOR_IN          => 'IN',
-            QueryFragment::OPERATOR_OR          => 'OR',
-            QueryFragment::OPERATOR_AND         => 'AND',
-            QueryFragment::OPERATOR_LIKE        => 'LIKE',
-            QueryFragment::OPERATOR_STARTS_WITH => 'LIKE',
-            QueryFragment::OPERATOR_ENDS_WITH   => 'LIKE'
+            QueryFragment::IN          => 'IN',
+            QueryFragment::NOT_IN      => 'NOT IN',
+            QueryFragment::OR          => 'OR',
+            QueryFragment::AND         => 'AND',
+            QueryFragment::LIKE        => 'LIKE',
+            QueryFragment::STARTS_WITH => 'LIKE',
+            QueryFragment::ENDS_WITH   => 'LIKE'
         ];
 
         return $operators[$operator] ?? null;
@@ -64,9 +65,9 @@ class SqlPropertyFragmentProvider implements PropertyFragmentInterface
     public function getModifier(string $modifier): ?string
     {
         $modifiers = [
-            QueryFragment::MODIFIER_IN          => 'field ~ " " ~ operator ~ " " ~ value',
-            QueryFragment::MODIFIER_STARTS_WITH => 'field ~ " " ~ operator ~ " " ~ context.escape(value ~ "%")',
-            QueryFragment::MODIFIER_ENDS_WITH   => 'field ~ " " ~ operator ~ " " ~ context.escape("%" ~ value)'
+            QueryFragment::IN          => 'field ~ " " ~ operator ~ " " ~ context.list(value)',
+            QueryFragment::STARTS_WITH => 'field ~ " " ~ operator ~ " " ~ context.escape(value ~ "%")',
+            QueryFragment::ENDS_WITH   => 'field ~ " " ~ operator ~ " " ~ context.escape("%" ~ value)'
         ];
 
         return $modifiers[$modifier] ?? null;
