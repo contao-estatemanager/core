@@ -14,9 +14,10 @@ use Contao\Config;
 use Contao\System;
 use Contao\Model\Collection;
 use Contao\PageModel;
-use Contao\StringUtil;
-use Contao\Validator;
+use ContaoEstateManager\EstateManager\EstateManager\PropertyFragment\QueryFragment;
+use ContaoEstateManager\EstateManager\EstateManager\PropertyFragment\Provider\SqlPropertyFragmentProvider;
 use ContaoEstateManager\EstateManager\Exception\ObjectTypeException;
+use ContaoEstateManager\EstateManager\EstateManager\PropertyFragment\PropertyFragmentBuilder;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
@@ -85,7 +86,7 @@ class SessionManager extends System
     /**
      * Selected real estate type
      */
-    protected ?RealEstateTypeModel $objCurrentType;
+    protected ?RealEstateTypeModel $objCurrentType = null;
 
     /**
      * Current mode.
@@ -243,9 +244,9 @@ class SessionManager extends System
      */
     protected function filterSubmitted()
     {
-        if($submitted = $_SESSION[Filter::STORAGE_KEY]['FILTER_SUBMITTED'] ?? null)
+        if($submitted = $_SESSION[Filter::STORAGE_KEY][Filter::SUBMITTED_KEY] ?? null)
         {
-            unset($_SESSION[Filter::STORAGE_KEY]['FILTER_SUBMITTED']);
+            unset($_SESSION[Filter::STORAGE_KEY][Filter::SUBMITTED_KEY]);
         }
 
         return !!$submitted;
@@ -272,6 +273,16 @@ class SessionManager extends System
 
         $this->objPage = $objPage->loadDetails();
         $this->objRootPage = PageModel::findByPk($this->objPage->rootId);
+
+        if ($lang = $this->objRootPage->realEstateQueryLanguage)
+        {
+            $this->set('language', $lang);
+        }
+
+        if ($country = $this->objRootPage->realEstateQueryCountry)
+        {
+            $this->set('pageCountry', $country);
+        }
     }
 
     /**
@@ -376,32 +387,36 @@ class SessionManager extends System
 
     /**
      * Collect and return parameter by a given type.
-     *
-     * @todo: Maybe it makes sense to outsource all QueryFragments to a FilterFragment class? I am unsure.
      */
     protected function getTypeParameter(?RealEstateTypeModel $objType, $objModule = null): array
     {
-        $arrColumns = [];
-        $arrValues = [];
-        $arrOptions = [];
-
-        $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentProvider($arrColumns, $objModule);
-
-        if ($objType === null)
+        if (null === $objType)
         {
             throw new ObjectTypeException('No object type could be found.');
         }
 
-        $this->addQueryFragmentBasics($objType, $arrColumns, $arrValues);
-        $this->addQueryFragmentCountry($arrColumns, $arrValues);
-        $this->addQueryFragmentLocation($arrColumns, $arrValues);
-        $this->addQueryFragmentPrice($objType, $arrColumns, $arrValues);
-        $this->addQueryFragmentRoom($arrColumns, $arrValues);
-        $this->addQueryFragmentArea($objType, $arrColumns, $arrValues);
-        $this->addQueryFragmentPeriod($arrColumns, $arrValues);
+        $fragments = new PropertyFragmentBuilder($this->data(), new SqlPropertyFragmentProvider());
+        $fragments->setObjType($objType);
+        $fragments->setModule($objModule);
 
-        $arrOptions['order']  = $this->getOrderOption();
+        // Apply fragments
+        $fragments->applyMultiple([
+            PropertyFragmentBuilder::FRAGMENT_BASIC,
+            PropertyFragmentBuilder::FRAGMENT_LANGUAGE,
+            PropertyFragmentBuilder::FRAGMENT_PROVIDER,
+            PropertyFragmentBuilder::FRAGMENT_COUNTRY,
+            PropertyFragmentBuilder::FRAGMENT_LOCATION,
+            PropertyFragmentBuilder::FRAGMENT_PRICE,
+            PropertyFragmentBuilder::FRAGMENT_ROOM,
+            PropertyFragmentBuilder::FRAGMENT_AREA,
+            PropertyFragmentBuilder::FRAGMENT_PERIOD
+        ]);
+
+        [$arrColumns, $arrValues] = $fragments->generate();
+
+        $arrOptions = [
+            'order' => $this->getOrderOption()
+        ];
 
         // HOOK: get filtered type parameter
         if (isset($GLOBALS['CEM_HOOKS']['getFilteredTypeParameter']) && \is_array($GLOBALS['CEM_HOOKS']['getFilteredTypeParameter']))
@@ -421,37 +436,47 @@ class SessionManager extends System
      */
     public function getParameterByGroups(array $arrGroups, $objModule, bool $blnFiltered=false): array
     {
-        $arrColumns = [];
-        $arrValues = [];
-        $arrOptions = [];
-        $arrTypeColumns = [];
-
-        $objTypes = $this->getTypeCollectionByPids($arrGroups);
-
-        if (null === $objTypes)
+        if (null === $objTypes = $this->getTypeCollectionByPids($arrGroups))
         {
             throw new ObjectTypeException('No object type could be found.');
         }
 
-        $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentProvider($arrColumns, $objModule);
-        //$this->addQueryFragmentCountry($arrColumns, $arrValues); // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
+        $fragments = new PropertyFragmentBuilder($this->data(), new SqlPropertyFragmentProvider());
+        $fragments->setModule($objModule);
+
+        // Apply fragments
+        $fragments->applyMultiple([
+            PropertyFragmentBuilder::FRAGMENT_LANGUAGE,
+            PropertyFragmentBuilder::FRAGMENT_PROVIDER,
+            //PropertyFragmentBuilder::FRAGMENT_COUNTRY // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
+        ]);
+
+        // Subfragment collection
+        $arrSubFragments = [];
 
         foreach ($objTypes as $objType)
         {
-            $arrColumn = [];
+            $subFragments = new PropertyFragmentBuilder($this->data(), new SqlPropertyFragmentProvider());
+            $subFragments->setModule($objModule);
+            $subFragments->setObjType($objType);
 
-            $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
+            // Apply basic fragments
+            $subFragments->apply(PropertyFragmentBuilder::FRAGMENT_BASIC);
 
             if ($blnFiltered)
             {
-                $this->addQueryFragmentCountry($arrColumn, $arrValues);
-                $this->addQueryFragmentLocation($arrColumn, $arrValues);
-                $this->addQueryFragmentPrice($objType, $arrColumn, $arrValues);
-                $this->addQueryFragmentRoom($arrColumn, $arrValues);
-                $this->addQueryFragmentArea($objType, $arrColumn, $arrValues);
-                $this->addQueryFragmentPeriod($arrColumn, $arrValues);
+                $subFragments->applyMultiple([
+                    PropertyFragmentBuilder::FRAGMENT_COUNTRY,
+                    PropertyFragmentBuilder::FRAGMENT_LOCATION,
+                    PropertyFragmentBuilder::FRAGMENT_PRICE,
+                    PropertyFragmentBuilder::FRAGMENT_ROOM,
+                    PropertyFragmentBuilder::FRAGMENT_AREA,
+                    PropertyFragmentBuilder::FRAGMENT_PERIOD,
+                ]);
             }
+
+            // Get generated columns and values from subfragments
+            [$arrSubColumns, $arrSubValues] = $subFragments->generate();
 
             // HOOK: modify parameter fragments
             if (isset($GLOBALS['CEM_HOOKS']['getGroupQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['getGroupQueryFragments']))
@@ -459,15 +484,36 @@ class SessionManager extends System
                 foreach ($GLOBALS['CEM_HOOKS']['getGroupQueryFragments'] as $callback)
                 {
                     $this->import($callback[0]);
-                    $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
+                    $this->{$callback[0]}->{$callback[1]}($objType, $arrSubColumns, $arrSubValues, $objModule);
                 }
             }
 
-            $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+            $arrSubFragments[] = [$arrSubColumns, $arrSubValues];
         }
 
-        $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
-        $arrOptions['order'] = $this->getOrderOption();
+        // Create a single QueryFragment for all subfragments
+        $queryFragment = new QueryFragment(['prefix' => false]);
+
+        // Add OR operator for all columns in this fragment
+        $queryFragment->operator(QueryFragment::OPERATOR_OR);
+
+        // Add all columns and values from subfragments to the QueryFragment
+        foreach ($arrSubFragments as $subColumn)
+        {
+            $queryFragment->column('(' . implode(' AND ', $subColumn[0]) . ')');
+            $queryFragment->value($subColumn[1]);
+        }
+
+        // Apply subfragments
+        $fragments->setQueryFragment($queryFragment);
+
+        // Get generated columns and values
+        [$arrColumns, $arrValues] = $fragments->generate();
+
+        // Add order options
+        $arrOptions = [
+            'order' => $this->getOrderOption()
+        ];
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['CEM_HOOKS']['getParameterByGroups']) && \is_array($GLOBALS['CEM_HOOKS']['getParameterByGroups']))
@@ -487,28 +533,35 @@ class SessionManager extends System
      */
     public function getParameterByTypes(array $arrTypes, $objModule): array
     {
-        $arrColumns = [];
-        $arrValues = [];
-        $arrOptions = [];
-
-        $arrTypeColumns = [];
-
-        $objTypes = $this->getTypeCollectionByIds($arrTypes);
-
-        if ($objTypes === null)
+        if (null === $objTypes = $this->getTypeCollectionByIds($arrTypes))
         {
             throw new ObjectTypeException('No object type could be found.');
         }
 
-        $this->addQueryFragmentLanguage($arrColumns, $arrValues);
-        $this->addQueryFragmentProvider($arrColumns, $objModule);
-        //$this->addQueryFragmentCountry($arrColumns, $arrValues); // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
+        $fragments = new PropertyFragmentBuilder($this->data(), new SqlPropertyFragmentProvider());
+        $fragments->setModule($objModule);
+
+        // Apply fragments
+        $fragments->applyMultiple([
+            PropertyFragmentBuilder::FRAGMENT_LANGUAGE,
+            PropertyFragmentBuilder::FRAGMENT_PROVIDER,
+            //PropertyFragmentBuilder::FRAGMENT_COUNTRY // ToDo: Sollen normale Immobilienlisten anhand eines Landes filtern? Woher kommt diese Information? (aus dem Modul?)
+        ]);
+
+        // Subfragment collection
+        $arrSubFragments = [];
 
         foreach ($objTypes as $objType)
         {
-            $arrColumn = [];
+            $subFragments = new PropertyFragmentBuilder($this->data(), new SqlPropertyFragmentProvider());
+            $subFragments->setModule($objModule);
+            $subFragments->setObjType($objType);
 
-            $this->addQueryFragmentBasics($objType, $arrColumn, $arrValues);
+            // Apply basic fragments
+            $subFragments->apply(PropertyFragmentBuilder::FRAGMENT_BASIC);
+
+            // Get generated columns and values from subfragments
+            [$arrSubColumns, $arrSubValues] = $subFragments->generate();
 
             // HOOK: modify parameter fragments
             if (isset($GLOBALS['CEM_HOOKS']['getTypeQueryFragments']) && \is_array($GLOBALS['CEM_HOOKS']['getTypeQueryFragments']))
@@ -516,15 +569,36 @@ class SessionManager extends System
                 foreach ($GLOBALS['CEM_HOOKS']['getTypeQueryFragments'] as $callback)
                 {
                     $this->import($callback[0]);
-                    $this->{$callback[0]}->{$callback[1]}($objType, $arrColumn, $arrValues, $objModule);
+                    $this->{$callback[0]}->{$callback[1]}($objType, $arrSubColumns, $arrSubValues, $objModule);
                 }
             }
 
-            $arrTypeColumns[] = '(' . implode(' AND ', $arrColumn) . ')';
+            $arrSubFragments[] = [$arrSubColumns, $arrSubValues];
         }
 
-        $arrColumns[] = '(' . implode(' OR ', $arrTypeColumns) . ')';
-        $arrOptions['order'] = $this->getOrderOption();
+        // Create a single QueryFragment for all subfragments
+        $queryFragment = new QueryFragment(['prefix' => false]);
+
+        // Add OR operator for all columns in this fragment
+        $queryFragment->operator(QueryFragment::OPERATOR_OR);
+
+        // Add all columns and values from subfragments to the QueryFragment
+        foreach ($arrSubFragments as $subColumn)
+        {
+            $queryFragment->column('(' . implode(' AND ', $subColumn[0]) . ')');
+            $queryFragment->value($subColumn[1]);
+        }
+
+        // Apply subfragments
+        $fragments->setQueryFragment($queryFragment);
+
+        // Get generated columns and values
+        [$arrColumns, $arrValues] = $fragments->generate();
+
+        // Add order options
+        $arrOptions = [
+            'order' => $this->getOrderOption()
+        ];
 
         // HOOK: get type parameter by groups
         if (isset($GLOBALS['CEM_HOOKS']['getParameterByTypes']) && \is_array($GLOBALS['CEM_HOOKS']['getParameterByTypes']))
@@ -537,242 +611,6 @@ class SessionManager extends System
         }
 
         return [$arrColumns, $arrValues, $arrOptions];
-    }
-
-    /**
-     * Add language query fragment.
-     */
-    protected function addQueryFragmentLanguage(array &$arrColumns, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-
-        if ($this->objRootPage->realEstateQueryLanguage)
-        {
-            $arrColumns[] = "$t.sprache=?";
-            $arrValues[]  = $this->objRootPage->realEstateQueryLanguage;
-        }
-    }
-
-    /**
-     * Add country query fragment.
-     */
-    protected function addQueryFragmentCountry(array &$arrColumns, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-
-        if ($country = $this->data()->get('country'))
-        {
-            $arrColumns[] = "$t.land=?";
-            $arrValues[] = $country;
-        }
-        elseif ($this->objRootPage->realEstateQueryCountry)
-        {
-            $arrColumns[] = "$t.land=?";
-            $arrValues[] = $this->objRootPage->realEstateQueryCountry;
-        }
-    }
-
-    /**
-     * Add query fragment for the location field.
-     */
-    protected function addQueryFragmentLocation(array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-
-        if ($location = $this->data()->get('location'))
-        {
-            $matches = [];
-
-            if (preg_match('/[0-9]{3,5}/', $location, $matches, PREG_UNMATCHED_AS_NULL))
-            {
-                $arrColumn[] = "$t.plz LIKE ?";
-                $arrValues[] = $matches[0].'%';
-                $location = trim(str_replace($matches[0], '', $location));
-            }
-
-            if ($location)
-            {
-                $arrColumn[] = "($t.ort LIKE ? OR $t.regionalerZusatz LIKE ?)";
-                $arrValues[] = $location.'%';
-                $arrValues[] = $location.'%';
-            }
-        }
-    }
-
-    /**
-     * Add query fragment for price fields.
-     */
-    protected function addQueryFragmentPrice(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-        $d = $this->data();
-
-        if ($d->get('price_per') === 'square_meter')
-        {
-            if ($priceFrom = $d->get('price_from'))
-            {
-                if ($objRealEstateType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
-                {
-                    $arrColumn[] = "$t.mietpreisProQm>=?";
-                    $arrValues[] = $priceFrom;
-                }
-                else
-                {
-                    $arrColumn[] = "$t.kaufpreisProQm>=?";
-                    $arrValues[] = $priceFrom;
-                }
-            }
-
-            if ($priceTo = $d->get('price_to'))
-            {
-                if ($objRealEstateType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
-                {
-                    $arrColumn[] = "$t.mietpreisProQm<=?";
-                    $arrValues[] = $priceTo;
-                }
-                else
-                {
-                    $arrColumn[] = "$t.kaufpreisProQm<=?";
-                    $arrValues[] = $priceTo;
-                }
-            }
-        }
-        else
-        {
-            if ($priceFrom = $d->get('price_from'))
-            {
-                $arrColumn[] = "$t.$objRealEstateType->price>=?";
-                $arrValues[] = $priceFrom;
-            }
-            if ($priceTo = $d->get('price_to'))
-            {
-                $arrColumn[] = "$t.$objRealEstateType->price<=?";
-                $arrValues[] = $priceTo;
-            }
-        }
-    }
-
-    /**
-     * Add query fragment for room fields.
-     */
-    protected function addQueryFragmentRoom(array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-        $d = $this->data();
-
-        if ($roomFrom = $d->get('room_from'))
-        {
-            $arrColumn[] = "$t.anzahlZimmer>=?";
-            $arrValues[] = $roomFrom;
-        }
-
-        if ($roomTo = $d->get('room_to'))
-        {
-            $arrColumn[] = "$t.anzahlZimmer<=?";
-            $arrValues[] = $roomTo;
-        }
-    }
-
-    /**
-     * Add query fragment for area fields.
-     */
-    protected function addQueryFragmentArea(RealEstateTypeModel $objRealEstateType, array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-        $d = $this->data();
-
-        if ($areaFrom = $d->get('area_from'))
-        {
-            $arrColumn[] = "$t.$objRealEstateType->area>=?";
-            $arrValues[] = $areaFrom;
-        }
-        if ($areaTo = $d->get('area_to'))
-        {
-            $arrColumn[] = "$t.$objRealEstateType->area<=?";
-            $arrValues[] = $areaTo;
-        }
-    }
-
-    /**
-     * Add query fragment for period fields.
-     */
-    protected function addQueryFragmentPeriod(array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-        $d = $this->data();
-
-        if ($periodFrom = $d->get('period_from'))
-        {
-            if (Validator::isDate($periodFrom))
-            {
-                $arrColumn[] = "($t.abdatum<=? OR abdatum='')";
-
-                $date = new \Date($periodFrom);
-                $arrValues[] = $date->tstamp;
-            }
-        }
-        if ($periodTo = $d->get('period_to'))
-        {
-            if (Validator::isDate($periodTo))
-            {
-                $arrColumn[] = "($t.bisdatum>=? OR $t.bisdatum='')";
-
-                $date = new \Date($periodTo);
-                $arrValues[] = $date->tstamp;
-            }
-        }
-    }
-
-    /**
-     * Add provider query fragment.
-     */
-    protected function addQueryFragmentProvider(array &$arrColumns, $objModule=null): void
-    {
-        if ($objModule === null)
-        {
-            return;
-        }
-
-        $t = RealEstateModel::getTable();
-
-        if ($objModule->filterByProvider)
-        {
-            $arrProvider = StringUtil::deserialize($objModule->provider, true);
-
-            if (\count($arrProvider))
-            {
-                $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
-            }
-        }
-    }
-
-    /**
-     * Add basic real estate type query fragment.
-     */
-    protected function addQueryFragmentBasics(RealEstateTypeModel $objType, array &$arrColumn, array &$arrValues): void
-    {
-        $t = RealEstateModel::getTable();
-
-        if ($objType->vermarktungsart === Filter::MARKETING_TYPE_BUY)
-        {
-            $arrColumn[] = "($t.vermarktungsartKauf='1' OR $t.vermarktungsartErbpacht='1')";
-        }
-        elseif ($objType->vermarktungsart === Filter::MARKETING_TYPE_RENT)
-        {
-            $arrColumn[] = "($t.vermarktungsartMietePacht='1' OR $t.vermarktungsartLeasing='1')";
-        }
-
-        if ($objType->nutzungsart)
-        {
-            $arrColumn[] = "$t.nutzungsart=?";
-            $arrValues[] = $objType->nutzungsart;
-        }
-
-        if ($objType->objektart)
-        {
-            $arrColumn[] = "$t.objektart=?";
-            $arrValues[] = $objType->objektart;
-        }
     }
 
     /**
