@@ -495,7 +495,7 @@ class SessionManager extends System
         $queryFragment = new QueryFragment(['prefix' => false]);
 
         // Add OR operator for all columns in this fragment
-        $queryFragment->operator(QueryFragment::OPERATOR_OR);
+        $queryFragment->operator(QueryFragment::OR);
 
         // Add all columns and values from subfragments to the QueryFragment
         foreach ($arrSubFragments as $subColumn)
