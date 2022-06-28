@@ -17,11 +17,11 @@ class ExpressionPropertyFragmentProvider implements PropertyFragmentInterface
 
         if(count($columns) > 1)
         {
-            $columns = implode(' ' . $this->getOperator($fragment->operator) . ' ', array_map(fn($column) => $this->replaceEqual($column), $columns));
+            $columns = implode(' ' . $this->getOperator($fragment->operator) . ' ', array_map(fn($column) => $this->replaceOperators($column), $columns));
         }
         else
         {
-            $columns = $this->replaceEqual($columns[0]);
+            $columns = $this->replaceOperators($columns[0]);
         }
 
         return [$columns, $values];
@@ -60,9 +60,9 @@ class ExpressionPropertyFragmentProvider implements PropertyFragmentInterface
             QueryFragment::NOT_IN      => 'not in',
             QueryFragment::OR          => 'or',
             QueryFragment::AND         => 'and',
-            QueryFragment::LIKE        => 'contains',
-            QueryFragment::STARTS_WITH => 'starts with',
-            QueryFragment::ENDS_WITH   => 'ends with'
+            QueryFragment::LIKE        => 'contains',    // Symfony 6.1
+            QueryFragment::STARTS_WITH => 'starts with', // Symfony 6.1
+            QueryFragment::ENDS_WITH   => 'ends with'    // Symfony 6.1
         ];
 
         return $operators[$operator] ?? null;
@@ -75,18 +75,19 @@ class ExpressionPropertyFragmentProvider implements PropertyFragmentInterface
     {
         $modifiers = [
             QueryFragment::IN          => 'field ~ " " ~ operator ~ " " ~ context.list(value, "[", "]")',
-            QueryFragment::STARTS_WITH => 'field ~ " " ~ operator ~ " " ~ context.escape(value)',
-            QueryFragment::ENDS_WITH   => 'field ~ " " ~ operator ~ " " ~ context.escape(value)'
+            QueryFragment::LIKE        => '"strpos("~field~", "~context.escape(value)~") !== false"',
+            QueryFragment::STARTS_WITH => '"strpos("~field~", "~context.escape(value)~") === 0"',
+            QueryFragment::ENDS_WITH   => '"(substr_compare("~field~", "~context.escape(value)~", -strlen("~context.escape(value)~"))==0)"'
         ];
 
         return $modifiers[$modifier] ?? null;
     }
 
     /**
-     * Replace single equal sign to double for using in expression language
+     * Replace single equal signs to double one for using in expression language
      */
-    public function replaceEqual($str): string
+    public function replaceOperators($str): string
     {
-        return str_replace("=", "==", $str);
+        return preg_replace('/(?<![=!<>])=(?![=!])/m', '==', $str);
     }
 }

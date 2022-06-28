@@ -3,6 +3,7 @@
 namespace ContaoEstateManager\EstateManager\EstateManager\PropertyFragment;
 
 use Contao\System;
+use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class QueryFragment
@@ -58,11 +59,22 @@ class QueryFragment
     {
         if(null !== $modifier)
         {
-            $this->columns[] = (new ExpressionLanguage())->evaluate($modifier, [
+            $expression = new ExpressionLanguage();
+
+            // HOOK: add custom expression language logic
+            if (isset($GLOBALS['CEM_HOOKS']['parseQueryFragmentModifier']) && \is_array($GLOBALS['CEM_HOOKS']['parseQueryFragmentModifier']))
+            {
+                foreach ($GLOBALS['CEM_HOOKS']['parseQueryFragmentModifier'] as $callback)
+                {
+                    System::importStatic($callback[0])->{$callback[1]}($expression, $field, $operator, $value, $modifier);
+                }
+            }
+
+            $this->columns[] = $expression->evaluate($modifier, [
                 'field'     => $field,
                 'value'     => $value,
                 'operator'  => $operator,
-                'context'   => $this      // ToDo: Exclude Expression Functions in its own class (escape, arrayList, etc)??
+                'context'   => $this      // ToDo: Exclude Expression Functions in its own class (escape, list, etc)?
             ]);
         }
         else
