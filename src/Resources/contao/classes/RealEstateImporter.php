@@ -938,6 +938,16 @@ class RealEstateImporter extends \BackendModule
     {
         if (FilesHelper::fileExt($file) === 'ZIP')
         {
+            if(FilesHelper::fileSize($file) === 0)
+            {
+                $this->addLog('File is empty.', 0, 'error');
+
+                // Delete empty file
+                try{ unlink(TL_ROOT . '/' . $file); }catch (\Exception $exception){}
+
+                return false;
+            }
+
             $this->unzipArchive($file);
 
             $syncFile = FilesHelper::scandirByExt($this->objImportFolder->path . '/tmp', array('xml'));
