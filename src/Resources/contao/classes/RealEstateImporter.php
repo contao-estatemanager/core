@@ -13,6 +13,7 @@ namespace ContaoEstateManager;
 
 use Contao\Dbafs;
 use Contao\FilesModel;
+use Contao\System;
 
 class RealEstateImporter extends \BackendModule
 {
@@ -22,6 +23,12 @@ class RealEstateImporter extends \BackendModule
      * @var string
      */
     protected $strTemplate = 'be_real_estate_sync';
+
+    /**
+     * Root dir
+     * @var string
+     */
+    protected $strRootDir;
 
     /**
      * Messages
@@ -115,6 +122,16 @@ class RealEstateImporter extends \BackendModule
      * @var boolean
      */
     public $skipContactPerson = false;
+
+    /**
+     * Initialize the object
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->strRootDir = System::getContainer()->getParameter('kernel.project_dir');
+    }
 
     /**
      * Set an object property
@@ -839,7 +856,7 @@ class RealEstateImporter extends \BackendModule
      */
     protected function loadData()
     {
-        $data = file_get_contents(TL_ROOT . '/' . $this->syncFile);
+        $data = file_get_contents($this->strRootDir . '/' . $this->syncFile);
 
         /* FlowFact
         $data = str_replace('<imo:', '<', $data);
@@ -938,6 +955,16 @@ class RealEstateImporter extends \BackendModule
     {
         if (FilesHelper::fileExt($file) === 'ZIP')
         {
+            if(FilesHelper::fileSize($file) === 0)
+            {
+                $this->addLog('File is empty.', 0, 'error');
+
+                // Delete empty file
+                try{ unlink(TL_ROOT . '/' . $file); }catch (\Exception $exception){}
+
+                return false;
+            }
+
             $this->unzipArchive($file);
 
             $syncFile = FilesHelper::scandirByExt($this->objImportFolder->path . '/tmp', array('xml'));
@@ -990,7 +1017,7 @@ class RealEstateImporter extends \BackendModule
         foreach ($files as $file)
         {
             $content = $zip->unzip();
-            $filePath = TL_ROOT . '/' . $tmpPath . '/' . $file;
+            $filePath = $this->strRootDir . '/' . $tmpPath . '/' . $file;
             $dir = dirname($filePath);
 
             if (!file_exists($dir))
@@ -998,7 +1025,7 @@ class RealEstateImporter extends \BackendModule
                 mkdir($dir);
             }
 
-            file_put_contents(TL_ROOT . '/' . $tmpPath . '/' . $file, $content);
+            file_put_contents($this->strRootDir . '/' . $tmpPath . '/' . $file, $content);
             $zip->next();
         }
     }
@@ -1356,19 +1383,19 @@ class RealEstateImporter extends \BackendModule
             $filePathRecord = $filePathProvider . ($directoryName !== '' ? '/' . $directoryName : '');
             $filePath = $filePathRecord . '/' . $fileName;
 
-            if (!file_exists($this->objImportFolder->path . '/tmp/' . $fileName))
+            if (!file_exists($this->strRootDir . '/' . $this->objImportFolder->path . '/tmp/' . $fileName))
             {
                 return null;
             }
 
-            if (!file_exists($filePathProvider))
+            if (!file_exists($this->strRootDir . '/' . $filePathProvider))
             {
-                mkdir($filePathProvider);
+                mkdir($this->strRootDir . '/' . $filePathProvider);
             }
 
-            if (!file_exists($filePathRecord))
+            if (!file_exists($this->strRootDir . '/' . $filePathRecord))
             {
-                mkdir($filePathRecord);
+                mkdir($this->strRootDir . '/' . $filePathRecord);
             }
 
             $objFiles->copy($this->objImportFolder->path . '/tmp/' . $fileName, $filePath);
