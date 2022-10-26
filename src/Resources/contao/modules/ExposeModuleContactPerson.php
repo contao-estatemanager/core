@@ -14,7 +14,6 @@ namespace ContaoEstateManager;
 use Contao\BackendTemplate;
 use Contao\Config;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "contact person".
@@ -39,7 +38,7 @@ class ExposeModuleContactPerson extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['contactPerson'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['contactPerson'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
