@@ -645,7 +645,7 @@ class FilterSession extends \Frontend
 
             if ($location)
             {
-                $arrColumn[] = "$t.ort LIKE ? OR $t.regionalerZusatz LIKE ?";
+                $arrColumn[] = "($t.ort LIKE ? OR $t.regionalerZusatz LIKE ?)";
                 $arrValues[] = $location.'%';
                 $arrValues[] = $location.'%';
             }
