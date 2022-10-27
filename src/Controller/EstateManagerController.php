@@ -27,7 +27,7 @@ class EstateManagerController extends AbstractController
     /**
      * Runs the command scheduler. (READ)
      *
-     * @Route("/api/estatemanager/v{version}/{module}/{id}", name="glossary_item_json", defaults={"id" = null})
+     * @Route("/api/estatemanager/v{version}/{module}/{id}", name="estate_read", defaults={"id" = null})
      */
     public function readAction(int $version, string $module, $id): JsonResponse
     {
