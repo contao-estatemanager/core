@@ -17,7 +17,6 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "gallery".
@@ -48,7 +47,7 @@ class ExposeModuleGallery extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['gallery'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['gallery'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -111,7 +110,7 @@ class ExposeModuleGallery extends ExposeModule
 
         foreach ($arrModules as $module)
         {
-            if(in_array($module, $arrValidFields))
+            if(\in_array($module, $arrValidFields))
             {
                 $arrImages = $this->realEstate->getImagesUuids([$module], $availableSlots);
                 $objFiles = FilesModel::findMultipleByUuids($arrImages);
@@ -122,7 +121,7 @@ class ExposeModuleGallery extends ExposeModule
                 // set new available slot count
                 if($availableSlots !== null)
                 {
-                    $availableSlots -= count($arrImages);
+                    $availableSlots -= \count($arrImages);
                 }
             }
             else
@@ -161,7 +160,7 @@ class ExposeModuleGallery extends ExposeModule
         }
 
         // set default image on empty
-        if(!count($arrSlides))
+        if(!\count($arrSlides))
         {
             if($this->gallerySkipOnEmpty)
             {
@@ -184,7 +183,7 @@ class ExposeModuleGallery extends ExposeModule
                 }
             }
 
-            if(!count($arrSlides))
+            if(!\count($arrSlides))
             {
                 $this->isEmpty = true;
                 return '';

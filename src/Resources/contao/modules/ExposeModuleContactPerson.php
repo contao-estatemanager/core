@@ -14,7 +14,6 @@ namespace ContaoEstateManager;
 use Contao\BackendTemplate;
 use Contao\Config;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "contact person".
@@ -39,7 +38,7 @@ class ExposeModuleContactPerson extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['contactPerson'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['contactPerson'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -64,21 +63,25 @@ class ExposeModuleContactPerson extends ExposeModule
         {
             if($field === 'singleSRC')
             {
-                $varSingleSrc = $contactPerson['singleSRC'];
+                $varSingleSrc = $contactPerson['singleSRC'] ?? null;
 
-                if(!$varSingleSrc)
+                if($varSingleSrc === null)
                 {
-                    switch(strtolower($contactPerson['anrede']))
+                    if ($contactPerson['anrede'] ?? null)
                     {
-                        case 'frau':
-                            $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
-                            break;
-                        case 'herr':
-                            $varSingleSrc = Config::get('defaultContactPersonMaleImage');
-                            break;
+                        switch(strtolower($contactPerson['anrede']))
+                        {
+                            case 'frau':
+                                $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
+                                break;
+                            case 'herr':
+                                $varSingleSrc = Config::get('defaultContactPersonMaleImage');
+                                break;
+                        }
                     }
 
-                    if(!$varSingleSrc){
+                    if($varSingleSrc === null)
+                    {
                         $varSingleSrc = Config::get('defaultContactPersonImage');
                     }
                 }
@@ -87,7 +90,7 @@ class ExposeModuleContactPerson extends ExposeModule
             }
             else
             {
-                if($contactPerson[ $field ])
+                if($contactPerson[$field] ?? null)
                 {
                     $this->Template->{$field} = $contactPerson[ $field ];
                 }

@@ -13,7 +13,6 @@ namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "details".
@@ -38,7 +37,7 @@ class ExposeModuleDetails extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['details'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['details'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -116,7 +115,7 @@ class ExposeModuleDetails extends ExposeModule
             }
         }
 
-        if(!count($arrCollection))
+        if(!\count($arrCollection))
         {
             $this->skipDetails = true;
         }

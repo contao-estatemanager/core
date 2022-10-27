@@ -11,7 +11,6 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
-use Patchwork\Utf8;
 
 /**
  * Front end module "real estate result list".
@@ -34,7 +33,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
     protected $strTemplate = 'mod_realEstateResultList';
 
     /**
-     * Do not display the module if there are no real etates
+     * Do not display the module if there are no real estates
      *
      * @return string
      */
@@ -43,7 +42,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateResultList'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['realEstateResultList'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -116,7 +115,7 @@ class ModuleRealEstateResultList extends ModuleRealEstate
 
         if ($this->addCustomOrder)
         {
-            $arrOptions['order'] = $this->customOrder . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
+            $arrOptions['order'] = $this->customOrder . (isset($arrOptions['order']) ? ', ' . $arrOptions['order'] : '');
         }
 
         return RealEstateModel::findPublishedBy($arrColumns, $arrValues, $arrOptions);

@@ -12,10 +12,10 @@
 namespace ContaoEstateManager;
 
 use Contao\BackendTemplate;
+use Contao\Environment;
 use Contao\FrontendTemplate;
 use Contao\PageModel;
 use Contao\StringUtil;
-use Patchwork\Utf8;
 
 /**
  * Expose module "share".
@@ -46,7 +46,7 @@ class ExposeModuleShare extends ExposeModule
         if (TL_MODE == 'BE')
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['share'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['share'][0], 'UTF-8') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -117,7 +117,7 @@ class ExposeModuleShare extends ExposeModule
         global $objPage;
 
         // create email content
-        $link = \Environment::get('base') . $this->realEstate->generateExposeUrl($objPage->id);
+        $link = Environment::get('base') . $this->realEstate->generateExposeUrl($objPage->id);
         $text = Translator::translateExpose('text_share_mail_body');
 
         // set url to email content

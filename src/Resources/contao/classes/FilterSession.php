@@ -14,6 +14,7 @@ use Contao\Input;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
+use Contao\Validator;
 
 /**
  * Loads and writes filter information
@@ -105,23 +106,23 @@ class FilterSession extends \Frontend
      */
     protected function initialize($pageId)
     {
-        /** @var \PageModel $objPage */
+        /** @var PageModel $objPage */
         global $objPage;
 
         if ($objPage === null)
         {
-            $objPage = \PageModel::findByPk($pageId);
+            $objPage = PageModel::findByPk($pageId);
         }
 
         static::$objPage = $objPage;
         static::$objPageDetails = $objPage !== null ? $objPage->loadDetails() : null;
-        static::$objRootPage = static::$objPageDetails !== null ? \PageModel::findByPk(static::$objPageDetails->rootId) : null;
+        static::$objRootPage = static::$objPageDetails !== null ? PageModel::findByPk(static::$objPageDetails->rootId) : null;
 
         $this->redirectByGetParameter();
 
-        $_SESSION['FILTER_DATA'] = \is_array($_SESSION['FILTER_DATA']) ? $_SESSION['FILTER_DATA'] : array();
+        $_SESSION['FILTER_DATA'] = $_SESSION['FILTER_DATA'] ?? [];
 
-        if ((!isset($_SESSION['FILTER_DATA']['country']) || !count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
+        if ((!isset($_SESSION['FILTER_DATA']['country']) || !\count($_SESSION['FILTER_DATA'])) && static::$objRootPage)
         {
             $_SESSION['FILTER_DATA']['country'] = static::$objRootPage->realEstateQueryCountry;
         }
@@ -131,7 +132,7 @@ class FilterSession extends \Frontend
 
         $submitted = $this->filterSubmitted();
 
-        if (!$submitted && $objPage->setRealEstateType)
+        if (!$submitted && $objPage !== null && $objPage->setRealEstateType)
         {
             if (!$objPage->realEstateType && $objPage->setMarketingType)
             {
@@ -157,11 +158,11 @@ class FilterSession extends \Frontend
         }
 
         // Determine current marketing type
-        if ($objPage->setMarketingType)
+        if ($objPage !== null && $objPage->setMarketingType)
         {
             $this->strMarketingType = $objPage->marketingType;
         }
-        elseif ($_SESSION['FILTER_DATA']['marketing-type'])
+        elseif (isset($_SESSION['FILTER_DATA']['marketing-type']))
         {
             $this->strMarketingType = $_SESSION['FILTER_DATA']['marketing-type'];
         }
@@ -170,7 +171,7 @@ class FilterSession extends \Frontend
             $this->strMarketingType = 'kauf_erbpacht_miete_leasing';
         }
 
-        if (!$submitted)
+        if (!$submitted && $objPage !== null)
         {
             while ($this->objRealEstateTypes->next())
             {
@@ -189,7 +190,7 @@ class FilterSession extends \Frontend
         }
 
         // Break if no real estate type selected
-        if (!$_SESSION['FILTER_DATA']['real-estate-type'])
+        if (!($_SESSION['FILTER_DATA']['real-estate-type'] ?? null))
         {
             $this->objCurrentType = null;
             return;
@@ -198,7 +199,7 @@ class FilterSession extends \Frontend
         // Determine current real estate type
         while ($this->objRealEstateTypes->next())
         {
-            if ($_SESSION['FILTER_DATA']['real-estate-type'])
+            if ($_SESSION['FILTER_DATA']['real-estate-type'] ?? null)
             {
                 if ($_SESSION['FILTER_DATA']['real-estate-type'] == $this->objRealEstateTypes->id)
                 {
@@ -233,10 +234,12 @@ class FilterSession extends \Frontend
      */
     protected function filterSubmitted()
     {
-        $submitted = !!$_SESSION['FILTER_DATA']['FILTER_SUBMITTED'];
-        unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+        if($submitted = $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] ?? null)
+        {
+            unset($_SESSION['FILTER_DATA']['FILTER_SUBMITTED']);
+        }
 
-        return $submitted;
+        return !!$submitted;
     }
 
     /**
@@ -357,7 +360,7 @@ class FilterSession extends \Frontend
 
         $arrTypeColumns = array();
 
-        if($arrGroups !== null)
+        if(\count($arrGroups))
         {
             $objRealEstateTypes = RealEstateTypeModel::findPublishedByPids($arrGroups);
 
@@ -561,7 +564,7 @@ class FilterSession extends \Frontend
         {
             $arrProvider = StringUtil::deserialize($objModule->provider, true);
 
-            if (count($arrProvider))
+            if (\count($arrProvider))
             {
                 $arrColumns[] = "$t.provider IN (" . implode(',', $arrProvider) . ")";
             }
@@ -611,7 +614,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['country'])
+        if ($_SESSION['FILTER_DATA']['country'] ?? null)
         {
             $arrColumn[] = "$t.land=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['country'];
@@ -628,7 +631,7 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['location'])
+        if ($_SESSION['FILTER_DATA']['location'] ?? null)
         {
             $location = $_SESSION['FILTER_DATA']['location'];
             $matches = array();
@@ -660,9 +663,9 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
+        if ($_SESSION['FILTER_DATA']['price_per'] ?? null && $_SESSION['FILTER_DATA']['price_per'] === 'square_meter')
         {
-            if ($_SESSION['FILTER_DATA']['price_from'])
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
@@ -675,7 +678,7 @@ class FilterSession extends \Frontend
                     $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
                 }
             }
-            if ($_SESSION['FILTER_DATA']['price_to'])
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
             {
                 if ($objRealEstateType->vermarktungsart === 'miete_leasing')
                 {
@@ -691,12 +694,12 @@ class FilterSession extends \Frontend
         }
         else
         {
-            if ($_SESSION['FILTER_DATA']['price_from'])
+            if ($_SESSION['FILTER_DATA']['price_from'] ?? null)
             {
                 $arrColumn[] = "$t.$objRealEstateType->price>=?";
                 $arrValues[] = $_SESSION['FILTER_DATA']['price_from'];
             }
-            if ($_SESSION['FILTER_DATA']['price_to'])
+            if ($_SESSION['FILTER_DATA']['price_to'] ?? null)
             {
                 $arrColumn[] = "$t.$objRealEstateType->price<=?";
                 $arrValues[] = $_SESSION['FILTER_DATA']['price_to'];
@@ -714,12 +717,12 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['room_from'])
+        if ($_SESSION['FILTER_DATA']['room_from'] ?? null)
         {
             $arrColumn[] = "$t.anzahlZimmer>=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['room_from'];
         }
-        if ($_SESSION['FILTER_DATA']['room_to'])
+        if ($_SESSION['FILTER_DATA']['room_to'] ?? null)
         {
             $arrColumn[] = "$t.anzahlZimmer<=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['room_to'];
@@ -737,12 +740,12 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['area_from'])
+        if ($_SESSION['FILTER_DATA']['area_from'] ?? null)
         {
             $arrColumn[] = "$t.$objRealEstateType->area>=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['area_from'];
         }
-        if ($_SESSION['FILTER_DATA']['area_to'])
+        if ($_SESSION['FILTER_DATA']['area_to'] ?? null)
         {
             $arrColumn[] = "$t.$objRealEstateType->area<=?";
             $arrValues[] = $_SESSION['FILTER_DATA']['area_to'];
@@ -759,9 +762,9 @@ class FilterSession extends \Frontend
     {
         $t = static::$strTable;
 
-        if ($_SESSION['FILTER_DATA']['period_from'])
+        if ($_SESSION['FILTER_DATA']['period_from'] ?? null)
         {
-            if (\Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_from']))
             {
                 $arrColumn[] = "($t.abdatum<=? OR abdatum='')";
 
@@ -769,9 +772,9 @@ class FilterSession extends \Frontend
                 $arrValues[] = $date->tstamp;
             }
         }
-        if ($_SESSION['FILTER_DATA']['period_to'])
+        if ($_SESSION['FILTER_DATA']['period_to'] ?? null)
         {
-            if (\Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
+            if (Validator::isDate($_SESSION['FILTER_DATA']['period_to']))
             {
                 $arrColumn[] = "($t.bisdatum>=? OR $t.bisdatum='')";
 
@@ -790,7 +793,7 @@ class FilterSession extends \Frontend
      */
     protected function addQueryFragmentUniqueImprecise(&$arrColumn, &$arrValues, &$addFragments)
     {
-        if ($_SESSION['FILTER_DATA']['unique-imprecise'])
+        if ($_SESSION['FILTER_DATA']['unique-imprecise'] ?? null)
         {
             $uniqueImprecise = $_SESSION['FILTER_DATA']['unique-imprecise'];
             $_SESSION['FILTER_DATA'] = array();
@@ -812,7 +815,7 @@ class FilterSession extends \Frontend
      */
     protected function getOrderOption()
     {
-        $strOrder = $_SESSION['SORTING'];
+        $strOrder = $_SESSION['SORTING'] ?? null;
 
         if ($strOrder === null)
         {
@@ -858,13 +861,13 @@ class FilterSession extends \Frontend
      */
     public function getReferencePage()
     {
-        if ($_SESSION['FILTER_DATA']['real-estate-type'])
+        if ($_SESSION['FILTER_DATA']['real-estate-type'] ?? null)
         {
             if (is_numeric($_SESSION['FILTER_DATA']['real-estate-type']))
             {
                 $objRealEstateType = RealEstateTypeModel::findByPk($_SESSION['FILTER_DATA']['real-estate-type']);
 
-                if ($objRealEstateType->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateType->referencePage)) instanceof \PageModel)
+                if ($objRealEstateType->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateType->referencePage)) instanceof PageModel)
                 {
                     return $objJumpTo;
                 }
@@ -876,7 +879,7 @@ class FilterSession extends \Frontend
             }
         }
 
-        if ($_SESSION['FILTER_DATA']['marketing-type'])
+        if ($_SESSION['FILTER_DATA']['marketing-type'] ?? null)
         {
             $objRealEstateGroup = RealEstateGroupModel::findByVermarktungsart($_SESSION['FILTER_DATA']['marketing-type']);
 
@@ -885,14 +888,14 @@ class FilterSession extends \Frontend
                 if ($objRealEstateGroup->count() > 1)
                 {
                     // Start: Hier muss die richtige Referenzseite anhand der gefundenen Gruppen gefunden werden.
-                    if ($objRealEstateGroup->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof \PageModel)
+                    if ($objRealEstateGroup->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof PageModel)
                     {
                         return $objJumpTo;
                     }
                     // Stop
                 }
 
-                if ($objRealEstateGroup->referencePage && ($objJumpTo = \PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof \PageModel)
+                if ($objRealEstateGroup->referencePage && ($objJumpTo = PageModel::findByPk($objRealEstateGroup->referencePage)) instanceof PageModel)
                 {
                     return $objJumpTo;
                 }
@@ -926,7 +929,7 @@ class FilterSession extends \Frontend
 
             foreach ($arrParam as $param => $value)
             {
-                if (in_array($param, $validParameter))
+                if (\in_array($param, $validParameter))
                 {
                     $_SESSION['FILTER_DATA'][$param] = $value;
                 }
@@ -939,7 +942,7 @@ class FilterSession extends \Frontend
             $objJumpTo = $this->getReferencePage();
 
             // Redirect if there is a reference page
-            if ($objJumpTo instanceof \PageModel)
+            if ($objJumpTo instanceof PageModel)
             {
                 $this->jumpToOrReload($objJumpTo->row());
             }

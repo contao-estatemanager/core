@@ -82,7 +82,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_real_estate', 'deleteRealEstate')
             ),
             'toggle' => array
@@ -4972,10 +4972,11 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
         'standVom'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['standVom'],
-            'exclude'                 => true,
+            'default'                   => time(),
+            'exclude'                   => true,
             'inputType'                 => 'text',
             'eval'                      => array('rgxp'=>'date', 'tl_class'=>'w50', 'datepicker'=>true),
-            'sql'                       => "int(10) unsigned NOT NULL default 0",
+            'sql'                       => "varchar(10) NOT NULL default ''",
         ),
         'weitergabeGenerell'  => array
         (
@@ -5234,7 +5235,7 @@ class tl_real_estate extends Contao\Backend
     public function generateAlias($varValue, $dc, string $title=''): string
     {
         // Generate alias if there is none
-        if ($varValue == '')
+        if (!$varValue)
         {
             $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
             $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate($title);
@@ -5427,7 +5428,7 @@ class tl_real_estate extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['config']['onload_callback'] as $callback)
             {
@@ -5466,7 +5467,7 @@ class tl_real_estate extends Contao\Backend
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields']['published']['save_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['name']['fields']['published']['save_callback'] as $callback)
             {
@@ -5495,7 +5496,7 @@ class tl_real_estate extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['config']['onsubmit_callback'] as $callback)
             {
@@ -5568,7 +5569,7 @@ class tl_real_estate extends Contao\Backend
         $args[5] = date(Contao\Config::get('datimFormat'), $args[5]);
 
         // Call post_label_callbacks ($row, $label, $dc, $args)
-        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks']))
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'] as $callback)
             {

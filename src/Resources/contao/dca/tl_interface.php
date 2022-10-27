@@ -99,14 +99,14 @@ $GLOBALS['TL_DCA']['tl_interface'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_interface']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'button_callback'     => array('tl_interface', 'deleteInterface')
             ),
             'cleardata' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['cleardata'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_interface']['clearRealEstates'],
                 'href'                => 'key=clearRealEstates',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['clearEstateConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
                 'icon'                => 'bundles/estatemanager/icons/clear.svg'
             ),
             'history' => array
@@ -493,7 +493,7 @@ class tl_interface extends Contao\Backend
      *
      * @param $insertId
      */
-    public function adjustPermissions($insertId)
+    public function adjustPermissions($insertId): void
     {
         // The oncreate_callback passes $insertId as second argument
         if (func_num_args() == 4)
@@ -653,11 +653,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_provider']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_provider']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_provider'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_provider'][$field][0];
+                }
             }
         }
 
@@ -675,11 +678,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_real_estate']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_real_estate']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_real_estate'][$field][0];
+                }
             }
         }
 
@@ -697,11 +703,14 @@ class tl_interface extends Contao\Backend
     {
         $return = array();
 
-        foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
+        if (is_array($GLOBALS['TL_DCA']['tl_contact_person']['fields'] ?? null))
         {
-            if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+            foreach ($GLOBALS['TL_DCA']['tl_contact_person']['fields'] as $field => $options)
             {
-                $return[$field] = $GLOBALS['TL_LANG']['tl_contact_person'][$field][0];
+                if (array_key_exists('realEstate', $options) && array_key_exists('unique', $options['realEstate']))
+                {
+                    $return[$field] = $GLOBALS['TL_LANG']['tl_contact_person'][$field][0];
+                }
             }
         }
 

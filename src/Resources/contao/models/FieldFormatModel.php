@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Database;
 use Contao\Model;
 use Contao\Model\Collection;
 
@@ -73,7 +74,7 @@ class FieldFormatModel extends Model
     {
         $t = static::$strTable;
 
-        $objResult = \Database::getInstance()->execute("SELECT id, fieldname FROM $t");
+        $objResult = Database::getInstance()->execute("SELECT id, fieldname FROM $t");
         $fields = array();
 
         while($objResult->next())

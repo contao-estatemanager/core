@@ -11,7 +11,12 @@
 namespace ContaoEstateManager;
 
 
-use Patchwork\Utf8;
+use Contao\BackendTemplate;
+use Contao\Hybrid;
+use Contao\Input;
+use Contao\PageModel;
+use Contao\StringUtil;
+use Contao\System;
 
 /**
  * Provide methods to handle real estate filter.
@@ -25,7 +30,7 @@ use Patchwork\Utf8;
  *
  * @author Fabian Ekert <https://github.com/eki89>
  */
-class Filter extends \Hybrid
+class Filter extends Hybrid
 {
 
     /**
@@ -68,9 +73,9 @@ class Filter extends \Hybrid
         if (TL_MODE == 'BE')
         {
             /** @var \BackendTemplate|object $objTemplate */
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
 
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['filter'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['CTE']['realEstateFilter'][0], 'UTF-8') . ' ###';
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
             $objTemplate->href = 'contao/main.php?do=filter&amp;table=tl_filter_item&amp;id=' . $this->id;
@@ -78,7 +83,7 @@ class Filter extends \Hybrid
             return $objTemplate->parse();
         }
 
-        if (\Input::post('reset'))
+        if (Input::post('reset'))
         {
             $_SESSION['FILTER_DATA'] = array();
             unset($_POST['reset']);
@@ -91,7 +96,7 @@ class Filter extends \Hybrid
             $this->strTemplate = $this->customTpl;
         }
 
-        \System::loadLanguageFile('tl_real_estate_filter');
+        System::loadLanguageFile('tl_real_estate_filter');
 
         return parent::generate();
     }
@@ -140,7 +145,7 @@ class Filter extends \Hybrid
             // HOOK: load filter item
 
             // Store values in the session
-            if (\Input::post('FORM_SUBMIT') == $filterId)
+            if (Input::post('FORM_SUBMIT') == $filterId)
             {
                 $objFilterWidget->validate();
 
@@ -184,16 +189,16 @@ class Filter extends \Hybrid
         }
 
         // Process the form data
-        if (\Input::post('FORM_SUBMIT') == $filterId && !$doNotSubmit)
+        if (Input::post('FORM_SUBMIT') == $filterId && !$doNotSubmit)
         {
             $this->processFilterData($arrSubmitted, $arrLabels);
         }
 
-        /** @var \PageModel $objPage */
+        /** @var PageModel $objPage */
         global $objPage;
 
         $this->Template->hasError = $doNotSubmit;
-        $this->Template->action = $objPage->getFrontendUrl();
+        $this->Template->action = $objPage->type !== 'regular' ? '' : $objPage->getFrontendUrl();
         $this->Template->attributes = $this->getAttributes();
         $this->Template->novalidate = $this->novalidate ? ' novalidate' : '';
         $this->Template->filterSubmit = $filterId;
@@ -221,7 +226,7 @@ class Filter extends \Hybrid
         // Store all values in the session
         foreach (array_keys($_POST) as $key)
         {
-            $_SESSION['FILTER_DATA'][$key] = \Input::post($key, true);
+            $_SESSION['FILTER_DATA'][$key] = Input::post($key, true);
         }
 
         $_SESSION['FILTER_DATA']['FILTER_SUBMITTED'] = true;
@@ -240,11 +245,11 @@ class Filter extends \Hybrid
 
         if ($objJumpTo === null && $this->jumpTo)
         {
-            $objJumpTo = \PageModel::findByPk($this->jumpTo);
+            $objJumpTo = PageModel::findByPk($this->jumpTo);
         }
 
         // Redirect if there is a reference page
-        if ($objJumpTo instanceof \PageModel)
+        if ($objJumpTo instanceof PageModel)
         {
             $this->jumpToOrReload($objJumpTo->row());
         }
@@ -260,7 +265,7 @@ class Filter extends \Hybrid
     protected function getAttributes()
     {
         $strAttributes = '';
-        $arrAttributes = \StringUtil::deserialize($this->attributes, true);
+        $arrAttributes = StringUtil::deserialize($this->attributes, true);
 
         if ($arrAttributes[0] != '')
         {

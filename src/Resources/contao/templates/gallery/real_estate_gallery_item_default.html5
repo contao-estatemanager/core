@@ -2,17 +2,17 @@
     <div class="gallery-item <?=$slide->isImage ? 'image' : 'html'?>">
         <?php if($slide->isImage): ?>
             <figure>
-                <?php if ($slide->href): ?>
+                <?php if (isset($slide->href)): ?>
                     <a href="<?= $slide->href ?>"<?= $slide->attributes ?><?php if ($slide->linkTitle) echo ' title="' . $slide->linkTitle . '"'; ?>>
                 <?php endif; ?>
 
                 <?php $this->insert('picture_default', $slide->picture); ?>
 
-                <?php if ($slide->href): ?>
+                <?php if (isset($slide->href)): ?>
                     </a>
                 <?php endif; ?>
 
-                <?php if ($slide->caption): ?>
+                <?php if (isset($slide->caption)): ?>
                     <figcaption class="caption"><?= $slide->caption ?></figcaption>
                 <?php endif; ?>
             </figure>

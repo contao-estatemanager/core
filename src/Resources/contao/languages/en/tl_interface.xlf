@@ -128,6 +128,12 @@
       <trans-unit id="tl_interface.syncRealEstates.1">
         <source>Here you can synchronize real estate</source>
       </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.0">
+        <source>Clean up images and files</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.clearRealEstates.1">
+        <source>Perform real estate file clean up</source>
+      </trans-unit>
       <trans-unit id="tl_interface.filesPerSync.0">
         <source>Max. files per sync</source>
       </trans-unit>

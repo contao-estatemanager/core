@@ -95,7 +95,7 @@ class RealEstateCronImporter extends \Frontend
 
         // ToDo: Use array_filter to remove duplicate files (may its possible if file is not completely transferred)
 
-        $files = array_slice(array_reverse($files), 0, $objInterface->filesPerSync);
+        $files = \array_slice(array_reverse($files), 0, $objInterface->filesPerSync);
 
         foreach ($files as $file)
         {

@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager;
 
+use Contao\Database;
 use Contao\Model;
 use Contao\Model\Collection;
 
@@ -84,7 +85,7 @@ class RealEstateGroupModel extends Model
 
         if (!isset($arrOptions['order']))
         {
-            $arrOptions['order'] = \Database::getInstance()->findInSet("$t.id", $arrIds);
+            $arrOptions['order'] = Database::getInstance()->findInSet("$t.id", $arrIds);
         }
 
         return static::findBy($arrColumns, null, $arrOptions);

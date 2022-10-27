@@ -82,7 +82,7 @@ $GLOBALS['TL_DCA']['tl_filter_item'] = array
                 'label'               => &$GLOBALS['TL_LANG']['tl_filter_item']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
+                'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"',
             ),
             'toggle' => array
             (
@@ -532,19 +532,9 @@ class tl_filter_item extends Contao\Backend
      *
      * @return array
      */
-    public function getFilterItems()
+    public function getFilterItems(): array
     {
         return array_keys($GLOBALS['TL_RFI']);
-
-        $arrItems = $GLOBALS['TL_RFI'];
-
-        // Add the translation
-        foreach (array_keys($arrItems) as $key)
-        {
-            $arrItems[$key] = $key;
-        }
-
-        return $arrItems;
     }
 
     /**
@@ -624,7 +614,7 @@ class tl_filter_item extends Contao\Backend
         }
 
         // Trigger the onload_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['config']['onload_callback'] as $callback)
             {
@@ -666,7 +656,7 @@ class tl_filter_item extends Contao\Backend
         $blnVisible = !$blnVisible;
 
         // Trigger the save_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['fields']['invisible']['save_callback'] as $callback)
             {
@@ -695,7 +685,7 @@ class tl_filter_item extends Contao\Backend
         }
 
         // Trigger the onsubmit_callback
-        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback']))
+        if (is_array($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback'] ?? null))
         {
             foreach ($GLOBALS['TL_DCA']['tl_filter_item']['config']['onsubmit_callback'] as $callback)
             {
