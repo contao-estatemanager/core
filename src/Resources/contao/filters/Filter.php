@@ -198,7 +198,7 @@ class Filter extends Hybrid
         global $objPage;
 
         $this->Template->hasError = $doNotSubmit;
-        $this->Template->action = $objPage->getFrontendUrl();
+        $this->Template->action = $objPage->type !== 'regular' ? '' : $objPage->getFrontendUrl();
         $this->Template->attributes = $this->getAttributes();
         $this->Template->novalidate = $this->novalidate ? ' novalidate' : '';
         $this->Template->filterSubmit = $filterId;
