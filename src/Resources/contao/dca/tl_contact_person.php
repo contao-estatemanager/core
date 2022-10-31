@@ -129,7 +129,7 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'options'                 => array('herr','frau'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
             'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(4) NOT NULL default ''"
+            'sql'                     => "varchar(8) NOT NULL default ''"
         ),
         'firma' => array
         (
