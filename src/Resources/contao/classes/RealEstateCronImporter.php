@@ -90,7 +90,8 @@ class RealEstateCronImporter extends Frontend
 
         foreach ($syncFiles as $syncFile)
         {
-            if ($syncFile['synctime'] === 0)
+            // ToDo: Check when merged
+            if (null === $syncFile['synctime'])
             {
                 $files[] = $syncFile;
             }
