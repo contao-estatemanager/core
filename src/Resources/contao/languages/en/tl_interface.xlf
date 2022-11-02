@@ -110,6 +110,12 @@
       <trans-unit id="tl_interface.dontPublishRecords.1">
         <source>Here you can specify whether real estate records should be initially published on create.</source>
       </trans-unit>
+      <trans-unit id="tl_interface.removeXmlNamespaces.0">
+        <source>Remove XML namespaces</source>
+      </trans-unit>
+      <trans-unit id="tl_interface.removeXmlNamespaces.1">
+        <source>Here you can specify whether XML namespaces should be removed from the OpenImmo-XML.</source>
+      </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
         <source>Automatic synchronization</source>
       </trans-unit>

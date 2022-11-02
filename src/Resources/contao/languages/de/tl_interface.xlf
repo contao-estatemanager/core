@@ -145,6 +145,14 @@
         <source>Here you can specify whether real estate records should be initially published on create.</source>
         <target>Hier können Sie angeben, ob Immobiliendatensätze beim Anlegen initial veröffentlicht werden sollen.</target>
       </trans-unit>
+      <trans-unit id="tl_interface.removeXmlNamespaces.0">
+        <source>Remove XML namespaces</source>
+        <target>XML-Namespaces entfernen</target>
+      </trans-unit>
+      <trans-unit id="tl_interface.removeXmlNamespaces.1">
+        <source>Here you can specify whether XML namespaces should be removed from the OpenImmo-XML.</source>
+        <target>Hier kannst du angeben, ob XML-Namespaces aus der OpenImmo-XML entfernt werden sollen.</target>
+      </trans-unit>
       <trans-unit id="tl_interface.autoSync.0">
         <source>Automatic synchronization</source>
         <target>Automatische Synchronisierung</target>

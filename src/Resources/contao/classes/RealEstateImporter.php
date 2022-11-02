@@ -872,14 +872,16 @@ class RealEstateImporter extends \BackendModule
     {
         $data = file_get_contents($this->strRootDir . '/' . $this->syncFile);
 
-        /* FlowFact
-        $data = str_replace('<imo:', '<', $data);
-        $data = str_replace('</imo:', '</', $data);
+        // Remove XML namespaces
+        if ($this->objInterface->removeXmlNamespaces)
+        {
+            $data = str_replace('<imo:', '<', $data);
+            $data = str_replace('</imo:', '</', $data);
 
-        $oi_open_pos = strpos($data, '<openimmo');
-        $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
-        $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
-        */
+            $oi_open_pos = strpos($data, '<openimmo');
+            $oi_close_pos = strpos(substr($data, $oi_open_pos), '>');
+            $data = substr($data, 0, $oi_open_pos) . '<openimmo>' . substr($data, $oi_close_pos + $oi_open_pos + 1);
+        }
 
         try {
             $this->data = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
