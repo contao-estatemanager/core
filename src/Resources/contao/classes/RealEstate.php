@@ -795,7 +795,8 @@ class RealEstate extends System
      */
     public static function parseImageTemplate($objFile, $imgSize, bool $blnImageFallback=true, ?string $strTemplate=null): string
     {
-        if ($objFile === null || !file_exists(System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path))
+        // ToDo: Check after merge
+        if ($objFile === null || !file_exists($path = (System::getContainer()->getParameter('kernel.project_dir') . '/' . $objFile->path)) || !filesize($path))
         {
             // Set default image
             if($blnImageFallback && $defaultImage = Config::get('defaultImage'))
