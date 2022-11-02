@@ -139,9 +139,9 @@ class ModuleRealEstateExpose extends ModuleRealEstate
         // Filter the disabled modules
         foreach ($arrModules as $module)
         {
-            if ($module['enable'])
+            if ($module['enable'] ?? null)
             {
-                $arrModuleIds[] = $module['mod'];
+                $arrModuleIds[] = $module['mod'] ?? null;
             }
         }
 
@@ -164,13 +164,13 @@ class ModuleRealEstateExpose extends ModuleRealEstate
             foreach ($arrModules as $arrModule)
             {
                 // Disabled module
-                if (!$arrModule['enable'])
+                if (!($arrModule['enable'] ?? null))
                 {
                     continue;
                 }
 
                 // Replace the module ID with the module model
-                if ($arrModule['mod'] > 0 && isset($arrMapper[$arrModule['mod']]))
+                if (($arrModule['mod'] ?? null) > 0 && isset($arrMapper[$arrModule['mod']]))
                 {
                     $arrModule['mod'] = $arrMapper[$arrModule['mod']];
                 }

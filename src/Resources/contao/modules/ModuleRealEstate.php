@@ -355,7 +355,7 @@ abstract class ModuleRealEstate extends Module
             }
 
             $this->Template->sortingOptions = $arrOptions;
-            $this->Template->selectedSortingOption = $_SESSION['SORTING'];
+            $this->Template->selectedSortingOption = $_SESSION['SORTING'] ?? null;
         }
     }
 
