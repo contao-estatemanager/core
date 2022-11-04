@@ -452,7 +452,7 @@ class ExposeForm extends Form
         (
             'tmp_name' => TL_ROOT . '/' . $filePath,
             'name'     => 'feedback.xml',
-            'type'     => 'xml'
+            'type'     => 'application/xml'
         );
     }
 
