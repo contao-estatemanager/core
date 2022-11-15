@@ -976,7 +976,7 @@ class RealEstateImporter extends BackendModule
                 "size" => $size,
                 "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
                 "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
-                "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : 0,
+                "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
                 "checked" => false
             );
         }
