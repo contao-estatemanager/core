@@ -184,7 +184,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             (
                 array('tl_real_estate', 'generateAlias')
             ),
-            'sql'                     => "varchar(255) COLLATE utf8_bin NOT NULL default ''"
+            'sql'                     => "varchar(255) BINARY NOT NULL default ''"
         ),
         'provider' => array
         (
