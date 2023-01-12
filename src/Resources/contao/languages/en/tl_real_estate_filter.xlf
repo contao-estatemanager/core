@@ -8,14 +8,12 @@
       <trans-unit id="tl_real_estate_filter.kauf_erbpacht">
         <source>Buy</source>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_filter.from">
         <source>min</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.to">
         <source>max</source>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_filter.price">
         <source>Price</source>
       </trans-unit>
@@ -52,6 +50,87 @@
       <trans-unit id="tl_real_estate_filter.pauschalmiete_price_to">
         <source>max. inclusive rent</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.betriebskostennetto">
+        <source>Operating costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.betriebskostennetto_price_from">
+        <source>min. operating costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.betriebskostennetto_price_to">
+        <source>max. operating costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.evbnetto">
+        <source>Maintenance costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.evbnetto_price_from">
+        <source>min. maintenance costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.evbnetto_price_to">
+        <source>max. maintenance costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietenetto">
+        <source>Total net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietenetto_price_from">
+        <source>min. total net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietenetto_price_to">
+        <source>max. total net rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietebrutto">
+        <source>Total gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietebrutto_price_from">
+        <source>min. total gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietebrutto_price_to">
+        <source>max. total gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungnetto">
+        <source>Total load net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungnetto_price_from">
+        <source>min. total load net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungnetto_price_to">
+        <source>max. total load net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungbrutto">
+        <source>Total load gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungbrutto_price_from">
+        <source>min. total load gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungbrutto_price_to">
+        <source>max. total load gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostennetto">
+        <source>Monthly costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostennetto_price_from">
+        <source>min. monthly costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostennetto_price_to">
+        <source>max. monthly costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostenbrutto">
+        <source>Monthly costs gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostenbrutto_price_from">
+        <source>min. monthly costs gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostenbrutto_price_to">
+        <source>max. monthly costs gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ruecklagenetto">
+        <source>Net reserves</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ruecklagenetto_price_from">
+        <source>min. net reserves</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ruecklagenetto_price_to">
+        <source>max. net reserves</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht">
         <source>Lease</source>
       </trans-unit>
@@ -60,6 +139,24 @@
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht_price_to">
         <source>max. lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erbpacht">
+        <source>Hereditary lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erbpacht_price_from">
+        <source>min. hereditary lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erbpacht_price_to">
+        <source>max. hereditary lease</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.hausgeld">
+        <source>HOA fee</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.hausgeld_price_from">
+        <source>min. HOA fee</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.hausgeld_price_to">
+        <source>max. HOA fee</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kaufpreis">
         <source>Purchase price</source>
@@ -70,7 +167,87 @@
       <trans-unit id="tl_real_estate_filter.kaufpreis_price_to">
         <source>max. purchase price</source>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate_filter.kaufpreisnetto">
+        <source>Purchase price net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisnetto_price_from">
+        <source>min. net purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisnetto_price_to">
+        <source>max. net purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisbrutto">
+        <source>Purchase price gross</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisbrutto_price_from">
+        <source>min. net purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisbrutto_price_to">
+        <source>max. net purchase price</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete">
+        <source>Basic rent net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_price_from">
+        <source>min. net basic rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_price_to">
+        <source>max. net basic rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete">
+        <source>Cold rent net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_price_from">
+        <source>min. cold rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_price_to">
+        <source>max. cold rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.warmmiete">
+        <source>Gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.warmmiete_price_from">
+        <source>min. gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.warmmiete_price_to">
+        <source>max. gross rent</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkosten">
+        <source>Ancillary costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkosten_price_from">
+        <source>min. ancillary costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkosten_price_to">
+        <source>max. ancillary costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkosten">
+        <source>Heating costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkosten_price_from">
+        <source>min. heating costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkosten_price_to">
+        <source>max. heating costs</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostenEnthalten">
+        <source>Heating costs included</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostenEnthalten_price_from">
+        <source>min. heating costs included</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostenEnthalten_price_to">
+        <source>max. heating costs included</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostennetto">
+        <source>Heating costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostennetto_price_from">
+        <source>min. heating costs net</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostennetto_price_to">
+        <source>max. heating costs net</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.price_per">
         <source>Price per</source>
       </trans-unit>
@@ -80,7 +257,6 @@
       <trans-unit id="tl_real_estate_filter.per_square_meter">
         <source>per sqm</source>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_filter.room">
         <source>Rooms</source>
       </trans-unit>
@@ -96,7 +272,6 @@
       <trans-unit id="tl_real_estate_filter.room_to_x">
         <source>up to %s rooms</source>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_filter.area">
         <source>Area</source>
       </trans-unit>
@@ -181,7 +356,6 @@
       <trans-unit id="tl_real_estate_filter.gastroflaeche_area_to">
         <source>Restaurant area up to</source>
       </trans-unit>
-
       <trans-unit id="tl_real_estate_filter.period">
         <source>Free of relation</source>
       </trans-unit>
@@ -191,17 +365,20 @@
       <trans-unit id="tl_real_estate_filter.period_to">
         <source>Free of relation to</source>
       </trans-unit>
-
-
       <trans-unit id="tl_real_estate_filter.radius">
         <source>Radius</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.radius_unit">
         <source>%s km</source>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate_filter.dateAdded_asc">
+        <source>Updated (oldest first)</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.dateAdded_desc">
         <source>Updated (most recent)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.tstamp_desc">
+        <source>Updated (oldest first)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.tstamp_desc">
         <source>Updated (most recent)</source>
@@ -221,11 +398,53 @@
       <trans-unit id="tl_real_estate_filter.kaufpreis_desc">
         <source>Purchase price (price decreasing)</source>
       </trans-unit>
-      <trans-unit id="tl_real_estate_filter.kaltmiete_asc">
-        <source>Net rent (price increasing)</source>
+      <trans-unit id="tl_real_estate_filter.kaufpreisnetto_asc">
+        <source>Purchase price net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisnetto_desc">
+        <source>Purchase price net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisbrutto_asc">
+        <source>Purchase price net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisbrutto_desc">
+        <source>Purchase price gross (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_desc">
+        <source>Basic rent net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettokaltmiete_asc">
+        <source>Basic rent net (price increasing)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.kaltmiete_desc">
         <source>Net rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaltmiete_asc">
+        <source>Net rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.warmmiete_desc">
+        <source>Gross rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.warmmiete_asc">
+        <source>Gross rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkosten_desc">
+        <source>Ancillary costs (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkosten_asc">
+        <source>Ancillary costs (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkosten_desc">
+        <source>Heating costs (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkosten_asc">
+        <source>Heating costs (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostennetto_desc">
+        <source>Heating costs net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.heizkostennetto_asc">
+        <source>Heating costs net (price increasing)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pauschalmiete_asc">
         <source>Inclusive rent (price increasing)</source>
@@ -233,11 +452,149 @@
       <trans-unit id="tl_real_estate_filter.pauschalmiete_desc">
         <source>Inclusive rent (price decreasing)</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.betriebskostennetto_desc">
+        <source>Operating costs net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.betriebskostennetto_asc">
+        <source>Operating costs net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.evbnetto_desc">
+        <source>Maintenance fund (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.evbnetto_asc">
+        <source>Maintenance fund (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietenetto_desc">
+        <source>Total rent net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietenetto_asc">
+        <source>Total rent net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietebrutto_desc">
+        <source>Total rent gross (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtmietebrutto_asc">
+        <source>Total rent gross (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungnetto_desc">
+        <source>Total load net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungnetto_asc">
+        <source>Total load net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungbrutto_desc">
+        <source>Total load gross (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtbelastungbrutto_asc">
+        <source>Total load gross (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtkostenprom2von_desc">
+        <source>Total costs per sqm of (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtkostenprom2von_asc">
+        <source>Total costs per sqm of (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtkostenprom2bis_desc">
+        <source>Total costs per sqm up to (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gesamtkostenprom2bis_asc">
+        <source>Total costs per sqm up to (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostennetto_desc">
+        <source>Monthly costs net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostennetto_asc">
+        <source>Monthly costs net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostenbrutto_desc">
+        <source>Monthly costs gross (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.monatlichekostenbrutto_asc">
+        <source>Monthly costs gross (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkostenprom2von_desc">
+        <source>Ancillary costs per sqm of (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkostenprom2von_asc">
+        <source>Ancillary costs per sqm of (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkostenprom2bis_desc">
+        <source>Ancillary costs per sqm up to (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nebenkostenprom2bis_asc">
+        <source>Ancillary costs per sqm up to (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ruecklagenetto_desc">
+        <source>Net reserves (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ruecklagenetto_asc">
+        <source>Net reserves (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstigekostennetto_desc">
+        <source>Other costs net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstigekostennetto_asc">
+        <source>Other costs net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstigemietenetto_desc">
+        <source>Other rents net (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstigemietenetto_asc">
+        <source>Other rents net (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.summemietenetto_desc">
+        <source>Total net rent (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.summemietenetto_asc">
+        <source>Total net rent (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettomieteprom2von_desc">
+        <source>Net rent per sqm of (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettomieteprom2von_asc">
+        <source>Net rent per sqm of (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettomieteprom2bis_desc">
+        <source>Net rent per sqm up to (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nettomieteprom2bis_asc">
+        <source>Net rent per sqm up to (price increasing)</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht_asc">
         <source>Lease (price increasing)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.pacht_desc">
         <source>Lease (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erbpacht_asc">
+        <source>Hereditary lease (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erbpacht_desc">
+        <source>Hereditary lease (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.hausgeld_asc">
+        <source>HOA fee (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.hausgeld_desc">
+        <source>HOA fee (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.mietpreisProQm_asc">
+        <source>Rental price per sqm (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.mietpreisProQm_desc">
+        <source>Rental price per sqm (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisProQm_asc">
+        <source>Purchase price per sqm (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kaufpreisProQm_desc">
+        <source>Purchase price per sqm (price decreasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erschliessungskosten_asc">
+        <source>Infrastructure costs (price increasing)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.erschliessungskosten_desc">
+        <source>Infrastructure costs (price decreasing)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.anzahlZimmer_asc">
         <source>Number of rooms (lowest to highest)</source>
@@ -245,11 +602,95 @@
       <trans-unit id="tl_real_estate_filter.anzahlZimmer_desc">
         <source>Number of rooms (highest to lowest)</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlSchlafzimmer_asc">
+        <source>Number of bedrooms (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlSchlafzimmer_desc">
+        <source>Number of bedrooms (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlBadezimmer_asc">
+        <source>Number of bathrooms (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlBadezimmer_desc">
+        <source>Number of bathrooms (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlSepWc_asc">
+        <source>Number of separate toilets (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlSepWc_desc">
+        <source>Number of separate toilets (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlBalkone_asc">
+        <source>Number of balconies (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlBalkone_desc">
+        <source>Number of balconies (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlTerrassen_asc">
+        <source>Number of terraces (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlTerrassen_desc">
+        <source>Number of terraces (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlLogia_asc">
+        <source>Number of loggias (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlLogia_desc">
+        <source>Number of loggias (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.balkonTerrasseFlaeche_asc">
+        <source>Balcony/Terrace area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.balkonTerrasseFlaeche_desc">
+        <source>Balcony/Terrace area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlWohnSchlafzimmer_asc">
+        <source>Bed-sitting rooms (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.anzahlWohnSchlafzimmer_desc">
+        <source>Bed-sitting rooms (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gartenflaeche_asc">
+        <source>Garden area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gartenflaeche_desc">
+        <source>Garden area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kellerflaeche_asc">
+        <source>Basement area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.kellerflaeche_desc">
+        <source>Basement area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.fensterfrontQm_asc">
+        <source>Glass facade sqm (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.fensterfrontQm_desc">
+        <source>Glass facade sqm (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksfront_asc">
+        <source>Plot depth (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.grundstuecksfront_desc">
+        <source>Plot depth (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.dachbodenflaeche_asc">
+        <source>Attic area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.dachbodenflaeche_desc">
+        <source>Attic area (highest to lowest)</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.wohnflaeche_asc">
         <source>Living space (lowest to highest)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.wohnflaeche_desc">
         <source>Living space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_asc">
+        <source>Usable area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.nutzflaeche_desc">
+        <source>Usable area (highest to lowest)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.gesamtflaeche_asc">
         <source>Total area (lowest to highest)</source>
@@ -257,11 +698,65 @@
       <trans-unit id="tl_real_estate_filter.gesamtflaeche_desc">
         <source>Total area (highest to lowest)</source>
       </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ladenflaeche_asc">
+        <source>Shop space (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.ladenflaeche_desc">
+        <source>Shop space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_asc">
+        <source>Storage space (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.lagerflaeche_desc">
+        <source>Storage space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_asc">
+        <source>Area for sale (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verkaufsflaeche_desc">
+        <source>Area for sale (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.freiflaeche_asc">
+        <source>Open area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.freiflaeche_desc">
+        <source>Open area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_asc">
+        <source>Office space (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroflaeche_desc">
+        <source>Office space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroteilflaeche_asc">
+        <source>Partial office space (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.bueroteilflaeche_desc">
+        <source>Partial office space (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verwaltungsflaeche_asc">
+        <source>Administrative area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.verwaltungsflaeche_desc">
+        <source>Administrative area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_asc">
+        <source>Restaurant area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.gastroflaeche_desc">
+        <source>Restaurant area (highest to lowest)</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_asc">
         <source>Plot area (lowest to highest)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.grundstuecksflaeche_desc">
         <source>Plot area (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstflaeche_asc">
+        <source>Other area (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.sonstflaeche_desc">
+        <source>Other area (highest to lowest)</source>
       </trans-unit>
       <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_asc">
         <source>Rentable area (lowest to highest)</source>
@@ -269,7 +764,24 @@
       <trans-unit id="tl_real_estate_filter.vermietbareFlaeche_desc">
         <source>Rentable area (highest to lowest)</source>
       </trans-unit>
-
+      <trans-unit id="tl_real_estate_filter.flaechevon_asc">
+        <source>Area from (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.flaechevon_desc">
+        <source>Area from (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.flaechebis_asc">
+        <source>Area up to (lowest to highest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.flaechebis_desc">
+        <source>Area up to (highest to lowest)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.baujahr_asc">
+        <source>Construction year (oldest first)</source>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_filter.baujahr_desc">
+        <source>Construction year (newest first)</source>
+      </trans-unit>
       <trans-unit id="tl_real_estate_filter.country">
         <source>Country</source>
       </trans-unit>
