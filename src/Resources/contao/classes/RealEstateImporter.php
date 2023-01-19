@@ -697,6 +697,7 @@ class RealEstateImporter extends \BackendModule
                             // Create new contact person
                             $objContactPerson = new ContactPersonModel();
                             $objContactPerson->setRow($contactPerson);
+                            $objContactPerson->tstamp = time();
                             $objContactPerson->pid = $objProvider->id;
                             $objContactPerson->published = 1;
                             $objContactPerson->save();
