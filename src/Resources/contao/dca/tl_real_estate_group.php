@@ -416,7 +416,7 @@ class tl_real_estate_group extends Contao\Backend
         {
             if (!$autoAlias)
             {
-                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+                throw new Exception(sprintf(($GLOBALS['TL_LANG']['ERR']['aliasExists'] ?? null), $varValue));
             }
 
             $varValue .= '-' . $dc->id;

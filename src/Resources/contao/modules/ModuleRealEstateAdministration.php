@@ -44,12 +44,12 @@ class ModuleRealEstateAdministration extends BackendModule
 
 		$this->Template->content = '';
 		$this->Template->href = $this->getReferer(true);
-		$this->Template->title = StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
-		$this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
+		$this->Template->title = StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle'] ?? '');
+		$this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'] ?? null;
 
-        $this->Template->headline = $GLOBALS['TL_LANG']['tl_real_estate_administration']['title'];
+        $this->Template->headline = $GLOBALS['TL_LANG']['tl_real_estate_administration']['title'] ?? null;
         $this->Template->version = $GLOBALS['TL_LANG']['MSC']['version'] . ': ' . (isset($packages['contao-estatemanager/core']) ? $packages['contao-estatemanager/core'] : '0.0.0');
-        $this->Template->descritption = sprintf($GLOBALS['TL_LANG']['MSC']['estatemanager_description'], '<a href="https://www.oveleon.de/" target="_blank">' . $GLOBALS['TL_LANG']['MSC']['estatemanager_company'] . '</a>');
+        $this->Template->description = sprintf($GLOBALS['TL_LANG']['MSC']['estatemanager_description'] ?? '', '<a href="https://www.oveleon.de/" target="_blank">' . ($GLOBALS['TL_LANG']['MSC']['estatemanager_company'] ?? null) . '</a>');
 
         $groups = array();
 
@@ -57,7 +57,7 @@ class ModuleRealEstateAdministration extends BackendModule
         {
             $gp = array(
                 'alias'   => $group,
-                'group'   => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ 'group_' . $group ],
+                'group'   => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ 'group_' . $group ] ?? null),
                 'modules' => array()
             );
 
@@ -73,8 +73,8 @@ class ModuleRealEstateAdministration extends BackendModule
                 }
 
                 $gp['modules'][] = array(
-                    'title' => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0],
-                    'desc'  => $GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1],
+                    'title' => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0] ?? null),
+                    'desc'  => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1] ?? null),
                     'link'  => $link,
                     'denied' => !$this->User->hasAccess($module, 'modules')
                 );

@@ -50,7 +50,7 @@ class tl_estate_manager_addon extends Contao\Backend
     {
         if (!array_key_exists('TL_ESTATEMANAGER_ADDONS', $GLOBALS))
         {
-            Message::addInfo($GLOBALS['TL_LANG']['tl_estate_manager_addon']['no_addons']);
+            Message::addInfo($GLOBALS['TL_LANG']['tl_estate_manager_addon']['no_addons'] ?? '');
             return;
         }
 
@@ -110,23 +110,23 @@ class tl_estate_manager_addon extends Contao\Backend
             $expTimeEnd = strtotime('+2 weeks', $expTime);
             if($expTimeEnd > $curTime && $expTime <= $curTime)
             {
-                $info = sprintf($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expiration_date'], date(Contao\Config::get('datimFormat'), $expTimeEnd));
-                $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' validLicense demo';
+                $info = sprintf($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expiration_date'] ?? '', date(Contao\Config::get('datimFormat'), $expTimeEnd));
+                $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = ($GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] ?? null) . ' validLicense demo';
             }
             else
             {
-                $info = $GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expired'];
-                $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' expiredLicense';
+                $info = $GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_expired'] ?? '';
+                $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = ($GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] ?? null) . ' expiredLicense';
             }
 
-            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['label'] = array($GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $dc->field ][0], $info);
+            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['label'] = array(($GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $dc->field ][0] ?? null), $info);
         }
 
         // Check valid license
         elseif(ContaoEstateManager\EstateManager::checkLicenses($varValue, $strClass::getLicenses(), $strClass::$key))
         {
-            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] . ' validLicense';
-            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['label'] = array($GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $dc->field ][0], $GLOBALS['TL_LANG']['tl_estate_manager_addon']['valid_license']);
+            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] = ($GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['eval']['tl_class'] ?? null) . ' validLicense';
+            $GLOBALS['TL_DCA']['tl_estate_manager_addon']['fields'][ $dc->field ]['label'] = array(($GLOBALS['TL_LANG']['tl_estate_manager_addon'][ $dc->field ][0] ?? null), ($GLOBALS['TL_LANG']['tl_estate_manager_addon']['valid_license'] ?? null));
         }
 
         return $varValue;

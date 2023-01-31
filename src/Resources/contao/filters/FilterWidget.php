@@ -94,7 +94,7 @@ abstract class FilterWidget extends Widget
 
 		$this->addAttributes($arrAttributes);
 
-		$this->mandatoryField = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+		$this->mandatoryField = $GLOBALS['TL_LANG']['MSC']['mandatory'] ?? null;
 
 		if ($this->customTpl != '' && TL_MODE == 'FE')
 		{
@@ -193,11 +193,11 @@ abstract class FilterWidget extends Widget
 			{
 				if ($this->strLabel == '')
 				{
-					$this->addError($GLOBALS['TL_LANG']['ERR']['mdtryNoLabel']);
+					$this->addError($GLOBALS['TL_LANG']['ERR']['mdtryNoLabel'] ?? '');
 				}
 				else
 				{
-					$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['mandatory'], $this->strLabel));
+					$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['mandatory'] ?? '', $this->strLabel));
 				}
 			}
 		}
@@ -215,7 +215,7 @@ abstract class FilterWidget extends Widget
 					}
 					if (!Validator::isNumeric($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['digit'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['digit'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -223,7 +223,7 @@ abstract class FilterWidget extends Widget
 				case 'natural':
 					if (!Validator::isNatural($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['natural'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['natural'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -231,7 +231,7 @@ abstract class FilterWidget extends Widget
 				case 'alpha':
 					if (!Validator::isAlphabetic($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alpha'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alpha'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -239,7 +239,7 @@ abstract class FilterWidget extends Widget
 				case 'alnum':
 					if (!Validator::isAlphanumeric($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alnum'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['alnum'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -247,7 +247,7 @@ abstract class FilterWidget extends Widget
 				case 'extnd':
 					if (!Validator::isExtendedAlphanumeric(html_entity_decode($varInput)))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['extnd'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['extnd'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -255,7 +255,7 @@ abstract class FilterWidget extends Widget
 				case 'date':
 					if (!Validator::isDate($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['date'], Date::getInputFormat(Date::getNumericDateFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['date'] ?? '', Date::getInputFormat(Date::getNumericDateFormat())));
 					}
 					else
 					{
@@ -266,7 +266,7 @@ abstract class FilterWidget extends Widget
 						}
 						catch (\OutOfBoundsException $e)
 						{
-							$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidDate'], $varInput));
+							$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidDate'] ?? '', $varInput));
 						}
 					}
 					break;
@@ -275,7 +275,7 @@ abstract class FilterWidget extends Widget
 				case 'time':
 					if (!Validator::isTime($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'], Date::getInputFormat(Date::getNumericTimeFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['time'] ?? '', Date::getInputFormat(Date::getNumericTimeFormat())));
 					}
 					break;
 
@@ -283,7 +283,7 @@ abstract class FilterWidget extends Widget
 				case 'datim':
 					if (!Validator::isDatim($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'], Date::getInputFormat(Date::getNumericDatimFormat())));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['dateTime'] ?? '', Date::getInputFormat(Date::getNumericDatimFormat())));
 					}
 					else
 					{
@@ -294,7 +294,7 @@ abstract class FilterWidget extends Widget
 						}
 						catch (\OutOfBoundsException $e)
 						{
-							$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidDate'], $varInput));
+							$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['invalidDate'] ?? '', $varInput));
 						}
 					}
 					break;
@@ -303,7 +303,7 @@ abstract class FilterWidget extends Widget
 				case 'prcnt':
 					if (!Validator::isPercent($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['prcnt'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['prcnt'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -311,7 +311,7 @@ abstract class FilterWidget extends Widget
 				case 'locale':
 					if (!Validator::isLocale($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['locale'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['locale'] ?? '', $this->strLabel));
 					}
 					break;
 
@@ -319,7 +319,7 @@ abstract class FilterWidget extends Widget
 				case 'language':
 					if (!Validator::isLanguage($varInput))
 					{
-						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['language'], $this->strLabel));
+						$this->addError(sprintf($GLOBALS['TL_LANG']['ERR']['language'] ?? '', $this->strLabel));
 					}
 					break;
 

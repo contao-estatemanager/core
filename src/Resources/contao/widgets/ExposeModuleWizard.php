@@ -61,7 +61,7 @@ class ExposeModuleWizard extends Widget
 		// Translate type
 		foreach ($modules as $k=>$v)
 		{
-			$v['type'] = $GLOBALS['TL_LANG']['FMD'][$v['type']][0];
+			$v['type'] = ($GLOBALS['TL_LANG']['FMD'][$v['type']][0] ?? null);
 			$modules[$k] = $v;
 		}
 
@@ -128,8 +128,8 @@ class ExposeModuleWizard extends Widget
 		$return = '<table id="ctrl_'.$this->strId.'" class="tl_modulewizard">
   <thead>
   <tr>
-    <th>'.$GLOBALS['TL_LANG']['MSC']['mw_module'].'</th>
-    <th>'.$GLOBALS['TL_LANG']['MSC']['mw_column'].'</th>
+    <th>'.($GLOBALS['TL_LANG']['MSC']['mw_module'] ?? null).'</th>
+    <th>'.($GLOBALS['TL_LANG']['MSC']['mw_column'] ?? null).'</th>
     <th></th>
   </tr>
   </thead>
@@ -171,15 +171,15 @@ class ExposeModuleWizard extends Widget
 				}
 				elseif ($button == 'drag')
 				{
-					$return .= ' <button type="button" class="drag-handle" title="' . StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['move']) . '" aria-hidden="true">' . Image::getHtml('drag.svg') . '</button>';
+					$return .= ' <button type="button" class="drag-handle" title="' . StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['move'] ?? '') . '" aria-hidden="true">' . Image::getHtml('drag.svg') . '</button>';
 				}
 				elseif ($button == 'enable')
 				{
-					$return .= ' <button type="button" data-command="enable" class="mw_enable" title="' . StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['mw_enable']) . '">' . Image::getHtml((($this->varValue[$i]['enable']  ?? null) ? 'visible.svg' : 'invisible.svg')) . '</button><input name="'.$this->strId.'['.$i.'][enable]" type="checkbox" class="tl_checkbox mw_enable" value="1" onfocus="Backend.getScrollOffset()"'. (($this->varValue[$i]['enable'] ?? null) ? ' checked' : '').'>';
+					$return .= ' <button type="button" data-command="enable" class="mw_enable" title="' . StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['mw_enable'] ?? '') . '">' . Image::getHtml((($this->varValue[$i]['enable']  ?? null) ? 'visible.svg' : 'invisible.svg')) . '</button><input name="'.$this->strId.'['.$i.'][enable]" type="checkbox" class="tl_checkbox mw_enable" value="1" onfocus="Backend.getScrollOffset()"'. (($this->varValue[$i]['enable'] ?? null) ? ' checked' : '').'>';
 				}
 				else
 				{
-					$return .= ' <button type="button" data-command="' . $button . '" title="' . \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['mw_'.$button]) . '">' . Image::getHtml($button.'.svg') . '</button>';
+					$return .= ' <button type="button" data-command="' . $button . '" title="' . \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['mw_'.$button] ?? '') . '">' . Image::getHtml($button.'.svg') . '</button>';
 				}
 			}
 

@@ -81,11 +81,11 @@ class LicenseField extends Widget
         {
             if(strtolower($varInput) === 'demo')
             {
-                $this->addError($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_used']);
+                $this->addError($GLOBALS['TL_LANG']['tl_estate_manager_addon']['demo_used'] ?? '');
             }
             else
             {
-                $this->addError($GLOBALS['TL_LANG']['tl_estate_manager_addon']['invalid_license']);
+                $this->addError($GLOBALS['TL_LANG']['tl_estate_manager_addon']['invalid_license'] ?? '');
             }
         }
 

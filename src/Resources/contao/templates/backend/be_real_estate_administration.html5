@@ -5,7 +5,7 @@
         </div>
         <div class="em_info">
             <span><?=$this->version?></span>
-            <div><?=$this->descritption?></div>
+            <div><?=$this->description?></div>
         </div>
     </div>
     <div class="re_listing_container">
@@ -26,8 +26,8 @@
         <?php endforeach; ?>
     </div>
     <div class="em_footer">
-        <a href="https://www.contao-estatemanager.com/" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_website']?></a> ·
-        <a href="https://docs.contao-estatemanager.com/" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_documentation']?></a> ·
-        <a href="https://github.com/contao-estatemanager/core/issues" target="_blank"><?=$GLOBALS['TL_LANG']['MSC']['estatemanager_issue']?></a>
+        <a href="https://www.contao-estatemanager.com/" target="_blank"><?=($GLOBALS['TL_LANG']['MSC']['estatemanager_website'] ?? null)?></a> ·
+        <a href="https://docs.contao-estatemanager.com/" target="_blank"><?=($GLOBALS['TL_LANG']['MSC']['estatemanager_documentation'] ?? null)?></a> ·
+        <a href="https://github.com/contao-estatemanager/core/issues" target="_blank"><?=($GLOBALS['TL_LANG']['MSC']['estatemanager_issue'] ?? null)?></a>
     </div>
 </div>
