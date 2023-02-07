@@ -215,7 +215,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate']['anbieternr'],
             'exclude'                   => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>32, 'tl_class'=>'w50'),
+            'eval'                    => array('maxlength'=>32, 'tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
 
