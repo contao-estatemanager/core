@@ -57,7 +57,7 @@ class ModuleRealEstateAdministration extends BackendModule
         {
             $gp = array(
                 'alias'   => $group,
-                'group'   => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ 'group_' . $group ] ?? null),
+                'group'   => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ 'group_' . $group ] ?? ''),
                 'modules' => array()
             );
 
@@ -73,8 +73,8 @@ class ModuleRealEstateAdministration extends BackendModule
                 }
 
                 $gp['modules'][] = array(
-                    'title' => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0] ?? null),
-                    'desc'  => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1] ?? null),
+                    'title' => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][0] ?? ''),
+                    'desc'  => ($GLOBALS['TL_LANG']['tl_real_estate_administration'][ $module ][1] ?? ''),
                     'link'  => $link,
                     'denied' => !$this->User->hasAccess($module, 'modules')
                 );

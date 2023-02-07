@@ -303,7 +303,7 @@ class tl_field_format extends Contao\Backend
             {
                 if (!in_array($field, $skipFields))
                 {
-                    $options[$field] = $field.' [' . $GLOBALS['TL_LANG']['tl_real_estate'][$field][0] . ']';
+                    $options[$field] = ($field.' ['.$GLOBALS['TL_LANG']['tl_real_estate'][$field][0].']') ?? '';
                 }
             }
         }

@@ -520,7 +520,7 @@ class tl_filter extends Contao\Backend
         {
             if (!$autoAlias)
             {
-                throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
+                throw new Exception(sprintf(($GLOBALS['TL_LANG']['ERR']['aliasExists'] ?? 'The alias %s already exists!'), $varValue));
             }
 
             $varValue .= '-' . $dc->id;
