@@ -4919,7 +4919,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'search'                    => true,
-            'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'eval'                      => array('maxlength'=>64, 'preserveTags'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
             'realEstate'                => array(
                 'unique' => true
@@ -4931,7 +4931,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'exclude'                   => true,
             'inputType'                 => 'text',
             'search'                    => true,
-            'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'eval'                      => array('maxlength'=>64, 'preserveTags'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
             'realEstate'                => array(
                 'unique' => true
@@ -4958,7 +4958,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['openimmoObid'],
             'exclude'                   => true,
             'inputType'                 => 'text',
-            'eval'                      => array('maxlength'=>64, 'tl_class'=>'w50'),
+            'eval'                      => array('maxlength'=>64, 'preserveTags'=>true, 'tl_class'=>'w50'),
             'sql'                       => "varchar(64) NOT NULL default ''",
         ),
         'kennungUrsprung'  => array
