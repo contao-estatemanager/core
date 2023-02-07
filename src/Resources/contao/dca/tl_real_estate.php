@@ -219,7 +219,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
 
-         // Objektkategorien
+        // Objektkategorien
         'nutzungsart' => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzungsart'],
