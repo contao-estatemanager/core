@@ -474,6 +474,13 @@ class RealEstateImporter extends \BackendModule
                 {
                     $interfaceMapping = $this->objInterfaceMapping->current();
 
+                    if (null === $interfaceMapping->oiFieldGroup || '' === $interfaceMapping->oiFieldGroup)
+                    {
+                        continue;
+                    }
+
+                    $field  = '';
+
                     $groups = $realEstate->xpath($interfaceMapping->oiFieldGroup);
                     $values = array();
 
