@@ -1,11 +1,11 @@
 <?php echo \Message::generate(); ?>
 <div id="tl_buttons">
-  <a href="<?= $this->getReferer(true) ?>" class="header_back" title="<?= StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b" onclick="Backend.getScrollOffset()"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+  <a href="<?= $this->getReferer(true) ?>" class="header_back" title="<?= StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle'] ?? '') ?>" accesskey="b" onclick="Backend.getScrollOffset()"><?= ($GLOBALS['TL_LANG']['MSC']['backBT'] ?? null) ?></a>
   <?php if ($this->syncAvailable): ?>
     <?php if ($this->type === 'wib'): ?>
-      <a href="<?= ampersand(str_replace('&downloadWibXml=1', '', \Environment::get('request'))) . '&downloadWibXml=1' ?>" class="header_sync"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['sync'] ?></a>
+      <a href="<?= ampersand(str_replace('&downloadWibXml=1', '', \Environment::get('request'))) . '&downloadWibXml=1' ?>" class="header_sync"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['sync'] ?? null) ?></a>
     <?php elseif ($this->type === 'onofficeapi'): ?>
-      <a href="<?= ampersand(str_replace('&downloadOnOfficeApiStream=1', '', \Environment::get('request'))) . '&downloadOnOfficeApiStream=1' ?>" class="header_sync"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['sync'] ?></a>
+      <a href="<?= ampersand(str_replace('&downloadOnOfficeApiStream=1', '', \Environment::get('request'))) . '&downloadOnOfficeApiStream=1' ?>" class="header_sync"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['sync'] ?? null) ?></a>
     <?php endif; ?>
   <?php endif; ?>
 </div>
@@ -19,11 +19,11 @@
         <tbody>
           <tr>
             <th class="tl_folder_tlist col_status"></th>
-            <th class="tl_folder_tlist col_file"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncFile'] ?></th>
-            <th class="tl_folder_tlist col_file_time"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['fileTime'] ?></th>
-            <th class="tl_folder_tlist col_file_size"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['fileSize'] ?></th>
-            <th class="tl_folder_tlist col_sync_time"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncTime'] ?></th>
-            <th class="tl_folder_tlist col_user"><?= $GLOBALS['TL_LANG']['tl_real_estate_sync']['syncUser'] ?></th>
+            <th class="tl_folder_tlist col_file"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['syncFile'] ?? null) ?></th>
+            <th class="tl_folder_tlist col_file_time"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['fileTime'] ?? null) ?></th>
+            <th class="tl_folder_tlist col_file_size"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['fileSize'] ?? null) ?></th>
+            <th class="tl_folder_tlist col_sync_time"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['syncTime'] ?? null) ?></th>
+            <th class="tl_folder_tlist col_user"><?= ($GLOBALS['TL_LANG']['tl_real_estate_sync']['syncUser'] ?? null) ?></th>
             <th class="tl_folder_tlist tl_right_nowrap"></th>
           </tr>
           <?php foreach ($this->files as $i => $file): ?>

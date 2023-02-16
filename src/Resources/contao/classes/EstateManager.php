@@ -124,14 +124,14 @@ class EstateManager
                 }
             }
 
-            Message::addConfirmation($GLOBALS['TL_LANG']['tl_field_format']['imported'][0]);
-            $message = $GLOBALS['TL_LANG']['tl_field_format']['imported'][1];
+            Message::addConfirmation($GLOBALS['TL_LANG']['tl_field_format']['imported'][0] ?? '');
+            $message = $GLOBALS['TL_LANG']['tl_field_format']['imported'][1] ?? '';
         }else{
-            Message::addError($GLOBALS['TL_LANG']['tl_field_format']['import_error'][0]);
-            $message = $GLOBALS['TL_LANG']['tl_field_format']['import_error'][1];
+            Message::addError($GLOBALS['TL_LANG']['tl_field_format']['import_error'][0] ?? '');
+            $message = $GLOBALS['TL_LANG']['tl_field_format']['import_error'][1] ?? '';
         }
 
-        return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=field_format" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
+        return \Message::generate() . '<div id="tl_buttons"><a href="/contao?do=field_format" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle'] ?? '').'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
     }
 
     /**
@@ -213,16 +213,16 @@ class EstateManager
                 $objInterfaceMapping->save();
             }
 
-            Message::addConfirmation($GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][0]);
-            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][1];
+            Message::addConfirmation($GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][0] ?? '');
+            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['imported'][1] ?? '';
         }
         else
         {
-            Message::addError($GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][0]);
-            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][1];
+            Message::addError($GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][0] ?? '');
+            $message = $GLOBALS['TL_LANG']['tl_interface_mapping']['import_error'][1] ?? '';
         }
 
-        return Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']).'" accesskey="b">'.$GLOBALS['TL_LANG']['MSC']['backBT'].'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
+        return Message::generate() . '<div id="tl_buttons"><a href="/contao?do=interface" class="header_back" title="'.\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle'] ?? '').'" accesskey="b">'.($GLOBALS['TL_LANG']['MSC']['backBT'] ?? '').'</a></div>' . ($message ? '<div class="tl_listing_container">' . $message . '</div>' : '');
     }
 
     public function clearRealEstates()

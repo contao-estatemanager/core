@@ -132,7 +132,7 @@ abstract class ModuleRealEstate extends Module
 
         if ($this->forceEmpty)
         {
-            $this->Template->empty = sprintf($GLOBALS['TL_LANG']['MSC']['noUniqueRealEstateResult'], '<span class="unique">'.$_SESSION['FILTER_DATA']['last_unique'].'</span>');
+            $this->Template->empty = sprintf($GLOBALS['TL_LANG']['MSC']['noUniqueRealEstateResult'] ?? '', '<span class="unique">'.$_SESSION['FILTER_DATA']['last_unique'].'</span>');
             return;
         }
 
