@@ -126,10 +126,10 @@ $GLOBALS['TL_DCA']['tl_contact_person'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_contact_person']['anrede'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => array('herr','frau'),
+            'options'                 => array('herr', 'frau', 'firma', 'eheleute', 'familie', 'nicht zutreffend', 'divers'),
             'reference'               => &$GLOBALS['TL_LANG']['tl_contact_person'],
             'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(8) NOT NULL default ''"
+            'sql'                     => "varchar(16) NOT NULL default ''"
         ),
         'firma' => array
         (
@@ -563,15 +563,31 @@ class tl_contact_person extends Contao\Backend
     public function generateSalutation(string $varValue, Contao\DataContainer $dc): string
     {
         // Generate salutation if there is none
-        if ($varValue == '')
+        if ('' == $varValue)
         {
-            if($dc->activeRecord->anrede == 'herr'){
-                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMr'][0];
-            }else{
-                $salutation = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMrs'][0];
+            $prefix  = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationGlobal'][0];
+            $prefix2 = null;
+
+            switch ($salutation = $dc->activeRecord->anrede)
+            {
+                case 'herr':
+                    $prefix  = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMr'][0];
+                    $prefix2 = &$GLOBALS['TL_LANG']['tl_contact_person'][$salutation][1];
+                    break;
+
+                case 'frau':
+                    $prefix  = &$GLOBALS['TL_LANG']['tl_contact_person']['salutationMrs'][0];
+                    $prefix2 = &$GLOBALS['TL_LANG']['tl_contact_person'][$salutation][1];
+                    break;
+
+                case 'eheleute':
+                case 'familie':
+                case 'firma':
+                    $prefix2 = &$GLOBALS['TL_LANG']['tl_contact_person'][$salutation][1];
+                    break;
             }
 
-            $varValue = $salutation . ' ' . $GLOBALS['TL_LANG']['tl_contact_person'][$dc->activeRecord->anrede][0] . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
+            $varValue = $prefix . ($prefix2 ? ' '. $prefix2 : '') . ' ' . ($dc->activeRecord->titel ? $dc->activeRecord->titel . ' ' : '') . $dc->activeRecord->vorname . ' ' . $dc->activeRecord->name;
         }
 
         return $varValue;
