@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions'
+		'default'                     => '{global_legend},estateManagerAdminEmail;{real_estate_list_legend},defaultSorting,statusTokenNewDisplayDuration,defaultNumberOfMainDetails,defaultNumberOfMainAttr,defaultImage;{provider_contact_legend},defaultContactPersonImage,defaultContactPersonFemaleImage,defaultContactPersonMaleImage;{number_legend:hide},numberFormatDecimals,numberFormatThousands;{filter_config_legend:hide},roomOptions;{import_legend:hide},estateManagerMaxFileSize'
 	),
 
 	// Fields
@@ -124,6 +124,13 @@ $GLOBALS['TL_DCA']['tl_real_estate_config'] = array
             'default'                 => '4',
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'tl_class'=>'w50')
+        ),
+        'estateManagerMaxFileSize' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_real_estate_config']['maxFileSize'],
+            'default'                 => '3000000',
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50')
         ),
 	)
 );

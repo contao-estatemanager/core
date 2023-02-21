@@ -12,6 +12,8 @@ namespace ContaoEstateManager;
 
 
 use Contao\BackendTemplate;
+use Contao\Config;
+use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\Database;
 use Contao\Dbafs;
 use Contao\Files;
@@ -21,6 +23,9 @@ use Contao\Input;
 use Contao\StringUtil;
 use Contao\System;
 use Contao\ZipReader;
+use Exception;
+use Psr\Log\LogLevel;
+use Throwable;
 
 class RealEstateImporter extends \BackendModule
 {
@@ -119,6 +124,11 @@ class RealEstateImporter extends \BackendModule
      * @var string
      */
     public $importMessage = 'File imported.';
+
+    /**
+     * @var string
+     */
+    public $errorMessage = '';
 
     /**
      * @var boolean
@@ -362,9 +372,18 @@ class RealEstateImporter extends \BackendModule
 
         if (($this->loadData()))
         {
+            try
+            {
+                $this->syncData();
+            }
+            catch (Throwable $e)
+            {
+                $this->handleImportError($e->getMessage());
+            }
+
             //$this->addLog('OpenImmo data loaded', 1, 'success');
 
-            if ($this->syncData())
+            /*if ($this->syncData())
             {
                 //$this->addLog('Import and synchronization was successful', 0, 'success');
                 //\Message::addConfirmation('Import and synchronization was successful');
@@ -373,7 +392,7 @@ class RealEstateImporter extends \BackendModule
             {
                 //$this->addLog('OpenImmo data could not be synchronized.', 0, 'error');
                 //\Message::addError('OpenImmo data could not be synchronized.');
-            }
+            }*/
         }
         else
         {
@@ -434,6 +453,7 @@ class RealEstateImporter extends \BackendModule
                 {
                     $this->importStatus = 2;
                     $this->importMessage = 'File partially imported.';
+                    $this->errorMessage = 'File was partially imported as no provider could be found';
 
                     continue;
                 }
@@ -850,7 +870,7 @@ class RealEstateImporter extends \BackendModule
 
         try {
             $tmpFolder = new Folder($this->objImportFolder->path . '/tmp');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return;
         }
 
@@ -858,14 +878,22 @@ class RealEstateImporter extends \BackendModule
         $tmpFolder->purge();
 
         // Create history entry
-        $objInterfaceHistory = new InterfaceHistoryModel();
-        $objInterfaceHistory->pid = $this->objInterface->id;
-        $objInterfaceHistory->tstamp = time();
-        $objInterfaceHistory->source = $this->originalSyncFile;
-        $objInterfaceHistory->action = '';
+
+        // In case file already existed before but has been skipped due to an error
+        if (null === ($objInterfaceHistory = InterfaceHistoryModel::findBySource($this->originalSyncFile)))
+        {
+            $objInterfaceHistory = new InterfaceHistoryModel();
+            $objInterfaceHistory->pid      = $this->objInterface->id;
+            $objInterfaceHistory->source   = $this->originalSyncFile;
+        }
+
+        $objInterfaceHistory->tstamp   = time();
+        $objInterfaceHistory->mtime    = FilesHelper::fileModTime($this->originalSyncFile);
+        $objInterfaceHistory->action   = '';
         $objInterfaceHistory->username = $this->username;
-        $objInterfaceHistory->text = $this->importMessage;
-        $objInterfaceHistory->status = $this->importStatus;
+        $objInterfaceHistory->text     = $this->importMessage;
+        $objInterfaceHistory->message  = $this->errorMessage;
+        $objInterfaceHistory->status   = $this->importStatus;
         $objInterfaceHistory->save();
 
         return true;
@@ -893,7 +921,7 @@ class RealEstateImporter extends \BackendModule
 
         try {
             $this->data = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
 
@@ -911,7 +939,7 @@ class RealEstateImporter extends \BackendModule
     {
         try {
             $folder = new Folder($this->objImportFolder->path);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return array();
         }
 
@@ -956,14 +984,23 @@ class RealEstateImporter extends \BackendModule
                 }
             }*/
 
+            // If the file with the same name has been found but was modified
+            $modified =
+                array_key_exists($file, $arrSynced) &&      // Only if it previously existed
+                (0 !== intval($arrSynced[$file]->mtime)) && // Do not reimport pre-update files (< 1.0.29)
+                $mtime !== intval($arrSynced[$file]->mtime) // Only if file has been modified
+            ;
+
             $arrFiles[] = array(
-                "file" => $file,
-                "time" => $mtime,
-                "size" => $size,
-                "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
-                "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
+                "file"     => $file,
+                "time"     => $mtime,
+                "size"     => $size,
+                "user"     => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
+                "status"   => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
                 "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
-                "checked" => false
+                "message"  => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->message : null,
+                "modified" => $modified,
+                "checked"  => false
             );
         }
 
@@ -984,7 +1021,7 @@ class RealEstateImporter extends \BackendModule
                 $this->addLog('File is empty.', 0, 'error');
 
                 // Delete empty file
-                try{ unlink(TL_ROOT . '/' . $file); }catch (\Exception $exception){}
+                try{ unlink(TL_ROOT . '/' . $file); }catch (Exception $exception){}
 
                 return false;
             }
@@ -1016,13 +1053,13 @@ class RealEstateImporter extends \BackendModule
      *
      * @param string $path path to zip file
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function unzipArchive($path)
     {
         try {
             $tmpFolder = new Folder(FilesHelper::fileDirPath($path) . 'tmp');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return;
         }
 
@@ -1333,8 +1370,10 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
-        $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
-        if ($fileSize > 3000000 || $fileSize === 0)
+        $fileSize  = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
+        $maxUpload = Config::get('estateManagerMaxFileSize') ?? 3000000;
+
+        if ($fileSize > $maxUpload || $fileSize === 0)
         {
             return false;
         }
@@ -1461,6 +1500,32 @@ class RealEstateImporter extends \BackendModule
         }
 
         return $arrReturn;
+    }
+
+    /**
+     * Handles import errors by logging the error and disabling the file for the next import
+     */
+    private function handleImportError(string $message): void
+    {
+        $errorMsg = 'The real estate file: ' . $this->originalSyncFile . ' could not be imported.';
+        $logger   = static::getContainer()->get('monolog.logger.contao');
+        $logger->log(LogLevel::ERROR, $errorMsg, array('contao' => new ContaoContext(__METHOD__, 'ERROR')));
+
+        if (null === ($objInterfaceHistory = InterfaceHistoryModel::findBySource($this->originalSyncFile)))
+        {
+            $objInterfaceHistory = new InterfaceHistoryModel();
+            $objInterfaceHistory->pid      = $this->objInterface->id;
+            $objInterfaceHistory->source   = $this->originalSyncFile;
+        }
+
+        $objInterfaceHistory->tstamp   = time();
+        $objInterfaceHistory->mtime    = FilesHelper::fileModTime($this->originalSyncFile);
+        $objInterfaceHistory->username = $this->username;
+        $objInterfaceHistory->text     = 'File has been skipped: <a href="/' . $this->originalSyncFile . '" target="_blank">' . $this->originalSyncFile . '</a>';
+        $objInterfaceHistory->message  = $message;
+        $objInterfaceHistory->status   = 2;
+        $objInterfaceHistory->action   = 'ERROR';
+        $objInterfaceHistory->save();
     }
 
     public function addLog($strMessage, $level=0, $strType='raw', $data=null)

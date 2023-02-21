@@ -219,7 +219,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'sql'                     => "varchar(64) NOT NULL default ''"
         ),
 
-         // Objektkategorien
+        // Objektkategorien
         'nutzungsart' => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['nutzungsart'],
@@ -2272,7 +2272,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'search'                    => true,
             'flag'                      => 1,
-            'eval'                      => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=> 'w50'),
+            'eval'                      => array('maxlength'=>255, 'tl_class'=> 'w50'),
             'sql'                       => "varchar(255) NOT NULL default ''",
         ),
         'objektbeschreibung'  => array
@@ -5238,6 +5238,13 @@ class tl_real_estate extends Contao\Backend
         if (!$varValue)
         {
             $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
+
+            // Do not generate an alias if no title is given
+            if (empty($title))
+            {
+                return '';
+            }
+
             $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate($title);
         }
 

@@ -87,7 +87,7 @@ class RealEstateCronImporter extends \Frontend
 
         foreach ($syncFiles as $syncFile)
         {
-            if (null === $syncFile['synctime'])
+            if ((null === $syncFile['synctime']) || $syncFile['modified'])
             {
                 $files[] = $syncFile;
             }

@@ -24,7 +24,7 @@ return array
     array('tl_contact_person', 'vorname',                  'kontaktperson', 'vorname'),
     array('tl_contact_person', 'titel',                    'kontaktperson', 'titel'),
     array('tl_contact_person', 'position',                 'kontaktperson', 'position'),
-    array('tl_contact_person', 'anrede',                   'kontaktperson', 'anrede'),
+    array('tl_contact_person', 'anrede',                   'kontaktperson', 'anrede', array('text', 'lowercase')),
     array('tl_contact_person', 'anrede_brief',             'kontaktperson', 'anrede_brief'),
     array('tl_contact_person', 'firma',                    'kontaktperson', 'firma'),
     array('tl_contact_person', 'strasse',                  'kontaktperson', 'strasse'),

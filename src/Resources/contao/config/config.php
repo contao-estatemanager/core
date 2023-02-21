@@ -193,3 +193,4 @@ $GLOBALS['TL_CONFIG']['defaultNumberOfMainAttr'] = '3';
 $GLOBALS['TL_CONFIG']['numberFormatDecimals'] = ',';
 $GLOBALS['TL_CONFIG']['numberFormatThousands'] = '.';
 $GLOBALS['TL_CONFIG']['roomOptions'] = '1,2,3,4,5,6,7,8';
+$GLOBALS['TL_CONFIG']['estateManagerMaxFileSize'] = 3000000;

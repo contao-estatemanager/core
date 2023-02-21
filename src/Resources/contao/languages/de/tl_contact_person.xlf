@@ -13,9 +13,57 @@
         <source>Mr.</source>
         <target>Herr</target>
       </trans-unit>
+      <trans-unit id="tl_contact_person.herr.1">
+        <source>Mr.</source>
+        <target>Herr</target>
+      </trans-unit>
       <trans-unit id="tl_contact_person.frau.0">
         <source>Mrs.</source>
         <target>Frau</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.frau.1">
+        <source>Mrs.</source>
+        <target>Frau</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.firma.0">
+        <source>Company</source>
+        <target>Firma</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.firma.1">
+        <source>Company</source>
+        <target>Firma</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.eheleute.0">
+        <source>Spouses</source>
+        <target>Eheleute</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.eheleute.1">
+        <source>spouses</source>
+        <target>Eheleute</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.familie.0">
+        <source>Family</source>
+        <target>Familie</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.familie.1">
+        <source>family</source>
+        <target>Familie</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.nicht_zutreffend.0">
+        <source>Not applicable</source>
+        <target>Nicht zutreffend</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.nicht_zutreffend.1">
+        <source></source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.divers.0">
+        <source>Diverse</source>
+        <target>Divers</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.divers.1">
+        <source></source>
+        <target></target>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
         <source>Dear</source>
@@ -24,6 +72,10 @@
       <trans-unit id="tl_contact_person.salutationMrs.0">
         <source>Dear</source>
         <target>Sehr geehrte</target>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationGlobal.0">
+        <source>Dear</source>
+        <target>Guten Tag</target>
       </trans-unit>
 
       <trans-unit id="tl_contact_person.firma.0">
