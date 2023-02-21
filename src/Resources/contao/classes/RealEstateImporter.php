@@ -12,6 +12,7 @@ namespace ContaoEstateManager;
 
 
 use Contao\BackendTemplate;
+use Contao\Config;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\Database;
 use Contao\Dbafs;
@@ -1355,9 +1356,10 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
-        // ToDo: Add import limit from estatemanager settings
-        $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
-        if ($fileSize > 3000000 || $fileSize === 0)
+        $fileSize  = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
+        $maxUpload = Config::get('estateManagerMaxFileSize') ?? 3000000;
+
+        if ($fileSize > $maxUpload || $fileSize === 0)
         {
             return false;
         }
