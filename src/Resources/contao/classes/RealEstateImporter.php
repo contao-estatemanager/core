@@ -126,6 +126,11 @@ class RealEstateImporter extends \BackendModule
     public $importMessage = 'File imported.';
 
     /**
+     * @var string
+     */
+    public $errorMessage = '';
+
+    /**
      * @var boolean
      */
     public $skipRecord = false;
@@ -448,6 +453,7 @@ class RealEstateImporter extends \BackendModule
                 {
                     $this->importStatus = 2;
                     $this->importMessage = 'File partially imported.';
+                    $this->errorMessage = 'File was partially imported as no provider could be found';
 
                     continue;
                 }
@@ -879,7 +885,7 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->action   = '';
         $objInterfaceHistory->username = $this->username;
         $objInterfaceHistory->text     = $this->importMessage;
-        $objInterfaceHistory->message  = '';
+        $objInterfaceHistory->message  = $this->errorMessage;
         $objInterfaceHistory->status   = $this->importStatus;
         $objInterfaceHistory->save();
 
