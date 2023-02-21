@@ -2272,7 +2272,7 @@ $GLOBALS['TL_DCA']['tl_real_estate'] = array
             'inputType'                 => 'text',
             'search'                    => true,
             'flag'                      => 1,
-            'eval'                      => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=> 'w50'),
+            'eval'                      => array('maxlength'=>255, 'tl_class'=> 'w50'),
             'sql'                       => "varchar(255) NOT NULL default ''",
         ),
         'objektbeschreibung'  => array
