@@ -123,6 +123,12 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
             'search'                  => true,
             'sql'                     => "text NULL"
         ),
+        'message' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['message'],
+            'search'                  => true,
+            'sql'                     => "text NULL"
+        ),
         'status' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['username'],

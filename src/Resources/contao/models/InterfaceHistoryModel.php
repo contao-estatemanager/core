@@ -24,6 +24,7 @@ use Contao\Model\Collection;
  * @property string  $action
  * @property string  $username
  * @property string  $text
+ * @property string  $message
  * @property integer $status
  *
  * @method static InterfaceHistoryModel|null findById($id, array $opt=array())
@@ -36,6 +37,7 @@ use Contao\Model\Collection;
  * @method static InterfaceHistoryModel|null findOneByAction($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByUsername($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByText($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByMessage($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByStatus($val, array $opt=array())
  *
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByPid($val, array $opt=array())
@@ -45,6 +47,7 @@ use Contao\Model\Collection;
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByAction($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByUsername($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByText($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByMessage($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByStatus($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findMultipleByIds($var, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBy($col, $val, array $opt=array())
@@ -58,6 +61,7 @@ use Contao\Model\Collection;
  * @method static integer countByAction($val, array $opt=array())
  * @method static integer countByUsername($val, array $opt=array())
  * @method static integer countByText($val, array $opt=array())
+ * @method static integer countByMessage($val, array $opt=array())
  * @method static integer countByStatus($val, array $opt=array())
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>

@@ -9,6 +9,14 @@
                 <source>Date and time of the log entry</source>
                 <target>Datum und Uhrzeit des Eintrags</target>
             </trans-unit>
+            <trans-unit id="tl_interface_history.mtime.0">
+                <source>Modification date</source>
+                <source>Datei-Änderungsdatum</source>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.mtime.1">
+                <source>Date and time of the last file modification</source>
+                <target>Datum und Uhrzeit der letzten Dateiänderung.</target>
+            </trans-unit>
             <trans-unit id="tl_interface_history.source.0">
                 <source>Origin</source>
                 <target>Ursprung</target>
@@ -40,6 +48,14 @@
             <trans-unit id="tl_interface_history.text.1">
                 <source>Details of the log entry</source>
                 <target>Details des Log-Eintrags</target>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.message.0">
+                <source>Message</source>
+                <source>Nachricht</source>
+            </trans-unit>
+            <trans-unit id="tl_interface_history.message.1">
+                <source>Details of the log message</source>
+                <source>Details der Log-Nachricht</source>
             </trans-unit>
             <trans-unit id="tl_interface_history.show.0">
                 <source>Show details</source>

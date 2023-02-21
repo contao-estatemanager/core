@@ -372,7 +372,7 @@ class RealEstateImporter extends \BackendModule
             }
             catch (Throwable $e)
             {
-                $this->handleImportError($e);
+                $this->handleImportError($e->getMessage());
             }
 
             //$this->addLog('OpenImmo data loaded', 1, 'success');
@@ -878,6 +878,7 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->action   = '';
         $objInterfaceHistory->username = $this->username;
         $objInterfaceHistory->text     = $this->importMessage;
+        $objInterfaceHistory->message  = '';
         $objInterfaceHistory->status   = $this->importStatus;
         $objInterfaceHistory->save();
 
@@ -1354,6 +1355,7 @@ class RealEstateImporter extends \BackendModule
             return false;
         }
 
+        // ToDo: Add import limit from estatemanager settings
         $fileSize = FilesHelper::fileSize($this->objImportFolder->path . '/tmp/' . $value);
         if ($fileSize > 3000000 || $fileSize === 0)
         {
@@ -1487,9 +1489,9 @@ class RealEstateImporter extends \BackendModule
     /**
      * Handles import errors by logging the error and disabling the file for the next import
      */
-    private function handleImportError(string $e): void
+    private function handleImportError(string $message): void
     {
-        $errorMsg = 'The real estate file: ' . $this->originalSyncFile . '. Error: ' . $e;
+        $errorMsg = 'The real estate file: ' . $this->originalSyncFile . ' could not be imported.';
         $logger   = static::getContainer()->get('monolog.logger.contao');
         $logger->log(LogLevel::ERROR, $errorMsg, array('contao' => new ContaoContext(__METHOD__, 'ERROR')));
 
@@ -1504,6 +1506,7 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->mtime    = FilesHelper::fileModTime($this->originalSyncFile);
         $objInterfaceHistory->username = $this->username;
         $objInterfaceHistory->text     = 'File has been skipped: <a href="/' . $this->originalSyncFile . '" target="_blank">' . $this->originalSyncFile . '</a>';
+        $objInterfaceHistory->message  = $message;
         $objInterfaceHistory->status   = 2;
         $objInterfaceHistory->action   = 'ERROR';
         $objInterfaceHistory->save();
