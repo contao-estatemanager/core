@@ -31,7 +31,7 @@
               <td colspan="1" class="tl_file_list col_status">
                 <div class="list_icon_status" style="background-image:url('bundles/estatemanager/icons/status_<?= $file['status'] ?>.svg')">&nbsp;</div>
               </td>
-              <td colspan="1" class="tl_file_list col_file"><?= $file['file'] ?></td>
+              <td colspan="1" class="tl_file_list col_file"><a href="/<?= $file['file'] ?>" target="_blank"<?= $file['message'] ? ' title="' . $file['message'] .'"': '' ?>><?= $file['file'] ?></a></td>
               <td colspan="1" class="tl_file_list col_file_time"><?= date('H:i:s d.m.Y', $file['time']); ?></td>
               <td colspan="1" class="tl_file_list col_file_size"><?= $file['size'] ?></td>
               <td colspan="1" class="tl_file_list col_sync_time"><?= ($file['synctime']) ? date('H:i:s d.m.Y', $file['synctime']) : ''; ?></td>

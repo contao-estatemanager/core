@@ -979,14 +979,15 @@ class RealEstateImporter extends \BackendModule
             ;
 
             $arrFiles[] = array(
-                "file" => $file,
-                "time" => $mtime,
-                "size" => $size,
-                "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
-                "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
+                "file"     => $file,
+                "time"     => $mtime,
+                "size"     => $size,
+                "user"     => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
+                "status"   => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
                 "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
+                "message"  => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->message : null,
                 "modified" => $modified,
-                "checked" => false
+                "checked"  => false
             );
         }
 
