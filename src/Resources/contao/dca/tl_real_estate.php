@@ -5238,6 +5238,13 @@ class tl_real_estate extends Contao\Backend
         if (!$varValue)
         {
             $title = $dc->activeRecord !== null ? $dc->activeRecord->objekttitel : $title;
+
+            // Do not generate an alias if no title is given
+            if (empty($title))
+            {
+                return '';
+            }
+
             $varValue = Contao\System::getContainer()->get('contao.slug.generator')->generate($title);
         }
 
