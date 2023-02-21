@@ -855,6 +855,7 @@ class RealEstateImporter extends \BackendModule
         $objInterfaceHistory->pid = $this->objInterface->id;
         $objInterfaceHistory->tstamp = time();
         $objInterfaceHistory->source = $this->originalSyncFile;
+        $objInterfaceHistory->mtime = FilesHelper::fileModTime($this->originalSyncFile);
         $objInterfaceHistory->action = '';
         $objInterfaceHistory->username = $this->username;
         $objInterfaceHistory->text = $this->importMessage;
@@ -949,6 +950,13 @@ class RealEstateImporter extends \BackendModule
                 }
             }*/
 
+            // If the file with the same name has been found but was modified
+            $modified =
+                array_key_exists($file, $arrSynced) &&      // Only if it previously existed
+                (0 !== intval($arrSynced[$file]->mtime)) && // Do not reimport pre-update files (< 1.0.29)
+                $mtime !== intval($arrSynced[$file]->mtime) // Only if file has been modified
+            ;
+
             $arrFiles[] = array(
                 "file" => $file,
                 "time" => $mtime,
@@ -956,6 +964,7 @@ class RealEstateImporter extends \BackendModule
                 "user" => array_key_exists($file, $arrSynced) ? $arrSynced[$file]->username : null,
                 "status" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->status) : 0,
                 "synctime" => array_key_exists($file, $arrSynced) ? intval($arrSynced[$file]->tstamp) : null,
+                "modified" => $modified,
                 "checked" => false
             );
         }

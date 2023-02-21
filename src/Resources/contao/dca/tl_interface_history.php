@@ -90,6 +90,10 @@ $GLOBALS['TL_DCA']['tl_interface_history'] = array
             'flag'                    => 6,
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
+        'mtime' => array
+        (
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
+        ),
         'source' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_interface_history']['source'],

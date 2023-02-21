@@ -19,6 +19,7 @@ use Contao\Model\Collection;
  * @property integer $id
  * @property integer $pid
  * @property integer $tstamp
+ * @property integer $mtime
  * @property string  $source
  * @property string  $action
  * @property string  $username
@@ -30,6 +31,7 @@ use Contao\Model\Collection;
  * @method static InterfaceHistoryModel|null findOneBy($col, $val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByPid($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByTstamp($val, array $opt=array())
+ * @method static InterfaceHistoryModel|null findOneByMtime($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneBySource($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByAction($val, array $opt=array())
  * @method static InterfaceHistoryModel|null findOneByUsername($val, array $opt=array())
@@ -38,6 +40,7 @@ use Contao\Model\Collection;
  *
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByPid($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByTstamp($val, array $opt=array())
+ * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByMtime($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findBySource($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByAction($val, array $opt=array())
  * @method static Collection|InterfaceHistoryModel[]|InterfaceHistoryModel|null findByUsername($val, array $opt=array())
@@ -50,6 +53,7 @@ use Contao\Model\Collection;
  * @method static integer countById($id, array $opt=array())
  * @method static integer countByPid($val, array $opt=array())
  * @method static integer countByTstamp($val, array $opt=array())
+ * @method static integer countByMtime($val, array $opt=array())
  * @method static integer countBySource($val, array $opt=array())
  * @method static integer countByAction($val, array $opt=array())
  * @method static integer countByUsername($val, array $opt=array())
