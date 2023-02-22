@@ -11,13 +11,58 @@
       <trans-unit id="tl_contact_person.herr.0">
         <source>Mr.</source>
       </trans-unit>
+      <trans-unit id="tl_contact_person.herr.1">
+        <source>Mr.</source>
+      </trans-unit>
       <trans-unit id="tl_contact_person.frau.0">
         <source>Mrs.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.frau.1">
+        <source>Mrs.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.herrn.0">
+        <source>Mr.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.herrn.1">
+        <source>Mr.</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.firma.0">
+        <source>Company</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.firma.1">
+        <source>Company</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.eheleute.0">
+        <source>Spouses</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.eheleute.1">
+        <source>spouses</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.familie.0">
+        <source>Family</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.familie.1">
+        <source>family</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.nicht_zutreffend.0">
+        <source>Not applicable</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.nicht_zutreffend.1">
+        <source></source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.divers.0">
+        <source>Diverse</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.divers.1">
+        <source></source>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationMr.0">
         <source>Dear</source>
       </trans-unit>
       <trans-unit id="tl_contact_person.salutationMrs.0">
+        <source>Dear</source>
+      </trans-unit>
+      <trans-unit id="tl_contact_person.salutationGlobal.0">
         <source>Dear</source>
       </trans-unit>
 

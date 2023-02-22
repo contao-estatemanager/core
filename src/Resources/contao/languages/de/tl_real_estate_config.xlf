@@ -21,6 +21,10 @@
         <source>Provider / Contact Persons</source>
         <target>Anbieter / Kontaktpersonen</target>
       </trans-unit>
+      <trans-unit id="tl_real_estate_config.import_legend">
+        <source>Import</source>
+        <target>Import</target>
+      </trans-unit>
 
       <trans-unit id="tl_real_estate_config.estateManagerAdminEmail.0">
         <source>E-mail address of the technical administrator</source>
@@ -109,6 +113,14 @@
       <trans-unit id="tl_real_estate_config.roomOptions.1">
         <source>Here you can enter a comma separated list of options which should be available for the number of rooms.</source>
         <target>Hier können Sie die eine kommagetrente Liste von Optionen eingeben, die für die Zimmeranzahl zur Verfügung stehen soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.estateManagerMaxFileSize.0">
+        <source>Maximum image upload file size</source>
+        <target>Maximale Bild-Upload-Dateigröße</target>
+      </trans-unit>
+      <trans-unit id="tl_real_estate_config.estateManagerMaxFileSize.1">
+        <source>Here you can enter the maximum upload file size in bytes (1 MB = 1000 kB = 1000000 byte).</source>
+        <target>Hier können Sie die maximale Upload-Dateigröße in Bytes eingeben (1 MB = 1000 kB = 1000000 Byte).</target>
       </trans-unit>
 
       <trans-unit id="tl_real_estate_config.dateAdded">

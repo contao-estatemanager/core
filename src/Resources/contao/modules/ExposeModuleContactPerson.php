@@ -75,6 +75,7 @@ class ExposeModuleContactPerson extends ExposeModule
                                 $varSingleSrc = Config::get('defaultContactPersonFemaleImage');
                                 break;
                             case 'herr':
+                            case 'herrn':
                                 $varSingleSrc = Config::get('defaultContactPersonMaleImage');
                                 break;
                         }

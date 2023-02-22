@@ -968,5 +968,13 @@ return array
         (
             array('combine', '', '', ' ', '', 'a:2:{i:0;a:2:{s:5:"field";s:3:"ort";s:6:"remove";s:1:"1";}i:1;a:2:{s:5:"field";s:16:"regionalerZusatz";s:6:"remove";s:1:"1";}}', '')
         )
-    )
+    ),
+    array
+    (
+        'field' => array('sicherheitstechnik', '', '', NULL),
+        'actions' => array
+        (
+            array('unserialize', '', '', ', ', '', NULL, '')
+        )
+    ),
 );
