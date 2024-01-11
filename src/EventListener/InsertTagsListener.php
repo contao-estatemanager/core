@@ -80,7 +80,7 @@ class InsertTagsListener
 
         switch ($insertTag) {
             case 'realestate':
-                return $realEstate->{$elements[1]} ?: '';
+                return (string) $realEstate->{$elements[1]} ?: '';
         }
 
         return '';
