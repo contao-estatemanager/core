@@ -162,7 +162,7 @@ class FilterSession extends \Frontend
         {
             $this->strMarketingType = $objPage->marketingType;
         }
-        elseif (isset($_SESSION['FILTER_DATA']['marketing-type']))
+        elseif (!empty($_SESSION['FILTER_DATA']['marketing-type']))
         {
             $this->strMarketingType = $_SESSION['FILTER_DATA']['marketing-type'];
         }
